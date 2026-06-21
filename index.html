@@ -29,8 +29,8 @@
             display: flex;
             justify-content: flex-start; /* Allinea a sinistra */
             align-items: flex-start;     /* Allinea in alto */
-            padding-top: 60px;           /* Distanza dall'alto su PC */
-            padding-left: 40px;          /* MARGINE UNIFICATO DA SINISTRA */
+            padding-top: 60px;           
+            padding-left: 40px;          /* Margine unificato da sinistra */
             padding-right: 40px;
             overflow: hidden;
         }
@@ -39,7 +39,8 @@
             font-family: 'GutteryFont', sans-serif;
             font-size: 2.8vw;            /* Dimensione per monitor PC */
             text-transform: uppercase;
-            letter-spacing: -1px;
+            letter-spacing: -1px;        /* Lettere dello stesso blocco vicine */
+            word-spacing: 15px;          /* FORZA LO SPAZIO TRA LE PAROLE SU DESKTOP */
             text-align: left;
             white-space: nowrap;         /* Tutto su una riga */
         }
@@ -51,28 +52,30 @@
         /* --- 2. REGOLE SPECIFICHE PER IPAD E TABLET --- */
         @media screen and (min-width: 481px) and (max-width: 1024px) {
             body {
-                padding-top: 50px;       /* Distanza dall'alto su iPad */
-                padding-left: 40px;      /* STESSO MARGINE DA SINISTRA */
+                padding-top: 50px;       
+                padding-left: 40px;      
                 padding-right: 40px;
             }
 
             .brand-name {
-                font-size: 4.5vw;        /* Font ingrandito per renderlo proporzionato su iPad */
+                font-size: 4.5vw;        
                 letter-spacing: -0.8px;
+                word-spacing: 20px;      /* Spazio tra le parole proporzionato per iPad */
             }
         }
 
         /* --- 3. REGOLE SPECIFICHE PER IPHONE E SMARTPHONE --- */
         @media screen and (max-width: 480px) {
             body {
-                padding-top: 40px;       /* Distanza dall'alto su iPhone */
-                padding-left: 40px;      /* STESSO MARGINE DA SINISTRA ANCHE SU MOBILE */
+                padding-top: 40px;       
+                padding-left: 40px;      
                 padding-right: 40px;
             }
 
             .brand-name {
-                font-size: 5.8vw;        /* Font grande d'impatto per il telefono */
+                font-size: 5.8vw;        
                 letter-spacing: -0.5px;  
+                word-spacing: 12px;      /* Spazio tra le parole proporzionato per iPhone */
             }
         }
     </style>
