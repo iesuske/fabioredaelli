@@ -29,7 +29,9 @@
             display: flex;
             justify-content: flex-start; /* Allinea a sinistra */
             align-items: flex-start;     /* Allinea in alto */
-            padding: 60px;               /* Distanza generosa su schermi grandi */
+            padding-top: 60px;           /* Distanza dall'alto su PC */
+            padding-left: 40px;          /* MARGINE UNIFICATO DA SINISTRA */
+            padding-right: 40px;
             overflow: hidden;
         }
 
@@ -50,8 +52,8 @@
         @media screen and (min-width: 481px) and (max-width: 1024px) {
             body {
                 padding-top: 50px;       /* Distanza dall'alto su iPad */
-                padding-left: 30px;      /* Spostato più a sinistra rispetto al desktop */
-                padding-right: 30px;
+                padding-left: 40px;      /* STESSO MARGINE DA SINISTRA */
+                padding-right: 40px;
             }
 
             .brand-name {
@@ -63,9 +65,9 @@
         /* --- 3. REGOLE SPECIFICHE PER IPHONE E SMARTPHONE --- */
         @media screen and (max-width: 480px) {
             body {
-                padding-top: 35px;       
-                padding-left: 10px;      /* Massima spinta a sinistra su iPhone */
-                padding-right: 10px;
+                padding-top: 40px;       /* Distanza dall'alto su iPhone */
+                padding-left: 40px;      /* STESSO MARGINE DA SINISTRA ANCHE SU MOBILE */
+                padding-right: 40px;
             }
 
             .brand-name {
