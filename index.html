@@ -3,61 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fabio Redaelli | Official Site</title>
+    <title>Fabio Hot Stuff Redaelli</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-
     <style>
-        /* Reset base per azzerare i margini del browser */
+        /* Reset iniziale dei margini del browser */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        /* Sfondo completamente nero e altezza totale della pagina */
+        /* Registriamo il font che hai caricato su GitHub */
+        @font-face {
+            font-family: 'GutteryFont';
+            /* Questo percorso punta esattamente alla cartella fonts e al file guttery.otf */
+            src: url('fonts/guttery.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Configurazione della pagina: sfondo nero e allineamento in alto a sinistra */
         body {
             background-color: #000000;
             color: #ffffff;
-            font-family: Arial, sans-serif; /* Font di fallback per i testi normali */
             height: 100vh;
-            position: relative;
+            display: flex;
+            justify-content: flex-start; /* Allinea a sinistra */
+            align-items: flex-start;     /* Allinea in alto */
+            padding: 60px;               /* Distanza dai bordi dello schermo */
             overflow: hidden;
         }
 
-        /* Contenitore posizionato in alto a destra */
-        .header-brand {
-            position: absolute;
-            top: 40px;
-            right: 60px;
-            text-align: right;
-        }
-
-        /* Stile del nome gigante con il font Anton */
+        /* Stile del testo gigante con il tuo font */
         .brand-name {
-            font-family: 'Anton', sans-serif;
-            font-size: 5vw; /* Dimensione fluida che si adatta allo schermo */
+            font-family: 'GutteryFont', sans-serif;
+            font-size: 7vw;              /* Dimensione gigante proporzionata allo schermo */
             line-height: 0.9;
             text-transform: uppercase;
-            letter-spacing: -1px; /* Lettere molto vicine stile agenzia */
-            color: #ffffff;
+            letter-spacing: -1px;        /* Lettere ravvicinate */
+            text-align: left;            /* Forza l'allineamento del testo a sinistra */
         }
 
-        /* Stile opzionale per far risaltare "Hot Stuff" se vuoi farlo di un altro colore (es. rosso), altrimenti rimane bianco */
+        /* Colore rosso per la parte "Hot Stuff" */
         .highlight {
-            color: #ff3333; /* Un rosso acceso da fumetto/adv */
+            color: #ff3333;              /* Rosso acceso stile fumetto/adv */
         }
     </style>
 </head>
 <body>
 
-    <header class="header-brand">
-        <h1 class="brand-name">
-            Fabio <span class="highlight">Hot Stuff</span> Redaelli
-        </h1>
-    </header>
+    <h1 class="brand-name">
+        Fabio <br>
+        <span class="highlight">Hot Stuff</span> <br>
+        Redaelli
+    </h1>
 
-    </body>
+</body>
 </html>
