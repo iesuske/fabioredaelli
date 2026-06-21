@@ -27,12 +27,22 @@
             color: #ffffff;
             height: 100vh;
             display: flex;
-            flex-direction: column;    /* Incolonna gli elementi (titolo e sottotitolo) */
-            justify-content: center;   /* Centra verticalmente */
-            align-items: center;       /* Centra orizzontalmente */
+            flex-direction: column;
+            align-items: center;       /* Centra orizzontalmente il contenuto */
+            justify-content: flex-start; /* Allinea il contenuto partendo dall'alto */
+            overflow: hidden;
+        }
+
+        /* Header posizionato in alto al centro */
+        header {
+            display: flex;
+            flex-direction: column;    /* Incolonna nome e sottotitolo */
+            align-items: center;       /* Centra perfettamente gli elementi interni */
+            text-align: center;
+            padding-top: 60px;         /* Margine dall'alto (modificabile se lo vuoi più su o più giù) */
             padding-left: 40px;          
             padding-right: 40px;
-            overflow: hidden;
+            width: 100%;
         }
 
         .brand-name {
@@ -41,59 +51,67 @@
             font-weight: normal;         /* Toglie il grassetto automatico */
             letter-spacing: -1px;        /* Lettere vicine all'interno della parola */
             word-spacing: 6px;           /* Spaziatura tra le parole */
-            text-align: center;          /* Forza il testo al centro */
             white-space: nowrap;         /* Tutto su una riga */
-            margin-bottom: 15px;         /* Spazio tra il nome e il sottotitolo */
+            margin-bottom: 10px;         /* Distanza minima tra nome e sottotitolo */
         }
 
         .highlight {
             color: #ff3333;              /* Rosso acceso */
         }
 
-        /* Stile per il sottotitolo */
+        /* Stile per il sottotitolo con lo STESSO font ma più piccolo */
         .subtitle {
-            font-family: sans-serif;     /* Font lineare pulito per il sottotitolo, puoi cambiarlo se serve */
-            font-size: 1.2vw;            /* Dimensione proporzionale su PC */
-            text-transform: lowercase;   /* Tutto minuscolo */
-            letter-spacing: 2px;         /* Un po' di aria tra le lettere */
-            color: #cccccc;              /* Grigio chiaro per non appesantire */
-            text-align: center;
+            font-family: 'GutteryFont', sans-serif; /* Mantenuto lo stesso font */
+            font-size: 1.3vw;            /* Dimensione più piccola rispetto al titolo */
+            font-weight: normal;
+            letter-spacing: 1px;         
+            word-spacing: 4px;
+            color: #cccccc;              /* Grigio chiaro per dare contrasto, se lo vuoi bianco puro metti #ffffff */
+            white-space: nowrap;
         }
 
         /* --- 2. REGOLE SPECIFICHE PER IPAD E TABLET --- */
         @media screen and (min-width: 481px) and (max-width: 1024px) {
+            header {
+                padding-top: 50px;       
+            }
             .brand-name {
                 font-size: 4.5vw;        
                 letter-spacing: -0.8px;
                 word-spacing: 8px;       
             }
             .subtitle {
-                font-size: 2vw;
+                font-size: 2.1vw;
             }
         }
 
         /* --- 3. REGOLE SPECIFICHE PER IPHONE E SMARTPHONE --- */
         @media screen and (max-width: 480px) {
+            header {
+                padding-top: 40px;       
+            }
             .brand-name {
                 font-size: 5.8vw;        
                 letter-spacing: -0.5px;  
                 word-spacing: 5px;       
             }
             .subtitle {
-                font-size: 3vw;
+                font-size: 2.8vw;
             }
         }
     </style>
 </head>
 <body>
 
-    <h1 class="brand-name">
-        Fabio <span class="highlight">“Hot Stuff”</span> Redaelli
-    </h1>
-    
-    <div class="subtitle">
-        - comics and illustrations -
-    </div>
+    <header>
+        <h1 class="brand-name">
+            Fabio <span class="highlight">“Hot Stuff”</span> Redaelli
+        </h1>
+        
+        <div class="subtitle">
+            - comics and illustrations -
+        </div>
+    </header>
 
 </body>
 </html>
