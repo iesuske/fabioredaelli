@@ -35,14 +35,23 @@
 
         /* L'intestazione principale (Titolo della Home) */
         header {
+            position: relative;        /* Necessario per posizionare la striscia dietro al testo */
             display: flex;
             flex-direction: column;    /* Incolonna il nome e il sottotitolo */
             align-items: center;       /* Centra perfettamente gli elementi tra di loro */
+            justify-content: center;   /* Centra il testo verticalmente rispetto alla banda */
             text-align: center;
             padding-top: 60px;         /* Distanza dal bordo superiore dello schermo */
-            padding-left: 40px;          
-            padding-right: 40px;
+            padding-bottom: 60px;
             width: 100%;
+            min-height: 240px;         /* Altezza per contenere comodamente la striscia grafica */
+        }
+
+        /* CONTENITORE SCRITTE: Assicura che il testo rimanga SOPRA la striscia di disegni */
+        .header-text {
+            position: relative;
+            z-index: 2;                /* Porta il testo in primo piano */
+            pointer-events: none;      /* Evita che il testo interferisca con azioni del mouse */
         }
 
         .brand-name {
@@ -53,6 +62,7 @@
             word-spacing: 6px;           /* Spaziatura tra le parole */
             white-space: nowrap;         /* Mantiene tutto su una sola riga */
             margin-bottom: 10px;         /* Spazio tra il titolo principale e il sottotitolo */
+            text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.9), 0px 0px 10px rgba(0, 0, 0, 0.9); /* Ombra pronunciata anti-disturbo */
         }
 
         .highlight {
@@ -68,12 +78,58 @@
             word-spacing: 4px;
             color: #ffffff;              /* Bianco puro */
             white-space: nowrap;         /* Mantiene anche il sottotitolo su una riga */
+            text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.9);
+        }
+
+        /* LA STRISCIA GRAFICA DI SFONDO (COLLAGE) */
+        .header-strip {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%); /* Centra la striscia verticalmente rispetto all'header */
+            width: 100%;
+            height: 180px;              /* Altezza della banda con i disegni */
+            background-color: rgba(10, 10, 10, 0.5); /* Sfondo scuro trasparente d'unione */
+            z-index: 1;                 /* Rimane dietro al testo */
+            overflow: hidden;           /* Taglia i disegni se escono dai bordi */
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        /* Contenitore interno per allineare e fondere le immagini */
+        .strip-gallery {
+            display: flex;
+            align-items: center;
+            width: max-content;
+            padding-right: 50px;
+        }
+
+        /* Stile comune per tutti i 20 lavori grafici nella striscia */
+        .header-strip img {
+            height: 150px;              /* Altezza uniforme per l'allineamento orizzontale */
+            width: auto;                /* Mantiene le proporzioni corrette di ogni disegno */
+            object-fit: cover;
+            opacity: 0.20;              /* Trasparenza per l'effetto d'atmosfera accennato */
+            filter: grayscale(40%) contrast(110%); /* Desatura parzialmente per valorizzare il rosso del nome */
+            margin-left: -25px;         /* Sovrapposizione reciproca ad effetto collage sfalsato */
+            mix-blend-mode: lighten;    /* Fonde piacevolmente le immagini sui toni scuri */
+            pointer-events: none;
         }
 
         /* --- 2. REGOLE SPECIFICHE PER IPAD E TABLET --- */
         @media screen and (min-width: 481px) and (max-width: 1024px) {
             header {
                 padding-top: 50px;       
+                padding-bottom: 50px;
+                min-height: 190px;
+            }
+            .header-strip {
+                height: 140px;
+            }
+            .header-strip img {
+                height: 120px;
+                margin-left: -18px;
             }
             .brand-name {
                 font-size: 4.5vw;        
@@ -89,6 +145,15 @@
         @media screen and (max-width: 480px) {
             header {
                 padding-top: 40px;       
+                padding-bottom: 40px;
+                min-height: 150px;
+            }
+            .header-strip {
+                height: 110px;
+            }
+            .header-strip img {
+                height: 90px;
+                margin-left: -12px;
             }
             .brand-name {
                 font-size: 5.8vw;        
@@ -104,13 +169,42 @@
 <body>
 
     <header>
-        <h1 class="brand-name">
-            Fabio <span class="highlight">“Hot Stuff”</span> Redaelli
-        </h1>
         
-        <div class="subtitle">
-            - Comic Art Author -
+        <div class="header-text">
+            <h1 class="brand-name">
+                Fabio<span class="highlight">“Hot Stuff”</span>Redaelli
+            </h1>
+            <div class="subtitle">
+                Comic art author
+            </div>
         </div>
+
+        <div class="header-strip">
+            <div class="strip-gallery">
+                <img src="616987710_18082180661238756_1853949525649807672_n.jpg" alt="Grafica 1">
+                <img src="575656634_18553452925028432_7538027429835504901_n.jpg" alt="Grafica 2">
+                <img src="536913239_771279048815462_2270826523541450789_n.jpg" alt="Grafica 3">
+                <img src="617601216_18079300337262112_2573794255911570420_n.jpg" alt="Grafica 4">
+                <img src="617850559_18092624146797605_7821590172086253337_n.jpg" alt="Grafica 5">
+                <img src="617837175_18099345169883097_2876763776130651949_n.jpg" alt="Grafica 6">
+                <img src="617512350_18089174063287397_7867576783431125970_n.jpg" alt="Grafica 7">
+                <img src="616098087_18101150416890313_5614747657125988009_n.jpg" alt="Grafica 8">
+                <img src="618169208_18107012773736733_1751668667999684768_n.jpg" alt="Grafica 9">
+                <img src="542731330_1860838831130927_5613417031476279964_n.jpg" alt="Grafica 10">
+
+                <img src="621524486_18189760999354574_6135942696905187547_n.jpg" alt="Grafica 11">
+                <img src="621450252_18188011711361690_1040459246478828965_n.jpg" alt="Grafica 12">
+                <img src="625250454_18205243945322936_6878811721088878630_n.jpg" alt="Grafica 13">
+                <img src="628033362_18446087698102735_2084676123212432937_n.jpg" alt="Grafica 14">
+                <img src="628164783_18325104664221178_2730524477002158391_n.jpg" alt="Grafica 15">
+                <img src="622030549_18109247362658531_1996659921977013897_n.jpg" alt="Grafica 16">
+                <img src="628394780_18451341901099285_8098324943641298465_n.jpg" alt="Grafica 17">
+                <img src="628112860_18391505890145052_7103366605849157655_n.jpg" alt="Grafica 18">
+                <img src="623826771_18089924120318858_3292534533442842422_n.jpg" alt="Grafica 19">
+                <img src="624998449_18186844954361641_6298485259651586925_n.jpg" alt="Grafica 20">
+            </div>
+        </div>
+
     </header>
 
 </body>
