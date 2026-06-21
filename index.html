@@ -28,18 +28,18 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;       /* Centra orizzontalmente il contenuto */
-            justify-content: flex-start; /* Allinea il contenuto partendo dall'alto */
+            align-items: center;       /* Centra orizzontalmente tutto il contenuto della pagina */
+            justify-content: flex-start; /* Fa partire il contenuto dall'alto */
             overflow: hidden;
         }
 
-        /* Header posizionato in alto al centro */
+        /* L'intestazione principale (Titolo della Home) */
         header {
             display: flex;
-            flex-direction: column;    /* Incolonna nome e sottotitolo */
-            align-items: center;       /* Centra perfettamente gli elementi interni */
+            flex-direction: column;    /* Incolonna il nome e il sottotitolo */
+            align-items: center;       /* Centra perfettamente gli elementi tra di loro */
             text-align: center;
-            padding-top: 60px;         /* Margine dall'alto (modificabile se lo vuoi più su o più giù) */
+            padding-top: 60px;         /* Distanza dal bordo superiore dello schermo */
             padding-left: 40px;          
             padding-right: 40px;
             width: 100%;
@@ -47,27 +47,27 @@
 
         .brand-name {
             font-family: 'GutteryFont', sans-serif;
-            font-size: 2.8vw;            /* Dimensione per monitor PC */
-            font-weight: normal;         /* Toglie il grassetto automatico */
+            font-size: 2.8vw;            /* Dimensione proporzionale per monitor PC */
+            font-weight: normal;         /* Toglie il grassetto automatico del tag h1 */
             letter-spacing: -1px;        /* Lettere vicine all'interno della parola */
             word-spacing: 6px;           /* Spaziatura tra le parole */
-            white-space: nowrap;         /* Tutto su una riga */
-            margin-bottom: 10px;         /* Distanza minima tra nome e sottotitolo */
+            white-space: nowrap;         /* Mantiene tutto su una sola riga */
+            margin-bottom: 10px;         /* Spazio tra il titolo principale e il sottotitolo */
         }
 
         .highlight {
-            color: #ff3333;              /* Rosso acceso */
+            color: #ff3333;              /* Rosso acceso per "Hot Stuff" */
         }
 
-        /* Stile per il sottotitolo con lo STESSO font ma più piccolo */
+        /* Stile per il sottotitolo dell'intestazione */
         .subtitle {
-            font-family: 'GutteryFont', sans-serif; /* Mantenuto lo stesso font */
-            font-size: 1.3vw;            /* Dimensione più piccola rispetto al titolo */
+            font-family: 'GutteryFont', sans-serif; /* Stesso identico font del titolo */
+            font-size: 1.3vw;            /* Dimensione più piccola */
             font-weight: normal;
             letter-spacing: 1px;         
             word-spacing: 4px;
-            color: #cccccc;              /* Grigio chiaro per dare contrasto, se lo vuoi bianco puro metti #ffffff */
-            white-space: nowrap;
+            color: #ffffff;              /* Bianco puro */
+            white-space: nowrap;         /* Mantiene anche il sottotitolo su una riga */
         }
 
         /* --- 2. REGOLE SPECIFICHE PER IPAD E TABLET --- */
