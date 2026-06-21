@@ -16,12 +16,12 @@
         /* Registriamo il font che hai caricato su GitHub */
         @font-face {
             font-family: 'GutteryFont';
-            src: url('fonts/guttery.otf') format('opentype');
+            src: url('fonts/guttery.otf');
             font-weight: normal;
             font-style: normal;
         }
 
-        /* Sfondo nero e allineamento in alto a sinistra */
+        /* --- STILE DI BASE (DESKTOP) --- */
         body {
             background-color: #000000;
             color: #ffffff;
@@ -29,23 +29,35 @@
             display: flex;
             justify-content: flex-start; /* Allinea a sinistra */
             align-items: flex-start;     /* Allinea in alto */
-            padding: 60px;               /* Distanza dai bordi dello schermo */
+            padding: 60px;               /* Distanza generosa dai bordi su PC */
             overflow: hidden;
         }
 
-        /* Stile del nome tutto su una riga */
         .brand-name {
             font-family: 'GutteryFont', sans-serif;
-            font-size: 2.8vw;            /* Dimensione ridotta per far stare tutto su una riga */
+            font-size: 2.8vw;            /* Dimensione proporzionata per Desktop */
             text-transform: uppercase;
-            letter-spacing: -1px;        /* Lettere ravvicinate */
-            text-align: left;            /* Forza l'allineamento del testo a sinistra */
-            white-space: nowrap;         /* Impedisce tassativamente al testo di andare a capo */
+            letter-spacing: -1px;
+            text-align: left;
+            white-space: nowrap;         /* Forza il testo su una riga sola */
         }
 
-        /* Colore rosso per la parte "Hot Stuff" */
         .highlight {
-            color: #ff3333;              /* Rosso acceso stile fumetto/adv */
+            color: #ff3333;              /* Rosso acceso */
+        }
+
+        /* --- REGOLE SPECIFICHE PER IPHONE E SMARTPHONE --- */
+        @media screen and (max-width: 480px) {
+            body {
+                padding-top: 40px;       /* Distanza dall'alto su mobile */
+                padding-left: 15px;      /* Spostiamo la scritta molto più a sinistra (riduciamo il margine) */
+                padding-right: 15px;
+            }
+
+            .brand-name {
+                font-size: 5.5vw;        /* Quasi raddoppiata la grandezza del font su iPhone */
+                letter-spacing: 0px;     /* Leggermente più respiro tra le lettere sugli schermi piccoli */
+            }
         }
     </style>
 </head>
