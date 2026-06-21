@@ -27,10 +27,10 @@
             color: #ffffff;
             height: 100vh;
             display: flex;
-            justify-content: flex-start; /* Allinea a sinistra */
-            align-items: flex-start;     /* Allinea in alto */
-            padding-top: 60px;           
-            padding-left: 40px;          /* Margine unificato da sinistra */
+            flex-direction: column;    /* Incolonna gli elementi (titolo e sottotitolo) */
+            justify-content: center;   /* Centra verticalmente */
+            align-items: center;       /* Centra orizzontalmente */
+            padding-left: 40px;          
             padding-right: 40px;
             overflow: hidden;
         }
@@ -41,41 +41,46 @@
             font-weight: normal;         /* Toglie il grassetto automatico */
             letter-spacing: -1px;        /* Lettere vicine all'interno della parola */
             word-spacing: 6px;           /* Spaziatura tra le parole */
-            text-align: left;
+            text-align: center;          /* Forza il testo al centro */
             white-space: nowrap;         /* Tutto su una riga */
+            margin-bottom: 15px;         /* Spazio tra il nome e il sottotitolo */
         }
 
         .highlight {
             color: #ff3333;              /* Rosso acceso */
         }
 
+        /* Stile per il sottotitolo */
+        .subtitle {
+            font-family: sans-serif;     /* Font lineare pulito per il sottotitolo, puoi cambiarlo se serve */
+            font-size: 1.2vw;            /* Dimensione proporzionale su PC */
+            text-transform: lowercase;   /* Tutto minuscolo */
+            letter-spacing: 2px;         /* Un po' di aria tra le lettere */
+            color: #cccccc;              /* Grigio chiaro per non appesantire */
+            text-align: center;
+        }
+
         /* --- 2. REGOLE SPECIFICHE PER IPAD E TABLET --- */
         @media screen and (min-width: 481px) and (max-width: 1024px) {
-            body {
-                padding-top: 50px;       
-                padding-left: 40px;      
-                padding-right: 40px;
-            }
-
             .brand-name {
                 font-size: 4.5vw;        
                 letter-spacing: -0.8px;
                 word-spacing: 8px;       
             }
+            .subtitle {
+                font-size: 2vw;
+            }
         }
 
         /* --- 3. REGOLE SPECIFICHE PER IPHONE E SMARTPHONE --- */
         @media screen and (max-width: 480px) {
-            body {
-                padding-top: 40px;       
-                padding-left: 40px;      
-                padding-right: 40px;
-            }
-
             .brand-name {
                 font-size: 5.8vw;        
                 letter-spacing: -0.5px;  
                 word-spacing: 5px;       
+            }
+            .subtitle {
+                font-size: 3vw;
             }
         }
     </style>
@@ -85,6 +90,10 @@
     <h1 class="brand-name">
         Fabio <span class="highlight">“Hot Stuff”</span> Redaelli
     </h1>
+    
+    <div class="subtitle">
+        - comics and illustrations -
+    </div>
 
 </body>
 </html>
