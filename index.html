@@ -33,14 +33,14 @@
             overflow: hidden;
         }
 
-        /* Stile del nome con dimensione ridotta */
+        /* Stile del nome tutto su una riga */
         .brand-name {
             font-family: 'GutteryFont', sans-serif;
-            font-size: 4.5vw;            /* Dimensione ridotta per non farla risultare troppo grande */
-            line-height: 1.0;            /* Regolata la spaziatura tra le righe */
+            font-size: 2.8vw;            /* Dimensione ridotta per far stare tutto su una riga */
             text-transform: uppercase;
             letter-spacing: -1px;        /* Lettere ravvicinate */
             text-align: left;            /* Forza l'allineamento del testo a sinistra */
+            white-space: nowrap;         /* Impedisce tassativamente al testo di andare a capo */
         }
 
         /* Colore rosso per la parte "Hot Stuff" */
@@ -52,9 +52,7 @@
 <body>
 
     <h1 class="brand-name">
-        Fabio <br>
-        <span class="highlight">Hot Stuff</span> <br>
-        Redaelli
+        Fabio <span class="highlight">Hot Stuff</span> Redaelli
     </h1>
 
 </body>
