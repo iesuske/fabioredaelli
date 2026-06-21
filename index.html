@@ -16,13 +16,12 @@
         /* Registriamo il font che hai caricato su GitHub */
         @font-face {
             font-family: 'GutteryFont';
-            /* Questo percorso punta esattamente alla cartella fonts e al file guttery.otf */
             src: url('fonts/guttery.otf') format('opentype');
             font-weight: normal;
             font-style: normal;
         }
 
-        /* Configurazione della pagina: sfondo nero e allineamento in alto a sinistra */
+        /* Sfondo nero e allineamento in alto a sinistra */
         body {
             background-color: #000000;
             color: #ffffff;
@@ -34,11 +33,11 @@
             overflow: hidden;
         }
 
-        /* Stile del testo gigante con il tuo font */
+        /* Stile del nome con dimensione ridotta */
         .brand-name {
             font-family: 'GutteryFont', sans-serif;
-            font-size: 7vw;              /* Dimensione gigante proporzionata allo schermo */
-            line-height: 0.9;
+            font-size: 4.5vw;            /* Dimensione ridotta per non farla risultare troppo grande */
+            line-height: 1.0;            /* Regolata la spaziatura tra le righe */
             text-transform: uppercase;
             letter-spacing: -1px;        /* Lettere ravvicinate */
             text-align: left;            /* Forza l'allineamento del testo a sinistra */
