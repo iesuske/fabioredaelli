@@ -21,7 +21,7 @@
             font-style: normal;
         }
 
-        /* --- STILE DI BASE (DESKTOP) --- */
+        /* --- 1. STILE DI BASE (DESKTOP) --- */
         body {
             background-color: #000000;
             color: #ffffff;
@@ -29,34 +29,48 @@
             display: flex;
             justify-content: flex-start; /* Allinea a sinistra */
             align-items: flex-start;     /* Allinea in alto */
-            padding: 60px;               /* Distanza generosa dai bordi su PC */
+            padding: 60px;               /* Distanza generosa su schermi grandi */
             overflow: hidden;
         }
 
         .brand-name {
             font-family: 'GutteryFont', sans-serif;
-            font-size: 2.8vw;            /* Dimensione proporzionata per Desktop */
+            font-size: 2.8vw;            /* Dimensione per monitor PC */
             text-transform: uppercase;
             letter-spacing: -1px;
             text-align: left;
-            white-space: nowrap;         /* Forza il testo su una riga sola */
+            white-space: nowrap;         /* Tutto su una riga */
         }
 
         .highlight {
             color: #ff3333;              /* Rosso acceso */
         }
 
-        /* --- REGOLE SPECIFICHE PER IPHONE E SMARTPHONE --- */
+        /* --- 2. REGOLE SPECIFICHE PER IPAD E TABLET --- */
+        @media screen and (min-width: 481px) and (max-width: 1024px) {
+            body {
+                padding-top: 50px;       /* Distanza dall'alto su iPad */
+                padding-left: 30px;      /* Spostato più a sinistra rispetto al desktop */
+                padding-right: 30px;
+            }
+
+            .brand-name {
+                font-size: 4.5vw;        /* Font ingrandito per renderlo proporzionato su iPad */
+                letter-spacing: -0.8px;
+            }
+        }
+
+        /* --- 3. REGOLE SPECIFICHE PER IPHONE E SMARTPHONE --- */
         @media screen and (max-width: 480px) {
             body {
-                padding-top: 35px;       /* Distanza dall'alto dello schermo dello smartphone */
-                padding-left: 10px;      /* Spostiamo la scritta al massimo verso sinistra */
+                padding-top: 35px;       
+                padding-left: 10px;      /* Massima spinta a sinistra su iPhone */
                 padding-right: 10px;
             }
 
             .brand-name {
-                font-size: 5.8vw;        /* Font decisamente più grande e d'impatto su iPhone */
-                letter-spacing: -0.5px;  /* Mantiene le lettere compatte anche su mobile */
+                font-size: 5.8vw;        /* Font grande d'impatto per il telefono */
+                letter-spacing: -0.5px;  
             }
         }
     </style>
