@@ -7,7 +7,7 @@
     
     <link rel="icon" href="images/favicon.ico" sizes="any">
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-    <link class="apple-touch-icon" rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
     
     <style>
@@ -55,9 +55,9 @@
         /* --- STILE MENU CONTACT ME IN ALTO A DESTRA --- */
         .nav-container {
             position: absolute;
-            top: 12px;                 /* Spostato leggermente più in alto */
+            top: 12px;                 /* Spostato in alto per non sovrapporsi al nastro */
             right: 40px;
-            z-index: 10;               /* Molto alto per stare sopra a tutto, anche alla striscia */
+            z-index: 10;               /* Alto per stare sopra a tutto */
         }
 
         .dropdown {
@@ -87,7 +87,7 @@
         /* Contenitore delle voci del menu (la tendina) */
         .dropdown-menu {
             position: absolute;
-            top: 90%;                  /* Agganciato correttamente senza vuoti */
+            top: 90%;                  
             right: 0;
             background-color: rgba(15, 15, 15, 0.95); 
             border: 1px solid rgba(255, 51, 51, 0.4);  
@@ -144,28 +144,28 @@
 
         .brand-name {
             font-family: 'GutteryFont', sans-serif;
-            font-size: 2.8vw;            /* Dimensione proporzionale originale per monitor PC */
-            font-weight: normal;         /* Toglie il grassetto automatico del tag h1 */
-            letter-spacing: -1px;        /* Lettere vicine all'interno della parola */
-            word-spacing: 6px;           /* Spaziatura tra le parole */
-            white-space: nowrap;         /* Mantiene tutto su una sola riga */
-            margin-bottom: 10px;         /* Spazio tra il titolo principale e il sottotitolo */
-            text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.9), 0px 0px 10px rgba(0, 0, 0, 0.9); /* Ombra originale anti-disturbo */
+            font-size: 2.8vw;            /* Testo grande per monitor PC ripristinato */
+            font-weight: normal;         
+            letter-spacing: -1px;        
+            word-spacing: 6px;           
+            white-space: nowrap;         
+            margin-bottom: 10px;         
+            text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.9), 0px 0px 10px rgba(0, 0, 0, 0.9); 
         }
 
         .highlight {
-            color: #ff3333;              /* Rosso acceso per "Hot Stuff" */
+            color: #ff3333;              
         }
 
         /* Stile per il sottotitolo dell'intestazione */
         .subtitle {
-            font-family: 'GutteryFont', sans-serif; /* Stesso identico font del titolo */
-            font-size: 1.3vw;            /* Dimensione più piccola originale */
+            font-family: 'GutteryFont', sans-serif; 
+            font-size: 1.3vw;            /* Sottotitolo grande ripristinato */
             font-weight: normal;
             letter-spacing: 1px;         
             word-spacing: 4px;
-            color: #ffffff;              /* Bianco puro */
-            white-space: nowrap;         /* Mantiene anche il sottotitolo su una riga */
+            color: #ffffff;              
+            white-space: nowrap;         
             text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.9);
         }
 
@@ -174,12 +174,12 @@
             position: absolute;
             top: 50%;
             left: 0;
-            transform: translateY(-50%); /* Centra la striscia verticalmente rispetto all'header */
+            transform: translateY(-50%); 
             width: 100%;
-            height: 180px;              /* Altezza della banda originale con i disegni */
-            background-color: rgba(10, 10, 10, 0.5); /* Sfondo scuro trasparente d'unione */
-            z-index: 1;                 /* Rimane dietro al testo */
-            overflow: hidden;           /* Taglia i disegni se escono dai bordi della striscia */
+            height: 180px;              
+            background-color: rgba(10, 10, 10, 0.5); 
+            z-index: 1;                 
+            overflow: hidden;           
             display: flex;
             align-items: center;
         }
@@ -192,18 +192,19 @@
             animation: scorriStriscia 60s linear infinite; 
         }
 
-        /* Stile comune per tutti i lavori grafici nella striscia (RIPRISTINATO ORIGINALE) */
+        /* Stile comune per le immagini (SISTEMATO: rimosse le sovrapposizioni) */
         .header-strip img {
-            height: 150px;              /* Altezza uniforme originale */
-            width: auto;                /* Mantiene le proporzioni corrette di ogni disegno */
+            height: 150px;              
+            width: auto;                
             object-fit: cover;
-            opacity: 0.20;              /* Trasparenza originale */
+            opacity: 0.20;              
             filter: grayscale(40%) contrast(110%); 
-            margin-right: 0px;          /* Rimossa la sovrapposizione errata */
+            margin-left: 0px;           /* Sistemato: nessuna sovrapposizione errata delle foto */
+            margin-right: 0px;
             pointer-events: none;
         }
 
-        /* ANIMAZIONE: Sposta la galleria esattamente della metà della sua larghezza totale */
+        /* ANIMAZIONE: Sposta la galleria */
         @keyframes scorriStriscia {
             0% {
                 transform: translateX(0);
