@@ -44,24 +44,25 @@
             display: flex;
             flex-direction: column;    
             align-items: center;       
-            justify-content: flex-start; 
+            justify-content: center;   
             text-align: center;
-            padding-top: 100px; /* Spazio per le scritte in alto */        
+            padding-top: 60px;         
+            padding-bottom: 60px;
             width: 100%;
-            min-height: 400px; /* Contenitore più alto per distanziare gli elementi */
+            min-height: 260px;         
         }
 
-        /* --- CONTENITORI NAVIGAZIONE (ALTO SINISTRA E ALTO DESTRA) --- */
+        /* --- CONTENITORI NAVIGAZIONE (ALZATI DI MEZZO CM VERSO L'ALTO) --- */
         .nav-left-container {
             position: absolute;
-            top: 20px;                 
+            top: -12px;                 /* Alzato per distanziarlo dal nastro */
             left: 40px;
             z-index: 10;               
         }
 
         .nav-right-container {
             position: absolute;
-            top: 20px;                 
+            top: -12px;                 /* Alzato per distanziarlo dal nastro */
             right: 40px;
             z-index: 10;               
         }
@@ -71,7 +72,7 @@
             display: inline-block;
         }
 
-        /* Stile comune dei pulsanti principali "About Me" e "Cont@ct Me" */
+        /* Pulsanti principali "About Me" e "Cont@ct Me" */
         .dropdown-trigger {
             font-family: 'GutteryFont', sans-serif;
             color: #ff3333;            
@@ -79,7 +80,7 @@
             text-decoration: none;
             cursor: pointer;
             letter-spacing: 1px;
-            text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.9);
+            text-shadow: 0px 0px 15px rgba(0, 0, 0, 1), 0px 0px 5px rgba(0, 0, 0, 1);
             transition: color 0.3s ease, transform 0.3s ease;
             display: block;
             padding: 10px;
@@ -90,17 +91,17 @@
             transform: scale(1.05);    
         }
 
-        /* --- MENU TENDINA TESTUALE ABOUT ME (SINISTRA) --- */
+        /* --- TENDINA ABOUT ME (SINISTRA) --- */
         .dropdown-about-box {
             position: absolute;
-            top: 100%;                  
+            top: 90%;                  
             left: 0;                   
             background-color: rgba(15, 15, 15, 0.98); 
             border: 1px solid rgba(255, 51, 51, 0.4);  
             border-radius: 6px;
             width: 320px;              
             padding: 20px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.6);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.8);
             
             opacity: 0;
             visibility: hidden;
@@ -122,17 +123,17 @@
             transform: translateY(0);
         }
 
-        /* --- MENU TENDINA LINK CONTACT ME (DESTRA) --- */
+        /* --- TENDINA CONTACT ME (DESTRA) --- */
         .dropdown-menu {
             position: absolute;
-            top: 100%;                  
+            top: 90%;                  
             right: 0;                  
             background-color: rgba(15, 15, 15, 0.95); 
             border: 1px solid rgba(255, 51, 51, 0.4);  
             border-radius: 6px;
             list-style: none;
             min-width: 200px;          
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.6);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.8);
             
             opacity: 0;
             visibility: hidden;
@@ -170,12 +171,11 @@
             color: #ff3333;                             
         }
 
-        /* --- CONTENITORE SCRITTE CENTRALI (BLOCCATE IN ALTO PER NON TOCCARE IL NASTRO) --- */
+        /* --- SCRITTE CENTRALI (AL CENTRO SOPRA IL NASTRO) --- */
         .header-text {
             position: relative;
             z-index: 2;                
             pointer-events: none;      
-            margin-bottom: 40px; /* Garantisce distacco fisico dal nastro inferiore */
         }
 
         .brand-name {
@@ -186,7 +186,7 @@
             word-spacing: 6px;           
             white-space: nowrap;         
             margin-bottom: 10px;         
-            text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.9), 0px 0px 10px rgba(0, 0, 0, 0.9); 
+            text-shadow: 0px 0px 25px rgba(0, 0, 0, 1), 0px 0px 15px rgba(0, 0, 0, 1), 0px 0px 5px rgba(0, 0, 0, 1); 
         }
 
         .highlight {
@@ -201,18 +201,18 @@
             word-spacing: 4px;
             color: #ffffff;              
             white-space: nowrap;         
-            text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.9);
+            text-shadow: 0px 0px 20px rgba(0, 0, 0, 1), 0px 0px 10px rgba(0, 0, 0, 1);
         }
 
-        /* --- LA STRISCIA GRAFICA DI SFONDO (ABBASSATA E IMMAGINI ALLINEATE ATTACCATE) --- */
+        /* --- NASTRO IMMAGINI (RITORNA AL CENTRO ED È PIÙ VISIBILE) --- */
         .header-strip {
             position: absolute;
-            top: 65%; /* Spostata dal 50% al 65% per abbassarla rispetto all'header */
+            top: 50%; /* Riportato al centro esatto */
             left: 0;
             transform: translateY(-50%); 
             width: 100%;
-            height: 200px;              
-            background-color: rgba(10, 10, 10, 0.5); 
+            height: 200px; /* Altezza incrementata di mezzo cm mantenuta */             
+            background-color: rgba(5, 5, 5, 0.6); 
             z-index: 1;                 
             overflow: hidden;           
             display: flex;
@@ -226,15 +226,15 @@
             animation: scorriStriscia 60s linear infinite; 
         }
 
-        /* Sistemazione immagini: rimosso il margine negativo per farle stare perfettamente attaccate e non sovrapposte */
+        /* Immagini sistemate: opacità aumentata per vederle bene e allineamento perfetto senza buchi */
         .header-strip img {
             height: 170px;              
             width: auto;                
             object-fit: cover;
-            opacity: 0.20;              
-            filter: grayscale(40%) contrast(110%); 
-            margin-left: 0px; /* Corretto: perfettamente a filo, una attaccata all'altra */
-            margin-right: 0px;
+            opacity: 0.65; /* Aumentata l'opacità da 0.20 a 0.65 per renderle ben visibili */             
+            filter: contrast(105%); 
+            margin-left: 0px; /* Perfettamente attaccate una di fianco all'altra */
+            margin-right: 0px;         
             pointer-events: none;
         }
 
@@ -246,25 +246,22 @@
         /* --- 2. REGOLE SPECIFICHE PER IPAD E TABLET --- */
         @media screen and (min-width: 481px) and (max-width: 1024px) {
             header {
-                padding-top: 90px;       
-                min-height: 380px;
+                padding-top: 60px;       
+                padding-bottom: 60px;
+                min-height: 220px;
             }
             .nav-left-container {
-                top: 15px;             
+                top: -8px;             
                 left: 20px;
             }
             .nav-right-container {
-                top: 15px;             
+                top: -8px;             
                 right: 20px;
             }
             .dropdown-trigger {
                 font-size: 1.5rem;      
             }
-            .header-text {
-                margin-bottom: 30px;
-            }
             .header-strip {
-                top: 68%; /* Abbassato anche su tablet */
                 height: 160px; 
             }
             .header-strip img {
@@ -284,15 +281,18 @@
         /* --- 3. REGOLE SPECIFICHE PER IPHONE E SMARTPHONE --- */
         @media screen and (max-width: 480px) {
             header {
-                padding-top: 85px;  
-                min-height: 340px;
+                padding-top: 50px;  
+                padding-bottom: 50px;
+                min-height: 180px;
             }
             .nav-left-container {
-                top: 15px;
+                position: absolute;      
+                top: -5px; /* Alzati e allontanati dal nastro */
                 left: 15px;
             }
             .nav-right-container {
-                top: 15px;
+                position: absolute;      
+                top: -5px; /* Alzati e allontanati dal nastro */
                 right: 15px;
             }
             .dropdown-trigger {
@@ -302,12 +302,9 @@
             .dropdown-about-box {
                 left: 0;
                 width: 280px;
-                max-height: 220px;
+                max-height: 250px;
                 overflow-y: auto; 
                 padding: 15px;
-            }
-            .dropdown-about-box p {
-                font-size: 0.85rem;
             }
             .dropdown-menu {
                 right: 0;
@@ -317,11 +314,7 @@
                 font-size: 1.1rem;
                 padding: 10px 12px;
             }
-            .header-text {
-                margin-bottom: 25px;
-            }
             .header-strip {
-                top: 72%; /* Ben abbassato su iPhone per non toccare i testi */
                 height: 130px; 
             }
             .header-strip img {
