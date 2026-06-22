@@ -47,93 +47,6 @@
             min-height: 240px;         /* Altezza per contenere comodamente la striscia grafica */
         }
 
-        /* --- NUOVO: STILE MENU CONTACT ME IN ALTO A DESTRA --- */
-        .nav-container {
-            position: absolute;
-            top: 20px;
-            right: 40px;
-            z-index: 10;               /* Molto alto per stare sopra a tutto, anche alla striscia */
-        }
-
-        /* Elemento principale del menu */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        /* Pulsante/Scritta principale "Contact me" */
-        .dropdown-trigger {
-            font-family: 'GutteryFont', sans-serif;
-            color: #ff3333;            /* Colore Magenta/Rosso abbinato a Hot Stuff */
-            font-size: 1.5rem;
-            text-decoration: none;
-            cursor: pointer;
-            letter-spacing: 1px;
-            text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.9);
-            transition: color 0.3s ease, transform 0.3s ease;
-            display: block;
-            padding: 10px;
-        }
-
-        /* Effetto al passaggio del mouse sul pulsante principale */
-        .dropdown-trigger:hover {
-            color: #ffffff;            /* Cambia in bianco */
-            transform: scale(1.05);    /* Si ingrandisce leggermente */
-        }
-
-        /* Contenitore delle voci del menu (la tendina vera e propria) */
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background-color: rgba(15, 15, 15, 0.95); /* Sfondo scuro quasi coprente per leggibilità */
-            border: 1px solid rgba(255, 51, 51, 0.4);  /* Bordino sottile magenta */
-            border-radius: 6px;
-            list-style: none;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.6);
-            
-            /* Stati per l'animazione di comparsa fluida */
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-        }
-
-        /* Mostra il menu a tendina quando si passa sopra con il mouse */
-        .dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        /* Stile dei singoli elementi della lista */
-        .dropdown-menu li {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .dropdown-menu li:last-child {
-            border-bottom: none;       /* Toglie il bordo all'ultima voce */
-        }
-
-        /* Stile dei link interni della tendina */
-        .dropdown-menu a {
-            font-family: Arial, sans-serif; /* Font più pulito e leggibile per i link piccoli */
-            font-size: 0.95rem;
-            color: #ffffff;
-            text-decoration: none;
-            display: block;
-            padding: 12px 16px;
-            text-align: right;          /* Allinea il testo a destra coerente con la posizione */
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
-
-        /* Effetto quando si passa sopra le voci della tendina */
-        .dropdown-menu a:hover {
-            background-color: rgba(255, 51, 51, 0.15); /* Sfumatura magenta sullo sfondo */
-            color: #ff3333;                             /* Testo diventa magenta */
-        }
-
-
         /* CONTENITORE SCRITTE: Assicura che il testo rimanga SOPRA la striscia di disegni */
         .header-text {
             position: relative;
@@ -205,7 +118,92 @@
             pointer-events: none;
         }
 
-        /* ANIMAZIONE: Sposta la galleria esattamente della metà della sua larghezza totale */
+        /* --- MODIFICATO: STILE MENU CONTACT ME SOTTO IL NASTRO --- */
+        .nav-container {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end; /* Allineato a destra su PC */
+            padding-right: 40px;
+            margin-top: 15px;          /* Distanza sotto il blocco dell'header */
+            z-index: 10;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Pulsante/Scritta principale "Contact me" */
+        .dropdown-trigger {
+            font-family: 'GutteryFont', sans-serif;
+            color: #ff3333;            /* Colore Magenta/Rosso abbinato a Hot Stuff */
+            font-size: 1.5rem;
+            text-decoration: none;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: block;
+            padding: 10px;
+        }
+
+        .dropdown-trigger:hover {
+            color: #ffffff;            
+            transform: scale(1.05);    
+        }
+
+        /* Contenitore delle voci del menu (la tendina) */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: rgba(15, 15, 15, 0.95); 
+            border: 1px solid rgba(255, 51, 51, 0.4);  
+            border-radius: 6px;
+            list-style: none;
+            min-width: 180px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.6);
+            
+            /* Stati per l'animazione di comparsa fluida */
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+        }
+
+        /* Mostra la tendina quando si passa sopra con il mouse */
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .dropdown-menu li:last-child {
+            border-bottom: none;       
+        }
+
+        /* Stile dei link interni della tendina */
+        .dropdown-menu a {
+            font-family: 'GutteryFont', sans-serif; /* MODIFICATO: Stesso font rock per tutte le voci */
+            font-size: 1.1rem;
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+            padding: 12px 16px;
+            text-align: right;          /* Allineato a destra coerente con il pulsante */
+            letter-spacing: 0.5px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        /* Effetto quando si passa sopra le voci del menu */
+        .dropdown-menu a:hover {
+            background-color: rgba(255, 51, 51, 0.15); 
+            color: #ff3333;                             
+        }
+
+        /* ANIMAZIONE NASTRO: Sposta la galleria */
         @keyframes scorriStriscia {
             0% {
                 transform: translateX(0);
@@ -218,16 +216,9 @@
         /* --- 2. REGOLE SPECIFICHE PER IPAD E TABLET --- */
         @media screen and (min-width: 481px) and (max-width: 1024px) {
             header {
-                padding-top: 70px;       /* Aumentato spazio in alto per far respirare il menu */
+                padding-top: 50px;       
                 padding-bottom: 50px;
-                min-height: 210px;
-            }
-            .nav-container {
-                top: 15px;
-                right: 25px;
-            }
-            .dropdown-trigger {
-                font-size: 1.3rem;
+                min-height: 190px;
             }
             .header-strip {
                 height: 140px;
@@ -237,45 +228,28 @@
                 margin-right: 0px;      
             }
             .brand-name {
-                font-size: 6.5vw;        /* Ingrandito ulteriormente di un punto su Tablet */
+                font-size: 6.5vw;        
                 letter-spacing: -0.8px;
                 word-spacing: 8px;       
             }
             .subtitle {
-                font-size: 4.1vw;        /* Ingrandito ulteriormente di un punto su Tablet */
+                font-size: 4.1vw;        
+            }
+            .nav-container {
+                padding-right: 25px;
+                justify-content: flex-end;
+            }
+            .dropdown-trigger {
+                font-size: 1.4rem;
             }
         }
 
         /* --- 3. REGOLE SPECIFICHE PER IPHONE E SMARTPHONE --- */
         @media screen and (max-width: 480px) {
             header {
-                padding-top: 80px;       /* Aumentato spazio in alto su telefono per evitare sovrapposizioni */
+                padding-top: 40px;       
                 padding-bottom: 40px;
-                min-height: 180px;
-            }
-            .nav-container {
-                position: relative;      /* Cambiato in relativo per posizionarsi sopra al titolo senza sormontarlo */
-                top: 0;
-                right: 0;
-                margin-bottom: 15px;
-                width: 100%;
-                display: flex;
-                justify-content: center; /* Centrato su smartphone per comodità di tocco delle dita */
-            }
-            .dropdown-trigger {
-                font-size: 1.4rem;
-                padding: 5px;
-            }
-            .dropdown-menu {
-                right: auto;
-                left: 50%;
-                transform: translateX(-50%) translateY(-10px); /* Centra la tendina su mobile */
-            }
-            .dropdown:hover .dropdown-menu {
-                transform: translateX(-50%) translateY(0);
-            }
-            .dropdown-menu a {
-                text-align: center;      /* Centrato anche all'interno */
+                min-height: 150px;
             }
             .header-strip {
                 height: 110px;
@@ -285,12 +259,32 @@
                 margin-right: 0px;      
             }
             .brand-name {
-                font-size: 7.8vw;        /* Ingrandito ulteriormente di un punto su Smartphone */
+                font-size: 7.8vw;        
                 letter-spacing: -0.5px;  
                 word-spacing: 5px;       
             }
             .subtitle {
-                font-size: 4.8vw;        /* Ingrandito ulteriormente di un punto su Smartphone */
+                font-size: 4.8vw;        
+            }
+            /* Su smartphone centriamo il menu sotto il titolo per un look bilanciato */
+            .nav-container {
+                padding-right: 0;
+                justify-content: center; 
+                margin-top: 20px;
+            }
+            .dropdown-trigger {
+                font-size: 1.4rem;
+            }
+            .dropdown-menu {
+                right: auto;
+                left: 50%;
+                transform: translateX(-50%) translateY(-10px); 
+            }
+            .dropdown:hover .dropdown-menu {
+                transform: translateX(-50%) translateY(0);
+            }
+            .dropdown-menu a {
+                text-align: center;      /* Testo centrato all'interno della tendina su mobile */
             }
         }
     </style>
@@ -298,19 +292,6 @@
 <body>
 
     <header>
-        
-        <nav class="nav-container">
-            <div class="dropdown">
-                <span class="dropdown-trigger">Contact me</span>
-                <ul class="dropdown-menu">
-                    <li><a href="mailto:tuafabio@email.com">Email</a></li>
-                    <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
-                    <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
-                    <li><a href="tel:+39123456789">WhatsApp</a></li>
-                </ul>
-            </div>
-        </nav>
-        
         <div class="header-text">
             <h1 class="brand-name">
                 Fabio&nbsp;<span class="highlight">“Hot Stuff”</span>&nbsp;Redaelli
@@ -365,8 +346,19 @@
                 <img src="images/621377117_18131273791455663_9040066806995626284_n.jpg" alt="Grafica">
             </div>
         </div>
-
     </header>
+
+    <nav class="nav-container">
+        <div class="dropdown">
+            <span class="dropdown-trigger">Contact me</span>
+            <ul class="dropdown-menu">
+                <li><a href="mailto:tuafabio@email.com">Email</a></li>
+                <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+                <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
+                <li><a href="tel:+39123456789">WhatsApp</a></li>
+            </ul>
+        </div>
+    </nav>
 
 </body>
 </html>
