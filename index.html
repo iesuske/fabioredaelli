@@ -7,8 +7,9 @@
     
     <link rel="icon" href="images/favicon.ico" sizes="any">
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link class="apple-touch-icon" rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+    
     <style>
         /* Reset iniziale dei margini del browser */
         * {
@@ -54,9 +55,9 @@
         /* --- STILE MENU CONTACT ME IN ALTO A DESTRA --- */
         .nav-container {
             position: absolute;
-            top: 12px;                 /* Alzato per stare più vicino al bordo superiore */
+            top: 12px;                 /* Spostato leggermente più in alto */
             right: 40px;
-            z-index: 10;               /* Alto per stare sopra alla striscia */
+            z-index: 10;               /* Molto alto per stare sopra a tutto, anche alla striscia */
         }
 
         .dropdown {
@@ -68,7 +69,7 @@
         .dropdown-trigger {
             font-family: 'GutteryFont', sans-serif;
             color: #ff3333;            /* Colore Magenta/Rosso abbinato a Hot Stuff */
-            font-size: 1.8rem;         /* Carattere ingrandito */
+            font-size: 1.8rem;         
             text-decoration: none;
             cursor: pointer;
             letter-spacing: 1px;
@@ -86,7 +87,7 @@
         /* Contenitore delle voci del menu (la tendina) */
         .dropdown-menu {
             position: absolute;
-            top: 90%;                  /* Avvicinato per evitare vuoti */
+            top: 90%;                  /* Agganciato correttamente senza vuoti */
             right: 0;
             background-color: rgba(15, 15, 15, 0.95); 
             border: 1px solid rgba(255, 51, 51, 0.4);  
@@ -119,7 +120,7 @@
         /* Stile dei link interni della tendina */
         .dropdown-menu a {
             font-family: 'GutteryFont', sans-serif; 
-            font-size: 1.3rem;         /* Menu interno ingrandito */
+            font-size: 1.3rem;         
             color: #ffffff;
             text-decoration: none;
             display: block;
@@ -143,28 +144,28 @@
 
         .brand-name {
             font-family: 'GutteryFont', sans-serif;
-            font-size: 2.8vw;            
-            font-weight: normal;         
-            letter-spacing: -1px;        
-            word-spacing: 6px;           
-            white-space: nowrap;         
-            margin-bottom: 10px;         
-            text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.9), 0px 0px 10px rgba(0, 0, 0, 0.9); 
+            font-size: 2.8vw;            /* Dimensione proporzionale originale per monitor PC */
+            font-weight: normal;         /* Toglie il grassetto automatico del tag h1 */
+            letter-spacing: -1px;        /* Lettere vicine all'interno della parola */
+            word-spacing: 6px;           /* Spaziatura tra le parole */
+            white-space: nowrap;         /* Mantiene tutto su una sola riga */
+            margin-bottom: 10px;         /* Spazio tra il titolo principale e il sottotitolo */
+            text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.9), 0px 0px 10px rgba(0, 0, 0, 0.9); /* Ombra originale anti-disturbo */
         }
 
         .highlight {
-            color: #ff3333;              
+            color: #ff3333;              /* Rosso acceso per "Hot Stuff" */
         }
 
         /* Stile per il sottotitolo dell'intestazione */
         .subtitle {
-            font-family: 'GutteryFont', sans-serif; 
-            font-size: 1.3vw;            
+            font-family: 'GutteryFont', sans-serif; /* Stesso identico font del titolo */
+            font-size: 1.3vw;            /* Dimensione più piccola originale */
             font-weight: normal;
             letter-spacing: 1px;         
             word-spacing: 4px;
-            color: #ffffff;              
-            white-space: nowrap;         
+            color: #ffffff;              /* Bianco puro */
+            white-space: nowrap;         /* Mantiene anche il sottotitolo su una riga */
             text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.9);
         }
 
@@ -173,12 +174,12 @@
             position: absolute;
             top: 50%;
             left: 0;
-            transform: translateY(-50%); 
+            transform: translateY(-50%); /* Centra la striscia verticalmente rispetto all'header */
             width: 100%;
-            height: 180px;              
-            background-color: rgba(10, 10, 10, 0.5); 
-            z-index: 1;                 
-            overflow: hidden;           
+            height: 180px;              /* Altezza della banda originale con i disegni */
+            background-color: rgba(10, 10, 10, 0.5); /* Sfondo scuro trasparente d'unione */
+            z-index: 1;                 /* Rimane dietro al testo */
+            overflow: hidden;           /* Taglia i disegni se escono dai bordi della striscia */
             display: flex;
             align-items: center;
         }
@@ -191,19 +192,18 @@
             animation: scorriStriscia 60s linear infinite; 
         }
 
-        /* Stile comune per tutti i lavori grafici nella striscia */
+        /* Stile comune per tutti i lavori grafici nella striscia (RIPRISTINATO ORIGINALE) */
         .header-strip img {
-            height: 150px;              
-            width: auto;                
+            height: 150px;              /* Altezza uniforme originale */
+            width: auto;                /* Mantiene le proporzioni corrette di ogni disegno */
             object-fit: cover;
-            opacity: 0.20;              
+            opacity: 0.20;              /* Trasparenza originale */
             filter: grayscale(40%) contrast(110%); 
-            margin-left: -25px;         
-            mix-blend-mode: lighten;    
+            margin-right: 0px;          /* Rimossa la sovrapposizione errata */
             pointer-events: none;
         }
 
-        /* ANIMAZIONE: Sposta la galleria */
+        /* ANIMAZIONE: Sposta la galleria esattamente della metà della sua larghezza totale */
         @keyframes scorriStriscia {
             0% {
                 transform: translateX(0);
@@ -235,7 +235,6 @@
             }
             .header-strip img {
                 height: 120px;
-                margin-left: -18px;
             }
             .brand-name {
                 font-size: 4.5vw;        
@@ -284,7 +283,6 @@
             }
             .header-strip img {
                 height: 90px;
-                margin-left: -12px;
             }
             .brand-name {
                 font-size: 5.8vw;        
