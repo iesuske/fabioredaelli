@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fabio Hot Stuff Redaelli - Comic Art Author - </title>
+    <title>Fabio Hot Stuff Redaelli</title>
     
     <style>
         /* Reset iniziale dei margini del browser */
@@ -46,6 +46,93 @@
             width: 100%;
             min-height: 240px;         /* Altezza per contenere comodamente la striscia grafica */
         }
+
+        /* --- NUOVO: STILE MENU CONTACT ME IN ALTO A DESTRA --- */
+        .nav-container {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            z-index: 10;               /* Molto alto per stare sopra a tutto, anche alla striscia */
+        }
+
+        /* Elemento principale del menu */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Pulsante/Scritta principale "Contact me" */
+        .dropdown-trigger {
+            font-family: 'GutteryFont', sans-serif;
+            color: #ff3333;            /* Colore Magenta/Rosso abbinato a Hot Stuff */
+            font-size: 1.5rem;
+            text-decoration: none;
+            cursor: pointer;
+            letter-spacing: 1px;
+            text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.9);
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: block;
+            padding: 10px;
+        }
+
+        /* Effetto al passaggio del mouse sul pulsante principale */
+        .dropdown-trigger:hover {
+            color: #ffffff;            /* Cambia in bianco */
+            transform: scale(1.05);    /* Si ingrandisce leggermente */
+        }
+
+        /* Contenitore delle voci del menu (la tendina vera e propria) */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: rgba(15, 15, 15, 0.95); /* Sfondo scuro quasi coprente per leggibilità */
+            border: 1px solid rgba(255, 51, 51, 0.4);  /* Bordino sottile magenta */
+            border-radius: 6px;
+            list-style: none;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.6);
+            
+            /* Stati per l'animazione di comparsa fluida */
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+        }
+
+        /* Mostra il menu a tendina quando si passa sopra con il mouse */
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Stile dei singoli elementi della lista */
+        .dropdown-menu li {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .dropdown-menu li:last-child {
+            border-bottom: none;       /* Toglie il bordo all'ultima voce */
+        }
+
+        /* Stile dei link interni della tendina */
+        .dropdown-menu a {
+            font-family: Arial, sans-serif; /* Font più pulito e leggibile per i link piccoli */
+            font-size: 0.95rem;
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+            padding: 12px 16px;
+            text-align: right;          /* Allinea il testo a destra coerente con la posizione */
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        /* Effetto quando si passa sopra le voci della tendina */
+        .dropdown-menu a:hover {
+            background-color: rgba(255, 51, 51, 0.15); /* Sfumatura magenta sullo sfondo */
+            color: #ff3333;                             /* Testo diventa magenta */
+        }
+
 
         /* CONTENITORE SCRITTE: Assicura che il testo rimanga SOPRA la striscia di disegni */
         .header-text {
@@ -131,9 +218,16 @@
         /* --- 2. REGOLE SPECIFICHE PER IPAD E TABLET --- */
         @media screen and (min-width: 481px) and (max-width: 1024px) {
             header {
-                padding-top: 50px;       
+                padding-top: 70px;       /* Aumentato spazio in alto per far respirare il menu */
                 padding-bottom: 50px;
-                min-height: 190px;
+                min-height: 210px;
+            }
+            .nav-container {
+                top: 15px;
+                right: 25px;
+            }
+            .dropdown-trigger {
+                font-size: 1.3rem;
             }
             .header-strip {
                 height: 140px;
@@ -143,21 +237,45 @@
                 margin-right: 0px;      
             }
             .brand-name {
-                font-size: 6.5vw;        /* MODIFICATO: Ingrandito ulteriormente di un punto su Tablet (da 5.5vw a 6.5vw) */
+                font-size: 6.5vw;        /* Ingrandito ulteriormente di un punto su Tablet */
                 letter-spacing: -0.8px;
                 word-spacing: 8px;       
             }
             .subtitle {
-                font-size: 4.1vw;        /* MODIFICATO: Ingrandito ulteriormente di un punto su Tablet (da 3.1vw a 4.1vw) */
+                font-size: 4.1vw;        /* Ingrandito ulteriormente di un punto su Tablet */
             }
         }
 
         /* --- 3. REGOLE SPECIFICHE PER IPHONE E SMARTPHONE --- */
         @media screen and (max-width: 480px) {
             header {
-                padding-top: 40px;       
+                padding-top: 80px;       /* Aumentato spazio in alto su telefono per evitare sovrapposizioni */
                 padding-bottom: 40px;
-                min-height: 150px;
+                min-height: 180px;
+            }
+            .nav-container {
+                position: relative;      /* Cambiato in relativo per posizionarsi sopra al titolo senza sormontarlo */
+                top: 0;
+                right: 0;
+                margin-bottom: 15px;
+                width: 100%;
+                display: flex;
+                justify-content: center; /* Centrato su smartphone per comodità di tocco delle dita */
+            }
+            .dropdown-trigger {
+                font-size: 1.4rem;
+                padding: 5px;
+            }
+            .dropdown-menu {
+                right: auto;
+                left: 50%;
+                transform: translateX(-50%) translateY(-10px); /* Centra la tendina su mobile */
+            }
+            .dropdown:hover .dropdown-menu {
+                transform: translateX(-50%) translateY(0);
+            }
+            .dropdown-menu a {
+                text-align: center;      /* Centrato anche all'interno */
             }
             .header-strip {
                 height: 110px;
@@ -167,12 +285,12 @@
                 margin-right: 0px;      
             }
             .brand-name {
-                font-size: 7.8vw;        /* MODIFICATO: Ingrandito ulteriormente di un punto su Smartphone (da 6.8vw a 7.8vw) */
+                font-size: 7.8vw;        /* Ingrandito ulteriormente di un punto su Smartphone */
                 letter-spacing: -0.5px;  
                 word-spacing: 5px;       
             }
             .subtitle {
-                font-size: 4.8vw;        /* MODIFICATO: Ingrandito ulteriormente di un punto su Smartphone (da 3.8vw a 4.8vw) */
+                font-size: 4.8vw;        /* Ingrandito ulteriormente di un punto su Smartphone */
             }
         }
     </style>
@@ -180,6 +298,18 @@
 <body>
 
     <header>
+        
+        <nav class="nav-container">
+            <div class="dropdown">
+                <span class="dropdown-trigger">Contact me</span>
+                <ul class="dropdown-menu">
+                    <li><a href="mailto:tuafabio@email.com">Email</a></li>
+                    <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+                    <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
+                    <li><a href="tel:+39123456789">WhatsApp</a></li>
+                </ul>
+            </div>
+        </nav>
         
         <div class="header-text">
             <h1 class="brand-name">
