@@ -89,7 +89,7 @@
             transform: translateY(-50%); /* Centra la striscia verticalmente rispetto all'header */
             width: 100%;
             height: 180px;              /* Altezza della banda con i disegni */
-            background-color: rgba(10, 10, 10, 0.5); /* Sfondo scuro trasparente d'unione */
+            background-color: rgba(15, 15, 15, 0.7); /* Sfondo leggermente più visibile per staccare dal nero totale */
             z-index: 1;                 /* Rimane dietro al testo */
             overflow: hidden;           /* Taglia i disegni se escono dai bordi della striscia */
             display: flex;
@@ -110,10 +110,9 @@
             height: 150px;              /* Altezza uniforme per l'allineamento orizzontale */
             width: auto;                /* Mantiene le proporzioni corrette di ogni disegno */
             object-fit: cover;
-            opacity: 0.20;              /* Trasparenza per l'effetto d'atmosfera accennato */
-            filter: grayscale(40%) contrast(110%); /* Desatura parzialmente per valorizzare il rosso del nome */
-            margin-left: -25px;         /* Sovrapposizione reciproca ad effetto collage sfalsato */
-            mix-blend-mode: lighten;    /* Fonde piacevolmente le immagini sui toni scuri */
+            opacity: 0.65;              /* MODIFICATO: Diminuita la trasparenza (quindi sono più visibili ed escono dal buio) */
+            filter: grayscale(30%) contrast(110%); /* Desatura leggermente meno per dare un po' di calore */
+            margin-right: 15px;         /* MODIFICATO: Rimosso il sormonto negativo, ora le foto sono separate e distinte */
             pointer-events: none;
         }
 
@@ -139,7 +138,7 @@
             }
             .header-strip img {
                 height: 120px;
-                margin-left: -18px;
+                margin-right: 12px;     /* MODIFICATO: Spaziatura regolare invece che sovrapposizione */
             }
             .brand-name {
                 font-size: 4.5vw;        
@@ -163,7 +162,7 @@
             }
             .header-strip img {
                 height: 90px;
-                margin-left: -12px;
+                margin-right: 10px;      /* MODIFICATO: Spaziatura regolare invece che sovrapposizione */
             }
             .brand-name {
                 font-size: 5.8vw;        
