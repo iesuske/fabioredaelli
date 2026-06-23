@@ -38,22 +38,19 @@
             overflow: hidden;
         }
 
-        /* L'intestazione principale (Titolo della Home) */
+        /* L'intestazione principale (Contiene tutto l'Header) */
         header {
             position: relative;        
             display: flex;
             flex-direction: column;    
             align-items: center;       
-            justify-content: center;   
+            justify-content: flex-start; 
             text-align: center;
-            padding-top: 60px;         
-            padding-bottom: 60px;
             width: 100%;
-            min-height: 260px;         
-            height: 100%;              /* Esteso per gestire i posizionamenti assoluti */
+            padding-top: 80px;         /* Spazio per i menu in alto */
         }
 
-        /* --- CONTENITORI NAVIGAZIONE (MANTENUTI IN ALTO) --- */
+        /* --- CONTENITORI NAVIGAZIONE (IN ALTO) --- */
         .nav-left-container {
             position: absolute;
             top: 15px;                  
@@ -172,13 +169,11 @@
             color: #ff3333;                             
         }
 
-        /* --- SCRITTE CENTRALI (POSIZIONATE ESATTAMENTE IN MEZZO AL TICKER) --- */
+        /* --- SCRITTE CENTRALI (SPOSTATE IN ALTO SOTTO I MENU CON SPAZIO) --- */
         .header-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%); /* Centrato in modo assoluto rispetto allo schermo e al ticker */
-            z-index: 2;                
+            margin-top: 40px;          /* Un po' di spazio sotto i menu */
+            margin-bottom: 30px;       /* Spazio prima del ticker */
+            z-index: 3;                
             pointer-events: none;      
             width: 100%;
         }
@@ -209,14 +204,11 @@
             text-shadow: 0px 0px 20px rgba(0, 0, 0, 1), 0px 0px 10px rgba(0, 0, 0, 1);
         }
 
-        /* --- NASTRO IMMAGINI (INGRANDITO E CENTRATO) --- */
+        /* --- NASTRO IMMAGINI (SPOSTATO SUBITO SOTTO LA SCRITTA) --- */
         .header-strip {
-            position: absolute;
-            top: 50%; /* Riportato al centro esatto dello schermo */
-            left: 0;
-            transform: translateY(-50%); 
+            position: relative;         /* Cambiato da absolute a relative per seguire la scritta */
             width: 100%;
-            height: 240px;              /* Ingrandito di mezzo punto (da 200px a 240px) */
+            height: 240px;              /* Mantiamo la dimensione ingrandita */
             background-color: rgba(5, 5, 5, 0.4); 
             z-index: 1;                 
             overflow: hidden;           
@@ -231,12 +223,12 @@
             animation: scorriStriscia 60s linear infinite; 
         }
 
-        /* Immagini del ticker con più trasparenza per far risaltare il testo */
+        /* Immagini del ticker con più trasparenza */
         .header-strip img {
-            height: 210px;              /* Ingrandito in proporzione al nastro (da 170px a 210px) */
+            height: 210px;              
             width: auto;                
             object-fit: cover;
-            opacity: 0.35;              /* Aumentata trasparenza di mezzo punto (da 0.60 a 0.35) */
+            opacity: 0.35;              /* Mantiamo la trasparenza elevata richiesta */
             filter: contrast(105%); 
             margin-left: 0px; 
             margin-right: 0px;         
@@ -250,6 +242,9 @@
 
         /* --- 2. REGOLE SPECIFICHE PER IPAD E TABLET --- */
         @media screen and (min-width: 481px) and (max-width: 1024px) {
+            header {
+                padding-top: 70px;
+            }
             .nav-left-container {
                 top: 15px;             
                 left: 20px;
@@ -260,6 +255,10 @@
             }
             .dropdown-trigger {
                 font-size: 1.5rem;      
+            }
+            .header-text {
+                margin-top: 30px;
+                margin-bottom: 20px;
             }
             .header-strip {
                 height: 190px; 
@@ -279,6 +278,9 @@
 
         /* --- 3. REGOLE SPECIFICHE PER IPHONE E SMARTPHONE --- */
         @media screen and (max-width: 480px) {
+            header {
+                padding-top: 60px;
+            }
             .nav-left-container {
                 top: 10px; 
                 left: 15px;
@@ -305,6 +307,10 @@
             .dropdown-menu a {
                 font-size: 1.1rem;
                 padding: 10px 12px;
+            }
+            .header-text {
+                margin-top: 25px;
+                margin-bottom: 15px;
             }
             .header-strip {
                 height: 150px; 
