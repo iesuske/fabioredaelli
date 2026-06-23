@@ -169,7 +169,7 @@
             color: #ff3333;                             
         }
 
-        /* --- NASTRO IMMAGINI (SOTTO IL MENU, SOPRA LA SCRITTA) --- */
+        /* --- NASTRO IMMAGINI (PORTATO PIÙ SU) --- */
         .header-strip {
             width: 100%;
             height: 240px;              
@@ -178,7 +178,7 @@
             overflow: hidden;           
             display: flex;
             align-items: center;
-            margin-top: 10px;           /* Distanza minima dal menu */
+            margin-top: -35px;          /* Portato in su di circa 1cm per avvicinarlo ai menu */
         }
 
         .strip-gallery {
@@ -188,12 +188,12 @@
             animation: scorriStriscia 60s linear infinite; 
         }
 
-        /* Immagini del ticker con opacità aumentata (meno trasparenza) */
+        /* Immagini del ticker */
         .header-strip img {
             height: 210px;              
             width: auto;                
             object-fit: cover;
-            opacity: 0.55;              /* Diminuita la trasparenza (prima era 0.35) */
+            opacity: 0.55;              
             filter: contrast(105%); 
             margin-left: 0px; 
             margin-right: 0px;         
@@ -205,18 +205,18 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* --- SCRITTE CENTRALI (PERFETTAMENTE AL CENTRO DELLO SPAZIO RIMANENTE) --- */
+        /* --- SCRITTE CENTRALI (AL CENTRO DELLO SPAZIO RIMANENTE) --- */
         .header-text {
-            flex-grow: 1;               /* Occupa tutto lo spazio verticale rimanente */
+            flex-grow: 1;               
             display: flex;
             flex-direction: column;
-            justify-content: center;    /* Centra la scritta in verticale */
-            align-items: center;        /* Centra la scritta in orizzontale */
+            justify-content: center;    
+            align-items: center;        
             text-align: center;
             z-index: 3;                
             pointer-events: none;      
             width: 100%;
-            padding-bottom: 50px;       /* Bilanciamento ottico per non farla sembrare troppo bassa */
+            padding-bottom: 40px;       
         }
 
         .brand-name {
@@ -250,7 +250,7 @@
             .nav-left-container { left: 20px; }
             .nav-right-container { right: 20px; }
             .dropdown-trigger { font-size: 1.5rem; }
-            .header-strip { height: 190px; }
+            .header-strip { height: 190px; margin-top: -25px; }
             .header-strip img { height: 165px; }
             .brand-name { font-size: 5.2vw; }
             .subtitle { font-size: 2.5vw; }
@@ -263,7 +263,7 @@
             .nav-right-container { right: 15px; top: 10px; }
             .dropdown-trigger { font-size: 1.35rem; padding: 5px; }
             .dropdown-about-box { width: 280px; }
-            .header-strip { height: 140px; }
+            .header-strip { height: 140px; margin-top: -15px; }
             .header-strip img { height: 120px; }
             .brand-name { font-size: 6.5vw; }
             .subtitle { font-size: 3.8vw; }
@@ -301,7 +301,7 @@
             </nav>
         </div>
         
-        <!-- Ticker delle foto posizionato in alto, subito sotto la barra menu -->
+        <!-- Ticker delle foto posizionato in alto, spostato ulteriormente su -->
         <div class="header-strip">
             <div class="strip-gallery">
                 <img src="images/536913239_771279048815462_2270826523541450789_n.jpg" alt="Grafica">
@@ -349,7 +349,7 @@
             </div>
         </div>
 
-        <!-- Scritte centrali posizionate al centro esatto dello spazio vuoto inferiore -->
+        <!-- Scritte centrali posizionate al centro dello spazio vuoto inferiore -->
         <div class="header-text">
             <h1 class="brand-name">
                 Fabio&nbsp;<span class="highlight">“Hot Stuff”</span>&nbsp;Redaelli
