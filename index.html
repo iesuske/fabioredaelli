@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fabio Hot Stuff Redaelli</title>
+    <title>Fabio HotStuff Redaelli - Comic Art Author - </title>
     
     <link rel="icon" href="images/favicon.ico" sizes="any">
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
@@ -33,36 +33,36 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;       
-            justify-content: flex-start; 
             overflow: hidden;
         }
 
-        /* L'intestazione principale (Contiene tutto l'Header) */
+        /* Contenitore principale della pagina */
         header {
             position: relative;        
-            display: flex;
-            flex-direction: column;    
-            align-items: center;       
-            justify-content: flex-start; 
-            text-align: center;
             width: 100%;
-            padding-top: 80px;         /* Spazio per i menu in alto */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         /* --- CONTENITORI NAVIGAZIONE (IN ALTO) --- */
+        .nav-container {
+            width: 100%;
+            height: 70px;
+            position: relative;
+            z-index: 10;
+        }
+
         .nav-left-container {
             position: absolute;
             top: 15px;                  
             left: 40px;
-            z-index: 10;               
         }
 
         .nav-right-container {
             position: absolute;
             top: 15px;                  
             right: 40px;
-            z-index: 10;               
         }
 
         .dropdown {
@@ -169,13 +169,54 @@
             color: #ff3333;                             
         }
 
-        /* --- SCRITTE CENTRALI (SPOSTATE IN ALTO SOTTO I MENU CON SPAZIO) --- */
+        /* --- NASTRO IMMAGINI (SOTTO IL MENU, SOPRA LA SCRITTA) --- */
+        .header-strip {
+            width: 100%;
+            height: 240px;              
+            background-color: rgba(5, 5, 5, 0.4); 
+            z-index: 1;                 
+            overflow: hidden;           
+            display: flex;
+            align-items: center;
+            margin-top: 10px;           /* Distanza minima dal menu */
+        }
+
+        .strip-gallery {
+            display: flex;
+            align-items: center;
+            width: max-content;
+            animation: scorriStriscia 60s linear infinite; 
+        }
+
+        /* Immagini del ticker con opacità aumentata (meno trasparenza) */
+        .header-strip img {
+            height: 210px;              
+            width: auto;                
+            object-fit: cover;
+            opacity: 0.55;              /* Diminuita la trasparenza (prima era 0.35) */
+            filter: contrast(105%); 
+            margin-left: 0px; 
+            margin-right: 0px;         
+            pointer-events: none;
+        }
+
+        @keyframes scorriStriscia {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* --- SCRITTE CENTRALI (PERFETTAMENTE AL CENTRO DELLO SPAZIO RIMANENTE) --- */
         .header-text {
-            margin-top: 40px;          /* Un po' di spazio sotto i menu */
-            margin-bottom: 30px;       /* Spazio prima del ticker */
+            flex-grow: 1;               /* Occupa tutto lo spazio verticale rimanente */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;    /* Centra la scritta in verticale */
+            align-items: center;        /* Centra la scritta in orizzontale */
+            text-align: center;
             z-index: 3;                
             pointer-events: none;      
             width: 100%;
+            padding-bottom: 50px;       /* Bilanciamento ottico per non farla sembrare troppo bassa */
         }
 
         .brand-name {
@@ -185,8 +226,8 @@
             letter-spacing: -1px;        
             word-spacing: 6px;           
             white-space: nowrap;         
-            margin-bottom: 10px;         
-            text-shadow: 0px 0px 25px rgba(0, 0, 0, 1), 0px 0px 15px rgba(0, 0, 0, 1), 0px 0px 5px rgba(0, 0, 0, 1); 
+            margin-bottom: 15px;         
+            text-shadow: 0px 0px 25px rgba(0, 0, 0, 1), 0px 0px 15px rgba(0, 0, 0, 1); 
         }
 
         .highlight {
@@ -204,129 +245,28 @@
             text-shadow: 0px 0px 20px rgba(0, 0, 0, 1), 0px 0px 10px rgba(0, 0, 0, 1);
         }
 
-        /* --- NASTRO IMMAGINI (SPOSTATO SUBITO SOTTO LA SCRITTA) --- */
-        .header-strip {
-            position: relative;         /* Cambiato da absolute a relative per seguire la scritta */
-            width: 100%;
-            height: 240px;              /* Mantiamo la dimensione ingrandita */
-            background-color: rgba(5, 5, 5, 0.4); 
-            z-index: 1;                 
-            overflow: hidden;           
-            display: flex;
-            align-items: center;
-        }
-
-        .strip-gallery {
-            display: flex;
-            align-items: center;
-            width: max-content;
-            animation: scorriStriscia 60s linear infinite; 
-        }
-
-        /* Immagini del ticker con più trasparenza */
-        .header-strip img {
-            height: 210px;              
-            width: auto;                
-            object-fit: cover;
-            opacity: 0.35;              /* Mantiamo la trasparenza elevata richiesta */
-            filter: contrast(105%); 
-            margin-left: 0px; 
-            margin-right: 0px;         
-            pointer-events: none;
-        }
-
-        @keyframes scorriStriscia {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
         /* --- 2. REGOLE SPECIFICHE PER IPAD E TABLET --- */
         @media screen and (min-width: 481px) and (max-width: 1024px) {
-            header {
-                padding-top: 70px;
-            }
-            .nav-left-container {
-                top: 15px;             
-                left: 20px;
-            }
-            .nav-right-container {
-                top: 15px;             
-                right: 20px;
-            }
-            .dropdown-trigger {
-                font-size: 1.5rem;      
-            }
-            .header-text {
-                margin-top: 30px;
-                margin-bottom: 20px;
-            }
-            .header-strip {
-                height: 190px; 
-            }
-            .header-strip img {
-                height: 165px; 
-            }
-            .brand-name {
-                font-size: 5.2vw;        
-                letter-spacing: -0.8px;
-                word-spacing: 6px;       
-            }
-            .subtitle {
-                font-size: 2.5vw;        
-            }
+            .nav-left-container { left: 20px; }
+            .nav-right-container { right: 20px; }
+            .dropdown-trigger { font-size: 1.5rem; }
+            .header-strip { height: 190px; }
+            .header-strip img { height: 165px; }
+            .brand-name { font-size: 5.2vw; }
+            .subtitle { font-size: 2.5vw; }
         }
 
         /* --- 3. REGOLE SPECIFICHE PER IPHONE E SMARTPHONE --- */
         @media screen and (max-width: 480px) {
-            header {
-                padding-top: 60px;
-            }
-            .nav-left-container {
-                top: 10px; 
-                left: 15px;
-            }
-            .nav-right-container {
-                top: 10px; 
-                right: 15px;
-            }
-            .dropdown-trigger {
-                font-size: 1.35rem;      
-                padding: 5px;
-            }
-            .dropdown-about-box {
-                left: 0;
-                width: 280px;
-                max-height: 250px;
-                overflow-y: auto; 
-                padding: 15px;
-            }
-            .dropdown-menu {
-                right: 0;
-                min-width: 150px;
-            }
-            .dropdown-menu a {
-                font-size: 1.1rem;
-                padding: 10px 12px;
-            }
-            .header-text {
-                margin-top: 25px;
-                margin-bottom: 15px;
-            }
-            .header-strip {
-                height: 150px; 
-            }
-            .header-strip img {
-                height: 130px; 
-            }
-            .brand-name {
-                font-size: 6.5vw;        
-                letter-spacing: -0.5px;  
-                word-spacing: 3px;       
-                margin-bottom: 6px;
-            }
-            .subtitle {
-                font-size: 3.8vw;        
-            }
+            .nav-container { height: 50px; }
+            .nav-left-container { left: 15px; top: 10px; }
+            .nav-right-container { right: 15px; top: 10px; }
+            .dropdown-trigger { font-size: 1.35rem; padding: 5px; }
+            .dropdown-about-box { width: 280px; }
+            .header-strip { height: 140px; }
+            .header-strip img { height: 120px; }
+            .brand-name { font-size: 6.5vw; }
+            .subtitle { font-size: 3.8vw; }
         }
     </style>
 </head>
@@ -334,39 +274,34 @@
 
     <header>
         
-        <nav class="nav-left-container">
-            <div class="dropdown">
-                <span class="dropdown-trigger">About Me</span>
-                <div class="dropdown-about-box">
-                    <p>
-                        Inserisci qui la tua storia personale. Puoi scrivere tutto il tuo percorso artistico, dove hai effettuato i tuoi studi, le tecniche apprese, le collaborazioni editoriali importanti e l'evoluzione della tua intera carriera come autore di fumetti e illustrazioni.
-                    </p>
+        <!-- Barra superiore Menu -->
+        <div class="nav-container">
+            <nav class="nav-left-container">
+                <div class="dropdown">
+                    <span class="dropdown-trigger">About Me</span>
+                    <div class="dropdown-about-box">
+                        <p>
+                            Inserisci qui la tua storia personale. Puoi scrivere tutto il tuo percorso artistico, dove hai effettuato i tuoi studi, le tecniche apprese, le collaborazioni editoriali importanti e l'evoluzione della tua intera carriera come autore di fumetti e illustrazioni.
+                        </p>
+                    </div>
                 </div>
-            </div>
-        </nav>
-        
-        <nav class="nav-right-container">
-            <div class="dropdown">
-                <span class="dropdown-trigger">Cont@ct Me</span>
-                <ul class="dropdown-menu">
-                    <li><a href="mailto:tuafabio@email.com">Email</a></li>
-                    <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
-                    <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
-                    <li><a href="tel:+39123456789">WhatsApp</a></li>
-                    <li><a href="https://t.me/tuousername" target="_blank">Telegram</a></li>
-                </ul>
-            </div>
-        </nav>
-        
-        <div class="header-text">
-            <h1 class="brand-name">
-                Fabio&nbsp;<span class="highlight">“Hot Stuff”</span>&nbsp;Redaelli
-            </h1>
-            <div class="subtitle">
-                -Comic Art Author-
-            </div>
+            </nav>
+            
+            <nav class="nav-right-container">
+                <div class="dropdown">
+                    <span class="dropdown-trigger">Cont@ct Me</span>
+                    <ul class="dropdown-menu">
+                        <li><a href="mailto:tuafabio@email.com">Email</a></li>
+                        <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+                        <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
+                        <li><a href="tel:+39123456789">WhatsApp</a></li>
+                        <li><a href="https://t.me/tuousername" target="_blank">Telegram</a></li>
+                    </ul>
+                </div>
+            </nav>
         </div>
-
+        
+        <!-- Ticker delle foto posizionato in alto, subito sotto la barra menu -->
         <div class="header-strip">
             <div class="strip-gallery">
                 <img src="images/536913239_771279048815462_2270826523541450789_n.jpg" alt="Grafica">
@@ -390,6 +325,7 @@
                 <img src="images/621155859_18119346355510333_7382313200709323896_n.jpg" alt="Grafica">
                 <img src="images/621377117_18131273791455663_9040066806995626284_n.jpg" alt="Grafica">
 
+                <!-- Duplicato per ciclo infinito -->
                 <img src="images/536913239_771279048815462_2270826523541450789_n.jpg" alt="Grafica">
                 <img src="images/542731330_1860838831130927_5613417031476279964_n.jpg" alt="Grafica">
                 <img src="images/575656634_18553452925028432_7538027429835504901_n.jpg" alt="Grafica">
@@ -410,6 +346,16 @@
                 <img src="images/620983567_18100004032857816_5417361991121559398_n.jpg" alt="Grafica">
                 <img src="images/621155859_18119346355510333_7382313200709323896_n.jpg" alt="Grafica">
                 <img src="images/621377117_18131273791455663_9040066806995626284_n.jpg" alt="Grafica">
+            </div>
+        </div>
+
+        <!-- Scritte centrali posizionate al centro esatto dello spazio vuoto inferiore -->
+        <div class="header-text">
+            <h1 class="brand-name">
+                Fabio&nbsp;<span class="highlight">“Hot Stuff”</span>&nbsp;Redaelli
+            </h1>
+            <div class="subtitle">
+                -Comic Art Author-
             </div>
         </div>
 
