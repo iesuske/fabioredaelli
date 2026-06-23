@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fabio Hot Stuff Redaelli - Comic Art Author - </title>
+    <title>Fabio Hot Stuff Redaelli</title>
     
     <link rel="icon" href="images/favicon.ico" sizes="any">
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
@@ -52,17 +52,17 @@
             min-height: 260px;         
         }
 
-        /* --- CONTENITORI NAVIGAZIONE (ABBASSATI PER NON USCIRE DALLA PAGINA) --- */
+        /* --- CONTENITORI NAVIGAZIONE (SPOSTATI PIÙ IN ALTO PER EVITARE IL TICKER) --- */
         .nav-left-container {
             position: absolute;
-            top: 15px;                 /* Abbassato per evitare di uscire fuori dallo schermo */
+            top: 5px;                  /* Spostato più in alto per non toccare le foto */
             left: 40px;
             z-index: 10;               
         }
 
         .nav-right-container {
             position: absolute;
-            top: 15px;                 /* Abbassato per evitare di uscire fuori dallo schermo */
+            top: 5px;                  /* Spostato più in alto per non toccare le foto */
             right: 40px;
             z-index: 10;               
         }
@@ -123,7 +123,7 @@
             transform: translateY(0);
         }
 
-        /* --- TENDINA CONTACT ME (DESTRA - TESTO CENTRATO ED OTTIMIZZATO) --- */
+        /* --- TENDINA CONTACT ME (DESTRA) --- */
         .dropdown-menu {
             position: absolute;
             top: 100%;                  
@@ -161,7 +161,7 @@
             text-decoration: none;
             display: block;
             padding: 12px 16px;
-            text-align: center;          /* Incolonnato perfettamente al centro */
+            text-align: center;          
             letter-spacing: 0.5px;
             transition: background-color 0.2s ease, color 0.2s ease;
         }
@@ -171,7 +171,7 @@
             color: #ff3333;                             
         }
 
-        /* --- SCRITTE CENTRALI (AL CENTRO SOPRA IL NASTRO) --- */
+        /* --- SCRITTE CENTRALI (AUMENTATE DI 1 PUNTO PER REIDRATARE LE PROPORZIONI) --- */
         .header-text {
             position: relative;
             z-index: 2;                
@@ -180,7 +180,7 @@
 
         .brand-name {
             font-family: 'GutteryFont', sans-serif;
-            font-size: 2.8vw;            
+            font-size: 3.8vw;            /* Aumentato di un punto per maggiore impatto visivo */
             font-weight: normal;         
             letter-spacing: -1px;        
             word-spacing: 6px;           
@@ -195,7 +195,7 @@
 
         .subtitle {
             font-family: 'GutteryFont', sans-serif; 
-            font-size: 1.3vw;            
+            font-size: 1.8vw;            /* Aumentato di un punto per bilanciare il titolo */
             font-weight: normal;
             letter-spacing: 1px;         
             word-spacing: 4px;
@@ -204,15 +204,15 @@
             text-shadow: 0px 0px 20px rgba(0, 0, 0, 1), 0px 0px 10px rgba(0, 0, 0, 1);
         }
 
-        /* --- NASTRO IMMAGINI (CON TRASPARENZA AGGIUNTIVA) --- */
+        /* --- NASTRO IMMAGINI (ABBASSATO DI MEZZO CENTIMETRO) --- */
         .header-strip {
             position: absolute;
-            top: 50%; 
+            top: 58%; /* Abbassato dal 50% al 58% per allontanarsi dai menu */
             left: 0;
             transform: translateY(-50%); 
             width: 100%;
             height: 200px;              
-            background-color: rgba(5, 5, 5, 0.4); /* Modifica 1: leggera trasparenza di fondo aumentata (da 0.6 a 0.4) */
+            background-color: rgba(5, 5, 5, 0.4); 
             z-index: 1;                 
             overflow: hidden;           
             display: flex;
@@ -226,12 +226,11 @@
             animation: scorriStriscia 60s linear infinite; 
         }
 
-        /* Immagini del ticker */
         .header-strip img {
             height: 170px;              
             width: auto;                
             object-fit: cover;
-            opacity: 0.60;              /* Trasparenza complessiva del ticker calibrata */
+            opacity: 0.60;              
             filter: contrast(105%); 
             margin-left: 0px; 
             margin-right: 0px;         
@@ -251,29 +250,30 @@
                 min-height: 220px;
             }
             .nav-left-container {
-                top: 10px;             
+                top: 5px;             
                 left: 20px;
             }
             .nav-right-container {
-                top: 10px;             
+                top: 5px;             
                 right: 20px;
             }
             .dropdown-trigger {
                 font-size: 1.5rem;      
             }
             .header-strip {
+                top: 56%;
                 height: 160px; 
             }
             .header-strip img {
                 height: 140px; 
             }
             .brand-name {
-                font-size: 4.2vw;        
+                font-size: 5.2vw;        
                 letter-spacing: -0.8px;
                 word-spacing: 6px;       
             }
             .subtitle {
-                font-size: 2.0vw;        
+                font-size: 2.5vw;        
             }
         }
 
@@ -286,12 +286,12 @@
             }
             .nav-left-container {
                 position: absolute;      
-                top: 8px; 
+                top: 5px; 
                 left: 15px;
             }
             .nav-right-container {
                 position: absolute;      
-                top: 8px; 
+                top: 5px; 
                 right: 15px;
             }
             .dropdown-trigger {
@@ -314,19 +314,20 @@
                 padding: 10px 12px;
             }
             .header-strip {
+                top: 55%;
                 height: 130px; 
             }
             .header-strip img {
                 height: 110px; 
             }
             .brand-name {
-                font-size: 5.5vw;        
+                font-size: 6.5vw;        
                 letter-spacing: -0.5px;  
                 word-spacing: 3px;       
                 margin-bottom: 6px;
             }
             .subtitle {
-                font-size: 3.2vw;        
+                font-size: 3.8vw;        
             }
         }
     </style>
