@@ -26,23 +26,22 @@
             background-color: #0d1b2a;
         }
 
-        /* LAYER 1 — Canvas: estende i pixel di bordo nelle bande laterali */
-        #ambient-canvas {
+        /* LAYER 1 — Sfondo blurrato cover: copre tutto, riempie le bande laterali */
+        .bg-blurred {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
+            background-image: url('images/sfondo2.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: blur(22px) brightness(0.55);
+            transform: scale(1.08);
             z-index: 1;
         }
 
-        /* LAYER 2 — Opera principale nitida, contain, centrata */
-        .bg-main-artwork {
+        /* LAYER 2 — Opera nitida contain: proporzionata, centrata, intatta */
+        .bg-artwork {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             background-image: url('images/sfondo2.jpg');
             background-size: contain;
             background-position: center;
@@ -50,7 +49,7 @@
             z-index: 2;
         }
 
-        /* LAYER 3 — Contenuti del sito */
+        /* LAYER 3 — Contenuti */
         .content-overlay {
             position: relative;
             z-index: 3;
@@ -83,9 +82,8 @@
 </head>
 <body>
 
-    <canvas id="ambient-canvas"></canvas>
-
-    <div class="bg-main-artwork"></div>
+    <div class="bg-blurred"></div>
+    <div class="bg-artwork"></div>
 
     <div class="content-overlay">
         <header></header>
@@ -94,141 +92,6 @@
             <p>&copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
         </footer>
     </div>
-
-<script>
-(function () {
-    "use strict";
-
-    const canvas  = document.getElementById("ambient-canvas");
-    const ctx     = canvas.getContext("2d");
-    const IMG_SRC = "images/sfondo2.jpg";
-
-    // Quante colonne di pixel campionare dal bordo dell'immagine
-    const SAMPLE_WIDTH = 50;
-
-    const img = new Image();
-    img.src = IMG_SRC;
-    img.onload = () => {
-        render();
-        window.addEventListener("resize", render);
-    };
-
-    function render() {
-        const W = window.innerWidth;
-        const H = window.innerHeight;
-
-        canvas.width  = W;
-        canvas.height = H;
-
-        const imgAspect  = img.naturalWidth / img.naturalHeight;
-        const viewAspect = W / H;
-
-        let imgW, imgH, imgX, imgY;
-
-        if (imgAspect > viewAspect) {
-            // Bande sopra/sotto
-            imgW = W;
-            imgH = W / imgAspect;
-        } else {
-            // Bande sinistra/destra (caso tipico con questo poster)
-            imgH = H;
-            imgW = H * imgAspect;
-        }
-
-        imgX = (W - imgW) / 2;
-        imgY = (H - imgH) / 2;
-
-        // Sfondo base
-        ctx.fillStyle = "#0d1b2a";
-        ctx.fillRect(0, 0, W, H);
-
-        // Fasce laterali
-        if (imgX > 0) {
-            drawSideStrip("left",  imgX, imgY, imgW, imgH, W, H);
-            drawSideStrip("right", imgX, imgY, imgW, imgH, W, H);
-        }
-
-        // Fasce sopra/sotto (robustezza su portrait o schermi molto alti)
-        if (imgY > 0) {
-            drawTopBottomStrip(imgX, imgY, imgW, imgH, W, H);
-        }
-    }
-
-    function drawSideStrip(side, imgX, imgY, imgW, imgH, W, H) {
-        const stripW = Math.ceil(imgX);
-        if (stripW <= 0) return;
-
-        // Canvas temporaneo per costruire la strip
-        const tmp    = document.createElement("canvas");
-        tmp.width    = stripW;
-        tmp.height   = H;
-        const tCtx   = tmp.getContext("2d");
-
-        // Campiona le prime o ultime SAMPLE_WIDTH colonne dell'immagine originale
-        const srcX = side === "left" ? 0 : img.naturalWidth - SAMPLE_WIDTH;
-
-        // Stira quella fetta sull'intera banda laterale, allineata verticalmente
-        // alla posizione contain dell'immagine
-        tCtx.drawImage(
-            img,
-            srcX, 0, SAMPLE_WIDTH, img.naturalHeight,
-            0, imgY, stripW, imgH
-        );
-
-        // Canvas sfocato: ridisegna su se stesso con blur
-        const blurred    = document.createElement("canvas");
-        blurred.width    = stripW;
-        blurred.height   = H;
-        const bCtx       = blurred.getContext("2d");
-        bCtx.filter      = "blur(20px)";
-        bCtx.drawImage(tmp, 0, 0);
-        bCtx.filter      = "none";
-
-        // Overlay scuro per coerenza con il design
-        bCtx.fillStyle = "rgba(13, 27, 42, 0.40)";
-        bCtx.fillRect(0, 0, stripW, H);
-
-        // Maschera alpha: fade verso il centro (dove inizia l'immagine nitida)
-        const gradX0 = side === "left" ? stripW : 0;
-        const gradX1 = side === "left" ? 0      : stripW;
-
-        const mask = bCtx.createLinearGradient(gradX0, 0, gradX1, 0);
-        mask.addColorStop(0,    "rgba(0,0,0,0)"); // verso il centro: trasparente
-        mask.addColorStop(0.6,  "rgba(0,0,0,0)");
-        mask.addColorStop(1,    "rgba(0,0,0,1)"); // bordo canvas: opaco
-
-        bCtx.globalCompositeOperation = "destination-out";
-        bCtx.fillStyle = mask;
-        bCtx.fillRect(0, 0, stripW, H);
-        bCtx.globalCompositeOperation = "source-over";
-
-        // Composita sul canvas principale
-        const destX = side === "left" ? 0 : imgX + imgW;
-        ctx.drawImage(blurred, destX, 0);
-    }
-
-    function drawTopBottomStrip(imgX, imgY, imgW, imgH, W, H) {
-        // Top
-        if (imgY > 0) {
-            const g1 = ctx.createLinearGradient(0, 0, 0, imgY);
-            g1.addColorStop(0, "rgba(13,27,42,1)");
-            g1.addColorStop(1, "rgba(13,27,42,0)");
-            ctx.fillStyle = g1;
-            ctx.fillRect(0, 0, W, imgY);
-        }
-        // Bottom
-        const bottomY = imgY + imgH;
-        if (bottomY < H) {
-            const g2 = ctx.createLinearGradient(0, bottomY, 0, H);
-            g2.addColorStop(0, "rgba(13,27,42,0)");
-            g2.addColorStop(1, "rgba(13,27,42,1)");
-            ctx.fillStyle = g2;
-            ctx.fillRect(0, bottomY, W, H - bottomY);
-        }
-    }
-
-})();
-</script>
 
 </body>
 </html>
