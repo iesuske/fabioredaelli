@@ -28,7 +28,7 @@
             background-color: #0d1b2a;
         }
 
-        /* 1. SFONDO SFOCATO "AMBIENTALE" (Riempie tutto lo schermo senza bande piatte) */
+        /* 1. SFONDO SFOCATO "AMBIENTALE" (Sfocatura ridotta a 15px) */
         .bg-blurred-ambient {
             position: absolute;
             top: 0;
@@ -38,12 +38,12 @@
             background-image: url('images/sfondo2.jpg');
             background-size: cover;
             background-position: center;
-            filter: blur(20px) brightness(0.6); /* Sfoca e scurisce per far risaltare il disegno centrale */
+            filter: blur(15px) brightness(0.6); /* Sfocatura ridotta di mezzo punto */
             transform: scale(1.1); /* Evita bordi bianchi dovuti alla sfocatura */
             z-index: 1;
         }
 
-        /* 2. OPERA D'ARTE CENTRALE (Nitida, intera, proporzionata e senza tagli sotto la macchina) */
+        /* 2. OPERA D'ARTE CENTRALE (Nitida, intera e proporzionata) */
         .bg-main-artwork {
             position: absolute;
             top: 0;
