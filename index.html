@@ -13,7 +13,7 @@
             font-style: normal;
         }
 
-        /* Reset dei margini e gestione della pagina */
+        /* Reset dei margini */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -23,12 +23,13 @@
         html, body {
             width: 100%;
             height: 100%;
-            overflow: hidden; /* Blocca lo scroll */
+            overflow: hidden;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0d1b2a;
+            /* Usiamo l'azzurro esatto del retino per lo sfondo */
+            background-color: #63bdd2; 
         }
 
-        /* 1. SFONDO SFOCATO "AMBIENTALE" */
+        /* 1. SFONDO SFOCATO AMBIENTALE (Mantiene la profondità) */
         .bg-blurred-ambient {
             position: absolute;
             top: 0;
@@ -38,12 +39,12 @@
             background-image: url('images/sfondo2.jpg');
             background-size: cover;
             background-position: center;
-            filter: blur(15px) brightness(0.6);
+            filter: blur(12px) brightness(0.65);
             transform: scale(1.1);
             z-index: 1;
         }
 
-        /* 2. OPERA D'ARTE CENTRALE - Questa è la chiave del posizionamento */
+        /* 2. OPERA D'ARTE CENTRALE CON BORDI SFUMATI ANCI-SCALINO */
         .bg-main-artwork {
             position: absolute;
             top: 0;
@@ -51,47 +52,40 @@
             width: 100%;
             height: 100%;
             background-image: url('images/sfondo2.jpg');
-            background-size: contain;     /* Mostra l'auto intera */
-            background-position: center;   /* Centra il poster nel monitor */
+            background-size: contain;     
+            background-position: center;   
             background-repeat: no-repeat;
-            filter: drop-shadow(0px 0px 30px rgba(0, 0, 0, 0.65));
             z-index: 2;
+
+            /* MASCHERA GRADIENTE: Sfuma i bordi laterali per eliminare il taglio netto della foto */
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
         }
 
-        /* Navigazione: posizionata IN MODO ASSOLUTO rispetto all'artwork nitido centrale */
-        /* Questo assicura che il menu segua l'immagine centrale quando questa si ridimensiona */
+        /* Navigazione dinamica agganciata alla fascia rossa */
         .top-nav {
             position: absolute;
-            /* Coordinate percentuali basate sul frame dell'artwork centrale */
-            top: 15.5%; /* Calcolato per combaciare perfettamente con l'altezza della banda rossa su desktop */
-            right: 17%; /* Distanza dal bordo destro dell'area centrale */
-            
+            top: 15.5%; 
+            right: 17%; 
             display: flex;
-            gap: 40px; /* Spazio tra "About Me" e "Contact" */
-            pointer-events: auto; /* Riattiva i clic per i link */
+            gap: 40px; 
+            pointer-events: auto; 
         }
 
-        /* Stile dei link del Menu con il font Lobster e l'ombra corretta */
         .nav-link {
             font-family: 'Lobster Regular', cursive;
             font-size: 2.2rem;
             color: #ffffff;
             text-decoration: none;
-            transition: transform 0.2s ease, color 0.2s ease, text-shadow 0.2s ease;
-            
-            /* Applichiamo un'ombra morbida ma decisa per staccare dal rosso, 
-               simile a quella nel tuo screenshot */
+            transition: transform 0.2s ease, color 0.2s ease;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
         }
 
-        /* Effetto al passaggio del mouse (Hover) */
         .nav-link:hover {
-            color: #fbc02d; /* Giallo caldo "Hot Stuff" */
-            transform: scale(1.05); /* Piccolo ingrandimento fluido */
-            text-shadow: 0px 0px 8px rgba(251, 192, 45, 0.6); /* Bagliore coordinato */
+            color: #fbc02d; 
+            transform: scale(1.05); 
         }
 
-        /* Footer coordinato */
         footer {
             position: absolute;
             bottom: 0;
@@ -102,7 +96,7 @@
             font-size: 0.9rem;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
             pointer-events: auto;
-            z-index: 3; /* Sopra a tutto il comparto grafico */
+            z-index: 3;
         }
     </style>
 </head>
