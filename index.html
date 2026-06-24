@@ -18,17 +18,17 @@
             padding: 0;
         }
 
-        /* Impostazione della pagina con sfondo interamente visibile e centrato */
+        /* Impostazione della pagina con sfondo a copertura totale e inquadratura controllata */
         body {
             background-image: url('images/sfondo2.jpg');
-            background-size: contain;        /* Forza l'immagine a mostrasi interamente senza tagli */
-            background-position: center;     /* Centra perfettamente lo sfondo sia in alto/basso che a destra/sinistra */
+            background-size: cover;          /* Riempie sempre l'intero schermo eliminando le bande nere laterali */
+            background-position: center top; /* Blocca il disegno in alto (salva la fascia rossa) e lo centra sui lati */
             background-repeat: no-repeat;    /* Impedisce la duplicazione dell'immagine */
             background-attachment: fixed;    /* Mantiene lo sfondo stabile */
-            background-color: #000000;       /* Sfondo nero di riempimento per le bande laterali o verticali avanzate */
+            background-color: #000000;       
             height: 100vh;
             width: 100vw;
-            overflow: hidden;                /* Blocca qualsiasi barra di scorrimento */
+            overflow: hidden;                /* Blocca le barre di scorrimento */
         }
 
         /* Contenitore principale vuoto pronto per i futuri sviluppi */
