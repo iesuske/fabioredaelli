@@ -3,45 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fabio HotStuff Redaelli - Comic Art Author - </title>
-    
-    <link rel="icon" href="images/favicon.ico" sizes="any">
-    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
-    
+    <title>Soluzione Layout - Ripristino Allineamento</title>
     <style>
-        /* Reset iniziale dei margini del browser */
+        /* Reset e stili di base per evitare conflitti */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        /* Impostazione della pagina con sfondo a copertura totale e inquadratura controllata */
         body {
-            background-image: url('images/sfondo2.jpg');
-            background-size: cover;          /* Riempie sempre l'intero schermo eliminando le bande nere laterali */
-            background-position: center top; /* Blocca il disegno in alto (salva la fascia rossa) e lo centra sui lati */
-            background-repeat: no-repeat;    /* Impedisce la duplicazione dell'immagine */
-            background-attachment: fixed;    /* Mantiene lo sfondo stabile */
-            background-color: #000000;       
-            height: 100vh;
-            width: 100vw;
-            overflow: hidden;                /* Blocca le barre di scorrimento */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
 
-        /* Contenitore principale vuoto pronto per i futuri sviluppi */
-        header {
+        /* Container principale della scheda */
+        .card-container {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            max-width: 450px;
             width: 100%;
-            height: 100vh;
+            padding: 24px;
+            transition: transform 0.2s ease;
+        }
+
+        .card-container:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Header della scheda */
+        .card-header {
+            margin-bottom: 16px;
+            border-bottom: 1px solid #edf2f7;
+            padding-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            color: #1a202c;
+            font-weight: 700;
+        }
+
+        /* Contenuto e fix del Flexbox */
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        /* Wrapper dei dati con allineamento corretto */
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8fafc;
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .data-label {
+            font-weight: 500;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .data-value {
+            font-weight: 600;
+            color: #0f172a;
+            font-size: 0.95rem;
+            text-align: right;
+        }
+
+        /* Evidenziazione per valori importanti (es. Totale) */
+        .data-row.highlight {
+            background: #e0f2fe;
+            border-color: #bae6fd;
+        }
+
+        .data-row.highlight .data-value {
+            color: #0369a1;
+            font-size: 1.1rem;
+        }
+
+        /* Pulsante di azione principale */
+        .action-button {
+            display: block;
+            width: 100%;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+            text-align: center;
+        }
+
+        .action-button:hover {
+            background-color: #1d4ed8;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+
+        .action-button:active {
+            background-color: #1e40af;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        </header>
+    <div class="card-container">
+        <div class="card-header">
+            <h2 class="card-title">Riepilogo Operazione</h2>
+        </div>
+        
+        <div class="card-content">
+            <div class="data-row">
+                <span class="data-label">Stato Connessione</span>
+                <span class="data-value" style="color: #16a34a;">Attivo</span>
+            </div>
+            
+            <div class="data-row">
+                <span class="data-label">ID Transazione</span>
+                <span class="data-value">#TRX-948201</span>
+            </div>
+            
+            <div class="data-row">
+                <span class="data-label">Data Ricezione</span>
+                <span class="data-value" id="current-date">--/--/----</span>
+            </div>
+            
+            <div class="data-row highlight">
+                <span class="data-label">Totale Ricevuto</span>
+                <span class="data-value">€ 1.250,00</span>
+            </div>
+        </div>
+
+        <button class="action-button" id="btn-conferma">Conferma e Invia</button>
+    </div>
+
+    <script>
+        // Inserisce automaticamente la data odierna nel formato corretto
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateElement = document.getElementById('current-date');
+            const oggi = new Date();
+            const opzioni = { day: '2-digit', month: '2-digit', year: 'numeric' };
+            dateElement.textContent = oggi.toLocaleDateString('it-IT', opzioni);
+
+            // Gestore evento per il pulsante
+            const button = document.getElementById('btn-conferma');
+            button.addEventListener('click', () => {
+                alert('Operazione confermata con successo!');
+            });
+        });
+    </script>
 
 </body>
 </html>
