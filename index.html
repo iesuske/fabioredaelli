@@ -13,7 +13,7 @@
             font-style: normal;
         }
 
-        /* Reset dei margini */
+        /* Reset dei margini e gestione della pagina */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -23,28 +23,12 @@
         html, body {
             width: 100%;
             height: 100%;
-            overflow: hidden;
+            overflow: hidden; /* Blocca lo scroll */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* Usiamo l'azzurro esatto del retino per lo sfondo */
-            background-color: #63bdd2; 
+            background-color: #63bdd2; /* Colore di sicurezza */
         }
 
-        /* 1. SFONDO SFOCATO AMBIENTALE (Mantiene la profondità) */
-        .bg-blurred-ambient {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('images/sfondo2.jpg');
-            background-size: cover;
-            background-position: center;
-            filter: blur(12px) brightness(0.65);
-            transform: scale(1.1);
-            z-index: 1;
-        }
-
-        /* 2. OPERA D'ARTE CENTRALE CON BORDI SFUMATI ANCI-SCALINO */
+        /* SFONDO PANORAMICO ESTESO (Ora riempie il monitor al 100% senza tagli o bande) */
         .bg-main-artwork {
             position: absolute;
             top: 0;
@@ -52,40 +36,39 @@
             width: 100%;
             height: 100%;
             background-image: url('images/sfondo2.jpg');
-            background-size: contain;     
-            background-position: center;   
+            background-size: cover;          /* Copre interamente lo schermo del PC */
+            background-position: top center; /* Tiene la banda rossa attaccata al soffitto */
             background-repeat: no-repeat;
-            z-index: 2;
-
-            /* MASCHERA GRADIENTE: Sfuma i bordi laterali per eliminare il taglio netto della foto */
-            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
-            mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+            z-index: 1;
         }
 
-        /* Navigazione dinamica agganciata alla fascia rossa */
+        /* Area del Menu agganciata in modo preciso sopra la banda rossa */
         .top-nav {
             position: absolute;
-            top: 15.5%; 
-            right: 17%; 
+            top: 4.5vh;    /* Altezza ideale per posizionarsi dentro la banda rossa su desktop */
+            right: 40px;   /* Distanza dal bordo destro dello schermo */
             display: flex;
-            gap: 40px; 
-            pointer-events: auto; 
+            gap: 40px;     /* Spazio tra i due pulsanti */
+            z-index: 2;
+            pointer-events: auto;
         }
 
+        /* Stile dei pulsanti del Menu */
         .nav-link {
             font-family: 'Lobster Regular', cursive;
             font-size: 2.2rem;
             color: #ffffff;
             text-decoration: none;
             transition: transform 0.2s ease, color 0.2s ease;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); 
         }
 
         .nav-link:hover {
-            color: #fbc02d; 
+            color: #fbc02d; /* Giallo Hot Stuff */
             transform: scale(1.05); 
         }
 
+        /* Footer */
         footer {
             position: absolute;
             bottom: 0;
@@ -94,22 +77,19 @@
             text-align: center;
             color: rgba(255, 255, 255, 0.8);
             font-size: 0.9rem;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
-            pointer-events: auto;
-            z-index: 3;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+            z-index: 2;
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-blurred-ambient"></div>
+    <div class="bg-main-artwork"></div>
 
-    <div class="bg-main-artwork">
-        <nav class="top-nav">
-            <a href="#about" class="nav-link">About Me</a>
-            <a href="#contact" class="nav-link">Contact</a>
-        </nav>
-    </div>
+    <nav class="top-nav">
+        <a href="#about" class="nav-link">About Me</a>
+        <a href="#contact" class="nav-link">Contact</a>
+    </nav>
 
     <footer>
         <p>&copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
