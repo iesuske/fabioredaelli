@@ -23,12 +23,13 @@
         html, body {
             width: 100%;
             height: 100%;
-            overflow: hidden; /* Evita lo scroll per mantenere lo sfondo fisso a tutto schermo */
+            overflow: hidden; /* Evita lo scroll per mantenere lo sfondo fisso */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #59b2c9; /* Colore di fallback che riprende l'azzurro del cielo */
+            /* Questo colore si fonderà perfettamente con i lati dell'immagine */
+            background-color: #64bdcf; 
         }
 
-        /* Container principale dello sfondo con ancoraggio in alto (Top Center) */
+        /* Container principale dello sfondo */
         .bg-container {
             position: absolute;
             top: 0;
@@ -36,9 +37,9 @@
             width: 100%;
             height: 100%;
             background-image: url('images/sfondo2.jpg');
-            background-size: cover;          /* Copre lo schermo in larghezza */
-            background-position: top center; /* ANCORATO IN ALTO: la banda rossa e il nome restano sempre visibili */
-            background-repeat: no-repeat;    /* Evita duplicazioni dell'immagine */
+            background-size: contain;     /* MOSTRA L'IMMAGINE INTERA: niente più tagli sotto la macchina! */
+            background-position: center;  /* Centra l'opera d'arte nello schermo */
+            background-repeat: no-repeat; /* Evita duplicazioni */
             z-index: 1;
         }
 
@@ -51,12 +52,12 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            pointer-events: none; /* Non blocca i clic sullo sfondo se non ci sono elementi sopra */
+            pointer-events: none;
         }
 
         header {
             padding: 40px;
-            pointer-events: auto; /* Riattiva i clic per i futuri link del menu */
+            pointer-events: auto;
         }
 
         main {
@@ -66,9 +67,9 @@
         footer {
             padding: 20px;
             text-align: center;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.8);
             font-size: 0.9rem;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Rende il testo del footer leggibile sulle nuvole */
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
             pointer-events: auto;
         }
     </style>
