@@ -39,11 +39,11 @@
             background-size: cover;
             background-position: center;
             filter: blur(15px) brightness(0.6);
-            transform: scale(1.1); /* Evita bordi bianchi dovuti alla sfocatura */
+            transform: scale(1.1);
             z-index: 1;
         }
 
-        /* 2. OPERA D'ARTE CENTRALE (Con aggiunta di ombra morbida per staccarla dallo sfondo) */
+        /* 2. OPERA D'ARTE CENTRALE */
         .bg-main-artwork {
             position: absolute;
             top: 0;
@@ -51,38 +51,53 @@
             width: 100%;
             height: 100%;
             background-image: url('images/sfondo2.jpg');
-            background-size: contain;     /* Garantisce la visione totale dell'auto */
-            background-position: center;   /* Centra perfettamente il poster nel monitor */
+            background-size: contain;     
+            background-position: center;   
             background-repeat: no-repeat;
-            
-            /* L'ombra morbida: scura, espansa di 30px e leggermente trasparente per massima naturalezza */
             filter: drop-shadow(0px 0px 30px rgba(0, 0, 0, 0.65));
-            
             z-index: 2;
         }
 
-        /* Overlay per i futuri contenuti del sito */
+        /* Overlay per i contenuti del sito (Sopra la grafica) */
         .content-overlay {
             position: relative;
             z-index: 3;
             width: 100%;
             height: 100%;
+            pointer-events: none; /* Permette di non intercettare i clic dove non serve */
+        }
+
+        /* Navigazione posizionata sopra la banda rossa sul lato destro dell'immagine */
+        .top-nav {
+            position: absolute;
+            /* Agganciamo il menu in base alle proporzioni dell'immagine centrale */
+            top: 4.5vh; 
+            right: 12%; 
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            pointer-events: none;
+            gap: 40px; /* Spazio tra "About Me" e "Contact" */
+            pointer-events: auto; /* Riattiva i clic per i link */
         }
 
-        header {
-            padding: 40px;
-            pointer-events: auto;
+        /* Stile dei link del Menu con il font Lobster */
+        .nav-link {
+            font-family: 'Lobster Regular', cursive;
+            font-size: 2.2rem; /* Dimensione generosa come da screenshot */
+            color: #ffffff;
+            text-decoration: none;
+            transition: transform 0.2s ease, color 0.2s ease;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Leggera ombra per staccare dal rosso */
         }
 
-        main {
-            flex-grow: 1;
+        /* Effetto al passaggio del mouse (Hover) */
+        .nav-link:hover {
+            color: #fbc02d; /* Si illumina di un giallo caldo che richiama la scritta Hot Stuff */
+            transform: scale(1.05); /* Piccolo ingrandimento fluido */
         }
 
         footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
             padding: 15px;
             text-align: center;
             color: rgba(255, 255, 255, 0.8);
@@ -99,11 +114,10 @@
     <div class="bg-main-artwork"></div>
 
     <div class="content-overlay">
-        <header>
-            </header>
-
-        <main>
-            </main>
+        <nav class="top-nav">
+            <a href="#about" class="nav-link">About Me</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </nav>
 
         <footer>
             <p>&copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
