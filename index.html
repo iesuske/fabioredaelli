@@ -43,7 +43,7 @@
             z-index: 1;
         }
 
-        /* 2. OPERA D'ARTE CENTRALE */
+        /* 2. OPERA D'ARTE CENTRALE - Questa è la chiave del posizionamento */
         .bg-main-artwork {
             position: absolute;
             top: 0;
@@ -51,49 +51,47 @@
             width: 100%;
             height: 100%;
             background-image: url('images/sfondo2.jpg');
-            background-size: contain;     
-            background-position: center;   
+            background-size: contain;     /* Mostra l'auto intera */
+            background-position: center;   /* Centra il poster nel monitor */
             background-repeat: no-repeat;
             filter: drop-shadow(0px 0px 30px rgba(0, 0, 0, 0.65));
             z-index: 2;
         }
 
-        /* Overlay per i contenuti del sito (Sopra la grafica) */
-        .content-overlay {
-            position: relative;
-            z-index: 3;
-            width: 100%;
-            height: 100%;
-            pointer-events: none; /* Permette di non intercettare i clic dove non serve */
-        }
-
-        /* Navigazione posizionata sopra la banda rossa sul lato destro dell'immagine */
+        /* Navigazione: posizionata IN MODO ASSOLUTO rispetto all'artwork nitido centrale */
+        /* Questo assicura che il menu segua l'immagine centrale quando questa si ridimensiona */
         .top-nav {
             position: absolute;
-            /* Agganciamo il menu in base alle proporzioni dell'immagine centrale */
-            top: 4.5vh; 
-            right: 12%; 
+            /* Coordinate percentuali basate sul frame dell'artwork centrale */
+            top: 15.5%; /* Calcolato per combaciare perfettamente con l'altezza della banda rossa su desktop */
+            right: 17%; /* Distanza dal bordo destro dell'area centrale */
+            
             display: flex;
             gap: 40px; /* Spazio tra "About Me" e "Contact" */
             pointer-events: auto; /* Riattiva i clic per i link */
         }
 
-        /* Stile dei link del Menu con il font Lobster */
+        /* Stile dei link del Menu con il font Lobster e l'ombra corretta */
         .nav-link {
             font-family: 'Lobster Regular', cursive;
-            font-size: 2.2rem; /* Dimensione generosa come da screenshot */
+            font-size: 2.2rem;
             color: #ffffff;
             text-decoration: none;
-            transition: transform 0.2s ease, color 0.2s ease;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Leggera ombra per staccare dal rosso */
+            transition: transform 0.2s ease, color 0.2s ease, text-shadow 0.2s ease;
+            
+            /* Applichiamo un'ombra morbida ma decisa per staccare dal rosso, 
+               simile a quella nel tuo screenshot */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
         }
 
         /* Effetto al passaggio del mouse (Hover) */
         .nav-link:hover {
-            color: #fbc02d; /* Si illumina di un giallo caldo che richiama la scritta Hot Stuff */
+            color: #fbc02d; /* Giallo caldo "Hot Stuff" */
             transform: scale(1.05); /* Piccolo ingrandimento fluido */
+            text-shadow: 0px 0px 8px rgba(251, 192, 45, 0.6); /* Bagliore coordinato */
         }
 
+        /* Footer coordinato */
         footer {
             position: absolute;
             bottom: 0;
@@ -104,6 +102,7 @@
             font-size: 0.9rem;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
             pointer-events: auto;
+            z-index: 3; /* Sopra a tutto il comparto grafico */
         }
     </style>
 </head>
@@ -111,18 +110,16 @@
 
     <div class="bg-blurred-ambient"></div>
 
-    <div class="bg-main-artwork"></div>
-
-    <div class="content-overlay">
+    <div class="bg-main-artwork">
         <nav class="top-nav">
             <a href="#about" class="nav-link">About Me</a>
             <a href="#contact" class="nav-link">Contact</a>
         </nav>
-
-        <footer>
-            <p>&copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
-        </footer>
     </div>
+
+    <footer>
+        <p>&copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
+    </footer>
 
 </body>
 </html>
