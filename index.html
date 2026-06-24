@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fabio Redaelli - Comic Art Author - Hot Stuff</title>
     <style>
-        /* Definizione del font personalizzato Lobster caricato da locale/GitHub */
+        /* Definizione del font personalizzato Lobster */
         @font-face {
             font-family: 'Lobster Regular';
             src: url('fonts/lobsteregular.ttf') format('truetype');
@@ -13,7 +13,7 @@
             font-style: normal;
         }
 
-        /* Reset dei margini e gestione del layout a piena pagina */
+        /* Reset dei margini */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -23,13 +23,12 @@
         html, body {
             width: 100%;
             height: 100%;
-            overflow: hidden; /* Evita lo scroll per mantenere lo sfondo fisso */
+            overflow: hidden; /* Evita lo scroll per mantenere il layout fisso */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* Questo colore si fonderà perfettamente con i lati dell'immagine */
-            background-color: #64bdcf; 
+            background-color: #b71c1c; /* Fallback rosso che richiama la banda superiore */
         }
 
-        /* Container principale dello sfondo */
+        /* Container dello sfondo ottimizzato per Desktop */
         .bg-container {
             position: absolute;
             top: 0;
@@ -37,13 +36,15 @@
             width: 100%;
             height: 100%;
             background-image: url('images/sfondo2.jpg');
-            background-size: contain;     /* MOSTRA L'IMMAGINE INTERA: niente più tagli sotto la macchina! */
-            background-position: center;  /* Centra l'opera d'arte nello schermo */
-            background-repeat: no-repeat; /* Evita duplicazioni */
+            /* background-size: 100% auto; forza l'immagine a occupare tutta la larghezza 
+               dello schermo e ad adattare l'altezza in modo proporzionale senza deformarsi */
+            background-size: 100% auto;
+            background-position: top center; /* Mantiene la banda rossa e il nome perfettamente agganciati in alto */
+            background-repeat: no-repeat;
             z-index: 1;
         }
 
-        /* Overlay per i futuri contenuti (testi, menu, elementi interattivi) */
+        /* Overlay per i contenuti */
         .content-overlay {
             position: relative;
             z-index: 2;
