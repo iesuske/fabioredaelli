@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabio Redaelli - Comic Art Author - Hot Stuff</title>
+    <style>
+        /* Definizione del font personalizzato Lobster caricato da locale/GitHub */
+        @font-face {
+            font-family: 'Lobster Regular';
+            src: url('fonts/lobsteregular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Reset dei margini e gestione del layout a piena pagina */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Evita lo scroll per mantenere lo sfondo fisso a tutto schermo */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d1b2a; /* Colore di fallback scuro */
+        }
+
+        /* Container principale dello sfondo */
+        .bg-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('images/sfondo2.jpg');
+            background-size: cover;        /* Copre l'intera area visibile mantenendo le proporzioni */
+            background-position: center;   /* Centra l'immagine sia verticalmente che orizzontalmente */
+            background-repeat: no-repeat;  /* Evita la ripetizione dell'immagine */
+            z-index: 1;
+        }
+
+        /* Overlay per i futuri contenuti (testi, menu, elementi interattivi) */
+        .content-overlay {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            pointer-events: none; /* Non blocca i clic sullo sfondo se non ci sono elementi sopra */
+        }
+
+        header {
+            padding: 40px;
+            pointer-events: auto; /* Riattiva i clic per i futuri link del menu */
+        }
+
+        main {
+            flex-grow: 1;
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-container"></div>
+
+    <div class="content-overlay">
+        <header>
+            </header>
+
+        <main>
+            </main>
+
+        <footer>
+            <p>&copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
