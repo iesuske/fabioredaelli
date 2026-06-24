@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fabio Redaelli - Comic Art Author - Hot Stuff</title>
     <style>
-        /* Definizione del font personalizzato Lobster */
         @font-face {
             font-family: 'Lobster Regular';
             src: url('fonts/lobsteregular.ttf') format('truetype');
@@ -13,7 +12,6 @@
             font-style: normal;
         }
 
-        /* Reset dei margini e gestione della pagina */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -23,12 +21,22 @@
         html, body {
             width: 100%;
             height: 100%;
-            overflow: hidden; /* Blocca lo scroll */
+            overflow: hidden;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #63bdd2; /* Colore di sicurezza */
+            background-color: #0d1b2a;
         }
 
-        /* SFONDO PANORAMICO ESTESO (Ora riempie il monitor al 100% senza tagli o bande) */
+        /* LAYER 1 — Canvas: estende i pixel di bordo nelle bande laterali */
+        #ambient-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* LAYER 2 — Opera principale nitida, contain, centrata */
         .bg-main-artwork {
             position: absolute;
             top: 0;
@@ -36,64 +44,191 @@
             width: 100%;
             height: 100%;
             background-image: url('images/sfondo2.jpg');
-            background-size: cover;          /* Copre interamente lo schermo del PC */
-            background-position: top center; /* Tiene la banda rossa attaccata al soffitto */
+            background-size: contain;
+            background-position: center;
             background-repeat: no-repeat;
-            z-index: 1;
+            z-index: 2;
         }
 
-        /* Area del Menu agganciata in modo preciso sopra la banda rossa */
-        .top-nav {
-            position: absolute;
-            top: 4.5vh;    /* Altezza ideale per posizionarsi dentro la banda rossa su desktop */
-            right: 40px;   /* Distanza dal bordo destro dello schermo */
+        /* LAYER 3 — Contenuti del sito */
+        .content-overlay {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            height: 100%;
             display: flex;
-            gap: 40px;     /* Spazio tra i due pulsanti */
-            z-index: 2;
+            flex-direction: column;
+            justify-content: space-between;
+            pointer-events: none;
+        }
+
+        header {
+            padding: 40px;
             pointer-events: auto;
         }
 
-        /* Stile dei pulsanti del Menu */
-        .nav-link {
-            font-family: 'Lobster Regular', cursive;
-            font-size: 2.2rem;
-            color: #ffffff;
-            text-decoration: none;
-            transition: transform 0.2s ease, color 0.2s ease;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); 
+        main {
+            flex-grow: 1;
         }
 
-        .nav-link:hover {
-            color: #fbc02d; /* Giallo Hot Stuff */
-            transform: scale(1.05); 
-        }
-
-        /* Footer */
         footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
             padding: 15px;
             text-align: center;
             color: rgba(255, 255, 255, 0.8);
             font-size: 0.9rem;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
-            z-index: 2;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+            pointer-events: auto;
         }
     </style>
 </head>
 <body>
 
+    <canvas id="ambient-canvas"></canvas>
+
     <div class="bg-main-artwork"></div>
 
-    <nav class="top-nav">
-        <a href="#about" class="nav-link">About Me</a>
-        <a href="#contact" class="nav-link">Contact</a>
-    </nav>
+    <div class="content-overlay">
+        <header></header>
+        <main></main>
+        <footer>
+            <p>&copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
+        </footer>
+    </div>
 
-    <footer>
-        <p>&copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
-    </footer>
+<script>
+(function () {
+    "use strict";
+
+    const canvas  = document.getElementById("ambient-canvas");
+    const ctx     = canvas.getContext("2d");
+    const IMG_SRC = "images/sfondo2.jpg";
+
+    // Quante colonne di pixel campionare dal bordo dell'immagine
+    const SAMPLE_WIDTH = 50;
+
+    const img = new Image();
+    img.src = IMG_SRC;
+    img.onload = () => {
+        render();
+        window.addEventListener("resize", render);
+    };
+
+    function render() {
+        const W = window.innerWidth;
+        const H = window.innerHeight;
+
+        canvas.width  = W;
+        canvas.height = H;
+
+        const imgAspect  = img.naturalWidth / img.naturalHeight;
+        const viewAspect = W / H;
+
+        let imgW, imgH, imgX, imgY;
+
+        if (imgAspect > viewAspect) {
+            // Bande sopra/sotto
+            imgW = W;
+            imgH = W / imgAspect;
+        } else {
+            // Bande sinistra/destra (caso tipico con questo poster)
+            imgH = H;
+            imgW = H * imgAspect;
+        }
+
+        imgX = (W - imgW) / 2;
+        imgY = (H - imgH) / 2;
+
+        // Sfondo base
+        ctx.fillStyle = "#0d1b2a";
+        ctx.fillRect(0, 0, W, H);
+
+        // Fasce laterali
+        if (imgX > 0) {
+            drawSideStrip("left",  imgX, imgY, imgW, imgH, W, H);
+            drawSideStrip("right", imgX, imgY, imgW, imgH, W, H);
+        }
+
+        // Fasce sopra/sotto (robustezza su portrait o schermi molto alti)
+        if (imgY > 0) {
+            drawTopBottomStrip(imgX, imgY, imgW, imgH, W, H);
+        }
+    }
+
+    function drawSideStrip(side, imgX, imgY, imgW, imgH, W, H) {
+        const stripW = Math.ceil(imgX);
+        if (stripW <= 0) return;
+
+        // Canvas temporaneo per costruire la strip
+        const tmp    = document.createElement("canvas");
+        tmp.width    = stripW;
+        tmp.height   = H;
+        const tCtx   = tmp.getContext("2d");
+
+        // Campiona le prime o ultime SAMPLE_WIDTH colonne dell'immagine originale
+        const srcX = side === "left" ? 0 : img.naturalWidth - SAMPLE_WIDTH;
+
+        // Stira quella fetta sull'intera banda laterale, allineata verticalmente
+        // alla posizione contain dell'immagine
+        tCtx.drawImage(
+            img,
+            srcX, 0, SAMPLE_WIDTH, img.naturalHeight,
+            0, imgY, stripW, imgH
+        );
+
+        // Canvas sfocato: ridisegna su se stesso con blur
+        const blurred    = document.createElement("canvas");
+        blurred.width    = stripW;
+        blurred.height   = H;
+        const bCtx       = blurred.getContext("2d");
+        bCtx.filter      = "blur(20px)";
+        bCtx.drawImage(tmp, 0, 0);
+        bCtx.filter      = "none";
+
+        // Overlay scuro per coerenza con il design
+        bCtx.fillStyle = "rgba(13, 27, 42, 0.40)";
+        bCtx.fillRect(0, 0, stripW, H);
+
+        // Maschera alpha: fade verso il centro (dove inizia l'immagine nitida)
+        const gradX0 = side === "left" ? stripW : 0;
+        const gradX1 = side === "left" ? 0      : stripW;
+
+        const mask = bCtx.createLinearGradient(gradX0, 0, gradX1, 0);
+        mask.addColorStop(0,    "rgba(0,0,0,0)"); // verso il centro: trasparente
+        mask.addColorStop(0.6,  "rgba(0,0,0,0)");
+        mask.addColorStop(1,    "rgba(0,0,0,1)"); // bordo canvas: opaco
+
+        bCtx.globalCompositeOperation = "destination-out";
+        bCtx.fillStyle = mask;
+        bCtx.fillRect(0, 0, stripW, H);
+        bCtx.globalCompositeOperation = "source-over";
+
+        // Composita sul canvas principale
+        const destX = side === "left" ? 0 : imgX + imgW;
+        ctx.drawImage(blurred, destX, 0);
+    }
+
+    function drawTopBottomStrip(imgX, imgY, imgW, imgH, W, H) {
+        // Top
+        if (imgY > 0) {
+            const g1 = ctx.createLinearGradient(0, 0, 0, imgY);
+            g1.addColorStop(0, "rgba(13,27,42,1)");
+            g1.addColorStop(1, "rgba(13,27,42,0)");
+            ctx.fillStyle = g1;
+            ctx.fillRect(0, 0, W, imgY);
+        }
+        // Bottom
+        const bottomY = imgY + imgH;
+        if (bottomY < H) {
+            const g2 = ctx.createLinearGradient(0, bottomY, 0, H);
+            g2.addColorStop(0, "rgba(13,27,42,0)");
+            g2.addColorStop(1, "rgba(13,27,42,1)");
+            ctx.fillStyle = g2;
+            ctx.fillRect(0, bottomY, W, H - bottomY);
+        }
+    }
+
+})();
+</script>
 
 </body>
 </html>
