@@ -13,7 +13,7 @@
             font-style: normal;
         }
 
-        /* Reset dei margini */
+        /* Reset dei margini e gestione della pagina */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -23,44 +23,44 @@
         html, body {
             width: 100%;
             height: 100%;
-            overflow: hidden; /* Evita lo scroll */
+            overflow: hidden; /* Blocca lo scroll */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* Il colore di base del body riprende l'azzurro del cielo dell'illustrazione */
-            background-color: #61bcd1; 
+            background-color: #0d1b2a;
         }
 
-        /* 1. CREIAMO LA PROLUNGA ROSSA IN ALTO */
-        /* Questa barra si estende da sinistra a destra all'infinito dietro l'immagine, 
-           fondendosi con la tua banda rossa originale */
-        .top-red-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            /* L'altezza è calcolata per combaciare perfettamente con lo spessore del tuo rosso su desktop */
-            height: 13.5vh; 
-            background-color: #b31c19; /* Lo stesso rosso del tuo disegno */
-            z-index: 1;
-        }
-
-        /* 2. IL CONTENITORE DELL'ILLUSTRAZIONE */
-        .bg-container {
+        /* 1. SFONDO SFOCATO "AMBIENTALE" (Riempie tutto lo schermo senza bande piatte) */
+        .bg-blurred-ambient {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background-image: url('images/sfondo2.jpg');
-            background-size: contain;        /* Mostra l'immagine intera senza tagliarla sotto */
-            background-position: top center;  /* La tiene attaccata al soffitto per allineare il rosso */
-            background-repeat: no-repeat;
-            z-index: 2;                       /* Sta sopra alla prolunga rossa */
+            background-size: cover;
+            background-position: center;
+            filter: blur(20px) brightness(0.6); /* Sfoca e scurisce per far risaltare il disegno centrale */
+            transform: scale(1.1); /* Evita bordi bianchi dovuti alla sfocatura */
+            z-index: 1;
         }
 
-        /* Overlay per i contenuti futuri (Menu, Ticker, Contatti) */
+        /* 2. OPERA D'ARTE CENTRALE (Nitida, intera, proporzionata e senza tagli sotto la macchina) */
+        .bg-main-artwork {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('images/sfondo2.jpg');
+            background-size: contain;     /* Garantisce la visione totale dell'auto e delle ruote */
+            background-position: center;   /* Centra perfettamente il poster nel monitor */
+            background-repeat: no-repeat;
+            z-index: 2;
+        }
+
+        /* Overlay per i futuri contenuti del sito */
         .content-overlay {
             position: relative;
-            z-index: 3;                       /* Sopra a tutto il comparto grafico */
+            z-index: 3;
             width: 100%;
             height: 100%;
             display: flex;
@@ -83,16 +83,16 @@
             text-align: center;
             color: rgba(255, 255, 255, 0.8);
             font-size: 0.9rem;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
             pointer-events: auto;
         }
     </style>
 </head>
 <body>
 
-    <div class="top-red-bar"></div>
+    <div class="bg-blurred-ambient"></div>
 
-    <div class="bg-container"></div>
+    <div class="bg-main-artwork"></div>
 
     <div class="content-overlay">
         <header>
