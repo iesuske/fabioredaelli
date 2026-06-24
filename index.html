@@ -25,10 +25,10 @@
             height: 100%;
             overflow: hidden; /* Evita lo scroll per mantenere lo sfondo fisso a tutto schermo */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0d1b2a; /* Colore di fallback scuro */
+            background-color: #59b2c9; /* Colore di fallback che riprende l'azzurro del cielo */
         }
 
-        /* Container principale dello sfondo */
+        /* Container principale dello sfondo con ancoraggio in alto (Top Center) */
         .bg-container {
             position: absolute;
             top: 0;
@@ -36,9 +36,9 @@
             width: 100%;
             height: 100%;
             background-image: url('images/sfondo2.jpg');
-            background-size: cover;        /* Copre l'intera area visibile mantenendo le proporzioni */
-            background-position: center;   /* Centra l'immagine sia verticalmente che orizzontalmente */
-            background-repeat: no-repeat;  /* Evita la ripetizione dell'immagine */
+            background-size: cover;          /* Copre lo schermo in larghezza */
+            background-position: top center; /* ANCORATO IN ALTO: la banda rossa e il nome restano sempre visibili */
+            background-repeat: no-repeat;    /* Evita duplicazioni dell'immagine */
             z-index: 1;
         }
 
@@ -66,8 +66,9 @@
         footer {
             padding: 20px;
             text-align: center;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.9rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Rende il testo del footer leggibile sulle nuvole */
             pointer-events: auto;
         }
     </style>
