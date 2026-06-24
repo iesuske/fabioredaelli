@@ -8,7 +8,7 @@
     <link rel="icon" href="images/favicon.ico" sizes="any">
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/images/favicon-96x96.png">
     
     <style>
         /* Reset iniziale dei margini del browser */
@@ -26,14 +26,19 @@
             font-style: normal;
         }
 
-        /* --- 1. STILE DI BASE (DESKTOP) --- */
+        /* --- 1. STILE DI BASE CON SFONDO A PAGINA PIENA --- */
         body {
-            background-color: #000000;
+            background-image: url('images/sfondo2.jpg');
+            background-size: cover;          /* Copre interamente la pagina senza distorcersi */
+            background-position: center;     /* Centra l'immagine sia in orizzontale che in verticale */
+            background-repeat: no-repeat;    /* Impedisce la duplicazione dell'immagine */
+            background-attachment: fixed;    /* Mantiene lo sfondo fisso durante lo scroll (se presente) */
+            background-color: #000000;       /* Colore di fallback */
             color: #ffffff;
             height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
+            overflow: hidden;                /* Evita barre di scorrimento indesiderate */
         }
 
         /* Contenitore principale della pagina */
@@ -43,6 +48,7 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
+            justify-content: space-between; /* Distribuisce i menu in alto e i testi in basso */
         }
 
         /* --- CONTENITORI NAVIGAZIONE (IN ALTO) --- */
@@ -169,54 +175,17 @@
             color: #ff3333;                             
         }
 
-        /* --- NASTRO IMMAGINI (PORTATO PIÙ SU) --- */
-        .header-strip {
-            width: 100%;
-            height: 240px;              
-            background-color: rgba(5, 5, 5, 0.4); 
-            z-index: 1;                 
-            overflow: hidden;           
-            display: flex;
-            align-items: center;
-            margin-top: -35px;          /* Portato in su di circa 1cm per avvicinarlo ai menu */
-        }
-
-        .strip-gallery {
-            display: flex;
-            align-items: center;
-            width: max-content;
-            animation: scorriStriscia 60s linear infinite; 
-        }
-
-        /* Immagini del ticker */
-        .header-strip img {
-            height: 210px;              
-            width: auto;                
-            object-fit: cover;
-            opacity: 0.55;              
-            filter: contrast(105%); 
-            margin-left: 0px; 
-            margin-right: 0px;         
-            pointer-events: none;
-        }
-
-        @keyframes scorriStriscia {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* --- SCRITTE CENTRALI (AL CENTRO DELLO SPAZIO RIMANENTE) --- */
+        /* --- SCRITTE IN BASSO OVE POSIZIONATE RISPETTO ALLA GRAFICA DELLO SFONDO --- */
         .header-text {
-            flex-grow: 1;               
             display: flex;
             flex-direction: column;
-            justify-content: center;    
+            justify-content: flex-end;    
             align-items: center;        
             text-align: center;
             z-index: 3;                
             pointer-events: none;      
             width: 100%;
-            padding-bottom: 40px;       
+            padding-bottom: 6vh;       /* Sposta i testi leggermente sopra il bordo inferiore */
         }
 
         .brand-name {
@@ -226,7 +195,7 @@
             letter-spacing: -1px;        
             word-spacing: 6px;           
             white-space: nowrap;         
-            margin-bottom: 15px;         
+            margin-bottom: 10px;         
             text-shadow: 0px 0px 25px rgba(0, 0, 0, 1), 0px 0px 15px rgba(0, 0, 0, 1); 
         }
 
@@ -250,23 +219,22 @@
             .nav-left-container { left: 20px; }
             .nav-right-container { right: 20px; }
             .dropdown-trigger { font-size: 1.5rem; }
-            .header-strip { height: 190px; margin-top: -25px; }
-            .header-strip img { height: 165px; }
             .brand-name { font-size: 5.2vw; }
             .subtitle { font-size: 2.5vw; }
         }
 
         /* --- 3. REGOLE SPECIFICHE PER IPHONE E SMARTPHONE --- */
         @media screen and (max-width: 480px) {
+            body {
+                background-position: 65% center; /* Ottimizza l'inquadratura del guidatore sui display verticali */
+            }
             .nav-container { height: 50px; }
             .nav-left-container { left: 15px; top: 10px; }
             .nav-right-container { right: 15px; top: 10px; }
             .dropdown-trigger { font-size: 1.35rem; padding: 5px; }
             .dropdown-about-box { width: 280px; }
-            .header-strip { height: 140px; margin-top: -15px; }
-            .header-strip img { height: 120px; }
-            .brand-name { font-size: 6.5vw; }
-            .subtitle { font-size: 3.8vw; }
+            .brand-name { font-size: 7vw; white-space: normal; } /* Permette l'andata a capo del nome sui telefoni piccoli */
+            .subtitle { font-size: 4.5vw; }
         }
     </style>
 </head>
@@ -274,7 +242,6 @@
 
     <header>
         
-        <!-- Barra superiore Menu -->
         <div class="nav-container">
             <nav class="nav-left-container">
                 <div class="dropdown">
@@ -301,55 +268,6 @@
             </nav>
         </div>
         
-        <!-- Ticker delle foto posizionato in alto, spostato ulteriormente su -->
-        <div class="header-strip">
-            <div class="strip-gallery">
-                <img src="images/536913239_771279048815462_2270826523541450789_n.jpg" alt="Grafica">
-                <img src="images/542731330_1860838831130927_5613417031476279964_n.jpg" alt="Grafica">
-                <img src="images/575656634_18553452925028432_7538027429835504901_n.jpg" alt="Grafica">
-                <img src="images/616098087_18101150416890313_5614747657125988009_n.jpg" alt="Grafica">
-                <img src="images/616987710_18082180661238756_1853949525649807672_n.jpg" alt="Grafica">
-                <img src="images/617512350_18089174063287397_7867576783431125970_n.jpg" alt="Grafica">
-                <img src="images/617601216_18079300337262112_2573794255911570420_n.jpg" alt="Grafica">
-                <img src="images/617837175_18099345169883097_2876763776130651949_n.jpg" alt="Grafica">
-                <img src="images/617850559_18092624146797605_7821590172086253337_n.jpg" alt="Grafica">
-                <img src="images/618169208_18107012773736733_1751668667999684768_n.jpg" alt="Grafica">
-                <img src="images/618582111_18091883314942530_1652208435841518326_n.jpg" alt="Grafica">
-                <img src="images/619210942_18078232373197044_8245749466928658887_n.jpg" alt="Grafica">
-                <img src="images/619813194_18072676058104736_1285675148402584492_n.jpg" alt="Grafica">
-                <img src="images/619992412_18084610111920743_5797182633911976737_n.jpg" alt="Grafica">
-                <img src="images/620791607_18087459998122258_2601258993977041465_n.jpg" alt="Grafica">
-                <img src="images/620802467_18211705903316268_8505839199780540376_n.jpg" alt="Grafica">
-                <img src="images/620897771_18092110204794848_121447748246872246_n.jpg" alt="Grafica">
-                <img src="images/620983567_18100004032857816_5417361991121559398_n.jpg" alt="Grafica">
-                <img src="images/621155859_18119346355510333_7382313200709323896_n.jpg" alt="Grafica">
-                <img src="images/621377117_18131273791455663_9040066806995626284_n.jpg" alt="Grafica">
-
-                <!-- Duplicato per ciclo infinito -->
-                <img src="images/536913239_771279048815462_2270826523541450789_n.jpg" alt="Grafica">
-                <img src="images/542731330_1860838831130927_5613417031476279964_n.jpg" alt="Grafica">
-                <img src="images/575656634_18553452925028432_7538027429835504901_n.jpg" alt="Grafica">
-                <img src="images/616098087_18101150416890313_5614747657125988009_n.jpg" alt="Grafica">
-                <img src="images/616987710_18082180661238756_1853949525649807672_n.jpg" alt="Grafica">
-                <img src="images/617512350_18089174063287397_7867576783431125970_n.jpg" alt="Grafica">
-                <img src="images/617601216_18079300337262112_2573794255911570420_n.jpg" alt="Grafica">
-                <img src="images/617837175_18099345169883097_2876763776130651949_n.jpg" alt="Grafica">
-                <img src="images/617850559_18092624146797605_7821590172086253337_n.jpg" alt="Grafica">
-                <img src="images/618169208_18107012773736733_1751668667999684768_n.jpg" alt="Grafica">
-                <img src="images/618582111_18091883314942530_1652208435841518326_n.jpg" alt="Grafica">
-                <img src="images/619210942_18078232373197044_8245749466928658887_n.jpg" alt="Grafica">
-                <img src="images/619813194_18072676058104736_1285675148402584492_n.jpg" alt="Grafica">
-                <img src="images/619992412_18084610111920743_5797182633911976737_n.jpg" alt="Grafica">
-                <img src="images/620791607_18087459998122258_2601258993977041465_n.jpg" alt="Grafica">
-                <img src="images/620802467_18211705903316268_8505839199780540376_n.jpg" alt="Grafica">
-                <img src="images/620897771_18092110204794848_121447748246872246_n.jpg" alt="Grafica">
-                <img src="images/620983567_18100004032857816_5417361991121559398_n.jpg" alt="Grafica">
-                <img src="images/621155859_18119346355510333_7382313200709323896_n.jpg" alt="Grafica">
-                <img src="images/621377117_18131273791455663_9040066806995626284_n.jpg" alt="Grafica">
-            </div>
-        </div>
-
-        <!-- Scritte centrali posizionate al centro dello spazio vuoto inferiore -->
         <div class="header-text">
             <h1 class="brand-name">
                 Fabio&nbsp;<span class="highlight">“Hot Stuff”</span>&nbsp;Redaelli
