@@ -26,7 +26,7 @@
             background-color: #fceecb;
         }
 
-        /* LAYER 1 — Sfondo nitido ancorato in alto (Cover) */
+        /* LAYER 1 — Sfondo nitido a tutto schermo ancorato in alto */
         .bg-artwork {
             position: absolute;
             inset: 0;
@@ -37,7 +37,7 @@
             z-index: 1;
         }
 
-        /* LAYER 2 — Interfaccia utente e Contenuti */
+        /* LAYER 2 — Contenuti e Interfaccia sopra lo sfondo */
         .content-overlay {
             position: relative;
             z-index: 2;
@@ -49,35 +49,36 @@
             pointer-events: none;
         }
 
+        /* L'header simula l'altezza e la posizione esatta della banda rossa sul fondo */
         header {
-            padding: 30px 20px;
+            width: 100%;
+            height: 140px; /* Altezza ottimale per contenere il testo dentro la banda */
+            margin-top: 35px; /* Spinge il testo esattamente al centro della fascia rossa dell'immagine */
+            padding: 0 20px;
             pointer-events: auto;
             display: flex;
-            justify-content: center; /* Centra perfettamente la scritta nella pagina */
+            justify-content: center;
             align-items: center;
-            width: 100%;
         }
 
-        /* Stile per il titolo centrato e largo con font Lobster */
+        /* Titolo ingrandito e centrato con font Lobster */
         .brand-title {
             font-family: 'Lobster Regular', cursive;
-            font-size: 3.5rem; /* Dimensione bella larga */
-            letter-spacing: 1px;
+            font-size: 5.5rem; /* Ingrandito per occupare bene la banda */
+            letter-spacing: 2px;
             text-align: center;
-            line-height: 1.2;
             white-space: nowrap;
-            /* Ombra leggera opzionale per staccare dal fondo se necessario */
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15); 
+            line-height: 1;
         }
 
-        /* Alternanza dei colori richiesti */
+        /* Colori alternati richiesti */
         .text-white {
             color: #ffffff;
         }
 
         .text-black {
             color: #000000;
-            margin: 0 12px; /* Spaziatura attorno a Hot Stuff */
+            margin: 0 20px; /* Spazio proporzionato tra le parole */
         }
 
         main {
@@ -97,19 +98,45 @@
             width: 100%;
         }
 
-        /* Responsive design per schermi piccoli per non fare uscire la scritta dal frame */
+        /* Controllo responsive avanzato: riduce il testo e i margini prima che tocchino i bordi */
+        @media (max-width: 1200px) {
+            .brand-title {
+                font-size: 4.2rem;
+            }
+            header {
+                height: 110px;
+                margin-top: 25px;
+            }
+        }
+
         @media (max-width: 768px) {
             header {
-                padding: 20px 10px;
+                height: 80px;
+                margin-top: 15px;
+                padding: 0 10px;
             }
             .brand-title {
-                font-size: 2.2rem; /* Si rimpicciolisce sui dispositivi mobili per rimanere dentro la banda */
+                font-size: 2.5rem;
+                letter-spacing: 1px;
             }
             .text-black {
-                margin: 0 6px;
+                margin: 0 10px;
             }
             footer {
                 font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                height: 60px;
+                margin-top: 10px;
+            }
+            .brand-title {
+                font-size: 1.8rem;
+            }
+            .text-black {
+                margin: 0 6px;
             }
         }
     </style>
