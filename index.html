@@ -26,13 +26,13 @@
             background-color: #fceecb;
         }
 
-        /* LAYER 1 — Sfondo nitido. Modificato "background-position" per traslare il disegno verso l'alto */
+        /* LAYER 1 — Sfondo nitido. Spostato ulteriormente verso l'alto (-55px) per avvicinare la macchina alla banda */
         .bg-artwork {
             position: absolute;
             inset: 0;
             background-image: url('images/bg2.jpg');
             background-size: cover;
-            background-position: center -20px; /* Sposta l'illustrazione della macchina verso l'alto avvicinandola alla banda */
+            background-position: center -55px; 
             background-repeat: no-repeat;
             z-index: 1;
         }
@@ -89,6 +89,12 @@
 
         .text-black {
             color: #000000;
+        }
+
+        /* Spazio singolo naturale intorno alla scritta nera centrale */
+        .spacer-word {
+            display: inline-block;
+            width: 0.28em; 
         }
 
         /* Navigazione del menu a destra */
@@ -197,7 +203,7 @@
             header { margin-top: 3.8vw; height: 9.5vw; }
             .brand-title { font-size: 4.8vw; }
             .dropdown-trigger { font-size: 2.2vw; }
-            .bg-artwork { background-position: center -10px; }
+            .bg-artwork { background-position: center -35px; }
         }
 
         @media (max-width: 768px) {
@@ -218,7 +224,9 @@
         <header>
             <div class="header-spacer"></div>
 
-            <h1 class="brand-title"><span class="text-white">Fabio</span> <span class="text-black">Hot Stuff</span> <span class="text-white">Redaelli</span></h1>
+            <h1 class="brand-title">
+                <span class="text-white">Fabio</span><span class="spacer-word"></span><span class="text-black">Hot Stuff</span><span class="spacer-word"></span><span class="text-white">Redaelli</span>
+            </h1>
 
             <nav class="nav-container">
                 <div class="dropdown">
