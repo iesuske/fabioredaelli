@@ -26,7 +26,7 @@
             background-color: #fceecb;
         }
 
-        /* LAYER 1 — Sfondo nitido a tutto schermo ancorato in alto */
+        /* LAYER 1 — Sfondo nitido a tutto schermo ancorato perfettamente in alto */
         .bg-artwork {
             position: absolute;
             inset: 0;
@@ -37,7 +37,7 @@
             z-index: 1;
         }
 
-        /* LAYER 2 — Interfaccia e testo sopra lo sfondo */
+        /* LAYER 2 — Interfaccia utente */
         .content-overlay {
             position: relative;
             z-index: 2;
@@ -49,12 +49,13 @@
             pointer-events: none;
         }
 
-        /* Spinge l'intero blocco del testo sotto la banda rossa dell'immagine */
+        /* L'header si sovrappone millimetricamente alla banda rossa dello sfondo */
         header {
             width: 100%;
-            /* Aumentato per posizionare il testo nella zona beige sotto la linea nera */
-            margin-top: 14.5vw; 
-            height: 7vw;
+            margin-top: 3.5vw; /* Allineamento proporzionale perfetto basato sullo screenshot */
+            height: 9vw;
+            min-height: 70px;
+            max-height: 140px;
             padding: 0 4%;
             pointer-events: auto;
             display: flex;
@@ -62,16 +63,15 @@
             align-items: center;
         }
 
-        /* Contenitore invisibile a sinistra per bilanciare il layout e tenere il titolo centrato */
+        /* Spaziatore per garantire che il titolo rimanga perfettamente al centro dello schermo */
         .header-spacer {
             flex: 1;
-            display: flex;
         }
 
-        /* Titolo centrale con font Lobster sotto la banda */
+        /* Il titolo fisso all'interno della banda rossa */
         .brand-title {
             font-family: 'Lobster Regular', cursive;
-            font-size: 5vw; 
+            font-size: 5rem; /* Dimensione imponente come nei primi test */
             letter-spacing: 1px;
             text-align: center;
             white-space: nowrap;
@@ -79,20 +79,21 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            flex: 2;
+            flex: 3;
+            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.25);
         }
 
-        /* Modificati i colori per renderli leggibili sul beige dello sfondo */
-        .text-dark {
-            color: #1a1a1a; /* Grigio quasi nero molto elegante */
+        /* Ripristino dei colori corretti per la banda rossa */
+        .text-white {
+            color: #ffffff;
         }
 
         .text-black {
             color: #000000;
-            margin: 0 2.2vw;
+            margin: 0 20px;
         }
 
-        /* Area di navigazione posizionata a destra */
+        /* Navigazione Contact Me allineata a destra dentro la banda */
         .nav-container {
             flex: 1;
             display: flex;
@@ -100,44 +101,46 @@
             align-items: center;
         }
 
-        /* Struttura del Menu Dropdown */
         .dropdown {
             position: relative;
             display: inline-block;
         }
 
-        /* Pulsante principale "Contact Me" - Nero per lo sfondo chiaro */
+        /* "Contact Me" torna Bianco ed elegante dentro il rosso */
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
-            color: #1a1a1a;
-            font-size: 2vw;
+            color: #ffffff;
+            font-size: 2.2rem;
             text-decoration: none;
             cursor: pointer;
-            padding: 10px 20px;
-            transition: opacity 0.3s ease;
+            padding: 10px 15px;
+            transition: transform 0.2s ease, opacity 0.2s ease;
             white-space: nowrap;
+            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.25);
         }
 
         .dropdown-trigger:hover {
-            opacity: 0.7;
+            opacity: 0.9;
+            transform: scale(1.02);
         }
 
-        /* Il menu a tendina che scende */
+        /* Menu a tendina che scende */
         .dropdown-menu {
             display: none;
             position: absolute;
             right: 0;
             top: 100%;
-            background: rgba(13, 27, 42, 0.95);
-            min-width: 180px;
-            box-shadow: 0px 8px 24px rgba(0,0,0,0.2);
+            margin-top: 10px;
+            background: rgba(13, 27, 42, 0.98);
+            min-width: 190px;
+            box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.4);
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
             list-style: none;
             padding: 6px 0;
-            z-index: 10;
+            z-index: 100;
         }
 
         .dropdown-menu li a {
@@ -147,20 +150,21 @@
             display: block;
             font-size: 0.95rem;
             font-weight: 600;
-            transition: background 0.3s ease;
+            letter-spacing: 0.5px;
+            transition: background 0.2s ease;
         }
 
         .dropdown-menu li a:hover {
-            background: #ff4757; /* Richiamo rosso della banda sull'hover delle voci */
+            background: #ff4757;
         }
 
         .dropdown:hover .dropdown-menu {
             display: block;
-            animation: fadeInDropdown 0.3s ease;
+            animation: fadeInDropdown 0.25s ease forwards;
         }
 
         @keyframes fadeInDropdown {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -181,32 +185,25 @@
             width: 100%;
         }
 
-        /* Schermi Grandi desktop */
-        @media (min-width: 1600px) {
-            header {
-                margin-top: 230px;
-                height: 100px;
-            }
-            .brand-title {
-                font-size: 5rem;
-            }
-            .dropdown-trigger {
-                font-size: 2rem;
-            }
+        /* Gestione fluida e reattiva per i vari monitor */
+        @media (max-width: 1400px) {
+            .brand-title { font-size: 4rem; }
+            .dropdown-trigger { font-size: 1.9rem; }
         }
 
-        /* Tablet e Mobile */
+        @media (max-width: 1024px) {
+            header { margin-top: 3.8vw; height: 10vw; }
+            .brand-title { font-size: 4.5vw; }
+            .text-black { margin: 0 12px; }
+            .dropdown-trigger { font-size: 2.2vw; }
+        }
+
         @media (max-width: 768px) {
-            header {
-                margin-top: 15vw;
-                height: 10vw;
-            }
-            .brand-title {
-                font-size: 5.5vw; 
-            }
-            .dropdown-trigger {
-                font-size: 2.5vw;
-            }
+            header { margin-top: 4vw; height: 11vw; padding: 0 2%; }
+            .brand-title { font-size: 5vw; }
+            .dropdown-trigger { font-size: 2.5vw; padding: 5px; }
+            .dropdown-menu { min-width: 150px; }
+            .dropdown-menu li a { padding: 10px 15px; font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -219,7 +216,7 @@
             <div class="header-spacer"></div>
 
             <h1 class="brand-title">
-                <span class="text-dark">Fabio</span><span class="text-black">Hot Stuff</span><span class="text-dark">Redaelli</span>
+                <span class="text-white">Fabio</span><span class="text-black">Hot Stuff</span><span class="text-white">Redaelli</span>
             </h1>
 
             <nav class="nav-container">
