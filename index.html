@@ -23,21 +23,21 @@
             height: 100%;
             overflow: hidden;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0d1b2a; /* Colore di fallback scuro */
+            background-color: #fceecb;
         }
 
-        /* LAYER 1 — Sfondo nitido a tutto schermo (Cover) */
+        /* LAYER 1 — Sfondo nitido ancorato in alto (Cover) */
         .bg-artwork {
             position: absolute;
             inset: 0;
-            background-image: url('images/bg.jpg');
-            background-size: cover; /* Riempie completamente lo schermo adattandosi */
-            background-position: center;
+            background-image: url('images/bg2.jpg');
+            background-size: cover;
+            background-position: top center;
             background-repeat: no-repeat;
             z-index: 1;
         }
 
-        /* LAYER 2 — Interfaccia utente e Contenuti */
+        /* LAYER 2 — Interfaccia utente e Navigazione */
         .content-overlay {
             position: relative;
             z-index: 2;
@@ -58,7 +58,7 @@
             width: 100%;
         }
 
-        /* Menu fluttuante ottimizzato */
+        /* Menu fluttuante */
         .nav-menu {
             display: flex;
             gap: 25px;
@@ -82,7 +82,7 @@
         }
 
         .nav-menu a:hover {
-            color: #ff4757; /* Accento rosso pop per i link */
+            color: #ff4757;
             transform: translateY(-1px);
         }
 
