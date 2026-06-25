@@ -23,33 +23,33 @@
             height: 100%;
             overflow: hidden;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #fceecb; /* Colore di sfondo coordinato con la nuova illustrazione */
+            background-color: #0d1b2a; /* Colore di fallback scuro */
         }
 
-        /* LAYER 1 — Sfondo blurrato cover: copre tutto, riempie le bande laterali */
+        /* LAYER 1 — Sfondo blurrato cover: riempie l'intero schermo */
         .bg-blurred {
             position: absolute;
             inset: 0;
-            background-image: url('images/background.jpg');
+            background-image: url('images/bg.jpg');
             background-size: cover;
             background-position: center;
-            filter: blur(22px) brightness(0.7);
+            filter: blur(20px) brightness(0.6);
             transform: scale(1.08);
             z-index: 1;
         }
 
-        /* LAYER 2 — Opera nitida contain: proporzionata, centrata, intatta */
+        /* LAYER 2 — Opera nitida in contain: centrale e proporzionata */
         .bg-artwork {
             position: absolute;
             inset: 0;
-            background-image: url('images/background.jpg');
+            background-image: url('images/bg.jpg');
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
             z-index: 2;
         }
 
-        /* LAYER 3 — Contenuti sopra l'opera */
+        /* LAYER 3 — Contenuti e Navigazione */
         .content-overlay {
             position: relative;
             z-index: 3;
@@ -62,79 +62,74 @@
         }
 
         header {
-            padding: 20px 40px;
+            padding: 30px 40px;
             pointer-events: auto;
             display: flex;
-            justify-content: flex-end; /* Allinea il menu a destra per non sovrapporsi al testo centrale del disegno */
+            justify-content: flex-end;
             align-items: center;
             width: 100%;
         }
 
-        /* Menu di navigazione elegante e pulito */
+        /* Menu fluttuante ottimizzato */
         .nav-menu {
             display: flex;
             gap: 25px;
             list-style: none;
-            background: rgba(13, 27, 42, 0.75);
-            padding: 10px 20px;
+            background: rgba(13, 27, 42, 0.8);
+            padding: 10px 24px;
             border-radius: 30px;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
         }
 
         .nav-menu a {
             color: #ffffff;
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
             transition: color 0.3s ease, transform 0.2s ease;
         }
 
         .nav-menu a:hover {
-            color: #ff4757; /* Richiamo cromatico al rosso della banda superiore dell'illustrazione */
+            color: #ff4757; /* Accento rosso pop */
             transform: translateY(-1px);
         }
 
         main {
             flex-grow: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             pointer-events: none;
         }
 
         footer {
             padding: 15px;
             text-align: center;
-            color: #0d1b2a;
-            font-size: 0.9rem;
-            font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.85rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
             pointer-events: auto;
-            background: rgba(252, 238, 203, 0.6);
-            backdrop-filter: blur(5px);
+            background: rgba(13, 27, 42, 0.4);
+            backdrop-filter: blur(4px);
             width: 100%;
         }
 
-        /* Ottimizzazioni Responsive per schermi piccoli per evitare che gli elementi vadano fuori frame */
+        /* Responsive design per evitare elementi fuori frame */
         @media (max-width: 768px) {
             header {
-                padding: 15px;
+                padding: 20px 15px;
                 justify-content: center;
             }
             .nav-menu {
                 gap: 15px;
-                padding: 8px 16px;
+                padding: 8px 18px;
             }
             .nav-menu a {
                 font-size: 0.85rem;
             }
             footer {
                 font-size: 0.8rem;
-                padding: 10px;
             }
         }
     </style>
@@ -154,8 +149,7 @@
             </ul>
         </header>
 
-        <main>
-            </main>
+        <main></main>
 
         <footer>
             <p>&copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
