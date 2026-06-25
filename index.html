@@ -23,10 +23,10 @@
             height: 100%;
             overflow: hidden;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #fceecb; /* Colore di fallback identico allo sfondo del disegno */
+            background-color: #fceecb;
         }
 
-        /* LAYER 1 — Sfondo nitido impostato a tutto schermo */
+        /* LAYER 1 — Sfondo nitido a tutto schermo ancorato in alto */
         .bg-artwork {
             position: absolute;
             inset: 0;
@@ -52,21 +52,26 @@
         /* L'header segue la proporzione esatta della banda rossa presente nell'immagine */
         header {
             width: 100%;
-            /* Calcolo dinamico: mantiene il testo agganciato alla banda rossa durante il ridimensionamento */
             margin-top: 3.8vw; 
             height: 9.5vw;
             max-height: 150px;
-            padding: 0 5%;
+            padding: 0 4%;
             pointer-events: auto;
             display: flex;
-            justify-content: center;
+            justify-content: space-between; /* Distribuisce il titolo al centro e i menu a destra */
             align-items: center;
         }
 
-        /* Stile del Titolo: Bello largo, centrato e proporzionale alla finestra */
+        /* Contenitore invisibile a sinistra per bilanciare il layout e tenere il titolo centrato */
+        .header-spacer {
+            flex: 1;
+            display: flex;
+        }
+
+        /* Titolo centrale, ingrandito e calibrato dentro la banda */
         .brand-title {
             font-family: 'Lobster Regular', cursive;
-            font-size: 5.8vw; /* Il font scala insieme allo schermo per non sforare mai */
+            font-size: 5.8vw; 
             max-size: 90px;
             letter-spacing: 1px;
             text-align: center;
@@ -75,17 +80,101 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 100%;
+            flex: 2;
         }
 
-        /* Classi per l'alternanza dei colori richiesti */
         .text-white {
             color: #ffffff;
         }
 
         .text-black {
             color: #000000;
-            margin: 0 2.2vw; /* Spaziatura flessibile tra le parole */
+            margin: 0 2.2vw;
+        }
+
+        /* Area di navigazione posizionata a destra che si estende verso il centro */
+        .nav-container {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        /* Struttura del Menu Dropdown principale */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Pulsante principale "Contact Me" */
+        .dropdown-trigger {
+            font-family: 'Lobster Regular', cursive;
+            color: #ffffff;
+            font-size: 2.2vw;
+            max-size: 36px;
+            text-decoration: none;
+            cursor: pointer;
+            padding: 10px 20px;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .dropdown-trigger:hover {
+            opacity: 0.85;
+        }
+
+        /* Il menu carino che scende */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            right: 0; /* Allineato a destra del pulsante per non uscire dallo schermo */
+            top: 100%;
+            background: rgba(13, 27, 42, 0.95); /* Sfondo scuro elegante coordinato */
+            min-width: 180px;
+            box-shadow: 0px 8px 24px rgba(0,0,0,0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            list-style: none;
+            padding: 6px 0;
+            z-index: 10;
+        }
+
+        /* Voci all'interno del menu a tendina */
+        .dropdown-menu li a {
+            color: #ffffff;
+            padding: 12px 20px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* Effetto hover sulle singole voci del menu */
+        .dropdown-menu li a:hover {
+            background: #ff4757; /* Accento rosso pop coordinato alla banda */
+            color: #ffffff;
+        }
+
+        /* Mostra il menu a tendina quando si passa sopra con il mouse */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            animation: fadeInDropdown 0.3s ease;
+        }
+
+        /* Animazione di comparsa morbida verso il basso */
+        @keyframes fadeInDropdown {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         main {
@@ -105,7 +194,7 @@
             width: 100%;
         }
 
-        /* Ottimizzazione specifica per schermi molto grandi (Desktop Monitor HD e superiori) */
+        /* Ottimizzazioni per schermi grandi */
         @media (min-width: 1600px) {
             header {
                 margin-top: 60px;
@@ -114,25 +203,31 @@
             .brand-title {
                 font-size: 5.5rem;
             }
-            .text-black {
-                margin: 0 30px;
+            .dropdown-trigger {
+                font-size: 2.2rem;
             }
         }
 
-        /* Ottimizzazione per Tablet e Smartphone per garantire la perfetta leggibilità dentro la fascia */
+        /* Adattamenti Responsive per Tablet e Smartphone */
         @media (max-width: 768px) {
             header {
                 margin-top: 4vw;
                 height: 11vw;
+                padding: 0 3%;
             }
             .brand-title {
-                font-size: 6.5vw; 
+                font-size: 5.2vw; 
             }
-            .text-black {
-                margin: 0 2vw;
+            .dropdown-trigger {
+                font-size: 2.8vw;
+                padding: 5px 10px;
             }
-            footer {
-                font-size: 0.8rem;
+            .dropdown-menu {
+                min-width: 140px;
+            }
+            .dropdown-menu li a {
+                padding: 10px 14px;
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -143,9 +238,23 @@
 
     <div class="content-overlay">
         <header>
+            <div class="header-spacer"></div>
+
             <h1 class="brand-title">
                 <span class="text-white">Fabio</span><span class="text-black">Hot Stuff</span><span class="text-white">Redaelli</span>
             </h1>
+
+            <nav class="nav-container">
+                <div class="dropdown">
+                    <a class="dropdown-trigger">Contact Me</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#instagram">Instagram</a></li>
+                        <li><a href="#facebook">Facebook</a></li>
+                        <li><a href="#telegram">Telegram</a></li>
+                        <li><a href="#whatsapp">WhatsApp</a></li>
+                    </ul>
+                </div>
+            </nav>
         </header>
 
         <main></main>
