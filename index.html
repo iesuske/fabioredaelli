@@ -49,16 +49,16 @@
             pointer-events: none;
         }
 
-        /* L'header segue la proporzione esatta della banda rossa presente nell'immagine */
+        /* Spinge l'intero blocco del testo sotto la banda rossa dell'immagine */
         header {
             width: 100%;
-            margin-top: 3.8vw; 
-            height: 9.5vw;
-            max-height: 150px;
+            /* Aumentato per posizionare il testo nella zona beige sotto la linea nera */
+            margin-top: 14.5vw; 
+            height: 7vw;
             padding: 0 4%;
             pointer-events: auto;
             display: flex;
-            justify-content: space-between; /* Distribuisce il titolo al centro e i menu a destra */
+            justify-content: space-between;
             align-items: center;
         }
 
@@ -68,11 +68,10 @@
             display: flex;
         }
 
-        /* Titolo centrale, ingrandito e calibrato dentro la banda */
+        /* Titolo centrale con font Lobster sotto la banda */
         .brand-title {
             font-family: 'Lobster Regular', cursive;
-            font-size: 5.8vw; 
-            max-size: 90px;
+            font-size: 5vw; 
             letter-spacing: 1px;
             text-align: center;
             white-space: nowrap;
@@ -83,8 +82,9 @@
             flex: 2;
         }
 
-        .text-white {
-            color: #ffffff;
+        /* Modificati i colori per renderli leggibili sul beige dello sfondo */
+        .text-dark {
+            color: #1a1a1a; /* Grigio quasi nero molto elegante */
         }
 
         .text-black {
@@ -92,7 +92,7 @@
             margin: 0 2.2vw;
         }
 
-        /* Area di navigazione posizionata a destra che si estende verso il centro */
+        /* Area di navigazione posizionata a destra */
         .nav-container {
             flex: 1;
             display: flex;
@@ -100,18 +100,17 @@
             align-items: center;
         }
 
-        /* Struttura del Menu Dropdown principale */
+        /* Struttura del Menu Dropdown */
         .dropdown {
             position: relative;
             display: inline-block;
         }
 
-        /* Pulsante principale "Contact Me" */
+        /* Pulsante principale "Contact Me" - Nero per lo sfondo chiaro */
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
-            color: #ffffff;
-            font-size: 2.2vw;
-            max-size: 36px;
+            color: #1a1a1a;
+            font-size: 2vw;
             text-decoration: none;
             cursor: pointer;
             padding: 10px 20px;
@@ -120,18 +119,18 @@
         }
 
         .dropdown-trigger:hover {
-            opacity: 0.85;
+            opacity: 0.7;
         }
 
-        /* Il menu carino che scende */
+        /* Il menu a tendina che scende */
         .dropdown-menu {
             display: none;
             position: absolute;
-            right: 0; /* Allineato a destra del pulsante per non uscire dallo schermo */
+            right: 0;
             top: 100%;
-            background: rgba(13, 27, 42, 0.95); /* Sfondo scuro elegante coordinato */
+            background: rgba(13, 27, 42, 0.95);
             min-width: 180px;
-            box-shadow: 0px 8px 24px rgba(0,0,0,0.3);
+            box-shadow: 0px 8px 24px rgba(0,0,0,0.2);
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -141,7 +140,6 @@
             z-index: 10;
         }
 
-        /* Voci all'interno del menu a tendina */
         .dropdown-menu li a {
             color: #ffffff;
             padding: 12px 20px;
@@ -149,32 +147,21 @@
             display: block;
             font-size: 0.95rem;
             font-weight: 600;
-            letter-spacing: 0.5px;
-            transition: background 0.3s ease, color 0.3s ease;
+            transition: background 0.3s ease;
         }
 
-        /* Effetto hover sulle singole voci del menu */
         .dropdown-menu li a:hover {
-            background: #ff4757; /* Accento rosso pop coordinato alla banda */
-            color: #ffffff;
+            background: #ff4757; /* Richiamo rosso della banda sull'hover delle voci */
         }
 
-        /* Mostra il menu a tendina quando si passa sopra con il mouse */
         .dropdown:hover .dropdown-menu {
             display: block;
             animation: fadeInDropdown 0.3s ease;
         }
 
-        /* Animazione di comparsa morbida verso il basso */
         @keyframes fadeInDropdown {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         main {
@@ -194,40 +181,31 @@
             width: 100%;
         }
 
-        /* Ottimizzazioni per schermi grandi */
+        /* Schermi Grandi desktop */
         @media (min-width: 1600px) {
             header {
-                margin-top: 60px;
-                height: 130px;
+                margin-top: 230px;
+                height: 100px;
             }
             .brand-title {
-                font-size: 5.5rem;
+                font-size: 5rem;
             }
             .dropdown-trigger {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
         }
 
-        /* Adattamenti Responsive per Tablet e Smartphone */
+        /* Tablet e Mobile */
         @media (max-width: 768px) {
             header {
-                margin-top: 4vw;
-                height: 11vw;
-                padding: 0 3%;
+                margin-top: 15vw;
+                height: 10vw;
             }
             .brand-title {
-                font-size: 5.2vw; 
+                font-size: 5.5vw; 
             }
             .dropdown-trigger {
-                font-size: 2.8vw;
-                padding: 5px 10px;
-            }
-            .dropdown-menu {
-                min-width: 140px;
-            }
-            .dropdown-menu li a {
-                padding: 10px 14px;
-                font-size: 0.85rem;
+                font-size: 2.5vw;
             }
         }
     </style>
@@ -241,7 +219,7 @@
             <div class="header-spacer"></div>
 
             <h1 class="brand-title">
-                <span class="text-white">Fabio</span><span class="text-black">Hot Stuff</span><span class="text-white">Redaelli</span>
+                <span class="text-dark">Fabio</span><span class="text-black">Hot Stuff</span><span class="text-dark">Redaelli</span>
             </h1>
 
             <nav class="nav-container">
