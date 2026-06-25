@@ -32,7 +32,7 @@
             inset: 0;
             background-image: url('images/bg2.jpg');
             background-size: cover;
-            background-position: center 18%; /* Sposta stabilmente la macchina e il fumetto verso l'alto */
+            background-position: center 18%; 
             background-repeat: no-repeat;
             z-index: 1;
         }
@@ -49,11 +49,11 @@
             pointer-events: none;
         }
 
-        /* Altezza e margini fissi in pixel per bloccare la scritta sopra la riga nera */
+        /* Altezza e margini bilanciati per ospitare la scritta più grande */
         header {
             width: 100%;
-            margin-top: 52px; 
-            height: 90px;
+            margin-top: 45px; 
+            height: 110px;
             padding: 0 4%;
             pointer-events: auto;
             display: flex;
@@ -65,10 +65,10 @@
             flex: 1;
         }
 
-        /* Il titolo fluttua perfettamente centrato dentro la banda rossa */
+        /* Titolo ingrandito e reso imponente all'interno della banda */
         .brand-title {
             font-family: 'Lobster Regular', cursive;
-            font-size: 4rem; 
+            font-size: 5.5rem; /* Scritta decisamente più grande e visibile */
             letter-spacing: 1px;
             text-align: center;
             white-space: nowrap;
@@ -177,18 +177,25 @@
             width: 100%;
         }
 
-        /* Controllo responsive per schermi più piccoli */
-        @media (max-width: 1024px) {
-            header { margin-top: 40px; height: 75px; }
+        /* Controllo responsive per schermi intermedi */
+        @media (max-width: 1200px) {
+            header { margin-top: 40px; height: 90px; }
+            .brand-title { font-size: 4.2rem; }
+            .bg-artwork { background-position: center 16%; }
+        }
+
+        /* Controllo responsive per tablet e schermi piccoli */
+        @media (max-width: 900px) {
+            header { margin-top: 30px; height: 75px; }
             .brand-title { font-size: 3rem; }
-            .dropdown-trigger { font-size: 1.5rem; }
+            .dropdown-trigger { font-size: 1.4rem; }
             .bg-artwork { background-position: center 14%; }
         }
 
         @media (max-width: 768px) {
             header { margin-top: 25px; height: 60px; padding: 0 2%; }
             .brand-title { font-size: 2.2rem; }
-            .dropdown-trigger { font-size: 1.2rem; }
+            .dropdown-trigger { font-size: 1.1rem; }
             .dropdown-menu { min-width: 140px; }
             .dropdown-menu li a { padding: 10px 15px; font-size: 0.85rem; }
             .bg-artwork { background-position: center center; }
