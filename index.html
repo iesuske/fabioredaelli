@@ -37,7 +37,7 @@
             z-index: 1;
         }
 
-        /* LAYER 2 — Interfaccia utente e Navigazione */
+        /* LAYER 2 — Interfaccia utente e Contenuti */
         .content-overlay {
             position: relative;
             z-index: 2;
@@ -56,34 +56,6 @@
             justify-content: flex-end;
             align-items: center;
             width: 100%;
-        }
-
-        /* Menu fluttuante */
-        .nav-menu {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-            background: rgba(13, 27, 42, 0.85);
-            padding: 10px 24px;
-            border-radius: 30px;
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        .nav-menu a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            transition: color 0.3s ease, transform 0.2s ease;
-        }
-
-        .nav-menu a:hover {
-            color: #ff4757;
-            transform: translateY(-1px);
         }
 
         main {
@@ -107,14 +79,6 @@
         @media (max-width: 768px) {
             header {
                 padding: 20px 15px;
-                justify-content: center;
-            }
-            .nav-menu {
-                gap: 15px;
-                padding: 8px 18px;
-            }
-            .nav-menu a {
-                font-size: 0.85rem;
             }
             footer {
                 font-size: 0.8rem;
@@ -128,12 +92,7 @@
 
     <div class="content-overlay">
         <header>
-            <ul class="nav-menu">
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#about">Chi Sono</a></li>
-                <li><a href="#contact">Contatti</a></li>
-            </ul>
-        </header>
+            </header>
 
         <main></main>
 
