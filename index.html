@@ -50,12 +50,34 @@
         }
 
         header {
-            padding: 30px 40px;
+            padding: 30px 20px;
             pointer-events: auto;
             display: flex;
-            justify-content: flex-end;
+            justify-content: center; /* Centra perfettamente la scritta nella pagina */
             align-items: center;
             width: 100%;
+        }
+
+        /* Stile per il titolo centrato e largo con font Lobster */
+        .brand-title {
+            font-family: 'Lobster Regular', cursive;
+            font-size: 3.5rem; /* Dimensione bella larga */
+            letter-spacing: 1px;
+            text-align: center;
+            line-height: 1.2;
+            white-space: nowrap;
+            /* Ombra leggera opzionale per staccare dal fondo se necessario */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15); 
+        }
+
+        /* Alternanza dei colori richiesti */
+        .text-white {
+            color: #ffffff;
+        }
+
+        .text-black {
+            color: #000000;
+            margin: 0 12px; /* Spaziatura attorno a Hot Stuff */
         }
 
         main {
@@ -75,10 +97,16 @@
             width: 100%;
         }
 
-        /* Responsive design per schermi piccoli */
+        /* Responsive design per schermi piccoli per non fare uscire la scritta dal frame */
         @media (max-width: 768px) {
             header {
-                padding: 20px 15px;
+                padding: 20px 10px;
+            }
+            .brand-title {
+                font-size: 2.2rem; /* Si rimpicciolisce sui dispositivi mobili per rimanere dentro la banda */
+            }
+            .text-black {
+                margin: 0 6px;
             }
             footer {
                 font-size: 0.8rem;
@@ -92,7 +120,10 @@
 
     <div class="content-overlay">
         <header>
-            </header>
+            <h1 class="brand-title">
+                <span class="text-white">Fabio</span><span class="text-black">Hot Stuff</span><span class="text-white">Redaelli</span>
+            </h1>
+        </header>
 
         <main></main>
 
