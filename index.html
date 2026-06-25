@@ -26,13 +26,13 @@
             background-color: #fceecb;
         }
 
-        /* LAYER 1 — Sfondo nitido a tutto schermo ancorato in alto */
+        /* LAYER 1 — Sfondo nitido. Modificato "background-position" per traslare il disegno verso l'alto */
         .bg-artwork {
             position: absolute;
             inset: 0;
             background-image: url('images/bg2.jpg');
             background-size: cover;
-            background-position: top center;
+            background-position: center -20px; /* Sposta l'illustrazione della macchina verso l'alto avvicinandola alla banda */
             background-repeat: no-repeat;
             z-index: 1;
         }
@@ -49,7 +49,7 @@
             pointer-events: none;
         }
 
-        /* Allineamento millimetrico dentro la banda rossa */
+        /* Allineamento dentro la banda rossa */
         header {
             width: 100%;
             margin-top: 3.8vw; 
@@ -67,7 +67,7 @@
             flex: 1;
         }
 
-        /* Titolo imponente e centrato che non tocca i bordi neri */
+        /* Titolo centrato che fluttua nella fascia senza toccare i bordi neri */
         .brand-title {
             font-family: 'Lobster Regular', cursive;
             font-size: 5.5vw; 
@@ -83,7 +83,6 @@
             text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-        /* Colori originari all'interno della banda rossa */
         .text-white {
             color: #ffffff;
         }
@@ -105,7 +104,7 @@
             display: inline-block;
         }
 
-        /* Scritta elegante "Contact Me" in bianco all'interno della banda */
+        /* Scritta elegante "Contact Me" in bianco */
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff;
@@ -123,7 +122,7 @@
             opacity: 0.85;
         }
 
-        /* Menu a tendina coordinato */
+        /* Menu a tendina */
         .dropdown-menu {
             display: none;
             position: absolute;
@@ -183,7 +182,7 @@
             width: 100%;
         }
 
-        /* Scalabilità per monitor grandi */
+        /* Scalabilità Monitor Grandi */
         @media (min-width: 1600px) {
             header {
                 margin-top: 60px;
@@ -193,11 +192,12 @@
             .dropdown-trigger { font-size: 2.2rem; }
         }
 
-        /* Scalabilità per schermi piccoli e tablet */
+        /* Scalabilità Tablet e Desktop standard */
         @media (max-width: 1024px) {
             header { margin-top: 3.8vw; height: 9.5vw; }
             .brand-title { font-size: 4.8vw; }
             .dropdown-trigger { font-size: 2.2vw; }
+            .bg-artwork { background-position: center -10px; }
         }
 
         @media (max-width: 768px) {
@@ -206,6 +206,7 @@
             .dropdown-trigger { font-size: 2.6vw; }
             .dropdown-menu { min-width: 140px; }
             .dropdown-menu li a { padding: 10px 15px; font-size: 0.85rem; }
+            .bg-artwork { background-position: center 0px; }
         }
     </style>
 </head>
@@ -217,9 +218,7 @@
         <header>
             <div class="header-spacer"></div>
 
-            <h1 class="brand-title">
-                <span class="text-white">Fabio </span><span class="text-black">Hot Stuff</span><span class="text-white"> Redaelli</span>
-            </h1>
+            <h1 class="brand-title"><span class="text-white">Fabio</span> <span class="text-black">Hot Stuff</span> <span class="text-white">Redaelli</span></h1>
 
             <nav class="nav-container">
                 <div class="dropdown">
