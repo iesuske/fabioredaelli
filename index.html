@@ -26,7 +26,7 @@
             background-color: #fceecb;
         }
 
-        /* LAYER 1 — Sfondo nitido a tutto schermo ancorato perfettamente in alto */
+        /* LAYER 1 — Sfondo nitido a tutto schermo ancorato in alto */
         .bg-artwork {
             position: absolute;
             inset: 0;
@@ -37,7 +37,7 @@
             z-index: 1;
         }
 
-        /* LAYER 2 — Interfaccia utente */
+        /* LAYER 2 — Interfaccia utente sopra lo sfondo */
         .content-overlay {
             position: relative;
             z-index: 2;
@@ -49,13 +49,12 @@
             pointer-events: none;
         }
 
-        /* L'header si sovrappone millimetricamente alla banda rossa dello sfondo */
+        /* Allineamento millimetrico dentro la banda rossa (versione ottimale ripristinata) */
         header {
             width: 100%;
-            margin-top: 3.5vw; /* Allineamento proporzionale perfetto basato sullo screenshot */
-            height: 9vw;
-            min-height: 70px;
-            max-height: 140px;
+            margin-top: 3.8vw; 
+            height: 8.5vw;
+            max-height: 130px;
             padding: 0 4%;
             pointer-events: auto;
             display: flex;
@@ -63,15 +62,16 @@
             align-items: center;
         }
 
-        /* Spaziatore per garantire che il titolo rimanga perfettamente al centro dello schermo */
+        /* Bilanciamento per mantenere il titolo perfettamente centrato */
         .header-spacer {
             flex: 1;
         }
 
-        /* Il titolo fisso all'interno della banda rossa */
+        /* Titolo imponente e centrato che non tocca i bordi neri */
         .brand-title {
             font-family: 'Lobster Regular', cursive;
-            font-size: 5rem; /* Dimensione imponente come nei primi test */
+            font-size: 5.5vw; 
+            max-size: 85px;
             letter-spacing: 1px;
             text-align: center;
             white-space: nowrap;
@@ -80,20 +80,20 @@
             justify-content: center;
             align-items: center;
             flex: 3;
-            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.25);
+            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-        /* Ripristino dei colori corretti per la banda rossa */
+        /* Colori originari all'interno della banda rossa */
         .text-white {
             color: #ffffff;
         }
 
         .text-black {
             color: #000000;
-            margin: 0 20px;
+            margin: 0 2.2vw;
         }
 
-        /* Navigazione Contact Me allineata a destra dentro la banda */
+        /* Navigazione del menu a destra */
         .nav-container {
             flex: 1;
             display: flex;
@@ -106,41 +106,41 @@
             display: inline-block;
         }
 
-        /* "Contact Me" torna Bianco ed elegante dentro il rosso */
+        /* Scritta elegante "Contact Me" in bianco all'interno della banda */
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff;
-            font-size: 2.2rem;
+            font-size: 2.2vw;
+            max-size: 34px;
             text-decoration: none;
             cursor: pointer;
             padding: 10px 15px;
-            transition: transform 0.2s ease, opacity 0.2s ease;
+            transition: opacity 0.2s ease;
             white-space: nowrap;
-            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.25);
+            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .dropdown-trigger:hover {
-            opacity: 0.9;
-            transform: scale(1.02);
+            opacity: 0.85;
         }
 
-        /* Menu a tendina che scende */
+        /* Menu a tendina coordinato */
         .dropdown-menu {
             display: none;
             position: absolute;
             right: 0;
             top: 100%;
-            margin-top: 10px;
-            background: rgba(13, 27, 42, 0.98);
-            min-width: 190px;
-            box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.4);
+            margin-top: 5px;
+            background: rgba(13, 27, 42, 0.96);
+            min-width: 180px;
+            box-shadow: 0px 8px 24px rgba(0,0,0,0.35);
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(8px);
             list-style: none;
             padding: 6px 0;
-            z-index: 100;
+            z-index: 10;
         }
 
         .dropdown-menu li a {
@@ -150,17 +150,16 @@
             display: block;
             font-size: 0.95rem;
             font-weight: 600;
-            letter-spacing: 0.5px;
             transition: background 0.2s ease;
         }
 
         .dropdown-menu li a:hover {
-            background: #ff4757;
+            background: #ff4757; /* Accento rosso sull'hover */
         }
 
         .dropdown:hover .dropdown-menu {
             display: block;
-            animation: fadeInDropdown 0.25s ease forwards;
+            animation: fadeInDropdown 0.2s ease;
         }
 
         @keyframes fadeInDropdown {
@@ -185,24 +184,28 @@
             width: 100%;
         }
 
-        /* Gestione fluida e reattiva per i vari monitor */
-        @media (max-width: 1400px) {
-            .brand-title { font-size: 4rem; }
-            .dropdown-trigger { font-size: 1.9rem; }
+        /* Scalabilità per monitor grandi */
+        @media (min-width: 1600px) {
+            header {
+                margin-top: 60px;
+                height: 120px;
+            }
+            .brand-title { font-size: 5.5rem; }
+            .dropdown-trigger { font-size: 2.2rem; }
         }
 
+        /* Scalabilità per schermi piccoli e tablet */
         @media (max-width: 1024px) {
-            header { margin-top: 3.8vw; height: 10vw; }
-            .brand-title { font-size: 4.5vw; }
-            .text-black { margin: 0 12px; }
+            header { margin-top: 3.8vw; height: 9.5vw; }
+            .brand-title { font-size: 4.8vw; }
             .dropdown-trigger { font-size: 2.2vw; }
         }
 
         @media (max-width: 768px) {
             header { margin-top: 4vw; height: 11vw; padding: 0 2%; }
-            .brand-title { font-size: 5vw; }
-            .dropdown-trigger { font-size: 2.5vw; padding: 5px; }
-            .dropdown-menu { min-width: 150px; }
+            .brand-title { font-size: 5.2vw; }
+            .dropdown-trigger { font-size: 2.6vw; }
+            .dropdown-menu { min-width: 140px; }
             .dropdown-menu li a { padding: 10px 15px; font-size: 0.85rem; }
         }
     </style>
