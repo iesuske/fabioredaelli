@@ -23,25 +23,36 @@
             height: 100%;
             overflow: hidden;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #fceecb;
+            background-color: #0d1b2a;
         }
 
-        /* LAYER 1 — Sfondo con posizionamento dinamico per spingere l'immagine verso l'alto */
-        .bg-artwork {
+        /* LAYER 1 — Sfondo blurrato cover per riempire i lati su ogni monitor */
+        .bg-blurred {
             position: absolute;
             inset: 0;
-            background-image: url('images/bg2.jpg');
+            background-image: url('images/background.jpg');
             background-size: cover;
-            /* Forza l'intera figura (macchina e uomo) a salire verso la banda rossa */
-            background-position: 50% calc(50% - 80px); 
-            background-repeat: no-repeat;
+            background-position: center;
+            filter: blur(22px) brightness(0.55);
+            transform: scale(1.08);
             z-index: 1;
         }
 
-        /* LAYER 2 — Interfaccia utente sopra lo sfondo */
+        /* LAYER 2 — L'opera d'arte nitida in modalità "contain" per non deformarsi mai */
+        .bg-artwork {
+            position: absolute;
+            inset: 0;
+            background-image: url('images/background.jpg');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 2;
+        }
+
+        /* LAYER 3 — Contenuti e Interfaccia sopraelevata */
         .content-overlay {
             position: relative;
-            z-index: 2;
+            z-index: 3;
             width: 100%;
             height: 100%;
             display: flex;
@@ -50,49 +61,24 @@
             pointer-events: none;
         }
 
-        /* Allineamento calibrato dentro la banda rossa */
+        /* Area Header riallineata alle proporzioni del tuo file originale */
         header {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            margin-top: 3.8vw; 
-            height: 8.5vw;
-            max-height: 130px;
-            padding: 0 4%;
+            padding: 40px;
             pointer-events: auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        /* Spaziatore sinistro per equilibrare il titolo al centro */
         .header-spacer {
             flex: 1;
         }
 
-        /* Titolo centrato fluttuante nella fascia */
-        .brand-title {
-            font-family: 'Lobster Regular', cursive;
-            font-size: 5.5vw; 
-            max-size: 85px;
-            letter-spacing: 1px;
-            text-align: center;
-            white-space: nowrap;
-            line-height: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex: 3;
-            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .text-white {
-            color: #ffffff;
-        }
-
-        .text-black {
-            color: #000000;
-        }
-
-        /* Navigazione del menu a destra */
+        /* Contenitore invisibile per gestire la presenza del menu "Contact Me" senza spostare nulla */
         .nav-container {
             flex: 1;
             display: flex;
@@ -105,25 +91,24 @@
             display: inline-block;
         }
 
-        /* Pulsante "Contact Me" elegante */
+        /* "Contact Me" con il font Lobster posizionato a destra allineato */
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff;
-            font-size: 2.2vw;
-            max-size: 34px;
+            font-size: 1.85rem;
             text-decoration: none;
             cursor: pointer;
             padding: 10px 15px;
             transition: opacity 0.2s ease;
             white-space: nowrap;
-            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .dropdown-trigger:hover {
             opacity: 0.85;
         }
 
-        /* Menu a tendina a comparsa dropdown */
+        /* Tendina Dropdown Social */
         .dropdown-menu {
             display: none;
             position: absolute;
@@ -139,7 +124,7 @@
             backdrop-filter: blur(8px);
             list-style: none;
             padding: 6px 0;
-            z-index: 10;
+            z-index: 100;
         }
 
         .dropdown-menu li a {
@@ -158,72 +143,30 @@
 
         .dropdown:hover .dropdown-menu {
             display: block;
-            animation: fadeInDropdown 0.2s ease;
-        }
-
-        @keyframes fadeInDropdown {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         main {
             flex-grow: 1;
-            pointer-events: none;
         }
 
         footer {
             padding: 15px;
             text-align: center;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
             pointer-events: auto;
-            background: rgba(13, 27, 42, 0.4);
-            backdrop-filter: blur(4px);
-            width: 100%;
-        }
-
-        /* Ottimizzazione Monitor Grandi */
-        @media (min-width: 1600px) {
-            header {
-                margin-top: 60px;
-                height: 120px;
-            }
-            .brand-title { font-size: 5.5rem; }
-            .dropdown-trigger { font-size: 2.2rem; }
-            .bg-artwork { background-position: 50% calc(50% - 110px); }
-        }
-
-        /* Ottimizzazione Tablet e Schermi Medi */
-        @media (max-width: 1024px) {
-            header { margin-top: 3.8vw; height: 9.5vw; }
-            .brand-title { font-size: 4.8vw; }
-            .dropdown-trigger { font-size: 2.2vw; }
-            .bg-artwork { background-position: 50% calc(50% - 50px); }
-        }
-
-        /* Ottimizzazione Mobile */
-        @media (max-width: 768px) {
-            header { margin-top: 4vw; height: 11vw; padding: 0 2%; }
-            .brand-title { font-size: 5.2vw; }
-            .dropdown-trigger { font-size: 2.6vw; }
-            .dropdown-menu { min-width: 140px; }
-            .dropdown-menu li a { padding: 10px 15px; font-size: 0.85rem; }
-            .bg-artwork { background-position: 50% calc(50% - 30px); }
         }
     </style>
 </head>
 <body>
 
+    <div class="bg-blurred"></div>
     <div class="bg-artwork"></div>
 
     <div class="content-overlay">
         <header>
             <div class="header-spacer"></div>
-
-            <h1 class="brand-title">
-                <span class="text-white">Fabio</span> <span class="text-black">Hot Stuff</span> <span class="text-white">Redaelli</span>
-            </h1>
 
             <nav class="nav-container">
                 <div class="dropdown">
