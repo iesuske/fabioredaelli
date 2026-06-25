@@ -23,17 +23,17 @@
             height: 100%;
             overflow: hidden;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0d1b2a;
+            background-color: #fceecb; /* Colore di sfondo coordinato con la nuova illustrazione */
         }
 
         /* LAYER 1 — Sfondo blurrato cover: copre tutto, riempie le bande laterali */
         .bg-blurred {
             position: absolute;
             inset: 0;
-            background-image: url('images/sfondo2.jpg');
+            background-image: url('images/background.jpg');
             background-size: cover;
             background-position: center;
-            filter: blur(22px) brightness(0.55);
+            filter: blur(22px) brightness(0.7);
             transform: scale(1.08);
             z-index: 1;
         }
@@ -42,14 +42,14 @@
         .bg-artwork {
             position: absolute;
             inset: 0;
-            background-image: url('images/sfondo2.jpg');
+            background-image: url('images/background.jpg');
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
             z-index: 2;
         }
 
-        /* LAYER 3 — Contenuti */
+        /* LAYER 3 — Contenuti sopra l'opera */
         .content-overlay {
             position: relative;
             z-index: 3;
@@ -62,32 +62,101 @@
         }
 
         header {
-            padding: 40px;
+            padding: 20px 40px;
             pointer-events: auto;
+            display: flex;
+            justify-content: flex-end; /* Allinea il menu a destra per non sovrapporsi al testo centrale del disegno */
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Menu di navigazione elegante e pulito */
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            background: rgba(13, 27, 42, 0.75);
+            padding: 10px 20px;
+            border-radius: 30px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #ff4757; /* Richiamo cromatico al rosso della banda superiore dell'illustrazione */
+            transform: translateY(-1px);
         }
 
         main {
             flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
         }
 
         footer {
             padding: 15px;
             text-align: center;
-            color: rgba(255, 255, 255, 0.8);
+            color: #0d1b2a;
             font-size: 0.9rem;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
             pointer-events: auto;
+            background: rgba(252, 238, 203, 0.6);
+            backdrop-filter: blur(5px);
+            width: 100%;
+        }
+
+        /* Ottimizzazioni Responsive per schermi piccoli per evitare che gli elementi vadano fuori frame */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px;
+                justify-content: center;
+            }
+            .nav-menu {
+                gap: 15px;
+                padding: 8px 16px;
+            }
+            .nav-menu a {
+                font-size: 0.85rem;
+            }
+            footer {
+                font-size: 0.8rem;
+                padding: 10px;
+            }
         }
     </style>
 </head>
 <body>
 
     <div class="bg-blurred"></div>
+    
     <div class="bg-artwork"></div>
 
     <div class="content-overlay">
-        <header></header>
-        <main></main>
+        <header>
+            <ul class="nav-menu">
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">Chi Sono</a></li>
+                <li><a href="#contact">Contatti</a></li>
+            </ul>
+        </header>
+
+        <main>
+            </main>
+
         <footer>
             <p>&copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
         </footer>
