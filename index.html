@@ -132,32 +132,28 @@
             
             box-shadow: 0px 12px 32px rgba(0,0,0,0.55);
             
-            /* Curvatura simmetrica e speculare */
+            /* Curvatura simmetrica e speculare stile TV anni '50 */
             border-radius: 45px / 55px;
             
             border: 1px solid rgba(255, 255, 255, 0.12);
             list-style: none;
-            
-            /* MODIFICATO: Azzerato il padding verticale per eliminare le bande nere sopra e sotto */
-            padding: 0 0; 
-            
+            padding: 0 0; /* Mantenuto a zero per non creare bande nere fisse */
             z-index: 10;
-            overflow: hidden; /* Taglia perfettamente la riga rossa dell'hover seguendo le curve del menu */
+            overflow: hidden; 
         }
 
         /* Struttura delle righe interne */
         .dropdown-menu li {
-            margin: 0; /* Eliminato il margine tra le voci per non creare interruzioni nere */
+            margin: 0; 
             width: 100%;
             display: block;
         }
 
-        /* Link interni */
+        /* Link interni - Voci standard (Facebook, Telegram) */
         .dropdown-menu li a {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            /* Aumentato leggermente il padding verticale per compensare la mancanza di quello della scatola */
-            padding: 12px 24px; 
+            padding: 10px 24px; 
             text-decoration: none;
             display: block;
             width: 100%;
@@ -167,7 +163,17 @@
             transition: background-color 0.15s ease;
         }
 
-        /* L'hover si estende perfettamente da lato a lato e da cima a fondo */
+        /* MODIFICATO: Più aria SOPRA la prima voce (Instagram) */
+        .dropdown-menu li:first-child a {
+            padding-top: 24px;
+        }
+
+        /* MODIFICATO: Più aria SOTTO l'ultima voce (WhatsApp) */
+        .dropdown-menu li:last-child a {
+            padding-bottom: 24px;
+        }
+
+        /* L'hover si estende perfettamente riempiendo le zone con più aria */
         .dropdown-menu li a:hover {
             background: #b72216; 
             color: #ffffff;
@@ -212,7 +218,9 @@
             .brand-title { font-size: 3rem; }
             .dropdown-trigger { font-size: 1.4rem; }
             .dropdown-menu { min-width: 150px; border-radius: 35px / 45px; }
-            .dropdown-menu li a { font-size: 1.2rem; padding: 10px 18px; }
+            .dropdown-menu li a { font-size: 1.2rem; padding: 8px 18px; }
+            .dropdown-menu li:first-child a { padding-top: 20px; }
+            .dropdown-menu li:last-child a { padding-bottom: 20px; }
             .bg-artwork { background-position: center 14%; }
         }
 
@@ -221,7 +229,9 @@
             .brand-title { font-size: 2.2rem; }
             .dropdown-trigger { font-size: 1.1rem; }
             .dropdown-menu { min-width: 130px; border-radius: 25px / 35px; }
-            .dropdown-menu li a { padding: 8px 14px; font-size: 1rem; }
+            .dropdown-menu li a { padding: 4px 14px; font-size: 1rem; }
+            .dropdown-menu li:first-child a { padding-top: 15px; }
+            .dropdown-menu li:last-child a { padding-bottom: 15px; }
             .bg-artwork { background-position: center center; }
         }
     </style>
