@@ -121,59 +121,60 @@
             opacity: 0.85;
         }
 
-        /* Menu a tendina dei social (scatola nera) */
+        /* MODIFICATO: L'intera parte nera del menu ora ha la forma geometrica bombata dello screenshot */
         .dropdown-menu {
             display: none;
             position: absolute;
             right: 50%;
             transform: translateX(50%); 
             top: 100%;
-            margin-top: 5px;
+            margin-top: 8px;
             background: #000000; 
             width: max-content; 
-            min-width: 140px; 
-            box-shadow: 0px 8px 24px rgba(0,0,0,0.5);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            min-width: 160px; 
+            box-shadow: 0px 12px 28px rgba(0,0,0,0.6);
+            
+            /* Curvatura geometrica asimmetrica per fare la forma a TV vintage/squircle */
+            border-radius: 40% 40% 40% 40% / 30% 30% 30% 30%;
+            
+            border: 1px solid rgba(255, 255, 255, 0.15);
             list-style: none;
-            padding: 10px 6px; /* Leggero spazio interno */
+            padding: 25px 15px; /* Più spazio interno per valorizzare la forma bombata */
             z-index: 10;
         }
 
         /* Struttura della singola voce */
         .dropdown-menu li {
-            margin: 4px 0;
+            margin: 2px 0;
             display: flex;
             justify-content: center;
+            width: 100%;
         }
 
-        /* MODIFICATO: Struttura del link per ricreare la forma geometrica vintage dello screenshot */
+        /* Stile dei link interni */
         .dropdown-menu li a {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            padding: 6px 16px; /* Rapporto proporzionato tra altezza e larghezza per la forma a TV */
+            padding: 6px 14px; 
             text-decoration: none;
-            display: inline-block;
-            font-size: 1.4rem; 
+            display: block;
+            width: 100%;
+            font-size: 1.3rem; 
             text-align: center; 
             letter-spacing: 0.5px;
-            transition: all 0.25s ease;
-            border-radius: 0%; /* Di base è normale */
+            transition: background-color 0.2s ease, color 0.2s ease;
+            border-radius: 8px; /* Un leggero arrotondamento interno che segue l'estetica */
         }
 
-        /* MODIFICATO: Al passaggio del mouse, si attiva il raggio asimmetrico "squircle/TV" dello screenshot */
+        /* Quando scorri le voci, lo sfondo diventa del rosso della riga */
         .dropdown-menu li a:hover {
-            background: #b72216; /* Lo stesso rosso della riga */
+            background: #b72216; 
             color: #ffffff; 
-            /* Crea la curvatura bombata tipica dello screenshot 0523A11B-D135-4E38-9C5F-FD3B8D01A481.png */
-            border-radius: 50% 50% 50% 50% / 40% 40% 40% 40%;
-            transform: scale(1.05); /* Un leggerissimo effetto di rilievo pop */
         }
 
         .dropdown:hover .dropdown-menu {
             display: block;
-            animation: fadeInDropdown 0.2s ease;
+            animation: fadeInDropdown 0.25s ease;
         }
 
         @keyframes fadeInDropdown {
@@ -198,7 +199,7 @@
             width: 100%;
         }
 
-        /* Controllo responsive */
+        /* Controllo responsive per mantenere le proporzioni della forma della TV */
         @media (max-width: 1200px) {
             header { margin-top: 40px; height: 90px; }
             .brand-title { font-size: 4.2rem; }
@@ -210,7 +211,8 @@
             .brand-title { font-size: 3rem; }
             .brand-title .text-black { margin: 0 14px; }
             .dropdown-trigger { font-size: 1.4rem; }
-            .dropdown-menu li a { font-size: 1.2rem; padding: 4px 12px; }
+            .dropdown-menu { padding: 20px 12px; min-width: 140px; }
+            .dropdown-menu li a { font-size: 1.1rem; padding: 4px 10px; }
             .bg-artwork { background-position: center 14%; }
         }
 
@@ -219,8 +221,8 @@
             .brand-title { font-size: 2.2rem; }
             .brand-title .text-black { margin: 0 10px; }
             .dropdown-trigger { font-size: 1.1rem; }
-            .dropdown-menu { min-width: 120px; }
-            .dropdown-menu li a { padding: 4px 10px; font-size: 1rem; }
+            .dropdown-menu { padding: 15px 10px; min-width: 120px; border-radius: 35% 35% 35% 35% / 25% 25% 25% 25%; }
+            .dropdown-menu li a { padding: 4px 8px; font-size: 0.95rem; }
             .bg-artwork { background-position: center center; }
         }
     </style>
