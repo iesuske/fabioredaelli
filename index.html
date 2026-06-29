@@ -117,7 +117,7 @@
             opacity: 0.85;
         }
 
-        /* Menu a tendina con forma Anni '50 (Mid-century blob) */
+        /* MODIFICATO: Restretto mantenendo le proporzioni e la forma Anni '50 */
         .dropdown-menu {
             display: none;
             position: absolute;
@@ -128,7 +128,7 @@
             background: #000000; 
             
             width: auto;
-            min-width: 220px; 
+            min-width: 180px; /* Ridotto per stringere il blocco in modo armonioso */
             
             box-shadow: 0px 12px 32px rgba(0,0,0,0.55);
             
@@ -137,9 +137,9 @@
             
             border: 1px solid rgba(255, 255, 255, 0.12);
             list-style: none;
-            padding: 30px 0; /* Rimosso il padding laterale per permettere all'hover di toccare i bordi */
+            padding: 25px 0; /* Spazio verticale bilanciato */
             z-index: 10;
-            overflow: hidden; /* Taglia lo sfondo rosso dell'hover per farlo seguire alla forma curva della TV */
+            overflow: hidden; 
         }
 
         /* Struttura delle righe interne */
@@ -149,11 +149,11 @@
             display: block;
         }
 
-        /* MODIFICATO: Voci di menu a tutta larghezza per riempire i lati destro e sinistro */
+        /* MODIFICATO: Bilanciati i padding interni per stringere il raggio dell'hover */
         .dropdown-menu li a {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            padding: 10px 35px; /* Spostato il respiro e lo spazio all'interno del link stesso */
+            padding: 8px 24px; /* Ridotto lo spazio laterale per adattarsi al menu più stretto */
             text-decoration: none;
             display: block;
             width: 100%;
@@ -163,9 +163,9 @@
             transition: background-color 0.15s ease;
         }
 
-        /* MODIFICATO: L'hover ora si estende completamente eliminando il bordo nero laterale */
+        /* L'hover si estende perfettamente da lato a lato */
         .dropdown-menu li a:hover {
-            background: #b72216; /* Lo stesso rosso della riga */
+            background: #b72216; 
             color: #ffffff;
         }
 
@@ -207,8 +207,8 @@
             header { margin-top: 30px; height: 75px; }
             .brand-title { font-size: 3rem; }
             .dropdown-trigger { font-size: 1.4rem; }
-            .dropdown-menu { padding: 25px 0; min-width: 180px; border-radius: 40px 30px 45px 35px; }
-            .dropdown-menu li a { font-size: 1.2rem; padding: 8px 25px; }
+            .dropdown-menu { padding: 20px 0; min-width: 150px; border-radius: 40px 30px 45px 35px; }
+            .dropdown-menu li a { font-size: 1.2rem; padding: 6px 18px; }
             .bg-artwork { background-position: center 14%; }
         }
 
@@ -216,8 +216,8 @@
             header { margin-top: 25px; height: 60px; padding: 0 2%; }
             .brand-title { font-size: 2.2rem; }
             .dropdown-trigger { font-size: 1.1rem; }
-            .dropdown-menu { padding: 20px 0; min-width: 150px; border-radius: 30px 25px 35px 28px; }
-            .dropdown-menu li a { padding: 6px 20px; font-size: 1rem; }
+            .dropdown-menu { padding: 15px 0; min-width: 130px; border-radius: 30px 25px 35px 28px; }
+            .dropdown-menu li a { padding: 4px 14px; font-size: 1rem; }
             .bg-artwork { background-position: center center; }
         }
     </style>
