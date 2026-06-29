@@ -26,7 +26,7 @@
             background-color: #fceecb;
         }
 
-        /* LAYER 1 — Lo sfondo pulito a tutto schermo */
+        /* LAYER 1 — Sfondo */
         .bg-artwork {
             position: absolute;
             inset: 0;
@@ -49,7 +49,6 @@
             pointer-events: none;
         }
 
-        /* Altezza e margini bilanciati per ospitare la scritta più grande */
         header {
             width: 100%;
             margin-top: 45px; 
@@ -59,16 +58,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative; /* Permette il posizionamento assoluto dei figli se necessario */
         }
 
         .header-spacer {
             flex: 1;
         }
 
-        /* Titolo ingrandito e reso imponente all'interno della banda */
+        /* Titolo della banda */
         .brand-title {
             font-family: 'Lobster Regular', cursive;
-            font-size: 5.5rem; /* Scritta decisamente più grande e visibile */
+            font-size: 5.5rem; 
             letter-spacing: 1px;
             text-align: center;
             white-space: nowrap;
@@ -80,6 +80,11 @@
             text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
+        /* Spaziature per staccare nettamente Hot Stuff */
+        .brand-title .text-black {
+            margin: 0 24px; 
+        }
+
         .text-white {
             color: #ffffff;
         }
@@ -88,12 +93,13 @@
             color: #000000;
         }
 
-        /* Navigazione Contact Me sulla destra */
+        /* Navigazione Contact Me sulla destra - Spostata sotto nella parte beige */
         .nav-container {
             flex: 1;
             display: flex;
             justify-content: flex-end;
             align-items: center;
+            transform: translateY(90px); /* Spinge l'intero blocco Contact Me sotto la riga rossa/nera nella zona beige */
         }
 
         .dropdown {
@@ -103,27 +109,27 @@
 
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
-            color: #ffffff;
+            color: #000000; /* Cambiato in nero o colore scuro per essere leggibile sul fondo beige */
             font-size: 1.8rem;
             text-decoration: none;
             cursor: pointer;
             padding: 10px 15px;
             transition: opacity 0.2s ease;
             white-space: nowrap;
-            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
         }
 
         .dropdown-trigger:hover {
-            opacity: 0.85;
+            opacity: 0.75;
         }
 
-        /* Menu a tendina dei social - Spostato sotto la riga visuale dello sfondo */
+        /* Menu a tendina dei social - Segue l'incolonnamento sotto il Contact Me beige */
         .dropdown-menu {
             display: none;
             position: absolute;
             right: 0;
-            top: 130%; /* Spinto più in basso per scendere sotto la riga rossa dello sfondo */
-            margin-top: 12px;
+            top: 100%; /* Si apre esattamente sotto il trigger */
+            margin-top: 5px;
             background: rgba(13, 27, 42, 0.96);
             min-width: 180px;
             box-shadow: 0px 8px 24px rgba(0,0,0,0.35);
@@ -133,7 +139,7 @@
             backdrop-filter: blur(8px);
             list-style: none;
             padding: 6px 0;
-            z-index: 10;
+            z-index: 999;
         }
 
         .dropdown-menu li a {
@@ -177,28 +183,32 @@
             width: 100%;
         }
 
-        /* Controllo responsive per schermi intermedi */
+        /* Gestione responsive dell'incolonnamento */
         @media (max-width: 1200px) {
             header { margin-top: 40px; height: 90px; }
             .brand-title { font-size: 4.2rem; }
             .bg-artwork { background-position: center 16%; }
+            .nav-container { transform: translateY(70px); }
         }
 
-        /* Controllo responsive per tablet e schermi piccoli */
         @media (max-width: 900px) {
             header { margin-top: 30px; height: 75px; }
             .brand-title { font-size: 3rem; }
+            .brand-title .text-black { margin: 0 14px; }
             .dropdown-trigger { font-size: 1.4rem; }
             .bg-artwork { background-position: center 14%; }
+            .nav-container { transform: translateY(55px); }
         }
 
         @media (max-width: 768px) {
             header { margin-top: 25px; height: 60px; padding: 0 2%; }
             .brand-title { font-size: 2.2rem; }
+            .brand-title .text-black { margin: 0 10px; }
             .dropdown-trigger { font-size: 1.1rem; }
-            .dropdown-menu { min-width: 140px; top: 120%; }
+            .dropdown-menu { min-width: 140px; }
             .dropdown-menu li a { padding: 10px 15px; font-size: 0.85rem; }
             .bg-artwork { background-position: center center; }
+            .nav-container { transform: translateY(45px); }
         }
     </style>
 </head>
@@ -211,7 +221,7 @@
             <div class="header-spacer"></div>
 
             <h1 class="brand-title">
-                <span class="text-white">Fabio</span> <span class="text-black"> Hot Stuff </span> <span class="text-white">Redaelli</span>
+                <span class="text-white">Fabio</span><span class="text-black">Hot Stuff</span><span class="text-white">Redaelli</span>
             </h1>
 
             <nav class="nav-container">
