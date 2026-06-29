@@ -117,13 +117,13 @@
             opacity: 0.85;
         }
 
-        /* Menu a tendina dei social */
+        /* Menu a tendina dei social - Spostato sotto la riga visuale dello sfondo */
         .dropdown-menu {
             display: none;
             position: absolute;
             right: 0;
-            top: 100%;
-            margin-top: 5px;
+            top: 130%; /* Spinto più in basso per scendere sotto la riga rossa dello sfondo */
+            margin-top: 12px;
             background: rgba(13, 27, 42, 0.96);
             min-width: 180px;
             box-shadow: 0px 8px 24px rgba(0,0,0,0.35);
@@ -196,7 +196,7 @@
             header { margin-top: 25px; height: 60px; padding: 0 2%; }
             .brand-title { font-size: 2.2rem; }
             .dropdown-trigger { font-size: 1.1rem; }
-            .dropdown-menu { min-width: 140px; }
+            .dropdown-menu { min-width: 140px; top: 120%; }
             .dropdown-menu li a { padding: 10px 15px; font-size: 0.85rem; }
             .bg-artwork { background-position: center center; }
         }
@@ -211,7 +211,7 @@
             <div class="header-spacer"></div>
 
             <h1 class="brand-title">
-                <span class="text-white">Fabio</span> <span class="text-black">Hot Stuff</span> <span class="text-white">Redaelli</span>
+                <span class="text-white">Fabio</span> <span class="text-black"> Hot Stuff </span> <span class="text-white">Redaelli</span>
             </h1>
 
             <nav class="nav-container">
