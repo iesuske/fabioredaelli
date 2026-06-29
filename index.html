@@ -26,7 +26,7 @@
             background-color: #fceecb;
         }
 
-        /* LAYER 1 — Sfondo */
+        /* LAYER 1 — Lo sfondo pulito a tutto schermo */
         .bg-artwork {
             position: absolute;
             inset: 0;
@@ -58,14 +58,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
         }
 
         .header-spacer {
             flex: 1;
         }
 
-        /* Titolo della banda */
+        /* Titolo con gli spazi corretti */
         .brand-title {
             font-family: 'Lobster Regular', cursive;
             font-size: 5.5rem; 
@@ -80,9 +79,8 @@
             text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-        /* Spaziature per staccare nettamente Hot Stuff */
         .brand-title .text-black {
-            margin: 0 24px; 
+            margin: 0 20px; 
         }
 
         .text-white {
@@ -93,13 +91,12 @@
             color: #000000;
         }
 
-        /* Navigazione Contact Me sulla destra - Nella parte beige */
+        /* Navigazione Contact Me sulla destra (Ripristinata la posizione originale nella banda) */
         .nav-container {
             flex: 1;
             display: flex;
             justify-content: flex-end;
             align-items: center;
-            transform: translateY(90px); 
         }
 
         .dropdown {
@@ -107,48 +104,44 @@
             display: inline-block;
         }
 
-        /* MODIFICATO: Pulsante Contact Me con lo stesso rosso della linea e font nera */
+        /* Voce principale "Contact Me" originale (Testo bianco, dentro la banda) */
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
-            background-color: #b72216; /* Rosso identico alla banda sopra */
-            color: #000000; /* Font Nera */
+            color: #ffffff;
             font-size: 1.8rem;
             text-decoration: none;
             cursor: pointer;
-            padding: 8px 20px;
-            border-radius: 8px; /* Arrotonda leggermente gli angoli del bottone */
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* Gli dà profondità sulla parte beige */
-            transition: background-color 0.2s ease, transform 0.2s ease;
+            padding: 10px 15px;
+            transition: opacity 0.2s ease;
             white-space: nowrap;
-            display: inline-block;
+            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .dropdown-trigger:hover {
-            background-color: #9e1c12; /* Un rosso leggermente più scuro quando ci passi sopra */
-            transform: scale(1.03); /* Piccolo effetto di zoom al passaggio del mouse */
+            opacity: 0.85;
         }
 
-        /* Menu a tendina dei social */
+        /* MODIFICATO: Menu a tendina con sfondo totalmente NERO */
         .dropdown-menu {
             display: none;
             position: absolute;
             right: 0;
-            top: 100%; 
-            margin-top: 8px;
-            background: rgba(13, 27, 42, 0.96);
+            top: 100%;
+            margin-top: 5px;
+            background: #000000; /* Sfondo nero richiesto */
             min-width: 180px;
-            box-shadow: 0px 8px 24px rgba(0,0,0,0.35);
+            box-shadow: 0px 8px 24px rgba(0,0,0,0.5);
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px);
             list-style: none;
             padding: 6px 0;
-            z-index: 999;
+            z-index: 10;
         }
 
+        /* MODIFICATO: Stile delle singole voci (Testo BIANCO di base) */
         .dropdown-menu li a {
-            color: #ffffff;
+            color: #ffffff; /* Testo bianco */
             padding: 12px 20px;
             text-decoration: none;
             display: block;
@@ -157,8 +150,10 @@
             transition: background 0.2s ease;
         }
 
+        /* MODIFICATO: Quando passi il mouse, lo sfondo diventa ROSSO e il testo resta BIANCO */
         .dropdown-menu li a:hover {
-            background: #ff4757;
+            background: #b72216; /* Lo stesso rosso della riga */
+            color: #ffffff; /* Il testo rimane rigorosamente bianco */
         }
 
         .dropdown:hover .dropdown-menu {
@@ -188,33 +183,29 @@
             width: 100%;
         }
 
-        /* Gestione responsive dell'incolonnamento */
+        /* Controllo responsive */
         @media (max-width: 1200px) {
             header { margin-top: 40px; height: 90px; }
             .brand-title { font-size: 4.2rem; }
             .bg-artwork { background-position: center 16%; }
-            .nav-container { transform: translateY(70px); }
-            .dropdown-trigger { font-size: 1.5rem; padding: 6px 16px; }
         }
 
         @media (max-width: 900px) {
             header { margin-top: 30px; height: 75px; }
             .brand-title { font-size: 3rem; }
             .brand-title .text-black { margin: 0 14px; }
-            .dropdown-trigger { font-size: 1.3rem; }
+            .dropdown-trigger { font-size: 1.4rem; }
             .bg-artwork { background-position: center 14%; }
-            .nav-container { transform: translateY(55px); }
         }
 
         @media (max-width: 768px) {
             header { margin-top: 25px; height: 60px; padding: 0 2%; }
             .brand-title { font-size: 2.2rem; }
             .brand-title .text-black { margin: 0 10px; }
-            .dropdown-trigger { font-size: 1.1rem; padding: 4px 12px; }
+            .dropdown-trigger { font-size: 1.1rem; }
             .dropdown-menu { min-width: 140px; }
             .dropdown-menu li a { padding: 10px 15px; font-size: 0.85rem; }
             .bg-artwork { background-position: center center; }
-            .nav-container { transform: translateY(45px); }
         }
     </style>
 </head>
