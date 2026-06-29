@@ -117,7 +117,7 @@
             opacity: 0.85;
         }
 
-        /* Forma Anni '50 perfettamente SIMMETRICA su tutti i lati */
+        /* Menu a tendina Anni '50 simmetrico */
         .dropdown-menu {
             display: none;
             position: absolute;
@@ -137,23 +137,27 @@
             
             border: 1px solid rgba(255, 255, 255, 0.12);
             list-style: none;
-            padding: 25px 0; 
+            
+            /* MODIFICATO: Azzerato il padding verticale per eliminare le bande nere sopra e sotto */
+            padding: 0 0; 
+            
             z-index: 10;
-            overflow: hidden; 
+            overflow: hidden; /* Taglia perfettamente la riga rossa dell'hover seguendo le curve del menu */
         }
 
         /* Struttura delle righe interne */
         .dropdown-menu li {
-            margin: 2px 0;
+            margin: 0; /* Eliminato il margine tra le voci per non creare interruzioni nere */
             width: 100%;
             display: block;
         }
 
-        /* Link interni a tutto schermo laterale */
+        /* Link interni */
         .dropdown-menu li a {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            padding: 8px 24px; 
+            /* Aumentato leggermente il padding verticale per compensare la mancanza di quello della scatola */
+            padding: 12px 24px; 
             text-decoration: none;
             display: block;
             width: 100%;
@@ -163,7 +167,7 @@
             transition: background-color 0.15s ease;
         }
 
-        /* L'hover si estende perfettamente da lato a lato */
+        /* L'hover si estende perfettamente da lato a lato e da cima a fondo */
         .dropdown-menu li a:hover {
             background: #b72216; 
             color: #ffffff;
@@ -207,8 +211,8 @@
             header { margin-top: 30px; height: 75px; }
             .brand-title { font-size: 3rem; }
             .dropdown-trigger { font-size: 1.4rem; }
-            .dropdown-menu { padding: 20px 0; min-width: 150px; border-radius: 35px / 45px; }
-            .dropdown-menu li a { font-size: 1.2rem; padding: 6px 18px; }
+            .dropdown-menu { min-width: 150px; border-radius: 35px / 45px; }
+            .dropdown-menu li a { font-size: 1.2rem; padding: 10px 18px; }
             .bg-artwork { background-position: center 14%; }
         }
 
@@ -216,8 +220,8 @@
             header { margin-top: 25px; height: 60px; padding: 0 2%; }
             .brand-title { font-size: 2.2rem; }
             .dropdown-trigger { font-size: 1.1rem; }
-            .dropdown-menu { padding: 15px 0; min-width: 130px; border-radius: 25px / 35px; }
-            .dropdown-menu li a { padding: 4px 14px; font-size: 1rem; }
+            .dropdown-menu { min-width: 130px; border-radius: 25px / 35px; }
+            .dropdown-menu li a { padding: 8px 14px; font-size: 1rem; }
             .bg-artwork { background-position: center center; }
         }
     </style>
@@ -230,7 +234,6 @@
         <header>
             <div class="header-spacer"></div>
 
-            <!-- RIPRISTINATO: Spazi corretti inseriti tra i blocchi del titolo -->
             <h1 class="brand-title">
                 <span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span>
             </h1>
