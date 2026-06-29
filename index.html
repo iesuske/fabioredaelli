@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fabio Hot Stuff Redaelli</title>
+    <title>Fabio Redaelli - Comic Art Author - Hot Stuff</title>
     <style>
         @font-face {
             font-family: 'Lobster Regular';
@@ -79,10 +79,6 @@
             text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-        .brand-title .text-black {
-            margin: 0 20px; 
-        }
-
         .text-white {
             color: #ffffff;
         }
@@ -121,64 +117,68 @@
             opacity: 0.85;
         }
 
-        /* MODIFICATO: L'intera parte nera del menu ora ha la forma geometrica bombata dello screenshot */
+        /* MODIFICATO: Menu a tendina con forma Anni '50 ispirata all'arancione/giallo (Mid-century blob) e più largo */
         .dropdown-menu {
             display: none;
             position: absolute;
             right: 50%;
             transform: translateX(50%); 
             top: 100%;
-            margin-top: 8px;
+            margin-top: 12px;
             background: #000000; 
-            width: max-content; 
-            min-width: 160px; 
-            box-shadow: 0px 12px 28px rgba(0,0,0,0.6);
             
-            /* Curvatura geometrica asimmetrica per fare la forma a TV vintage/squircle */
-            border-radius: 40% 40% 40% 40% / 30% 30% 30% 30%;
+            /* Larghezza più generosa per contenere comodamente il menu senza stringere */
+            width: auto;
+            min-width: 200px; 
             
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0px 12px 32px rgba(0,0,0,0.55);
+            
+            /* Forma asimmetrica organica stile anni '50 */
+            border-radius: 50px 35px 55px 40px / 45px 55px 40px 50px;
+            
+            border: 1px solid rgba(255, 255, 255, 0.12);
             list-style: none;
-            padding: 25px 15px; /* Più spazio interno per valorizzare la forma bombata */
+            padding: 30px 35px; /* Aumentato molto il padding laterale per dare aria */
             z-index: 10;
         }
 
-        /* Struttura della singola voce */
+        /* Struttura delle righe interne */
         .dropdown-menu li {
-            margin: 2px 0;
+            margin: 6px 0;
+            width: 100%;
             display: flex;
             justify-content: center;
-            width: 100%;
         }
 
-        /* Stile dei link interni */
+        /* Voci di menu larghe e centrate */
         .dropdown-menu li a {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            padding: 6px 14px; 
+            padding: 8px 18px; 
             text-decoration: none;
             display: block;
             width: 100%;
-            font-size: 1.3rem; 
+            font-size: 1.4rem; 
             text-align: center; 
-            letter-spacing: 0.5px;
-            transition: background-color 0.2s ease, color 0.2s ease;
-            border-radius: 8px; /* Un leggero arrotondamento interno che segue l'estetica */
+            letter-spacing: 0.8px;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            border-radius: 14px; /* Angoli morbidi che riprendono lo stile vintage */
         }
 
-        /* Quando scorri le voci, lo sfondo diventa del rosso della riga */
+        /* Passaggio del mouse: sfondo rosso della riga e testo bianco */
         .dropdown-menu li a:hover {
             background: #b72216; 
-            color: #ffffff; 
+            color: #ffffff;
+            transform: scale(1.03);
         }
 
         .dropdown:hover .dropdown-menu {
             display: block;
-            animation: fadeInDropdown 0.25s ease;
+            animation: fadeInDropdown 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         @keyframes fadeInDropdown {
-            from { opacity: 0; transform: translate(50%, 8px); }
+            from { opacity: 0; transform: translate(50%, 12px); }
             to { opacity: 1; transform: translate(50%, 0); }
         }
 
@@ -199,7 +199,7 @@
             width: 100%;
         }
 
-        /* Controllo responsive per mantenere le proporzioni della forma della TV */
+        /* Controllo responsive */
         @media (max-width: 1200px) {
             header { margin-top: 40px; height: 90px; }
             .brand-title { font-size: 4.2rem; }
@@ -209,20 +209,18 @@
         @media (max-width: 900px) {
             header { margin-top: 30px; height: 75px; }
             .brand-title { font-size: 3rem; }
-            .brand-title .text-black { margin: 0 14px; }
             .dropdown-trigger { font-size: 1.4rem; }
-            .dropdown-menu { padding: 20px 12px; min-width: 140px; }
-            .dropdown-menu li a { font-size: 1.1rem; padding: 4px 10px; }
+            .dropdown-menu { padding: 25px 25px; min-width: 170px; border-radius: 40px 30px 45px 35px; }
+            .dropdown-menu li a { font-size: 1.2rem; }
             .bg-artwork { background-position: center 14%; }
         }
 
         @media (max-width: 768px) {
             header { margin-top: 25px; height: 60px; padding: 0 2%; }
             .brand-title { font-size: 2.2rem; }
-            .brand-title .text-black { margin: 0 10px; }
             .dropdown-trigger { font-size: 1.1rem; }
-            .dropdown-menu { padding: 15px 10px; min-width: 120px; border-radius: 35% 35% 35% 35% / 25% 25% 25% 25%; }
-            .dropdown-menu li a { padding: 4px 8px; font-size: 0.95rem; }
+            .dropdown-menu { padding: 20px 20px; min-width: 140px; border-radius: 30px 25px 35px 28px; }
+            .dropdown-menu li a { padding: 6px 10px; font-size: 1rem; }
             .bg-artwork { background-position: center center; }
         }
     </style>
@@ -236,7 +234,7 @@
             <div class="header-spacer"></div>
 
             <h1 class="brand-title">
-                <span class="text-white">Fabio</span><span class="text-black">Hot Stuff</span><span class="text-white">Redaelli</span>
+                <span class="text-white">Fabio</span> <span class="text-black">Hot Stuff</span> <span class="text-white">Redaelli</span>
             </h1>
 
             <nav class="nav-container">
