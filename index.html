@@ -121,7 +121,7 @@
             opacity: 0.85;
         }
 
-        /* Menu a tendina dei social */
+        /* Menu a tendina dei social (scatola nera) */
         .dropdown-menu {
             display: none;
             position: absolute;
@@ -131,33 +131,44 @@
             margin-top: 5px;
             background: #000000; 
             width: max-content; 
-            min-width: 110px; /* Ridotta la larghezza minima della scatola per stare più compatta */
+            min-width: 140px; 
             box-shadow: 0px 8px 24px rgba(0,0,0,0.5);
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
             list-style: none;
-            padding: 6px 0;
+            padding: 10px 6px; /* Leggero spazio interno */
             z-index: 10;
         }
 
-        /* MODIFICATO: Ridotto il padding a 8px (destra/sinistra) per rimpicciolire la riga rossa dell'hover rispetto al testo */
+        /* Struttura della singola voce */
+        .dropdown-menu li {
+            margin: 4px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* MODIFICATO: Struttura del link per ricreare la forma geometrica vintage dello screenshot */
         .dropdown-menu li a {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            padding: 8px 10px; /* Meno spazio sopra/sotto e pochissimo spazio a destra/sinistra */
+            padding: 6px 16px; /* Rapporto proporzionato tra altezza e larghezza per la forma a TV */
             text-decoration: none;
-            display: block;
+            display: inline-block;
             font-size: 1.4rem; 
             text-align: center; 
             letter-spacing: 0.5px;
-            transition: background 0.2s ease;
+            transition: all 0.25s ease;
+            border-radius: 0%; /* Di base è normale */
         }
 
-        /* Quando passi il mouse sopra una voce */
+        /* MODIFICATO: Al passaggio del mouse, si attiva il raggio asimmetrico "squircle/TV" dello screenshot */
         .dropdown-menu li a:hover {
-            background: #b72216; 
+            background: #b72216; /* Lo stesso rosso della riga */
             color: #ffffff; 
+            /* Crea la curvatura bombata tipica dello screenshot 0523A11B-D135-4E38-9C5F-FD3B8D01A481.png */
+            border-radius: 50% 50% 50% 50% / 40% 40% 40% 40%;
+            transform: scale(1.05); /* Un leggerissimo effetto di rilievo pop */
         }
 
         .dropdown:hover .dropdown-menu {
@@ -199,7 +210,7 @@
             .brand-title { font-size: 3rem; }
             .brand-title .text-black { margin: 0 14px; }
             .dropdown-trigger { font-size: 1.4rem; }
-            .dropdown-menu li a { font-size: 1.2rem; padding: 6px 8px; }
+            .dropdown-menu li a { font-size: 1.2rem; padding: 4px 12px; }
             .bg-artwork { background-position: center 14%; }
         }
 
@@ -208,7 +219,8 @@
             .brand-title { font-size: 2.2rem; }
             .brand-title .text-black { margin: 0 10px; }
             .dropdown-trigger { font-size: 1.1rem; }
-            .dropdown-menu li a { padding: 4px 6px; font-size: 1rem; }
+            .dropdown-menu { min-width: 120px; }
+            .dropdown-menu li a { padding: 4px 10px; font-size: 1rem; }
             .bg-artwork { background-position: center center; }
         }
     </style>
