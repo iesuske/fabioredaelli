@@ -64,7 +64,7 @@
             flex: 1;
         }
 
-        /* Titolo con gli spazi corretti */
+        /* Titolo principale */
         .brand-title {
             font-family: 'Lobster Regular', cursive;
             font-size: 5.5rem; 
@@ -91,7 +91,7 @@
             color: #000000;
         }
 
-        /* Navigazione Contact Me sulla destra (Ripristinata la posizione originale nella banda) */
+        /* Navigazione Contact Me sulla destra */
         .nav-container {
             flex: 1;
             display: flex;
@@ -104,7 +104,7 @@
             display: inline-block;
         }
 
-        /* Voce principale "Contact Me" originale (Testo bianco, dentro la banda) */
+        /* Voce principale "Contact Me" */
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff;
@@ -121,15 +121,17 @@
             opacity: 0.85;
         }
 
-        /* MODIFICATO: Menu a tendina con sfondo totalmente NERO */
+        /* MODIFICATO: Larghezza dinamica al minimo indispensabile e allineamento al centro rispetto al Contact Me */
         .dropdown-menu {
             display: none;
             position: absolute;
-            right: 0;
+            right: 50%;
+            transform: translateX(50%); /* Centra la tendina perfettamente sotto la scritta Contact Me */
             top: 100%;
             margin-top: 5px;
-            background: #000000; /* Sfondo nero richiesto */
-            min-width: 180px;
+            background: #000000; 
+            width: max-content; /* Stringe la scatola al minimo indispensabile per le parole */
+            min-width: 130px; /* Un minimo di base per non farla troppo stretta */
             box-shadow: 0px 8px 24px rgba(0,0,0,0.5);
             border-radius: 12px;
             overflow: hidden;
@@ -139,31 +141,34 @@
             z-index: 10;
         }
 
-        /* MODIFICATO: Stile delle singole voci (Testo BIANCO di base) */
+        /* MODIFICATO: Testo centrato e padding laterale ridotto al minimo */
         .dropdown-menu li a {
-            color: #ffffff; /* Testo bianco */
-            padding: 12px 20px;
+            font-family: 'Lobster Regular', cursive;
+            color: #ffffff; 
+            padding: 10px 18px; /* Spazio ridotto al minimo indispensabile */
             text-decoration: none;
             display: block;
-            font-size: 0.95rem;
-            font-weight: 600;
+            font-size: 1.4rem; 
+            text-align: center; /* Forza l'incolonnamento al centro di ogni voce */
+            letter-spacing: 0.5px;
             transition: background 0.2s ease;
         }
 
-        /* MODIFICATO: Quando passi il mouse, lo sfondo diventa ROSSO e il testo resta BIANCO */
+        /* Quando passi il mouse sopra una voce */
         .dropdown-menu li a:hover {
-            background: #b72216; /* Lo stesso rosso della riga */
-            color: #ffffff; /* Il testo rimane rigorosamente bianco */
+            background: #b72216; 
+            color: #ffffff; 
         }
 
+        /* Gestione dell'effetto hover combinato con il trucco di centratura */
         .dropdown:hover .dropdown-menu {
             display: block;
             animation: fadeInDropdown 0.2s ease;
         }
 
         @keyframes fadeInDropdown {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translate(50%, 8px); }
+            to { opacity: 1; transform: translate(50%, 0); }
         }
 
         main {
@@ -195,6 +200,7 @@
             .brand-title { font-size: 3rem; }
             .brand-title .text-black { margin: 0 14px; }
             .dropdown-trigger { font-size: 1.4rem; }
+            .dropdown-menu li a { font-size: 1.2rem; padding: 8px 14px; }
             .bg-artwork { background-position: center 14%; }
         }
 
@@ -203,8 +209,8 @@
             .brand-title { font-size: 2.2rem; }
             .brand-title .text-black { margin: 0 10px; }
             .dropdown-trigger { font-size: 1.1rem; }
-            .dropdown-menu { min-width: 140px; }
-            .dropdown-menu li a { padding: 10px 15px; font-size: 0.85rem; }
+            .dropdown-menu { min-width: 110px; }
+            .dropdown-menu li a { padding: 6px 12px; font-size: 1rem; }
             .bg-artwork { background-position: center center; }
         }
     </style>
