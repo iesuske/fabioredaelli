@@ -96,7 +96,7 @@
             display: inline-block;
         }
 
-        /* Voce principale "Contact Me" - Testo bianco di base con ombra per leggibilità */
+        /* Voce principale "Contact Me" - Con ombra base definita */
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
@@ -106,13 +106,12 @@
             padding: 10px 15px;
             transition: color 0.2s ease;
             white-space: nowrap;
-            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
+            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4); /* Stessa ombra */
         }
 
-        /* Cambia colore in rosso e rimuove l'effetto ombra quando il mouse è sopra il menu */
+        /* MODIFICATO: Ora cambia solo il colore, l'ombra rimane identica a prima */
         .dropdown:hover .dropdown-trigger {
             color: #b72216;
-            text-shadow: none;
         }
 
         /* Menu a tendina Anni '50 simmetrico */
