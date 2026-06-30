@@ -87,7 +87,7 @@
             padding: 0 4%;
             display: flex;
             justify-content: flex-end; 
-            gap: 20px; /* Spazio tra il menu About Me e Contact Me */
+            gap: 20px; 
             pointer-events: auto;
             margin-top: 25px; 
         }
@@ -97,7 +97,7 @@
             display: inline-block;
         }
 
-        /* Voci principali dei Menu - Stesso stile per entrambi */
+        /* Voci principali dei Menu */
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
@@ -110,7 +110,7 @@
             text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
         }
 
-        /* Cambia colore in rosso quando il mouse passa sopra il rispettivo menu */
+        /* Cambia colore in rosso al passaggio del mouse */
         .dropdown:hover .dropdown-trigger {
             color: #b72216;
         }
@@ -169,7 +169,7 @@
             color: #ffffff;
         }
 
-        /* L'effetto hover sul container apre il menu e avvia l'animazione */
+        /* L'effetto hover apre il menu */
         .dropdown:hover .dropdown-menu {
             display: block;
             animation: fadeInDropdown 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -233,7 +233,7 @@
             .sub-nav {
                 justify-content: center; 
                 margin-top: 10px;
-                gap: 10px; /* Riduce lo spazio tra i due menu su mobile per non farli uscire dallo schermo */
+                gap: 10px; 
             }
 
             .dropdown-trigger { 
@@ -287,7 +287,7 @@
             <div class="dropdown">
                 <a class="dropdown-trigger">About Me</a>
                 <ul class="dropdown-menu">
-                    <li><a href="#about">ho frequentato...</a></li>
+                    <li><a href="#about">sono Fabio Redaelli, ho frequentato…</a></li>
                 </ul>
             </div>
 
