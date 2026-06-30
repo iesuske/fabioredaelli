@@ -55,13 +55,8 @@
             padding: 0 4%;
             pointer-events: auto;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            gap: 15px;
-        }
-
-        .header-spacer {
-            flex: 1;
         }
 
         /* Titolo principale */
@@ -75,7 +70,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            flex: 3;
             text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
@@ -87,12 +81,14 @@
             color: #000000;
         }
 
-        /* Navigazione Contact Me sulla destra */
-        .nav-container {
-            flex: 1;
+        /* Nuova sezione posizionata sotto la banda dell'header */
+        .sub-nav {
+            width: 100%;
+            padding: 0 4%;
             display: flex;
-            justify-content: flex-end;
-            align-items: center;
+            justify-content: flex-end; /* Allinea a destra come da mockup */
+            pointer-events: auto;
+            margin-top: 25px; /* Distanza sotto la banda rossa */
         }
 
         .dropdown {
@@ -100,17 +96,17 @@
             display: inline-block;
         }
 
-        /* Voce principale "Contact Me" */
+        /* Voce principale "Contact Me" - Modificata per la nuova posizione */
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
-            color: #ffffff;
+            color: #b72216; /* Cambiato in rosso per staccare sullo sfondo beige chiaro */
             font-size: 1.8rem;
             text-decoration: none;
             cursor: pointer;
             padding: 10px 15px;
             transition: opacity 0.2s ease;
             white-space: nowrap;
-            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .dropdown-trigger:hover {
@@ -208,6 +204,7 @@
         @media (max-width: 900px) {
             header { margin-top: 30px; }
             .brand-title { font-size: 3rem; }
+            .sub-nav { margin-top: 15px; }
             .dropdown-trigger { font-size: 1.4rem; }
             .dropdown-menu { min-width: 150px; border-radius: 35px / 45px; }
             .dropdown-menu li a { font-size: 1.2rem; padding: 10px 18px; }
@@ -216,33 +213,23 @@
             .bg-artwork { background-position: center 14%; }
         }
 
-        /* MODIFICATO: FIX COMPLETO PER IPHONE / MOBILE (Es. iPhone 12 Pro) */
+        /* FIX COMPLETO PER IPHONE / MOBILE */
         @media (max-width: 768px) {
             header { 
                 margin-top: 20px; 
                 padding: 0 15px;
-                flex-direction: column; /* Mette il titolo sopra e il menu sotto su mobile per evitare collisioni */
-                align-items: center;
-                gap: 8px;
-            }
-
-            .header-spacer {
-                display: none; /* Rimosso l'elemento vuoto che disallinea il mobile */
             }
 
             .brand-title { 
-                font-size: 2rem; /* Dimensione ridotta per stare perfettamente in una riga su iPhone */
+                font-size: 2rem; 
                 white-space: nowrap;
-                flex: none;
                 width: 100%;
                 justify-content: center;
             }
 
-            .nav-container {
-                flex: none;
-                width: 100%;
-                justify-content: center; /* Centra il pulsante "Contact Me" sotto il titolo */
-                margin-top: 2px;
+            .sub-nav {
+                justify-content: center; /* Centra il pulsante sotto il titolo su mobile */
+                margin-top: 10px;
             }
 
             .dropdown-trigger { 
@@ -250,13 +237,12 @@
                 padding: 6px 12px;
             }
 
-            /* Mantiene la proporzione geometrica anni '50 anche su mobile, scalando le misure */
             .dropdown-menu { 
                 min-width: 150px; 
                 border-radius: 30px / 40px; 
                 position: absolute;
                 left: 50%;
-                transform: translateX(-50%); /* Centra perfettamente la tendina rispetto allo schermo */
+                transform: translateX(-50%); 
                 right: auto;
             }
 
@@ -288,24 +274,22 @@
 
     <div class="content-overlay">
         <header>
-            <div class="header-spacer"></div>
-
             <h1 class="brand-title">
                 <span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span>
             </h1>
-
-            <nav class="nav-container">
-                <div class="dropdown">
-                    <a class="dropdown-trigger">Contact Me</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#instagram">Instagram</a></li>
-                        <li><a href="#facebook">Facebook</a></li>
-                        <li><a href="#telegram">Telegram</a></li>
-                        <li><a href="#whatsapp">WhatsApp</a></li>
-                    </ul>
-                </div>
-            </nav>
         </header>
+
+        <div class="sub-nav">
+            <nav class="dropdown">
+                <a class="dropdown-trigger">Contact Me</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#instagram">Instagram</a></li>
+                    <li><a href="#facebook">Facebook</a></li>
+                    <li><a href="#telegram">Telegram</a></li>
+                    <li><a href="#whatsapp">WhatsApp</a></li>
+                </ul>
+            </nav>
+        </div>
 
         <main></main>
 
