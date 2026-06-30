@@ -65,7 +65,7 @@
             font-size: 5.5rem; 
             letter-spacing: 1px;
             text-align: center;
-            white-space: nowrap; /* Impedisce qualsiasi andata a capo del titolo */
+            white-space: nowrap;
             line-height: 1;
             display: flex;
             justify-content: center;
@@ -75,12 +75,10 @@
 
         .text-white {
             color: #ffffff;
-            white-space: nowrap;
         }
 
         .text-black {
             color: #000000;
-            white-space: nowrap;
         }
 
         /* Sezione sottomenu posizionata sotto la banda dell'header */
@@ -223,14 +221,13 @@
         @media (max-width: 768px) {
             header { 
                 margin-top: 15px; 
-                padding: 0 5px;
+                padding: 0 10px;
             }
 
             .brand-title { 
-                font-size: 1.7rem; /* Ridotto un pelo per garantire che entri tutto su una riga senza spezzarsi */
-                white-space: nowrap !important;
+                font-size: 1.9rem; 
+                white-space: nowrap;
                 width: 100%;
-                display: flex;
                 justify-content: center;
             }
 
@@ -289,7 +286,7 @@
         </header>
 
         <div class="sub-nav">
-            <!-- MENU: About Me -->
+            <!-- MENU: About Me con andata a capo corretta dopo il nome -->
             <div class="dropdown">
                 <a class="dropdown-trigger">About Me</a>
                 <ul class="dropdown-menu">
