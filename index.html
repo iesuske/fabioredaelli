@@ -86,9 +86,9 @@
             width: 100%;
             padding: 0 4%;
             display: flex;
-            justify-content: flex-end; /* Allinea a destra come da mockup */
+            justify-content: flex-end; 
             pointer-events: auto;
-            margin-top: 25px; /* Distanza sotto la banda rossa */
+            margin-top: 25px; 
         }
 
         .dropdown {
@@ -96,21 +96,23 @@
             display: inline-block;
         }
 
-        /* Voce principale "Contact Me" - Modificata per la nuova posizione */
+        /* Voce principale "Contact Me" - Testo bianco di base con ombra per leggibilità */
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
-            color: #b72216; /* Cambiato in rosso per staccare sullo sfondo beige chiaro */
+            color: #ffffff; 
             font-size: 1.8rem;
             text-decoration: none;
             cursor: pointer;
             padding: 10px 15px;
-            transition: opacity 0.2s ease;
+            transition: color 0.2s ease;
             white-space: nowrap;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
         }
 
-        .dropdown-trigger:hover {
-            opacity: 0.85;
+        /* Cambia colore in rosso e rimuove l'effetto ombra quando il mouse è sopra il menu */
+        .dropdown:hover .dropdown-trigger {
+            color: #b72216;
+            text-shadow: none;
         }
 
         /* Menu a tendina Anni '50 simmetrico */
@@ -167,6 +169,7 @@
             color: #ffffff;
         }
 
+        /* L'effetto hover sul container apre il menu e avvia l'animazione */
         .dropdown:hover .dropdown-menu {
             display: block;
             animation: fadeInDropdown 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -228,7 +231,7 @@
             }
 
             .sub-nav {
-                justify-content: center; /* Centra il pulsante sotto il titolo su mobile */
+                justify-content: center; 
                 margin-top: 10px;
             }
 
