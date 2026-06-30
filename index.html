@@ -81,12 +81,13 @@
             color: #000000;
         }
 
-        /* Nuova sezione posizionata sotto la banda dell'header */
+        /* Sezione sottomenu posizionata sotto la banda dell'header */
         .sub-nav {
             width: 100%;
             padding: 0 4%;
             display: flex;
             justify-content: flex-end; 
+            gap: 20px; /* Spazio tra il menu About Me e Contact Me */
             pointer-events: auto;
             margin-top: 25px; 
         }
@@ -96,7 +97,7 @@
             display: inline-block;
         }
 
-        /* Voce principale "Contact Me" - Con ombra base definita */
+        /* Voci principali dei Menu - Stesso stile per entrambi */
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
@@ -106,10 +107,10 @@
             padding: 10px 15px;
             transition: color 0.2s ease;
             white-space: nowrap;
-            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4); /* Stessa ombra */
+            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
         }
 
-        /* MODIFICATO: Ora cambia solo il colore, l'ombra rimane identica a prima */
+        /* Cambia colore in rosso quando il mouse passa sopra il rispettivo menu */
         .dropdown:hover .dropdown-trigger {
             color: #b72216;
         }
@@ -206,7 +207,7 @@
         @media (max-width: 900px) {
             header { margin-top: 30px; }
             .brand-title { font-size: 3rem; }
-            .sub-nav { margin-top: 15px; }
+            .sub-nav { margin-top: 15px; gap: 15px; }
             .dropdown-trigger { font-size: 1.4rem; }
             .dropdown-menu { min-width: 150px; border-radius: 35px / 45px; }
             .dropdown-menu li a { font-size: 1.2rem; padding: 10px 18px; }
@@ -232,6 +233,7 @@
             .sub-nav {
                 justify-content: center; 
                 margin-top: 10px;
+                gap: 10px; /* Riduce lo spazio tra i due menu su mobile per non farli uscire dallo schermo */
             }
 
             .dropdown-trigger { 
@@ -282,7 +284,14 @@
         </header>
 
         <div class="sub-nav">
-            <nav class="dropdown">
+            <div class="dropdown">
+                <a class="dropdown-trigger">About Me</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#about">ho frequentato...</a></li>
+                </ul>
+            </div>
+
+            <div class="dropdown">
                 <a class="dropdown-trigger">Contact Me</a>
                 <ul class="dropdown-menu">
                     <li><a href="#instagram">Instagram</a></li>
@@ -290,7 +299,7 @@
                     <li><a href="#telegram">Telegram</a></li>
                     <li><a href="#whatsapp">WhatsApp</a></li>
                 </ul>
-            </nav>
+            </div>
         </div>
 
         <main></main>
