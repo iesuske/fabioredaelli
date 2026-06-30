@@ -65,7 +65,7 @@
             font-size: 5.5rem; 
             letter-spacing: 1px;
             text-align: center;
-            white-space: nowrap;
+            white-space: nowrap; /* Impedisce qualsiasi andata a capo del titolo */
             line-height: 1;
             display: flex;
             justify-content: center;
@@ -75,10 +75,12 @@
 
         .text-white {
             color: #ffffff;
+            white-space: nowrap;
         }
 
         .text-black {
             color: #000000;
+            white-space: nowrap;
         }
 
         /* Sezione sottomenu posizionata sotto la banda dell'header */
@@ -221,13 +223,14 @@
         @media (max-width: 768px) {
             header { 
                 margin-top: 15px; 
-                padding: 0 10px;
+                padding: 0 5px;
             }
 
             .brand-title { 
-                font-size: 1.9rem; 
-                white-space: nowrap;
+                font-size: 1.7rem; /* Ridotto un pelo per garantire che entri tutto su una riga senza spezzarsi */
+                white-space: nowrap !important;
                 width: 100%;
+                display: flex;
                 justify-content: center;
             }
 
@@ -286,7 +289,7 @@
         </header>
 
         <div class="sub-nav">
-            <!-- MENU: About Me con virgola rimessa sulla prima riga -->
+            <!-- MENU: About Me -->
             <div class="dropdown">
                 <a class="dropdown-trigger">About Me</a>
                 <ul class="dropdown-menu">
