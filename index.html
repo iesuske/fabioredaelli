@@ -26,7 +26,7 @@
             background-color: #fceecb;
         }
 
-        /* LAYER 1 — Sfondo Desktop */
+        /* LAYER 1 — Sfondo Unico Reale (Desktop e Mobile) */
         .bg-artwork {
             position: absolute;
             inset: 0;
@@ -35,11 +35,6 @@
             background-position: center 18%; 
             background-repeat: no-repeat;
             z-index: 1;
-        }
-
-        /* Elemento immagine specifico per Mobile (nascosto su desktop) */
-        .mobile-artwork {
-            display: none;
         }
 
         /* LAYER 2 — Contenuti */
@@ -56,7 +51,7 @@
 
         header {
             width: 100%;
-            margin-top: 50px; 
+            margin-top: 52px; /* Calibrato per abbassare il titolo senza tagliare le lettere su desktop */
             padding: 0 4%;
             pointer-events: auto;
             display: flex;
@@ -71,7 +66,7 @@
             letter-spacing: 1px;
             text-align: center;
             white-space: nowrap;
-            line-height: 1.1; /* Sistemato l'interlinea per non tagliare le lettere */
+            line-height: 1.2; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -86,13 +81,13 @@
             color: #000000;
         }
 
-        /* Sezione sottomenu posizionata sotto la banda dell'header */
+        /* Sezione sottomenu desktop */
         .sub-nav {
             width: 100%;
             padding: 0 4%;
             display: flex;
             justify-content: flex-end; 
-            gap: 20px; 
+            gap: 75px; /* Distanziati di 1,5 cm su desktop */
             pointer-events: auto;
             margin-top: 25px; 
         }
@@ -196,10 +191,6 @@
         main {
             flex-grow: 1;
             pointer-events: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
         }
 
         footer {
@@ -218,32 +209,23 @@
         @media (max-width: 1200px) {
             header { margin-top: 45px; }
             .brand-title { font-size: 4.2rem; }
+            .sub-nav { gap: 50px; }
         }
 
         @media (max-width: 900px) {
             header { margin-top: 35px; }
             .brand-title { font-size: 3rem; }
-            .sub-nav { margin-top: 15px; gap: 15px; }
+            .sub-nav { margin-top: 15px; gap: 30px; }
             .dropdown-trigger { font-size: 1.4rem; }
             .dropdown-menu { border-radius: 35px / 45px; }
-            .menu-about { min-width: 225px; }
-            .menu-contact { min-width: 170px; }
         }
 
-        /* --- STILE MOBILE RIVOLUZIONATO (NO BUG) --- */
+        /* --- STILE IPHONE / MOBILE PERFETTO E PULITO --- */
         @media (max-width: 768px) {
-            /* Disattiva l'immagine di sfondo nativa che creava sdoppiamenti */
+            /* Riposiziona lo sfondo nativo al centro perfetto per iPhone */
             .bg-artwork { 
-                display: none; 
-            }
-
-            /* Attiva l'immagine inserita nel flusso per centrarla al millimetro */
-            .mobile-artwork {
                 display: block;
-                max-width: 90%;
-                max-height: 50vh;
-                object-fit: contain;
-                pointer-events: auto;
+                background-position: center 42%; /* Inquadra e centra la macchina al millimetro */
             }
 
             header { 
@@ -265,7 +247,7 @@
                 justify-content: center; 
                 margin-top: 0;
                 padding: 10px 0; 
-                gap: 30px; 
+                gap: 30px; /* Distanza bilanciata su mobile */
                 background-color: #b72216; 
                 box-shadow: 0 3px 6px rgba(0,0,0,0.15); 
             }
@@ -317,7 +299,7 @@
 </head>
 <body>
 
-    <!-- Sfondo Desktop -->
+    <!-- Sfondo Unico Condiviso -->
     <div class="bg-artwork"></div>
 
     <div class="content-overlay">
@@ -348,10 +330,7 @@
             </div>
         </div>
 
-        <!-- Al centro inseriamo la macchina visibile perfettamente su mobile -->
-        <main>
-            <img src="images/bg2.jpg" alt="Comic Artist Artwork" class="mobile-artwork">
-        </main>
+        <main></main>
 
         <footer>
             <p>Copyright 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
