@@ -26,7 +26,7 @@
             background-color: #fceecb;
         }
 
-        /* LAYER 1 — Sfondo */
+        /* LAYER 1 — Sfondo Desktop */
         .bg-artwork {
             position: absolute;
             inset: 0;
@@ -51,7 +51,7 @@
 
         header {
             width: 100%;
-            margin-top: 45px; 
+            margin-top: 65px; /* Aumentato da 45px a 65px per abbassare il titolo di mezzo centimetro su desktop */
             padding: 0 4%;
             pointer-events: auto;
             display: flex;
@@ -217,13 +217,12 @@
 
         /* --- MEDIA QUERY PER SCHERMI GRANDI / MEDI --- */
         @media (max-width: 1200px) {
-            header { margin-top: 40px; }
+            header { margin-top: 55px; } /* Adattato proporzionalmente */
             .brand-title { font-size: 4.2rem; }
-            .bg-artwork { background-position: center 16%; }
         }
 
         @media (max-width: 900px) {
-            header { margin-top: 30px; }
+            header { margin-top: 45px; }
             .brand-title { font-size: 3rem; }
             .sub-nav { margin-top: 15px; gap: 15px; }
             .dropdown-trigger { font-size: 1.4rem; }
@@ -233,16 +232,15 @@
             .dropdown-menu li a { font-size: 1.2rem; padding: 8px 15px; }
             .dropdown-menu li:first-child a { padding-top: 18px; }
             .dropdown-menu li:last-child a { padding-bottom: 18px; }
-            .bg-artwork { background-position: center 14%; }
         }
 
-        /* FIX COMPLETO E PULITO PER IPHONE / MOBILE */
+        /* FIX MOBILISSIMO: FOCUS SU MACCHINA CENTRATA E SCRITTA RIGA UNICA */
         @media (max-width: 768px) {
             header { 
                 margin-top: 0; 
                 padding: 12px 10px;
                 background-color: #fceecb; 
-                box-shadow: none; /* Elimina ombreggiature intermedie */
+                box-shadow: none; 
             }
 
             .brand-title { 
@@ -258,8 +256,8 @@
                 padding: 10px 0; 
                 gap: 30px; 
                 background-color: #b72216; 
-                box-shadow: 0 3px 6px rgba(0,0,0,0.15); /* Sposta l'ombra solo sotto la banda rossa */
-                height: auto; /* Evita sovrapposizioni o sdoppiamenti strani */
+                box-shadow: 0 3px 6px rgba(0,0,0,0.15); 
+                height: auto; 
             }
 
             .dropdown-trigger { 
@@ -296,17 +294,23 @@
             .dropdown-menu li:first-child a { padding-top: 18px; }
             .dropdown-menu li:last-child a { padding-bottom: 18px; }
 
-            /* Ottimizzazione inquadratura disegno su iPhone */
+            /* FIX SFONDO MOBILE: Ridimensiona la macchina interamente dentro lo schermo */
             .bg-artwork { 
-                background-position: center 24%; 
+                background-size: contain; 
+                background-position: center 55%; 
+                background-repeat: no-repeat;
             }
 
+            /* FIX FOOTER MOBILE: Forza la scritta su un'unica riga riducendo il font */
             footer {
                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-                font-size: 0.75rem;
-                padding: 12px 10px;
+                font-size: 0.65rem; /* Rimpiccolito per non spezzarsi */
+                padding: 10px 5px;
                 background: rgba(0, 0, 0, 0.75); 
                 color: #ffffff;
+                white-space: nowrap; /* Impedisce tassativamente di andare a capo */
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
         }
     </style>
