@@ -115,18 +115,18 @@
             color: #b72216;
         }
 
-        /* Menu a tendina Anni '50 simmetrico */
+        /* Menu a tendina Anni '50 simmetrico - AVVICINATO ALLA SCRITTA */
         .dropdown-menu {
             display: none;
             position: absolute;
             right: 50%;
             transform: translateX(50%); 
             top: 100%;
-            margin-top: 12px;
+            margin-top: 2px; /* Ridotto da 12px a 2px per eliminare lo spazio vuoto */
             background: #000000; 
             
             width: auto;
-            min-width: 180px; 
+            min-width: 220px; /* Leggermente aumentato per contenere meglio la descrizione */
             
             box-shadow: 0px 12px 32px rgba(0,0,0,0.55);
             border-radius: 45px / 55px;
@@ -146,14 +146,14 @@
         .dropdown-menu li a {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            padding: 10px 24px; 
+            padding: 12px 24px; 
             text-decoration: none;
             display: block;
             width: 100%;
-            font-size: 1.4rem; 
+            font-size: 1.3rem; 
             text-align: center; 
             letter-spacing: 0.8px;
-            line-height: 1.3; 
+            line-height: 1.4; 
             transition: background-color 0.15s ease;
         }
 
@@ -170,14 +170,14 @@
             color: #ffffff;
         }
 
-        /* L'effetto hover apre il menu */
+        /* L'effetto hover apre il menu mantenendolo vicino */
         .dropdown:hover .dropdown-menu {
             display: block;
-            animation: fadeInDropdown 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeInDropdown 0.2s ease-out;
         }
 
         @keyframes fadeInDropdown {
-            from { opacity: 0; transform: translate(50%, 12px); }
+            from { opacity: 0; transform: translate(50%, -5px); }
             to { opacity: 1; transform: translate(50%, 0); }
         }
 
@@ -193,7 +193,7 @@
             font-size: 0.85rem;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
             pointer-events: auto;
-            background: rgba(13, 27, 42, 0.4);
+            background: rgba(13, 27, 42, 0.6);
             backdrop-filter: blur(4px);
             width: 100%;
         }
@@ -210,22 +210,24 @@
             .brand-title { font-size: 3rem; }
             .sub-nav { margin-top: 15px; gap: 15px; }
             .dropdown-trigger { font-size: 1.4rem; }
-            .dropdown-menu { min-width: 150px; border-radius: 35px / 45px; }
+            .dropdown-menu { min-width: 180px; border-radius: 35px / 45px; }
             .dropdown-menu li a { font-size: 1.2rem; padding: 10px 18px; }
             .dropdown-menu li:first-child a { padding-top: 20px; }
             .dropdown-menu li:last-child a { padding-bottom: 20px; }
             .bg-artwork { background-position: center 14%; }
         }
 
-        /* RISOLUZIONE COMPLETA PER IPHONE / MOBILE */
+        /* FIX COMPLETO PER IPHONE / MOBILE */
         @media (max-width: 768px) {
             header { 
-                margin-top: 15px; 
-                padding: 0 10px;
+                margin-top: 0; 
+                padding: 15px;
+                background-color: #fceecb; /* Riproduce la banda superiore chiara dello screenshot */
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             }
 
             .brand-title { 
-                font-size: 1.9rem; 
+                font-size: 1.8rem; 
                 white-space: nowrap;
                 width: 100%;
                 justify-content: center;
@@ -233,23 +235,32 @@
 
             .sub-nav {
                 justify-content: center; 
-                margin-top: 35px; 
-                gap: 15px; 
+                margin-top: 0;
+                padding: 10px 0;
+                gap: 20px; 
+                background-color: #b72216; /* Riproduce la banda rossa sotto il titolo dello screenshot */
+                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             }
 
             .dropdown-trigger { 
-                font-size: 1.3rem; 
-                padding: 6px 12px;
-                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); 
+                font-size: 1.4rem; 
+                padding: 5px 10px;
+                text-shadow: none;
+                color: #ffffff;
+            }
+
+            .dropdown:hover .dropdown-trigger {
+                color: #000000; /* Sulla barra rossa l'hover diventa nero per contrasto */
             }
 
             .dropdown-menu { 
-                min-width: 160px; 
-                border-radius: 30px / 40px; 
+                min-width: 200px; 
+                border-radius: 25px / 35px; 
                 position: absolute;
                 left: 50%;
                 transform: translateX(-50%); 
                 right: auto;
+                margin-top: 5px;
             }
 
             .dropdown:hover .dropdown-menu {
@@ -257,19 +268,20 @@
             }
 
             .dropdown-menu li a { 
-                padding: 10px 18px; 
+                padding: 12px 15px; 
                 font-size: 1.1rem; 
             }
-            .dropdown-menu li:first-child a { padding-top: 18px; }
-            .dropdown-menu li:last-child a { padding-bottom: 18px; }
+            .dropdown-menu li:first-child a { padding-top: 20px; }
+            .dropdown-menu li:last-child a { padding-bottom: 20px; }
 
             .bg-artwork { 
-                background-position: center center; 
+                background-position: center 40%; /* Abbassato l'orientamento per centrare l'auto sulla visualizzazione mobile */
             }
 
             footer {
                 font-size: 0.8rem;
                 padding: 12px 10px;
+                background: rgba(0, 0, 0, 0.7); /* Sfondo più scuro per leggere bene i testi legali su mobile */
             }
         }
     </style>
@@ -286,15 +298,13 @@
         </header>
 
         <div class="sub-nav">
-            <!-- MENU: About Me — TESTO CORRETTO E MANDATO A CAPO DOPO REDAELLI, -->
             <div class="dropdown">
                 <a class="dropdown-trigger">About Me</a>
                 <ul class="dropdown-menu">
-                    <li><a href="#about">Sono Fabio Redaelli,<br>ho frequentato…</a></li>
+                    <li><a href="#about">Sono Fabio Redaelli,<br>appassionato di Rock’n’Roll e arte, ecc...</a></li>
                 </ul>
             </div>
 
-            <!-- MENU: Contact Me -->
             <div class="dropdown">
                 <a class="dropdown-trigger">Contact Me</a>
                 <ul class="dropdown-menu">
