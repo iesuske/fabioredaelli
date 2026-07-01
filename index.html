@@ -115,19 +115,15 @@
             color: #b72216;
         }
 
-        /* Menu a tendina Anni '50 simmetrico - AVVICINATO ALLA SCRITTA */
+        /* Menu a tendina base */
         .dropdown-menu {
             display: none;
             position: absolute;
             right: 50%;
             transform: translateX(50%); 
             top: 100%;
-            margin-top: 2px; /* Ridotto da 12px a 2px per eliminare lo spazio vuoto */
+            margin-top: 2px; 
             background: #000000; 
-            
-            width: auto;
-            min-width: 220px; /* Leggermente aumentato per contenere meglio la descrizione */
-            
             box-shadow: 0px 12px 32px rgba(0,0,0,0.55);
             border-radius: 45px / 55px;
             border: 1px solid rgba(255, 255, 255, 0.12);
@@ -135,6 +131,15 @@
             padding: 0 0; 
             z-index: 10;
             overflow: hidden; 
+        }
+
+        /* Larghezze specifiche differenziate */
+        .menu-about {
+            min-width: 240px; /* Più largo per contenere la descrizione */
+        }
+
+        .menu-contact {
+            min-width: 140px; /* Stretto ed elegante per i soli nomi dei social */
         }
 
         .dropdown-menu li {
@@ -146,7 +151,7 @@
         .dropdown-menu li a {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            padding: 12px 24px; 
+            padding: 10px 15px; /* Ridotto il padding laterale per stringere l'inizio e la fine */
             text-decoration: none;
             display: block;
             width: 100%;
@@ -157,12 +162,13 @@
             transition: background-color 0.15s ease;
         }
 
+        /* Padding verticali per mantenere la forma ovale ad inizio e fine menu */
         .dropdown-menu li:first-child a {
-            padding-top: 24px;
+            padding-top: 22px;
         }
 
         .dropdown-menu li:last-child a {
-            padding-bottom: 24px;
+            padding-bottom: 22px;
         }
 
         .dropdown-menu li a:hover {
@@ -170,7 +176,7 @@
             color: #ffffff;
         }
 
-        /* L'effetto hover apre il menu mantenendolo vicino */
+        /* Effetto hover */
         .dropdown:hover .dropdown-menu {
             display: block;
             animation: fadeInDropdown 0.2s ease-out;
@@ -210,10 +216,12 @@
             .brand-title { font-size: 3rem; }
             .sub-nav { margin-top: 15px; gap: 15px; }
             .dropdown-trigger { font-size: 1.4rem; }
-            .dropdown-menu { min-width: 180px; border-radius: 35px / 45px; }
-            .dropdown-menu li a { font-size: 1.2rem; padding: 10px 18px; }
-            .dropdown-menu li:first-child a { padding-top: 20px; }
-            .dropdown-menu li:last-child a { padding-bottom: 20px; }
+            .dropdown-menu { border-radius: 35px / 45px; }
+            .menu-about { min-width: 200px; }
+            .menu-contact { min-width: 130px; }
+            .dropdown-menu li a { font-size: 1.2rem; padding: 8px 12px; }
+            .dropdown-menu li:first-child a { padding-top: 18px; }
+            .dropdown-menu li:last-child a { padding-bottom: 18px; }
             .bg-artwork { background-position: center 14%; }
         }
 
@@ -222,7 +230,7 @@
             header { 
                 margin-top: 0; 
                 padding: 15px;
-                background-color: #fceecb; /* Riproduce la banda superiore chiara dello screenshot */
+                background-color: #fceecb; 
                 box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             }
 
@@ -238,7 +246,7 @@
                 margin-top: 0;
                 padding: 10px 0;
                 gap: 20px; 
-                background-color: #b72216; /* Riproduce la banda rossa sotto il titolo dello screenshot */
+                background-color: #b72216; 
                 box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             }
 
@@ -250,11 +258,10 @@
             }
 
             .dropdown:hover .dropdown-trigger {
-                color: #000000; /* Sulla barra rossa l'hover diventa nero per contrasto */
+                color: #000000; 
             }
 
             .dropdown-menu { 
-                min-width: 200px; 
                 border-radius: 25px / 35px; 
                 position: absolute;
                 left: 50%;
@@ -263,25 +270,28 @@
                 margin-top: 5px;
             }
 
+            .menu-about { min-width: 210px; }
+            .menu-contact { min-width: 130px; }
+
             .dropdown:hover .dropdown-menu {
                 transform: translate(-50%, 0);
             }
 
             .dropdown-menu li a { 
-                padding: 12px 15px; 
+                padding: 10px 12px; 
                 font-size: 1.1rem; 
             }
-            .dropdown-menu li:first-child a { padding-top: 20px; }
-            .dropdown-menu li:last-child a { padding-bottom: 20px; }
+            .dropdown-menu li:first-child a { padding-top: 18px; }
+            .dropdown-menu li:last-child a { padding-bottom: 18px; }
 
             .bg-artwork { 
-                background-position: center 40%; /* Abbassato l'orientamento per centrare l'auto sulla visualizzazione mobile */
+                background-position: center 40%; 
             }
 
             footer {
                 font-size: 0.8rem;
                 padding: 12px 10px;
-                background: rgba(0, 0, 0, 0.7); /* Sfondo più scuro per leggere bene i testi legali su mobile */
+                background: rgba(0, 0, 0, 0.7); 
             }
         }
     </style>
@@ -298,16 +308,18 @@
         </header>
 
         <div class="sub-nav">
+            <!-- MENU: About Me -->
             <div class="dropdown">
                 <a class="dropdown-trigger">About Me</a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu menu-about">
                     <li><a href="#about">Sono Fabio Redaelli,<br>appassionato di Rock’n’Roll e arte, ecc...</a></li>
                 </ul>
             </div>
 
+            <!-- MENU: Contact Me (Ristretto) -->
             <div class="dropdown">
                 <a class="dropdown-trigger">Contact Me</a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu menu-contact">
                     <li><a href="#instagram">Instagram</a></li>
                     <li><a href="#facebook">Facebook</a></li>
                     <li><a href="#telegram">Telegram</a></li>
