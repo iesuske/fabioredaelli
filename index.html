@@ -133,13 +133,15 @@
             overflow: hidden; 
         }
 
-        /* Larghezze specifiche differenziate */
+        /* Larghezze bilanciate per non tagliare il testo */
         .menu-about {
-            min-width: 240px; /* Più largo per contenere la descrizione */
+            width: max-content;
+            min-width: 250px; 
         }
 
         .menu-contact {
-            min-width: 140px; /* Stretto ed elegante per i soli nomi dei social */
+            width: max-content;
+            min-width: 190px; /* Aumentato e reso dinamico per evitare tagli */
         }
 
         .dropdown-menu li {
@@ -151,7 +153,7 @@
         .dropdown-menu li a {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            padding: 10px 15px; /* Ridotto il padding laterale per stringere l'inizio e la fine */
+            padding: 10px 25px; /* Più spazio ai lati del testo */
             text-decoration: none;
             display: block;
             width: 100%;
@@ -160,6 +162,7 @@
             letter-spacing: 0.8px;
             line-height: 1.4; 
             transition: background-color 0.15s ease;
+            white-space: nowrap; /* Evita che i nomi vadano a capo a metà */
         }
 
         /* Padding verticali per mantenere la forma ovale ad inizio e fine menu */
@@ -217,9 +220,9 @@
             .sub-nav { margin-top: 15px; gap: 15px; }
             .dropdown-trigger { font-size: 1.4rem; }
             .dropdown-menu { border-radius: 35px / 45px; }
-            .menu-about { min-width: 200px; }
-            .menu-contact { min-width: 130px; }
-            .dropdown-menu li a { font-size: 1.2rem; padding: 8px 12px; }
+            .menu-about { min-width: 220px; }
+            .menu-contact { min-width: 170px; }
+            .dropdown-menu li a { font-size: 1.2rem; padding: 8px 20px; }
             .dropdown-menu li:first-child a { padding-top: 18px; }
             .dropdown-menu li:last-child a { padding-bottom: 18px; }
             .bg-artwork { background-position: center 14%; }
@@ -270,15 +273,15 @@
                 margin-top: 5px;
             }
 
-            .menu-about { min-width: 210px; }
-            .menu-contact { min-width: 130px; }
+            .menu-about { min-width: 220px; }
+            .menu-contact { min-width: 160px; }
 
             .dropdown:hover .dropdown-menu {
                 transform: translate(-50%, 0);
             }
 
             .dropdown-menu li a { 
-                padding: 10px 12px; 
+                padding: 10px 20px; 
                 font-size: 1.1rem; 
             }
             .dropdown-menu li:first-child a { padding-top: 18px; }
@@ -316,7 +319,7 @@
                 </ul>
             </div>
 
-            <!-- MENU: Contact Me (Ristretto) -->
+            <!-- MENU: Contact Me -->
             <div class="dropdown">
                 <a class="dropdown-trigger">Contact Me</a>
                 <ul class="dropdown-menu menu-contact">
