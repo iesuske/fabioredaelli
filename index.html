@@ -133,15 +133,15 @@
             overflow: hidden; 
         }
 
-        /* Larghezze bilanciate per non tagliare il testo */
+        /* Larghezze e comportamenti bilanciati */
         .menu-about {
             width: max-content;
-            min-width: 250px; 
+            min-width: 260px; 
         }
 
         .menu-contact {
             width: max-content;
-            min-width: 190px; /* Aumentato e reso dinamico per evitare tagli */
+            min-width: 190px; 
         }
 
         .dropdown-menu li {
@@ -153,7 +153,7 @@
         .dropdown-menu li a {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            padding: 10px 25px; /* Più spazio ai lati del testo */
+            padding: 10px 25px; 
             text-decoration: none;
             display: block;
             width: 100%;
@@ -162,7 +162,13 @@
             letter-spacing: 0.8px;
             line-height: 1.4; 
             transition: background-color 0.15s ease;
-            white-space: nowrap; /* Evita che i nomi vadano a capo a metà */
+            white-space: nowrap; 
+        }
+
+        /* Permette l'andata a capo e l'incolonnamento centrato specifico per l'About Me */
+        .menu-about li a {
+            white-space: normal; /* Consente la gestione dei margini a capo */
+            text-align: center;  /* Forza tutto il blocco al centro */
         }
 
         /* Padding verticali per mantenere la forma ovale ad inizio e fine menu */
@@ -220,7 +226,7 @@
             .sub-nav { margin-top: 15px; gap: 15px; }
             .dropdown-trigger { font-size: 1.4rem; }
             .dropdown-menu { border-radius: 35px / 45px; }
-            .menu-about { min-width: 220px; }
+            .menu-about { min-width: 240px; }
             .menu-contact { min-width: 170px; }
             .dropdown-menu li a { font-size: 1.2rem; padding: 8px 20px; }
             .dropdown-menu li:first-child a { padding-top: 18px; }
@@ -273,7 +279,7 @@
                 margin-top: 5px;
             }
 
-            .menu-about { min-width: 220px; }
+            .menu-about { min-width: 240px; }
             .menu-contact { min-width: 160px; }
 
             .dropdown:hover .dropdown-menu {
@@ -311,7 +317,7 @@
         </header>
 
         <div class="sub-nav">
-            <!-- MENU: About Me -->
+            <!-- MENU: About Me (Testo perfettamente a capo dopo Redaelli, e centrato in colonna) -->
             <div class="dropdown">
                 <a class="dropdown-trigger">About Me</a>
                 <ul class="dropdown-menu menu-about">
