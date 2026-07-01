@@ -26,7 +26,7 @@
             background-color: #fceecb;
         }
 
-        /* LAYER 1 — Sfondo Unico Reale (Desktop e Mobile) */
+        /* LAYER 1 — Sfondo */
         .bg-artwork {
             position: absolute;
             inset: 0;
@@ -51,7 +51,7 @@
 
         header {
             width: 100%;
-            margin-top: 52px; /* Calibrato per abbassare il titolo senza tagliare le lettere su desktop */
+            margin-top: 52px; 
             padding: 0 4%;
             pointer-events: auto;
             display: flex;
@@ -87,7 +87,7 @@
             padding: 0 4%;
             display: flex;
             justify-content: flex-end; 
-            gap: 75px; /* Distanziati di 1,5 cm su desktop */
+            gap: 75px; 
             pointer-events: auto;
             margin-top: 25px; 
         }
@@ -220,12 +220,14 @@
             .dropdown-menu { border-radius: 35px / 45px; }
         }
 
-        /* --- STILE IPHONE / MOBILE PERFETTO E PULITO --- */
+        /* --- STILE IPHONE / MOBILE PERFETTO CON INTEGRAZIONE COMPLETAMENTE CENTRATA --- */
         @media (max-width: 768px) {
-            /* Riposiziona lo sfondo nativo al centro perfetto per iPhone */
             .bg-artwork { 
                 display: block;
-                background-position: center 42%; /* Inquadra e centra la macchina al millimetro */
+                background-size: contain; /* Contiene l'immagine interamente senza tagliare i lati */
+                background-position: center 50%; /* Centra perfettamente la macchina verticalmente e orizzontalmente */
+                background-repeat: no-repeat;
+                background-color: #fceecb; /* Riempie lo spazio sopra e sotto con lo stesso colore esatto dell'artwork */
             }
 
             header { 
@@ -247,7 +249,7 @@
                 justify-content: center; 
                 margin-top: 0;
                 padding: 10px 0; 
-                gap: 30px; /* Distanza bilanciata su mobile */
+                gap: 30px; 
                 background-color: #b72216; 
                 box-shadow: 0 3px 6px rgba(0,0,0,0.15); 
             }
@@ -299,7 +301,6 @@
 </head>
 <body>
 
-    <!-- Sfondo Unico Condiviso -->
     <div class="bg-artwork"></div>
 
     <div class="content-overlay">
