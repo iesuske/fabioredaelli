@@ -37,6 +37,11 @@
             z-index: 1;
         }
 
+        /* Elemento immagine specifico per Mobile (nascosto su desktop) */
+        .mobile-artwork {
+            display: none;
+        }
+
         /* LAYER 2 — Contenuti */
         .content-overlay {
             position: relative;
@@ -51,7 +56,7 @@
 
         header {
             width: 100%;
-            margin-top: 65px; /* Aumentato da 45px a 65px per abbassare il titolo di mezzo centimetro su desktop */
+            margin-top: 50px; 
             padding: 0 4%;
             pointer-events: auto;
             display: flex;
@@ -66,7 +71,7 @@
             letter-spacing: 1px;
             text-align: center;
             white-space: nowrap;
-            line-height: 1;
+            line-height: 1.1; /* Sistemato l'interlinea per non tagliare le lettere */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -110,7 +115,6 @@
             text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
         }
 
-        /* Cambia colore in rosso al passaggio del mouse */
         .dropdown:hover .dropdown-trigger {
             color: #b72216;
         }
@@ -133,7 +137,6 @@
             overflow: hidden; 
         }
 
-        /* Larghezze regolate bilanciate */
         .menu-about {
             width: max-content;
             min-width: 245px; 
@@ -166,28 +169,20 @@
             white-space: nowrap; 
         }
 
-        /* Gestione incolonnamento centrato per l'About Me */
         .menu-about li a {
             white-space: normal; 
             text-align: center;  
             padding: 10px 24px; 
         }
 
-        /* Padding verticali per mantenere la forma ovale ad inizio e fine menu */
-        .dropdown-menu li:first-child a {
-            padding-top: 22px;
-        }
-
-        .dropdown-menu li:last-child a {
-            padding-bottom: 22px;
-        }
+        .dropdown-menu li:first-child a { padding-top: 22px; }
+        .dropdown-menu li:last-child a { padding-bottom: 22px; }
 
         .dropdown-menu li a:hover {
             background: #b72216; 
             color: #ffffff;
         }
 
-        /* Effetto hover */
         .dropdown:hover .dropdown-menu {
             display: block;
             animation: fadeInDropdown 0.2s ease-out;
@@ -201,6 +196,10 @@
         main {
             flex-grow: 1;
             pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
         }
 
         footer {
@@ -217,25 +216,36 @@
 
         /* --- MEDIA QUERY PER SCHERMI GRANDI / MEDI --- */
         @media (max-width: 1200px) {
-            header { margin-top: 55px; } /* Adattato proporzionalmente */
+            header { margin-top: 45px; }
             .brand-title { font-size: 4.2rem; }
         }
 
         @media (max-width: 900px) {
-            header { margin-top: 45px; }
+            header { margin-top: 35px; }
             .brand-title { font-size: 3rem; }
             .sub-nav { margin-top: 15px; gap: 15px; }
             .dropdown-trigger { font-size: 1.4rem; }
             .dropdown-menu { border-radius: 35px / 45px; }
             .menu-about { min-width: 225px; }
             .menu-contact { min-width: 170px; }
-            .dropdown-menu li a { font-size: 1.2rem; padding: 8px 15px; }
-            .dropdown-menu li:first-child a { padding-top: 18px; }
-            .dropdown-menu li:last-child a { padding-bottom: 18px; }
         }
 
-        /* FIX MOBILISSIMO: FOCUS SU MACCHINA CENTRATA E SCRITTA RIGA UNICA */
+        /* --- STILE MOBILE RIVOLUZIONATO (NO BUG) --- */
         @media (max-width: 768px) {
+            /* Disattiva l'immagine di sfondo nativa che creava sdoppiamenti */
+            .bg-artwork { 
+                display: none; 
+            }
+
+            /* Attiva l'immagine inserita nel flusso per centrarla al millimetro */
+            .mobile-artwork {
+                display: block;
+                max-width: 90%;
+                max-height: 50vh;
+                object-fit: contain;
+                pointer-events: auto;
+            }
+
             header { 
                 margin-top: 0; 
                 padding: 12px 10px;
@@ -248,6 +258,7 @@
                 white-space: nowrap;
                 width: 100%;
                 justify-content: center;
+                line-height: 1.2;
             }
 
             .sub-nav {
@@ -257,7 +268,6 @@
                 gap: 30px; 
                 background-color: #b72216; 
                 box-shadow: 0 3px 6px rgba(0,0,0,0.15); 
-                height: auto; 
             }
 
             .dropdown-trigger { 
@@ -294,29 +304,20 @@
             .dropdown-menu li:first-child a { padding-top: 18px; }
             .dropdown-menu li:last-child a { padding-bottom: 18px; }
 
-            /* FIX SFONDO MOBILE: Ridimensiona la macchina interamente dentro lo schermo */
-            .bg-artwork { 
-                background-size: contain; 
-                background-position: center 55%; 
-                background-repeat: no-repeat;
-            }
-
-            /* FIX FOOTER MOBILE: Forza la scritta su un'unica riga riducendo il font */
             footer {
                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-                font-size: 0.65rem; /* Rimpiccolito per non spezzarsi */
-                padding: 10px 5px;
+                font-size: 0.65rem; 
+                padding: 12px 10px;
                 background: rgba(0, 0, 0, 0.75); 
                 color: #ffffff;
-                white-space: nowrap; /* Impedisce tassativamente di andare a capo */
-                overflow: hidden;
-                text-overflow: ellipsis;
+                white-space: nowrap; 
             }
         }
     </style>
 </head>
 <body>
 
+    <!-- Sfondo Desktop -->
     <div class="bg-artwork"></div>
 
     <div class="content-overlay">
@@ -347,7 +348,10 @@
             </div>
         </div>
 
-        <main></main>
+        <!-- Al centro inseriamo la macchina visibile perfettamente su mobile -->
+        <main>
+            <img src="images/bg2.jpg" alt="Comic Artist Artwork" class="mobile-artwork">
+        </main>
 
         <footer>
             <p>Copyright 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
