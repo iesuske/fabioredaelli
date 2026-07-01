@@ -240,13 +240,13 @@
         @media (max-width: 768px) {
             header { 
                 margin-top: 0; 
-                padding: 15px;
+                padding: 8px 10px; /* Molto più stretto per non rubare spazio */
                 background-color: #fceecb; 
-                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             }
 
             .brand-title { 
-                font-size: 1.8rem; 
+                font-size: 1.5rem; /* Ridotto per stare perfettamente su una riga senza invadere lo schermo */
                 white-space: nowrap;
                 width: 100%;
                 justify-content: center;
@@ -255,15 +255,15 @@
             .sub-nav {
                 justify-content: center; 
                 margin-top: 0;
-                padding: 10px 0;
-                gap: 20px; 
+                padding: 6px 0; /* Ridotto lo spessore della banda rossa */
+                gap: 25px; 
                 background-color: #b72216; 
-                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+                box-shadow: 0 3px 8px rgba(0,0,0,0.2);
             }
 
             .dropdown-trigger { 
-                font-size: 1.4rem; 
-                padding: 5px 10px;
+                font-size: 1.3rem; 
+                padding: 4px 8px;
                 text-shadow: none;
                 color: #ffffff;
             }
@@ -295,14 +295,18 @@
             .dropdown-menu li:first-child a { padding-top: 18px; }
             .dropdown-menu li:last-child a { padding-bottom: 18px; }
 
+            /* Alza l'inquadratura del disegno per valorizzarlo su mobile */
             .bg-artwork { 
-                background-position: center 40%; 
+                background-position: center 28%; 
             }
 
+            /* Fix totale font e encoding del footer per iPhone */
             footer {
-                font-size: 0.8rem;
-                padding: 12px 10px;
-                background: rgba(0, 0, 0, 0.7); 
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                font-size: 0.75rem;
+                padding: 10px 10px;
+                background: rgba(0, 0, 0, 0.75); 
+                color: #ffffff;
             }
         }
     </style>
@@ -342,7 +346,7 @@
         <main></main>
 
         <footer>
-            <p>&copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
+            <p>Copyright 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
         </footer>
     </div>
 
