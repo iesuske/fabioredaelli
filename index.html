@@ -133,10 +133,11 @@
             overflow: hidden; 
         }
 
-        /* Larghezze e comportamenti bilanciati */
+        /* Larghezze bilanciate e ristrette */
         .menu-about {
             width: max-content;
-            min-width: 260px; 
+            min-width: 170px; /* Ristretto per evitare che sia troppo largo */
+            max-width: 220px; /* Impedisce che si allarghi eccessivamente */
         }
 
         .menu-contact {
@@ -153,7 +154,7 @@
         .dropdown-menu li a {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            padding: 10px 25px; 
+            padding: 10px 20px; 
             text-decoration: none;
             display: block;
             width: 100%;
@@ -165,10 +166,11 @@
             white-space: nowrap; 
         }
 
-        /* Permette l'andata a capo e l'incolonnamento centrato specifico per l'About Me */
+        /* Gestione incolonnamento stretto e centrato per l'About Me */
         .menu-about li a {
-            white-space: normal; /* Consente la gestione dei margini a capo */
-            text-align: center;  /* Forza tutto il blocco al centro */
+            white-space: normal; 
+            text-align: center;  
+            padding: 10px 15px; /* Un po' meno padding interno per stringere ulteriormente */
         }
 
         /* Padding verticali per mantenere la forma ovale ad inizio e fine menu */
@@ -226,9 +228,9 @@
             .sub-nav { margin-top: 15px; gap: 15px; }
             .dropdown-trigger { font-size: 1.4rem; }
             .dropdown-menu { border-radius: 35px / 45px; }
-            .menu-about { min-width: 240px; }
+            .menu-about { min-width: 160px; }
             .menu-contact { min-width: 170px; }
-            .dropdown-menu li a { font-size: 1.2rem; padding: 8px 20px; }
+            .dropdown-menu li a { font-size: 1.2rem; padding: 8px 15px; }
             .dropdown-menu li:first-child a { padding-top: 18px; }
             .dropdown-menu li:last-child a { padding-bottom: 18px; }
             .bg-artwork { background-position: center 14%; }
@@ -279,7 +281,7 @@
                 margin-top: 5px;
             }
 
-            .menu-about { min-width: 240px; }
+            .menu-about { min-width: 160px; max-width: 200px; }
             .menu-contact { min-width: 160px; }
 
             .dropdown:hover .dropdown-menu {
@@ -287,7 +289,7 @@
             }
 
             .dropdown-menu li a { 
-                padding: 10px 20px; 
+                padding: 10px 15px; 
                 font-size: 1.1rem; 
             }
             .dropdown-menu li:first-child a { padding-top: 18px; }
@@ -317,7 +319,7 @@
         </header>
 
         <div class="sub-nav">
-            <!-- MENU: About Me (Testo perfettamente a capo dopo Redaelli, e centrato in colonna) -->
+            <!-- MENU: About Me (Stretto e incolonnato perfettamente al centro) -->
             <div class="dropdown">
                 <a class="dropdown-trigger">About Me</a>
                 <ul class="dropdown-menu menu-about">
