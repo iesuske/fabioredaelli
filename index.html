@@ -89,7 +89,7 @@
             justify-content: flex-end; 
             gap: 75px; 
             pointer-events: auto;
-            margin-top: 25px; 
+            margin-top: -15px; /* Modificato per alzare i menu */
         }
 
         .dropdown {
@@ -215,7 +215,7 @@
         @media (max-width: 900px) {
             header { margin-top: 35px; }
             .brand-title { font-size: 3rem; }
-            .sub-nav { margin-top: 15px; gap: 30px; }
+            .sub-nav { margin-top: 0px; gap: 30px; } /* Regolato per mantenere fluidità */
             .dropdown-trigger { font-size: 1.4rem; }
             .dropdown-menu { border-radius: 35px / 45px; }
         }
@@ -224,10 +224,10 @@
         @media (max-width: 768px) {
             .bg-artwork { 
                 display: block;
-                background-size: contain; /* Contiene l'immagine interamente senza tagliare i lati */
-                background-position: center 50%; /* Centra perfettamente la macchina verticalmente e orizzontalmente */
+                background-size: contain; 
+                background-position: center 50%; 
                 background-repeat: no-repeat;
-                background-color: #fceecb; /* Riempie lo spazio sopra e sotto con lo stesso colore esatto dell'artwork */
+                background-color: #fceecb; 
             }
 
             header { 
@@ -311,7 +311,6 @@
         </header>
 
         <div class="sub-nav">
-            <!-- MENU: About Me -->
             <div class="dropdown">
                 <a class="dropdown-trigger">About Me</a>
                 <ul class="dropdown-menu menu-about">
@@ -319,7 +318,6 @@
                 </ul>
             </div>
 
-            <!-- MENU: Contact Me -->
             <div class="dropdown">
                 <a class="dropdown-trigger">Contact Me</a>
                 <ul class="dropdown-menu menu-contact">
