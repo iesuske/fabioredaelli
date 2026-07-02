@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -74,27 +73,27 @@
         .dropdown-menu {
             display: none; position: absolute;
             right: 50%; transform: translateX(50%); 
-            top: 100%; margin-top: 2px; 
+            top: 100%; 
+            margin-top: 0; /* RIMOSSO IL MARGINE CHE SPOSTAVA IL MENU */
             background: #000000; 
             box-shadow: 0px 12px 32px rgba(0,0,0,0.55);
-            border-radius: 35px / 45px;
-            border: none; /* Rimosso il bordo nero */
+            border-radius: 45px / 55px;
+            border: none; /* ELIMINATO IL BORDO NERO */
             list-style: none;
-            padding: 10px 0; /* Spazio interno per non attaccare le voci */
+            padding: 0; 
             z-index: 10;
             overflow: hidden; 
         }
 
-        /* Menu ristretti e allungati */
-        .menu-about { min-width: 220px; }
-        .menu-contact { min-width: 170px; }
+        .menu-about { min-width: 245px; }
+        .menu-contact { min-width: 190px; }
 
         .dropdown-menu li { width: 100%; }
 
         .dropdown-menu li a {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            padding: 12px 20px; /* Più spazio verticale per distanziare le voci */
+            padding: 12px 20px; /* Padding coerente per le voci */
             text-decoration: none;
             display: block;
             width: 100%;
@@ -103,8 +102,9 @@
             transition: background-color 0.1s ease;
         }
 
+        /* Il rosso copre tutto senza stacchi */
         .dropdown-menu li a:hover {
-            background-color: #b72216;
+            background-color: #b72216 !important;
             color: #ffffff;
         }
 
@@ -121,7 +121,7 @@
         @media (max-width: 768px) {
             .brand-title { font-size: 1.6rem; }
             .sub-nav { justify-content: center; gap: 30px; background-color: #b72216; }
-            .dropdown-menu { border-radius: 20px; left: 50%; transform: translateX(-50%); }
+            .dropdown-menu { border-radius: 25px / 35px; left: 50%; transform: translateX(-50%); }
         }
     </style>
 </head>
