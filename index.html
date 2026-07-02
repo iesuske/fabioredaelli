@@ -26,7 +26,6 @@
             background-color: #fceecb;
         }
 
-        /* LAYER 1 — Sfondo */
         .bg-artwork {
             position: absolute;
             inset: 0;
@@ -37,7 +36,6 @@
             z-index: 1;
         }
 
-        /* LAYER 2 — Contenuti */
         .content-overlay {
             position: relative;
             z-index: 2;
@@ -51,7 +49,8 @@
 
         header {
             width: 100%;
-            margin-top: 52px; 
+            /* ALZATO IL TITOLO: Ridotto da 52px a 30px */
+            margin-top: 30px; 
             padding: 0 4%;
             pointer-events: auto;
             display: flex;
@@ -176,7 +175,6 @@
             width: 100%;
         }
 
-        /* --- MEDIA QUERY CORRETTA --- */
         @media (max-width: 768px) {
             .sub-nav { 
                 justify-content: center; 
@@ -185,8 +183,6 @@
                 gap: 30px; 
                 background-color: #b72216; 
             }
-
-            /* Alzata la posizione delle voci menu */
             .dropdown-menu li a { 
                 padding: 2px 15px 8px 15px; 
                 font-size: 1.1rem; 
