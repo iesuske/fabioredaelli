@@ -87,7 +87,7 @@
             padding: 0 4%;
             display: flex;
             justify-content: flex-end; 
-            gap: 1cm; /* Distanza tra i due menu aumentata a 1 centimetro */
+            gap: 2cm; /* Distanza mantenuta a 2 centimetri */
             pointer-events: auto;
             margin-top: 0; 
         }
@@ -152,7 +152,7 @@
         .dropdown-menu li a {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            padding: 10px 20px; 
+            padding: 5px 20px; /* Padding verticale ridotto per abbassare l'altezza della selezione rossa */
             text-decoration: none;
             display: block;
             width: 100%;
@@ -167,11 +167,11 @@
         .menu-about li a {
             white-space: normal; 
             text-align: center;  
-            padding: 10px 24px; 
+            padding: 5px 24px; /* Padding verticale ridotto */
         }
 
-        .dropdown-menu li:first-child a { padding-top: 22px; }
-        .dropdown-menu li:last-child a { padding-bottom: 22px; }
+        .dropdown-menu li:first-child a { padding-top: 14px; } /* Regolato per i bordi arrotondati */
+        .dropdown-menu li:last-child a { padding-bottom: 14px; } /* Regolato per i bordi arrotondati */
 
         .dropdown-menu li a:hover {
             background: #b72216; 
@@ -209,13 +209,13 @@
         @media (max-width: 1200px) {
             header { margin-top: 45px; }
             .brand-title { font-size: 4.2rem; }
-            .sub-nav { gap: 1cm; }
+            .sub-nav { gap: 2cm; }
         }
 
         @media (max-width: 900px) {
             header { margin-top: 35px; }
             .brand-title { font-size: 3rem; }
-            .sub-nav { margin-top: 0px; gap: 1cm; }
+            .sub-nav { margin-top: 0px; gap: 2cm; }
             .dropdown-trigger { font-size: 1.4rem; }
             .dropdown-menu { border-radius: 35px / 45px; }
         }
@@ -282,11 +282,11 @@
             }
 
             .dropdown-menu li a { 
-                padding: 10px 15px; 
+                padding: 5px 15px; /* Proporzionato per il mobile */
                 font-size: 1.1rem; 
             }
-            .dropdown-menu li:first-child a { padding-top: 18px; }
-            .dropdown-menu li:last-child a { padding-bottom: 18px; }
+            .dropdown-menu li:first-child a { padding-top: 12px; }
+            .dropdown-menu li:last-child a { padding-bottom: 12px; }
 
             footer {
                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
