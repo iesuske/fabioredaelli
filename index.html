@@ -12,23 +12,17 @@
             font-style: normal;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         html, body {
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             overflow-x: hidden;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #fceecb;
         }
 
         .bg-artwork {
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0;
             background-image: url('images/bg2.jpg');
             background-size: cover;
             background-position: center 18%; 
@@ -37,36 +31,27 @@
         }
 
         .content-overlay {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            position: relative; z-index: 2;
+            width: 100%; height: 100%;
+            display: flex; flex-direction: column; justify-content: space-between;
             pointer-events: none;
         }
 
         header {
             width: 100%;
-            margin-top: 52px; /* Ripristinato valore originale */
+            margin-top: 52px; /* Titolo bloccato qui */
             padding: 0 4%;
             pointer-events: auto;
             display: flex;
             justify-content: center;
-            align-items: center;
         }
 
         .brand-title {
             font-family: 'Lobster Regular', cursive;
             font-size: 5.5rem; 
-            letter-spacing: 1px;
             text-align: center;
             white-space: nowrap;
-            line-height: 1.1; /* Leggera modifica per evitare tagli senza spostare tutto */
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            line-height: 1.2;
             text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
@@ -74,110 +59,75 @@
         .text-black { color: #000000; }
 
         .sub-nav {
-            width: 100%;
-            padding: 0 4%;
-            display: flex;
-            justify-content: flex-end; 
-            gap: 3cm;
-            pointer-events: auto;
-            margin-top: 0; 
+            width: 100%; padding: 0 4%;
+            display: flex; justify-content: flex-end; 
+            gap: 3cm; pointer-events: auto;
+            margin-top: 20px; /* SPOSTATI I MENU VERSO IL BASSO DI 20 PIXEL */
         }
 
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
+        .dropdown { position: relative; display: inline-block; }
 
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
-            color: #ffffff; 
-            font-size: 1.8rem;
-            text-decoration: none;
-            cursor: pointer;
+            color: #ffffff; font-size: 1.8rem;
+            text-decoration: none; cursor: pointer;
             padding: 10px 15px;
-            transition: color 0.2s ease;
-            white-space: nowrap;
             text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
         }
 
-        .dropdown:hover .dropdown-trigger {
-            color: #b72216;
-        }
+        .dropdown:hover .dropdown-trigger { color: #b72216; }
 
         .dropdown-menu {
-            display: none;
-            position: absolute;
-            right: 50%;
-            transform: translateX(50%); 
-            top: 100%;
-            margin-top: 2px; 
+            display: none; position: absolute;
+            right: 50%; transform: translateX(50%); 
+            top: 100%; margin-top: 2px; 
             background: #000000; 
             box-shadow: 0px 12px 32px rgba(0,0,0,0.55);
             border-radius: 45px / 55px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            border: none;
             list-style: none;
             padding: 0; 
             z-index: 10;
-            overflow: hidden; /* Elimina il bordo nero negli angoli */
+            overflow: hidden; 
         }
 
-        .menu-about { width: max-content; min-width: 245px; max-width: 290px; }
-        .menu-contact { width: max-content; min-width: 190px; }
+        .menu-about { min-width: 245px; }
+        .menu-contact { min-width: 190px; }
 
-        .dropdown-menu li { margin: 0; width: 100%; display: block; }
+        .dropdown-menu li { width: 100%; }
 
         .dropdown-menu li a {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            padding: 5px 20px; 
+            padding: 5px 20px;
             text-decoration: none;
             display: block;
             width: 100%;
             font-size: 1.3rem; 
             text-align: center; 
             transition: background-color 0.15s ease;
-            white-space: nowrap; 
         }
-
-        .menu-about li a { white-space: normal; text-align: center; padding: 5px 24px; }
-        .dropdown-menu li:first-child a { padding-top: 14px; } 
-        .dropdown-menu li:last-child a { padding-bottom: 14px; } 
 
         .dropdown-menu li a:hover {
             background: #b72216; 
             color: #ffffff;
         }
 
-        .dropdown:hover .dropdown-menu {
-            display: block;
-        }
+        .dropdown:hover .dropdown-menu { display: block; }
 
         main { flex-grow: 1; pointer-events: none; }
 
         footer {
-            padding: 15px;
-            text-align: center;
+            padding: 15px; text-align: center;
             color: rgba(255, 255, 255, 0.9);
-            font-size: 0.85rem;
-            pointer-events: auto;
+            font-size: 0.85rem; pointer-events: auto;
             background: rgba(13, 27, 42, 0.6);
             backdrop-filter: blur(4px);
-            width: 100%;
-        }
-
-        @media (max-width: 768px) {
-            .bg-artwork { background-size: contain; }
-            .brand-title { font-size: 1.6rem; }
-            .sub-nav { justify-content: center; gap: 30px; background-color: #b72216; }
-            .dropdown-menu { border-radius: 25px / 35px; left: 50%; transform: translateX(-50%); }
-            .dropdown-menu li a { font-size: 1.1rem; }
         }
     </style>
 </head>
 <body>
-
     <div class="bg-artwork"></div>
-
     <div class="content-overlay">
         <header>
             <h1 class="brand-title">
@@ -189,7 +139,7 @@
             <div class="dropdown">
                 <a class="dropdown-trigger">About Me</a>
                 <ul class="dropdown-menu menu-about">
-                    <li><a href="#about">Sono Fabio Redaelli,<br>appassionato di Rock’n’Roll e arte, ecc...</a></li>
+                    <li><a href="#about">Sono Fabio Redaelli,<br>appassionato di Rock’n’Roll e arte</a></li>
                 </ul>
             </div>
 
@@ -203,13 +153,10 @@
                 </ul>
             </div>
         </div>
-
         <main></main>
-
         <footer>
             <p>Copyright 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
         </footer>
     </div>
-
 </body>
 </html>
