@@ -87,7 +87,7 @@
             padding: 0 4%;
             display: flex;
             justify-content: flex-end; 
-            gap: 2cm; /* Distanza mantenuta a 2 centimetri */
+            gap: 3cm; /* Distanza tra i due menu aumentata a 3 centimetri complessivi */
             pointer-events: auto;
             margin-top: 0; 
         }
@@ -152,7 +152,7 @@
         .dropdown-menu li a {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            padding: 5px 20px; /* Padding verticale ridotto per abbassare l'altezza della selezione rossa */
+            padding: 5px 20px; /* Mantenuta la selezione rossa ad altezza ridotta */
             text-decoration: none;
             display: block;
             width: 100%;
@@ -167,11 +167,11 @@
         .menu-about li a {
             white-space: normal; 
             text-align: center;  
-            padding: 5px 24px; /* Padding verticale ridotto */
+            padding: 5px 24px; 
         }
 
-        .dropdown-menu li:first-child a { padding-top: 14px; } /* Regolato per i bordi arrotondati */
-        .dropdown-menu li:last-child a { padding-bottom: 14px; } /* Regolato per i bordi arrotondati */
+        .dropdown-menu li:first-child a { padding-top: 14px; } 
+        .dropdown-menu li:last-child a { padding-bottom: 14px; } 
 
         .dropdown-menu li a:hover {
             background: #b72216; 
@@ -209,13 +209,13 @@
         @media (max-width: 1200px) {
             header { margin-top: 45px; }
             .brand-title { font-size: 4.2rem; }
-            .sub-nav { gap: 2cm; }
+            .sub-nav { gap: 3cm; }
         }
 
         @media (max-width: 900px) {
             header { margin-top: 35px; }
             .brand-title { font-size: 3rem; }
-            .sub-nav { margin-top: 0px; gap: 2cm; }
+            .sub-nav { margin-top: 0px; gap: 3cm; }
             .dropdown-trigger { font-size: 1.4rem; }
             .dropdown-menu { border-radius: 35px / 45px; }
         }
@@ -282,7 +282,7 @@
             }
 
             .dropdown-menu li a { 
-                padding: 5px 15px; /* Proporzionato per il mobile */
+                padding: 5px 15px; 
                 font-size: 1.1rem; 
             }
             .dropdown-menu li:first-child a { padding-top: 12px; }
