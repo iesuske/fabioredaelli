@@ -37,7 +37,6 @@
             pointer-events: none;
         }
 
-        /* HEADER BLOCCATO COME ORIGINALE */
         header {
             width: 100%;
             margin-top: 52px; 
@@ -59,13 +58,10 @@
         .text-white { color: #ffffff; }
         .text-black { color: #000000; }
 
-        /* SPOSTAMENTO SOLO DEI MENU VERSO IL BASSO */
         .sub-nav {
             width: 100%; padding: 0 4%;
             display: flex; justify-content: flex-end; 
             gap: 3cm; pointer-events: auto;
-            position: relative;
-            top: 20px; /* Sposta i menu di 20px verso il basso rispetto alla posizione originale */
         }
 
         .dropdown { position: relative; display: inline-block; }
@@ -91,7 +87,7 @@
             list-style: none;
             padding: 0; 
             z-index: 10;
-            overflow: hidden; 
+            overflow: hidden; /* Manteniamo solo questo per il bordo nero */
         }
 
         .menu-about { min-width: 245px; }
