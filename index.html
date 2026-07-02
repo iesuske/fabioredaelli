@@ -70,42 +70,40 @@
 
         .dropdown:hover .dropdown-trigger { color: #b72216; }
 
+        /* MENU FISSO E STRETTO */
         .dropdown-menu {
-            display: none; position: absolute;
-            right: 50%; transform: translateX(50%); 
+            display: none; 
+            position: absolute;
+            left: 0; /* Allineato a sinistra del contenitore dropdown */
             top: 100%; 
-            margin-top: 0; /* RIMOSSO IL MARGINE CHE SPOSTAVA IL MENU */
+            margin-top: 5px; 
             background: #000000; 
-            box-shadow: 0px 12px 32px rgba(0,0,0,0.55);
-            border-radius: 45px / 55px;
-            border: none; /* ELIMINATO IL BORDO NERO */
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.5);
+            border-radius: 20px;
+            border: none;
             list-style: none;
-            padding: 0; 
+            padding: 5px 0; 
             z-index: 10;
-            overflow: hidden; 
+            width: 190px; /* Larghezza fissa ristretta */
+            overflow: hidden;
         }
-
-        .menu-about { min-width: 245px; }
-        .menu-contact { min-width: 190px; }
 
         .dropdown-menu li { width: 100%; }
 
         .dropdown-menu li a {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            padding: 12px 20px; /* Padding coerente per le voci */
+            padding: 6px 10px; /* Voci distanziate ma contenute */
             text-decoration: none;
             display: block;
             width: 100%;
-            font-size: 1.3rem; 
+            font-size: 1.2rem; 
             text-align: center; 
-            transition: background-color 0.1s ease;
+            transition: background 0s;
         }
 
-        /* Il rosso copre tutto senza stacchi */
         .dropdown-menu li a:hover {
             background-color: #b72216 !important;
-            color: #ffffff;
         }
 
         .dropdown:hover .dropdown-menu { display: block; }
@@ -116,12 +114,6 @@
             font-size: 0.85rem; pointer-events: auto;
             background: rgba(13, 27, 42, 0.6);
             backdrop-filter: blur(4px);
-        }
-
-        @media (max-width: 768px) {
-            .brand-title { font-size: 1.6rem; }
-            .sub-nav { justify-content: center; gap: 30px; background-color: #b72216; }
-            .dropdown-menu { border-radius: 25px / 35px; left: 50%; transform: translateX(-50%); }
         }
     </style>
 </head>
@@ -137,14 +129,14 @@
         <div class="sub-nav">
             <div class="dropdown">
                 <a class="dropdown-trigger">About Me</a>
-                <ul class="dropdown-menu menu-about">
-                    <li><a href="#about">Sono Fabio Redaelli,<br>appassionato di Rock’n’Roll e arte</a></li>
+                <ul class="dropdown-menu">
+                    <li><a href="#about">Chi sono</a></li>
                 </ul>
             </div>
 
             <div class="dropdown">
                 <a class="dropdown-trigger">Contact Me</a>
-                <ul class="dropdown-menu menu-contact">
+                <ul class="dropdown-menu">
                     <li><a href="#instagram">Instagram</a></li>
                     <li><a href="#facebook">Facebook</a></li>
                     <li><a href="#telegram">Telegram</a></li>
