@@ -87,9 +87,9 @@
             padding: 0 4%;
             display: flex;
             justify-content: flex-end; 
-            gap: 75px; 
+            gap: 0.5cm; /* Distanza tra i due menu impostata esattamente a mezzo centimetro */
             pointer-events: auto;
-            margin-top: 0; /* Alzato di pochissimi pixel per il bilanciamento finale */
+            margin-top: 0; 
         }
 
         .dropdown {
@@ -209,13 +209,13 @@
         @media (max-width: 1200px) {
             header { margin-top: 45px; }
             .brand-title { font-size: 4.2rem; }
-            .sub-nav { gap: 50px; }
+            .sub-nav { gap: 0.5cm; }
         }
 
         @media (max-width: 900px) {
             header { margin-top: 35px; }
             .brand-title { font-size: 3rem; }
-            .sub-nav { margin-top: 0px; gap: 30px; }
+            .sub-nav { margin-top: 0px; gap: 0.5cm; }
             .dropdown-trigger { font-size: 1.4rem; }
             .dropdown-menu { border-radius: 35px / 45px; }
         }
