@@ -16,7 +16,7 @@
 
         html, body {
             width: 100%; height: 100%;
-            overflow-x: hidden;
+            overflow: hidden; /* Blocca lo scroll per mantenere la vista perfetta */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #fceecb;
         }
@@ -25,8 +25,8 @@
             position: absolute;
             inset: 0;
             background-image: url('images/bg2.jpg');
-            background-size: cover;
-            background-position: center 20%; 
+            background-size: contain; /* L'auto ora rientra nello schermo */
+            background-position: bottom center; 
             background-repeat: no-repeat;
             z-index: 1;
         }
@@ -35,24 +35,20 @@
             position: relative;
             z-index: 2;
             width: 100%; height: 100%;
-            display: flex; flex-direction: column; justify-content: space-between;
+            display: flex; flex-direction: column;
             pointer-events: none;
         }
 
         header {
             width: 100%;
-            margin-top: 52px; 
-            padding: 0 4%;
+            margin-top: 20px; 
             pointer-events: auto;
-            display: flex;
-            justify-content: center;
+            text-align: center;
         }
 
         .brand-title {
             font-family: 'Lobster Regular', cursive;
-            font-size: 3.28rem;
-            text-align: center;
-            line-height: 1.1;
+            font-size: 1.8rem; /* Rimpicciolito per iPhone */
             text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
@@ -61,60 +57,37 @@
 
         .sub-nav {
             width: 100%;
-            padding: 0 4%;
-            margin-top: 42px;
-            display: flex; justify-content: center; /* Centrato su mobile */
-            gap: 20px; 
+            margin-top: 15px;
+            display: flex; justify-content: center;
+            gap: 15px; 
             pointer-events: auto;
         }
 
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             text-decoration: none; cursor: pointer;
-            padding: 5px 10px;
-            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
-        }
-
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            left: 50%; transform: translateX(-50%); 
-            top: 100%; margin-top: 5px; 
-            background: #000000; 
-            box-shadow: 0px 8px 20px rgba(0,0,0,0.5);
-            border-radius: 15px; 
-            list-style: none;
-            z-index: 10;
-        }
-
-        .dropdown:hover .dropdown-menu { display: block; }
-
-        .dropdown-menu li a {
-            font-family: 'Lobster Regular', cursive;
-            color: #ffffff; 
-            padding: 10px 20px;
-            font-size: 1.1rem; 
-            text-align: center;
-            display: block;
+            padding: 5px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
             padding: 10px;
             text-align: center;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.7rem; pointer-events: auto;
-            background: rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            font-size: 0.65rem; 
+            pointer-events: auto;
+            background: rgba(0, 0, 0, 0.6);
         }
 
-        /* OTTIMIZZAZIONE IPHONE */
-        @media (max-width: 480px) {
-            .brand-title { font-size: 2.2rem; transform: translateY(10px); }
-            .sub-nav { margin-top: 20px; gap: 10px; }
-            .dropdown-trigger { font-size: 1.2rem; }
-            .bg-artwork { background-size: 150%; background-position: center 30%; }
-        }
+        /* Nessuna modifica necessaria ai dropdown esistenti */
+        .dropdown-menu { display: none; position: absolute; left: 50%; transform: translateX(-50%); background: #000; border-radius: 10px; z-index: 10; }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu li a { font-family: 'Lobster Regular'; color: #fff; padding: 5px 10px; font-size: 0.9rem; text-decoration: none; display: block; }
     </style>
 </head>
 <body>
@@ -122,30 +95,23 @@
     <div class="content-overlay">
         <header>
             <h1 class="brand-title">
-                <span class="text-white">Fabio</span><br><span class="text-black">Hot Stuff</span><br><span class="text-white">Redaelli</span>
+                <span class="text-white">Fabio</span> <span class="text-black">Hot Stuff</span> <span class="text-white">Redaelli</span>
             </h1>
         </header>
 
         <div class="sub-nav">
             <div class="dropdown">
                 <a class="dropdown-trigger">About Me</a>
-                <ul class="dropdown-menu">
-                    <li><a href="#about">Sono Fabio Redaelli,<br>artista e sognatore</a></li>
-                </ul>
+                <ul class="dropdown-menu"><li><a href="#about">Comic Artist</a></li></ul>
             </div>
-
             <div class="dropdown">
                 <a class="dropdown-trigger">Contact</a>
-                <ul class="dropdown-menu">
-                    <li><a href="#instagram">Instagram</a></li>
-                    <li><a href="#facebook">Facebook</a></li>
-                    <li><a href="#telegram">Telegram</a></li>
-                </ul>
+                <ul class="dropdown-menu"><li><a href="#social">Social</a></li></ul>
             </div>
         </div>
-        <main></main>
+        
         <footer>
-            <p>© 2026 Fabio Redaelli - Comic Art Author.</p>
+            <p>© 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
         </footer>
     </div>
 </body>
