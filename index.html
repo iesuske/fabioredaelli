@@ -64,7 +64,7 @@
         .sub-nav {
             width: 100%;
             padding: 0 4%;
-            margin-top: 42px; 
+            margin-top: 32px; /* Avvicinati di 10px (da 42px a 32px) */
             display: flex; justify-content: flex-end; 
             gap: 3cm; pointer-events: auto;
         }
@@ -80,6 +80,8 @@
             text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
         }
 
+        /* Ridotto il font di About Me di un punto */
+        .about-trigger { font-size: 1.6rem; }
         .contact-trigger { font-size: 1.6rem; }
 
         .dropdown:hover .dropdown-trigger { color: #b72216; }
@@ -91,25 +93,23 @@
             top: 100%; margin-top: 2px; 
             background: #000000; 
             box-shadow: 0px 12px 32px rgba(0,0,0,0.55);
-            border-radius: 20px; /* Bordo arrotondato uniforme */
+            border-radius: 20px; 
             border: none;
             list-style: none;
-            padding: 0; /* Rimosso padding per far aderire il rosso */
+            padding: 0; 
             z-index: 10;
-            overflow: hidden; /* Taglia l'hover al bordo */
+            overflow: hidden; 
         }
 
         .menu-about { min-width: 245px; }
-        .menu-contact { 
-            min-width: 150px; /* Restretto per essere più compatto */
-        } 
+        .menu-contact { min-width: 150px; } 
 
         .dropdown-menu li { width: 100%; }
 
         .dropdown-menu li a {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            padding: 8px 15px; /* Adattato per la nuova larghezza */
+            padding: 8px 15px; 
             text-decoration: none;
             display: block;
             width: 100%;
@@ -148,7 +148,7 @@
 
         <div class="sub-nav">
             <div class="dropdown">
-                <a class="dropdown-trigger">About Me</a>
+                <a class="dropdown-trigger about-trigger">About Me</a>
                 <ul class="dropdown-menu menu-about">
                     <li><a href="#about">Sono Fabio Redaelli,<br>appassionato di Rock’n’Roll e arte</a></li>
                 </ul>
