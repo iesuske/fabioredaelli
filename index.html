@@ -161,57 +161,74 @@
            RESPONSIVE OVERRIDES — iPhone / mobile (≤480px)
            ===================================================== */
         @media (max-width: 480px) {
-            html, body { overflow-x: hidden; }
+            /* Blocca l'intero hero a UNA sola schermata: niente scroll,
+               niente body più alto del viewport → lo sfondo (bg-artwork,
+               absolute/inset:0) resta vincolato a 100dvh invece di
+               "spalmarsi" su più schermate di scroll. */
+            html, body {
+                height: 100vh;      /* fallback iOS < 15.4 */
+                height: 100dvh;
+                overflow: hidden;
+                overflow-x: hidden;
+            }
 
             .bg-artwork {
-                background-position: center 12%;
+                background-size: cover;
+                background-position: center 8%;  /* mostra titolo + inizio auto, non tutta la scena */
+            }
+
+            .content-overlay {
+                height: 100vh;
+                height: 100dvh;
             }
 
             header {
-                margin-top: 24px;
-                padding: 0 3%;
+                margin-top: 16px;
+                padding: 0 4%;
             }
 
             .brand-title {
-                font-size: 1.55rem;
+                font-size: 1.45rem;
                 white-space: normal;      /* niente più overflow orizzontale */
-                line-height: 1.25;
-                transform: translateY(10px);
+                line-height: 1.2;
+                transform: translateY(6px);
             }
 
             .sub-nav {
-                margin-top: 18px;
-                gap: 24px;                /* niente più calc(3cm - 8px) */
+                margin-top: 10px;
+                gap: 20px;                 /* niente più calc(3cm - 8px) */
+                justify-content: center;   /* centrato invece di flex-end: più leggibile su schermi stretti */
                 flex-wrap: wrap;
+                padding: 0 4%;
             }
 
             .dropdown-trigger {
-                font-size: 1.15rem;
-                padding: 6px 10px;
+                font-size: 1.05rem;
+                padding: 5px 8px;
             }
 
-            .contact-trigger { font-size: 1.1rem; }
+            .contact-trigger { font-size: 1rem; }
 
             .dropdown-menu {
-                min-width: 200px;
+                min-width: 190px;
                 max-width: 90vw;
                 left: 50%;
                 right: auto;
                 transform: translateX(-50%);
             }
 
-            .menu-about { min-width: 180px; }
-            .menu-contact { min-width: 140px; }
+            .menu-about { min-width: 170px; }
+            .menu-contact { min-width: 130px; }
 
             .dropdown-menu li a {
-                font-size: 1.05rem;
+                font-size: 1rem;
                 padding: 10px 12px;       /* target touch più grande */
             }
 
             footer {
-                font-size: 0.72rem;
-                padding: 10px 12px;
-                line-height: 1.4;
+                font-size: 0.68rem;
+                padding: 8px 10px;
+                line-height: 1.3;
             }
         }
 
