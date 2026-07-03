@@ -163,7 +163,11 @@
 
             .content-overlay {
                 height: auto;      /* niente più flex-shrink sui figli: il contenuto reale (immagine inclusa) detta l'altezza */
-                min-height: 100%;
+                min-height: 0;     /* esplicito: NON deve legarsi a body{height:100%} della regola desktop, altrimenti torna a dipendere dal viewport */
+            }
+
+            main {
+                flex-grow: 0;      /* nessuno spazio residuo da distribuire: elimina il vuoto sotto l'immagine */
             }
 
             .brand-title {
