@@ -64,9 +64,9 @@
         .sub-nav {
             width: 100%;
             padding: 0 4%;
-            margin-top: 42px; 
+            margin-top: 42px; /* Ripristinato margine verticale */
             display: flex; justify-content: flex-end; 
-            gap: calc(3cm - 8px); 
+            gap: calc(3cm - 8px); /* Avvicinati in orizzontale di 8px */
             pointer-events: auto;
         }
 
@@ -75,7 +75,7 @@
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            font-size: 1.7rem; 
+            font-size: 1.7rem; /* Ripristinato font originale */
             text-decoration: none; cursor: pointer;
             padding: 10px 15px;
             text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
@@ -133,20 +133,91 @@
             font-size: 0.85rem; pointer-events: auto;
             background: rgba(13, 27, 42, 0.6);
             backdrop-filter: blur(4px);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
-        /* --- STILE MOBILE (iPhone) --- */
-        @media only screen and (max-width: 480px) {
-            .brand-title { 
-                font-size: 1.6rem; 
-                white-space: normal; 
-                transform: translateY(10px); 
+        /* =====================================================
+           RESPONSIVE OVERRIDES — iPad / tablet (≤1024px)
+           Il layout desktop sopra resta invariato: qui si
+           sovrascrivono solo le proprietà che rompono il layout
+           su viewport stretti (nowrap, gap in cm, margini fissi).
+           ===================================================== */
+        @media (max-width: 1024px) {
+            .brand-title {
+                font-size: 2.6rem;
+                transform: translateY(20px);
             }
-            .sub-nav { 
-                justify-content: center; 
-                gap: 15px; 
+
+            .sub-nav {
+                gap: 40px;
+                margin-top: 30px;
             }
-            .dropdown-trigger { font-size: 1.2rem; }
+
+            header { margin-top: 36px; }
+        }
+
+        /* =====================================================
+           RESPONSIVE OVERRIDES — iPhone / mobile (≤480px)
+           ===================================================== */
+        @media (max-width: 480px) {
+            html, body { overflow-x: hidden; }
+
+            .bg-artwork {
+                background-position: center 12%;
+            }
+
+            header {
+                margin-top: 24px;
+                padding: 0 3%;
+            }
+
+            .brand-title {
+                font-size: 1.55rem;
+                white-space: normal;      /* niente più overflow orizzontale */
+                line-height: 1.25;
+                transform: translateY(10px);
+            }
+
+            .sub-nav {
+                margin-top: 18px;
+                gap: 24px;                /* niente più calc(3cm - 8px) */
+                flex-wrap: wrap;
+            }
+
+            .dropdown-trigger {
+                font-size: 1.15rem;
+                padding: 6px 10px;
+            }
+
+            .contact-trigger { font-size: 1.1rem; }
+
+            .dropdown-menu {
+                min-width: 200px;
+                max-width: 90vw;
+                left: 50%;
+                right: auto;
+                transform: translateX(-50%);
+            }
+
+            .menu-about { min-width: 180px; }
+            .menu-contact { min-width: 140px; }
+
+            .dropdown-menu li a {
+                font-size: 1.05rem;
+                padding: 10px 12px;       /* target touch più grande */
+            }
+
+            footer {
+                font-size: 0.72rem;
+                padding: 10px 12px;
+                line-height: 1.4;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .brand-title { font-size: 1.35rem; }
+            .sub-nav { gap: 16px; }
         }
     </style>
 </head>
