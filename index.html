@@ -5,32 +5,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fabio Hot Stuff Redaelli - Comic Art Author -</title>
     <style>
-        @font-face { font-family: 'Lobster Regular'; src: url('fonts/lobsteregular.ttf') format('truetype'); }
+        @font-face {
+            font-family: 'Lobster Regular';
+            src: url('fonts/lobsteregular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html, body { width: 100%; height: 100%; overflow-x: hidden; background-color: #fceecb; }
 
-        /* --- LOGICA DI BASE (Desktop Invariata) --- */
-        .bg-artwork { position: absolute; inset: 0; background-image: url('images/bg2.jpg'); background-size: cover; background-position: center 18%; background-repeat: no-repeat; z-index: 1; }
-        .content-overlay { position: relative; z-index: 2; width: 100%; height: 100%; }
-        header { width: 100%; margin-top: 52px; display: flex; justify-content: center; }
-        .brand-title { font-family: 'Lobster Regular', cursive; font-size: 3.28rem; text-align: center; white-space: nowrap; text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2); transform: translateY(33px); }
-        .sub-nav { width: 100%; margin-top: 42px; display: flex; justify-content: flex-end; gap: calc(3cm - 8px); padding: 0 4%; pointer-events: auto; }
-        
-        .dropdown { position: relative; display: inline-block; }
-        .dropdown-trigger { font-family: 'Lobster Regular', cursive; color: #ffffff; font-size: 1.7rem; cursor: pointer; padding: 10px 15px; text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4); }
-        .dropdown-menu { display: none; position: absolute; right: 50%; transform: translateX(50%); top: 100%; margin-top: 2px; background: #000000; border-radius: 20px; list-style: none; z-index: 10; overflow: hidden; }
+        html, body {
+            width: 100%; height: 100%;
+            overflow-x: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fceecb;
+        }
+
+        .bg-artwork {
+            position: absolute;
+            inset: 0;
+            background-image: url('images/bg2.jpg');
+            background-size: cover;
+            background-position: center center; 
+            background-repeat: no-repeat;
+            z-index: 1;
+        }
+
+        .content-overlay {
+            position: relative;
+            z-index: 2;
+            width: 100%; height: 100%;
+            display: flex; flex-direction: column; justify-content: space-between;
+            pointer-events: none;
+        }
+
+        header {
+            width: 100%;
+            padding: 20px 4% 0 4%;
+            pointer-events: auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .brand-title {
+            font-family: 'Lobster Regular', cursive;
+            font-size: 2.5rem;
+            text-align: center;
+            line-height: 1.1;
+            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .text-white { color: #ffffff; }
+        .text-black { color: #000000; }
+
+        .sub-nav {
+            width: 100%;
+            display: flex; flex-direction: column; align-items: center;
+            gap: 15px;
+            pointer-events: auto;
+            margin-bottom: 20px;
+        }
+
+        .dropdown { position: relative; display: block; text-align: center; }
+
+        .dropdown-trigger {
+            font-family: 'Lobster Regular', cursive;
+            color: #ffffff; 
+            font-size: 1.7rem;
+            text-decoration: none; cursor: pointer;
+            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: relative;
+            background: #000000; 
+            box-shadow: 0px 12px 32px rgba(0,0,0,0.55);
+            border-radius: 20px; 
+            list-style: none;
+            padding: 10px; 
+            z-index: 10;
+            margin-top: 5px;
+        }
+
         .dropdown:hover .dropdown-menu { display: block; }
-        .dropdown-menu li a { font-family: 'Lobster Regular', cursive; color: #ffffff; padding: 8px 15px; display: block; font-size: 1.3rem; text-align: center; }
-        
-        footer { position: fixed; bottom: 0; width: 100%; padding: 15px; text-align: center; color: rgba(255, 255, 255, 0.9); font-size: 0.85rem; background: rgba(13, 27, 42, 0.6); backdrop-filter: blur(4px); }
 
-        /* --- CORREZIONE MOBILE (iPhone) --- */
-        @media (max-width: 480px) {
-            .bg-artwork { background-size: contain; background-position: center 60%; }
-            .brand-title { font-size: 1.8rem; transform: translateY(10px); }
-            .sub-nav { justify-content: center; margin-top: 15px; gap: 5px; }
-            .dropdown-trigger { font-size: 1.2rem; padding: 5px; }
-            footer { font-size: 0.6rem; padding: 5px; }
+        .dropdown-menu li a {
+            font-family: 'Lobster Regular', cursive;
+            color: #ffffff; 
+            padding: 8px 15px; 
+            text-decoration: none;
+            display: block;
+            font-size: 1.2rem; 
+        }
+
+        main { flex-grow: 1; }
+
+        footer {
+            padding: 15px;
+            text-align: center;
+            color: #ffffff;
+            font-size: 0.75rem; 
+            pointer-events: auto;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Ottimizzazioni specifiche per Mobile */
+        @media (max-width: 768px) {
+            .bg-artwork {
+                background-size: cover;
+                background-position: center center;
+            }
+            .brand-title { font-size: 2rem; }
+            .sub-nav { margin-top: 20px; }
         }
     </style>
 </head>
@@ -39,26 +126,30 @@
     <div class="content-overlay">
         <header>
             <h1 class="brand-title">
-                <span style="color:#ffffff;">Fabio</span> <span style="color:#000000;">Hot Stuff</span> <span style="color:#ffffff;">Redaelli</span>
+                <span class="text-white">Fabio</span><br><span class="text-black">Hot Stuff</span><br><span class="text-white">Redaelli</span>
             </h1>
         </header>
 
         <div class="sub-nav">
             <div class="dropdown">
                 <a class="dropdown-trigger">About Me</a>
-                <ul class="dropdown-menu"><li><a href="#about">Sono Fabio</a></li></ul>
+                <ul class="dropdown-menu">
+                    <li><a href="#about">Sono Fabio Redaelli,<br>appassionato di Rock’n’Roll</a></li>
+                </ul>
             </div>
             <div class="dropdown">
                 <a class="dropdown-trigger">Contact Me</a>
                 <ul class="dropdown-menu">
-                    <li><a href="#insta">Instagram</a></li>
-                    <li><a href="#fb">Facebook</a></li>
+                    <li><a href="#instagram">Instagram</a></li>
+                    <li><a href="#facebook">Facebook</a></li>
                 </ul>
             </div>
         </div>
-
+        
+        <main></main>
+        
         <footer>
-            <p>© 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
+            <p>&copy; 2026 Fabio Redaelli - Comic Art Author.</p>
         </footer>
     </div>
 </body>
