@@ -74,11 +74,14 @@
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            font-size: 1.7rem; /* Ridotto di 0.1rem */
+            font-size: 1.7rem;
             text-decoration: none; cursor: pointer;
             padding: 10px 15px;
             text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
         }
+
+        /* Specifico per ridurre il font di Contact Me */
+        .contact-trigger { font-size: 1.6rem; }
 
         .dropdown:hover .dropdown-trigger { color: #b72216; }
 
@@ -98,7 +101,7 @@
         }
 
         .menu-about { min-width: 245px; }
-        .menu-contact { min-width: 190px; }
+        .menu-contact { min-width: 150px; } /* Ridotto da 190px a 150px */
 
         .dropdown-menu li { width: 100%; }
 
@@ -151,7 +154,7 @@
             </div>
 
             <div class="dropdown">
-                <a class="dropdown-trigger">Contact Me</a>
+                <a class="dropdown-trigger contact-trigger">Contact Me</a>
                 <ul class="dropdown-menu menu-contact">
                     <li><a href="#instagram">Instagram</a></li>
                     <li><a href="#facebook">Facebook</a></li>
