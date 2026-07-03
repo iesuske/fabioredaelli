@@ -80,7 +80,6 @@
             text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
         }
 
-        /* Specifico per ridurre il font di Contact Me */
         .contact-trigger { font-size: 1.6rem; }
 
         .dropdown:hover .dropdown-trigger { color: #b72216; }
@@ -101,14 +100,16 @@
         }
 
         .menu-about { min-width: 245px; }
-        .menu-contact { min-width: 150px; } /* Ridotto da 190px a 150px */
+        .menu-contact { 
+            min-width: 180px; /* Allargato per dare respiro */
+        } 
 
         .dropdown-menu li { width: 100%; }
 
         .dropdown-menu li a {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            padding: 5px 20px;
+            padding: 8px 25px; /* Aumentato padding laterale per non far toccare i bordi */
             text-decoration: none;
             display: block;
             width: 100%;
