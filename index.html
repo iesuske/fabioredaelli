@@ -64,9 +64,10 @@
         .sub-nav {
             width: 100%;
             padding: 0 4%;
-            margin-top: 32px; /* Avvicinati di 10px (da 42px a 32px) */
+            margin-top: 42px; /* Ripristinato margine verticale */
             display: flex; justify-content: flex-end; 
-            gap: 3cm; pointer-events: auto;
+            gap: calc(3cm - 8px); /* Avvicinati in orizzontale di 8px */
+            pointer-events: auto;
         }
 
         .dropdown { position: relative; display: inline-block; }
@@ -74,14 +75,12 @@
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            font-size: 1.7rem;
+            font-size: 1.7rem; /* Ripristinato font originale */
             text-decoration: none; cursor: pointer;
             padding: 10px 15px;
             text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
         }
 
-        /* Ridotto il font di About Me di un punto */
-        .about-trigger { font-size: 1.6rem; }
         .contact-trigger { font-size: 1.6rem; }
 
         .dropdown:hover .dropdown-trigger { color: #b72216; }
@@ -148,7 +147,7 @@
 
         <div class="sub-nav">
             <div class="dropdown">
-                <a class="dropdown-trigger about-trigger">About Me</a>
+                <a class="dropdown-trigger">About Me</a>
                 <ul class="dropdown-menu menu-about">
                     <li><a href="#about">Sono Fabio Redaelli,<br>appassionato di Rock’n’Roll e arte</a></li>
                 </ul>
