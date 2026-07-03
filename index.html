@@ -137,111 +137,78 @@
             overflow-wrap: break-word;
         }
 
+        /* Sfondo alternativo per mobile/tablet: vero <img> nel flusso
+           documentale, nascosto su desktop. Nessuna unità vh/dvh, nessun
+           position:fixed/absolute — l'altezza pagina è la somma naturale
+           dei contenuti, quindi è immune per costruzione a bug di
+           resize/stitching del viewport nei tool di screenshot full-page. */
+        .mobile-hero {
+            display: none;
+        }
+
         /* =====================================================
            RESPONSIVE OVERRIDES — iPad / tablet (≤1024px)
-           Il desktop sopra resta invariato. Su tablet portrait
-           lo sfondo cover taglia troppo: passiamo a un layout
-           a blocchi (header rosso solido + artwork contain).
+           Il layout desktop sopra resta invariato: qui si
+           sovrascrivono solo le proprietà che rompono il layout
+           su viewport stretti (nowrap, gap in cm, margini fissi).
            ===================================================== */
         @media (max-width: 1024px) {
-            html, body {
-                height: auto;
-                overflow-x: hidden;
-                overflow-y: auto;
-                background-color: #fceecb;
-            }
+            .bg-artwork { display: none; }   /* niente più cover/fixed su mobile: sostituito da .mobile-hero in flusso */
 
-            .bg-artwork {
-                position: relative;
-                inset: auto;
+            .mobile-hero {
+                display: block;
                 width: 100%;
-                height: 60vh;
-                background-size: contain;
-                background-position: center center;
-                background-color: #fceecb;
+                height: auto;
             }
 
             .content-overlay {
-                position: static;
-                min-height: 100vh;
-                display: flex;
-                flex-direction: column;
-                pointer-events: auto;
+                height: auto;      /* niente più flex-shrink sui figli: il contenuto reale (immagine inclusa) detta l'altezza */
+                min-height: 100%;
             }
 
-            header {
-                order: 1;
-                margin-top: 0;
-                padding: 22px 4% 10px;
-                background: #b72216;
-                justify-content: center;
+            .brand-title {
+                font-size: 2.6rem;
+                transform: translateY(20px);
             }
 
             .sub-nav {
-                order: 2;
-                margin-top: 0;
-                padding: 0 4% 16px;
-                background: #b72216;
-                justify-content: center;
                 gap: 40px;
-                border-bottom: 4px solid #7a1710;
+                margin-top: 30px;
             }
 
-            main {
-                order: 3;
-                flex-grow: 1;
-                display: flex;
-                align-items: stretch;
-                pointer-events: auto;
-            }
-
-            main .bg-artwork-slot { width: 100%; }
-
-            footer { order: 4; }
-
-            .brand-title {
-                font-size: 2.4rem;
-                transform: none;
-                white-space: normal;
-                line-height: 1.15;
-            }
+            header { margin-top: 36px; }
         }
 
         /* =====================================================
            RESPONSIVE OVERRIDES — iPhone / mobile (≤480px)
            ===================================================== */
         @media (max-width: 480px) {
-            /* Layout a blocchi verticali: header rosso solido con titolo,
-               poi barra nav rossa, poi l'illustrazione mostrata intera
-               (contain) e footer in fondo. La pagina è scrollabile. */
-            .bg-artwork {
-                height: 55vh;
-                min-height: 320px;
-            }
-
             header {
-                padding: 16px 4% 6px;
+                margin-top: 16px;
+                padding: 0 4%;
             }
 
             .brand-title {
-                font-size: 1.65rem;
-                white-space: normal;
+                font-size: 1.45rem;
+                white-space: normal;      /* niente più overflow orizzontale */
                 line-height: 1.2;
-                transform: none;
+                transform: translateY(6px);
             }
 
             .sub-nav {
-                gap: 22px;
-                padding: 0 4% 12px;
+                margin-top: 10px;
+                gap: 20px;                 /* niente più calc(3cm - 8px) */
+                justify-content: center;   /* centrato invece di flex-end: più leggibile su schermi stretti */
                 flex-wrap: wrap;
+                padding: 0 4%;
             }
 
             .dropdown-trigger {
-                font-size: 1.15rem;
-                padding: 4px 6px;
+                font-size: 1.05rem;
+                padding: 5px 8px;
             }
 
-            .contact-trigger { font-size: 1.1rem; }
+            .contact-trigger { font-size: 1rem; }
 
             .dropdown-menu {
                 min-width: 190px;
@@ -251,33 +218,21 @@
                 transform: translateX(-50%);
             }
 
-            .menu-about { min-width: 200px; }
-            .menu-contact { min-width: 140px; }
+            .menu-about { min-width: 170px; }
+            .menu-contact { min-width: 130px; }
 
             .dropdown-menu li a {
                 font-size: 1rem;
-                padding: 10px 12px;
+                padding: 10px 12px;       /* target touch più grande */
             }
 
             footer {
-                font-size: 0.72rem;
-                padding: 10px 12px;
-                line-height: 1.35;
+                font-size: 0.68rem;
+                padding: 8px 10px;
+                line-height: 1.3;
             }
         }
 
-
-        @media (max-width: 1024px) {
-            .bg-artwork { display: none !important; }
-            main {
-                background-image: url('images/bg2.jpg');
-                background-size: contain;
-                background-position: center center;
-                background-repeat: no-repeat;
-                background-color: #fceecb;
-                min-height: 55vh;
-            }
-        }
         @media (max-width: 360px) {
             .brand-title { font-size: 1.35rem; }
             .sub-nav { gap: 16px; }
@@ -311,7 +266,9 @@
                 </ul>
             </div>
         </div>
-        <main></main>
+        <main>
+            <img class="mobile-hero" src="images/bg2.jpg" alt="Fabio Redaelli - Comic Artist illustration">
+        </main>
         <footer>
             <p>Copyright 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
         </footer>
