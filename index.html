@@ -91,18 +91,18 @@
             top: 100%; margin-top: 2px; 
             background: #000000; 
             box-shadow: 0px 12px 32px rgba(0,0,0,0.55);
-            border-radius: 45px / 55px;
+            /* Bordo arrotondato rimosso per permettere al rosso di arrivare al limite */
+            border-radius: 20px; 
             border: none;
             list-style: none;
-            padding: 0; 
+            padding: 2px; /* Piccolissimo padding per gestire il bordo */
             z-index: 10;
-            overflow: hidden;
+            overflow: hidden; /* Fondamentale per tagliare il rosso sul bordo */
         }
 
         .menu-about { min-width: 245px; }
         .menu-contact { 
             min-width: 180px; 
-            padding-bottom: 10px; /* Spazio aggiuntivo sotto WhatsApp */
         } 
 
         .dropdown-menu li { width: 100%; }
@@ -116,12 +116,13 @@
             width: 100%;
             font-size: 1.3rem; 
             text-align: center; 
-            transition: background-color 0.15s ease;
+            transition: background-color 0.1s ease;
         }
 
         .dropdown-menu li a:hover {
             background: #b72216;
             color: #ffffff;
+            margin: 0; /* Assicura nessuna spaziatura */
         }
 
         .dropdown:hover .dropdown-menu { display: block; }
