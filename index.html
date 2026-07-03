@@ -144,6 +144,10 @@
            su viewport stretti (nowrap, gap in cm, margini fissi).
            ===================================================== */
         @media (max-width: 1024px) {
+            .bg-artwork {
+                position: fixed;   /* esclude l'elemento dallo scrollHeight del body: fix strutturale, non un overflow:hidden cosmetico */
+            }
+
             .brand-title {
                 font-size: 2.6rem;
                 transform: translateY(20px);
@@ -173,6 +177,7 @@
             }
 
             .bg-artwork {
+                position: fixed;   /* ereditato da 1024px, esplicitato qui per chiarezza */
                 background-size: cover;
                 background-position: center 8%;  /* mostra titolo + inizio auto, non tutta la scena */
             }
