@@ -153,6 +153,10 @@
            su viewport stretti (nowrap, gap in cm, margini fissi).
            ===================================================== */
         @media (max-width: 1024px) {
+            html, body {
+                height: auto;   /* scollega body dal viewport: niente più spazio cream residuo sotto il footer, generato da height:100% della regola desktop condivisa */
+            }
+
             .bg-artwork { display: none; }   /* niente più cover/fixed su mobile: sostituito da .mobile-hero in flusso */
 
             .mobile-hero {
