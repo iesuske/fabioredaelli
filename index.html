@@ -166,8 +166,8 @@
 
             .bg-artwork { 
                 display: block; 
-                background-size: cover; 
-                background-position: center top; /* Elimina il margine beige sopra la barra rossa */
+                background-size: 100% auto; /* L'immagine rientra al 100% della larghezza senza tagli */
+                background-position: center top; 
                 background-repeat: no-repeat;
             }
 
@@ -177,7 +177,7 @@
             }
 
             header { 
-                margin-top: 30px; 
+                margin-top: 0px; 
                 padding: 0 10px;
             }
 
@@ -190,31 +190,31 @@
             }
 
             .brand-title { 
-                font-size: 1.55rem; 
-                transform: translateY(22px); 
+                font-size: 1.35rem; 
+                transform: translateY(16px); /* Centra esattamente il titolo nella fascia rossa */
                 white-space: nowrap; 
             }
 
             .dropdown-about {
                 position: absolute;
                 top: 100%;
-                left: 2%;
+                left: 3%;
                 right: auto;
-                margin-top: 48px; /* Sposta il testo completamente sotto la riga nera */
+                margin-top: 42px; /* Posiziona About Me nello spazio beige sotto la riga nera */
                 margin-right: 0;
             }
 
             .dropdown-contact {
                 position: absolute;
                 top: 100%;
-                right: 2%;
+                right: 3%;
                 left: auto;
-                margin-top: 48px; /* Sposta il testo completamente sotto la riga nera */
+                margin-top: 42px; /* Posiziona Contact Me nello spazio beige sotto la riga nera */
                 margin-left: 0;
             }
 
             .dropdown-trigger { 
-                font-size: 1.15rem; 
+                font-size: 1.1rem; 
             }
 
             .menu-about { 
