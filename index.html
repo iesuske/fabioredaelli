@@ -50,12 +50,12 @@
 
         .brand-title {
             font-family: 'Lobster Regular', cursive;
-            font-size: 3.45rem; /* Aumentato di circa 2 punti rispetto alla versione precedente */
+            font-size: 3.65rem; /* Aumentato ulteriormente */
             text-align: center;
             white-space: nowrap;
             line-height: 1.2;
             text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
-            transform: translateY(31px); /* Compensato l'aumento del font per restare allineati alla riga nera */
+            transform: translateY(28px); /* Compensato nuovamente per mantenere l'allineamento con la linea nera */
         }
 
         .text-white { color: #ffffff; }
@@ -63,10 +63,10 @@
 
         .sub-nav {
             width: 100%;
-            padding: 0 4%;
+            padding: 0 1%; /* Ridotto per spingere l'intero blocco più a destra */
             margin-top: 42px; 
             display: flex; justify-content: flex-end; 
-            gap: 6cm; /* Distacco dei due menu di qualche centimetro */
+            gap: 6cm; /* Distanza tra i menu invariata */
             pointer-events: auto;
         }
 
@@ -175,6 +175,7 @@
             .sub-nav {
                 gap: 40px;
                 margin-top: 30px;
+                padding: 0 4%; /* Ripristino un po' di margine sui tablet per evitare che tocchi il bordo */
             }
 
             header { margin-top: 36px; }
