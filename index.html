@@ -48,12 +48,10 @@
             justify-content: center;
         }
 
-        /* Blocco unico che forza il menu ad avere la stessa identica larghezza del titolo */
+        /* Contenitore ancorato all'esatta larghezza del testo del titolo */
         .header-inner {
-            display: inline-flex;
-            flex-direction: column;
-            align-items: stretch;
-            width: max-content;
+            position: relative;
+            display: inline-block;
         }
 
         .brand-title {
@@ -63,33 +61,48 @@
             white-space: nowrap;
             line-height: 1;
             text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
-            transform: translateY(37px); /* Spinto in basso per adagiare la base delle lettere sulla riga nera */
+            transform: translateY(44px); /* Abbassato per adagiare il font direttamente sulla riga nera */
         }
 
         .text-white { color: #ffffff; }
         .text-black { color: #000000; }
 
         .sub-nav {
-            width: 100%;
-            margin-top: 48px; /* Posiziona i due tasti nella zona gialla subito sotto la riga nera */
-            display: flex; 
-            justify-content: space-between; /* "About Me" allineato a sinistra sotto "Fabio", "Contact Me" a destra sotto "Redaelli" */
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            margin-top: 52px; /* Distanza verticale dalla linea nera */
             pointer-events: auto;
         }
 
-        .dropdown { position: relative; display: inline-block; }
+        .dropdown {
+            position: absolute;
+            top: 0;
+            white-space: nowrap;
+        }
+
+        /* About Me: parte dalla riga rossa a sinistra (Fabio) e va verso sinistra */
+        .dropdown-about {
+            right: 100%;
+            padding-right: 8px;
+        }
+
+        /* Contact Me: parte dalla riga rossa a destra (Redaelli) e va verso destra */
+        .dropdown-contact {
+            left: 100%;
+            padding-left: 8px;
+        }
 
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            font-size: 2.3rem; /* Ingrandito nettamente il font dei due menu */
+            font-size: 1.85rem; 
             text-decoration: none; 
             cursor: pointer;
             padding: 0;
             text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
         }
-
-        .contact-trigger { font-size: 2.3rem; }
 
         .dropdown:hover .dropdown-trigger { color: #b72216; }
 
@@ -175,16 +188,29 @@
                 flex-grow: 0;
             }
 
+            .header-inner {
+                display: block;
+                width: 100%;
+            }
+
             .brand-title {
                 font-size: 2.6rem;
                 transform: translateY(20px);
             }
 
             .sub-nav {
-                gap: 40px;
+                position: relative;
+                top: auto; left: auto; right: auto;
                 margin-top: 30px;
+                display: flex;
+                justify-content: center;
+                gap: 40px;
                 padding: 0 4%; 
             }
+
+            .dropdown { position: relative; top: auto; left: auto; right: auto; }
+            .dropdown-about { right: auto; padding-right: 0; }
+            .dropdown-contact { left: auto; padding-left: 0; }
 
             header { margin-top: 36px; }
         }
@@ -259,14 +285,14 @@
                 </h1>
 
                 <div class="sub-nav">
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-about">
                         <a class="dropdown-trigger">About Me</a>
                         <ul class="dropdown-menu menu-about">
                             <li><a href="#about">Sono Fabio Redaelli,<br>appassionato di Rock’n’Roll e arte</a></li>
                         </ul>
                     </div>
 
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-contact">
                         <a class="dropdown-trigger contact-trigger">Contact Me</a>
                         <ul class="dropdown-menu menu-contact">
                             <li><a href="#instagram">Instagram</a></li>
