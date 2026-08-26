@@ -12,82 +12,92 @@
             font-style: normal;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
 
         html, body {
-            width: 100%; height: 100%;
+            width: 100%; 
+            height: 100%;
             overflow-x: hidden;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #fceecb;
         }
 
-        /* Ancoraggio fisso in alto per bloccare la fascia rossa su desktop */
+        /* Contenitore principale a tutta altezza */
+        .page-container {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Sfondo con l'illustrazione al centro */
         .bg-artwork {
-            position: absolute;
+            position: fixed;
             inset: 0;
             background-image: url('images/bg2.jpg');
-            background-size: cover;
-            background-position: center top; 
+            background-position: center center;
             background-repeat: no-repeat;
+            background-size: contain;
             z-index: 1;
         }
 
-        .content-overlay {
+        /* Struttura contenuti sopra lo sfondo */
+        .content-wrapper {
             position: relative;
             z-index: 2;
-            width: 100%; height: 100%;
-            min-width: 1000px; /* Impedisce il collasso degli elementi su Desktop */
-            display: flex; flex-direction: column; justify-content: space-between;
-            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: space-between;
         }
 
-        header {
+        /* ==================== FASCIA ROSSA SOLIDA IN CSS ==================== */
+        .red-banner {
             width: 100%;
-            margin-top: 15px; 
-            padding: 0 4%;
-            pointer-events: auto;
-            display: flex;
-            justify-content: center;
+            background-color: #b72216; /* Rosso identico alla grafica */
+            border-bottom: 3px solid #1a1a1a; /* Bordo scuro sottostante */
+            padding: 16px 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
         }
 
         .header-inner {
             position: relative;
-            display: inline-block;
+            display: inline-block; /* Mantiene la larghezza esatta del titolo */
         }
 
         .brand-title {
             font-family: 'Lobster Regular', cursive;
-            font-size: 3.9rem;
-            text-align: center;
-            white-space: nowrap;
+            font-size: 3.8rem;
             line-height: 1;
-            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
-            transform: translateY(32px);
+            white-space: nowrap;
+            margin: 0;
+            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .text-white { color: #ffffff; }
         .text-black { color: #000000; }
 
+        /* ==================== MENU ABOUT / CONTACT ==================== */
+        /* Posizionati subito SOTTO la fascia rossa, agganciati ai bordi del titolo */
         .dropdown-about {
             position: absolute;
-            top: 100%;
-            right: 100%;
-            margin-top: 45px;
-            margin-right: 25px;
+            top: calc(100% + 22px); /* Spazio esatto sotto la barra rossa */
+            left: 0; /* Allineato all'inizio di "Fabio" */
             white-space: nowrap;
-            pointer-events: auto;
-            text-align: right;
         }
 
         .dropdown-contact {
             position: absolute;
-            top: 100%;
-            left: 100%;
-            margin-top: 45px;
-            margin-left: 25px;
+            top: calc(100% + 22px); /* Spazio esatto sotto la barra rossa */
+            right: 0; /* Allineato alla fine di "Redaelli" */
             white-space: nowrap;
-            pointer-events: auto;
-            text-align: left;
         }
 
         .dropdown-trigger {
@@ -97,40 +107,42 @@
             text-decoration: none; 
             cursor: pointer;
             padding: 0;
-            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
+            text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+            transition: color 0.2s ease;
         }
 
-        .dropdown:hover .dropdown-trigger { color: #b72216; }
+        .dropdown:hover .dropdown-trigger { 
+            color: #b72216; 
+        }
 
+        /* Submenu a tendina */
         .dropdown-menu {
             display: none;
             position: absolute;
-            top: 100%; margin-top: 6px; 
+            top: 100%; 
+            margin-top: 8px; 
             background: #000000; 
             box-shadow: 0px 12px 32px rgba(0,0,0,0.55);
-            border-radius: 20px; 
-            border: none;
+            border-radius: 16px; 
             list-style: none;
             padding: 0; 
-            z-index: 10;
+            z-index: 100;
             overflow: hidden; 
         }
 
-        .menu-about { min-width: 245px; right: 0; }
-        .menu-contact { min-width: 150px; left: 0; } 
-
-        .dropdown-menu li { width: 100%; }
+        .menu-about { min-width: 245px; left: 0; }
+        .menu-contact { min-width: 150px; right: 0; } 
 
         .dropdown-menu li a {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            padding: 8px 15px; 
+            padding: 10px 16px; 
             text-decoration: none;
             display: block;
             width: 100%;
-            font-size: 1.3rem; 
+            font-size: 1.2rem; 
             text-align: center; 
-            transition: background-color 0.1s ease;
+            transition: background-color 0.15s ease;
         }
 
         .dropdown-menu li a:hover {
@@ -138,99 +150,60 @@
             color: #ffffff;
         }
 
-        .dropdown:hover .dropdown-menu { display: block; }
+        .dropdown:hover .dropdown-menu { 
+            display: block; 
+        }
 
-        main { flex-grow: 1; pointer-events: none; }
+        main { 
+            flex-grow: 1; 
+            pointer-events: none; 
+        }
 
         footer {
             padding: 15px;
             text-align: center;
             color: rgba(255, 255, 255, 0.9);
-            font-size: 0.85rem; pointer-events: auto;
-            background: rgba(13, 27, 42, 0.6);
+            font-size: 0.85rem;
+            background: rgba(13, 27, 42, 0.7);
             backdrop-filter: blur(4px);
-            word-wrap: break-word;
-            overflow-wrap: break-word;
         }
 
-        /* ==================== OTTIMIZZAZIONE MOBILE ==================== */
+        /* ==================== ADATTAMENTO MOBILE ==================== */
         @media (max-width: 768px) {
-            .content-overlay {
-                min-width: 100%; /* Su mobile rimuove il vincolo desktop */
-            }
-
-            .bg-artwork { 
-                background-position: center top; 
-            }
-
-            header { 
-                margin-top: 25px; 
-                padding: 0 10px;
-            }
-
-            .header-inner { 
-                width: 100%;
-                display: flex; 
-                flex-direction: column; 
-                align-items: center; 
+            .red-banner {
+                padding: 12px 10px;
             }
 
             .brand-title { 
-                font-size: 1.45rem; 
-                transform: translateY(22px); 
-                white-space: nowrap; 
-            }
-
-            .dropdown-about {
-                position: absolute;
-                top: 100%;
-                left: 3%;
-                right: auto;
-                margin-top: 45px; 
-                margin-right: 0;
-            }
-
-            .dropdown-contact {
-                position: absolute;
-                top: 100%;
-                right: 3%;
-                left: auto;
-                margin-top: 45px; 
-                margin-left: 0;
+                font-size: 1.8rem; 
             }
 
             .dropdown-trigger { 
-                font-size: 1.15rem; 
+                font-size: 1.25rem; 
             }
 
-            .menu-about { 
-                min-width: 200px; 
-                left: 0; 
-                right: auto; 
+            .dropdown-about {
+                top: calc(100% + 14px);
+                left: 0;
             }
 
-            .menu-contact { 
-                min-width: 140px; 
-                right: 0; 
-                left: auto; 
+            .dropdown-contact {
+                top: calc(100% + 14px);
+                right: 0;
             }
 
             .dropdown-menu li a {
-                font-size: 0.95rem;
-                padding: 6px 10px;
-            }
-
-            footer {
-                padding: 12px 15px;
-                font-size: 0.75rem;
+                font-size: 1rem;
+                padding: 8px 12px;
             }
         }
     </style>
 </head>
 <body>
     <div class="bg-artwork"></div>
-    <div class="content-overlay">
-        <header>
+
+    <div class="content-wrapper">
+        <header class="red-banner">
             <div class="header-inner">
                 <h1 class="brand-title">
                     <span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span>
