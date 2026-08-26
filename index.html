@@ -18,7 +18,7 @@
             width: 100%; height: 100%;
             overflow-x: hidden;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #fceecb;
+            background-color: #f7da99; /* Colore unico uniforme della macchina */
         }
 
         .bg-artwork {
@@ -161,12 +161,13 @@
             html, body { 
                 height: 100%; 
                 min-height: 100vh;
+                background-color: #f7da99;
             }
 
             .bg-artwork { 
                 display: block; 
-                background-size: 100% auto; /* Copre al 100% in larghezza senza ingrandire troppo la macchina */
-                background-position: center top; /* Ancora la fascia rossa in alto */
+                background-size: cover; 
+                background-position: center 14%; 
                 background-repeat: no-repeat;
             }
 
@@ -176,7 +177,7 @@
             }
 
             header { 
-                margin-top: 22px; 
+                margin-top: 35px; 
                 padding: 0 10px;
             }
 
@@ -189,8 +190,8 @@
             }
 
             .brand-title { 
-                font-size: 1.45rem; 
-                transform: translateY(18px); 
+                font-size: 1.55rem; 
+                transform: translateY(24px); 
                 white-space: nowrap; 
             }
 
@@ -199,7 +200,7 @@
                 top: 100%;
                 left: 2%;
                 right: auto;
-                margin-top: 32px;
+                margin-top: 36px;
                 margin-right: 0;
             }
 
@@ -208,7 +209,7 @@
                 top: 100%;
                 right: 2%;
                 left: auto;
-                margin-top: 32px;
+                margin-top: 36px;
                 margin-left: 0;
             }
 
