@@ -48,31 +48,25 @@
             justify-content: center;
         }
 
-        /* Contenitore inline che vincola il menu all'esatta larghezza del titolo sopra */
-        .header-inner {
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
         .brand-title {
             font-family: 'Lobster Regular', cursive;
-            font-size: 3.95rem; /* Font ulteriormente ingrandito */
+            font-size: 3.85rem;
             text-align: center;
             white-space: nowrap;
             line-height: 1.1;
             text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
-            transform: translateY(-2px); /* Alzato per appoggiarsi alla riga nera senza tagliarla */
+            transform: translateY(21px); /* Abbassato per far adagiare la base delle lettere sulla linea nera */
         }
 
         .text-white { color: #ffffff; }
         .text-black { color: #000000; }
 
         .sub-nav {
-            width: 100%; /* Larghezza identica al titolo sopra */
-            margin-top: 22px; 
+            width: 100%;
+            margin-top: 35px; 
             display: flex; 
-            justify-content: space-between; /* "About Me" a sinistra sotto "Fabio", "Contact Me" a destra sotto "Redaelli" */
+            justify-content: center;
+            gap: 220px; /* Distanziamento calcolato sul primo screenshot per posizionarli sotto Fabio e Redaelli */
             pointer-events: auto;
         }
 
@@ -81,10 +75,10 @@
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            font-size: 1.7rem; /* Dimensione font originale ripristinata */
+            font-size: 1.7rem; /* Dimensione originale ripristinata */
             text-decoration: none; 
             cursor: pointer;
-            padding: 5px 0; /* Padding azzerato sui lati per allineamento millimetrico alle lettere estremità */
+            padding: 5px 10px;
             text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
         }
 
@@ -252,31 +246,30 @@
     <div class="bg-artwork"></div>
     <div class="content-overlay">
         <header>
-            <div class="header-inner">
-                <h1 class="brand-title">
-                    <span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span>
-                </h1>
-
-                <div class="sub-nav">
-                    <div class="dropdown">
-                        <a class="dropdown-trigger">About Me</a>
-                        <ul class="dropdown-menu menu-about">
-                            <li><a href="#about">Sono Fabio Redaelli,<br>appassionato di Rock’n’Roll e arte</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="dropdown">
-                        <a class="dropdown-trigger contact-trigger">Contact Me</a>
-                        <ul class="dropdown-menu menu-contact">
-                            <li><a href="#instagram">Instagram</a></li>
-                            <li><a href="#facebook">Facebook</a></li>
-                            <li><a href="#telegram">Telegram</a></li>
-                            <li><a href="#whatsapp">WhatsApp</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <h1 class="brand-title">
+                <span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span>
+            </h1>
         </header>
+
+        <div class="sub-nav">
+            <div class="dropdown">
+                <a class="dropdown-trigger">About Me</a>
+                <ul class="dropdown-menu menu-about">
+                    <li><a href="#about">Sono Fabio Redaelli,<br>appassionato di Rock’n’Roll e arte</a></li>
+                </ul>
+            </div>
+
+            <div class="dropdown">
+                <a class="dropdown-trigger contact-trigger">Contact Me</a>
+                <ul class="dropdown-menu menu-contact">
+                    <li><a href="#instagram">Instagram</a></li>
+                    <li><a href="#facebook">Facebook</a></li>
+                    <li><a href="#telegram">Telegram</a></li>
+                    <li><a href="#whatsapp">WhatsApp</a></li>
+                </ul>
+            </div>
+        </div>
+
         <main>
             <img class="mobile-hero" src="images/bg2.jpg" alt="Fabio Redaelli - Comic Artist illustration">
         </main>
