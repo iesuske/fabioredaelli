@@ -50,12 +50,12 @@
 
         .brand-title {
             font-family: 'Lobster Regular', cursive;
-            font-size: 3.28rem;
+            font-size: 3.45rem; /* Aumentato di circa 2 punti rispetto alla versione precedente */
             text-align: center;
             white-space: nowrap;
             line-height: 1.2;
             text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
-            transform: translateY(33px); 
+            transform: translateY(31px); /* Compensato l'aumento del font per restare allineati alla riga nera */
         }
 
         .text-white { color: #ffffff; }
@@ -64,9 +64,9 @@
         .sub-nav {
             width: 100%;
             padding: 0 4%;
-            margin-top: 42px; /* Ripristinato margine verticale */
+            margin-top: 42px; 
             display: flex; justify-content: flex-end; 
-            gap: calc(3cm - 8px); /* Avvicinati in orizzontale di 8px */
+            gap: 6cm; /* Distacco dei due menu di qualche centimetro */
             pointer-events: auto;
         }
 
@@ -75,7 +75,7 @@
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff; 
-            font-size: 1.7rem; /* Ripristinato font originale */
+            font-size: 1.7rem; 
             text-decoration: none; cursor: pointer;
             padding: 10px 15px;
             text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
@@ -137,27 +137,20 @@
             overflow-wrap: break-word;
         }
 
-        /* Sfondo alternativo per mobile/tablet: vero <img> nel flusso
-           documentale, nascosto su desktop. Nessuna unità vh/dvh, nessun
-           position:fixed/absolute — l'altezza pagina è la somma naturale
-           dei contenuti, quindi è immune per costruzione a bug di
-           resize/stitching del viewport nei tool di screenshot full-page. */
+        /* Sfondo alternativo per mobile/tablet */
         .mobile-hero {
             display: none;
         }
 
         /* =====================================================
            RESPONSIVE OVERRIDES — iPad / tablet (≤1024px)
-           Il layout desktop sopra resta invariato: qui si
-           sovrascrivono solo le proprietà che rompono il layout
-           su viewport stretti (nowrap, gap in cm, margini fissi).
            ===================================================== */
         @media (max-width: 1024px) {
             html, body {
-                height: auto;   /* scollega body dal viewport: niente più spazio cream residuo sotto il footer, generato da height:100% della regola desktop condivisa */
+                height: auto;
             }
 
-            .bg-artwork { display: none; }   /* niente più cover/fixed su mobile: sostituito da .mobile-hero in flusso */
+            .bg-artwork { display: none; }
 
             .mobile-hero {
                 display: block;
@@ -166,12 +159,12 @@
             }
 
             .content-overlay {
-                height: auto;      /* niente più flex-shrink sui figli: il contenuto reale (immagine inclusa) detta l'altezza */
-                min-height: 0;     /* esplicito: NON deve legarsi a body{height:100%} della regola desktop, altrimenti torna a dipendere dal viewport */
+                height: auto;
+                min-height: 0;
             }
 
             main {
-                flex-grow: 0;      /* nessuno spazio residuo da distribuire: elimina il vuoto sotto l'immagine */
+                flex-grow: 0;
             }
 
             .brand-title {
@@ -198,15 +191,15 @@
 
             .brand-title {
                 font-size: 1.45rem;
-                white-space: normal;      /* niente più overflow orizzontale */
+                white-space: normal;
                 line-height: 1.2;
                 transform: translateY(6px);
             }
 
             .sub-nav {
                 margin-top: 10px;
-                gap: 20px;                 /* niente più calc(3cm - 8px) */
-                justify-content: center;   /* centrato invece di flex-end: più leggibile su schermi stretti */
+                gap: 20px;
+                justify-content: center;
                 flex-wrap: wrap;
                 padding: 0 4%;
             }
@@ -231,7 +224,7 @@
 
             .dropdown-menu li a {
                 font-size: 1rem;
-                padding: 10px 12px;       /* target touch più grande */
+                padding: 10px 12px;
             }
 
             footer {
