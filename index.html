@@ -50,12 +50,12 @@
 
         .brand-title {
             font-family: 'Lobster Regular', cursive;
-            font-size: 3.65rem; /* Aumentato ulteriormente */
+            font-size: 3.85rem; /* Aumentato di nuovo il font */
             text-align: center;
             white-space: nowrap;
             line-height: 1.2;
             text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
-            transform: translateY(28px); /* Compensato nuovamente per mantenere l'allineamento con la linea nera */
+            transform: translateY(14px); /* Ridotto molto per far salire la scritta e farla appoggiare alla riga nera senza tagliarla */
         }
 
         .text-white { color: #ffffff; }
@@ -63,10 +63,11 @@
 
         .sub-nav {
             width: 100%;
-            padding: 0 1%; /* Ridotto per spingere l'intero blocco più a destra */
+            padding: 0; 
             margin-top: 42px; 
-            display: flex; justify-content: flex-end; 
-            gap: 6cm; /* Distanza tra i menu invariata */
+            display: flex; 
+            justify-content: center; /* Modificato per spostare il blocco verso sinistra e renderlo centrale */
+            gap: 6cm; /* La distanza tra i due tasti rimane invariata */
             pointer-events: auto;
         }
 
@@ -175,7 +176,7 @@
             .sub-nav {
                 gap: 40px;
                 margin-top: 30px;
-                padding: 0 4%; /* Ripristino un po' di margine sui tablet per evitare che tocchi il bordo */
+                padding: 0 4%; 
             }
 
             header { margin-top: 36px; }
