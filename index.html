@@ -156,21 +156,86 @@
 
         .mobile-hero { display: none; }
 
-        /* Responsive tablet/mobile */
+        /* ==================== OTTIMIZZAZIONE MOBILE ==================== */
         @media (max-width: 768px) {
-            html, body { height: auto; }
-            .bg-artwork { display: none; }
-            .mobile-hero { display: block; width: 100%; height: auto; }
-            .content-overlay { height: auto; min-height: 0; }
-            main { flex-grow: 0; }
-            .header-inner { display: flex; flex-direction: column; align-items: center; width: 100%; }
-            .brand-title { font-size: 2.2rem; transform: translateY(10px); white-space: normal; }
-            .dropdown-about, .dropdown-contact {
-                position: relative; top: auto; left: auto; right: auto;
-                margin: 15px 10px 0 10px; display: inline-block;
+            html, body { 
+                height: 100%; 
+                min-height: 100vh;
             }
-            .dropdown-trigger { font-size: 1.3rem; }
-            header { margin-top: 20px; }
+
+            .bg-artwork { 
+                display: block; 
+                background-size: cover;
+                background-position: center 12%; 
+            }
+
+            .content-overlay { 
+                height: 100%; 
+                min-height: 100vh; 
+            }
+
+            header { 
+                margin-top: 15px; 
+                padding: 0 10px;
+            }
+
+            .header-inner { 
+                width: 100%;
+                display: flex; 
+                flex-direction: column; 
+                align-items: center; 
+                position: relative;
+            }
+
+            .brand-title { 
+                font-size: 1.55rem; 
+                transform: translateY(20px); 
+                white-space: nowrap; 
+            }
+
+            .dropdown-about {
+                position: absolute;
+                top: 100%;
+                left: 4%;
+                right: auto;
+                margin-top: 26px;
+                margin-right: 0;
+            }
+
+            .dropdown-contact {
+                position: absolute;
+                top: 100%;
+                right: 4%;
+                left: auto;
+                margin-top: 26px;
+                margin-left: 0;
+            }
+
+            .dropdown-trigger { 
+                font-size: 1.25rem; 
+            }
+
+            .menu-about { 
+                min-width: 200px; 
+                left: 0; 
+                right: auto; 
+            }
+
+            .menu-contact { 
+                min-width: 140px; 
+                right: 0; 
+                left: auto; 
+            }
+
+            .dropdown-menu li a {
+                font-size: 1rem;
+                padding: 6px 10px;
+            }
+
+            footer {
+                padding: 10px 15px;
+                font-size: 0.75rem;
+            }
         }
     </style>
 </head>
@@ -186,7 +251,7 @@
                 <div class="dropdown dropdown-about">
                     <a class="dropdown-trigger">About Me</a>
                     <ul class="dropdown-menu menu-about">
-                        <li><a href="#about">Sono Fabio Redaelli,<br>appassionato di Rock’n’Roll e arte</a></li>
+                        <li><a href="#about">Sono Fabio Redaelli,<br>appassionato di Rock'n'Roll e arte</a></li>
                     </ul>
                 </div>
 
@@ -203,7 +268,7 @@
         </header>
 
         <main>
-            <img class="mobile-hero" src="images/bg2.jpg" alt="Fabio Redaelli - Comic Artist illustration">
+            <!-- Spazio centrale reservato all'opera -->
         </main>
         <footer>
             <p>Copyright 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
