@@ -18,31 +18,29 @@
             padding: 0; 
         }
 
-        /* SFONDO UNIFORME: Colore panna identico all'immagine per eliminare lo stacco */
+        /* SFONDO UNIFORME: Colore panna originale identico a bg2.jpg */
         html, body {
             width: 100%;
-            min-height: 100vh;
             overflow-x: hidden; 
-            background-color: #fde7bf; 
+            background-color: #fceecb; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            flex-direction: column;
         }
 
-        /* CONTENITORE PRINCIPALE */
+        /* 1. CONTENITORE: Bloccato al 100% sulle dimensioni dell'immagine */
         .master-canvas {
             position: relative;
             width: 100%;
-            flex-grow: 1;
-            background-color: #fde7bf;
+            overflow: hidden;
         }
 
+        /* 2. IMMAGINE: Comanda le proporzioni della pagina */
         .bg-image {
             width: 100%;
             height: auto;
             display: block; 
         }
 
+        /* 3. LIVELLO TESTI: Si sovrappone esattamente all'altezza dell'immagine */
         .text-layer {
             position: absolute;
             top: 0; 
@@ -52,10 +50,10 @@
             pointer-events: none; 
         }
 
-        /* ANCORAGGIO SCRITTA SULLA RIGA NERA */
+        /* 4. ANCORAGGIO ALLA FASCIA ROSSA */
         .header-anchor {
             position: absolute;
-            top: 8.0%; /* Aumentato per abbassare la scritta a filo della linea nera */
+            top: 9.8%; /* Spinge la scritta verso il basso per appoggiarla a filo della riga nera */
             left: 0;
             width: 100%;
             text-align: center;
@@ -74,13 +72,13 @@
         .text-white { color: #ffffff; }
         .text-black { color: #000000; }
 
-        /* MENU */
+        /* 5. MENU INCOLLATI SOTTO IL TITOLO */
         .menus-container {
             display: flex;
             justify-content: space-between;
             width: 70%; 
             margin: 0 auto;
-            margin-top: 1.5vw; 
+            margin-top: 1.2vw; 
         }
 
         .dropdown {
@@ -133,6 +131,7 @@
             border-radius: 12px;
         }
 
+        /* 6. FOOTER */
         footer {
             padding: 20px;
             text-align: center;
@@ -180,3 +179,4 @@
 
 </body>
 </html>
+
