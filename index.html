@@ -18,29 +18,28 @@
             padding: 0; 
         }
 
-        /* SFONDO UNIFORME: Colore panna originale identico a bg2.jpg */
+        /* SFONDO UNIFORME: Colore panna #fceecb matched al 100% con l'immagine dell'auto */
         html, body {
             width: 100%;
+            min-height: 100vh;
             overflow-x: hidden; 
             background-color: #fceecb; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* 1. CONTENITORE: Bloccato al 100% sulle dimensioni dell'immagine */
+        /* CONTENITORE PRINCIPALE */
         .master-canvas {
             position: relative;
             width: 100%;
-            overflow: hidden;
+            background-color: #fceecb;
         }
 
-        /* 2. IMMAGINE: Comanda le proporzioni della pagina */
         .bg-image {
             width: 100%;
             height: auto;
             display: block; 
         }
 
-        /* 3. LIVELLO TESTI: Si sovrappone esattamente all'altezza dell'immagine */
         .text-layer {
             position: absolute;
             top: 0; 
@@ -50,10 +49,10 @@
             pointer-events: none; 
         }
 
-        /* 4. ANCORAGGIO ALLA FASCIA ROSSA */
+        /* ANCORAGGIO SCRITTA: 5.8% allinea la base del testo sopra la riga nera */
         .header-anchor {
             position: absolute;
-            top: 9.8%; /* Spinge la scritta verso il basso per appoggiarla a filo della riga nera */
+            top: 5.8%; 
             left: 0;
             width: 100%;
             text-align: center;
@@ -72,7 +71,7 @@
         .text-white { color: #ffffff; }
         .text-black { color: #000000; }
 
-        /* 5. MENU INCOLLATI SOTTO IL TITOLO */
+        /* MENU */
         .menus-container {
             display: flex;
             justify-content: space-between;
@@ -131,7 +130,6 @@
             border-radius: 12px;
         }
 
-        /* 6. FOOTER */
         footer {
             padding: 20px;
             text-align: center;
@@ -179,4 +177,3 @@
 
 </body>
 </html>
-
