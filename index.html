@@ -18,32 +18,31 @@
             padding: 0; 
         }
 
-        /* STRUTTURA ELASTICA: Risolve il problema dello spazio vuoto sotto il footer */
+        /* SFONDO UNIFORME: Colore panna identico all'immagine per eliminare lo stacco */
         html, body {
             width: 100%;
-            min-height: 100vh; /* Impone alla pagina di essere alta ALMENO quanto lo schermo intero */
+            min-height: 100vh;
             overflow-x: hidden; 
-            background-color: #fceecb;
+            background-color: #fde7bf; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
-            flex-direction: column; /* Impila gli elementi verticalmente */
+            flex-direction: column;
         }
 
-        /* 1. IL CONTENITORE CANVAS */
+        /* CONTENITORE PRINCIPALE */
         .master-canvas {
             position: relative;
             width: 100%;
-            flex-grow: 1; /* Questo comando dice: "Espanditi e spingi il footer tutto in basso!" */
+            flex-grow: 1;
+            background-color: #fde7bf;
         }
 
-        /* 2. L'IMMAGINE */
         .bg-image {
             width: 100%;
             height: auto;
             display: block; 
         }
 
-        /* 3. IL LIVELLO TESTI */
         .text-layer {
             position: absolute;
             top: 0; 
@@ -53,25 +52,16 @@
             pointer-events: none; 
         }
 
-        /* 4. ANCORAGGIO ALLA FASCIA ROSSA */
+        /* ANCORAGGIO SCRITTA SULLA RIGA NERA */
         .header-anchor {
             position: absolute;
-            
-            /* ========================================================
-               MODIFICA QUI PER ALZARE O ABBASSARE LA SCRITTA
-               L'ho portato a 4.8%. 
-               Se la scritta è ancora bassa, metti 4.5% o 4.0%.
-               Se è salita troppo, metti 5.0% o 5.2%.
-               ======================================================== */
-            top: 4.8%; 
-            
+            top: 8.0%; /* Aumentato per abbassare la scritta a filo della linea nera */
             left: 0;
             width: 100%;
             text-align: center;
             pointer-events: auto; 
         }
 
-        /* Testo in vw: scalabile */
         .brand-title {
             font-family: 'Lobster Regular', cursive;
             font-size: 3.8vw; 
@@ -84,7 +74,7 @@
         .text-white { color: #ffffff; }
         .text-black { color: #000000; }
 
-        /* 5. MENU */
+        /* MENU */
         .menus-container {
             display: flex;
             justify-content: space-between;
@@ -109,7 +99,6 @@
 
         .dropdown:hover .dropdown-trigger { color: #000000; }
 
-        /* Le tendine */
         .dropdown-menu {
             display: none;
             position: absolute;
@@ -144,11 +133,10 @@
             border-radius: 12px;
         }
 
-        /* 6. FOOTER */
         footer {
             padding: 20px;
             text-align: center;
-            background: rgba(13, 27, 42, 1); /* Reso opaco e solido al 100% */
+            background: rgba(13, 27, 42, 1);
             color: white;
             font-size: 0.9rem;
             width: 100%;
