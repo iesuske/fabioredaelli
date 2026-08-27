@@ -18,29 +18,32 @@
             padding: 0; 
         }
 
-        /* Uccidiamo lo scorrimento orizzontale alla radice per evitare sbavature */
+        /* STRUTTURA ELASTICA: Risolve il problema dello spazio vuoto sotto il footer */
         html, body {
             width: 100%;
+            min-height: 100vh; /* Impone alla pagina di essere alta ALMENO quanto lo schermo intero */
             overflow-x: hidden; 
             background-color: #fceecb;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column; /* Impila gli elementi verticalmente */
         }
 
-        /* 1. IL CONTENITORE CANVAS: Tiene tutto unito */
+        /* 1. IL CONTENITORE CANVAS */
         .master-canvas {
             position: relative;
             width: 100%;
-            /* Niente margini o padding che possano rompere le proporzioni */
+            flex-grow: 1; /* Questo comando dice: "Espanditi e spingi il footer tutto in basso!" */
         }
 
-        /* 2. L'IMMAGINE: Detta le dimensioni del contenitore in modo assoluto */
+        /* 2. L'IMMAGINE */
         .bg-image {
             width: 100%;
             height: auto;
             display: block; 
         }
 
-        /* 3. IL LIVELLO TESTI: Si sovrappone perfettamente all'immagine */
+        /* 3. IL LIVELLO TESTI */
         .text-layer {
             position: absolute;
             top: 0; 
@@ -53,21 +56,27 @@
         /* 4. ANCORAGGIO ALLA FASCIA ROSSA */
         .header-anchor {
             position: absolute;
-            /* L'ho alzato dal 8.5% precedente al 6.5% per centrarlo sulla fascia rossa. 
-               Se serve un micro-aggiustamento, cambia questo numero (es. 6.2% o 6.8%) */
-            top: 6.5%; 
+            
+            /* ========================================================
+               MODIFICA QUI PER ALZARE O ABBASSARE LA SCRITTA
+               L'ho portato a 4.8%. 
+               Se la scritta è ancora bassa, metti 4.5% o 4.0%.
+               Se è salita troppo, metti 5.0% o 5.2%.
+               ======================================================== */
+            top: 4.8%; 
+            
             left: 0;
             width: 100%;
             text-align: center;
             pointer-events: auto; 
         }
 
-        /* Testo in vw: si ingrandisce/rimpicciolisce in proporzione all'immagine senza sgranare mai */
+        /* Testo in vw: scalabile */
         .brand-title {
             font-family: 'Lobster Regular', cursive;
             font-size: 3.8vw; 
             line-height: 1;
-            white-space: nowrap; /* Impedisce al testo di andare a capo e rompere tutto */
+            white-space: nowrap; 
             margin: 0;
             text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
         }
@@ -75,13 +84,13 @@
         .text-white { color: #ffffff; }
         .text-black { color: #000000; }
 
-        /* 5. MENU INCOLLATI SOTTO IL TITOLO */
+        /* 5. MENU */
         .menus-container {
             display: flex;
             justify-content: space-between;
             width: 70%; 
             margin: 0 auto;
-            margin-top: 1.5vw; /* Usa vw per la distanza, così non sballa ridimensionando */
+            margin-top: 1.5vw; 
         }
 
         .dropdown {
@@ -139,9 +148,10 @@
         footer {
             padding: 20px;
             text-align: center;
-            background: rgba(13, 27, 42, 0.9);
+            background: rgba(13, 27, 42, 1); /* Reso opaco e solido al 100% */
             color: white;
             font-size: 0.9rem;
+            width: 100%;
         }
     </style>
 </head>
