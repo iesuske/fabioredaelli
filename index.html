@@ -12,10 +12,16 @@
             font-style: normal;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
 
+        /* Uccidiamo lo scorrimento orizzontale alla radice per evitare sbavature */
         html, body {
             width: 100%;
+            overflow-x: hidden; 
             background-color: #fceecb;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
@@ -24,14 +30,14 @@
         .master-canvas {
             position: relative;
             width: 100%;
-            overflow: hidden; /* Evita qualsiasi sbavatura laterale */
+            /* Niente margini o padding che possano rompere le proporzioni */
         }
 
-        /* 2. L'IMMAGINE: Detta le dimensioni del contenitore */
+        /* 2. L'IMMAGINE: Detta le dimensioni del contenitore in modo assoluto */
         .bg-image {
             width: 100%;
             height: auto;
-            display: block; /* Rimuove spazi vuoti sotto l'immagine */
+            display: block; 
         }
 
         /* 3. IL LIVELLO TESTI: Si sovrappone perfettamente all'immagine */
@@ -41,27 +47,27 @@
             left: 0;
             width: 100%; 
             height: 100%;
-            pointer-events: none; /* Lascia cliccare l'immagine sotto, tranne che sui menu */
+            pointer-events: none; 
         }
 
         /* 4. ANCORAGGIO ALLA FASCIA ROSSA */
         .header-anchor {
             position: absolute;
-            /* ATTENZIONE: Regola questo valore (es. 8%, 9%, 10%) per centrare 
-               il testo perfettamente al centro della tua fascia rossa specifica */
-            top: 8.5%; 
+            /* L'ho alzato dal 8.5% precedente al 6.5% per centrarlo sulla fascia rossa. 
+               Se serve un micro-aggiustamento, cambia questo numero (es. 6.2% o 6.8%) */
+            top: 6.5%; 
             left: 0;
             width: 100%;
             text-align: center;
-            pointer-events: auto; /* Riattiva il click per i menu */
+            pointer-events: auto; 
         }
 
-        /* Il testo usa i 'vw' per crescere e decrescere in perfetta proporzione con l'immagine */
+        /* Testo in vw: si ingrandisce/rimpicciolisce in proporzione all'immagine senza sgranare mai */
         .brand-title {
             font-family: 'Lobster Regular', cursive;
             font-size: 3.8vw; 
             line-height: 1;
-            white-space: nowrap;
+            white-space: nowrap; /* Impedisce al testo di andare a capo e rompere tutto */
             margin: 0;
             text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
         }
@@ -73,9 +79,9 @@
         .menus-container {
             display: flex;
             justify-content: space-between;
-            width: 70%; /* Allarga o stringi per avvicinare/allontanare i menu tra loro */
+            width: 70%; 
             margin: 0 auto;
-            margin-top: 1.2vw; /* Distanza proporzionale sotto il titolo */
+            margin-top: 1.5vw; /* Usa vw per la distanza, così non sballa ridimensionando */
         }
 
         .dropdown {
@@ -84,7 +90,7 @@
 
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
-            font-size: 2vw; /* Dimensione proporzionale */
+            font-size: 2vw; 
             color: #ffffff;
             cursor: pointer;
             text-decoration: none;
@@ -94,7 +100,7 @@
 
         .dropdown:hover .dropdown-trigger { color: #000000; }
 
-        /* Le tendine che si aprono al passaggio del mouse */
+        /* Le tendine */
         .dropdown-menu {
             display: none;
             position: absolute;
@@ -114,7 +120,6 @@
 
         .dropdown:hover .dropdown-menu { display: block; }
 
-        /* Il testo dentro la tendina non usa vw, resta leggibile a grandezza fissa */
         .dropdown-menu li a {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff;
@@ -142,16 +147,10 @@
 </head>
 <body>
 
-    <!-- CONTENITORE ASSOLUTO -->
     <div class="master-canvas">
-        
-        <!-- L'IMMAGINE REALE (Ora comanda lei le dimensioni della pagina) -->
         <img src="images/bg2.jpg" class="bg-image" alt="Artwork Fabio Redaelli">
-
-        <!-- IL TESTO (Incollato e proporzionale all'immagine) -->
         <div class="text-layer">
             <div class="header-anchor">
-                
                 <h1 class="brand-title">
                     <span class="text-white">Fabio</span> <span class="text-black">Hot Stuff</span> <span class="text-white">Redaelli</span>
                 </h1>
@@ -173,7 +172,6 @@
                         </ul>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
