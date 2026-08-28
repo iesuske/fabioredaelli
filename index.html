@@ -49,10 +49,10 @@
             pointer-events: none; 
         }
 
-        /* ANCORAGGIO SCRITTA: 20.2% porta la scritta nella seconda fascia rossa a filo della riga nera */
+        /* ANCORAGGIO SCRITTA: 8.2% adagia la base delle lettere direttamente a filo della linea nera */
         .header-anchor {
             position: absolute;
-            top: 20.2%; 
+            top: 8.2%; 
             left: 0;
             width: 100%;
             text-align: center;
@@ -71,13 +71,13 @@
         .text-white { color: #ffffff; }
         .text-black { color: #000000; }
 
-        /* MENU: Centrati e ristretti (48%) per allinearsi esattamente sotto la "S" e la "i" */
+        /* MENU: Posizionati in corrispondenza precisa della "S" di Stuff e della "i" di Redaelli */
         .menus-container {
             display: flex;
             justify-content: space-between;
-            width: 48%; 
-            margin: 0 auto;
-            margin-top: 0.8vw; 
+            width: 30%; 
+            margin-left: 45.5%;
+            margin-top: 0.3vw; 
         }
 
         .dropdown {
@@ -86,7 +86,7 @@
 
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
-            font-size: 2vw; 
+            font-size: 1.8vw; 
             color: #ffffff;
             cursor: pointer;
             text-decoration: none;
@@ -100,13 +100,13 @@
             display: none;
             position: absolute;
             top: 100%;
-            margin-top: 1vw;
+            margin-top: 0.5vw;
             background: #000000;
             border-radius: 12px;
             list-style: none;
             padding: 0;
             z-index: 100;
-            min-width: 220px;
+            min-width: 200px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
 
@@ -118,10 +118,10 @@
         .dropdown-menu li a {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff;
-            padding: 12px 20px;
+            padding: 10px 18px;
             display: block;
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             transition: background 0.2s;
         }
 
