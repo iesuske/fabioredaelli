@@ -29,12 +29,10 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* CONTAINER CENTRALE CON BANDA ROSSA DI CORREDO */
+        /* CONTENITORE CENTRALE */
         .main-container {
             flex: 1;
             min-height: 0;
-            position: relative;
-            width: 100%;
             display: flex;
             justify-content: center;
             align-items: flex-start;
@@ -42,31 +40,19 @@
             overflow: hidden;
         }
 
-        /* BANDA ROSSA A TUTTA LARGHEZZA (100% SCHERMO) */
-        .red-banner-bg {
-            position: absolute;
-            top: 4.8%;
-            left: 0;
-            width: 100%;
-            height: 11.5%;
-            background-color: #b72419;
-            border-bottom: 3px solid #000000;
-            z-index: 1;
-        }
-
-        /* CANVAS DELL'ARTWORK ADATTIVO (SI RIDIMENSIONA SENZA TAGLIARE LE RUOTE) */
+        /* WRAPPER ADATTIVO PER IMMAGINE E TESTO */
         .master-canvas {
             position: relative;
-            z-index: 2;
             display: inline-block;
             max-height: 100%;
             max-width: 100%;
             container-type: inline-size; 
         }
 
+        /* IMMAGINE RIDIMENSIONATA SU MISURA */
         .bg-image {
             display: block;
-            max-height: calc(100vh - 28px); 
+            max-height: calc(100vh - 22px); 
             max-width: 100vw;
             width: auto;
             height: auto;
@@ -166,19 +152,17 @@
             border-radius: 12px;
         }
 
-        /* FOOTER ULTRA-SLIM (28PX) */
+        /* FOOTER COMPATTO E TESTO PICCOLO */
         footer {
-            position: relative;
-            z-index: 10;
             flex-shrink: 0;
-            height: 28px;
-            line-height: 28px;
-            padding: 0 15px;
+            height: 22px;
+            line-height: 22px;
+            padding: 0 10px;
             text-align: center;
             background: rgba(13, 27, 42, 1);
-            color: white;
-            font-size: 0.75rem;
-            letter-spacing: 0.3px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 10px;
+            letter-spacing: 0.5px;
             width: 100%;
         }
     </style>
@@ -186,9 +170,6 @@
 <body>
 
     <div class="main-container">
-        <!-- SFONDO ROSSO A TUTTA LARGHEZZA CHE ELIMINA IL BLOCCO CREMA A SINISTRA -->
-        <div class="red-banner-bg"></div>
-
         <div class="master-canvas">
             <img src="images/bg2.jpg" class="bg-image" alt="Artwork Fabio Redaelli">
             <div class="text-layer">
