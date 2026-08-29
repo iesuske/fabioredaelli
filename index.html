@@ -18,7 +18,7 @@
             padding: 0; 
         }
 
-        /* SCHERMO BLINDATO A 100VH SENZA SCROLLBAR */
+        /* SCHERMO INTERO RIGIDO SENZA SCROLL */
         html, body {
             width: 100%;
             height: 100vh;
@@ -29,34 +29,22 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* CONTENITORE CENTRALE */
-        .main-container {
-            flex: 1;
-            min-height: 0;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            background-color: #fde3b8;
-            overflow: hidden;
-        }
-
-        /* WRAPPER ADATTIVO PER IMMAGINE E TESTO */
+        /* CONTENITORE PRINCIPALE */
         .master-canvas {
             position: relative;
-            display: inline-block;
-            max-height: 100%;
-            max-width: 100%;
-            container-type: inline-size; 
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+            overflow: hidden;
+            background-color: #fde3b8;
         }
 
-        /* IMMAGINE RIDIMENSIONATA SU MISURA */
         .bg-image {
-            display: block;
-            max-height: calc(100vh - 22px); 
-            max-width: 100vw;
-            width: auto;
-            height: auto;
-            object-fit: contain;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center; /* Mantiene l'allineamento con la riga rossa */
+            display: block; 
         }
 
         .text-layer {
@@ -69,7 +57,7 @@
         }
 
         /* =======================================================
-           [BLINDATO 1/2] TITOLO HEADER 
+           [BLINDATO 1/2] TITOLO HEADER - NON MODIFICARE PER NESSUN MOTIVO
            ======================================================= */
         .header-anchor {
             position: absolute;
@@ -82,7 +70,7 @@
 
         .brand-title {
             font-family: 'Lobster Regular', cursive;
-            font-size: 3.8cqw; 
+            font-size: 3.8vw; 
             line-height: 1;
             white-space: nowrap; 
             margin: 0;
@@ -93,22 +81,23 @@
         .text-black { color: #000000; }
 
         /* =======================================================
-           [BLINDATO 2/2] POSIZIONE MENU (DESTRA SOTTO REDAELLI)
+           [BLINDATO 2/2] POSIZIONE MENU (DESTRA) - NON MODIFICARE
            ======================================================= */
         .menus-container {
             display: flex;
-            gap: 3.5cqw;
+            gap: 3.5vw;
             margin-left: 58%;
-            margin-top: 0.8cqw; 
+            margin-top: 0.8vw; 
         }
 
+        /* STILI DROPDOWN (CONTENUTI E COLORI) */
         .dropdown {
             position: relative;
         }
 
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
-            font-size: 2cqw; 
+            font-size: 2vw; 
             color: #ffffff;
             cursor: pointer;
             text-decoration: none;
@@ -152,48 +141,43 @@
             border-radius: 12px;
         }
 
-        /* FOOTER COMPATTO E TESTO PICCOLO */
+        /* FOOTER RIDOTTO */
         footer {
             flex-shrink: 0;
-            height: 22px;
-            line-height: 22px;
-            padding: 0 10px;
+            padding: 8px 15px;
             text-align: center;
             background: rgba(13, 27, 42, 1);
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 10px;
-            letter-spacing: 0.5px;
+            color: white;
+            font-size: 0.75rem; /* Testo del copyright rimpicciolito */
             width: 100%;
         }
     </style>
 </head>
 <body>
 
-    <div class="main-container">
-        <div class="master-canvas">
-            <img src="images/bg2.jpg" class="bg-image" alt="Artwork Fabio Redaelli">
-            <div class="text-layer">
-                <div class="header-anchor">
-                    <h1 class="brand-title">
-                        <span class="text-white">Fabio</span> <span class="text-black">Hot Stuff</span> <span class="text-white">Redaelli</span>
-                    </h1>
-                    
-                    <div class="menus-container">
-                        <div class="dropdown">
-                            <a class="dropdown-trigger">About Me</a>
-                            <ul class="dropdown-menu menu-about">
-                                <li><a href="#about">Sono Fabio Redaelli</a></li>
-                            </ul>
-                        </div>
-                        <div class="dropdown">
-                            <a class="dropdown-trigger">Contact Me</a>
-                            <ul class="dropdown-menu menu-contact">
-                                <li><a href="#instagram">Instagram</a></li>
-                                <li><a href="#facebook">Facebook</a></li>
-                                <li><a href="#telegram">Telegram</a></li>
-                                <li><a href="#whatsapp">WhatsApp</a></li>
-                            </ul>
-                        </div>
+    <div class="master-canvas">
+        <img src="images/bg2.jpg" class="bg-image" alt="Artwork Fabio Redaelli">
+        <div class="text-layer">
+            <div class="header-anchor">
+                <h1 class="brand-title">
+                    <span class="text-white">Fabio</span> <span class="text-black">Hot Stuff</span> <span class="text-white">Redaelli</span>
+                </h1>
+                
+                <div class="menus-container">
+                    <div class="dropdown">
+                        <a class="dropdown-trigger">About Me</a>
+                        <ul class="dropdown-menu menu-about">
+                            <li><a href="#about">Sono Fabio Redaelli</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <a class="dropdown-trigger">Contact Me</a>
+                        <ul class="dropdown-menu menu-contact">
+                            <li><a href="#instagram">Instagram</a></li>
+                            <li><a href="#facebook">Facebook</a></li>
+                            <li><a href="#telegram">Telegram</a></li>
+                            <li><a href="#whatsapp">WhatsApp</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -201,7 +185,7 @@
     </div>
 
     <footer>
-        Copyright &copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.
+        <p>Copyright &copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
     </footer>
 
 </body>
