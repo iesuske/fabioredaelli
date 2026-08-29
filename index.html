@@ -113,8 +113,8 @@
             -webkit-backdrop-filter: blur(6px);
             border-radius: 12px;
             list-style: none;
-            padding: 0; /* AZZERATO IL PADDING INTERNO PER ELIMINARE BORDINI NERI */
-            overflow: hidden; /* TAGLIA IL ROSSO SUI BORDI ARROTONDATI AI CAPI */
+            padding: 0;
+            overflow: hidden;
             z-index: 100;
             box-shadow: 0 10px 25px rgba(0,0,0,0.35);
         }
@@ -128,12 +128,13 @@
             height: 12px;
         }
 
-        /* ABOUT ME */
+        /* ABOUT ME: TESTO CENTRATO CON A CAPO DOPO REDAELLI */
         .menu-about { 
             left: 50%;
             transform: translateX(-50%);
             text-align: center; 
             width: max-content;
+            padding: 8px 12px;
         }
 
         /* CONTACT ME */
@@ -149,34 +150,32 @@
         .dropdown-menu li {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff;
-            padding: 0;
             font-size: 0.95rem;
             line-height: 1.25;
-            text-align: center;
-            width: 100%;
             white-space: nowrap;
         }
 
-        /* ABOUT ME SENZA LINK */
+        /* INCOLONNAMENTO CENTRATO ABOUT ME */
         .menu-about li {
-            padding: 6px 12px;
+            text-align: center;
+            padding: 2px 0;
         }
 
         /* CONTACT ME CON LINK DA BORDO A BORDO */
-        .dropdown-menu li a {
+        .menu-contact li a {
             color: #ffffff;
             display: block;
             text-decoration: none;
-            padding: 6px 0; /* RIEMPIMENTO COMPLETO SENZA CORNICE NERA */
+            padding: 6px 0;
             transition: background 0.2s ease;
             text-align: center;
             cursor: pointer;
             width: 100%;
         }
 
-        .dropdown-menu li a:hover { 
+        .menu-contact li a:hover { 
             background: #b72216;
-            border-radius: 0; /* ADERISCE AL BORDO DEL CONTENITORE PARENTE */
+            border-radius: 0;
         }
 
         /* FOOTER FISSO IN BASSO */
@@ -205,7 +204,6 @@
                 </h1>
                 
                 <div class="menus-container">
-                    <!-- DROPDOWN ABOUT ME -->
                     <div class="dropdown">
                         <a class="dropdown-trigger">About Me</a>
                         <ul class="dropdown-menu menu-about">
@@ -216,7 +214,6 @@
                         </ul>
                     </div>
 
-                    <!-- DROPDOWN CONTACT ME -->
                     <div class="dropdown">
                         <a class="dropdown-trigger">Contact Me</a>
                         <ul class="dropdown-menu menu-contact">
