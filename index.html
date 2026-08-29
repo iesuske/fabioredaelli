@@ -87,7 +87,7 @@
         /* STILI DROPDOWN CON PONTE CONTINUO PER MOUSE */
         .dropdown {
             position: relative;
-            padding-bottom: 12px; /* Ponte di passaggio per il mouse */
+            padding-bottom: 12px;
         }
 
         .dropdown-trigger {
@@ -107,19 +107,18 @@
             display: none;
             position: absolute;
             top: 100%;
-            background: rgba(0, 0, 0, 0.65); /* TRASPARENZA */
+            background: rgba(0, 0, 0, 0.65);
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
             border-radius: 12px;
             list-style: none;
-            padding: 8px 10px;
+            padding: 6px 6px; /* LARGHEZZA INTERNA RISTRETTA DI POCHI PX */
             z-index: 100;
             width: max-content;
-            min-width: 180px;
+            min-width: 150px; /* LARGHEZZA MINIMA RISTRETTA */
             box-shadow: 0 10px 25px rgba(0,0,0,0.35);
         }
 
-        /* PERMUTA IL PASSAGGIO DEL MOUSE SENZA INTERRUZIONI */
         .dropdown-menu::before {
             content: '';
             position: absolute;
@@ -129,7 +128,6 @@
             height: 12px;
         }
 
-        /* CENTRATURA PERFETTA DI ENTRAMBI I MENU RISPETTO AI LORO TITOLI */
         .menu-about, .menu-contact { 
             left: 50%;
             transform: translateX(-50%);
@@ -138,7 +136,6 @@
 
         .dropdown:hover .dropdown-menu { display: block; }
 
-        /* CENTRATURA E INCOLONNAMENTO TESTO */
         .dropdown-menu li {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff;
@@ -149,19 +146,18 @@
             width: 100%;
         }
 
-        /* SELEZIONE IN ROSSO BANDA HEADER */
         .dropdown-menu li a {
             color: #ffffff;
             display: block;
             text-decoration: none;
-            padding: 5px 12px;
+            padding: 4px 8px; /* PADDING INTERNO LEGGERMENTE PIÙ STRETTO */
             transition: background 0.2s ease;
             text-align: center;
             cursor: pointer;
         }
 
         .dropdown-menu li a:hover { 
-            background: #b72216; /* ROSSO DELL'HEADER */
+            background: #b72216;
             border-radius: 8px;
         }
 
