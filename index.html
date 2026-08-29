@@ -18,31 +18,25 @@
             padding: 0; 
         }
 
-        /* SCHERMO INTERO SENZA SCROLL */
+        /* STRUTTURA ADATTIVA SENZA DEFORMAZIONE */
         html, body {
             width: 100%;
-            height: 100vh;
-            overflow: hidden; 
-            display: flex;
-            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden; 
             background-color: #fde3b8; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* CONTENITORE PRINCIPALE ADATTABILE */
+        /* CONTENITORE PRINCIPALE (MANTIENE IL RAPPORTO D'ASPETTO IMMAGINE/TESTO) */
         .master-canvas {
             position: relative;
             width: 100%;
-            flex: 1;
-            min-height: 0;
             background-color: #fde3b8;
-            overflow: hidden;
         }
 
         .bg-image {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
             display: block; 
         }
 
@@ -56,7 +50,7 @@
         }
 
         /* =======================================================
-           [BLINDATO 1/2] TITOLO HEADER - NON MODIFICARE PER NESSUN MOTIVO
+           [BLINDATO 1/2] TITOLO HEADER - PERFETTAMENTE RIPRISTINATO
            ======================================================= */
         .header-anchor {
             position: absolute;
@@ -80,7 +74,7 @@
         .text-black { color: #000000; }
 
         /* =======================================================
-           [BLINDATO 2/2] POSIZIONE MENU (DESTRA) - NON MODIFICARE
+           [BLINDATO 2/2] POSIZIONE MENU (DESTRA) - PERFETTAMENTE RIPRISTINATO
            ======================================================= */
         .menus-container {
             display: flex;
@@ -140,10 +134,9 @@
             border-radius: 12px;
         }
 
-        /* FOOTER VISIBILE SENZA SCROLL */
+        /* FOOTER CON SIMBOLO COPYRIGHT */
         footer {
-            flex-shrink: 0;
-            padding: 12px 20px;
+            padding: 15px;
             text-align: center;
             background: rgba(13, 27, 42, 1);
             color: white;
