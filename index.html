@@ -18,7 +18,7 @@
             padding: 0; 
         }
 
-        /* BLOCCO RIGIDO DELLO SCROLL */
+        /* SCHERMO BLOCCATO A 100VH */
         html, body {
             width: 100%;
             height: 100vh;
@@ -27,11 +27,12 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* CONTENITORE PRINCIPALE (ORIGINALE 100%) */
+        /* CONTENITORE TRASLATO IN ALTO DI ~0.5CM */
         .master-canvas {
             position: relative;
             width: 100%;
             background-color: #fde3b8;
+            margin-top: -25px; /* Recupera lo spazio in alto per far salire l'auto */
         }
 
         .bg-image {
@@ -50,7 +51,7 @@
         }
 
         /* =======================================================
-           [BLINDATO 1/2] TITOLO HEADER - ORIGINALE UNTOUCHED
+           [BLINDATO 1/2] TITOLO HEADER - ORIGINALE
            ======================================================= */
         .header-anchor {
             position: absolute;
@@ -74,7 +75,7 @@
         .text-black { color: #000000; }
 
         /* =======================================================
-           [BLINDATO 2/2] POSIZIONE MENU (DESTRA) - ORIGINALE UNTOUCHED
+           [BLINDATO 2/2] POSIZIONE MENU (DESTRA) - ORIGINALE
            ======================================================= */
         .menus-container {
             display: flex;
@@ -83,7 +84,7 @@
             margin-top: 0.8vw; 
         }
 
-        /* STILI DROPDOWN (ORIGINALE) */
+        /* STILI DROPDOWN */
         .dropdown {
             position: relative;
         }
@@ -134,7 +135,7 @@
             border-radius: 12px;
         }
 
-        /* FOOTER FISSO IN BASSO SENZA CREARE SCROLL */
+        /* FOOTER FISSO IN BASSO */
         footer {
             position: fixed;
             bottom: 0;
