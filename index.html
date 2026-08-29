@@ -106,13 +106,15 @@
             position: absolute;
             top: 100%;
             margin-top: 0.5vw;
-            background: #000000;
+            background: rgba(0, 0, 0, 0.85); /* SFONDO NERO SEMI-TRASPARENTE */
+            backdrop-filter: blur(4px); /* SFOCATURA ELEGANTE DI SFONDO */
+            -webkit-backdrop-filter: blur(4px);
             border-radius: 12px;
             list-style: none;
-            padding: 8px 0;
+            padding: 8px 10px;
             z-index: 100;
-            min-width: 260px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            min-width: 200px; /* FINESTRA RISTRETTA */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
         }
 
         /* CENTRATURA PERFETTA RISPETTO AL TITOLO ABOUT ME */
@@ -133,8 +135,8 @@
         .dropdown-menu li {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff;
-            padding: 3px 14px;
-            font-size: 0.98rem;
+            padding: 3px 4px;
+            font-size: 0.95rem;
             line-height: 1.15;
         }
 
@@ -177,7 +179,7 @@
                 </h1>
                 
                 <div class="menus-container">
-                    <!-- DROPDOWN ABOUT ME (CENTRATO E COMPATTO) -->
+                    <!-- DROPDOWN ABOUT ME -->
                     <div class="dropdown">
                         <a class="dropdown-trigger">About Me</a>
                         <ul class="dropdown-menu menu-about">
