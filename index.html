@@ -112,10 +112,10 @@
             -webkit-backdrop-filter: blur(6px);
             border-radius: 12px;
             list-style: none;
-            padding: 6px 6px; /* LARGHEZZA INTERNA RISTRETTA DI POCHI PX */
+            padding: 6px 3px; /* PADDING LATERALE MINIMIZZATO PER ELIMINARE L'ARIA AI LATI */
             z-index: 100;
             width: max-content;
-            min-width: 150px; /* LARGHEZZA MINIMA RISTRETTA */
+            min-width: auto; /* LARGHEZZA MINIMA AZZERATA PER ADATTARSI STRETTAMENTE AL TESTO */
             box-shadow: 0 10px 25px rgba(0,0,0,0.35);
         }
 
@@ -139,18 +139,19 @@
         .dropdown-menu li {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff;
-            padding: 2px 0;
+            padding: 2px 6px;
             font-size: 0.95rem;
             line-height: 1.25;
             text-align: center;
             width: 100%;
+            white-space: nowrap;
         }
 
         .dropdown-menu li a {
             color: #ffffff;
             display: block;
             text-decoration: none;
-            padding: 4px 8px; /* PADDING INTERNO LEGGERMENTE PIÙ STRETTO */
+            padding: 4px 6px; /* RISALTO ROSSO ADERENTE AI TESTI */
             transition: background 0.2s ease;
             text-align: center;
             cursor: pointer;
