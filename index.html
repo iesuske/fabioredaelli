@@ -18,11 +18,11 @@
             padding: 0; 
         }
 
-        /* SCHERMO BLOCCATO A 100VH SENZA ALCUN TIPO DI SCROLL */
+        /* SFONDO UNIFORME */
         html, body {
             width: 100%;
-            height: 100vh;
-            overflow: hidden; 
+            min-height: 100vh;
+            overflow-x: hidden; 
             background-color: #fde3b8; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
@@ -31,8 +31,6 @@
         .master-canvas {
             position: relative;
             width: 100%;
-            height: 100vh;
-            overflow: hidden;
             background-color: #fde3b8;
         }
 
@@ -85,7 +83,7 @@
             margin-top: 0.8vw; 
         }
 
-        /* STILI DROPDOWN */
+        /* STILI DROPDOWN (CONTENUTI E COLORI) */
         .dropdown {
             position: relative;
         }
@@ -136,18 +134,14 @@
             border-radius: 12px;
         }
 
-        /* FOOTER ADERENTE AL BORDO IN BASSO SENZA FORZARE LO SCROLL */
+        /* FOOTER SOTTILE CON TESTO PICCOLO */
         footer {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            z-index: 50;
-            padding: 6px 10px;
+            padding: 5px 10px;
             text-align: center;
             background: rgba(13, 27, 42, 1);
             color: white;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
+            width: 100%;
         }
     </style>
 </head>
@@ -180,11 +174,11 @@
                 </div>
             </div>
         </div>
-
-        <footer>
-            <p>Copyright &copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
-        </footer>
     </div>
+
+    <footer>
+        <p>Copyright &copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
+    </footer>
 
 </body>
 </html>
