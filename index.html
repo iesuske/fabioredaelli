@@ -113,7 +113,7 @@
             -webkit-backdrop-filter: blur(6px);
             border-radius: 12px;
             list-style: none;
-            padding: 6px 0;
+            padding: 6px 4px;
             z-index: 100;
             box-shadow: 0 10px 25px rgba(0,0,0,0.35);
         }
@@ -136,10 +136,11 @@
             padding: 6px 8px;
         }
 
-        /* CONTACT ME: LARGHEZZA IDENTICA ALLA SCRITTA "CONTACT ME" */
+        /* CONTACT ME: LEGGERMENTE PIÙ LARGO DELLA SCRITTA E CENTRATO */
         .menu-contact { 
-            left: 0;
-            width: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% + 24px); /* UN PO' PIÙ LARGO DELLA SCRITTA SUPERIORE */
             text-align: center; 
         }
 
@@ -160,7 +161,7 @@
             color: #ffffff;
             display: block;
             text-decoration: none;
-            padding: 4px 0;
+            padding: 4px 6px;
             transition: background 0.2s ease;
             text-align: center;
             cursor: pointer;
@@ -208,7 +209,7 @@
                         </ul>
                     </div>
 
-                    <!-- DROPDOWN CONTACT ME (LARGHEZZA PARI A CONTACT ME) -->
+                    <!-- DROPDOWN CONTACT ME -->
                     <div class="dropdown">
                         <a class="dropdown-trigger">Contact Me</a>
                         <ul class="dropdown-menu menu-contact">
