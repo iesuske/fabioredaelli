@@ -128,13 +128,12 @@
             height: 12px;
         }
 
-        /* ABOUT ME: TESTO CENTRATO CON A CAPO DOPO REDAELLI */
+        /* ABOUT ME */
         .menu-about { 
             left: 50%;
             transform: translateX(-50%);
             text-align: center; 
             width: max-content;
-            padding: 8px 12px;
         }
 
         /* CONTACT ME */
@@ -155,10 +154,17 @@
             white-space: nowrap;
         }
 
-        /* INCOLONNAMENTO CENTRATO ABOUT ME */
+        /* ABOUT ME CON HOVER ROSSO TRASPARENTE */
         .menu-about li {
             text-align: center;
-            padding: 2px 0;
+            padding: 6px 14px;
+            transition: background 0.2s ease;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .menu-about li:hover {
+            background: rgba(183, 34, 22, 0.75); /* ROSSO HEADER CON TRASPARENZA */
         }
 
         /* CONTACT ME CON LINK DA BORDO A BORDO */
@@ -174,7 +180,7 @@
         }
 
         .menu-contact li a:hover { 
-            background: #b72216;
+            background: rgba(183, 34, 22, 0.75); /* ROSSO HEADER CON TRASPARENZA */
             border-radius: 0;
         }
 
