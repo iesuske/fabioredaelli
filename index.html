@@ -106,54 +106,50 @@
             position: absolute;
             top: 100%;
             margin-top: 0.5vw;
-            background: rgba(0, 0, 0, 0.65); /* TRASPARENZA MOLTO PIÙ VISIBILE */
+            background: rgba(0, 0, 0, 0.65); /* TRASPARENZA IDENTICA PER ENTRAMBI */
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
             border-radius: 12px;
             list-style: none;
-            padding: 10px 14px;
+            padding: 8px 10px;
             z-index: 100;
             width: max-content;
-            min-width: 210px;
+            min-width: 180px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.35);
         }
 
-        /* CENTRATURA PERFETTA RISPETTO AL TITOLO ABOUT ME */
-        .menu-about { 
+        /* CENTRATURA PERFETTA DI ENTRAMBI I MENU RISPETTO AI LORO TITOLI */
+        .menu-about, .menu-contact { 
             left: 50%;
             transform: translateX(-50%);
             text-align: center; 
         }
 
-        .menu-contact { 
-            right: 0; 
-            text-align: center; 
-        }
-
         .dropdown:hover .dropdown-menu { display: block; }
 
-        /* CENTRATURA E INCOLONNAMENTO DEL TESTO */
+        /* CENTRATURA E INCOLONNAMENTO TESTO */
         .dropdown-menu li {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff;
-            padding: 4px 0;
+            padding: 2px 0;
             font-size: 0.95rem;
             line-height: 1.25;
             text-align: center;
             width: 100%;
         }
 
+        /* SELEZIONE IN ROSSO BANDA HEADER */
         .dropdown-menu li a {
             color: #ffffff;
             display: block;
             text-decoration: none;
-            padding: 4px 10px;
-            transition: background 0.2s;
+            padding: 5px 12px;
+            transition: background 0.2s ease;
             text-align: center;
         }
 
         .dropdown-menu li a:hover { 
-            background: #b72216; 
+            background: #b72216; /* ROSSO DELL'HEADER */
             border-radius: 8px;
         }
 
@@ -194,7 +190,7 @@
                         </ul>
                     </div>
 
-                    <!-- DROPDOWN CONTACT ME -->
+                    <!-- DROPDOWN CONTACT ME (CENTRATO, TRASPARENTE E CON SELEZIONE ROSSA) -->
                     <div class="dropdown">
                         <a class="dropdown-trigger">Contact Me</a>
                         <ul class="dropdown-menu menu-contact">
