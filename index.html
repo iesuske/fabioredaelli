@@ -88,6 +88,7 @@
         .dropdown {
             position: relative;
             padding-bottom: 12px;
+            display: inline-block;
         }
 
         .dropdown-trigger {
@@ -112,10 +113,8 @@
             -webkit-backdrop-filter: blur(6px);
             border-radius: 12px;
             list-style: none;
-            padding: 6px 3px; /* PADDING LATERALE MINIMIZZATO PER ELIMINARE L'ARIA AI LATI */
+            padding: 6px 0;
             z-index: 100;
-            width: max-content;
-            min-width: auto; /* LARGHEZZA MINIMA AZZERATA PER ADATTARSI STRETTAMENTE AL TESTO */
             box-shadow: 0 10px 25px rgba(0,0,0,0.35);
         }
 
@@ -128,9 +127,19 @@
             height: 12px;
         }
 
-        .menu-about, .menu-contact { 
+        /* ABOUT ME: LARGHEZZA IN BASE AL TESTO CENTRATO */
+        .menu-about { 
             left: 50%;
             transform: translateX(-50%);
+            text-align: center; 
+            width: max-content;
+            padding: 6px 8px;
+        }
+
+        /* CONTACT ME: LARGHEZZA IDENTICA ALLA SCRITTA "CONTACT ME" */
+        .menu-contact { 
+            left: 0;
+            width: 100%;
             text-align: center; 
         }
 
@@ -139,7 +148,7 @@
         .dropdown-menu li {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff;
-            padding: 2px 6px;
+            padding: 2px 0;
             font-size: 0.95rem;
             line-height: 1.25;
             text-align: center;
@@ -151,7 +160,7 @@
             color: #ffffff;
             display: block;
             text-decoration: none;
-            padding: 4px 6px; /* RISALTO ROSSO ADERENTE AI TESTI */
+            padding: 4px 0;
             transition: background 0.2s ease;
             text-align: center;
             cursor: pointer;
@@ -199,7 +208,7 @@
                         </ul>
                     </div>
 
-                    <!-- DROPDOWN CONTACT ME -->
+                    <!-- DROPDOWN CONTACT ME (LARGHEZZA PARI A CONTACT ME) -->
                     <div class="dropdown">
                         <a class="dropdown-trigger">Contact Me</a>
                         <ul class="dropdown-menu menu-contact">
