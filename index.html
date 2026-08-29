@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fabio Hot Stuff Redaelli - Comic Art Author -</title>
+    
+    <!-- PRELOAD DEL FONT PER EVITARE IL FLASH DI COMIC SANS -->
+    <link rel="preload" href="fonts/lobsteregular.ttf" as="font" type="font/ttf" crossorigin>
+
     <style>
         @font-face {
             font-family: 'Lobster Regular';
             src: url('fonts/lobsteregular.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
+            font-display: block; /* FORZA IL BROWSER AD ASPETTARE IL FONT SENSE SWAP TEMPORANEI */
         }
 
         * { 
