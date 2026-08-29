@@ -108,7 +108,7 @@
             display: none;
             position: absolute;
             top: 100%;
-            background: rgba(183, 34, 22, 0.65); /* SFONDO DELL'INTERA FINESTRA ROSSO TRASPARENTE */
+            background: rgba(0, 0, 0, 0.65); /* SFONDO NERO TRASPARENTE ORIGINALE */
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
             border-radius: 12px;
@@ -154,20 +154,14 @@
             white-space: nowrap;
         }
 
-        /* ABOUT ME VOCIBOX */
+        /* ABOUT ME - NESSUNA SELEZIONE/HOVER */
         .menu-about li {
             text-align: center;
             padding: 6px 14px;
-            transition: background 0.2s ease;
-            cursor: pointer;
             width: 100%;
         }
 
-        .menu-about li:hover {
-            background: rgba(0, 0, 0, 0.25); /* RIFINITURA PIÙ SCURA IN HOVER */
-        }
-
-        /* CONTACT ME LINK BOX */
+        /* CONTACT ME - SELEZIONE IN ROSSO RIPRISTINATA AL PASSAGGIO DEL MOUSE */
         .menu-contact li a {
             color: #ffffff;
             display: block;
@@ -180,7 +174,7 @@
         }
 
         .menu-contact li a:hover { 
-            background: rgba(0, 0, 0, 0.25); /* RIFINITURA PIÙ SCURA IN HOVER */
+            background: #b72216; /* ROSSO ORIGINALE IN HOVER */
             border-radius: 0;
         }
 
