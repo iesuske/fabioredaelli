@@ -106,15 +106,16 @@
             position: absolute;
             top: 100%;
             margin-top: 0.5vw;
-            background: rgba(0, 0, 0, 0.85); /* SFONDO NERO SEMI-TRASPARENTE */
-            backdrop-filter: blur(4px); /* SFOCATURA ELEGANTE DI SFONDO */
-            -webkit-backdrop-filter: blur(4px);
+            background: rgba(0, 0, 0, 0.65); /* TRASPARENZA MOLTO PIÙ VISIBILE */
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
             border-radius: 12px;
             list-style: none;
-            padding: 8px 10px;
+            padding: 10px 14px;
             z-index: 100;
-            min-width: 200px; /* FINESTRA RISTRETTA */
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            width: max-content;
+            min-width: 210px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.35);
         }
 
         /* CENTRATURA PERFETTA RISPETTO AL TITOLO ABOUT ME */
@@ -126,18 +127,20 @@
 
         .menu-contact { 
             right: 0; 
-            text-align: right; 
+            text-align: center; 
         }
 
         .dropdown:hover .dropdown-menu { display: block; }
 
-        /* INTERLINEA RIDOTTA E SPAZIATURA COMPATTA */
+        /* CENTRATURA E INCOLONNAMENTO DEL TESTO */
         .dropdown-menu li {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff;
-            padding: 3px 4px;
+            padding: 4px 0;
             font-size: 0.95rem;
-            line-height: 1.15;
+            line-height: 1.25;
+            text-align: center;
+            width: 100%;
         }
 
         .dropdown-menu li a {
@@ -146,6 +149,7 @@
             text-decoration: none;
             padding: 4px 10px;
             transition: background 0.2s;
+            text-align: center;
         }
 
         .dropdown-menu li a:hover { 
@@ -183,7 +187,7 @@
                     <div class="dropdown">
                         <a class="dropdown-trigger">About Me</a>
                         <ul class="dropdown-menu menu-about">
-                            <li>Mi chiamo Fabio Redaelli</li>
+                            <li>Mi chiamo Fabio Redaelli,</li>
                             <li>sono un artista autore di fumetti,</li>
                             <li>mi piace la musica Rock'n'Roll,</li>
                             <li>i Rolling Stones...</li>
