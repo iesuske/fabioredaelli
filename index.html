@@ -18,25 +18,31 @@
             padding: 0; 
         }
 
-        /* SFONDO UNIFORME */
+        /* SCHERMO INTERO SENZA SCROLL */
         html, body {
             width: 100%;
-            min-height: 100vh;
-            overflow-x: hidden; 
+            height: 100vh;
+            overflow: hidden; 
+            display: flex;
+            flex-direction: column;
             background-color: #fde3b8; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* CONTENITORE PRINCIPALE */
+        /* CONTENITORE PRINCIPALE ADATTABILE */
         .master-canvas {
             position: relative;
             width: 100%;
+            flex: 1;
+            min-height: 0;
             background-color: #fde3b8;
+            overflow: hidden;
         }
 
         .bg-image {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
             display: block; 
         }
 
@@ -83,7 +89,7 @@
             margin-top: 0.8vw; 
         }
 
-        /* STILI DROPDOWN (CONTENUTI E COLORI) */
+        /* STILI DROPDOWN */
         .dropdown {
             position: relative;
         }
@@ -134,8 +140,10 @@
             border-radius: 12px;
         }
 
+        /* FOOTER VISIBILE SENZA SCROLL */
         footer {
-            padding: 20px;
+            flex-shrink: 0;
+            padding: 12px 20px;
             text-align: center;
             background: rgba(13, 27, 42, 1);
             color: white;
@@ -176,7 +184,7 @@
     </div>
 
     <footer>
-        <p>Copyright 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
+        <p>Copyright &copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
     </footer>
 
 </body>
