@@ -18,25 +18,21 @@
             padding: 0; 
         }
 
-        /* SFONDO UNIFORME E SCROLLBAR NASCOSTA */
+        /* SCHERMO BLOCCATO A 100VH SENZA ALCUN TIPO DI SCROLL */
         html, body {
             width: 100%;
-            min-height: 100vh;
+            height: 100vh;
+            overflow: hidden; 
             background-color: #fde3b8; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* Nasconde la barra di scorrimento visibile mantenendo le dimensioni reali dell'auto */
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none; /* IE e Edge */
-        }
-
-        body::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Opera */
         }
 
         /* CONTENITORE PRINCIPALE (ORIGINALE BLOCCATO) */
         .master-canvas {
             position: relative;
             width: 100%;
+            height: 100vh;
+            overflow: hidden;
             background-color: #fde3b8;
         }
 
@@ -56,7 +52,7 @@
         }
 
         /* =======================================================
-           [BLINDATO 1/2] TITOLO HEADER - NON MODIFICARE PER NESSUN MOTIVO
+           [BLINDATO 1/2] TITOLO HEADER - DALLORIGINALE
            ======================================================= */
         .header-anchor {
             position: absolute;
@@ -80,7 +76,7 @@
         .text-black { color: #000000; }
 
         /* =======================================================
-           [BLINDATO 2/2] POSIZIONE MENU (DESTRA) - NON MODIFICARE
+           [BLINDATO 2/2] POSIZIONE MENU (DESTRA) - DALLORIGINALE
            ======================================================= */
         .menus-container {
             display: flex;
@@ -89,7 +85,7 @@
             margin-top: 0.8vw; 
         }
 
-        /* STILI DROPDOWN (CONTENUTI E COLORI) */
+        /* STILI DROPDOWN */
         .dropdown {
             position: relative;
         }
@@ -140,14 +136,18 @@
             border-radius: 12px;
         }
 
-        /* FOOTER COMPATTO CON TESTO PICCOLO */
+        /* FOOTER ADERENTE AL BORDO IN BASSO SENZA FORZARE LO SCROLL */
         footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 50;
             padding: 6px 10px;
             text-align: center;
             background: rgba(13, 27, 42, 1);
             color: white;
             font-size: 0.75rem;
-            width: 100%;
         }
     </style>
 </head>
@@ -180,11 +180,11 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <footer>
-        <p>Copyright &copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
-    </footer>
+        <footer>
+            <p>Copyright &copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
+        </footer>
+    </div>
 
 </body>
 </html>
