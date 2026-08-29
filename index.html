@@ -18,24 +18,19 @@
             padding: 0; 
         }
 
-        /* SCHERMO INTERO SENZA SCROLL */
+        /* SFONDO E PAGINA BLOCCATA SENZA SCROLL */
         html, body {
             width: 100%;
             height: 100vh;
             overflow: hidden; 
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
             background-color: #fde3b8; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* CONTENITORE PRINCIPALE (ORIGINALE BLOCCATO) */
+        /* CONTENITORE PRINCIPALE (ORIGINALE 100%) */
         .master-canvas {
             position: relative;
             width: 100%;
-            flex: 1;
-            overflow: hidden;
             background-color: #fde3b8;
         }
 
@@ -139,15 +134,18 @@
             border-radius: 12px;
         }
 
-        /* FOOTER SLIM CON CARATTERE RIDOTTO */
+        /* FOOTER SOTTILE E DISCRETO FIXATO IN BASSO */
         footer {
-            flex-shrink: 0;
-            padding: 6px 15px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 5px 10px;
             text-align: center;
             background: rgba(13, 27, 42, 1);
             color: white;
-            font-size: 0.75rem;
-            width: 100%;
+            font-size: 0.7rem;
         }
     </style>
 </head>
