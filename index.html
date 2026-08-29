@@ -18,25 +18,40 @@
             padding: 0; 
         }
 
-        /* STRUTTURA ADATTIVA SENZA DEFORMAZIONE */
+        /* LAYOUT RIGIDO 100VH SENZA SCROLLBAR */
         html, body {
             width: 100%;
-            min-height: 100vh;
-            overflow-x: hidden; 
+            height: 100vh;
+            overflow: hidden; 
+            display: flex;
+            flex-direction: column;
             background-color: #fde3b8; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* CONTENITORE PRINCIPALE (MANTIENE IL RAPPORTO D'ASPETTO IMMAGINE/TESTO) */
+        /* CONTENITORE CENTRATO FLESSIBILE */
         .master-canvas {
-            position: relative;
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
             width: 100%;
             background-color: #fde3b8;
         }
 
+        /* WRAPPER CHE TRATTIENE TESTO E IMMAGINE NELLE STESSE PROPORZIONI */
+        .canvas-wrapper {
+            position: relative;
+            height: 100%;
+            display: inline-block;
+            container-type: inline-size; /* Permette il ridimensionamento perfetto del testo */
+        }
+
         .bg-image {
-            width: 100%;
-            height: auto;
+            height: 100%;
+            width: auto;
+            max-width: 100vw;
             display: block; 
         }
 
@@ -50,7 +65,7 @@
         }
 
         /* =======================================================
-           [BLINDATO 1/2] TITOLO HEADER - PERFETTAMENTE RIPRISTINATO
+           [BLINDATO 1/2] TITOLO HEADER (7.6% DALL'ALTO DELL'IMMAGINE)
            ======================================================= */
         .header-anchor {
             position: absolute;
@@ -63,7 +78,7 @@
 
         .brand-title {
             font-family: 'Lobster Regular', cursive;
-            font-size: 3.8vw; 
+            font-size: 3.8cqw; 
             line-height: 1;
             white-space: nowrap; 
             margin: 0;
@@ -74,23 +89,22 @@
         .text-black { color: #000000; }
 
         /* =======================================================
-           [BLINDATO 2/2] POSIZIONE MENU (DESTRA) - PERFETTAMENTE RIPRISTINATO
+           [BLINDATO 2/2] POSIZIONE MENU (DESTRA)
            ======================================================= */
         .menus-container {
             display: flex;
-            gap: 3.5vw;
+            gap: 3.5cqw;
             margin-left: 58%;
-            margin-top: 0.8vw; 
+            margin-top: 0.8cqw; 
         }
 
-        /* STILI DROPDOWN */
         .dropdown {
             position: relative;
         }
 
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
-            font-size: 2vw; 
+            font-size: 2cqw; 
             color: #ffffff;
             cursor: pointer;
             text-decoration: none;
@@ -134,9 +148,10 @@
             border-radius: 12px;
         }
 
-        /* FOOTER CON SIMBOLO COPYRIGHT */
+        /* FOOTER SEMPRE VISIBILE IN BASSO */
         footer {
-            padding: 15px;
+            flex-shrink: 0;
+            padding: 12px 20px;
             text-align: center;
             background: rgba(13, 27, 42, 1);
             color: white;
@@ -148,28 +163,30 @@
 <body>
 
     <div class="master-canvas">
-        <img src="images/bg2.jpg" class="bg-image" alt="Artwork Fabio Redaelli">
-        <div class="text-layer">
-            <div class="header-anchor">
-                <h1 class="brand-title">
-                    <span class="text-white">Fabio</span> <span class="text-black">Hot Stuff</span> <span class="text-white">Redaelli</span>
-                </h1>
-                
-                <div class="menus-container">
-                    <div class="dropdown">
-                        <a class="dropdown-trigger">About Me</a>
-                        <ul class="dropdown-menu menu-about">
-                            <li><a href="#about">Sono Fabio Redaelli</a></li>
-                        </ul>
-                    </div>
-                    <div class="dropdown">
-                        <a class="dropdown-trigger">Contact Me</a>
-                        <ul class="dropdown-menu menu-contact">
-                            <li><a href="#instagram">Instagram</a></li>
-                            <li><a href="#facebook">Facebook</a></li>
-                            <li><a href="#telegram">Telegram</a></li>
-                            <li><a href="#whatsapp">WhatsApp</a></li>
-                        </ul>
+        <div class="canvas-wrapper">
+            <img src="images/bg2.jpg" class="bg-image" alt="Artwork Fabio Redaelli">
+            <div class="text-layer">
+                <div class="header-anchor">
+                    <h1 class="brand-title">
+                        <span class="text-white">Fabio</span> <span class="text-black">Hot Stuff</span> <span class="text-white">Redaelli</span>
+                    </h1>
+                    
+                    <div class="menus-container">
+                        <div class="dropdown">
+                            <a class="dropdown-trigger">About Me</a>
+                            <ul class="dropdown-menu menu-about">
+                                <li><a href="#about">Sono Fabio Redaelli</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <a class="dropdown-trigger">Contact Me</a>
+                            <ul class="dropdown-menu menu-contact">
+                                <li><a href="#instagram">Instagram</a></li>
+                                <li><a href="#facebook">Facebook</a></li>
+                                <li><a href="#telegram">Telegram</a></li>
+                                <li><a href="#whatsapp">WhatsApp</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
