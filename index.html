@@ -23,7 +23,7 @@
             font-display: block;
         }
 
-        /* BLOCCO ANTI-FONT BRUTTO (FOUT / FADE EFFECT) */
+        /* GESTIONE FONT CARICATO */
         .testo-custom { visibility: hidden; opacity: 0; }
         body.fonts-loaded .testo-custom { 
             visibility: visible; 
@@ -46,7 +46,7 @@
         }
 
         /* =======================================================
-           STRUTTURA DESKTOP (INTATTA E PERFETTA)
+           STRUTTURA DESKTOP
            ======================================================= */
         .master-canvas {
             position: relative;
@@ -86,12 +86,10 @@
             white-space: nowrap; 
             margin: 0;
             text-shadow: none;
-            
             text-rendering: optimizeLegibility;
             font-variant-ligatures: none;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            
             transform: translateY(2px);
         }
 
@@ -101,15 +99,8 @@
             }
         }
 
-        .text-white { 
-            color: #ffffff; 
-            text-shadow: none;
-        }
-        
-        .text-black { 
-            color: #000000; 
-            text-shadow: none;
-        }
+        .text-white { color: #ffffff; }
+        .text-black { color: #000000; }
 
         .menus-container {
             display: flex;
@@ -203,9 +194,7 @@
             width: 100%;
         }
 
-        .menu-contact li a:hover { 
-            background: #b72216;
-        }
+        .menu-contact li a:hover { background: #b72216; }
 
         .menu-contact li:first-child a {
             border-top-left-radius: 12px;
@@ -229,13 +218,9 @@
         }
 
         /* =======================================================
-           STRUTTURA MOBILE DEFINITIVA (FORZATA E PULITA)
+           STRUTTURA MOBILE OTTIMIZZATA
            ======================================================= */
         @media screen and (max-width: 1024px) {
-            html, body {
-                background-color: #fde3b8 !important;
-            }
-
             .master-canvas {
                 width: 100%;
                 margin-top: 0 !important;
@@ -244,11 +229,9 @@
             .bg-image {
                 width: 100% !important;
                 height: auto !important;
-                max-width: 100% !important;
                 display: block;
             }
 
-            /* Ricalcolo geometrico pulito per smartphone */
             .header-anchor {
                 top: 7.2% !important; 
                 padding: 0 4px;
@@ -277,9 +260,17 @@
                 font-size: 0.9rem;
             }
 
+            /* Footer fisso in basso sul mobile per pulire lo spazio vuoto */
             footer {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
                 font-size: 0.6rem;
                 padding: 8px 4px;
+                background: rgba(13, 27, 42, 0.98);
+                backdrop-filter: blur(4px);
+                z-index: 2000;
             }
         }
     </style>
@@ -295,7 +286,7 @@
 <body>
 
     <div class="master-canvas">
-        <img src="images/bg2.jpg?v=NEW" class="bg-image" alt="Artwork Fabio Redaelli">
+        <img src="images/bg2.jpg" class="bg-image" alt="Artwork Fabio Redaelli">
         <div class="text-layer">
             <div class="header-anchor">
                 <h1 class="brand-title testo-custom"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
