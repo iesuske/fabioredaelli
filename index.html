@@ -37,7 +37,7 @@
         }
 
         /* =======================================================
-           STRUTTURA DESKTOP (ORIGINALE E PERFETTA)
+           STRUTTURA DESKTOP (ORIGINALE E INTATTA)
            ======================================================= */
         .master-canvas {
             position: relative;
@@ -196,15 +196,43 @@
         }
 
         /* =======================================================
-           ADATTAMENTO MOBILE PULITO (Preserva proporzioni e allineamenti)
+           VERSIONE MOBILE PERFETTA (Schermo intero, auto grande, zero spazi)
            ======================================================= */
         @media screen and (max-width: 768px) {
+            html, body {
+                height: 100vh;
+                overflow: hidden;
+                background-color: #fde3b8;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .master-canvas {
+                flex: 1;
+                width: 100%;
+                height: 100%;
+                position: relative;
+                overflow: hidden;
+                background-color: #fde3b8;
+            }
+
+            .bg-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover; /* Riempie lo schermo verticalmente ingrandendo l'auto ed eliminando i bordi vuoti */
+                display: block;
+            }
+
+            .header-anchor {
+                top: 7% !important; /* Centrato perfettamente sulla fascia rossa mobile */
+            }
+
             .brand-title {
-                font-size: 5.2vw !important; /* Ottimizzato per la lettura su smartphone */
+                font-size: 5.5vw !important; /* Ottimizzato per smartphone */
             }
 
             .menus-container {
-                margin-left: 0 !important; /* Rimuove lo spostamento a destra del desktop */
+                margin-left: 0 !important;
                 justify-content: center !important;
                 margin-top: 1.5vw;
                 gap: 5vw;
@@ -212,6 +240,15 @@
 
             .dropdown-trigger {
                 font-size: 3.8vw !important;
+            }
+
+            footer {
+                flex-shrink: 0;
+                width: 100%;
+                position: relative;
+                z-index: 1000;
+                background: rgba(13, 27, 42, 1) !important;
+                padding: 8px 10px;
             }
         }
     </style>
