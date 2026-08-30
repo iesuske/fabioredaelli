@@ -18,8 +18,6 @@
 
         /* =======================================================
            BLOCCO ANTI-FONT BRUTTO (FOUT)
-           Nasconde il testo finché la classe .fonts-loaded non viene 
-           aggiunta dallo script JS a fine caricamento.
            ======================================================= */
         .testo-custom { visibility: hidden; opacity: 0; }
         body.fonts-loaded .testo-custom { 
@@ -90,11 +88,9 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             
-            /* VALORE BASE PER CHROME */
             transform: translateY(2px);
         }
 
-        /* CORREZIONE SPECIFICA PER SAFARI */
         @supports (-webkit-hyphens:none) {
             .brand-title {
                 transform: translateY(3.2px);
@@ -210,14 +206,15 @@
         }
 
         /* =======================================================
-           CORREZIONE IPAD/TABLET (non tocca il desktop)
+           CORREZIONE IPAD/TABLET 
            ======================================================= */
         @media screen and (min-width: 769px) and (max-width: 1180px) {
             .master-canvas { margin-top: 0px; }
+            .header-anchor { top: 9%; } /* Spinto leggermente in giù per centrarlo nell'iPad */
         }
 
         /* =======================================================
-           MOBILE RESPONSIVE - ALLINEAMENTO MATEMATICO
+           MOBILE RESPONSIVE
            ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
@@ -232,7 +229,7 @@
             }
 
             .master-canvas {
-                width: 280vw; /* Zoom dell'immagine */
+                width: 280vw;
                 margin-top: 0;
                 flex-shrink: 0;
                 background-color: #fde3b8;
@@ -246,12 +243,11 @@
             }
 
             .header-anchor {
-                /* Usiamo VW per essere certi che scenda perfettamente nella riga rossa */
-                top: 11.5vw; 
+                /* PORTATO DA 11.5vw a 21vw: questo abbassa il blocco di testo centrando la fascia rossa */
+                top: 21vw; 
             }
 
             .brand-title {
-                /* Font leggermente ridotto per far entrare titolo e menu nella fascia */
                 font-size: 6.5vw; 
                 transform: translateY(0);
             }
@@ -275,11 +271,9 @@
         }
     </style>
 
-    <!-- SCRIPT FORZATURA FONT -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             document.fonts.ready.then(function() {
-                // Aggiunge la classe che rende visibile il testo solo quando il font è 100% caricato
                 document.body.classList.add('fonts-loaded');
             });
         });
@@ -291,7 +285,6 @@
         <img src="images/bg2.jpg" class="bg-image" alt="Artwork Fabio Redaelli">
         <div class="text-layer">
             <div class="header-anchor">
-                <!-- Aggiunta classe testo-custom per prevenire il font brutto -->
                 <h1 class="brand-title testo-custom"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
                 
                 <div class="menus-container">
