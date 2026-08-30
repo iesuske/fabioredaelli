@@ -54,7 +54,7 @@
         }
 
         /* =======================================================
-           TITOLO HEADER - POSIZIONAMENTO CHIRURGICO
+           TITOLO HEADER
            ======================================================= */
         .header-anchor {
             position: absolute;
@@ -78,13 +78,19 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             
-            /* REGOLAZIONE MILLIMETRICA: ALZATO A 2PX */
+            /* VALORE BASE PER CHROME */
             transform: translateY(2px);
+        }
+
+        /* CORREZIONE SPECIFICA SOLO PER SAFARI */
+        @supports (-webkit-hyphens:none) {
+            .brand-title {
+                transform: translateY(3.2px);
+            }
         }
 
         .text-white { 
             color: #ffffff; 
-            /* RIMOSSA L'OMBRA CHE CREAVA L'EFFETTO AFFONDAMENTO */
             text-shadow: none;
         }
         
