@@ -196,59 +196,30 @@
         }
 
         /* =======================================================
-           VERSIONE MOBILE PERFETTA (Schermo intero, auto grande, zero spazi)
+           VERSIONE MOBILE: Zero spazi in alto, proporzioni corrette
            ======================================================= */
         @media screen and (max-width: 768px) {
-            html, body {
-                height: 100vh;
-                overflow: hidden;
-                background-color: #fde3b8;
-                display: flex;
-                flex-direction: column;
-            }
-
             .master-canvas {
-                flex: 1;
-                width: 100%;
-                height: 100%;
-                position: relative;
-                overflow: hidden;
-                background-color: #fde3b8;
-            }
-
-            .bg-image {
-                width: 100%;
-                height: 100%;
-                object-fit: cover; /* Riempie lo schermo verticalmente ingrandendo l'auto ed eliminando i bordi vuoti */
-                display: block;
+                margin-top: 0 !important;
             }
 
             .header-anchor {
-                top: 7% !important; /* Centrato perfettamente sulla fascia rossa mobile */
+                top: 7.6% !important; /* Mantiene la posizione esatta sulla fascia rossa */
             }
 
             .brand-title {
-                font-size: 5.5vw !important; /* Ottimizzato per smartphone */
+                font-size: 5.2vw !important; /* Dimensione ottimale per smartphone */
             }
 
             .menus-container {
-                margin-left: 0 !important;
+                margin-left: 0 !important; /* Centra i menu sotto al titolo */
                 justify-content: center !important;
-                margin-top: 1.5vw;
+                margin-top: 1.2vw;
                 gap: 5vw;
             }
 
             .dropdown-trigger {
                 font-size: 3.8vw !important;
-            }
-
-            footer {
-                flex-shrink: 0;
-                width: 100%;
-                position: relative;
-                z-index: 1000;
-                background: rgba(13, 27, 42, 1) !important;
-                padding: 8px 10px;
             }
         }
     </style>
