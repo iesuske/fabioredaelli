@@ -197,10 +197,9 @@
         }
 
         /* =======================================================
-           CORREZIONE PERFETTA ESCLUSIVAMENTE PER MOBILE (iPhone)
+           CORREZIONE DEDICATA ESCLUSIVAMENTE A MOBILE (iPhone)
            ======================================================= */
         @media screen and (max-width: 768px) {
-            /* 1. Sfondi allineati al colore originale */
             html, body {
                 height: 100%;
                 min-height: -webkit-fill-available;
@@ -212,7 +211,6 @@
                 overflow: hidden;
             }
 
-            /* 2. Canvas ingrandito e centrato nello schermo mobile */
             .master-canvas {
                 margin-top: -30px;
                 width: 100vw;
@@ -224,18 +222,15 @@
                 height: auto;
             }
 
-            /* 3. Ripristino posizione originale sulla fascia rossa dell'immagine */
             .header-anchor {
                 top: 7.6%;
             }
 
-            /* 4. Font proporzionato alla larghezza dello schermo */
             .brand-title {
                 font-size: 4vw;
                 text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
             }
 
-            /* 5. Menu sotto la fascia rossa a destra come in Desktop */
             .menus-container {
                 margin-left: 45%;
                 margin-top: 0.5vw;
@@ -258,9 +253,7 @@
         <img src="images/bg2.jpg" class="bg-image" alt="Artwork Fabio Redaelli">
         <div class="text-layer">
             <div class="header-anchor">
-                <h1 class="brand-title">
-                    <span class="text-white">Fabio</span> <span class="text-black">Hot Stuff</span> <span class="text-white">Redaelli</span>
-                </h1>
+                <h1 class="brand-title"><span class="text-white">Fabio </span><span class="text-black">Hot Stuff </span><span class="text-white">Redaelli</span></h1>
                 
                 <div class="menus-container">
                     <div class="dropdown">
