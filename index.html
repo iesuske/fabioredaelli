@@ -30,23 +30,25 @@
             padding: 0; 
         }
 
-        /* SCHERMO BLOCCATO A 100VH SENZA SCROLL (DESKTOP) */
         html, body {
             width: 100%;
-            height: 100vh;
-            overflow: hidden; 
             background-color: #fde3b8; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         /* =======================================================
-           AREA DESKTOP (ORIGINALE E INTROVABILE - MAI PIÙ TOCCATA)
+           1. VERSIONE DESKTOP (ORIGINALE E INTATTA)
            ======================================================= */
+        .desktop-view {
+            display: block;
+            width: 100%;
+            position: relative;
+        }
+
         .master-canvas {
             position: relative;
             width: 100%;
             background-color: #fde3b8;
-            margin-top: -50px;
         }
 
         .bg-image {
@@ -80,12 +82,10 @@
             white-space: nowrap; 
             margin: 0;
             text-shadow: none;
-            
             text-rendering: optimizeLegibility;
             font-variant-ligatures: none;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            
             transform: translateY(2px);
         }
 
@@ -191,33 +191,28 @@
         .menu-contact li:last-child a { border-bottom-left-radius: 12px; border-bottom-right-radius: 12px; }
 
         footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
             width: 100%;
-            z-index: 1000;
-            padding: 5px 10px;
+            padding: 10px;
             text-align: center;
             background: rgba(13, 27, 42, 1);
             color: white;
             font-size: 0.75rem;
         }
 
-        /* Nascondiamo la versione mobile su desktop */
-        .mobile-canvas {
+        /* Di default la versione mobile è nascosta su desktop */
+        .mobile-view {
             display: none;
         }
 
         /* =======================================================
-           AREA MOBILE DEDICATA (Attiva solo sotto i 768px)
-           Il desktop sopra resta assolutamente AL SICURO.
+           2. VERSIONE MOBILE DEDICATA (Attiva solo sotto i 768px)
            ======================================================= */
         @media screen and (max-width: 768px) {
-            .master-canvas {
-                display: none !important; /* Spegne completamente il blocco desktop su mobile */
+            .desktop-view {
+                display: none !important; /* Spegne totalmente il blocco desktop su mobile */
             }
 
-            .mobile-canvas {
+            .mobile-view {
                 display: flex !important;
                 flex-direction: column;
                 justify-content: center;
@@ -231,7 +226,7 @@
             .mobile-bg {
                 width: 100%;
                 height: 100%;
-                object-fit: contain; /* Evita il taglio della macchina */
+                object-fit: contain;
                 display: block;
             }
 
@@ -252,7 +247,6 @@
                 text-align: center;
                 pointer-events: auto;
                 width: 100%;
-                /* Posizionamento perfetto della scritta mobile sulla fascia rossa */
                 margin-top: -35vh; 
             }
 
@@ -287,38 +281,43 @@
 </head>
 <body>
 
-    <div class="master-canvas">
-        <img src="images/bg2.jpg" class="bg-image" alt="Artwork Fabio Redaelli">
-        <div class="text-layer">
-            <div class="header-anchor">
-                <h1 class="brand-title testo-custom"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
-                
-                <div class="menus-container">
-                    <div class="dropdown">
-                        <a class="dropdown-trigger testo-custom">About Me</a>
-                        <ul class="dropdown-menu menu-about testo-custom">
-                            <li>Mi chiamo Fabio Redaelli,</li>
-                            <li>sono un artista autore di fumetti,</li>
-                            <li>mi piace la musica Rock'n'Roll,</li>
-                            <li>i Rolling Stones e l'A.S. Roma!</li>
-                        </ul>
-                    </div>
+    <div class="desktop-view">
+        <div class="master-canvas">
+            <img src="images/bg2.jpg" class="bg-image" alt="Artwork Fabio Redaelli">
+            <div class="text-layer">
+                <div class="header-anchor">
+                    <h1 class="brand-title testo-custom"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
+                    
+                    <div class="menus-container">
+                        <div class="dropdown">
+                            <a class="dropdown-trigger testo-custom">About Me</a>
+                            <ul class="dropdown-menu menu-about testo-custom">
+                                <li>Mi chiamo Fabio Redaelli,</li>
+                                <li>sono un artista autore di fumetti,</li>
+                                <li>mi piace la musica Rock'n'Roll,</li>
+                                <li>i Rolling Stones e l'A.S. Roma!</li>
+                            </ul>
+                        </div>
 
-                    <div class="dropdown">
-                        <a class="dropdown-trigger testo-custom">Contact Me</a>
-                        <ul class="dropdown-menu menu-contact testo-custom">
-                            <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=fabiohotstuff@gmail.com&su=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli" target="_blank" rel="noopener noreferrer">E-mail</a></li>
-                            <li><a href="https://wa.me/393400670069" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
-                            <li><a href="https://www.instagram.com/dandelion64?igsi=MXJwZHhkNTlqcjl2MA==" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-                            <li><a href="https://www.linkedin.com/in/fabio-redaelli-18682219" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                        </ul>
+                        <div class="dropdown">
+                            <a class="dropdown-trigger testo-custom">Contact Me</a>
+                            <ul class="dropdown-menu menu-contact testo-custom">
+                                <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=fabiohotstuff@gmail.com&su=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli" target="_blank" rel="noopener noreferrer">E-mail</a></li>
+                                <li><a href="https://wa.me/393400670069" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+                                <li><a href="https://www.instagram.com/dandelion64?igsi=MXJwZHhkNTlqcjl2MA==" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                                <li><a href="https://www.linkedin.com/in/fabio-redaelli-18682219" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <footer>
+            <p>Copyright &copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
+        </footer>
     </div>
 
-    <div class="mobile-canvas">
+    <div class="mobile-view">
         <img src="images/bg2.jpg" class="mobile-bg" alt="Artwork Fabio Redaelli Mobile">
         <div class="mobile-text-overlay">
             <div class="mobile-header-anchor">
@@ -348,10 +347,6 @@
             </div>
         </div>
     </div>
-
-    <footer>
-        <p>Copyright &copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
-    </footer>
 
 </body>
 </html>
