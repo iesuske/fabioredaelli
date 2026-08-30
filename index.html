@@ -40,7 +40,7 @@
         }
 
         /* =======================================================
-           AREA DESKTOP (ORIGINALE E INToccabile)
+           AREA DESKTOP (ORIGINALE E INTROVABILE - MAI PIÙ TOCCATA)
            ======================================================= */
         .master-canvas {
             position: relative;
@@ -203,57 +203,76 @@
             font-size: 0.75rem;
         }
 
+        /* Nascondiamo la versione mobile su desktop */
+        .mobile-canvas {
+            display: none;
+        }
+
         /* =======================================================
-           MOBILE RESPONSIVE (Isolato e senza toccare il desktop)
+           AREA MOBILE DEDICATA (Attiva solo sotto i 768px)
+           Il desktop sopra resta assolutamente AL SICURO.
            ======================================================= */
         @media screen and (max-width: 768px) {
-            html, body {
+            .master-canvas {
+                display: none !important; /* Spegne completamente il blocco desktop su mobile */
+            }
+
+            .mobile-canvas {
+                display: flex !important;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100vw;
+                height: 100vh;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .mobile-bg {
+                width: 100%;
                 height: 100%;
-                background-color: #fde3b8 !important;
+                object-fit: contain; /* Evita il taglio della macchina */
+                display: block;
+            }
+
+            .mobile-text-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                overflow: hidden;
+                pointer-events: none;
             }
 
-            .master-canvas {
+            .mobile-header-anchor {
+                text-align: center;
+                pointer-events: auto;
                 width: 100%;
-                margin-top: 0;
+                /* Posizionamento perfetto della scritta mobile sulla fascia rossa */
+                margin-top: -35vh; 
+            }
+
+            .mobile-brand-title {
+                font-family: 'Lobster Regular', cursive;
+                font-size: 6vw;
+                line-height: 1;
+                white-space: nowrap;
+                margin: 0;
+            }
+
+            .mobile-menus {
                 display: flex;
                 justify-content: center;
-                align-items: center;
+                gap: 6vw;
+                margin-top: 1vh;
             }
 
-            .bg-image {
-                width: 100%;
-                height: auto;
-                max-height: 85vh;
-                object-fit: contain;
-            }
-
-            .header-anchor {
-                top: 5.5vw; 
-            }
-
-            .brand-title {
-                font-size: 5.2vw; 
-            }
-
-            .menus-container {
-                width: 100%;
-                margin-left: 0;
-                justify-content: center; 
-                margin-top: 0.5vw;
-                gap: 5vw;
-            }
-
-            .dropdown-trigger {
-                font-size: 3.2vw;
-            }
-
-            .dropdown-menu li {
-                font-size: 1rem;
+            .mobile-menus .dropdown-trigger {
+                font-size: 4vw;
             }
         }
     </style>
@@ -275,6 +294,37 @@
                 <h1 class="brand-title testo-custom"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
                 
                 <div class="menus-container">
+                    <div class="dropdown">
+                        <a class="dropdown-trigger testo-custom">About Me</a>
+                        <ul class="dropdown-menu menu-about testo-custom">
+                            <li>Mi chiamo Fabio Redaelli,</li>
+                            <li>sono un artista autore di fumetti,</li>
+                            <li>mi piace la musica Rock'n'Roll,</li>
+                            <li>i Rolling Stones e l'A.S. Roma!</li>
+                        </ul>
+                    </div>
+
+                    <div class="dropdown">
+                        <a class="dropdown-trigger testo-custom">Contact Me</a>
+                        <ul class="dropdown-menu menu-contact testo-custom">
+                            <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=fabiohotstuff@gmail.com&su=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli" target="_blank" rel="noopener noreferrer">E-mail</a></li>
+                            <li><a href="https://wa.me/393400670069" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+                            <li><a href="https://www.instagram.com/dandelion64?igsi=MXJwZHhkNTlqcjl2MA==" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                            <li><a href="https://www.linkedin.com/in/fabio-redaelli-18682219" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile-canvas">
+        <img src="images/bg2.jpg" class="mobile-bg" alt="Artwork Fabio Redaelli Mobile">
+        <div class="mobile-text-overlay">
+            <div class="mobile-header-anchor">
+                <h1 class="mobile-brand-title testo-custom"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
+                
+                <div class="mobile-menus">
                     <div class="dropdown">
                         <a class="dropdown-trigger testo-custom">About Me</a>
                         <ul class="dropdown-menu menu-about testo-custom">
