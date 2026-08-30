@@ -55,7 +55,7 @@
         }
 
         /* =======================================================
-           [BLINDATO 1/2] TITOLO HEADER - ORIGINALE DESKTOP
+           [BLINDATO 1/2] TITOLO HEADER - ORIGINALE DESKTOP (SPAZI CORRETTI)
            ======================================================= */
         .header-anchor {
             position: absolute;
@@ -73,6 +73,12 @@
             white-space: nowrap; 
             margin: 0;
             text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+            word-spacing: -0.1em; /* Riduce lo spazio tra le parole per Desktop */
+        }
+
+        .brand-title span {
+            display: inline-block;
+            margin: 0 -0.05em; /* Avvicina chirurgicamente i 3 blocchi di testo */
         }
 
         .text-white { color: #ffffff; }
@@ -229,6 +235,7 @@
             .brand-title {
                 font-size: 4vw;
                 text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+                word-spacing: -0.08em;
             }
 
             .menus-container {
@@ -253,7 +260,7 @@
         <img src="images/bg2.jpg" class="bg-image" alt="Artwork Fabio Redaelli">
         <div class="text-layer">
             <div class="header-anchor">
-                <h1 class="brand-title"><span class="text-white">Fabio </span><span class="text-black">Hot Stuff </span><span class="text-white">Redaelli</span></h1>
+                <h1 class="brand-title"><span class="text-white">Fabio</span><span class="text-black">Hot Stuff</span><span class="text-white">Redaelli</span></h1>
                 
                 <div class="menus-container">
                     <div class="dropdown">
