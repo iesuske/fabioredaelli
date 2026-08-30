@@ -197,14 +197,14 @@
         }
 
         /* =======================================================
-           CORREZIONE DEDICATA ESCLUSIVAMENTE A MOBILE (iPhone)
+           CORREZIONE PERFETTA ESCLUSIVAMENTE PER MOBILE (iPhone)
            ======================================================= */
         @media screen and (max-width: 768px) {
-            /* 1. Sfondo uniforme: usa il colore nativo dell'immagine (#fde7bd) */
+            /* 1. Sfondi allineati al colore originale */
             html, body {
                 height: 100%;
                 min-height: -webkit-fill-available;
-                background-color: #fde7bd !important;
+                background-color: #fde3b8 !important;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -212,11 +212,11 @@
                 overflow: hidden;
             }
 
-            /* 2. Ingrandimento grafica: occupa tutta la larghezza mobile senza rimpicciolirsi */
+            /* 2. Canvas ingrandito e centrato nello schermo mobile */
             .master-canvas {
-                margin-top: -20px;
+                margin-top: -30px;
                 width: 100vw;
-                background-color: #fde7bd;
+                background-color: #fde3b8;
             }
 
             .bg-image {
@@ -224,33 +224,30 @@
                 height: auto;
             }
 
-            /* 3. Allineamento preciso del Titolo sulla fascia rossa dell'immagine */
+            /* 3. Ripristino posizione originale sulla fascia rossa dell'immagine */
             .header-anchor {
-                top: 36.8%;
+                top: 7.6%;
             }
 
-            /* 4. Rimozione dell'ombra pesante e adeguamento dimensione testo */
+            /* 4. Font proporzionato alla larghezza dello schermo */
             .brand-title {
-                font-size: 4.8vw;
-                text-shadow: none !important;
+                font-size: 4vw;
+                text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
             }
 
-            /* 5. Posizionamento corretto dei Menu sotto la fascia rossa */
+            /* 5. Menu sotto la fascia rossa a destra come in Desktop */
             .menus-container {
-                margin-left: 0;
-                margin-top: 1.5vw;
-                display: flex;
-                justify-content: center;
-                gap: 8vw;
+                margin-left: 45%;
+                margin-top: 0.5vw;
+                gap: 4vw;
             }
 
             .dropdown-trigger {
-                font-size: 3.8vw;
-                text-shadow: none !important;
+                font-size: 2.5vw;
             }
 
             .dropdown-menu li {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
             }
         }
     </style>
