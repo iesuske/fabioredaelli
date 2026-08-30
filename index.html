@@ -55,7 +55,7 @@
         }
 
         /* =======================================================
-           [BLINDATO 1/2] TITOLO HEADER - ORIGINALE DESKTOP
+           [BLINDATO 1/2] TITOLO HEADER - CORRETTO PER SAFARI
            ======================================================= */
         .header-anchor {
             position: absolute;
@@ -72,7 +72,10 @@
             line-height: 1;
             white-space: nowrap; 
             margin: 0;
-            text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+            /* OMBRA AMMORBIDITA SPECIFICA PER SAFARI */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .text-white { color: #ffffff; }
@@ -150,7 +153,6 @@
 
         .dropdown:hover .dropdown-menu { display: block; }
 
-        /* FONT INGRANDITO A 1.4REM */
         .dropdown-menu li {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff;
@@ -166,7 +168,7 @@
             width: 100%;
         }
 
-        /* CONTACT ME - SELEZIONE IN ROSSO IN HOVER */
+        /* CONTACT ME - PULITO SENZA BORDINI ROSSI SULLE ESTREMITÀ */
         .menu-contact li a {
             color: #ffffff;
             display: block;
@@ -180,7 +182,17 @@
 
         .menu-contact li a:hover { 
             background: #b72216;
-            border-radius: 0;
+        }
+
+        /* Smussa gli angoli del pulsante in alto ed in basso per non far strabordare il rosso */
+        .menu-contact li:first-child a {
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+
+        .menu-contact li:last-child a {
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
         }
 
         /* FOOTER FISSO IN BASSO */
