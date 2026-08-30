@@ -54,7 +54,7 @@
         }
 
         /* =======================================================
-           TITOLO HEADER
+           TITOLO HEADER - ALLINEAMENTO IDENTICO SAFARI/CHROME
            ======================================================= */
         .header-anchor {
             position: absolute;
@@ -72,9 +72,15 @@
             white-space: nowrap; 
             margin: 0;
             text-shadow: none;
+            
+            /* CORREZIONI SPECIFICHE PER SAFARI */
+            text-rendering: optimizeLegibility;
+            font-variant-ligatures: none;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            transform: translateY(2px);
+            
+            /* SPOSTAMENTO VERTICALE AUMENTATO A 4PX PER TOCCARE LA LINEA */
+            transform: translateY(4px);
         }
 
         .text-white { 
