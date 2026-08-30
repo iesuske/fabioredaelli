@@ -71,7 +71,6 @@
             line-height: 1;
             white-space: nowrap; 
             margin: 0;
-            /* AZZERATA OMBRA SFOCATA PER EVITARE ALONI SU SAFARI */
             text-shadow: none;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -80,7 +79,6 @@
 
         .text-white { 
             color: #ffffff; 
-            /* Leggerissimo contrasto solo per il bianco, zero sfocatura */
             text-shadow: 1px 1px 0px rgba(0,0,0,0.15);
         }
         
@@ -105,9 +103,10 @@
             display: inline-block;
         }
 
+        /* FONT DIMINUITO DI MEZZO PUNTO (DA 2.5vw A 2vw) */
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
-            font-size: 2.5vw; 
+            font-size: 2vw; 
             color: #ffffff;
             cursor: pointer;
             text-decoration: none;
@@ -127,7 +126,7 @@
             -webkit-backdrop-filter: blur(6px);
             border-radius: 12px;
             list-style: none;
-            padding: 0; /* RIMOSSO PADDING PER ELIMINARE I BORDINI */
+            padding: 0; 
             overflow: hidden;
             z-index: 100;
             box-shadow: 0 10px 25px rgba(0,0,0,0.35);
@@ -173,7 +172,7 @@
             width: 100%;
         }
 
-        /* CORREZIONE PERETTA HOVER MENU CONTACT ME */
+        /* CORREZIONE PERFETTA HOVER MENU CONTACT ME */
         .menu-contact li a {
             color: #ffffff;
             display: block;
@@ -189,7 +188,6 @@
             background: #b72216;
         }
 
-        /* RACCORDO ANGOLI PERFETTO SENZA TRAPELAMENTI SCURI */
         .menu-contact li:first-child a {
             border-top-left-radius: 12px;
             border-top-right-radius: 12px;
@@ -253,7 +251,7 @@
             }
 
             .dropdown-trigger {
-                font-size: 3vw;
+                font-size: 2.5vw; /* Diminuito anche su mobile */
             }
 
             .dropdown-menu li {
