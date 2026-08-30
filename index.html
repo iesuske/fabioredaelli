@@ -16,9 +16,7 @@
             font-display: block;
         }
 
-        /* =======================================================
-           BLOCCO ANTI-FONT BRUTTO (FOUT)
-           ======================================================= */
+        /* BLOCCO ANTI-FONT BRUTTO (FOUT) */
         .testo-custom { visibility: hidden; opacity: 0; }
         body.fonts-loaded .testo-custom { 
             visibility: visible; 
@@ -206,11 +204,10 @@
         }
 
         /* =======================================================
-           CORREZIONE IPAD/TABLET 
+           IPAD / TABLET (Ripristinato originale e perfetto)
            ======================================================= */
         @media screen and (min-width: 769px) and (max-width: 1180px) {
-            .master-canvas { margin-top: 0px; }
-            .header-anchor { top: 9%; } /* Spinto leggermente in giù per centrarlo nell'iPad */
+            .master-canvas { margin-top: -50px; }
         }
 
         /* =======================================================
@@ -229,7 +226,7 @@
             }
 
             .master-canvas {
-                width: 280vw;
+                width: 280vw; /* Zoom pulito dell'immagine */
                 margin-top: 0;
                 flex-shrink: 0;
                 background-color: #fde3b8;
@@ -243,12 +240,12 @@
             }
 
             .header-anchor {
-                /* PORTATO DA 11.5vw a 21vw: questo abbassa il blocco di testo centrando la fascia rossa */
-                top: 21vw; 
+                /* Riportato a livello della fascia rossa ingrandita */
+                top: 7.2vw; 
             }
 
             .brand-title {
-                font-size: 6.5vw; 
+                font-size: 7.5vw; 
                 transform: translateY(0);
             }
 
@@ -256,13 +253,13 @@
                 width: 100%;
                 margin-left: 0;
                 justify-content: center; 
-                margin-top: 0.5vw;
-                gap: 5vw;
+                margin-top: 1vw;
+                gap: 6vw;
                 line-height: normal;
             }
 
             .dropdown-trigger {
-                font-size: 3vw;
+                font-size: 3.5vw;
             }
 
             .dropdown-menu li {
