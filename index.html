@@ -31,7 +31,6 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* CONTENITORE SPINTO IN ALTO DI ~1CM TOTALE */
         .master-canvas {
             position: relative;
             width: 100%;
@@ -55,7 +54,7 @@
         }
 
         /* =======================================================
-           [BLINDATO 1/2] TITOLO HEADER - ALLINEATO ALLA LINEA NERA
+           TITOLO HEADER - SENZA OMBRA SCURA (PULITO PER SAFARI)
            ======================================================= */
         .header-anchor {
             position: absolute;
@@ -72,17 +71,26 @@
             line-height: 1;
             white-space: nowrap; 
             margin: 0;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+            /* AZZERATA OMBRA SFOCATA PER EVITARE ALONI SU SAFARI */
+            text-shadow: none;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            transform: translateY(2px); /* Abbassa la scritta per farla toccare perfettamente la linea */
+            transform: translateY(2px);
         }
 
-        .text-white { color: #ffffff; }
-        .text-black { color: #000000; }
+        .text-white { 
+            color: #ffffff; 
+            /* Leggerissimo contrasto solo per il bianco, zero sfocatura */
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.15);
+        }
+        
+        .text-black { 
+            color: #000000; 
+            text-shadow: none;
+        }
 
         /* =======================================================
-           [BLINDATO 2/2] POSIZIONE MENU (DESTRA) - ORIGINALE DESKTOP
+           POSIZIONE MENU DESKTOP
            ======================================================= */
         .menus-container {
             display: flex;
@@ -91,21 +99,19 @@
             margin-top: 0.8vw; 
         }
 
-        /* STILI DROPDOWN CON PONTE CONTINUO PER MOUSE */
         .dropdown {
             position: relative;
             padding-bottom: 12px;
             display: inline-block;
         }
 
-        /* FONT AUMENTATO DI MEZZO PUNTO (DA 2vw A 2.5vw) */
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
             font-size: 2.5vw; 
             color: #ffffff;
             cursor: pointer;
             text-decoration: none;
-            text-shadow: 1px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
             transition: color 0.2s ease;
             display: inline-block;
         }
@@ -116,12 +122,12 @@
             display: none;
             position: absolute;
             top: 100%;
-            background: rgba(0, 0, 0, 0.65);
+            background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
             border-radius: 12px;
             list-style: none;
-            padding: 8px 0;
+            padding: 0; /* RIMOSSO PADDING PER ELIMINARE I BORDINI */
             overflow: hidden;
             z-index: 100;
             box-shadow: 0 10px 25px rgba(0,0,0,0.35);
@@ -136,15 +142,14 @@
             height: 12px;
         }
 
-        /* ABOUT ME */
         .menu-about { 
             left: 50%;
             transform: translateX(-50%);
             text-align: center; 
             width: max-content;
+            padding: 8px 0;
         }
 
-        /* CONTACT ME */
         .menu-contact { 
             left: 50%;
             transform: translateX(-50%);
@@ -162,19 +167,18 @@
             white-space: nowrap;
         }
 
-        /* ABOUT ME - NESSUNA SELEZIONE/HOVER */
         .menu-about li {
             text-align: center;
-            padding: 8px 18px;
+            padding: 6px 18px;
             width: 100%;
         }
 
-        /* CONTACT ME - PULITO SENZA BORDINI ROSSI SULLE ESTREMITÀ */
+        /* CORREZIONE PERETTA HOVER MENU CONTACT ME */
         .menu-contact li a {
             color: #ffffff;
             display: block;
             text-decoration: none;
-            padding: 8px 12px;
+            padding: 10px 12px;
             transition: background 0.2s ease;
             text-align: center;
             cursor: pointer;
@@ -185,14 +189,15 @@
             background: #b72216;
         }
 
+        /* RACCORDO ANGOLI PERFETTO SENZA TRAPELAMENTI SCURI */
         .menu-contact li:first-child a {
-            border-top-left-radius: 4px;
-            border-top-right-radius: 4px;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
         }
 
         .menu-contact li:last-child a {
-            border-bottom-left-radius: 4px;
-            border-bottom-right-radius: 4px;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
         }
 
         /* FOOTER FISSO IN BASSO */
@@ -209,9 +214,7 @@
             font-size: 0.75rem;
         }
 
-        /* =======================================================
-           CORREZIONE DEDICATA ESCLUSIVAMENTE A MOBILE
-           ======================================================= */
+        /* MOBILE RESPONSIVE */
         @media screen and (max-width: 768px) {
             html, body {
                 height: 100%;
@@ -241,7 +244,6 @@
 
             .brand-title {
                 font-size: 4vw;
-                text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
             }
 
             .menus-container {
@@ -251,7 +253,7 @@
             }
 
             .dropdown-trigger {
-                font-size: 3vw; /* Aumentato anche su mobile */
+                font-size: 3vw;
             }
 
             .dropdown-menu li {
