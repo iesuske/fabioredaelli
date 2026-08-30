@@ -200,9 +200,11 @@
            CORREZIONE DEDICATA ESCLUSIVAMENTE A MOBILE (iPhone)
            ======================================================= */
         @media screen and (max-width: 768px) {
+            /* 1. Sfondo uniforme: usa il colore nativo dell'immagine (#fde7bd) */
             html, body {
                 height: 100%;
                 min-height: -webkit-fill-available;
+                background-color: #fde7bd !important;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -210,30 +212,41 @@
                 overflow: hidden;
             }
 
+            /* 2. Ingrandimento grafica: occupa tutta la larghezza mobile senza rimpicciolirsi */
             .master-canvas {
-                margin-top: -30px;
+                margin-top: -20px;
+                width: 100vw;
+                background-color: #fde7bd;
+            }
+
+            .bg-image {
                 width: 100%;
-                max-width: 500px;
+                height: auto;
             }
 
+            /* 3. Allineamento preciso del Titolo sulla fascia rossa dell'immagine */
             .header-anchor {
-                top: 6.5%;
+                top: 36.8%;
             }
 
+            /* 4. Rimozione dell'ombra pesante e adeguamento dimensione testo */
             .brand-title {
-                font-size: 5.5vw;
+                font-size: 4.8vw;
+                text-shadow: none !important;
             }
 
+            /* 5. Posizionamento corretto dei Menu sotto la fascia rossa */
             .menus-container {
                 margin-left: 0;
-                margin-top: 1vw;
+                margin-top: 1.5vw;
                 display: flex;
                 justify-content: center;
-                gap: 6vw;
+                gap: 8vw;
             }
 
             .dropdown-trigger {
-                font-size: 4vw;
+                font-size: 3.8vw;
+                text-shadow: none !important;
             }
 
             .dropdown-menu li {
