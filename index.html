@@ -30,7 +30,7 @@
             padding: 0; 
         }
 
-        /* SCHERMO DESKTOP BASE */
+        /* SFONDO E STRUTTURA BASE UNIFORME */
         html, body {
             width: 100%;
             height: 100vh;
@@ -204,40 +204,58 @@
         }
 
         /* =======================================================
-           CORRETTORE MOBILE (Aggiusta solo l'allineamento senza rompere nulla)
+           MOBILE OTTIMIZZATO (Niente spazi vuoti, niente doppi sfondi)
            ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
-                height: auto;
-                overflow: auto; /* Consente la visualizzazione corretta del footer e dello scroll mobile */
+                height: 100vh;
+                overflow: hidden;
+                background-color: #fde3b8 !important;
             }
 
             .master-canvas {
+                width: 100%;
+                height: 100vh;
                 margin-top: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: #fde3b8 !important;
+            }
+
+            .bg-image {
+                width: 100%;
+                height: auto;
+                max-height: 82vh;
+                object-fit: contain;
             }
 
             .header-anchor {
-                top: 7.2%; /* Centrato perfettamente sulla fascia rossa dell'immagine originale */
+                top: 14% !important; /* Ricalibrato al millimetro sulla fascia rossa mobile */
             }
 
             .brand-title {
-                font-size: 5.2vw; /* Dimensione ideale leggibile su smartphone */
+                font-size: 5.5vw !important; 
             }
 
             .menus-container {
-                margin-left: 0 !important; /* Rimuove il 58% del desktop che sballava i menu su mobile */
+                margin-left: 0 !important;
                 justify-content: center !important;
-                margin-top: 1vw;
+                margin-top: 1.2vw;
                 gap: 5vw;
             }
 
             .dropdown-trigger {
-                font-size: 3.5vw;
+                font-size: 3.6vw !important;
             }
 
             footer {
-                position: relative; /* Evita sovrapposizioni su mobile */
-                margin-top: 15px;
+                position: fixed !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                background: rgba(13, 27, 42, 1) !important;
             }
         }
     </style>
