@@ -54,7 +54,7 @@
         }
 
         /* =======================================================
-           TITOLO HEADER - ALLINEAMENTO IDENTICO SAFARI/CHROME
+           TITOLO HEADER - POSIZIONAMENTO CHIRURGICO
            ======================================================= */
         .header-anchor {
             position: absolute;
@@ -73,19 +73,19 @@
             margin: 0;
             text-shadow: none;
             
-            /* CORREZIONI SPECIFICHE PER SAFARI */
             text-rendering: optimizeLegibility;
             font-variant-ligatures: none;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             
-            /* SPOSTAMENTO VERTICALE AUMENTATO A 4PX PER TOCCARE LA LINEA */
-            transform: translateY(4px);
+            /* REGOLAZIONE MILLIMETRICA: ALZATO A 2PX */
+            transform: translateY(2px);
         }
 
         .text-white { 
             color: #ffffff; 
-            text-shadow: 1px 1px 0px rgba(0,0,0,0.15);
+            /* RIMOSSA L'OMBRA CHE CREAVA L'EFFETTO AFFONDAMENTO */
+            text-shadow: none;
         }
         
         .text-black { 
