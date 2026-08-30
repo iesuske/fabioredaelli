@@ -16,6 +16,14 @@
             font-display: block;
         }
 
+        /* BLOCCO ANTI-FONT BRUTTO (FOUT / FADE EFFECT) */
+        .testo-custom { visibility: hidden; opacity: 0; }
+        body.fonts-loaded .testo-custom { 
+            visibility: visible; 
+            opacity: 1; 
+            transition: opacity 0.3s ease-in; 
+        }
+
         * { 
             box-sizing: border-box; 
             margin: 0; 
@@ -100,11 +108,11 @@
         }
 
         /* =======================================================
-           POSIZIONE MENU DESKTOP
+           POSIZIONE MENU DESKTOP (DISTANZA AUMENTATA TRA I MENU)
            ======================================================= */
         .menus-container {
             display: flex;
-            gap: 3.5vw;
+            gap: 5.5vw; /* Distanza aumentata tra About Me e Contact Me */
             margin-left: 58%;
             margin-top: 0.8vw; 
         }
@@ -222,7 +230,7 @@
             font-size: 0.75rem;
         }
 
-        /* MOBILE RESPONSIVE CORRETTO (SENZA CENTRAMENTO FORZATO VERTICALE) */
+        /* MOBILE RESPONSIVE */
         @media screen and (max-width: 768px) {
             html, body {
                 height: 100%;
@@ -252,7 +260,7 @@
             .menus-container {
                 margin-left: 45%;
                 margin-top: 0.5vw;
-                gap: 4vw;
+                gap: 6vw; /* Distanza aumentata anche su mobile */
             }
 
             .dropdown-trigger {
@@ -264,6 +272,14 @@
             }
         }
     </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.fonts.ready.then(function() {
+                document.body.classList.add('fonts-loaded');
+            });
+        });
+    </script>
 </head>
 <body>
 
@@ -271,12 +287,12 @@
         <img src="images/bg2.jpg" class="bg-image" alt="Artwork Fabio Redaelli">
         <div class="text-layer">
             <div class="header-anchor">
-                <h1 class="brand-title"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
+                <h1 class="brand-title testo-custom"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
                 
                 <div class="menus-container">
                     <div class="dropdown">
-                        <a class="dropdown-trigger">About Me</a>
-                        <ul class="dropdown-menu menu-about">
+                        <a class="dropdown-trigger testo-custom">About Me</a>
+                        <ul class="dropdown-menu menu-about testo-custom">
                             <li>Mi chiamo Fabio Redaelli,</li>
                             <li>sono un artista autore di fumetti,</li>
                             <li>mi piace la musica Rock'n'Roll,</li>
@@ -285,8 +301,8 @@
                     </div>
 
                     <div class="dropdown">
-                        <a class="dropdown-trigger">Contact Me</a>
-                        <ul class="dropdown-menu menu-contact">
+                        <a class="dropdown-trigger testo-custom">Contact Me</a>
+                        <ul class="dropdown-menu menu-contact testo-custom">
                             <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=fabiohotstuff@gmail.com&su=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli" target="_blank" rel="noopener noreferrer">E-mail</a></li>
                             <li><a href="https://wa.me/393400670069" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
                             <li><a href="https://www.instagram.com/dandelion64?igsi=MXJwZHhkNTlqcjl2MA==" target="_blank" rel="noopener noreferrer">Instagram</a></li>
