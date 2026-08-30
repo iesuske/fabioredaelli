@@ -236,7 +236,7 @@
         }
 
         /* =======================================================
-           MOBILE & TABLET RESPONSIVE (Fino a 1024px)
+           MOBILE & TABLET RESPONSIVE (Fino a 1024px) - NUOVO APPROCCIO
            ======================================================= */
         @media screen and (max-width: 1024px) {
             html, body {
@@ -249,25 +249,26 @@
                 position: relative;
                 width: 100vw;
                 height: 100vh;
-                display: flex;
-                align-items: center;
-                justify-content: center;
                 background-color: #fde3b8;
                 margin-top: 0 !important;
                 overflow: hidden;
             }
 
+            /* L'immagine riempie l'altezza dello schermo e si centra, eliminando spazi vuoti e macchine piccole */
             .bg-image {
-                width: 100%;
-                height: 100%;
-                object-fit: contain; /* Mostra l'intera immagine senza tagliarla */
-                object-position: center;
+                height: 100vh;
+                width: auto;
+                max-width: none;
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
                 display: block;
             }
 
             .header-anchor {
                 position: absolute;
-                top: 22%; /* Posizionamento calibrato sulla fascia rossa dell'immagine */
+                top: 15.5%; /* Posizionamento esatto sulla fascia rossa della grafica */
                 left: 0;
                 width: 100%;
                 padding: 0 10px;
@@ -297,7 +298,7 @@
                 font-size: 0.95rem;
             }
 
-            /* FOOTER MOBILE: Carattere ridotto e forzato su riga unica */
+            /* FOOTER MOBILE: Riga unica senza andare a capo */
             footer {
                 font-size: 0.58rem;
                 white-space: nowrap;
@@ -307,6 +308,13 @@
 
         /* ORIENTAMENTO ORIZZONTALE (LANDSCAPE) MOBILE/TABLET */
         @media screen and (max-width: 1024px) and (orientation: landscape) {
+            .bg-image {
+                width: 100vw;
+                height: auto;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+            }
             .header-anchor {
                 top: 12%;
             }
