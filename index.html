@@ -37,7 +37,7 @@
         }
 
         /* =======================================================
-           STRUTTURA DESKTOP (ORIGINALE E INTATTA)
+           STRUTTURA PRINCIPALE (DESKTOP & MOBILE UGUALI)
            ======================================================= */
         .master-canvas {
             position: relative;
@@ -62,7 +62,7 @@
 
         .header-anchor {
             position: absolute;
-            top: 7.6%; 
+            top: 7.6%; /* Valore originale identico al desktop */
             left: 0;
             width: 100%;
             text-align: center;
@@ -196,17 +196,9 @@
         }
 
         /* =======================================================
-           VERSIONE MOBILE: Spazio superiore ridotto al minimo
+           VERSIONE MOBILE: Adattamento proporzionale dei testi
            ======================================================= */
         @media screen and (max-width: 768px) {
-            .master-canvas {
-                margin-top: 0 !important;
-            }
-
-            .header-anchor {
-                top: 1.2% !important; /* Spazio ridotto al minimo in cima */
-            }
-
             .brand-title {
                 font-size: 5.2vw !important; 
             }
