@@ -37,15 +37,17 @@
             padding: 0; 
         }
 
-        /* SCHERMO BLOCCATO A 100VH SENZA SCROLL */
         html, body {
             width: 100%;
-            height: 100vh;
-            overflow: hidden; 
+            min-height: 100vh;
             background-color: #fde3b8; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
         }
 
+        /* =======================================================
+           STRUTTURA DESKTOP (INTATTA E PERFETTA)
+           ======================================================= */
         .master-canvas {
             position: relative;
             width: 100%;
@@ -68,9 +70,6 @@
             pointer-events: none; 
         }
 
-        /* =======================================================
-           TITOLO HEADER (DESKTOP)
-           ======================================================= */
         .header-anchor {
             position: absolute;
             top: 7.6%; 
@@ -112,9 +111,6 @@
             text-shadow: none;
         }
 
-        /* =======================================================
-           POSIZIONE MENU DESKTOP
-           ======================================================= */
         .menus-container {
             display: flex;
             gap: 5.5vw; 
@@ -221,62 +217,45 @@
             border-bottom-right-radius: 12px;
         }
 
-        /* FOOTER FISSO IN BASSO (DESKTOP) */
         footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
+            position: relative;
             width: 100%;
-            z-index: 1000;
-            padding: 5px 10px;
+            padding: 10px;
             text-align: center;
             background: rgba(13, 27, 42, 1);
             color: white;
             font-size: 0.75rem;
+            z-index: 1000;
         }
 
         /* =======================================================
-           MOBILE & TABLET RESPONSIVE (Fino a 1024px) - NUOVO APPROCCIO
+           STRUTTURA MOBILE DEFINITIVA (FORZATA E PULITA)
            ======================================================= */
         @media screen and (max-width: 1024px) {
             html, body {
-                height: 100vh;
                 background-color: #fde3b8 !important;
-                overflow: hidden;
             }
 
             .master-canvas {
-                position: relative;
-                width: 100vw;
-                height: 100vh;
-                background-color: #fde3b8;
+                width: 100%;
                 margin-top: 0 !important;
-                overflow: hidden;
             }
 
-            /* L'immagine riempie l'altezza dello schermo e si centra, eliminando spazi vuoti e macchine piccole */
             .bg-image {
-                height: 100vh;
-                width: auto;
-                max-width: none;
-                position: absolute;
-                top: 0;
-                left: 50%;
-                transform: translateX(-50%);
+                width: 100% !important;
+                height: auto !important;
+                max-width: 100% !important;
                 display: block;
             }
 
+            /* Ricalcolo geometrico pulito per smartphone */
             .header-anchor {
-                position: absolute;
-                top: 15.5%; /* Posizionamento esatto sulla fascia rossa della grafica */
-                left: 0;
-                width: 100%;
-                padding: 0 10px;
-                text-align: center;
+                top: 7.2% !important; 
+                padding: 0 4px;
             }
 
             .brand-title {
-                font-size: 5.2vw;
+                font-size: 4.8vw !important;
                 white-space: nowrap;
             }
 
@@ -285,48 +264,22 @@
                 justify-content: center;
                 align-items: center;
                 margin-left: 0 !important;
-                margin-top: 1vh;
-                gap: 6vw; 
+                margin-top: 0.6vw !important;
+                gap: 5vw; 
                 width: 100%;
             }
 
             .dropdown-trigger {
-                font-size: 3.2vw;
+                font-size: 3vw !important;
             }
 
             .dropdown-menu li {
-                font-size: 0.95rem;
+                font-size: 0.9rem;
             }
 
-            /* FOOTER MOBILE: Riga unica senza andare a capo */
             footer {
-                font-size: 0.58rem;
-                white-space: nowrap;
-                padding: 4px 2px;
-            }
-        }
-
-        /* ORIENTAMENTO ORIZZONTALE (LANDSCAPE) MOBILE/TABLET */
-        @media screen and (max-width: 1024px) and (orientation: landscape) {
-            .bg-image {
-                width: 100vw;
-                height: auto;
-                top: 50%;
-                left: 0;
-                transform: translateY(-50%);
-            }
-            .header-anchor {
-                top: 12%;
-            }
-            .brand-title {
-                font-size: 4.5vh;
-            }
-            .menus-container {
-                margin-top: 0.8vh;
-                gap: 6vw;
-            }
-            .dropdown-trigger {
-                font-size: 2.8vh;
+                font-size: 0.6rem;
+                padding: 8px 4px;
             }
         }
     </style>
@@ -342,7 +295,7 @@
 <body>
 
     <div class="master-canvas">
-        <img src="images/bg2.jpg" class="bg-image" alt="Artwork Fabio Redaelli">
+        <img src="images/bg2.jpg?v=NEW" class="bg-image" alt="Artwork Fabio Redaelli">
         <div class="text-layer">
             <div class="header-anchor">
                 <h1 class="brand-title testo-custom"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
