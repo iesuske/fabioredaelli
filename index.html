@@ -222,7 +222,9 @@
             font-size: 0.75rem;
         }
 
-        /* MOBILE RESPONSIVE */
+        /* =======================================================
+           MOBILE RESPONSIVE - AGGIORNATO CON EFFETTO ZOOM
+           ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
                 height: 100%;
@@ -236,8 +238,12 @@
             }
 
             .master-canvas {
-                margin-top: -30px;
-                width: 100vw;
+                /* Ingrandiamo il canvas molto oltre lo schermo.
+                   Il flexbox lo manterrà perfettamente centrato, 
+                   tagliando l'eccesso laterale e facendo lo zoom sull'auto! */
+                width: 280vw;
+                margin-top: 0;
+                flex-shrink: 0;
                 background-color: #fde3b8;
             }
 
@@ -251,21 +257,23 @@
             }
 
             .brand-title {
-                font-size: 4vw;
+                font-size: 8.5vw; /* Aumentato proporzionalmente per lo zoom */
             }
 
             .menus-container {
-                margin-left: 45%;
-                margin-top: 0.5vw;
-                gap: 4vw;
+                width: 100%;
+                margin-left: 0;
+                justify-content: center; /* Menu centrato perfettamente sotto il titolo su mobile */
+                margin-top: 2vw;
+                gap: 8vw;
             }
 
             .dropdown-trigger {
-                font-size: 2vw;
+                font-size: 3.5vw;
             }
 
             .dropdown-menu li {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
         }
     </style>
