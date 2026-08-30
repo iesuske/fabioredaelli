@@ -16,6 +16,18 @@
             font-display: block;
         }
 
+        /* =======================================================
+           BLOCCO ANTI-FONT BRUTTO (FOUT)
+           Nasconde il testo finché la classe .fonts-loaded non viene 
+           aggiunta dallo script JS a fine caricamento.
+           ======================================================= */
+        .testo-custom { visibility: hidden; opacity: 0; }
+        body.fonts-loaded .testo-custom { 
+            visibility: visible; 
+            opacity: 1; 
+            transition: opacity 0.3s ease-in; 
+        }
+
         * { 
             box-sizing: border-box; 
             margin: 0; 
@@ -31,6 +43,9 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        /* =======================================================
+           AREA DESKTOP (BLINDATA E INTOCCABILE)
+           ======================================================= */
         .master-canvas {
             position: relative;
             width: 100%;
@@ -53,9 +68,6 @@
             pointer-events: none; 
         }
 
-        /* =======================================================
-           TITOLO HEADER
-           ======================================================= */
         .header-anchor {
             position: absolute;
             top: 7.6%; 
@@ -89,19 +101,9 @@
             }
         }
 
-        .text-white { 
-            color: #ffffff; 
-            text-shadow: none;
-        }
-        
-        .text-black { 
-            color: #000000; 
-            text-shadow: none;
-        }
+        .text-white { color: #ffffff; text-shadow: none; }
+        .text-black { color: #000000; text-shadow: none; }
 
-        /* =======================================================
-           POSIZIONE MENU DESKTOP
-           ======================================================= */
         .menus-container {
             display: flex;
             gap: 3.5vw;
@@ -177,11 +179,7 @@
             white-space: nowrap;
         }
 
-        .menu-about li {
-            text-align: center;
-            padding: 6px 18px;
-            width: 100%;
-        }
+        .menu-about li { text-align: center; padding: 6px 18px; width: 100%; }
 
         .menu-contact li a {
             color: #ffffff;
@@ -194,21 +192,10 @@
             width: 100%;
         }
 
-        .menu-contact li a:hover { 
-            background: #b72216;
-        }
+        .menu-contact li a:hover { background: #b72216; }
+        .menu-contact li:first-child a { border-top-left-radius: 12px; border-top-right-radius: 12px; }
+        .menu-contact li:last-child a { border-bottom-left-radius: 12px; border-bottom-right-radius: 12px; }
 
-        .menu-contact li:first-child a {
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
-        }
-
-        .menu-contact li:last-child a {
-            border-bottom-left-radius: 12px;
-            border-bottom-right-radius: 12px;
-        }
-
-        /* FOOTER FISSO IN BASSO */
         footer {
             position: fixed;
             bottom: 0;
@@ -223,7 +210,14 @@
         }
 
         /* =======================================================
-           MOBILE RESPONSIVE - AGGIORNATO CON EFFETTO ZOOM
+           CORREZIONE IPAD/TABLET (non tocca il desktop)
+           ======================================================= */
+        @media screen and (min-width: 769px) and (max-width: 1180px) {
+            .master-canvas { margin-top: 0px; }
+        }
+
+        /* =======================================================
+           MOBILE RESPONSIVE - ALLINEAMENTO MATEMATICO
            ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
@@ -238,13 +232,12 @@
             }
 
             .master-canvas {
-                /* Ingrandiamo il canvas molto oltre lo schermo.
-                   Il flexbox lo manterrà perfettamente centrato, 
-                   tagliando l'eccesso laterale e facendo lo zoom sull'auto! */
-                width: 280vw;
+                width: 280vw; /* Zoom dell'immagine */
                 margin-top: 0;
                 flex-shrink: 0;
                 background-color: #fde3b8;
+                display: block; 
+                line-height: 0;
             }
 
             .bg-image {
@@ -253,23 +246,27 @@
             }
 
             .header-anchor {
-                top: 7.6%;
+                /* Usiamo VW per essere certi che scenda perfettamente nella riga rossa */
+                top: 11.5vw; 
             }
 
             .brand-title {
-                font-size: 8.5vw; /* Aumentato proporzionalmente per lo zoom */
+                /* Font leggermente ridotto per far entrare titolo e menu nella fascia */
+                font-size: 6.5vw; 
+                transform: translateY(0);
             }
 
             .menus-container {
                 width: 100%;
                 margin-left: 0;
-                justify-content: center; /* Menu centrato perfettamente sotto il titolo su mobile */
-                margin-top: 2vw;
-                gap: 8vw;
+                justify-content: center; 
+                margin-top: 0.5vw;
+                gap: 5vw;
+                line-height: normal;
             }
 
             .dropdown-trigger {
-                font-size: 3.5vw;
+                font-size: 3vw;
             }
 
             .dropdown-menu li {
@@ -277,6 +274,16 @@
             }
         }
     </style>
+
+    <!-- SCRIPT FORZATURA FONT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.fonts.ready.then(function() {
+                // Aggiunge la classe che rende visibile il testo solo quando il font è 100% caricato
+                document.body.classList.add('fonts-loaded');
+            });
+        });
+    </script>
 </head>
 <body>
 
@@ -284,12 +291,13 @@
         <img src="images/bg2.jpg" class="bg-image" alt="Artwork Fabio Redaelli">
         <div class="text-layer">
             <div class="header-anchor">
-                <h1 class="brand-title"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
+                <!-- Aggiunta classe testo-custom per prevenire il font brutto -->
+                <h1 class="brand-title testo-custom"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
                 
                 <div class="menus-container">
                     <div class="dropdown">
-                        <a class="dropdown-trigger">About Me</a>
-                        <ul class="dropdown-menu menu-about">
+                        <a class="dropdown-trigger testo-custom">About Me</a>
+                        <ul class="dropdown-menu menu-about testo-custom">
                             <li>Mi chiamo Fabio Redaelli,</li>
                             <li>sono un artista autore di fumetti,</li>
                             <li>mi piace la musica Rock'n'Roll,</li>
@@ -298,8 +306,8 @@
                     </div>
 
                     <div class="dropdown">
-                        <a class="dropdown-trigger">Contact Me</a>
-                        <ul class="dropdown-menu menu-contact">
+                        <a class="dropdown-trigger testo-custom">Contact Me</a>
+                        <ul class="dropdown-menu menu-contact testo-custom">
                             <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=fabiohotstuff@gmail.com&su=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli" target="_blank" rel="noopener noreferrer">E-mail</a></li>
                             <li><a href="https://wa.me/393400670069" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
                             <li><a href="https://www.instagram.com/dandelion64?igsi=MXJwZHhkNTlqcjl2MA==" target="_blank" rel="noopener noreferrer">Instagram</a></li>
