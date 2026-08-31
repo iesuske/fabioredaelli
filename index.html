@@ -23,14 +23,6 @@
             font-display: block;
         }
 
-        /* GESTIONE FONT CARICATO */
-        .testo-custom { visibility: hidden; opacity: 0; }
-        body.fonts-loaded .testo-custom { 
-            visibility: visible; 
-            opacity: 1; 
-            transition: opacity 0.3s ease-in; 
-        }
-
         * { 
             box-sizing: border-box; 
             margin: 0; 
@@ -46,7 +38,7 @@
         }
 
         /* =======================================================
-           STRUTTURA DESKTOP (INTATTA)
+           STRUTTURA DESKTOP
            ======================================================= */
         .master-canvas {
             position: relative;
@@ -126,7 +118,8 @@
             display: inline-block;
         }
 
-        .dropdown:hover .dropdown-trigger { color: #000000; }
+        .dropdown:hover .dropdown-trigger,
+        .dropdown.active .dropdown-trigger { color: #000000; }
 
         .dropdown-menu {
             display: none;
@@ -152,14 +145,20 @@
             height: 12px;
         }
 
-        /* MENU BIO CON TRASPARENZA AUMENTATA E FONT DEL SITO */
+        /* APERTURA TENDINA CON HOVER O CLASSE ACTIVE (JS) */
+        .dropdown:hover .dropdown-menu,
+        .dropdown.active .dropdown-menu { 
+            display: block; 
+        }
+
+        /* MENU BIO INCOLONNATO AL CENTRO */
         .menu-bio {
             left: 50%;
             transform: translateX(-50%);
             width: 580px;
             max-width: 90vw;
             padding: 15px 20px;
-            text-align: left;
+            text-align: center;
             background: rgba(0, 0, 0, 0.65);
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
@@ -175,7 +174,7 @@
             font-size: 1.25rem;
             line-height: 1.35;
             white-space: normal;
-            text-align: left;
+            text-align: center;
             padding: 4px 0;
             width: 100%;
         }
@@ -186,8 +185,6 @@
             width: calc(100% + 40px);
             text-align: center; 
         }
-
-        .dropdown:hover .dropdown-menu { display: block; }
 
         .menu-contact li {
             font-family: 'Lobster Regular', cursive;
@@ -234,7 +231,7 @@
         }
 
         /* =======================================================
-           STRUTTURA MOBILE: SCHERMO INTERO FORZATO (COVER)
+           STRUTTURA MOBILE
            ======================================================= */
         @media screen and (max-width: 1024px) {
             html, body {
@@ -305,8 +302,24 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            document.fonts.ready.then(function() {
-                document.body.classList.add('fonts-loaded');
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            dropdowns.forEach(dropdown => {
+                const trigger = dropdown.querySelector('.dropdown-trigger');
+                trigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    dropdowns.forEach(d => {
+                        if (d !== dropdown) d.classList.remove('active');
+                    });
+                    
+                    dropdown.classList.toggle('active');
+                });
+            });
+
+            document.addEventListener('click', function() {
+                dropdowns.forEach(d => d.classList.remove('active'));
             });
         });
     </script>
@@ -317,20 +330,19 @@
         <img src="images/bg2.jpg?v=COVER" class="bg-image" alt="Artwork Fabio Redaelli">
         <div class="text-layer">
             <div class="header-anchor">
-                <h1 class="brand-title testo-custom"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
+                <h1 class="brand-title"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
                 
                 <div class="menus-container">
                     <div class="dropdown">
-                        <a class="dropdown-trigger testo-custom">Bio</a>
-                        <ul class="dropdown-menu menu-bio testo-custom">
-                            <li>Roma, 1964. Autore di fumetti, storyboard artist ed illustratore. Una fantastica copertina de la “Bionda” su Comic Art mi convinse a bussare alla redazione romana con la cartellina piena di sogni e di fogli scopiazzati.</li>
-                            <li>Con Comic Art lavorai 4 anni come letterista, grafico, colorista, illustratore, ma le mie prime tavole furono pubblicate dall’ACME di Francesco Coniglio. Ho continuato ad alternare collaborazioni grafiche di ogni tipo, dai fumetti su tela ai manifesti teatrali alla pubblicità, dall’animazione agli storyboards ritagliandomi sempre uno spazio come autore di fumetti. Nel 1997 la serie dei Blues Bondage ebbe un discreto successo nelle pagine di Blue, con storie autoconclusive che si fermarono nel 2001. Con la Scuola Romana dei fumetti inizio una collaborazione che si consolida nel tempo, con mostre, concerti rock, lezioni, collaborazioni grafiche e pubblicazioni di vari fumetti. Negli anni duemila collaboro costantemente con la AS Roma e Il Romanista e illustro diverse locandine teatrali tra cui "I sette Re di Roma" di Enrico Brignano, innamorato degli anni ’50 e ’60 ovvero di tutta quell’iconografia popolare densa di colori, forme e atmosfere che mi hanno da sempre condizionato: pop art, rock’n’roll, tacchi alti e pin ups. Sono cresciuto con i fumetti della Corno, Metal Hurlant, A Suivre, l’Eternauta, Rock’n’Folk. Adoro mescolare i miei miti: Keith Richards e Bruce Timm, Chuck Berry e Leone Frollo, Betty Page e Wallace Wood, David Bailey e Alberto Sordi.</li>
+                        <a class="dropdown-trigger">Bio</a>
+                        <ul class="dropdown-menu menu-bio">
+                            <li>Roma, 1964. Autore di fumetti, storyboard artist ed illustratore. Una fantastica copertina de la “Bionda” su Comic Art mi convinse a bussare alla redazione romana con la cartellina piena di sogni e di fogli scopiazzati. Con Comic Art lavorai 4 anni come letterista, grafico, colorista, illustratore, ma le mie prime tavole furono pubblicate dall’ACME di Francesco Coniglio. Ho continuato ad alternare collaborazioni grafiche di ogni tipo, dai fumetti su tela ai manifesti teatrali alla pubblicità, dall’animazione agli storyboards ritagliandomi sempre uno spazio come autore di fumetti. Nel 1997 la serie dei Blues Bondage ebbe un discreto successo nelle pagine di Blue, con storie autoconclusive che si fermarono nel 2001. Con la Scuola Romana dei fumetti inizio una collaborazione che si consolida nel tempo, con mostre, concerti rock, lezioni, collaborazioni grafiche e pubblicazioni di vari fumetti. Negli anni duemila collaboro costantemente con la AS Roma e Il Romanista e illustro diverse locandine teatrali tra cui "I sette Re di Roma" di Enrico Brignano, innamorato degli anni ’50 e ’60 ovvero di tutta quell’iconografia popolare densa di colori, forme e atmosfere che mi hanno da sempre condizionato: pop art, rock’n’roll, tacchi alti e pin ups. Sono cresciuto con i fumetti della Corno, Metal Hurlant, A Suivre, l’Eternauta, Rock’n’Folk. Adoro mescolare i miei miti: Keith Richards e Bruce Timm, Chuck Berry e Leone Frollo, Betty Page e Wallace Wood, David Bailey e Alberto Sordi.</li>
                         </ul>
                     </div>
 
                     <div class="dropdown">
-                        <a class="dropdown-trigger testo-custom">Contact Me</a>
-                        <ul class="dropdown-menu menu-contact testo-custom">
+                        <a class="dropdown-trigger">Contact Me</a>
+                        <ul class="dropdown-menu menu-contact">
                             <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=fabiohotstuff@gmail.com&su=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli" target="_blank" rel="noopener noreferrer">E-mail</a></li>
                             <li><a href="https://wa.me/393400670069" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
                             <li><a href="https://www.instagram.com/dandelion64?igsi=MXJwZHhkNTlqcjl2MA==" target="_blank" rel="noopener noreferrer">Instagram</a></li>
