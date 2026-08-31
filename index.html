@@ -38,11 +38,11 @@
         }
 
         html, body {
-            width: 100%;
-            min-height: 100vh;
+            width: 100vw;
+            height: 100vh;
             background-color: #fde3b8; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow-x: hidden;
+            overflow: hidden;
         }
 
         /* =======================================================
@@ -160,6 +160,13 @@
             padding: 8px 0;
         }
 
+        .menu-contact { 
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% + 40px);
+            text-align: center; 
+        }
+
         .dropdown:hover .dropdown-menu { display: block; }
 
         .dropdown-menu li {
@@ -176,8 +183,33 @@
             width: 100%;
         }
 
+        .menu-contact li a {
+            color: #ffffff;
+            display: block;
+            text-decoration: none;
+            padding: 10px 12px;
+            transition: background 0.2s ease;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .menu-contact li a:hover { background: #b72216; }
+
+        .menu-contact li:first-child a {
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        .menu-contact li:last-child a {
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+
         footer {
-            position: relative;
+            position: fixed;
+            bottom: 0;
+            left: 0;
             width: 100%;
             padding: 10px;
             text-align: center;
@@ -275,23 +307,15 @@
                 
                 <div class="menus-container">
                     <div class="dropdown">
-                        <a class="dropdown-trigger testo-custom">About Me</a>
-                        <ul class="dropdown-menu menu-about testo-custom">
-                            <li>Mi chiamo Fabio Redaelli,</li>
-                            <li>sono un artista autore di fumetti,</li>
-                            <li>mi piace la musica Rock'n'Roll,</li>
-                            <li>i Rolling Stones e l'A.S. Roma!</li>
-                        </ul>
-                    </div>
-
-                    <div class="dropdown">
                         <a class="dropdown-trigger testo-custom">Bio</a>
                         <ul class="dropdown-menu menu-about testo-custom">
                             <li>Roma, 1964.</li>
-                            <li>Autore di fumetti, storyboard artist ed illustratore.</li>
+                            <li>Autore di fumetti, storyboard artist ed</li>
+                            <li>illustratore.</li>
                             <li>Una fantastica copertina de la “Bionda” su Comic Art mi convinse a bussare alla</li>
                             <li>redazione romana con la cartellina piena di sogni e di fogli scopiazzati.</li>
-                            <li>Con Comic Art lavorai 4 anni come letterista, grafico, colorista, illustratore, ma le</li>
+                            <li>Con Comic Art lavorai 4 anni come letterista, grafico, colorista,</li>
+                            <li>illustratore, ma le</li>
                             <li>mie prime tavole furono pubblicate dall’ACME di Francesco Coniglio.</li>
                             <li>Ho continuato ad alternare collaborazioni grafiche di ogni tipo, dai fumetti su tela ai</li>
                             <li>manifesti teatrali alla pubblicità, dall’animazione agli storyboards ritagliandomi</li>
@@ -304,6 +328,16 @@
                             <li>Sono cresciuto con i fumetti di della Corno, Metal Hurlant, A Suivre, l’Eternauta ,</li>
                             <li>Rock’n’Folk.</li>
                             <li>Adoro mescolare I miei miti: Keith Richards e Bruce Timm, Chuck Berry e Leone Frollo, Betty Page e Wallace Wood, David Bailey e Alberto Sordi.</li>
+                        </ul>
+                    </div>
+
+                    <div class="dropdown">
+                        <a class="dropdown-trigger testo-custom">Contact Me</a>
+                        <ul class="dropdown-menu menu-contact testo-custom">
+                            <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=fabiohotstuff@gmail.com&su=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli" target="_blank" rel="noopener noreferrer">E-mail</a></li>
+                            <li><a href="https://wa.me/393400670069" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+                            <li><a href="https://www.instagram.com/dandelion64?igsi=MXJwZHhkNTlqcjl2MA==" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                            <li><a href="https://www.linkedin.com/in/fabio-redaelli-18682219" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
                         </ul>
                     </div>
                 </div>
