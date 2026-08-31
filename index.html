@@ -152,12 +152,32 @@
             height: 12px;
         }
 
-        .menu-about { 
+        /* MENU BIO FORMATTATO A BLOCCO */
+        .menu-bio {
             left: 50%;
             transform: translateX(-50%);
-            text-align: center; 
-            width: max-content;
-            padding: 8px 0;
+            width: 520px;
+            max-width: 90vw;
+            padding: 15px 20px;
+            text-align: left;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border-radius: 12px;
+            list-style: none;
+            z-index: 100;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+        }
+
+        .menu-bio li {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ffffff;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            white-space: normal;
+            text-align: left;
+            padding: 3px 0;
+            width: 100%;
         }
 
         .menu-contact { 
@@ -169,18 +189,12 @@
 
         .dropdown:hover .dropdown-menu { display: block; }
 
-        .dropdown-menu li {
+        .menu-contact li {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff;
             font-size: 1.4rem;
             line-height: 1.3;
             white-space: nowrap;
-        }
-
-        .menu-about li {
-            text-align: center;
-            padding: 6px 18px;
-            width: 100%;
         }
 
         .menu-contact li a {
@@ -308,26 +322,12 @@
                 <div class="menus-container">
                     <div class="dropdown">
                         <a class="dropdown-trigger testo-custom">Bio</a>
-                        <ul class="dropdown-menu menu-about testo-custom">
+                        <ul class="dropdown-menu menu-bio testo-custom">
                             <li>Roma, 1964.</li>
-                            <li>Autore di fumetti, storyboard artist ed</li>
-                            <li>illustratore.</li>
-                            <li>Una fantastica copertina de la “Bionda” su Comic Art mi convinse a bussare alla</li>
-                            <li>redazione romana con la cartellina piena di sogni e di fogli scopiazzati.</li>
-                            <li>Con Comic Art lavorai 4 anni come letterista, grafico, colorista,</li>
-                            <li>illustratore, ma le</li>
-                            <li>mie prime tavole furono pubblicate dall’ACME di Francesco Coniglio.</li>
-                            <li>Ho continuato ad alternare collaborazioni grafiche di ogni tipo, dai fumetti su tela ai</li>
-                            <li>manifesti teatrali alla pubblicità, dall’animazione agli storyboards ritagliandomi</li>
-                            <li>sempre uno spazio come autore di fumetti.</li>
-                            <li>Nel 1997 la serie dei Blues Bondage ebbe un discreto successo nelle pagine di Blue, con storie autoconclusive che si fermarono nel 2001.</li>
-                            <li>Con la Scuola Romana dei fumetti inizio una collaborazione che si consolida nel tempo, con mostre, concerti rock, lezioni, collaborazioni grafiche e pubblicazioni di vari fumetti.</li>
-                            <li>Negli anni duemila collaboro constantemente con la AS Roma e Il Romanista e illustro diverse locandine teatrali tra cui "I sette Re di Roma" di Enrico Brignano</li>
-                            <li>Innamorato degli anni ’50 e ’60, ovvero di tutta quell’iconografia popolare densa di</li>
-                            <li>colori, forme e atmosfere che mi hanno da sempre condizionato: pop art, rock’n’roll, tacchi alti e pin ups.</li>
-                            <li>Sono cresciuto con i fumetti di della Corno, Metal Hurlant, A Suivre, l’Eternauta ,</li>
-                            <li>Rock’n’Folk.</li>
-                            <li>Adoro mescolare I miei miti: Keith Richards e Bruce Timm, Chuck Berry e Leone Frollo, Betty Page e Wallace Wood, David Bailey e Alberto Sordi.</li>
+                            <li>Autore di fumetti, storyboard artist ed illustratore.</li>
+                            <li>Una fantastica copertina de la “Bionda” su Comic Art mi convinse a bussare alla redazione romana con la cartellina piena di sogni e di fogli scopiazzati. </li>
+                            <li>Con Comic Art lavorai 4 anni come letterista, grafico, colorista, illustratore, ma le mie prime tavole furono pubblicate dall’ACME di Francesco Coniglio. Ho continuato ad alternare collaborazioni grafiche di ogni tipo, dai fumetti su tela ai manifesti teatrali alla pubblicità, dall’animazione agli storyboards ritagliandomi sempre uno spazio come autore di fumetti. Nel 1997 la serie dei Blues Bondage ebbe un discreto successo nelle pagine di Blue, con storie autoconclusive che si fermarono nel 2001. Con la Scuola Romana dei fumetti inizio una collaborazione che si consolida nel tempo, con mostre, concerti rock, lezioni, collaborazioni grafiche e pubblicazioni di vari fumetti. Negli anni duemila collaboro costantemente con la AS Roma e Il Romanista e illustro diverse locandine teatrali tra cui "I sette Re di Roma" di Enrico Brignano, innamorato degli anni ’50 e ’60 ovvero di tutta quell’iconografia popolare densa di colori, forme e atmosfere che mi hanno da sempre condizionato: pop art, rock’n’roll, tacchi alti e pin ups. Sono cresciuto con i fumetti della Corno, Metal Hurlant, A Suivre, l’Eternauta, Rock’n’Folk.</li>
+                            <li>Adoro mescolare i miei miti: Keith Richards e Bruce Timm, Chuck Berry e Leone Frollo, Betty Page e Wallace Wood, David Bailey e Alberto Sordi.</li>
                         </ul>
                     </div>
 
