@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fabio Hot Stuff Redaelli - Comic Art Author -</title>
     
+    <!-- FAVICON E MANIFEST -->
     <link rel="icon" type="image/png" href="images/favicon-96x96.png" sizes="96x96">
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="shortcut icon" href="images/favicon.ico">
@@ -36,33 +37,40 @@
             padding: 0; 
         }
 
+        /* BLOCCO SCROLLING E LAYOUT A SCHERMO INTERO */
         html, body {
             width: 100vw;
             height: 100vh;
             background-color: #fde3b8; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         /* =======================================================
-           STRUTTURA SCHERMO INTERO (SENZA SCROLLING)
+           STRUTTURA ORIGINALE CON ALLINEAMENTO PERFETTO
            ======================================================= */
         .master-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            position: relative;
+            width: 100%;
             background-color: #fde3b8;
-            margin: 0;
+            margin-top: -50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            overflow: hidden;
         }
 
         .bg-image {
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            object-position: center;
+            width: 100%;
+            height: auto;
+            max-height: calc(100vh - 40px);
+            object-fit: contain;
             display: block; 
+            margin: 0 auto;
         }
 
         .text-layer {
@@ -211,22 +219,18 @@
         }
 
         footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
             width: 100vw;
             padding: 8px 10px;
             text-align: center;
-            background: rgba(13, 27, 42, 0.95);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
+            background: rgba(13, 27, 42, 1);
             color: white;
             font-size: 0.75rem;
-            z-index: 2000;
+            z-index: 1000;
+            flex-shrink: 0;
         }
 
         /* =======================================================
-           STRUTTURA MOBILE E SCHERMI RIDOTTI
+           ADATTAMENTO MOBILE
            ======================================================= */
         @media screen and (max-width: 1024px) {
             .header-anchor {
@@ -275,7 +279,7 @@
 <body>
 
     <div class="master-canvas">
-        <img src="images/bg2.jpg?v=COVER" class="bg-image" alt="Artwork Fabio Redaelli">
+        <img src="images/bg2.jpg?v=ORIGINAL" class="bg-image" alt="Artwork Fabio Redaelli">
         <div class="text-layer">
             <div class="header-anchor">
                 <h1 class="brand-title testo-custom"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
