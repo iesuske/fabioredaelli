@@ -104,9 +104,31 @@
 
         .menus-container {
             display: flex;
-            gap: 5.5vw; 
-            margin-left: 58%;
+            justify-content: center;
+            align-items: center;
+            gap: 3.5vw; 
+            margin-left: 48%; /* Ricalibrato per includere il nuovo tasto Works! */
             margin-top: 0.8vw; 
+        }
+
+        /* STILE TASTO WORKS! */
+        .btn-works {
+            font-family: 'Lobster Regular', cursive;
+            font-size: 1.5vw;
+            color: #ffffff;
+            background-color: #b72216;
+            padding: 3px 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            cursor: pointer;
+        }
+
+        .btn-works:hover {
+            background-color: #ffffff;
+            color: #b72216;
         }
 
         .dropdown {
@@ -222,6 +244,10 @@
 
         /* Media query solo per consentire lo scorrimento interno della tendina se troppo lunga su mobile */
         @media screen and (max-width: 1024px) {
+            .btn-works {
+                font-size: 3.5vw !important;
+                padding: 2px 10px;
+            }
             .dropdown-menu {
                 max-height: 54vh;
                 overflow-y: auto;
@@ -249,6 +275,8 @@
                 <h1 class="brand-title testo-custom"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
                 
                 <div class="menus-container">
+                    <a href="#" class="btn-works testo-custom">Works!</a>
+
                     <div class="dropdown">
                         <a class="dropdown-trigger testo-custom">Bio</a>
                         <ul class="dropdown-menu menu-about testo-custom">
