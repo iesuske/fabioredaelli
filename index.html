@@ -241,7 +241,7 @@
         }
 
         /* =======================================================
-           OTTIMIZZAZIONE MOBILE (TESTO ABBASSATO E CENTRATO)
+           OTTIMIZZAZIONE MOBILE (BANDA ROSSA ESPANSA E TESTO ABBASSATO)
            ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
@@ -259,18 +259,23 @@
                 width: 155%;
                 max-width: none;
                 margin-left: -27.5%;
+                transform: translateY(22px); /* Sposta l'immagine leggermente in basso per far spazio alla banda rossa espansa */
             }
 
             .header-anchor {
                 position: absolute;
-                top: 5.8%; /* ABBASSATO: sposta la scritta più in basso all'interno della fascia rossa */
+                top: 4.5%; 
                 left: 0;
                 width: 100%;
-                padding: 0 10px;
+                background-color: #b72216; /* Crea una banda rossa più alta e spessa */
+                border-top: 2px solid #000000;
+                border-bottom: 2px solid #000000;
+                padding: 14px 10px 16px 10px; /* Aumenta lo spessore verticale */
             }
 
+            /* Titolo proporzionato e abbassato al centro della nuova banda */
             .brand-title {
-                font-size: 6.8vw; 
+                font-size: 6.4vw; 
                 white-space: normal;
                 line-height: 1.15;
                 transform: none !important;
@@ -278,20 +283,21 @@
 
             .menus-container {
                 margin-left: 0 !important;
-                margin-top: 2.2vw;
+                margin-top: 2.5vw;
                 justify-content: center;
-                gap: 4vw;
+                gap: 5vw;
             }
 
+            /* Menu rifiniti e ottimizzati per mobile */
             .btn-works {
-                font-size: 3.5vw; 
-                padding: 3px 12px;
+                font-size: 3.6vw; 
+                padding: 4px 14px;
                 border-radius: 6px;
                 transform: none !important;
             }
 
             .dropdown-trigger {
-                font-size: 3.5vw; 
+                font-size: 3.6vw; 
             }
 
             .dropdown-menu {
