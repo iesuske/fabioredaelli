@@ -241,7 +241,7 @@
         }
 
         /* =======================================================
-           OTTIMIZZAZIONE MOBILE (TESTO RIDOTTO E ALLINEATO)
+           OTTIMIZZAZIONE MOBILE (BANDA ROSSA PIÙ SPESSA E TESTO ABBASSATO)
            ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
@@ -259,17 +259,19 @@
                 width: 155%;
                 max-width: none;
                 margin-left: -27.5%;
+                transform: scaleY(1.3); /* Aumenta lo spessore verticale della banda rossa */
+                transform-origin: top center;
             }
 
             .header-anchor {
                 position: absolute;
-                top: 5.8%; /* Allineato precisamente sulla linea nera */
+                top: 9.5%; /* Abbassa e centra perfettamente il testo nella nuova banda rossa */
                 left: 0;
                 width: 100%;
                 padding: 0 10px;
             }
 
-            /* Titolo ridotto e proporzionato */
+            /* Titolo proporzionato */
             .brand-title {
                 font-size: 7.2vw; 
                 white-space: normal;
@@ -284,7 +286,7 @@
                 gap: 4vw;
             }
 
-            /* Menu ridotti in proporzione al titolo */
+            /* Menu proporzionati */
             .btn-works {
                 font-size: 3.2vw; 
                 padding: 2px 10px;
