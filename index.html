@@ -14,71 +14,6 @@
 
     <link rel="preload" href="fonts/lobsteregular.ttf" as="font" type="font/ttf" crossorigin>
 
-    <script>
-        // IMPEDISCE AL BROWSER DI MEMORIZZARE LA POSIZIONE DI SCROLL
-        if ('scrollRestoration' in history) {
-            history.scrollRestoration = 'manual';
-        }
-
-        function forceScrollTop() {
-            window.scrollTo(0, 0);
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        }
-
-        forceScrollTop();
-
-        window.addEventListener("DOMContentLoaded", function() {
-            forceScrollTop();
-            setTimeout(forceScrollTop, 50);
-            setTimeout(forceScrollTop, 150);
-            setTimeout(forceScrollTop, 300);
-            
-            document.fonts.ready.then(function() {
-                document.body.classList.add('fonts-loaded');
-                forceScrollTop();
-            });
-
-            // GESTIONE CLIC/TAP PER I MENU MOBILE
-            const dropdowns = document.querySelectorAll('.dropdown');
-            
-            dropdowns.forEach(dropdown => {
-                const trigger = dropdown.querySelector('.dropdown-trigger');
-                if (trigger) {
-                    trigger.addEventListener('click', function(e) {
-                        if (window.innerWidth <= 768) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            
-                            dropdowns.forEach(d => {
-                                if (d !== dropdown) {
-                                    d.classList.remove('active');
-                                }
-                            });
-                            
-                            dropdown.classList.toggle('active');
-                        }
-                    });
-                }
-            });
-
-            document.addEventListener('click', function(e) {
-                if (window.innerWidth <= 768 && !e.target.closest('.dropdown')) {
-                    dropdowns.forEach(d => d.classList.remove('active'));
-                }
-            });
-        });
-
-        window.addEventListener('load', function() {
-            forceScrollTop();
-            setTimeout(forceScrollTop, 100);
-        });
-
-        window.addEventListener('pageshow', function(event) {
-            forceScrollTop();
-        });
-    </script>
-
     <style>
         @font-face {
             font-family: 'Lobster Regular';
@@ -306,7 +241,7 @@
         }
 
         /* =======================================================
-           OTTIMIZZAZIONE MOBILE (INTERATTIVO E CORRETTO)
+           OTTIMIZZAZIONE MOBILE STABILE
            ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
@@ -317,7 +252,6 @@
 
             .master-canvas {
                 margin-top: 0;
-                overflow: hidden;
             }
 
             .bg-image {
@@ -328,19 +262,17 @@
 
             .header-anchor {
                 position: absolute;
-                top: 7.2%; 
+                top: 4%; /* Posizionamento stabile in alto */
                 left: 0;
                 width: 100%;
                 padding: 0 10px;
-                background: transparent !important;
-                border: none !important;
             }
 
             .brand-title {
                 font-size: calc(6.2vw + 1px);
                 white-space: normal;
                 line-height: 1.1;
-                transform: translateY(1px) !important; 
+                transform: none !important; 
                 text-align: center;
             }
 
@@ -355,14 +287,13 @@
                 font-size: 3.5vw; 
                 padding: 1px 8px;
                 border-radius: 6px;
-                transform: none !important;
             }
 
             .dropdown-trigger {
                 font-size: 3.5vw; 
             }
 
-            /* APERTURA FORZATA TRAMITE CLASSE ACTIVE SU MOBILE */
+            /* APERTURA CORRETTA DEI MENU AL TOCCO SU MOBILE */
             .dropdown.active .dropdown-menu {
                 display: block !important;
             }
@@ -390,12 +321,57 @@
             }
         }
     </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            window.scrollTo(0, 0);
+            
+            document.fonts.ready.then(function() {
+                document.body.classList.add('fonts-loaded');
+            });
+
+            // GESTIONE APERTURA MENU MOBILE AL TOCCO
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            dropdowns.forEach(dropdown => {
+                const trigger = dropdown.querySelector('.dropdown-trigger');
+                if (trigger) {
+                    trigger.addEventListener('click', function(e) {
+                        if (window.innerWidth <= 768) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            
+                            // Chiude gli altri menu eventualmente aperti
+                            dropdowns.forEach(d => {
+                                if (d !== dropdown) {
+                                    d.classList.remove('active');
+                                }
+                            });
+                            
+                            // Apre/chiude quello cliccato
+                            dropdown.classList.toggle('active');
+                        }
+                    });
+                }
+            });
+
+            // Chiude i menu se si tocca fuori
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768 && !e.target.closest('.dropdown')) {
+                    dropdowns.forEach(d => d.classList.remove('active'));
+                }
+            });
+        });
+
+        window.addEventListener('load', function() {
+            window.scrollTo(0, 0);
+        });
+    </script>
 </head>
 <body>
 
     <div class="master-canvas">
-        <!-- AGGIUNTO L'ID PER GESTIRE IL CARICAMENTO DELL'IMMAGINE -->
-        <img src="images/bg2.jpg?v=COVER" class="bg-image" id="bgImage" alt="Artwork Fabio Redaelli">
+        <img src="images/bg2.jpg?v=COVER" class="bg-image" alt="Artwork Fabio Redaelli">
         <div class="text-layer">
             <div class="header-anchor">
                 <h1 class="brand-title testo-custom"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
@@ -442,11 +418,5 @@
         <p>Copyright &copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
     </footer>
 
-    <script>
-        // FORZATURA AGGIUNTIVA SUL CARICAMENTO DELL'IMMAGINE D'SFONDO
-        document.getElementById('bgImage').addEventListener('load', function() {
-            forceScrollTop();
-        });
-    </script>
 </body>
 </html>
