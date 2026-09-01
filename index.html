@@ -105,12 +105,12 @@
         .menus-container {
             display: flex;
             gap: 5.5vw; 
-            margin-left: 45.5%; /* DESKTOP BLOCCATO: Centratura perfetta */
+            margin-left: 45.5%; /* Spostato leggermente più a sinistra per il centramento ottimale */
             margin-top: 0.8vw; 
             align-items: center;
         }
 
-        /* STILE TASTO WORKS! DESKTOP */
+        /* STILE TASTO WORKS! DESKTOP (Cornice rimpicciolita) */
         .btn-works {
             font-family: 'Lobster Regular', cursive;
             font-size: 1.5vw;
@@ -241,7 +241,7 @@
         }
 
         /* =======================================================
-           OTTIMIZZAZIONE MOBILE STABILE
+           OTTIMIZZAZIONE MOBILE (MINIATURA FEDELE + REGOLAZIONE FINE)
            ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
@@ -252,6 +252,7 @@
 
             .master-canvas {
                 margin-top: 0;
+                overflow: hidden;
             }
 
             .bg-image {
@@ -262,17 +263,19 @@
 
             .header-anchor {
                 position: absolute;
-                top: 4%; /* Posizionamento stabile in alto */
+                top: 7.2%; 
                 left: 0;
                 width: 100%;
                 padding: 0 10px;
+                background: transparent !important;
+                border: none !important;
             }
 
             .brand-title {
                 font-size: calc(6.2vw + 1px);
                 white-space: normal;
                 line-height: 1.1;
-                transform: none !important; 
+                transform: translateY(1px) !important; 
                 text-align: center;
             }
 
@@ -287,15 +290,11 @@
                 font-size: 3.5vw; 
                 padding: 1px 8px;
                 border-radius: 6px;
+                transform: none !important;
             }
 
             .dropdown-trigger {
                 font-size: 3.5vw; 
-            }
-
-            /* APERTURA CORRETTA DEI MENU AL TOCCO SU MOBILE */
-            .dropdown.active .dropdown-menu {
-                display: block !important;
             }
 
             .dropdown-menu {
@@ -329,38 +328,6 @@
             document.fonts.ready.then(function() {
                 document.body.classList.add('fonts-loaded');
             });
-
-            // GESTIONE APERTURA MENU MOBILE AL TOCCO
-            const dropdowns = document.querySelectorAll('.dropdown');
-            
-            dropdowns.forEach(dropdown => {
-                const trigger = dropdown.querySelector('.dropdown-trigger');
-                if (trigger) {
-                    trigger.addEventListener('click', function(e) {
-                        if (window.innerWidth <= 768) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            
-                            // Chiude gli altri menu eventualmente aperti
-                            dropdowns.forEach(d => {
-                                if (d !== dropdown) {
-                                    d.classList.remove('active');
-                                }
-                            });
-                            
-                            // Apre/chiude quello cliccato
-                            dropdown.classList.toggle('active');
-                        }
-                    });
-                }
-            });
-
-            // Chiude i menu se si tocca fuori
-            document.addEventListener('click', function(e) {
-                if (window.innerWidth <= 768 && !e.target.closest('.dropdown')) {
-                    dropdowns.forEach(d => d.classList.remove('active'));
-                }
-            });
         });
 
         window.addEventListener('load', function() {
@@ -380,7 +347,7 @@
                     <a href="#" class="btn-works testo-custom">Works!</a>
 
                     <div class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-trigger testo-custom">Bio</a>
+                        <a class="dropdown-trigger testo-custom">Bio</a>
                         <ul class="dropdown-menu menu-about testo-custom">
                             <li>Roma, 1964.</li>
                             <li>Autore di fumetti, storyboard artist ed illustratore;</li>
@@ -401,7 +368,7 @@
                     </div>
 
                     <div class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-trigger testo-custom">Contact Me</a>
+                        <a class="dropdown-trigger testo-custom">Contact Me</a>
                         <ul class="dropdown-menu menu-contact testo-custom">
                             <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=fabiohotstuff@gmail.com&su=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli" target="_blank" rel="noopener noreferrer">E-mail</a></li>
                             <li><a href="https://wa.me/393400670069" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
