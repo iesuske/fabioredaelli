@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -42,7 +43,7 @@
             height: 100vh;
             background-color: #fde3b8; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow: hidden; /* ELIMINA DEFINITIVAMENTE LO SCROLL DELLA PAGINA */
+            overflow: hidden; /* ELIMINA LO SCROLL SU DESKTOP */
         }
 
         /* =======================================================
@@ -104,13 +105,13 @@
 
         .menus-container {
             display: flex;
-            gap: 5.5vw; /* Spaziatura uniforme mantenuta uguale tra tutti gli elementi */
-            margin-left: 47%; /* Posizionato correttamente per far coincidere Bio e Contact Me alla posizione originale */
+            gap: 5.5vw; 
+            margin-left: 47%; 
             margin-top: 0.8vw; 
             align-items: center;
         }
 
-        /* STILE TASTO WORKS! CON TESTO NERO AL PASSAGGIO DEL MOUSE */
+        /* STILE TASTO WORKS! DESKTOP */
         .btn-works {
             font-family: 'Lobster Regular', cursive;
             font-size: 1.5vw;
@@ -127,7 +128,7 @@
 
         .btn-works:hover {
             background-color: #ffffff;
-            color: #000000; /* Testo nero al passaggio del mouse */
+            color: #000000; 
         }
 
         .dropdown {
@@ -177,7 +178,7 @@
             transform: translateX(-50%);
             text-align: center; 
             width: max-content;
-            padding: 10px 0 18px 0; /* Spazio maggiore in basso per staccare Cagnucci */
+            padding: 10px 0 18px 0; 
         }
 
         .menu-contact { 
@@ -240,18 +241,68 @@
             z-index: 1000;
         }
 
-        /* Media query solo per consentire lo scorrimento interno della tendina se troppo lunga su mobile */
-        @media screen and (max-width: 1024px) {
-            .btn-works {
-                font-size: 3.5vw !important;
-                padding: 2px 10px;
+        /* =======================================================
+           OTTIMIZZAZIONE MOBILE (CORREZIONE SCHERMI STRETTI)
+           ======================================================= */
+        @media screen and (max-width: 768px) {
+            html, body {
+                height: auto;
+                min-height: 100vh;
+                overflow-y: auto; /* Consente lo scorrimento naturale su mobile */
             }
+
+            .master-canvas {
+                margin-top: 0;
+            }
+
+            .header-anchor {
+                position: relative;
+                top: 0;
+                padding: 25px 15px 15px 15px;
+            }
+
+            .brand-title {
+                font-size: 7.5vw; /* Adatta il titolo perfettamente agli schermi mobile */
+                white-space: normal;
+                line-height: 1.1;
+                transform: none !important;
+            }
+
+            .menus-container {
+                margin-left: 0 !important; /* Rimuove il posizionamento desktop forzato */
+                margin-top: 15px;
+                justify-content: center; /* Centra perfettamente i menu sotto al titolo */
+                flex-wrap: wrap;
+                gap: 18px;
+            }
+
+            .btn-works {
+                font-size: 4.5vw;
+                padding: 4px 14px;
+                transform: none !important;
+            }
+
+            .dropdown-trigger {
+                font-size: 4.5vw;
+            }
+
             .dropdown-menu {
-                max-height: 54vh;
+                position: fixed;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                width: 88vw !important;
+                max-height: 55vh;
                 overflow-y: auto;
             }
-            .dropdown-menu li {
-                font-size: 0.85rem;
+
+            .menu-about li {
+                font-size: 0.9rem;
+                white-space: normal; /* Permette al testo lungo della bio di andare a capo correttamente su mobile */
+                padding: 6px 10px;
+            }
+
+            .menu-contact li a {
+                font-size: 1rem;
             }
         }
     </style>
