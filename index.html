@@ -110,7 +110,7 @@
             align-items: center;
         }
 
-        /* STILE TASTO WORKS! */
+        /* STILE TASTO WORKS! CON ALLINEAMENTO PERFETTO DEL TESTO */
         .btn-works {
             font-family: 'Lobster Regular', cursive;
             font-size: 1.5vw;
@@ -123,6 +123,7 @@
             transition: background-color 0.2s ease, color 0.2s ease;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             cursor: pointer;
+            transform: translateY(-4px); /* Solleva il pulsante per allineare perfettamente il testo con Bio e Contact Me */
         }
 
         .btn-works:hover {
@@ -246,6 +247,7 @@
             .btn-works {
                 font-size: 3.5vw !important;
                 padding: 2px 10px;
+                transform: translateY(-2px);
             }
             .dropdown-menu {
                 max-height: 54vh;
