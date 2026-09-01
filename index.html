@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -242,13 +241,13 @@
         }
 
         /* =======================================================
-           OTTIMIZZAZIONE MOBILE (CORREZIONE SCHERMI STRETTI)
+           OTTIMIZZAZIONE MOBILE (RIDISEGNATA E PULITA)
            ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
                 height: auto;
                 min-height: 100vh;
-                overflow-y: auto; /* Consente lo scorrimento naturale su mobile */
+                overflow-y: auto;
             }
 
             .master-canvas {
@@ -258,51 +257,50 @@
             .header-anchor {
                 position: relative;
                 top: 0;
-                padding: 25px 15px 15px 15px;
+                padding: 12px 10px 10px 10px;
             }
 
             .brand-title {
-                font-size: 7.5vw; /* Adatta il titolo perfettamente agli schermi mobile */
-                white-space: normal;
-                line-height: 1.1;
+                font-size: 6.8vw; /* Dimensione bilanciata per smartphone */
+                white-space: normal; /* Consente al titolo di andare a capo ordinatamente */
+                line-height: 1.15;
                 transform: none !important;
             }
 
             .menus-container {
-                margin-left: 0 !important; /* Rimuove il posizionamento desktop forzato */
-                margin-top: 15px;
-                justify-content: center; /* Centra perfettamente i menu sotto al titolo */
-                flex-wrap: wrap;
-                gap: 18px;
+                margin-left: 0 !important;
+                margin-top: 12px;
+                justify-content: center;
+                gap: 22px; /* Spaziatura uniforme e pulita tra i tasti */
             }
 
             .btn-works {
-                font-size: 4.5vw;
-                padding: 4px 14px;
+                font-size: 4.8vw;
+                padding: 3px 12px;
                 transform: none !important;
             }
 
             .dropdown-trigger {
-                font-size: 4.5vw;
+                font-size: 4.8vw;
             }
 
             .dropdown-menu {
                 position: fixed;
                 left: 50% !important;
                 transform: translateX(-50%) !important;
-                width: 88vw !important;
+                width: 90vw !important;
                 max-height: 55vh;
                 overflow-y: auto;
             }
 
             .menu-about li {
-                font-size: 0.9rem;
-                white-space: normal; /* Permette al testo lungo della bio di andare a capo correttamente su mobile */
-                padding: 6px 10px;
+                font-size: 0.85rem;
+                white-space: normal;
+                padding: 6px 12px;
             }
 
             .menu-contact li a {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
         }
     </style>
