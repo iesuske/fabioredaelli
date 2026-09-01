@@ -172,7 +172,7 @@
         .dropdown-menu li {
             font-family: 'Lobster Regular', cursive;
             color: #ffffff;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             line-height: 1.3;
             white-space: nowrap;
         }
@@ -223,7 +223,8 @@
         @media screen and (max-width: 1024px) {
             html, body {
                 width: 100vw;
-                min-height: 100vh;
+                height: 100vh;
+                overflow: hidden; /* BLOCCA LO SCROLL DELLA PAGINA */
                 background-color: #fde3b8;
             }
 
@@ -268,8 +269,14 @@
                 font-size: 3.8vw !important;
             }
 
+            /* Scroll interno solo per la tendina su mobile */
+            .dropdown-menu {
+                max-height: 54vh;
+                overflow-y: auto;
+            }
+
             .dropdown-menu li {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
 
             footer {
@@ -308,31 +315,19 @@
                         <ul class="dropdown-menu menu-about testo-custom">
                             <li>Roma, 1964.</li>
                             <li>Autore di fumetti, storyboard artist ed illustratore.</li>
-                            <li>Piu' di 30 anni di esperienza</li>
-                            <li>sul campo, alternando</li>
-                            <li>collaborazioni di ogni tipo,</li>
-                            <li>dai fumetti a locandine teatrali,</li>
-                            <li>da storyboards pubblicitari</li>
-                            <li>ai cartoni animati,</li>
-                            <li>ritagliandomi sempre</li>
-                            <li>uno spazio come autore.</li>
-                            <li>Docente della Scuola Romana</li>
-                            <li>dei fumetti con molteplici</li>
-                            <li>collaborazioni consolidate nel tempo,</li>
-                            <li>con mostre, stages,</li>
-                            <li>e pubblicazioni di vari fumetti.</li>
-                            <li>Pubblicazioni: Comic Art,</li>
-                            <li>Acme comics, Blue press,</li>
-                            <li>Newton & Compton, il Sistina,</li>
-                            <li>Giunti, Einaudi, AS Roma,</li>
-                            <li>Tipymedia, Lav, Il Romanista.</li>
-                            <li>Ultimi lavori comprendono</li>
-                            <li>la locandina teatrale</li>
-                            <li>del blockbuster</li>
-                            <li>"I sette Re di Roma"</li>
-                            <li>di Enrico Brignano e cinque</li>
-                            <li>volumi illustrati de l'Enciclopedia</li>
-                            <li>Romanista di Tonino Cagnucci.</li>
+                            <li>Piu' di 30 anni di esperienza sul campo, alternando</li>
+                            <li>collaborazioni di ogni tipo, dai fumetti a locandine</li>
+                            <li>teatrali, da storyboards pubblicitari ai cartoni animati,</li>
+                            <li>ritagliandomi sempre uno spazio come autore. Docente</li>
+                            <li>della Scuola Romana dei fumetti con molteplici</li>
+                            <li>collaborazioni consolidate nel tempo, con mostre, stages</li>
+                            <li>e pubblicazioni di vari fumetti. Pubblicazioni: Newton &</li>
+                            <li>Compton, Comic Art, Acme comics, Blue press, il Sistina,</li>
+                            <li>Giunti, Einaudi, AS Roma, Tipymedia, Lav, Il Romanista.</li>
+                            <li>Ultimi lavori comprendono la locandina teatrale del</li>
+                            <li>blockbuster "I sette Re di Roma" di Enrico Brignano</li>
+                            <li>e cinque volumi illustrati de l'Enciclopedia Romanista</li>
+                            <li>di Tonino Cagnucci.</li>
                         </ul>
                     </div>
 
