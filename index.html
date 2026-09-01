@@ -241,7 +241,7 @@
         }
 
         /* =======================================================
-           OTTIMIZZAZIONE MOBILE (BANDA ROSSA ESPANSA E TESTO ABBASSATO)
+           OTTIMIZZAZIONE MOBILE (MINIATURA FEDELE DEL DESKTOP)
            ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
@@ -255,49 +255,47 @@
                 overflow: hidden;
             }
 
+            /* Zoom pulito dell'immagine originale per mantenere le proporzioni intatte */
             .bg-image {
-                width: 155%;
+                width: 165%;
                 max-width: none;
-                margin-left: -27.5%;
-                transform: translateY(22px); /* Sposta l'immagine leggermente in basso per far spazio alla banda rossa espansa */
+                margin-left: -32.5%;
             }
 
             .header-anchor {
                 position: absolute;
-                top: 4.5%; 
+                top: 7.2%; /* Ancoraggio millimetrico sulla banda rossa nativa dell'immagine */
                 left: 0;
                 width: 100%;
-                background-color: #b72216; /* Crea una banda rossa più alta e spessa */
-                border-top: 2px solid #000000;
-                border-bottom: 2px solid #000000;
-                padding: 14px 10px 16px 10px; /* Aumenta lo spessore verticale */
+                padding: 0 10px;
+                background: transparent !important;
+                border: none !important;
             }
 
-            /* Titolo proporzionato e abbassato al centro della nuova banda */
             .brand-title {
-                font-size: 6.4vw; 
+                font-size: 6.2vw; 
                 white-space: normal;
-                line-height: 1.15;
+                line-height: 1.1;
                 transform: none !important;
+                text-align: center;
             }
 
             .menus-container {
                 margin-left: 0 !important;
-                margin-top: 2.5vw;
+                margin-top: 2vw;
                 justify-content: center;
-                gap: 5vw;
+                gap: 4vw;
             }
 
-            /* Menu rifiniti e ottimizzati per mobile */
             .btn-works {
-                font-size: 3.6vw; 
-                padding: 4px 14px;
+                font-size: 3.5vw; 
+                padding: 2px 10px;
                 border-radius: 6px;
                 transform: none !important;
             }
 
             .dropdown-trigger {
-                font-size: 3.6vw; 
+                font-size: 3.5vw; 
             }
 
             .dropdown-menu {
