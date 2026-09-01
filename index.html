@@ -105,12 +105,12 @@
         .menus-container {
             display: flex;
             gap: 5.5vw; 
-            margin-left: 45.5%; /* Spostato leggermente più a sinistra per il centramento ottimale */
+            margin-left: 45.5%; /* DESKTOP BLOCCATO: Centratura perfetta */
             margin-top: 0.8vw; 
             align-items: center;
         }
 
-        /* STILE TASTO WORKS! DESKTOP (Cornice rimpicciolita) */
+        /* STILE TASTO WORKS! DESKTOP */
         .btn-works {
             font-family: 'Lobster Regular', cursive;
             font-size: 1.5vw;
@@ -241,7 +241,7 @@
         }
 
         /* =======================================================
-           OTTIMIZZAZIONE MOBILE (MINIATURA FEDELE + REGOLAZIONE FINE)
+           OTTIMIZZAZIONE MOBILE (INTERATTIVO E ATTIVO AL TOCCO)
            ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
@@ -297,6 +297,11 @@
                 font-size: 3.5vw; 
             }
 
+            /* APERTURA TRAMITE CLASSE ACTIVE SU MOBILE */
+            .dropdown.active .dropdown-menu {
+                display: block !important;
+            }
+
             .dropdown-menu {
                 position: fixed;
                 left: 50% !important;
@@ -328,6 +333,32 @@
             document.fonts.ready.then(function() {
                 document.body.classList.add('fonts-loaded');
             });
+
+            // GESTIONE CLIC/TAP PER I MENU MOBILE
+            const dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns.forEach(dropdown => {
+                const trigger = dropdown.querySelector('.dropdown-trigger');
+                if (trigger) {
+                    trigger.addEventListener('click', function(e) {
+                        if (window.innerWidth <= 768) {
+                            e.preventDefault();
+                            // Chiude gli altri menu aperti
+                            dropdowns.items = dropdowns.forEach(d => {
+                                if (d !== dropdown) d.classList.remove('active');
+                            });
+                            // Attiva/disattiva quello corrente
+                            dropdown.classList.toggle('active');
+                        }
+                    });
+                }
+            });
+
+            // Chiude i menu se si clicca fuori dallo schermo su mobile
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768 && !e.target.closest('.dropdown')) {
+                    dropdowns.forEach(d => d.classList.remove('active'));
+                }
+            });
         });
 
         window.addEventListener('load', function() {
@@ -347,7 +378,7 @@
                     <a href="#" class="btn-works testo-custom">Works!</a>
 
                     <div class="dropdown">
-                        <a class="dropdown-trigger testo-custom">Bio</a>
+                        <a href="javascript:void(0);" class="dropdown-trigger testo-custom">Bio</a>
                         <ul class="dropdown-menu menu-about testo-custom">
                             <li>Roma, 1964.</li>
                             <li>Autore di fumetti, storyboard artist ed illustratore;</li>
@@ -368,7 +399,7 @@
                     </div>
 
                     <div class="dropdown">
-                        <a class="dropdown-trigger testo-custom">Contact Me</a>
+                        <a href="javascript:void(0);" class="dropdown-trigger testo-custom">Contact Me</a>
                         <ul class="dropdown-menu menu-contact testo-custom">
                             <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=fabiohotstuff@gmail.com&su=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli" target="_blank" rel="noopener noreferrer">E-mail</a></li>
                             <li><a href="https://wa.me/393400670069" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
