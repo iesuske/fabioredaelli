@@ -241,7 +241,7 @@
         }
 
         /* =======================================================
-           OTTIMIZZAZIONE MOBILE (RIDISEGNATA E PULITA)
+           OTTIMIZZAZIONE MOBILE (PROPORZIONI E MACCHINA INGRANDITA)
            ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
@@ -252,43 +252,55 @@
 
             .master-canvas {
                 margin-top: 0;
+                overflow: hidden; /* Contiene lo zoom e centra l'artwork */
+            }
+
+            /* Ingrandisce e centra perfettamente l'immagine grafica (inclusa la macchina) */
+            .bg-image {
+                width: 155%;
+                max-width: none;
+                margin-left: -27.5%;
             }
 
             .header-anchor {
-                position: relative;
-                top: 0;
-                padding: 12px 10px 10px 10px;
+                position: absolute;
+                top: 5.2%; /* Allinea perfettamente i testi alla fascia rossa superiore */
+                left: 0;
+                width: 100%;
+                padding: 0 10px;
             }
 
+            /* Titolo principale ingrandito e ben evidente */
             .brand-title {
-                font-size: 6.8vw; /* Dimensione bilanciata per smartphone */
-                white-space: normal; /* Consente al titolo di andare a capo ordinatamente */
-                line-height: 1.15;
+                font-size: 7.8vw; 
+                white-space: normal;
+                line-height: 1.1;
                 transform: none !important;
             }
 
+            /* Menu proporzionalmente più piccoli rispetto al titolo principale */
             .menus-container {
                 margin-left: 0 !important;
-                margin-top: 12px;
+                margin-top: 1.8vw;
                 justify-content: center;
-                gap: 22px; /* Spaziatura uniforme e pulita tra i tasti */
+                gap: 4vw;
             }
 
             .btn-works {
-                font-size: 4.8vw;
-                padding: 3px 12px;
+                font-size: 3.4vw; /* Proporzionato e più piccolo del titolo */
+                padding: 2px 10px;
                 transform: none !important;
             }
 
             .dropdown-trigger {
-                font-size: 4.8vw;
+                font-size: 3.4vw; /* Proporzionato e più piccolo del titolo */
             }
 
             .dropdown-menu {
                 position: fixed;
                 left: 50% !important;
                 transform: translateX(-50%) !important;
-                width: 90vw !important;
+                width: 88vw !important;
                 max-height: 55vh;
                 overflow-y: auto;
             }
@@ -296,7 +308,7 @@
             .menu-about li {
                 font-size: 0.85rem;
                 white-space: normal;
-                padding: 6px 12px;
+                padding: 6px 10px;
             }
 
             .menu-contact li a {
