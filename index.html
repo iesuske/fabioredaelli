@@ -241,7 +241,7 @@
         }
 
         /* =======================================================
-           OTTIMIZZAZIONE MOBILE (MACCHINA NORMALE, TESTO ALLINEATO, MENU CURATI)
+           OTTIMIZZAZIONE MOBILE (TESTO ABBASSATO E CENTRATO)
            ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
@@ -259,18 +259,16 @@
                 width: 155%;
                 max-width: none;
                 margin-left: -27.5%;
-                /* Nessuna alterazione geometrica: la macchina mantiene le proporzioni originali */
             }
 
             .header-anchor {
                 position: absolute;
-                top: 3.2%; /* Posizionato millimetricamente per far poggiare la scritta sulla linea nera */
+                top: 5.8%; /* ABBASSATO: sposta la scritta più in basso all'interno della fascia rossa */
                 left: 0;
                 width: 100%;
                 padding: 0 10px;
             }
 
-            /* Titolo bilanciato per mobile */
             .brand-title {
                 font-size: 6.8vw; 
                 white-space: normal;
@@ -285,7 +283,6 @@
                 gap: 4vw;
             }
 
-            /* Menu rifiniti e proporzionati */
             .btn-works {
                 font-size: 3.5vw; 
                 padding: 3px 12px;
