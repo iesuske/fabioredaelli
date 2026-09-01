@@ -241,7 +241,7 @@
         }
 
         /* =======================================================
-           OTTIMIZZAZIONE MOBILE (MINIATURA FEDELE DEL DESKTOP)
+           OTTIMIZZAZIONE MOBILE (MINIATURA FEDELE + REGOLAZIONE FINE)
            ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
@@ -255,7 +255,6 @@
                 overflow: hidden;
             }
 
-            /* Zoom pulito dell'immagine originale per mantenere le proporzioni intatte */
             .bg-image {
                 width: 165%;
                 max-width: none;
@@ -264,7 +263,7 @@
 
             .header-anchor {
                 position: absolute;
-                top: 7.2%; /* Ancoraggio millimetrico sulla banda rossa nativa dell'immagine */
+                top: 7.2%; 
                 left: 0;
                 width: 100%;
                 padding: 0 10px;
@@ -276,7 +275,7 @@
                 font-size: 6.2vw; 
                 white-space: normal;
                 line-height: 1.1;
-                transform: none !important;
+                transform: translateY(0.5px) !important; /* Abbassato esattamente di mezzo pixel verso la riga nera */
                 text-align: center;
             }
 
