@@ -241,7 +241,7 @@
         }
 
         /* =======================================================
-           OTTIMIZZAZIONE MOBILE (CORREZIONE APERTURA IN CIMA)
+           OTTIMIZZAZIONE MOBILE (TESTI INGRANDITI E ALLINEATI)
            ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
@@ -263,14 +263,15 @@
 
             .header-anchor {
                 position: absolute;
-                top: 5.2%; 
+                top: 4%; /* Allineamento millimetrico sulla fascia rossa */
                 left: 0;
                 width: 100%;
                 padding: 0 10px;
             }
 
+            /* Titolo leggermente ingrandito */
             .brand-title {
-                font-size: 7.8vw; 
+                font-size: 8.4vw; 
                 white-space: normal;
                 line-height: 1.1;
                 transform: none !important;
@@ -278,19 +279,20 @@
 
             .menus-container {
                 margin-left: 0 !important;
-                margin-top: 1.8vw;
+                margin-top: 2vw;
                 justify-content: center;
                 gap: 4vw;
             }
 
+            /* Menu leggermente ingranditi in proporzione */
             .btn-works {
-                font-size: 3.4vw; 
+                font-size: 3.8vw; 
                 padding: 2px 10px;
                 transform: none !important;
             }
 
             .dropdown-trigger {
-                font-size: 3.4vw; 
+                font-size: 3.8vw; 
             }
 
             .dropdown-menu {
@@ -316,7 +318,6 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Forza lo scroll in cima all'avvio per evitare lo sfasamento su Chrome iOS
             window.scrollTo(0, 0);
             
             document.fonts.ready.then(function() {
@@ -324,7 +325,6 @@
             });
         });
 
-        // Controllo di sicurezza extra al caricamento completo della pagina
         window.addEventListener('load', function() {
             window.scrollTo(0, 0);
         });
