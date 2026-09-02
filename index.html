@@ -241,7 +241,7 @@
         }
 
         /* =======================================================
-           OTTIMIZZAZIONE MOBILE (SFONDO UNICO E PULITO)
+           OTTIMIZZAZIONE MOBILE (GRAFICA ORIGINALE + SFONDO UNICO)
            ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
@@ -253,14 +253,27 @@
 
             .master-canvas {
                 margin-top: 0;
-                height: 125vw; /* Taglia l'immagine esattamente sotto la macchina rimuovendo la seconda metà */
-                overflow: hidden; /* Nasconde la parte inferiore dell'immagine con lo stacco di colore */
+                overflow: hidden;
+                position: relative;
             }
 
             .bg-image {
                 width: 165%;
                 max-width: none;
                 margin-left: -32.5%;
+            }
+
+            /* Copre la parte inferiore dell'immagine con lo stacco di colore, uniformandola a #fde3b8 */
+            .master-canvas::after {
+                content: '';
+                position: absolute;
+                top: 58%; 
+                left: 0;
+                width: 100%;
+                height: 1000px;
+                background-color: #fde3b8;
+                pointer-events: none;
+                z-index: 1;
             }
 
             .header-anchor {
@@ -308,6 +321,7 @@
                 overflow-y: auto;
                 border-radius: 10px;
                 padding: 5px 0;
+                z-index: 10;
             }
 
             .menu-about li {
