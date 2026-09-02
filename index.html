@@ -185,6 +185,7 @@
             transform: translateX(-50%);
             width: calc(100% + 40px);
             text-align: center; 
+            width: max-content;
         }
 
         .dropdown:hover .dropdown-menu { display: block; }
@@ -241,7 +242,7 @@
         }
 
         /* =======================================================
-           OTTIMIZZAZIONE MOBILE (GRAFICA ORIGINALE + FUSIONE SFONDO)
+           OTTIMIZZAZIONE MOBILE (TAGLIO PULITO DELLO SFONDO)
            ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
@@ -253,7 +254,8 @@
 
             .master-canvas {
                 margin-top: 0;
-                overflow: hidden;
+                height: 132vw; /* Blocca l'altezza esattamente sotto la macchina, tagliando la parte inferiore con lo stacco di colore */
+                overflow: hidden; /* Nasconde tutto ciò che sfora l'altezza, lasciando spazio al colore unico #fde3b8 */
                 position: relative;
             }
 
@@ -261,19 +263,9 @@
                 width: 165%;
                 max-width: none;
                 margin-left: -32.5%;
-            }
-
-            /* Sfumatura morbida sotto le ruote che fonde il secondo colore con #fde3b8 */
-            .master-canvas::after {
-                content: '';
                 position: absolute;
-                top: 62%;
+                top: 0;
                 left: 0;
-                width: 100%;
-                height: 38%;
-                background: linear-gradient(to bottom, rgba(253, 227, 184, 0) 0%, rgba(253, 227, 184, 0.85) 50%, rgba(253, 227, 184, 1) 100%);
-                pointer-events: none;
-                z-index: 2;
             }
 
             .header-anchor {
