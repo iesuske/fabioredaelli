@@ -241,7 +241,7 @@
         }
 
         /* =======================================================
-           OTTIMIZZAZIONE MOBILE (CON MASCHERA DI TRASPARENZA PERFETTA)
+           OTTIMIZZAZIONE MOBILE (CORRETTO POSIZIONAMENTO SAFARI)
            ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
@@ -251,7 +251,7 @@
             }
 
             .master-canvas {
-                margin-top: 0;
+                margin-top: 15px; /* Dà il giusto respiro iniziale evitando che si attacchi al bordo superiore */
                 overflow: hidden;
             }
 
@@ -259,8 +259,7 @@
                 width: 165%;
                 max-width: none;
                 margin-left: -32.5%;
-                /* Maschera pulita: la foto resta al 100% nitida e brillante, 
-                   e sfuma dolcemente in trasparenza solo negli ultimi istanti in basso */
+                /* Maschera di dissolvenza pulita e nitida */
                 -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 95%);
                 mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 95%);
             }
@@ -327,15 +326,10 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            window.scrollTo(0, 0);
-            
+            // Rimosso il window.scrollTo forzato che creava conflitti con Safari mobile
             document.fonts.ready.then(function() {
                 document.body.classList.add('fonts-loaded');
             });
-        });
-
-        window.addEventListener('load', function() {
-            window.scrollTo(0, 0);
         });
     </script>
 </head>
