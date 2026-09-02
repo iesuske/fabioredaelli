@@ -259,9 +259,9 @@
                 width: 165%;
                 max-width: none;
                 margin-left: -32.5%;
-                /* Nasconde la stria superiore dell'immagine lasciando lo sfondo interamente a tinta unita */
-                clip-path: inset(35px 0 0 0);
-                -webkit-clip-path: inset(35px 0 0 0);
+                /* Taglia la parte inferiore dell'immagine per eliminare lo scalino e unire lo sfondo */
+                clip-path: inset(0 0 50% 0);
+                -webkit-clip-path: inset(0 0 50% 0);
             }
 
             .header-anchor {
