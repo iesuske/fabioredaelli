@@ -46,7 +46,7 @@
         }
 
         /* =======================================================
-           STRUTTURA GRAFICA UNIFICATA
+           STRUTTURA GRAFICA DESKTOP (BLOCCATA E DEFINITIVA)
            ======================================================= */
         .master-canvas {
             position: relative;
@@ -105,12 +105,12 @@
         .menus-container {
             display: flex;
             gap: 5.5vw; 
-            margin-left: 45.5%; 
+            margin-left: 45.5%; /* Spostato leggermente più a sinistra per il centramento ottimale */
             margin-top: 0.8vw; 
             align-items: center;
         }
 
-        /* STILE TASTO WORKS! */
+        /* STILE TASTO WORKS! DESKTOP (Cornice rimpicciolita) */
         .btn-works {
             font-family: 'Lobster Regular', cursive;
             font-size: 1.5vw;
@@ -241,7 +241,7 @@
         }
 
         /* =======================================================
-           OTTIMIZZAZIONE MOBILE PULITA (SENZA ZOOM FORZATO)
+           OTTIMIZZAZIONE MOBILE (MINIATURA FEDELE + REGOLAZIONE FINE)
            ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
@@ -252,11 +252,13 @@
 
             .master-canvas {
                 margin-top: 0;
+                overflow: hidden;
             }
 
             .bg-image {
-                width: 100%; /* Niente più tagli o riquadri forzati al 165% */
-                margin-left: 0;
+                width: 165%;
+                max-width: none;
+                margin-left: -32.5%;
             }
 
             .header-anchor {
