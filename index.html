@@ -55,6 +55,11 @@
             margin-top: -50px;
         }
 
+        .bg-crop-container {
+            position: relative;
+            width: 100%;
+        }
+
         .bg-image {
             width: 100%;
             height: auto;
@@ -185,7 +190,6 @@
             transform: translateX(-50%);
             width: calc(100% + 40px);
             text-align: center; 
-            width: max-content;
         }
 
         .dropdown:hover .dropdown-menu { display: block; }
@@ -242,7 +246,7 @@
         }
 
         /* =======================================================
-           OTTIMIZZAZIONE MOBILE (TAGLIO PULITO DELLO SFONDO)
+           OTTIMIZZAZIONE MOBILE (TAGLIO PULITO DELL'IMMAGINE)
            ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
@@ -254,9 +258,12 @@
 
             .master-canvas {
                 margin-top: 0;
-                height: 132vw; /* Blocca l'altezza esattamente sotto la macchina, tagliando la parte inferiore con lo stacco di colore */
-                overflow: hidden; /* Nasconde tutto ciò che sfora l'altezza, lasciando spazio al colore unico #fde3b8 */
-                position: relative;
+            }
+
+            /* Contenitore che taglia solo l'immagine di sfondo lasciando intatti i testi */
+            .bg-crop-container {
+                height: 124vw; 
+                overflow: hidden;
             }
 
             .bg-image {
@@ -313,7 +320,6 @@
                 overflow-y: auto;
                 border-radius: 10px;
                 padding: 5px 0;
-                z-index: 10;
             }
 
             .menu-about li {
@@ -346,7 +352,9 @@
 <body>
 
     <div class="master-canvas">
-        <img src="images/bg2.jpg?v=COVER" class="bg-image" alt="Artwork Fabio Redaelli">
+        <div class="bg-crop-container">
+            <img src="images/bg2.jpg?v=COVER" class="bg-image" alt="Artwork Fabio Redaelli">
+        </div>
         <div class="text-layer">
             <div class="header-anchor">
                 <h1 class="brand-title testo-custom"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
