@@ -241,7 +241,7 @@
         }
 
         /* =======================================================
-           OTTIMIZZAZIONE MOBILE (MINIATURA FEDELE + REGOLAZIONE FINE)
+           OTTIMIZZAZIONE MOBILE (MINIATURA FEDELE + SFONDO UNICO)
            ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
@@ -253,15 +253,26 @@
             .master-canvas {
                 margin-top: 0;
                 overflow: hidden;
+                position: relative;
             }
 
             .bg-image {
                 width: 165%;
                 max-width: none;
                 margin-left: -32.5%;
-                /* Taglia la parte inferiore dell'immagine per eliminare lo scalino e unire lo sfondo */
-                clip-path: inset(0 0 50% 0);
-                -webkit-clip-path: inset(0 0 50% 0);
+                display: block;
+            }
+
+            /* Sfumatura di raccordo per eliminare lo stacco/scalino sul fondo dell'immagine */
+            .master-canvas::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 60px;
+                background: linear-gradient(to bottom, rgba(253, 227, 184, 0), rgba(253, 227, 184, 1));
+                pointer-events: none;
             }
 
             .header-anchor {
