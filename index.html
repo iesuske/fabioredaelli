@@ -241,7 +241,7 @@
         }
 
         /* =======================================================
-           OTTIMIZZAZIONE MOBILE (SPAZIO SOPRA AZZERATO PER CHROME)
+           OTTIMIZZAZIONE MOBILE (RIDUZIONE ULTERIORE SPAZIO SOPRA)
            ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
@@ -251,7 +251,7 @@
             }
 
             .master-canvas {
-                margin-top: 0px; /* Azzerato per eliminare lo spazio eccessivo in alto su Chrome */
+                margin-top: -15px; /* Leggermente negativo per tirare su la grafica di un altro pochino */
                 overflow: hidden;
             }
 
