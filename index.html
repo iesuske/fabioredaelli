@@ -240,7 +240,7 @@
         }
 
         /* =======================================================
-           OTTIMIZZAZIONE MOBILE (MARGINE A -13.5PX)
+           OTTIMIZZAZIONE MOBILE (MARGINE A -11.5PX)
            ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
@@ -250,15 +250,14 @@
             }
 
             .master-canvas {
-                margin-top: -13.5px; /* Aumentato di 1 pixel rispetto a prima */
+                margin-top: -11.5px;
                 overflow: hidden;
             }
 
             .bg-image {
                 width: 165%;
                 max-width: none;
-                margin-left: -35%; /* Centratura perfetta della macchina */
-                /* Nitidezza al 100% con sfumatura solo sull'estremità inferiore */
+                margin-left: -35%;
                 -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 98%);
                 mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 98%);
             }
