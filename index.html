@@ -241,7 +241,7 @@
         }
 
         /* =======================================================
-           OTTIMIZZAZIONE MOBILE (COMPATTO E STABILE PER SAFARI)
+           OTTIMIZZAZIONE MOBILE (PERFETTO SU SAFARI E CHROME)
            ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
@@ -251,7 +251,7 @@
             }
 
             .master-canvas {
-                margin-top: 0; /* Annullato il margine per evitare spazi morti in alto */
+                margin-top: 20px; /* Dà il giusto respiro iniziale dall'alto sia su Safari che su Chrome */
                 overflow: hidden;
             }
 
@@ -259,9 +259,9 @@
                 width: 165%;
                 max-width: none;
                 margin-left: -32.5%;
-                /* Maschera più raccolta verticalmente per non coprire il footer */
-                -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 82%);
-                mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 82%);
+                /* Immagine al 100% nitida e brillante, sfumatura spostata solo sul bordo estremo in basso */
+                -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 98%);
+                mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 98%);
             }
 
             .header-anchor {
