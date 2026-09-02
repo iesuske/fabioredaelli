@@ -55,11 +55,6 @@
             margin-top: -50px;
         }
 
-        .image-container {
-            position: relative;
-            width: 100%;
-        }
-
         .bg-image {
             width: 100%;
             height: auto;
@@ -246,7 +241,7 @@
         }
 
         /* =======================================================
-           OTTIMIZZAZIONE MOBILE (IMMAGINE ORIGINALE AL 100%)
+           OTTIMIZZAZIONE MOBILE (CON MASCHERA DI TRASPARENZA PERFETTA)
            ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
@@ -264,6 +259,10 @@
                 width: 165%;
                 max-width: none;
                 margin-left: -32.5%;
+                /* Maschera pulita: la foto resta al 100% nitida e brillante, 
+                   e sfuma dolcemente in trasparenza solo negli ultimi istanti in basso */
+                -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 95%);
+                mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 95%);
             }
 
             .header-anchor {
@@ -343,9 +342,7 @@
 <body>
 
     <div class="master-canvas">
-        <div class="image-container">
-            <img src="images/bg2.jpg?v=COVER" class="bg-image" alt="Artwork Fabio Redaelli">
-        </div>
+        <img src="images/bg2.jpg?v=COVER" class="bg-image" alt="Artwork Fabio Redaelli">
         <div class="text-layer">
             <div class="header-anchor">
                 <h1 class="brand-title testo-custom"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
