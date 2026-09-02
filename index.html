@@ -241,7 +241,7 @@
         }
 
         /* =======================================================
-           OTTIMIZZAZIONE MOBILE (CENTRATURA E ALTEZZA BILANCIATE)
+           OTTIMIZZAZIONE MOBILE (SPAZIO SOPRA AZZERATO PER CHROME)
            ======================================================= */
         @media screen and (max-width: 768px) {
             html, body {
@@ -251,14 +251,14 @@
             }
 
             .master-canvas {
-                margin-top: 10px; /* Bilanciato: né troppo basso su Chrome, né troppo in alto */
+                margin-top: 0px; /* Azzerato per eliminare lo spazio eccessivo in alto su Chrome */
                 overflow: hidden;
             }
 
             .bg-image {
                 width: 165%;
                 max-width: none;
-                margin-left: -35%; /* Spostato leggermente più a sinistra per centrare perfettamente la macchina */
+                margin-left: -35%; /* Centratura perfetta della macchina */
                 /* Nitidezza al 100% con sfumatura solo sull'estremità inferiore */
                 -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 98%);
                 mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 98%);
