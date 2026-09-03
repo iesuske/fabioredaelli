@@ -284,13 +284,14 @@
             .menus-container {
                 margin-left: 0 !important;
                 margin-top: 2vw;
-                justify-content: center;
-                gap: 4vw;
+                justify-content: flex-start; /* Allineamento a sinistra del contenitore per posizionamento preciso */
+                padding-left: 28%; /* Sposta l'intero blocco menu a destra facendolo allineare con la T di Hot */
+                gap: 5.5vw; /* Mantiene esattamente la distanza originale proporzionale tra i 3 menu */
             }
 
             .btn-works {
                 font-size: 3.5vw; 
-                padding: 0px 4px; /* Ridotto il padding orizzontale di un altro pixel (da 5px a 4px) per la cornice mobile */
+                padding: 0px 4px; 
                 border-radius: 6px;
                 transform: none !important;
             }
