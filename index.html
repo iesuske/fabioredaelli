@@ -289,61 +289,66 @@
                 text-align: center;
             }
 
+            /* --- FIX POSIZIONAMENTI PER SBLOCCARE IL MENU --- */
             .menus-container {
                 margin-left: 0 !important;
                 margin-top: 0.3vw;
                 justify-content: center;
                 gap: 5vw;
-                transform: translateX(2vw);
+                /* Rimossi i transform, sostituiti con position relative per layout identico ma senza "ingabbiare" il menu a tendina */
+                position: relative;
+                left: 2vw;
             }
 
             .btn-works {
                 font-size: 3.5vw; 
                 padding: 0px 4px; 
                 border-radius: 6px;
-                transform: translateX(10.5vw);
+                position: relative;
+                left: 10.5vw;
             }
 
             .secondary-menus {
                 gap: 9.5vw;
-                transform: translateX(17.5vw);
+                position: relative;
+                left: 17.5vw;
             }
+            /* --------------------------------------------------- */
 
             .dropdown-trigger {
                 font-size: 3.5vw; 
-                padding: 5px; /* Lasciato intatto per evitare modifiche all'area di tocco */
+                padding: 5px; 
             }
 
-            /* TENDINA CENTRATA CON SCROLL (Ottimizzata per Mobile) */
+            /* TENDINA POPUP CENTRATA */
             .dropdown-menu {
                 position: fixed !important;
-                top: 50% !important; /* La centriamo verticalmente */
-                left: 50% !important; /* La centriamo orizzontalmente */
-                transform: translate(-50%, -50%) !important; /* Centratura assoluta esatta */
-                width: 90vw !important; /* 90% della larghezza dello schermo, ideale per iPhone */
-                max-width: 400px !important;
-                max-height: 65vh !important; /* Altezza massima, se la supera scatta lo scroll */
-                overflow-y: auto !important; /* Abilita lo scroll verticale */
-                overflow-x: hidden !important; /* Blocca fastidiosi allargamenti orizzontali */
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important; /* Centratura assoluta vera */
+                width: 90vw !important; 
+                max-width: 380px !important;
+                max-height: 65vh !important; /* Limite altezza e scatta lo scroll */
+                overflow-y: auto !important; 
+                overflow-x: hidden !important;
                 border-radius: 12px;
                 padding: 20px 0 !important;
                 z-index: 9999 !important;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+                box-shadow: 0 10px 40px rgba(0,0,0,0.8);
                 box-sizing: border-box !important;
             }
 
-            /* Assicura che la scatola ignori la larghezza del Desktop */
-            .menu-about {
+            .menu-about, .menu-contact {
                 width: 100% !important; 
             }
 
-            /* GESTIONE DEL TESTO CHE VA A CAPO */
+            /* FIX TESTO A CAPO */
             .menu-about li {
-                font-size: 0.95rem; /* Dimensione comoda da leggere */
-                line-height: 1.4; /* Spazio tra le righe per dare respiro */
-                white-space: normal !important; /* FONDAMENTALE: forza il testo ad andare a capo! */
-                word-wrap: break-word !important; /* Evita che il testo "buchi" i margini */
-                padding: 4px 20px !important; /* Crea uno spazio interno tra il testo e i bordi neri */
+                font-size: 0.95rem;
+                line-height: 1.4;
+                white-space: normal !important; /* Fondamentale */
+                word-wrap: break-word !important; 
+                padding: 6px 20px !important; 
                 text-align: center;
                 width: 100% !important;
                 box-sizing: border-box !important;
@@ -358,12 +363,10 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Gestione caricamento font
             document.fonts.ready.then(function() {
                 document.body.classList.add('fonts-loaded');
             });
 
-            // GESTIONE APERTURA/CHIUSURA MENU SU MOBILE E DESKTOP
             const dropdowns = document.querySelectorAll('.dropdown');
 
             dropdowns.forEach(dropdown => {
@@ -373,19 +376,16 @@
                     e.preventDefault();
                     e.stopPropagation();
 
-                    // Chiudi eventuali altri menu aperti
                     dropdowns.forEach(other => {
                         if (other !== dropdown) {
                             other.classList.remove('active');
                         }
                     });
 
-                    // Alterna stato di apertura del menu corrente
                     dropdown.classList.toggle('active');
                 });
             });
 
-            // Chiudi il menu quando si tocca/clicca fuori
             document.addEventListener('click', function(e) {
                 dropdowns.forEach(dropdown => {
                     if (!dropdown.contains(e.target)) {
