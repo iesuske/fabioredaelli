@@ -192,7 +192,6 @@
             text-align: center; 
         }
 
-        /* MOSTRA MENU SIA CON HOVER DESKTOP CHE CON CLASSE ACTIVE MOBILE */
         .dropdown:hover .dropdown-menu,
         .dropdown.active .dropdown-menu { 
             display: block !important; 
@@ -235,7 +234,6 @@
             border-bottom-right-radius: 12px;
         }
 
-        /* BOTTONE CHIUDI (NASCOSTO SU DESKTOP) */
         .close-bio-btn {
             display: none;
         }
@@ -321,67 +319,77 @@
                 padding: 5px; 
             }
 
-            /* TENDINA POPUP CON SCROLL INTERNO E SPAZIO IN ALTO PER LA X */
+            /* TENDINA BIO PIÙ LUNGA, COMMISURATA E CON SPAZIO AL TOP */
             .dropdown-menu {
                 position: fixed !important;
                 top: 50% !important;
                 left: 50% !important;
                 transform: translate(-50%, -50%) !important; 
-                width: 88vw !important; 
-                max-width: 350px !important;
-                max-height: 55vh !important; 
+                width: 90vw !important; 
+                max-width: 370px !important;
+                max-height: 68vh !important; /* Finestra più lunga e proporzionata */
                 overflow-y: auto !important; 
                 overflow-x: hidden !important;
                 border-radius: 12px;
-                padding: 35px 12px 15px 12px !important; 
+                padding: 38px 14px 18px 14px !important; 
                 z-index: 9999 !important;
                 box-shadow: 0 10px 40px rgba(0,0,0,0.8);
                 box-sizing: border-box !important;
             }
 
-            /* RESTRINGE SOLO LA TENDINA CONTACT ME */
             .dropdown-menu.menu-contact {
                 width: 55vw !important; 
                 max-width: 250px !important;
                 padding: 10px 0 15px 0 !important;
+                max-height: 50vh !important;
             }
 
             .menu-about, .menu-contact {
                 width: 100% !important; 
             }
 
-            /* TASTO "X" FISSO NELL'ANGOLO CON LA "X" BIANCA LEGGERMENTE PIÙ GRANDE */
+            /* TASTO X LEGGERMENTE PIÙ PICCOLO E INCASTRATO PERFETTAMENTE NELL'ANGOLO */
             .close-bio-btn {
                 display: block !important;
                 position: absolute;
-                top: 8px;
-                right: 8px;
-                width: 26px;
-                height: 26px;
+                top: 7px;
+                right: 7px;
+                width: 23px;
+                height: 23px;
                 background-color: #b72216;
                 color: #ffffff;
                 border-radius: 50%;
                 text-align: center;
-                line-height: 26px;
-                font-size: 1.15rem; /* X bianca leggermente più grande */
+                line-height: 23px;
+                font-size: 0.95rem; /* X bianca proporzionata */
                 font-weight: bold;
                 cursor: pointer;
                 z-index: 10000;
                 border: none;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+                box-shadow: 0 2px 4px rgba(0,0,0,0.4);
                 pointer-events: auto !important;
             }
 
-            /* TESTO DELLA BIO ORIGINALE A RIGHE SEPARATE */
+            /* TESTO DELLA BIO FLUIDO E BELLO LUNGO COME ALL'INIZIO */
             .menu-about li {
-                font-size: 0.9rem;
-                line-height: 1.35;
+                font-size: 0.88rem;
+                line-height: 1.38;
                 white-space: normal !important; 
                 word-wrap: break-word !important; 
-                padding: 4px 12px !important; 
-                text-align: center;
+                padding: 3px 0 !important; 
+                text-align: left; /* Testo pulito e leggibile */
                 width: 100% !important;
                 box-sizing: border-box !important;
+                text-indent: -10px;
+                padding-left: 10px;
+            }
+
+            .menu-about li:first-child {
+                text-indent: 0;
+                padding-left: 0;
+                text-align: center;
+                font-weight: bold;
+                margin-bottom: 6px;
             }
 
             .menu-contact li a {
@@ -415,7 +423,7 @@
                 });
             });
 
-            // GESTIONE PRECISA DELLA "X" CON TOUCH E CLICK IMMEDIATO
+            // GESTIONE BLINDATA DELLA "X" (FUNZIONA AL PRIMO TOCCO)
             const closeBtn = document.querySelector('.close-bio-btn');
             if (closeBtn) {
                 const closeDropdown = function(e) {
@@ -428,6 +436,7 @@
                 };
 
                 closeBtn.addEventListener('click', closeDropdown);
+                closeBtn.addEventListener('touchstart', closeDropdown, { passive: false });
                 closeBtn.addEventListener('touchend', closeDropdown);
             }
 
@@ -457,7 +466,7 @@
                         <div class="dropdown">
                             <a class="dropdown-trigger testo-custom">Bio</a>
                             <ul class="dropdown-menu menu-about testo-custom">
-                                <!-- TASTINO X FISSO NELL'ANGOLO -->
+                                <!-- TASTINO X PERFETTAMENTE INCASTRATO NELL'ANGOLO -->
                                 <button class="close-bio-btn">&times;</button>
                                 
                                 <li>Roma, 1964.</li>
