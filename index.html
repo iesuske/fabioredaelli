@@ -110,6 +110,12 @@
             align-items: center;
         }
 
+        .secondary-menus {
+            display: flex;
+            gap: 5.5vw;
+            align-items: center;
+        }
+
         /* STILE TASTO WORKS! DESKTOP */
         .btn-works {
             font-family: 'Lobster Regular', cursive;
@@ -283,10 +289,15 @@
 
             .menus-container {
                 margin-left: 0 !important;
-                margin-top: 0.3vw; /* Ridotto leggermente per avvicinare il blocco alla scritta */
+                margin-top: 0.3vw;
                 justify-content: center;
-                gap: 9.5vw;
-                transform: translateX(10vw);
+                gap: 5vw; /* Spaziatura base dal tasto Works! */
+                transform: translateX(2vw); /* Ancoraggio di Works! sotto la T */
+            }
+
+            .secondary-menus {
+                gap: 9.5vw; /* Mantiene la spaziatura interna tra Bio e Contact Me */
+                transform: translateX(11vw); /* Sposta solo Bio e Contact Me in avanti fino ad allineare la B con la R di Redaelli */
             }
 
             .btn-works {
@@ -342,35 +353,37 @@
                 <div class="menus-container">
                     <a href="#" class="btn-works testo-custom">Works!</a>
 
-                    <div class="dropdown">
-                        <a class="dropdown-trigger testo-custom">Bio</a>
-                        <ul class="dropdown-menu menu-about testo-custom">
-                            <li>Roma, 1964.</li>
-                            <li>Autore di fumetti, storyboard artist ed illustratore;</li>
-                            <li>piu' di 30 anni di esperienza sul campo, alternando</li>
-                            <li>collaborazioni di ogni tipo, dai fumetti a locandine</li>
-                            <li>teatrali, da storyboards pubblicitari ai cartoni animati,</li>
-                            <li>ritagliandomi sempre uno spazio come autore. Docente</li>
-                            <li>della Scuola Romana dei fumetti con molteplici</li>
-                            <li>collaborazioni consolidate nel tempo, con mostre, stages</li>
-                            <li>e pubblicazioni di vari fumetti. Pubblicazioni: Newton &</li>
-                            <li>Compton, Comic Art, Acme Comics, Blue press, il Sistina,</li>
-                            <li>Giunti, Einaudi, AS Roma, Tipymedia, LAV, Il Romanista.</li>
-                            <li>Gli ultimi lavori comprendono la locandina teatrale del</li>
-                            <li>blockbuster "I sette Re di Roma" di Enrico Brignano</li>
-                            <li>e cinque volumi illustrati de l'Enciclopedia Romanista</li>
-                            <li>curata dal Direttore Editoriale Tonino Cagnucci.</li>
-                        </ul>
-                    </div>
+                    <div class="secondary-menus">
+                        <div class="dropdown">
+                            <a class="dropdown-trigger testo-custom">Bio</a>
+                            <ul class="dropdown-menu menu-about testo-custom">
+                                <li>Roma, 1964.</li>
+                                <li>Autore di fumetti, storyboard artist ed illustratore;</li>
+                                <li>piu' di 30 anni di esperienza sul campo, alternando</li>
+                                <li>collaborazioni di ogni tipo, dai fumetti a locandine</li>
+                                <li>teatrali, da storyboards pubblicitari ai cartoni animati,</li>
+                                <li>ritagliandomi sempre uno spazio come autore. Docente</li>
+                                <li>della Scuola Romana dei fumetti con molteplici</li>
+                                <li>collaborazioni consolidate nel tempo, con mostre, stages</li>
+                                <li>e pubblicazioni di vari fumetti. Pubblicazioni: Newton &</li>
+                                <li>Compton, Comic Art, Acme Comics, Blue press, il Sistina,</li>
+                                <li>Giunti, Einaudi, AS Roma, Tipymedia, LAV, Il Romanista.</li>
+                                <li>Gli ultimi lavori comprendono la locandina teatrale del</li>
+                                <li>blockbuster "I sette Re di Roma" di Enrico Brignano</li>
+                                <li>e cinque volumi illustrati de l'Enciclopedia Romanista</li>
+                                <li>curata dal Direttore Editoriale Tonino Cagnucci.</li>
+                            </ul>
+                        </div>
 
-                    <div class="dropdown">
-                        <a class="dropdown-trigger testo-custom">Contact Me</a>
-                        <ul class="dropdown-menu menu-contact testo-custom">
-                            <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=fabiohotstuff@gmail.com&su=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli" target="_blank" rel="noopener noreferrer">E-mail</a></li>
-                            <li><a href="https://wa.me/393400670069" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
-                            <li><a href="https://www.instagram.com/dandelion64?igsi=MXJwZHhkNTlqcjl2MA==" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-                            <li><a href="https://www.linkedin.com/in/fabio-redaelli-18682219" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                        </ul>
+                        <div class="dropdown">
+                            <a class="dropdown-trigger testo-custom">Contact Me</a>
+                            <ul class="dropdown-menu menu-contact testo-custom">
+                                <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=fabiohotstuff@gmail.com&su=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli" target="_blank" rel="noopener noreferrer">E-mail</a></li>
+                                <li><a href="https://wa.me/393400670069" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+                                <li><a href="https://www.instagram.com/dandelion64?igsi=MXJwZHhkNTlqcjl2MA==" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                                <li><a href="https://www.linkedin.com/in/fabio-redaelli-18682219" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
