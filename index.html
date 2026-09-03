@@ -323,7 +323,7 @@
                 top: 50% !important;
                 left: 50% !important;
                 transform: translate(-50%, -50%) !important; 
-                width: 90vw !important; /* Larghezza standard per la Bio */
+                width: 90vw !important; 
                 max-width: 380px !important;
                 max-height: 65vh !important; 
                 overflow-y: auto !important; 
@@ -389,12 +389,36 @@
                 });
             });
 
-            // CHIUDE IL MENU BIO AL TOCCO (Ignorando lo scroll)
+            // GESTIONE INTELLIGENTE SCROLL VS TAP SULLA BIO
             const menuAbout = document.querySelector('.menu-about');
-            if(menuAbout) {
-                menuAbout.addEventListener('click', function() {
-                    // Cerca il genitore dropdown e lo chiude
-                    this.closest('.dropdown').classList.remove('active');
+            if (menuAbout) {
+                let startX = 0;
+                let startY = 0;
+                let isDragging = false;
+
+                menuAbout.addEventListener('touchstart', function(e) {
+                    startX = e.touches[0].clientX;
+                    startY = e.touches[0].clientY;
+                    isDragging = false;
+                }, { passive: true });
+
+                menuAbout.addEventListener('touchmove', function(e) {
+                    const moveX = e.touches[0].clientX;
+                    const moveY = e.touches[0].clientY;
+                    // Se il dito si sposta di oltre 10 pixel, significa che sta scrollando
+                    if (Math.abs(moveX - startX) > 10 || Math.abs(moveY - startY) > 10) {
+                        isDragging = true;
+                    }
+                }, { passive: true });
+
+                menuAbout.addEventListener('touchend', function(e) {
+                    // Se NON stava scrollando (quindi è un tap fermo), chiude il menu
+                    if (!isDragging) {
+                        const dropdown = menuAbout.closest('.dropdown');
+                        if (dropdown) {
+                            dropdown.classList.remove('active');
+                        }
+                    }
                 });
             }
 
