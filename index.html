@@ -41,12 +41,10 @@
             height: 100vh;
             background-color: #fde3b8; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow: hidden; /* ELIMINA LO SCROLL SU DESKTOP */
+            overflow: hidden;
         }
 
-        /* =======================================================
-           STRUTTURA GRAFICA DESKTOP (INVARIATA)
-           ======================================================= */
+        /* STRUTTURA GRAFICA DESKTOP */
         .master-canvas {
             position: relative;
             width: 100%;
@@ -115,7 +113,7 @@
             align-items: center;
         }
 
-        /* STILE TASTO WORKS! DESKTOP */
+        /* TASTO WORKS DESKTOP */
         .btn-works {
             font-family: 'Lobster Regular', cursive;
             font-size: 1.5vw;
@@ -245,9 +243,7 @@
             z-index: 1000;
         }
 
-        /* =======================================================
-           OTTIMIZZAZIONE MOBILE
-           ======================================================= */
+        /* STRUTTURA BLINDATA MOBILE */
         @media screen and (max-width: 768px) {
             html, body {
                 height: auto;
@@ -303,7 +299,7 @@
 
             .secondary-menus {
                 gap: 9.5vw;
-                transform: translateX(17.5vw); /* AVANZATO DI UN ALTRO PO' VERSO DESTRA */
+                transform: translateX(17.5vw);
             }
 
             .dropdown-trigger {
