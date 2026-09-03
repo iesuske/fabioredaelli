@@ -289,13 +289,11 @@
                 text-align: center;
             }
 
-            /* --- FIX POSIZIONAMENTI PER SBLOCCARE IL MENU --- */
             .menus-container {
                 margin-left: 0 !important;
                 margin-top: 0.3vw;
                 justify-content: center;
                 gap: 5vw;
-                /* Rimossi i transform, sostituiti con position relative per layout identico ma senza "ingabbiare" il menu a tendina */
                 position: relative;
                 left: 2vw;
             }
@@ -313,7 +311,6 @@
                 position: relative;
                 left: 17.5vw;
             }
-            /* --------------------------------------------------- */
 
             .dropdown-trigger {
                 font-size: 3.5vw; 
@@ -325,10 +322,10 @@
                 position: fixed !important;
                 top: 50% !important;
                 left: 50% !important;
-                transform: translate(-50%, -50%) !important; /* Centratura assoluta vera */
-                width: 90vw !important; 
+                transform: translate(-50%, -50%) !important; 
+                width: 90vw !important; /* Larghezza standard per la Bio */
                 max-width: 380px !important;
-                max-height: 65vh !important; /* Limite altezza e scatta lo scroll */
+                max-height: 65vh !important; 
                 overflow-y: auto !important; 
                 overflow-x: hidden !important;
                 border-radius: 12px;
@@ -338,15 +335,21 @@
                 box-sizing: border-box !important;
             }
 
+            /* RESTRINGE SOLO LA TENDINA CONTACT ME */
+            .dropdown-menu.menu-contact {
+                width: 55vw !important; 
+                max-width: 250px !important;
+            }
+
             .menu-about, .menu-contact {
                 width: 100% !important; 
             }
 
-            /* FIX TESTO A CAPO */
+            /* FIX TESTO A CAPO PER BIO */
             .menu-about li {
                 font-size: 0.95rem;
                 line-height: 1.4;
-                white-space: normal !important; /* Fondamentale */
+                white-space: normal !important; 
                 word-wrap: break-word !important; 
                 padding: 6px 20px !important; 
                 text-align: center;
@@ -385,6 +388,15 @@
                     dropdown.classList.toggle('active');
                 });
             });
+
+            // CHIUDE IL MENU BIO AL TOCCO (Ignorando lo scroll)
+            const menuAbout = document.querySelector('.menu-about');
+            if(menuAbout) {
+                menuAbout.addEventListener('click', function() {
+                    // Cerca il genitore dropdown e lo chiude
+                    this.closest('.dropdown').classList.remove('active');
+                });
+            }
 
             document.addEventListener('click', function(e) {
                 dropdowns.forEach(dropdown => {
