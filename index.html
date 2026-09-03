@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fabio Hot Stuff Redaelli - Comic Art Author -</title>
     
+    <!-- FAVICON E MANIFEST -->
     <link rel="icon" type="image/png" href="images/favicon-96x96.png" sizes="96x96">
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="shortcut icon" href="images/favicon.ico">
@@ -45,7 +46,7 @@
         }
 
         /* =======================================================
-           STRUTTURA GRAFICA DESKTOP
+           STRUTTURA GRAFICA DESKTOP (INVARIATA)
            ======================================================= */
         .master-canvas {
             position: relative;
@@ -250,7 +251,7 @@
             }
 
             .master-canvas {
-                margin-top: -10.5px;
+                margin-top: -12.5px; /* Restretto lo spazio superiore di 2px (da -10.5px a -12.5px) */
                 overflow: hidden;
             }
 
@@ -276,7 +277,7 @@
                 font-size: calc(6.2vw + 4px); 
                 white-space: normal;
                 line-height: 1.1;
-                transform: translateY(-1px) !important; /* Abbassata di 1 pixel */
+                transform: translateY(-1px) !important; 
                 text-align: center;
             }
 
