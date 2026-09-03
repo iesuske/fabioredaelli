@@ -257,9 +257,8 @@
         /* STRUTTURA BLINDATA MOBILE */
         @media screen and (max-width: 768px) {
             html, body {
-                height: auto;
-                min-height: 100dvh;
-                overflow-y: auto;
+                height: 100vh !important;
+                overflow: hidden !important; /* Blocca lo scroll infinito della pagina dietro */
             }
 
             .master-canvas {
@@ -322,19 +321,19 @@
                 padding: 5px; 
             }
 
-            /* TENDINA POPUP CENTRATA NATIVA (ALTEZZA E POSIZIONE ORIGINARIA) */
+            /* TENDINA POPUP CON SCROLL INTERNO (RIPRISTINATA COME PIACE A TE) */
             .dropdown-menu {
                 position: fixed !important;
                 top: 50% !important;
                 left: 50% !important;
                 transform: translate(-50%, -50%) !important; 
-                width: 90vw !important; 
-                max-width: 380px !important;
-                max-height: 60vh !important; 
+                width: 88vw !important; 
+                max-width: 350px !important;
+                max-height: 55vh !important; /* Ritorna lo scroll interno della tendina */
                 overflow-y: auto !important; 
                 overflow-x: hidden !important;
                 border-radius: 12px;
-                padding: 12px 0 15px 0 !important;
+                padding: 10px 0 15px 0 !important;
                 z-index: 9999 !important;
                 box-shadow: 0 10px 40px rgba(0,0,0,0.8);
                 box-sizing: border-box !important;
@@ -350,37 +349,34 @@
                 width: 100% !important; 
             }
 
-            /* MINI TASTO "X" DISCRETO NELL'ANGOLO */
+            /* TASTO "X" PICCOLO E ANCORATO PERFETTAMENTE NELL'ANGOLO IN ALTO A DESTRA */
             .close-bio-btn {
-                display: flex !important;
-                position: sticky;
-                top: 2px;
-                float: right;
-                right: 6px;
-                margin-right: 8px;
-                margin-bottom: 2px;
-                width: 20px;
-                height: 20px;
+                display: block !important;
+                position: absolute;
+                top: 6px;
+                right: 8px;
+                width: 22px;
+                height: 22px;
                 background-color: #b72216;
                 color: #ffffff;
                 border-radius: 50%;
-                align-items: center;
-                justify-content: center;
-                font-size: 0.75rem;
+                text-align: center;
+                line-height: 22px;
+                font-size: 0.8rem;
                 font-weight: bold;
                 cursor: pointer;
-                z-index: 100;
+                z-index: 10000;
                 border: none;
-                line-height: 1;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.3);
             }
 
-            /* TESTO BIO ALLE DIMENSIONI CORRETTE ORIGINARIE */
+            /* TESTO DELLA BIO NORMALE E PROPORZIONATO */
             .menu-about li {
                 font-size: 0.9rem;
                 line-height: 1.35;
                 white-space: normal !important; 
                 word-wrap: break-word !important; 
-                padding: 4px 15px !important; 
+                padding: 5px 18px !important; 
                 text-align: center;
                 width: 100% !important;
                 box-sizing: border-box !important;
@@ -408,7 +404,6 @@
                     e.preventDefault();
                     e.stopPropagation();
 
-                    // Se il menu è già attivo, un nuovo tap sul trigger lo chiude (comportamento toggle perfetto)
                     if (dropdown.classList.contains('active')) {
                         dropdown.classList.remove('active');
                     } else {
@@ -418,7 +413,7 @@
                 });
             });
 
-            // GESTIONE PRECISA DEL TASTO X (Funziona al primo tocco mobile)
+            // GESTIONE DELLA "X" NELL'ANGOLO
             const closeBtn = document.querySelector('.close-bio-btn');
             if (closeBtn) {
                 closeBtn.addEventListener('click', function(e) {
@@ -439,7 +434,7 @@
                 });
             }
 
-            // Chiusura generale cliccando fuori
+            // Chiusura cliccando fuori dal menu
             document.addEventListener('click', function(e) {
                 dropdowns.forEach(dropdown => {
                     if (!dropdown.contains(e.target)) {
@@ -465,8 +460,8 @@
                         <div class="dropdown">
                             <a class="dropdown-trigger testo-custom">Bio</a>
                             <ul class="dropdown-menu menu-about testo-custom">
-                                <!-- MINI TASTO X NELL'ANGOLO -->
-                                <button class="close-bio-btn">&times;</button>
+                                <!-- TASTINO X PERFETTAMENTE NELL'ANGOLO -->
+                                <li><button class="close-bio-btn">&times;</button></li>
                                 <li>Roma, 1964.</li>
                                 <li>Autore di fumetti, storyboard artist ed illustratore;</li>
                                 <li>piu' di 30 anni di esperienza sul campo, alternando</li>
