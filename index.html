@@ -147,22 +147,24 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
             transition: color 0.2s ease;
             display: inline-block;
+            user-select: none;
         }
 
-        .dropdown:hover .dropdown-trigger { color: #000000; }
+        .dropdown:hover .dropdown-trigger,
+        .dropdown.active .dropdown-trigger { color: #000000; }
 
         .dropdown-menu {
             display: none;
             position: absolute;
             top: 100%;
-            background: rgba(0, 0, 0, 0.75);
+            background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
             border-radius: 12px;
             list-style: none;
             padding: 0; 
             overflow: hidden;
-            z-index: 100;
+            z-index: 1000;
             box-shadow: 0 10px 25px rgba(0,0,0,0.35);
         }
 
@@ -190,7 +192,11 @@
             text-align: center; 
         }
 
-        .dropdown:hover .dropdown-menu { display: block; }
+        /* MOSTRA MENU SIA CON HOVER DESKTOP CHE CON CLASSE ACTIVE MOBILE */
+        .dropdown:hover .dropdown-menu,
+        .dropdown.active .dropdown-menu { 
+            display: block !important; 
+        }
 
         .dropdown-menu li {
             font-family: 'Lobster Regular', cursive;
@@ -272,6 +278,7 @@
                 padding: 0 10px;
                 background: transparent !important;
                 border: none !important;
+                z-index: 100;
             }
 
             .brand-title {
@@ -304,36 +311,72 @@
 
             .dropdown-trigger {
                 font-size: 3.5vw; 
+                padding: 5px; /* Aumenta l'area di tocco per smartphone */
             }
 
             .dropdown-menu {
-                position: fixed;
+                position: fixed !important;
+                top: 25% !important;
                 left: 50% !important;
                 transform: translateX(-50%) !important;
-                width: 90vw !important;
-                max-height: 50vh;
+                width: 88vw !important;
+                max-height: 60vh;
                 overflow-y: auto;
-                border-radius: 10px;
-                padding: 5px 0;
+                border-radius: 12px;
+                padding: 10px 0;
+                z-index: 9999 !important;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.6);
             }
 
             .menu-about li {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
                 white-space: normal;
-                padding: 8px 12px;
+                padding: 6px 12px;
             }
 
             .menu-contact li a {
                 font-size: 1rem;
-                padding: 10px;
+                padding: 12px;
             }
         }
     </style>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // Gestione caricamento font
             document.fonts.ready.then(function() {
                 document.body.classList.add('fonts-loaded');
+            });
+
+            // GESTIONE APERTURA/CHIUSURA MENU SU MOBILE E DESKTOP
+            const dropdowns = document.querySelectorAll('.dropdown');
+
+            dropdowns.forEach(dropdown => {
+                const trigger = dropdown.querySelector('.dropdown-trigger');
+
+                trigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    // Chiudi eventuali altri menu aperti
+                    dropdowns.forEach(other => {
+                        if (other !== dropdown) {
+                            other.classList.remove('active');
+                        }
+                    });
+
+                    // Alterna stato di apertura del menu corrente
+                    dropdown.classList.toggle('active');
+                });
+            });
+
+            // Chiudi il menu quando si tocca/clicca fuori
+            document.addEventListener('click', function(e) {
+                dropdowns.forEach(dropdown => {
+                    if (!dropdown.contains(e.target)) {
+                        dropdown.classList.remove('active');
+                    }
+                });
             });
         });
     </script>
