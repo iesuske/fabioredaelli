@@ -389,31 +389,39 @@
                 });
             });
 
-            // GESTIONE INTELLIGENTE SCROLL VS TAP SULLA BIO
+            // CHIUSURA AL TOCCO: Se tocchi un punto qualsiasi del documento che NON sia il bottone Bio/Contact Me, chiude tutto
+            document.addEventListener('click', function(e) {
+                dropdowns.forEach(dropdown => {
+                    const trigger = dropdown.querySelector('.dropdown-trigger');
+                    const menu = dropdown.querySelector('.dropdown-menu');
+                    
+                    // Se il menu è attivo e il click NON è avvenuto sul testo interno della tendina Bio (permettendo lo scroll)
+                    // ma si desidera chiudere toccando dentro o fuori, gestiamolo così:
+                    if (dropdown.classList.contains('active')) {
+                        // Se clicchi fuori dal blocco del dropdown (trigger + menu), chiudi
+                        if (!dropdown.contains(e.target)) {
+                            dropdown.classList.remove('active');
+                        }
+                    }
+                });
+            });
+
+            // Permette di chiudere la tendina Bio anche con un tap diretto sulla tendina stessa (senza interferire con lo scroll verticale)
             const menuAbout = document.querySelector('.menu-about');
             if (menuAbout) {
-                let startX = 0;
-                let startY = 0;
-                let isDragging = false;
+                let isScrolling = false;
 
-                menuAbout.addEventListener('touchstart', function(e) {
-                    startX = e.touches[0].clientX;
-                    startY = e.touches[0].clientY;
-                    isDragging = false;
+                menuAbout.addEventListener('touchmove', function() {
+                    isScrolling = true;
                 }, { passive: true });
 
-                menuAbout.addEventListener('touchmove', function(e) {
-                    const moveX = e.touches[0].clientX;
-                    const moveY = e.touches[0].clientY;
-                    // Se il dito si sposta di oltre 10 pixel, significa che sta scrollando
-                    if (Math.abs(moveX - startX) > 10 || Math.abs(moveY - startY) > 10) {
-                        isDragging = true;
-                    }
+                menuAbout.addEventListener('touchstart', function() {
+                    isScrolling = false;
                 }, { passive: true });
 
                 menuAbout.addEventListener('touchend', function(e) {
-                    // Se NON stava scrollando (quindi è un tap fermo), chiude il menu
-                    if (!isDragging) {
+                    // Se l'utente ha fatto un tap pulito (senza scrollare) dentro la Bio, si chiude
+                    if (!isScrolling) {
                         const dropdown = menuAbout.closest('.dropdown');
                         if (dropdown) {
                             dropdown.classList.remove('active');
@@ -421,14 +429,6 @@
                     }
                 });
             }
-
-            document.addEventListener('click', function(e) {
-                dropdowns.forEach(dropdown => {
-                    if (!dropdown.contains(e.target)) {
-                        dropdown.classList.remove('active');
-                    }
-                });
-            });
         });
     </script>
 </head>
