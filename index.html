@@ -282,11 +282,12 @@
             }
 
             .menus-container {
-                margin-left: 0 !important;
+                position: relative;
+                margin-left: 32% !important; /* Sposta la W di Works! in linea con la T di Hot */
                 margin-top: 2vw;
-                justify-content: flex-start; /* Allineamento a sinistra del contenitore per posizionamento preciso */
-                padding-left: 28%; /* Sposta l'intero blocco menu a destra facendolo allineare con la T di Hot */
-                gap: 5.5vw; /* Mantiene esattamente la distanza originale proporzionale tra i 3 menu */
+                justify-content: flex-start;
+                gap: 5.5vw; /* Distanza tra i pulsanti identica al desktop */
+                width: auto;
             }
 
             .btn-works {
