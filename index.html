@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fabio Hot Stuff Redaelli - Comic Art Author -</title>
     
-    <!-- FAVICON E MANIFEST -->
     <link rel="icon" type="image/png" href="images/favicon-96x96.png" sizes="96x96">
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="shortcut icon" href="images/favicon.ico">
@@ -291,19 +290,20 @@
                 margin-left: 0 !important;
                 margin-top: 0.3vw;
                 justify-content: center;
-                gap: 5vw; /* Spaziatura base dal tasto Works! */
-                transform: translateX(2vw); /* Ancoraggio di Works! sotto la T */
-            }
-
-            .secondary-menus {
-                gap: 9.5vw; /* Mantiene la spaziatura interna tra Bio e Contact Me */
-                transform: translateX(11vw); /* Sposta solo Bio e Contact Me in avanti fino ad allineare la B con la R di Redaelli */
+                gap: 5vw;
+                transform: translateX(2vw);
             }
 
             .btn-works {
                 font-size: 3.5vw; 
                 padding: 0px 4px; 
                 border-radius: 6px;
+                transform: translateX(3.5vw); /* Avanzamento dedicato di pochi pixel per Works! */
+            }
+
+            .secondary-menus {
+                gap: 9.5vw;
+                transform: translateX(11vw);
             }
 
             .dropdown-trigger {
