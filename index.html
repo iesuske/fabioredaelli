@@ -311,27 +311,42 @@
 
             .dropdown-trigger {
                 font-size: 3.5vw; 
-                padding: 5px; /* Aumenta l'area di tocco per smartphone */
+                padding: 5px; /* Lasciato intatto per evitare modifiche all'area di tocco */
             }
 
+            /* TENDINA CENTRATA CON SCROLL (Ottimizzata per Mobile) */
             .dropdown-menu {
                 position: fixed !important;
-                top: 25% !important;
-                left: 50% !important;
-                transform: translateX(-50%) !important;
-                width: 88vw !important;
-                max-height: 60vh;
-                overflow-y: auto;
+                top: 50% !important; /* La centriamo verticalmente */
+                left: 50% !important; /* La centriamo orizzontalmente */
+                transform: translate(-50%, -50%) !important; /* Centratura assoluta esatta */
+                width: 90vw !important; /* 90% della larghezza dello schermo, ideale per iPhone */
+                max-width: 400px !important;
+                max-height: 65vh !important; /* Altezza massima, se la supera scatta lo scroll */
+                overflow-y: auto !important; /* Abilita lo scroll verticale */
+                overflow-x: hidden !important; /* Blocca fastidiosi allargamenti orizzontali */
                 border-radius: 12px;
-                padding: 10px 0;
+                padding: 20px 0 !important;
                 z-index: 9999 !important;
                 box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+                box-sizing: border-box !important;
             }
 
+            /* Assicura che la scatola ignori la larghezza del Desktop */
+            .menu-about {
+                width: 100% !important; 
+            }
+
+            /* GESTIONE DEL TESTO CHE VA A CAPO */
             .menu-about li {
-                font-size: 0.85rem;
-                white-space: normal;
-                padding: 6px 12px;
+                font-size: 0.95rem; /* Dimensione comoda da leggere */
+                line-height: 1.4; /* Spazio tra le righe per dare respiro */
+                white-space: normal !important; /* FONDAMENTALE: forza il testo ad andare a capo! */
+                word-wrap: break-word !important; /* Evita che il testo "buchi" i margini */
+                padding: 4px 20px !important; /* Crea uno spazio interno tra il testo e i bordi neri */
+                text-align: center;
+                width: 100% !important;
+                box-sizing: border-box !important;
             }
 
             .menu-contact li a {
