@@ -333,7 +333,7 @@
                 overflow-y: auto !important; 
                 overflow-x: hidden !important;
                 border-radius: 12px;
-                padding: 35px 15px 15px 15px !important; 
+                padding: 35px 12px 15px 12px !important; 
                 z-index: 9999 !important;
                 box-shadow: 0 10px 40px rgba(0,0,0,0.8);
                 box-sizing: border-box !important;
@@ -350,12 +350,12 @@
                 width: 100% !important; 
             }
 
-            /* TASTO "X" FISSO NELL'ANGOLO IN ALTO A DESTRA (NON SCORRE VIA) */
+            /* TASTO "X" FISSO NELL'ANGOLO CON LA "X" BIANCA LEGGERMENTE PIÙ GRANDE */
             .close-bio-btn {
                 display: block !important;
                 position: absolute;
-                top: 10px;
-                right: 10px;
+                top: 8px;
+                right: 8px;
                 width: 26px;
                 height: 26px;
                 background-color: #b72216;
@@ -363,21 +363,22 @@
                 border-radius: 50%;
                 text-align: center;
                 line-height: 26px;
-                font-size: 0.9rem;
+                font-size: 1.15rem; /* X bianca leggermente più grande */
                 font-weight: bold;
                 cursor: pointer;
                 z-index: 10000;
                 border: none;
                 box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+                pointer-events: auto !important;
             }
 
-            /* TESTO DELLA BIO PULITO SENZA SCALETTE */
+            /* TESTO DELLA BIO ORIGINALE A RIGHE SEPARATE */
             .menu-about li {
-                font-size: 0.85rem;
+                font-size: 0.9rem;
                 line-height: 1.35;
                 white-space: normal !important; 
                 word-wrap: break-word !important; 
-                padding: 2px 0 !important; 
+                padding: 4px 12px !important; 
                 text-align: center;
                 width: 100% !important;
                 box-sizing: border-box !important;
@@ -414,25 +415,20 @@
                 });
             });
 
-            // GESTIONE DELLA "X" NELL'ANGOLO
+            // GESTIONE PRECISA DELLA "X" CON TOUCH E CLICK IMMEDIATO
             const closeBtn = document.querySelector('.close-bio-btn');
             if (closeBtn) {
-                closeBtn.addEventListener('click', function(e) {
+                const closeDropdown = function(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     const dropdown = closeBtn.closest('.dropdown');
                     if (dropdown) {
                         dropdown.classList.remove('active');
                     }
-                });
-                closeBtn.addEventListener('touchend', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const dropdown = closeBtn.closest('.dropdown');
-                    if (dropdown) {
-                        dropdown.classList.remove('active');
-                    }
-                });
+                };
+
+                closeBtn.addEventListener('click', closeDropdown);
+                closeBtn.addEventListener('touchend', closeDropdown);
             }
 
             // Chiusura cliccando fuori dal menu
@@ -464,7 +460,21 @@
                                 <!-- TASTINO X FISSO NELL'ANGOLO -->
                                 <button class="close-bio-btn">&times;</button>
                                 
-                                <li>Roma, 1964. Autore di fumetti, storyboard artist ed illustratore; piu' di 30 anni di esperienza sul campo, alternando collaborazioni di ogni tipo, dai fumetti a locandine teatrali, da storyboards pubblicitari ai cartoni animati, ritagliandomi sempre uno spazio come autore. Docente della Scuola Romana dei fumetti con molteplici collaborazioni consolidate nel tempo, con mostre, stages e pubblicazioni di vari fumetti. Pubblicazioni: Newton & Compton, Comic Art, Acme Comics, Blue press, il Sistina, Giunti, Einaudi, AS Roma, Tipymedia, LAV, Il Romanista. Gli ultimi lavori comprendono la locandina teatrale del blockbuster "I sette Re di Roma" di Enrico Brignano e cinque volumi illustrati de l'Enciclopedia Romanista curata dal Direttore Editoriale Tonino Cagnucci.</li>
+                                <li>Roma, 1964.</li>
+                                <li>Autore di fumetti, storyboard artist ed illustratore;</li>
+                                <li>piu' di 30 anni di esperienza sul campo, alternando</li>
+                                <li>collaborazioni di ogni tipo, dai fumetti a locandine</li>
+                                <li>teatrali, da storyboards pubblicitari ai cartoni animati,</li>
+                                <li>ritagliandomi sempre uno spazio come autore. Docente</li>
+                                <li>della Scuola Romana dei fumetti con molteplici</li>
+                                <li>collaborazioni consolidate nel tempo, con mostre, stages</li>
+                                <li>e pubblicazioni di vari fumetti. Pubblicazioni: Newton &</li>
+                                <li>Compton, Comic Art, Acme Comics, Blue press, il Sistina,</li>
+                                <li>Giunti, Einaudi, AS Roma, Tipymedia, LAV, Il Romanista.</li>
+                                <li>Gli ultimi lavori comprendono la locandina teatrale del</li>
+                                <li>blockbuster "I sette Re di Roma" di Enrico Brignano</li>
+                                <li>e cinque volumi illustrati de l'Enciclopedia Romanista</li>
+                                <li>curata dal Direttore Editoriale Tonino Cagnucci.</li>
                             </ul>
                         </div>
 
