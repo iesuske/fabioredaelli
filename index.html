@@ -270,7 +270,6 @@
                 overflow: hidden !important; 
             }
 
-            /* Disattiva l'apertura hover su touch screen per permettere il toggle click */
             .dropdown:hover .dropdown-menu {
                 display: none !important;
             }
@@ -338,7 +337,7 @@
                 padding: 5px; 
             }
 
-            /* FINISTRA MODALE MOBILE */
+            /* FINISTRE MODALI MOBILE */
             .dropdown-menu {
                 position: fixed !important;
                 top: 50% !important;
@@ -369,7 +368,7 @@
             .dropdown-menu.menu-contact {
                 width: 55vw !important; 
                 max-width: 250px !important;
-                padding: 10px 0 15px 0 !important;
+                padding: 28px 0 10px 0 !important;
                 max-height: 50vh !important;
             }
 
@@ -377,7 +376,7 @@
                 width: 100% !important; 
             }
 
-            /* TASTO CHIUDI PICCOLO E DEDICATO ALL'ANGOLO ALTO A DESTRA */
+            /* TASTO CHIUDI PICCOLO PER BIO E CONTACT */
             .close-bio-btn {
                 display: flex !important;
                 align-items: center;
@@ -401,7 +400,6 @@
                 padding: 0;
             }
 
-            /* TESTO PORTATO IN ALTO ALLINEATO ALLA X */
             .menu-about li {
                 font-size: 0.9rem;
                 line-height: 1.35;
@@ -422,7 +420,7 @@
 
             .menu-contact li a {
                 font-size: 1rem;
-                padding: 12px;
+                padding: 10px 12px;
             }
         }
     </style>
@@ -451,7 +449,7 @@
                 });
             });
 
-            // GESTIONE PULSANTE DI CHIUSURA
+            /* GESTIONE TASTI DI CHIUSURA PER TUTTI I MENU */
             const closeBtns = document.querySelectorAll('.close-bio-btn');
             closeBtns.forEach(btn => {
                 btn.addEventListener('click', function(e) {
@@ -464,7 +462,6 @@
                 });
             });
 
-            // CHIUSURA CLICCANDO FUORI
             document.addEventListener('click', function(e) {
                 dropdowns.forEach(dropdown => {
                     if (!dropdown.contains(e.target)) {
@@ -513,6 +510,7 @@
                         <div class="dropdown">
                             <a class="dropdown-trigger testo-custom">Contact Me</a>
                             <ul class="dropdown-menu menu-contact testo-custom">
+                                <button class="close-bio-btn">&times;</button>
                                 <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=fabiohotstuff@gmail.com&su=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli" target="_blank" rel="noopener noreferrer">E-mail</a></li>
                                 <li><a href="https://wa.me/393400670069" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
                                 <li><a href="https://www.instagram.com/dandelion64?igsi=MXJwZHhkNTlqcjl2MA==" target="_blank" rel="noopener noreferrer">Instagram</a></li>
