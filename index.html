@@ -283,7 +283,7 @@
             display: none;
         }
 
-        /* MODALE CURIOSITY (PLAYER VIDEO + TESTO) */
+        /* MODALE CURIOSITY (PLAYER VIDEO + TESTO IN LOBSTER) */
         .curiosity-overlay {
             position: fixed;
             top: 0;
@@ -365,20 +365,24 @@
         .curiosity-text {
             color: #ffffff;
             text-align: center;
+            font-family: 'Lobster Regular', cursive;
         }
 
         .curiosity-text h3 {
             font-family: 'Lobster Regular', cursive;
             color: #fde3b8;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             margin-bottom: 6px;
             font-weight: normal;
+            letter-spacing: 0.5px;
         }
 
         .curiosity-text p {
-            font-size: 0.95rem;
-            line-height: 1.4;
+            font-family: 'Lobster Regular', cursive;
+            font-size: 1.15rem;
+            line-height: 1.45;
             color: #e0e0e0;
+            letter-spacing: 0.5px;
         }
 
         footer {
@@ -578,11 +582,11 @@
             }
 
             .curiosity-text h3 {
-                font-size: 1.3rem !important;
+                font-size: 1.4rem !important;
             }
 
             .curiosity-text p {
-                font-size: 0.85rem !important;
+                font-size: 1rem !important;
             }
 
             /* FOOTER MOBILE SU UNA SOLA RIGA */
@@ -662,16 +666,14 @@
                 btnCuriosity.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
-                    // Chiudi eventuali tendine aperte
                     dropdowns.forEach(d => d.classList.remove('active'));
-                    // Apri modale
                     curiosityOverlay.classList.add('open');
                 });
 
                 function closeModalCuriosity() {
                     curiosityOverlay.classList.remove('open');
                     if (curiosityVideo) {
-                        curiosityVideo.pause(); // Mette in pausa il video alla chiusura
+                        curiosityVideo.pause();
                     }
                 }
 
@@ -757,7 +759,7 @@
                 </video>
             </div>
 
-            <div class="curiosity-text">
+            <div class="curiosity-text testo-custom">
                 <h3>Behind the Scenes</h3>
                 <p>Un breve sguardo al processo creativo, agli storyboard e alle tecniche utilizzate durante la realizzazione delle opere.</p>
             </div>
