@@ -22,7 +22,6 @@
             font-display: block;
         }
 
-        /* GESTIONE FONT CARICATO */
         .testo-custom { visibility: hidden; opacity: 0; }
         body.fonts-loaded .testo-custom { 
             visibility: visible; 
@@ -45,7 +44,6 @@
             overflow: hidden;
         }
 
-        /* STRUTTURA GRAFICA DESKTOP */
         .master-canvas {
             position: relative;
             width: 100%;
@@ -114,7 +112,6 @@
             align-items: center;
         }
 
-        /* TASTO CURIOSITY DESKTOP (FONDO BIANCO, TESTO ROSSO -> SELEZIONE NERO) */
         .btn-curiosity {
             font-family: 'Lobster Regular', cursive;
             font-size: 1.5vw;
@@ -136,7 +133,6 @@
             color: #000000; 
         }
 
-        /* TASTO WORKS! DESKTOP (FONDO ROSSO, TESTO BIANCO -> SELEZIONE NERO) */
         .btn-works {
             font-family: 'Lobster Regular', cursive;
             font-size: 1.5vw;
@@ -176,7 +172,6 @@
             white-space: nowrap;
         }
 
-        /* HOVER DESKTOP */
         @media (hover: hover) {
             .dropdown:hover .dropdown-trigger { 
                 color: #000000; 
@@ -187,7 +182,6 @@
             color: #000000 !important; 
         }
 
-        /* TENDINA DESKTOP */
         .dropdown-menu {
             display: none;
             position: absolute;
@@ -217,18 +211,14 @@
             text-align: center; 
             width: max-content;
             padding: 10px 0 18px 0; 
-            
             max-height: 60vh;
             overflow-y: auto;
             overflow-x: hidden;
-
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
 
-        .menu-about::-webkit-scrollbar {
-            display: none;
-        }
+        .menu-about::-webkit-scrollbar { display: none; }
 
         .menu-contact { 
             left: 50%;
@@ -238,9 +228,7 @@
         }
 
         .dropdown:hover .dropdown-menu,
-        .dropdown.active .dropdown-menu { 
-            display: block !important; 
-        }
+        .dropdown.active .dropdown-menu { display: block !important; }
 
         .dropdown-menu li {
             font-family: 'Lobster Regular', cursive;
@@ -279,11 +267,9 @@
             border-bottom-right-radius: 12px;
         }
 
-        .close-bio-btn {
-            display: none;
-        }
+        .close-bio-btn { display: none; }
 
-        /* MODALE CURIOSITY (PLAYER VIDEO + TESTO IN LOBSTER) */
+        /* MODALE CURIOSITY PER YOUTUBE */
         .curiosity-overlay {
             position: fixed;
             top: 0;
@@ -300,9 +286,7 @@
             padding: 15px;
         }
 
-        .curiosity-overlay.open {
-            display: flex;
-        }
+        .curiosity-overlay.open { display: flex; }
 
         .curiosity-modal {
             position: relative;
@@ -322,9 +306,7 @@
             scrollbar-width: none;
         }
 
-        .curiosity-modal::-webkit-scrollbar {
-            display: none;
-        }
+        .curiosity-modal::-webkit-scrollbar { display: none; }
 
         .close-curiosity-btn {
             position: absolute;
@@ -347,19 +329,24 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.4);
         }
 
+        /* CONTAINER 16:9 RESPONSIVE PER YOUTUBE */
         .video-container {
+            position: relative;
             width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
             border-radius: 10px;
             overflow: hidden;
             background: #000;
-            line-height: 0;
         }
 
-        .video-container video {
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
-            max-height: 55vh;
-            display: block;
+            height: 100%;
+            border: 0;
         }
 
         .curiosity-text {
@@ -399,7 +386,6 @@
             z-index: 1000;
         }
 
-        /* STRUTTURA MOBILE REVISIONATA */
         @media screen and (max-width: 768px) {
             html, body {
                 height: 100vh !important;
@@ -407,19 +393,11 @@
                 overflow: hidden !important; 
             }
 
-            .dropdown:hover .dropdown-menu {
-                display: none !important;
-            }
-            .dropdown.active .dropdown-menu {
-                display: block !important;
-            }
+            .dropdown:hover .dropdown-menu { display: none !important; }
+            .dropdown.active .dropdown-menu { display: block !important; }
 
-            .dropdown:hover .dropdown-trigger {
-                color: #ffffff;
-            }
-            .dropdown.active .dropdown-trigger {
-                color: #000000 !important;
-            }
+            .dropdown:hover .dropdown-trigger { color: #ffffff; }
+            .dropdown.active .dropdown-trigger { color: #000000 !important; }
 
             .master-canvas {
                 margin-top: -21.5px !important;
@@ -453,7 +431,6 @@
                 text-align: center;
             }
 
-            /* MENU IN LINEA SU MOBILE */
             .menus-container {
                 margin-left: 0 !important;
                 margin-top: 0.5vw;
@@ -482,7 +459,6 @@
                 padding: 2px !important; 
             }
 
-            /* FINESTRE MODALI MOBILE */
             .dropdown-menu {
                 position: fixed !important;
                 top: 50% !important;
@@ -501,14 +477,11 @@
                 z-index: 9999 !important;
                 box-shadow: 0 10px 40px rgba(0,0,0,0.8);
                 box-sizing: border-box !important;
-
                 -ms-overflow-style: none !important;
                 scrollbar-width: none !important;
             }
 
-            .dropdown-menu::-webkit-scrollbar {
-                display: none !important;
-            }
+            .dropdown-menu::-webkit-scrollbar { display: none !important; }
 
             .dropdown-menu.menu-contact {
                 width: 52vw !important; 
@@ -517,9 +490,7 @@
                 max-height: 50vh !important;
             }
 
-            .menu-about, .menu-contact {
-                width: 100% !important; 
-            }
+            .menu-about, .menu-contact { width: 100% !important; }
 
             .close-bio-btn {
                 display: flex !important;
@@ -575,30 +546,21 @@
                 border-bottom-right-radius: 12px !important;
             }
 
-            /* ADATTAMENTO CURIOSITY MOBILE */
             .curiosity-modal {
                 width: 92vw !important;
                 padding: 30px 14px 16px 14px !important;
             }
 
-            .curiosity-text h3 {
-                font-size: 1.4rem !important;
-            }
+            .curiosity-text h3 { font-size: 1.4rem !important; }
+            .curiosity-text p { font-size: 1rem !important; }
 
-            .curiosity-text p {
-                font-size: 1rem !important;
-            }
-
-            /* FOOTER MOBILE SU UNA SOLA RIGA */
             footer {
                 font-size: clamp(8.5px, 2.5vw, 11px) !important;
                 white-space: nowrap !important;
                 padding: 8px 4px !important;
             }
 
-            footer p {
-                white-space: nowrap !important;
-            }
+            footer p { white-space: nowrap !important; }
         }
     </style>
 
@@ -608,7 +570,6 @@
                 document.body.classList.add('fonts-loaded');
             });
 
-            /* GESTIONE DROPDOWN BIO E CONTACT */
             const dropdowns = document.querySelectorAll('.dropdown');
 
             dropdowns.forEach(dropdown => {
@@ -617,11 +578,8 @@
                 trigger.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
-
                     const isActive = dropdown.classList.contains('active');
-                    
                     dropdowns.forEach(other => other.classList.remove('active'));
-
                     if (!isActive) {
                         dropdown.classList.add('active');
                     }
@@ -656,37 +614,33 @@
                 });
             });
 
-            /* GESTIONE MODALE CURIOSITY CON AUTOPLAY */
+            /* GESTIONE YOUTUBE IFRAME CON AUTOPLAY E CHIUSURA PULITA */
             const btnCuriosity = document.getElementById('btn-curiosity');
             const curiosityOverlay = document.getElementById('curiosity-overlay');
             const closeCuriosity = document.getElementById('close-curiosity');
-            const curiosityVideo = document.getElementById('curiosity-video');
+            const youtubeFrame = document.getElementById('youtube-frame');
+
+            // ID del video YouTube (tratto da https://www.youtube.com/watch?v=hlJmwrHEUQ0)
+            const youtubeVideoId = "hlJmwrHEUQ0";
 
             if (btnCuriosity && curiosityOverlay) {
                 btnCuriosity.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     dropdowns.forEach(d => d.classList.remove('active'));
-                    curiosityOverlay.classList.add('open');
-
-                    // Avvio automatico del video al click
-                    if (curiosityVideo) {
-                        curiosityVideo.currentTime = 0;
-                        const playPromise = curiosityVideo.play();
-                        if (playPromise !== undefined) {
-                            playPromise.catch(() => {
-                                // Fallback se il browser blocca l'audio automatico
-                                curiosityVideo.muted = true;
-                                curiosityVideo.play();
-                            });
-                        }
+                    
+                    // Avvio immediato con no-cookie
+                    if (youtubeFrame) {
+                        youtubeFrame.src = "https://www.youtube-nocookie.com/embed/" + youtubeVideoId + "?autoplay=1&rel=0";
                     }
+
+                    curiosityOverlay.classList.add('open');
                 });
 
                 function closeModalCuriosity() {
                     curiosityOverlay.classList.remove('open');
-                    if (curiosityVideo) {
-                        curiosityVideo.pause();
+                    if (youtubeFrame) {
+                        youtubeFrame.src = "";
                     }
                 }
 
@@ -766,10 +720,7 @@
             <button class="close-curiosity-btn" id="close-curiosity">&times;</button>
             
             <div class="video-container">
-                <video id="curiosity-video" controls playsinline preload="metadata">
-                    <source src="images/3.mp4" type="video/mp4">
-                    Il tuo browser non supporta il riproduttore video.
-                </video>
+                <iframe id="youtube-frame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
 
             <div class="curiosity-text testo-custom">
