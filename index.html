@@ -75,7 +75,6 @@
             pointer-events: auto; 
         }
 
-        /* Contenitore per allineare rigidamente i menu alla larghezza esatta del titolo */
         .brand-group {
             display: inline-block;
             width: auto;
@@ -160,54 +159,27 @@
             display: inline-block;
         }
 
-        /* STILE PULSANTE BIO */
-        .btn-bio {
+        .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
-            font-size: 1.5vw;
+            font-size: 1.5vw; 
             color: #ffffff;
-            background-color: #000000;
-            padding: 1px 10px;
-            border-radius: 8px;
-            text-decoration: none;
-            display: inline-block;
-            transition: background-color 0.2s ease, color 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             cursor: pointer;
-            white-space: nowrap;
-            user-select: none;
-            text-shadow: none;
-        }
-
-        .btn-bio:hover,
-        .btn-bio:active,
-        .dropdown.active .btn-bio {
-            background-color: #ffffff;
-            color: #000000;
-        }
-
-        /* STILE PULSANTE CONTACT ME */
-        .btn-contact {
-            font-family: 'Lobster Regular', cursive;
-            font-size: 1.5vw;
-            color: #000000;
-            background-color: #ffffff;
-            padding: 1px 10px;
-            border-radius: 8px;
             text-decoration: none;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            transition: color 0.2s ease;
             display: inline-block;
-            transition: background-color 0.2s ease, color 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            cursor: pointer;
-            white-space: nowrap;
             user-select: none;
-            text-shadow: none;
+            white-space: nowrap;
         }
 
-        .btn-contact:hover,
-        .btn-contact:active,
-        .dropdown.active .btn-contact {
-            background-color: #000000;
-            color: #ffffff;
+        @media (hover: hover) {
+            .dropdown:hover .dropdown-trigger { 
+                color: #000000; 
+            }
+        }
+
+        .dropdown.active .dropdown-trigger { 
+            color: #000000 !important; 
         }
 
         .dropdown-menu {
@@ -297,7 +269,6 @@
 
         .close-bio-btn { display: none; }
 
-        /* MODALE CURIOSITY PER YOUTUBE */
         .curiosity-overlay {
             position: fixed;
             top: 0;
@@ -357,7 +328,6 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.4);
         }
 
-        /* CONTAINER 16:9 RESPONSIVE PER YOUTUBE */
         .video-container {
             position: relative;
             width: 100%;
@@ -400,7 +370,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* BARRA INFERIORE DELIMITATA DA LINEA SUPERIORE E INFERIORE */
         .curiosity-footer {
             display: flex;
             justify-content: space-between;
@@ -425,7 +394,6 @@
             align-items: center;
         }
 
-        /* PULSANTI TESTUALI SENZA CORNICE */
         .curiosity-nav-btn {
             font-family: 'Lobster Regular', cursive;
             font-size: 1.25rem;
@@ -468,6 +436,9 @@
 
             .dropdown:hover .dropdown-menu { display: none !important; }
             .dropdown.active .dropdown-menu { display: block !important; }
+
+            .dropdown:hover .dropdown-trigger { color: #ffffff; }
+            .dropdown.active .dropdown-trigger { color: #000000 !important; }
 
             .master-canvas {
                 margin-top: -21.5px !important;
@@ -513,10 +484,15 @@
                 margin-top: 1.5vw;
             }
 
-            .btn-works, .btn-curiosity, .btn-bio, .btn-contact {
+            .btn-works, .btn-curiosity {
                 font-size: 3.2vw !important; 
                 padding: 1px 6px !important; 
-                border-radius: 6px !important;
+                border-radius: 6px;
+            }
+
+            .dropdown-trigger {
+                font-size: 3.2vw !important; 
+                padding: 2px !important; 
             }
 
             .dropdown-menu {
@@ -684,12 +660,11 @@
                 });
             });
 
-            /* ELENCO VIDEO PER CURIOSITY */
             const videos = [
                 {
                     id: "hlJmwrHEUQ0",
                     title: "Behind The Scene",
-                    desc: "Un breve sguardo al processo creativo, agli storyboard e alle tecniche utilizzate durante la realizzazione delle opere di Fabio Redaelli"
+                    desc: "Un breve sguardo al processo creativo, agli storyboard e alle tecniche utilizzate durante la realizzazione delle opere di Fabio Redaelli."
                 },
                 {
                     id: "nW3AkeZIBXg",
@@ -797,7 +772,7 @@
                         <a href="#" class="btn-works testo-custom">Works!</a>
 
                         <div class="dropdown">
-                            <a class="dropdown-trigger btn-bio testo-custom">Bio</a>
+                            <a class="dropdown-trigger testo-custom">Bio</a>
                             <ul class="dropdown-menu menu-about testo-custom">
                                 <button class="close-bio-btn">&times;</button>
                                 
@@ -820,7 +795,7 @@
                         </div>
 
                         <div class="dropdown">
-                            <a class="dropdown-trigger btn-contact testo-custom">Contact Me</a>
+                            <a class="dropdown-trigger testo-custom">Contact Me</a>
                             <ul class="dropdown-menu menu-contact testo-custom">
                                 <button class="close-bio-btn">&times;</button>
                                 <li><a href="mailto:fabiohotstuff@gmail.com?subject=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli">E-mail</a></li>
