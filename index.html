@@ -45,7 +45,7 @@
             overflow: hidden;
         }
 
-        /* STRUTTURA GRAFICA DESKTOP (BLOCCATA) */
+        /* STRUTTURA GRAFICA DESKTOP */
         .master-canvas {
             position: relative;
             width: 100%;
@@ -102,19 +102,19 @@
 
         .menus-container {
             display: flex;
-            gap: 5.5vw; 
-            margin-left: 45.5%; 
+            gap: 3.5vw; 
+            margin-left: 42%; 
             margin-top: 0.8vw; 
             align-items: center;
         }
 
         .secondary-menus {
             display: flex;
-            gap: 5.5vw;
+            gap: 3.5vw;
             align-items: center;
         }
 
-        /* TASTO WORKS DESKTOP */
+        /* TASTO WORKS! DESKTOP */
         .btn-works {
             font-family: 'Lobster Regular', cursive;
             font-size: 1.5vw;
@@ -127,11 +127,33 @@
             transition: background-color 0.2s ease, color 0.2s ease;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             cursor: pointer;
+            white-space: nowrap;
         }
 
         .btn-works:hover {
             background-color: #ffffff;
             color: #000000; 
+        }
+
+        /* TASTO CURIOSITY DESKTOP (COLORI INVERTITI) */
+        .btn-curiosity {
+            font-family: 'Lobster Regular', cursive;
+            font-size: 1.5vw;
+            color: #b72216;
+            background-color: #ffffff;
+            padding: 1px 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .btn-curiosity:hover {
+            background-color: #b72216;
+            color: #ffffff; 
         }
 
         .dropdown {
@@ -149,9 +171,10 @@
             transition: color 0.2s ease;
             display: inline-block;
             user-select: none;
+            white-space: nowrap;
         }
 
-        /* HOVER REALE SOLO SU DESKTOP */
+        /* HOVER DESKTOP */
         @media (hover: hover) {
             .dropdown:hover .dropdown-trigger { 
                 color: #000000; 
@@ -287,7 +310,6 @@
                 display: block !important;
             }
 
-            /* DISABILITA L'HOVER STICKY SU MOBILE */
             .dropdown:hover .dropdown-trigger {
                 color: #ffffff;
             }
@@ -327,32 +349,33 @@
                 text-align: center;
             }
 
+            /* MENU IN LINEA SU MOBILE */
             .menus-container {
                 margin-left: 0 !important;
-                margin-top: 0.3vw;
+                margin-top: 0.5vw;
                 justify-content: center;
-                gap: 5vw;
+                gap: 3.5vw !important;
                 position: relative;
-                left: 2vw;
+                left: 0 !important;
             }
 
-            .btn-works {
-                font-size: 3.5vw; 
-                padding: 0px 4px; 
+            .btn-works, .btn-curiosity {
+                font-size: 3.2vw !important; 
+                padding: 1px 6px !important; 
                 border-radius: 6px;
                 position: relative;
-                left: 10.5vw;
+                left: 0 !important;
             }
 
             .secondary-menus {
-                gap: 9.5vw;
+                gap: 3.5vw !important;
                 position: relative;
-                left: 17.5vw;
+                left: 0 !important;
             }
 
             .dropdown-trigger {
-                font-size: 3.5vw; 
-                padding: 5px; 
+                font-size: 3.2vw !important; 
+                padding: 2px !important; 
             }
 
             /* FINESTRE MODALI MOBILE */
@@ -472,7 +495,6 @@
             dropdowns.forEach(dropdown => {
                 const trigger = dropdown.querySelector('.dropdown-trigger');
 
-                /* GESTIONE APERTURA ESCLUSIVA UN MENU ALLA VOLTA */
                 trigger.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
@@ -527,6 +549,7 @@
                 
                 <div class="menus-container">
                     <a href="#" class="btn-works testo-custom">Works!</a>
+                    <a href="#" class="btn-curiosity testo-custom">Curiosity</a>
 
                     <div class="secondary-menus">
                         <div class="dropdown">
