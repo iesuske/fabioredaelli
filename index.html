@@ -656,7 +656,7 @@
                 });
             });
 
-            /* GESTIONE MODALE CURIOSITY CON VIDEO */
+            /* GESTIONE MODALE CURIOSITY CON AUTOPLAY */
             const btnCuriosity = document.getElementById('btn-curiosity');
             const curiosityOverlay = document.getElementById('curiosity-overlay');
             const closeCuriosity = document.getElementById('close-curiosity');
@@ -668,6 +668,19 @@
                     e.stopPropagation();
                     dropdowns.forEach(d => d.classList.remove('active'));
                     curiosityOverlay.classList.add('open');
+
+                    // Avvio automatico del video al click
+                    if (curiosityVideo) {
+                        curiosityVideo.currentTime = 0;
+                        const playPromise = curiosityVideo.play();
+                        if (playPromise !== undefined) {
+                            playPromise.catch(() => {
+                                // Fallback se il browser blocca l'audio automatico
+                                curiosityVideo.muted = true;
+                                curiosityVideo.play();
+                            });
+                        }
+                    }
                 });
 
                 function closeModalCuriosity() {
@@ -761,7 +774,7 @@
 
             <div class="curiosity-text testo-custom">
                 <h3>Behind the Scenes</h3>
-                <p>Un breve sguardo al processo creativo, agli storyboard e alle tecniche utilizzate durante la realizzazione delle opere.</p>
+                <p>Un breve sguardo al processo creativo, agli storyboard e alle tecniche utilizzate durante la realizzazione delle opere di Fabio Redaelli</p>
             </div>
         </div>
     </div>
