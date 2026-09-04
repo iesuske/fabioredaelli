@@ -365,10 +365,11 @@
                 display: none !important;
             }
 
+            /* CONTACT ME PARTICOLARMENTE COMPATTO ED EDGE-TO-EDGE */
             .dropdown-menu.menu-contact {
-                width: 60vw !important; 
-                max-width: 260px !important;
-                padding: 36px 10px 10px 10px !important;
+                width: 52vw !important; 
+                max-width: 210px !important;
+                padding: 34px 0 0 0 !important;
                 max-height: 50vh !important;
             }
 
@@ -418,17 +419,18 @@
                 margin-bottom: 4px;
             }
 
-            /* SELEZIONI PULITE SENZA SOVRAPPOSIZIONI */
+            /* SELEZIONI A TUTTA LARGHEZZA SENZA SPAZI NERI LATERALI */
             .menu-contact li a {
                 font-size: 1rem;
                 padding: 10px 12px;
-                border-radius: 8px !important;
-                margin: 2px 0;
+                border-radius: 0 !important;
+                margin: 0;
+                width: 100%;
             }
 
-            .menu-contact li:first-child a,
             .menu-contact li:last-child a {
-                border-radius: 8px !important;
+                border-bottom-left-radius: 12px !important;
+                border-bottom-right-radius: 12px !important;
             }
         }
     </style>
