@@ -160,27 +160,54 @@
             display: inline-block;
         }
 
-        .dropdown-trigger {
+        /* STILE PULSANTE BIO */
+        .btn-bio {
             font-family: 'Lobster Regular', cursive;
-            font-size: 1.5vw; 
+            font-size: 1.5vw;
             color: #ffffff;
-            cursor: pointer;
+            background-color: #000000;
+            padding: 1px 10px;
+            border-radius: 8px;
             text-decoration: none;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-            transition: color 0.2s ease;
             display: inline-block;
-            user-select: none;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            cursor: pointer;
             white-space: nowrap;
+            user-select: none;
+            text-shadow: none;
         }
 
-        @media (hover: hover) {
-            .dropdown:hover .dropdown-trigger { 
-                color: #000000; 
-            }
+        .btn-bio:hover,
+        .btn-bio:active,
+        .dropdown.active .btn-bio {
+            background-color: #ffffff;
+            color: #000000;
         }
 
-        .dropdown.active .dropdown-trigger { 
-            color: #000000 !important; 
+        /* STILE PULSANTE CONTACT ME */
+        .btn-contact {
+            font-family: 'Lobster Regular', cursive;
+            font-size: 1.5vw;
+            color: #000000;
+            background-color: #ffffff;
+            padding: 1px 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            cursor: pointer;
+            white-space: nowrap;
+            user-select: none;
+            text-shadow: none;
+        }
+
+        .btn-contact:hover,
+        .btn-contact:active,
+        .dropdown.active .btn-contact {
+            background-color: #000000;
+            color: #ffffff;
         }
 
         .dropdown-menu {
@@ -442,9 +469,6 @@
             .dropdown:hover .dropdown-menu { display: none !important; }
             .dropdown.active .dropdown-menu { display: block !important; }
 
-            .dropdown:hover .dropdown-trigger { color: #ffffff; }
-            .dropdown.active .dropdown-trigger { color: #000000 !important; }
-
             .master-canvas {
                 margin-top: -21.5px !important;
                 overflow: hidden;
@@ -489,15 +513,10 @@
                 margin-top: 1.5vw;
             }
 
-            .btn-works, .btn-curiosity {
+            .btn-works, .btn-curiosity, .btn-bio, .btn-contact {
                 font-size: 3.2vw !important; 
                 padding: 1px 6px !important; 
-                border-radius: 6px;
-            }
-
-            .dropdown-trigger {
-                font-size: 3.2vw !important; 
-                padding: 2px !important; 
+                border-radius: 6px !important;
             }
 
             .dropdown-menu {
@@ -778,7 +797,7 @@
                         <a href="#" class="btn-works testo-custom">Works!</a>
 
                         <div class="dropdown">
-                            <a class="dropdown-trigger testo-custom">Bio</a>
+                            <a class="dropdown-trigger btn-bio testo-custom">Bio</a>
                             <ul class="dropdown-menu menu-about testo-custom">
                                 <button class="close-bio-btn">&times;</button>
                                 
@@ -801,7 +820,7 @@
                         </div>
 
                         <div class="dropdown">
-                            <a class="dropdown-trigger testo-custom">Contact Me</a>
+                            <a class="dropdown-trigger btn-contact testo-custom">Contact Me</a>
                             <ul class="dropdown-menu menu-contact testo-custom">
                                 <button class="close-bio-btn">&times;</button>
                                 <li><a href="mailto:fabiohotstuff@gmail.com?subject=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli">E-mail</a></li>
