@@ -283,6 +283,104 @@
             display: none;
         }
 
+        /* MODALE CURIOSITY (PLAYER VIDEO + TESTO) */
+        .curiosity-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 99999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+
+        .curiosity-overlay.open {
+            display: flex;
+        }
+
+        .curiosity-modal {
+            position: relative;
+            background: rgba(18, 18, 18, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            width: 100%;
+            max-width: 680px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 24px 20px 20px 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .curiosity-modal::-webkit-scrollbar {
+            display: none;
+        }
+
+        .close-curiosity-btn {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            width: 28px;
+            height: 28px;
+            background-color: #b72216;
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            line-height: 1;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+        }
+
+        .video-container {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #000;
+            line-height: 0;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            max-height: 55vh;
+            display: block;
+        }
+
+        .curiosity-text {
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .curiosity-text h3 {
+            font-family: 'Lobster Regular', cursive;
+            color: #fde3b8;
+            font-size: 1.6rem;
+            margin-bottom: 6px;
+            font-weight: normal;
+        }
+
+        .curiosity-text p {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            color: #e0e0e0;
+        }
+
         footer {
             position: fixed;
             bottom: 0;
@@ -473,6 +571,20 @@
                 border-bottom-right-radius: 12px !important;
             }
 
+            /* ADATTAMENTO CURIOSITY MOBILE */
+            .curiosity-modal {
+                width: 92vw !important;
+                padding: 30px 14px 16px 14px !important;
+            }
+
+            .curiosity-text h3 {
+                font-size: 1.3rem !important;
+            }
+
+            .curiosity-text p {
+                font-size: 0.85rem !important;
+            }
+
             /* FOOTER MOBILE SU UNA SOLA RIGA */
             footer {
                 font-size: clamp(8.5px, 2.5vw, 11px) !important;
@@ -492,6 +604,7 @@
                 document.body.classList.add('fonts-loaded');
             });
 
+            /* GESTIONE DROPDOWN BIO E CONTACT */
             const dropdowns = document.querySelectorAll('.dropdown');
 
             dropdowns.forEach(dropdown => {
@@ -538,6 +651,46 @@
                     }
                 });
             });
+
+            /* GESTIONE MODALE CURIOSITY CON VIDEO */
+            const btnCuriosity = document.getElementById('btn-curiosity');
+            const curiosityOverlay = document.getElementById('curiosity-overlay');
+            const closeCuriosity = document.getElementById('close-curiosity');
+            const curiosityVideo = document.getElementById('curiosity-video');
+
+            if (btnCuriosity && curiosityOverlay) {
+                btnCuriosity.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    // Chiudi eventuali tendine aperte
+                    dropdowns.forEach(d => d.classList.remove('active'));
+                    // Apri modale
+                    curiosityOverlay.classList.add('open');
+                });
+
+                function closeModalCuriosity() {
+                    curiosityOverlay.classList.remove('open');
+                    if (curiosityVideo) {
+                        curiosityVideo.pause(); // Mette in pausa il video alla chiusura
+                    }
+                }
+
+                if (closeCuriosity) {
+                    closeCuriosity.addEventListener('click', closeModalCuriosity);
+                }
+
+                curiosityOverlay.addEventListener('click', function(e) {
+                    if (e.target === curiosityOverlay) {
+                        closeModalCuriosity();
+                    }
+                });
+
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && curiosityOverlay.classList.contains('open')) {
+                        closeModalCuriosity();
+                    }
+                });
+            }
         });
     </script>
 </head>
@@ -550,7 +703,7 @@
                 <h1 class="brand-title testo-custom"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
                 
                 <div class="menus-container">
-                    <a href="#" class="btn-curiosity testo-custom">Curiosity</a>
+                    <a href="#" id="btn-curiosity" class="btn-curiosity testo-custom">Curiosity</a>
                     <a href="#" class="btn-works testo-custom">Works!</a>
 
                     <div class="secondary-menus">
@@ -589,6 +742,24 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="curiosity-overlay" class="curiosity-overlay">
+        <div class="curiosity-modal">
+            <button class="close-curiosity-btn" id="close-curiosity">&times;</button>
+            
+            <div class="video-container">
+                <video id="curiosity-video" controls playsinline preload="metadata">
+                    <source src="images/3.mp4" type="video/mp4">
+                    Il tuo browser non supporta il riproduttore video.
+                </video>
+            </div>
+
+            <div class="curiosity-text">
+                <h3>Behind the Scenes</h3>
+                <p>Un breve sguardo al processo creativo, agli storyboard e alle tecniche utilizzate durante la realizzazione delle opere.</p>
             </div>
         </div>
     </div>
