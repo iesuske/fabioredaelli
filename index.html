@@ -279,9 +279,9 @@
                 display: block !important;
             }
 
-            /* FIX SAFARI: AZZERATO MARGINE NEGATIVO PER NON CARICARE TROPPO IN ALTO */
+            /* RIPRISTINATO POSIZIONAMENTO ALTO SU MOBILE */
             .master-canvas {
-                margin-top: 0px !important;
+                margin-top: -21.5px !important;
                 overflow: hidden;
             }
 
@@ -293,10 +293,10 @@
                 mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 98%);
             }
 
-            /* FIX SAFARI: ABBASSATA LA TESTATA SU MOBILE */
+            /* TITOLO RIALZATO NELLA POSIZIONE ORIGINARIA */
             .header-anchor {
                 position: absolute;
-                top: calc(7.2% + 22px) !important; 
+                top: calc(7.2% + 10px) !important; 
                 left: 0;
                 width: 100%;
                 padding: 0 10px;
@@ -434,7 +434,7 @@
                 border-bottom-right-radius: 12px !important;
             }
 
-            /* FOOTER MOBILE SU UNA SOLA RIGA SENZA ANDARE A CAPO */
+            /* FOOTER MOBILE SU UNA SOLA RIGA */
             footer {
                 font-size: clamp(8.5px, 2.5vw, 11px) !important;
                 white-space: nowrap !important;
@@ -458,14 +458,13 @@
             dropdowns.forEach(dropdown => {
                 const trigger = dropdown.querySelector('.dropdown-trigger');
 
-                /* GESTIONE APERTURA ESCLUSIVA AL CLICK (SIA DESKTOP CHE MOBILE) */
+                /* GESTIONE APERTURA ESCLUSIVA UN MENU ALLA VOLTA */
                 trigger.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
 
                     const isActive = dropdown.classList.contains('active');
                     
-                    /* Chiude tutti gli altri menu aperti */
                     dropdowns.forEach(other => other.classList.remove('active'));
 
                     if (!isActive) {
@@ -473,7 +472,6 @@
                     }
                 });
 
-                /* EVITA DOPPIA APERTURA SU DESKTOP QUANDO SI PASSA SUL SECONDO MENU CON IL MOUSE */
                 dropdown.addEventListener('mouseenter', function() {
                     dropdowns.forEach(other => {
                         if (other !== dropdown) {
@@ -544,7 +542,7 @@
                             <a class="dropdown-trigger testo-custom">Contact Me</a>
                             <ul class="dropdown-menu menu-contact testo-custom">
                                 <button class="close-bio-btn">&times;</button>
-                                <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=fabiohotstuff@gmail.com&su=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli" target="_blank" rel="noopener noreferrer">E-mail</a></li>
+                                <li><a href="mailto:fabiohotstuff@gmail.com?subject=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli">E-mail</a></li>
                                 <li><a href="https://wa.me/393400670069" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
                                 <li><a href="https://www.instagram.com/dandelion64?igsi=MXJwZHhkNTlqcjl2MA==" target="_blank" rel="noopener noreferrer">Instagram</a></li>
                                 <li><a href="https://www.linkedin.com/in/fabio-redaelli-18682219" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
