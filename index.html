@@ -153,7 +153,7 @@
         .dropdown:hover .dropdown-trigger,
         .dropdown.active .dropdown-trigger { color: #000000; }
 
-        /* TENDINA DESKTOP CON 70% OPACITÀ (rgba 0.7) */
+        /* TENDINA DESKTOP */
         .dropdown-menu {
             display: none;
             position: absolute;
@@ -177,7 +177,6 @@
             height: 12px;
         }
 
-        /* MENU BIO DESKTOP CON SCROLL E BARRA INVISIBILE */
         .menu-about { 
             left: 50%;
             transform: translateX(-50%);
@@ -189,12 +188,12 @@
             overflow-y: auto;
             overflow-x: hidden;
 
-            -ms-overflow-style: none;  /* IE / Edge */
-            scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
 
         .menu-about::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Opera */
+            display: none;
         }
 
         .menu-contact { 
@@ -264,11 +263,19 @@
             z-index: 1000;
         }
 
-        /* STRUTTURA MOBILE CORRETTA */
+        /* STRUTTURA MOBILE */
         @media screen and (max-width: 768px) {
             html, body {
                 height: 100vh !important;
                 overflow: hidden !important; 
+            }
+
+            /* Disattiva l'apertura hover su touch screen per permettere il toggle click */
+            .dropdown:hover .dropdown-menu {
+                display: none !important;
+            }
+            .dropdown.active .dropdown-menu {
+                display: block !important;
             }
 
             .master-canvas {
@@ -331,7 +338,7 @@
                 padding: 5px; 
             }
 
-            /* TENDINA MOBILE */
+            /* FINISTRA MODALE MOBILE */
             .dropdown-menu {
                 position: fixed !important;
                 top: 50% !important;
@@ -346,7 +353,7 @@
                 backdrop-filter: blur(8px) !important;
                 -webkit-backdrop-filter: blur(8px) !important;
                 border-radius: 12px;
-                padding: 34px 16px 20px 16px !important; 
+                padding: 12px 14px 16px 14px !important; 
                 z-index: 9999 !important;
                 box-shadow: 0 10px 40px rgba(0,0,0,0.8);
                 box-sizing: border-box !important;
@@ -370,37 +377,37 @@
                 width: 100% !important; 
             }
 
-            /* TASTO CHIUDI PERFETTAMENTE CENTRATO CON FLEXBOX */
+            /* TASTO CHIUDI PICCOLO E DEDICATO ALL'ANGOLO ALTO A DESTRA */
             .close-bio-btn {
                 display: flex !important;
                 align-items: center;
                 justify-content: center;
                 position: absolute;
-                top: 10px;
-                right: 10px;
-                width: 26px;
-                height: 26px;
+                top: 8px;
+                right: 8px;
+                width: 20px;
+                height: 20px;
                 background-color: #b72216;
                 color: #ffffff;
                 border-radius: 50%;
-                font-size: 1.1rem;
+                font-size: 0.85rem;
                 font-weight: bold;
                 line-height: 1;
                 cursor: pointer;
                 z-index: 10000;
                 border: none;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+                box-shadow: 0 1px 3px rgba(0,0,0,0.5);
                 pointer-events: auto !important;
                 padding: 0;
             }
 
-            /* TESTO COMPLETAMENTE CENTRATO */
+            /* TESTO PORTATO IN ALTO ALLINEATO ALLA X */
             .menu-about li {
                 font-size: 0.9rem;
-                line-height: 1.4;
+                line-height: 1.35;
                 white-space: normal !important; 
                 word-wrap: break-word !important; 
-                padding: 3px 0 !important; 
+                padding: 2px 0 !important; 
                 text-align: center !important;
                 width: 100% !important;
                 box-sizing: border-box !important;
@@ -410,7 +417,7 @@
 
             .menu-about li:first-child {
                 font-weight: bold;
-                margin-bottom: 8px;
+                margin-bottom: 4px;
             }
 
             .menu-contact li a {
@@ -435,31 +442,29 @@
                     e.preventDefault();
                     e.stopPropagation();
 
-                    if (dropdown.classList.contains('active')) {
-                        dropdown.classList.remove('active');
-                    } else {
-                        dropdowns.forEach(other => other.classList.remove('active'));
+                    const isActive = dropdown.classList.contains('active');
+                    dropdowns.forEach(other => other.classList.remove('active'));
+
+                    if (!isActive) {
                         dropdown.classList.add('active');
                     }
                 });
             });
 
-            const closeBtn = document.querySelector('.close-bio-btn');
-            if (closeBtn) {
-                const closeDropdown = function(e) {
+            // GESTIONE PULSANTE DI CHIUSURA
+            const closeBtns = document.querySelectorAll('.close-bio-btn');
+            closeBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
-                    const dropdown = closeBtn.closest('.dropdown');
+                    const dropdown = this.closest('.dropdown');
                     if (dropdown) {
                         dropdown.classList.remove('active');
                     }
-                };
+                });
+            });
 
-                closeBtn.addEventListener('click', closeDropdown);
-                closeBtn.addEventListener('touchstart', closeDropdown, { passive: false });
-                closeBtn.addEventListener('touchend', closeDropdown);
-            }
-
+            // CHIUSURA CLICCANDO FUORI
             document.addEventListener('click', function(e) {
                 dropdowns.forEach(dropdown => {
                     if (!dropdown.contains(e.target)) {
