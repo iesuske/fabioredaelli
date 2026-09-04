@@ -194,6 +194,7 @@
             padding: 0; 
             z-index: 1000;
             box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+            overflow: hidden; /* Mantiene gli angoli smussati puliti per tutti i menu a tendina desktop */
         }
 
         .dropdown-menu::before {
@@ -256,16 +257,6 @@
         }
 
         .menu-contact li a:hover { background: #b72216; }
-
-        .menu-contact li:first-child a {
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
-        }
-
-        .menu-contact li:last-child a {
-            border-bottom-left-radius: 12px;
-            border-bottom-right-radius: 12px;
-        }
 
         .close-bio-btn { display: none; }
 
@@ -586,11 +577,6 @@
                 width: 100%;
             }
 
-            .menu-contact li:last-child a {
-                border-bottom-left-radius: 12px !important;
-                border-bottom-right-radius: 12px !important;
-            }
-
             .curiosity-modal {
                 width: 92vw !important;
                 padding: 26px 14px 14px 14px !important;
@@ -807,7 +793,7 @@
                         <a class="dropdown-trigger testo-custom">Contact Me</a>
                         <ul class="dropdown-menu menu-contact testo-custom">
                             <button class="close-bio-btn">&times;</button>
-                            <li><a href="mailto:fabiohotstuff@gmail.com?subject=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli">E-mail</a></li>
+                            <li><a href="mailto:fabiohotstuff@gmail.com?subject=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli" target="_blank" rel="noopener noreferrer">E-mail</a></li>
                             <li><a href="https://wa.me/393400670069" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
                             <li><a href="https://www.instagram.com/dandelion64?igsi=MXJwZHhkNTlqcjl2MA==" target="_blank" rel="noopener noreferrer">Instagram</a></li>
                             <li><a href="https://www.linkedin.com/in/fabio-redaelli-18682219" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
@@ -818,6 +804,7 @@
         </div>
     </div>
 
+    <!-- MODALE CURIOSITY CON YOUTUBE IFRAME E GALLERIA VIDEO -->
     <div id="curiosity-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-curiosity-btn" id="close-curiosity">&times;</button>
