@@ -41,7 +41,7 @@
             height: 100vh;
             background-color: #fde3b8; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow: hidden;
+            overflow: hidden; /* La pagina non si muove mai e non mostra barre */
         }
 
         /* STRUTTURA GRAFICA DESKTOP */
@@ -163,7 +163,6 @@
             border-radius: 12px;
             list-style: none;
             padding: 0; 
-            overflow: hidden;
             z-index: 1000;
             box-shadow: 0 10px 25px rgba(0,0,0,0.35);
         }
@@ -177,12 +176,16 @@
             height: 12px;
         }
 
+        /* TENDINA BIO CON SCROLL INTERNO SOLO SE NECESSARIO */
         .menu-about { 
             left: 50%;
             transform: translateX(-50%);
             text-align: center; 
             width: max-content;
             padding: 10px 0 18px 0; 
+            max-height: calc(85vh - 120px); /* Limita la tendina all'altezza della finestra */
+            overflow-y: auto;  /* Attiva lo scroll unicamente dentro la tendina */
+            overflow-x: hidden;
         }
 
         .menu-contact { 
@@ -190,6 +193,7 @@
             transform: translateX(-50%);
             width: calc(100% + 40px);
             text-align: center; 
+            overflow: hidden;
         }
 
         .dropdown:hover .dropdown-menu,
@@ -319,7 +323,7 @@
                 padding: 5px; 
             }
 
-            /* TENDINA BIO PIÙ LUNGA, COMMISURATA E CON SPAZIO AL TOP */
+            /* TENDINA BIO MOBILE */
             .dropdown-menu {
                 position: fixed !important;
                 top: 50% !important;
@@ -327,7 +331,7 @@
                 transform: translate(-50%, -50%) !important; 
                 width: 90vw !important; 
                 max-width: 370px !important;
-                max-height: 68vh !important; /* Finestra più lunga e proporzionata */
+                max-height: 68vh !important; 
                 overflow-y: auto !important; 
                 overflow-x: hidden !important;
                 border-radius: 12px;
@@ -348,7 +352,7 @@
                 width: 100% !important; 
             }
 
-            /* TASTO X LEGGERMENTE PIÙ PICCOLO E INCASTRATO PERFETTAMENTE NELL'ANGOLO */
+            /* TASTO X */
             .close-bio-btn {
                 display: block !important;
                 position: absolute;
@@ -361,7 +365,7 @@
                 border-radius: 50%;
                 text-align: center;
                 line-height: 23px;
-                font-size: 0.95rem; /* X bianca proporzionata */
+                font-size: 0.95rem; 
                 font-weight: bold;
                 cursor: pointer;
                 z-index: 10000;
@@ -370,14 +374,13 @@
                 pointer-events: auto !important;
             }
 
-            /* TESTO DELLA BIO FLUIDO E BELLO LUNGO COME ALL'INIZIO */
             .menu-about li {
                 font-size: 0.88rem;
                 line-height: 1.38;
                 white-space: normal !important; 
                 word-wrap: break-word !important; 
                 padding: 3px 0 !important; 
-                text-align: left; /* Testo pulito e leggibile */
+                text-align: left;
                 width: 100% !important;
                 box-sizing: border-box !important;
                 text-indent: -10px;
@@ -423,7 +426,6 @@
                 });
             });
 
-            // GESTIONE BLINDATA DELLA "X" (FUNZIONA AL PRIMO TOCCO)
             const closeBtn = document.querySelector('.close-bio-btn');
             if (closeBtn) {
                 const closeDropdown = function(e) {
@@ -440,7 +442,6 @@
                 closeBtn.addEventListener('touchend', closeDropdown);
             }
 
-            // Chiusura cliccando fuori dal menu
             document.addEventListener('click', function(e) {
                 dropdowns.forEach(dropdown => {
                     if (!dropdown.contains(e.target)) {
@@ -466,7 +467,6 @@
                         <div class="dropdown">
                             <a class="dropdown-trigger testo-custom">Bio</a>
                             <ul class="dropdown-menu menu-about testo-custom">
-                                <!-- TASTINO X PERFETTAMENTE INCASTRATO NELL'ANGOLO -->
                                 <button class="close-bio-btn">&times;</button>
                                 
                                 <li>Roma, 1964.</li>
