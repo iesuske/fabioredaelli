@@ -301,7 +301,7 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.8);
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
@@ -359,7 +359,7 @@
             font-family: 'Lobster Regular', cursive;
             color: #fde3b8;
             font-size: 1.8rem;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             font-weight: normal;
             letter-spacing: 0.5px;
         }
@@ -367,9 +367,52 @@
         .curiosity-text p {
             font-family: 'Lobster Regular', cursive;
             font-size: 1.15rem;
-            line-height: 1.45;
+            line-height: 1.4;
             color: #e0e0e0;
             letter-spacing: 0.5px;
+        }
+
+        /* PIE DI PAGINA MODALE CON COMANDI AVANTI/INDIETRO A DESTRA */
+        .curiosity-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 4px;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .video-counter {
+            color: #fde3b8;
+            font-family: 'Lobster Regular', cursive;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            margin-left: auto; /* Posiziona i pulsanti in basso a destra */
+        }
+
+        .curiosity-nav-btn {
+            font-family: 'Lobster Regular', cursive;
+            font-size: 1.25rem;
+            color: #ffffff;
+            background-color: #b72216;
+            border: none;
+            border-radius: 8px;
+            padding: 3px 14px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+            white-space: nowrap;
+        }
+
+        .curiosity-nav-btn:hover,
+        .curiosity-nav-btn:active {
+            background-color: #ffffff;
+            color: #000000;
         }
 
         footer {
@@ -548,11 +591,22 @@
 
             .curiosity-modal {
                 width: 92vw !important;
-                padding: 30px 14px 16px 14px !important;
+                padding: 26px 14px 14px 14px !important;
             }
 
-            .curiosity-text h3 { font-size: 1.4rem !important; }
-            .curiosity-text p { font-size: 1rem !important; }
+            .curiosity-text h3 { font-size: 1.35rem !important; }
+            .curiosity-text p { font-size: 0.95rem !important; }
+
+            .curiosity-footer {
+                padding-top: 6px !important;
+            }
+
+            .video-counter { font-size: 0.95rem !important; }
+
+            .curiosity-nav-btn {
+                font-size: 1.05rem !important;
+                padding: 2px 10px !important;
+            }
 
             footer {
                 font-size: clamp(8.5px, 2.5vw, 11px) !important;
@@ -614,14 +668,43 @@
                 });
             });
 
-            /* GESTIONE YOUTUBE IFRAME CON AUTOPLAY E CHIUSURA PULITA */
+            /* ELENCO VIDEO PER CURIOSITY */
+            const videos = [
+                {
+                    id: "hlJmwrHEUQ0",
+                    title: "Behind the Scenes",
+                    desc: "Un breve sguardo al processo creativo, agli storyboard e alle tecniche utilizzate durante la realizzazione delle opere di Fabio Redaelli."
+                },
+                {
+                    id: "nW3AkeZIBXg",
+                    title: "Tutorial Pin-up",
+                    desc: "Tutorial e dimostrazione pratica su come disegnare una Pin-up con la Scuola Romana dei Fumetti."
+                }
+            ];
+
+            let currentVideoIndex = 0;
+
             const btnCuriosity = document.getElementById('btn-curiosity');
             const curiosityOverlay = document.getElementById('curiosity-overlay');
             const closeCuriosity = document.getElementById('close-curiosity');
             const youtubeFrame = document.getElementById('youtube-frame');
+            const curiosityTitle = document.getElementById('curiosity-title');
+            const curiosityDesc = document.getElementById('curiosity-desc');
+            const videoCounter = document.getElementById('video-counter');
+            const btnNextVideo = document.getElementById('btn-next-video');
+            const btnPrevVideo = document.getElementById('btn-prev-video');
 
-            // ID del video YouTube (tratto da https://www.youtube.com/watch?v=hlJmwrHEUQ0)
-            const youtubeVideoId = "hlJmwrHEUQ0";
+            function updateVideo(index) {
+                currentVideoIndex = index;
+                const video = videos[currentVideoIndex];
+                
+                if (youtubeFrame) {
+                    youtubeFrame.src = "https://www.youtube-nocookie.com/embed/" + video.id + "?autoplay=1&rel=0";
+                }
+                if (curiosityTitle) curiosityTitle.textContent = video.title;
+                if (curiosityDesc) curiosityDesc.textContent = video.desc;
+                if (videoCounter) videoCounter.textContent = (currentVideoIndex + 1) + " / " + videos.length;
+            }
 
             if (btnCuriosity && curiosityOverlay) {
                 btnCuriosity.addEventListener('click', function(e) {
@@ -629,11 +712,8 @@
                     e.stopPropagation();
                     dropdowns.forEach(d => d.classList.remove('active'));
                     
-                    // Avvio immediato con no-cookie
-                    if (youtubeFrame) {
-                        youtubeFrame.src = "https://www.youtube-nocookie.com/embed/" + youtubeVideoId + "?autoplay=1&rel=0";
-                    }
-
+                    // Apri partendo sempre dal primo video
+                    updateVideo(0);
                     curiosityOverlay.classList.add('open');
                 });
 
@@ -646,6 +726,22 @@
 
                 if (closeCuriosity) {
                     closeCuriosity.addEventListener('click', closeModalCuriosity);
+                }
+
+                if (btnNextVideo) {
+                    btnNextVideo.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        let nextIndex = (currentVideoIndex + 1) % videos.length;
+                        updateVideo(nextIndex);
+                    });
+                }
+
+                if (btnPrevVideo) {
+                    btnPrevVideo.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        let prevIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
+                        updateVideo(prevIndex);
+                    });
                 }
 
                 curiosityOverlay.addEventListener('click', function(e) {
@@ -724,8 +820,16 @@
             </div>
 
             <div class="curiosity-text testo-custom">
-                <h3>Behind the Scenes</h3>
-                <p>Un breve sguardo al processo creativo, agli storyboard e alle tecniche utilizzate durante la realizzazione delle opere di Fabio Redaelli</p>
+                <h3 id="curiosity-title">Behind the Scenes</h3>
+                <p id="curiosity-desc">Un breve sguardo al processo creativo, agli storyboard e alle tecniche utilizzate durante la realizzazione delle opere di Fabio Redaelli.</p>
+            </div>
+
+            <div class="curiosity-footer testo-custom">
+                <span id="video-counter" class="video-counter">1 / 2</span>
+                <div class="nav-buttons">
+                    <button id="btn-prev-video" class="curiosity-nav-btn">&laquo; Indietro</button>
+                    <button id="btn-next-video" class="curiosity-nav-btn">Avanti &raquo;</button>
+                </div>
             </div>
         </div>
     </div>
