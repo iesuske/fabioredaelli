@@ -114,28 +114,7 @@
             align-items: center;
         }
 
-        /* TASTO WORKS! DESKTOP */
-        .btn-works {
-            font-family: 'Lobster Regular', cursive;
-            font-size: 1.5vw;
-            color: #ffffff;
-            background-color: #b72216;
-            padding: 1px 10px;
-            border-radius: 8px;
-            text-decoration: none;
-            display: inline-block;
-            transition: background-color 0.2s ease, color 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
-        .btn-works:hover {
-            background-color: #ffffff;
-            color: #000000; 
-        }
-
-        /* TASTO CURIOSITY DESKTOP (COLORI INVERTITI) */
+        /* TASTO CURIOSITY DESKTOP (FONDO BIANCO, TESTO ROSSO -> SELEZIONE NERO) */
         .btn-curiosity {
             font-family: 'Lobster Regular', cursive;
             font-size: 1.5vw;
@@ -151,9 +130,32 @@
             white-space: nowrap;
         }
 
-        .btn-curiosity:hover {
+        .btn-curiosity:hover,
+        .btn-curiosity:active {
             background-color: #b72216;
-            color: #ffffff; 
+            color: #000000; 
+        }
+
+        /* TASTO WORKS! DESKTOP (FONDO ROSSO, TESTO BIANCO -> SELEZIONE NERO) */
+        .btn-works {
+            font-family: 'Lobster Regular', cursive;
+            font-size: 1.5vw;
+            color: #ffffff;
+            background-color: #b72216;
+            padding: 1px 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .btn-works:hover,
+        .btn-works:active {
+            background-color: #ffffff;
+            color: #000000; 
         }
 
         .dropdown {
@@ -548,8 +550,8 @@
                 <h1 class="brand-title testo-custom"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
                 
                 <div class="menus-container">
-                    <a href="#" class="btn-works testo-custom">Works!</a>
                     <a href="#" class="btn-curiosity testo-custom">Curiosity</a>
+                    <a href="#" class="btn-works testo-custom">Works!</a>
 
                     <div class="secondary-menus">
                         <div class="dropdown">
