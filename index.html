@@ -337,7 +337,7 @@
                 padding: 5px; 
             }
 
-            /* FINISTRE MODALI MOBILE */
+            /* FINESTRE MODALI MOBILE */
             .dropdown-menu {
                 position: fixed !important;
                 top: 50% !important;
@@ -352,7 +352,7 @@
                 backdrop-filter: blur(8px) !important;
                 -webkit-backdrop-filter: blur(8px) !important;
                 border-radius: 12px;
-                padding: 12px 14px 16px 14px !important; 
+                padding: 34px 16px 16px 16px !important; 
                 z-index: 9999 !important;
                 box-shadow: 0 10px 40px rgba(0,0,0,0.8);
                 box-sizing: border-box !important;
@@ -366,9 +366,9 @@
             }
 
             .dropdown-menu.menu-contact {
-                width: 55vw !important; 
-                max-width: 250px !important;
-                padding: 28px 0 10px 0 !important;
+                width: 60vw !important; 
+                max-width: 260px !important;
+                padding: 36px 10px 10px 10px !important;
                 max-height: 50vh !important;
             }
 
@@ -376,7 +376,7 @@
                 width: 100% !important; 
             }
 
-            /* TASTO CHIUDI PICCOLO PER BIO E CONTACT */
+            /* TASTO CHIUDI PERFETTAMENTE INCASTRATO NELL'ANGOLO */
             .close-bio-btn {
                 display: flex !important;
                 align-items: center;
@@ -389,13 +389,13 @@
                 background-color: #b72216;
                 color: #ffffff;
                 border-radius: 50%;
-                font-size: 0.85rem;
+                font-size: 0.8rem;
                 font-weight: bold;
                 line-height: 1;
                 cursor: pointer;
                 z-index: 10000;
                 border: none;
-                box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+                box-shadow: 0 1px 4px rgba(0,0,0,0.5);
                 pointer-events: auto !important;
                 padding: 0;
             }
@@ -418,9 +418,17 @@
                 margin-bottom: 4px;
             }
 
+            /* SELEZIONI PULITE SENZA SOVRAPPOSIZIONI */
             .menu-contact li a {
                 font-size: 1rem;
                 padding: 10px 12px;
+                border-radius: 8px !important;
+                margin: 2px 0;
+            }
+
+            .menu-contact li:first-child a,
+            .menu-contact li:last-child a {
+                border-radius: 8px !important;
             }
         }
     </style>
@@ -449,7 +457,6 @@
                 });
             });
 
-            /* GESTIONE TASTI DI CHIUSURA PER TUTTI I MENU */
             const closeBtns = document.querySelectorAll('.close-bio-btn');
             closeBtns.forEach(btn => {
                 btn.addEventListener('click', function(e) {
