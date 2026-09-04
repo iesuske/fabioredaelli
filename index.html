@@ -151,8 +151,16 @@
             user-select: none;
         }
 
-        .dropdown:hover .dropdown-trigger,
-        .dropdown.active .dropdown-trigger { color: #000000; }
+        /* HOVER REALE SOLO SU DESKTOP */
+        @media (hover: hover) {
+            .dropdown:hover .dropdown-trigger { 
+                color: #000000; 
+            }
+        }
+
+        .dropdown.active .dropdown-trigger { 
+            color: #000000 !important; 
+        }
 
         /* TENDINA DESKTOP */
         .dropdown-menu {
@@ -279,7 +287,14 @@
                 display: block !important;
             }
 
-            /* RIPRISTINATO POSIZIONAMENTO ALTO SU MOBILE */
+            /* DISABILITA L'HOVER STICKY SU MOBILE */
+            .dropdown:hover .dropdown-trigger {
+                color: #ffffff;
+            }
+            .dropdown.active .dropdown-trigger {
+                color: #000000 !important;
+            }
+
             .master-canvas {
                 margin-top: -21.5px !important;
                 overflow: hidden;
@@ -293,7 +308,6 @@
                 mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 98%);
             }
 
-            /* TITOLO RIALZATO NELLA POSIZIONE ORIGINARIA */
             .header-anchor {
                 position: absolute;
                 top: calc(7.2% + 10px) !important; 
