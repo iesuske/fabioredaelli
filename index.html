@@ -153,14 +153,14 @@
         .dropdown:hover .dropdown-trigger,
         .dropdown.active .dropdown-trigger { color: #000000; }
 
-        /* TENDINE DESKTOP CON SFONDO TRASPARENTE E SFOCATO ORIGINALE */
+        /* TENDINA DESKTOP CON SFONDO TRASPARENTE SFOCATO ORIGINALE */
         .dropdown-menu {
             display: none;
             position: absolute;
             top: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
+            background: rgba(0, 0, 0, 0.75) !important;
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
             border-radius: 12px;
             list-style: none;
             padding: 0; 
@@ -202,7 +202,6 @@
             transform: translateX(-50%);
             width: calc(100% + 40px);
             text-align: center; 
-            overflow: hidden;
         }
 
         .dropdown:hover .dropdown-menu,
@@ -332,7 +331,7 @@
                 padding: 5px; 
             }
 
-            /* TENDINE MOBILE CON TRASPARENZA, BLUR E BARRA INVISIBILE */
+            /* TENDINE MOBILE CON TRASPARENZA VERA E SCROLL INVISIBILE */
             .dropdown-menu {
                 position: fixed !important;
                 top: 50% !important;
@@ -343,9 +342,9 @@
                 max-height: 68vh !important;
                 overflow-y: auto !important; 
                 overflow-x: hidden !important;
-                background: rgba(0, 0, 0, 0.85) !important;
-                backdrop-filter: blur(6px) !important;
-                -webkit-backdrop-filter: blur(6px) !important;
+                background: rgba(0, 0, 0, 0.75) !important;
+                backdrop-filter: blur(8px) !important;
+                -webkit-backdrop-filter: blur(8px) !important;
                 border-radius: 12px;
                 padding: 38px 14px 18px 14px !important; 
                 z-index: 9999 !important;
