@@ -176,16 +176,45 @@
             height: 12px;
         }
 
-        /* TENDINA BIO CON SCROLL INTERNO SOLO SE NECESSARIO */
+        /* TENDINA BIO CON SCROLLBAR DISCRETA E SOTTILE */
         .menu-about { 
             left: 50%;
             transform: translateX(-50%);
             text-align: center; 
             width: max-content;
             padding: 10px 0 18px 0; 
-            max-height: calc(85vh - 120px); /* Limita la tendina all'altezza della finestra */
-            overflow-y: auto;  /* Attiva lo scroll unicamente dentro la tendina */
+            max-height: calc(85vh - 120px);
+            overflow-y: auto;  
             overflow-x: hidden;
+
+            /* Firefox */
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+            transition: scrollbar-color 0.3s ease;
+        }
+
+        .menu-about:hover {
+            scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
+        }
+
+        /* Chrome, Safari, Edge, Opera */
+        .menu-about::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .menu-about::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .menu-about::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .menu-about:hover::-webkit-scrollbar-thumb,
+        .menu-about:active::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.5);
         }
 
         .menu-contact { 
