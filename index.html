@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page - Scrollbar Discreta</title>
+    <title>Home Page</title>
     <style>
         * {
             margin: 0;
@@ -12,36 +12,12 @@
             font-family: system-ui, -apple-system, sans-serif;
         }
 
-        /* --- Personalizzazione Scrollbar Discreta --- */
-        /* Per Chrome, Edge, Safari e Opera */
-        ::-webkit-scrollbar {
-            width: 6px;  /* Molto stretta */
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent; /* Sfondo trasparente */
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(0, 0, 0, 0.15); /* Colore semi-trasparente */
-            border-radius: 10px; /* Bordo arrotondato */
-            transition: background 0.3s ease;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(0, 0, 0, 0.35); /* Si scurisce leggermente solo al passaggio */
-        }
-
-        /* Per Firefox */
-        html {
-            scrollbar-width: thin; /* Dimensione ridotta */
-            scrollbar-color: rgba(0, 0, 0, 0.15) transparent; /* Cursor trasparente, track invisibile */
-        }
-        /* ------------------------------------------- */
-
         body {
             line-height: 1.6;
             color: #333;
             background-color: #f9f9f9;
         }
+
         header {
             background-color: #1a1a1a;
             color: #fff;
@@ -50,40 +26,52 @@
             justify-content: space-between;
             align-items: center;
         }
+
         nav ul {
             display: flex;
             list-style: none;
             gap: 1.5rem;
         }
+
         nav a {
             color: #fff;
             text-decoration: none;
             font-weight: 500;
         }
-        nav a:hover {
-            color: #0070f3;
-        }
-        .hero {
-            padding: 4rem 2rem;
-            text-align: center;
-            background-color: #fff;
-            border-bottom: 1px solid #eee;
-        }
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
+
         .container {
             max-width: 1100px;
             margin: 2rem auto;
             padding: 0 1rem;
-            min-height: 120vh; /* Forza lo scroll per mostrare la barra */
         }
+
+        /* --- Sezione Menu Bio --- */
+        .menu-bio {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            
+            /* Limite altezza e scorrimento */
+            max-height: 200px;
+            overflow-y: auto;
+
+            /* SCROLLBAR INVISIBILE (solo per il menu bio) */
+            -ms-overflow-style: none;  /* IE / Edge datati */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        /* Per Chrome, Safari e Edge */
+        .menu-bio::-webkit-scrollbar {
+            display: none;
+        }
+
         footer {
             text-align: center;
             padding: 2rem;
             background-color: #1a1a1a;
             color: #888;
+            margin-top: 3rem;
         }
     </style>
 </head>
@@ -96,24 +84,23 @@
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="#servizi">Servizi</a></li>
+                <li><a href="#bio">Bio</a></li>
                 <li><a href="#contatti">Contatti</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <section class="hero" id="home">
-            <h1>Benvenuto nel tuo nuovo progetto</h1>
-            <p>Scorri verso il basso per testare la scrollbar ultra-discreta.</p>
+    <main class="container">
+        <!-- Menu / Box Bio -->
+        <section class="menu-bio" id="bio">
+            <h2>Biografia</h2>
+            <p>Questo contenuto scorre verticalmente ma la barra di scorrimento è completamente invisibile.</p>
+            <p>Puoi continuare a scorrere con la rotellina del mouse o con il touch sul telefono.</p>
+            <p>Linea 3 della bio...</p>
+            <p>Linea 4 della bio...</p>
+            <p>Linea 5 della bio...</p>
+            <p>Fine della bio.</p>
         </section>
-
-        <div class="container">
-            <section id="servizi">
-                <h2>Cosa facciamo</h2>
-                <p>La barra laterale è stata ridotta a soli 6px ed è semi-trasparente, rendendola quasi invisibile finché non ci passi sopra con il mouse.</p>
-            </section>
-        </div>
     </main>
 
     <footer>
