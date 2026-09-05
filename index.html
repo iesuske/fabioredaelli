@@ -263,7 +263,6 @@
             border-top-right-radius: 12px;
         }
 
-        /* Spaziatura extra in basso e arrotondamento per LinkedIn su desktop */
         .menu-contact li:last-child a {
             padding: 10px 12px 20px 12px;
             border-bottom-left-radius: 12px;
@@ -272,15 +271,16 @@
 
         .close-bio-btn { display: none; }
 
+        /* Sfondo trasparente su Desktop per il layer Curiosity */
         .curiosity-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
             z-index: 99999;
             display: none;
             align-items: center;
@@ -603,7 +603,11 @@
                 background: #b72216 !important;
             }
 
+            /* Mantiene la tenda nera e il blur protetti e invariati su Mobile */
             .curiosity-overlay {
+                background: rgba(0, 0, 0, 0.85) !important;
+                backdrop-filter: blur(8px) !important;
+                -webkit-backdrop-filter: blur(8px) !important;
                 align-items: flex-start !important;
                 padding-top: 30px !important;
             }
