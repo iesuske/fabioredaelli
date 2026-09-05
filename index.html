@@ -684,6 +684,21 @@
                 });
             });
 
+            // Chiude il menu quando viene cliccato un link all'interno di Contact Me
+            const contactLinks = document.querySelectorAll('.menu-contact li a');
+            contactLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    dropdowns.forEach(d => d.classList.remove('active'));
+                });
+            });
+
+            // Pulisce e chiude tutti i menu quando si ritorna sulla scheda del browser (dopo un link esterno)
+            window.addEventListener('focus', function() {
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            });
+
             const closeBtns = document.querySelectorAll('.close-bio-btn');
             closeBtns.forEach(btn => {
                 btn.addEventListener('click', function(e) {
