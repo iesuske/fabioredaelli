@@ -482,7 +482,6 @@
                 text-align: center;
             }
 
-            /* Spazio tra la scritta e i menu ridotto nella versione mobile */
             .menus-container {
                 display: flex !important;
                 justify-content: space-between !important;
@@ -527,10 +526,11 @@
 
             .dropdown-menu::-webkit-scrollbar { display: none !important; }
 
+            /* Contatto mobile: larghezza ridotta e padding inferiore aumentato per dare più aria sotto LinkedIn */
             .dropdown-menu.menu-contact {
-                width: 52vw !important; 
-                max-width: 210px !important;
-                padding: 28px 0 0 0 !important;
+                width: 45vw !important; 
+                max-width: 175px !important;
+                padding: 28px 0 12px 0 !important;
                 max-height: 50vh !important;
                 top: 16vh !important;
                 transform: translateX(-50%) !important;
