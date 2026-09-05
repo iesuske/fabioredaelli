@@ -66,6 +66,7 @@
             width: 100%;
             text-align: center;
             pointer-events: auto; 
+            z-index: 100;
         }
 
         .brand-group {
@@ -423,7 +424,8 @@
             z-index: 1000;
         }
 
-        @media screen and (max-width: 900px) {
+        /* Regole unificate per Mobile e iPad (fino a 1024px) */
+        @media screen and (max-width: 1024px) {
             html, body {
                 height: 100vh !important;
                 height: 100dvh !important;
@@ -438,7 +440,7 @@
 
             .master-canvas {
                 margin-top: -21.5px !important;
-                overflow: hidden;
+                overflow: visible !important;
             }
 
             .bg-image {
@@ -469,112 +471,4 @@
             }
 
             .brand-title {
-                font-size: calc(6.2vw + 4px); 
-                white-space: normal;
-                line-height: 1.1;
-                transform: translateY(-1px) !important; 
-                text-align: center;
-            }
-
-            .menus-container {
-                display: flex !important;
-                justify-content: space-between !important;
-                align-items: center !important;
-                width: 100% !important;
-                margin-top: 0.6vw !important; 
-            }
-
-            .btn-works, .btn-curiosity {
-                font-size: 3.2vw !important; 
-                padding: 1px 6px !important; 
-                border-radius: 6px;
-            }
-
-            .dropdown-trigger {
-                font-size: 3.2vw !important; 
-                padding: 2px !important; 
-            }
-
-            .dropdown-menu {
-                position: fixed !important;
-                top: 16vh !important;
-                left: 50% !important;
-                transform: translateX(-50%) !important; 
-                width: 88vw !important; 
-                max-width: 360px !important;
-                max-height: 68vh !important;
-                overflow-y: auto !important; 
-                overflow-x: hidden !important;
-                background: rgba(0, 0, 0, 0.7) !important;
-                backdrop-filter: blur(8px) !important;
-                -webkit-backdrop-filter: blur(8px) !important;
-                border-radius: 12px;
-                overflow: hidden !important;
-                padding: 34px 16px 16px 16px !important; 
-                z-index: 9999 !important;
-                box-shadow: 0 10px 40px rgba(0,0,0,0.8);
-                box-sizing: border-box !important;
-                -ms-overflow-style: none !important;
-                scrollbar-width: none !important;
-            }
-
-            .dropdown-menu::-webkit-scrollbar { display: none !important; }
-
-            .dropdown-menu.menu-contact {
-                width: 45vw !important; 
-                max-width: 175px !important;
-                padding: 28px 0 0 0 !important; 
-                max-height: 50vh !important;
-                top: 16vh !important;
-                transform: translateX(-50%) !important;
-            }
-
-            .dropdown-menu.menu-contact .close-bio-btn {
-                top: 4px !important;
-                right: 4px !important;
-            }
-
-            .menu-about, .menu-contact { width: 100% !important; }
-
-            .close-bio-btn {
-                display: flex !important;
-                align-items: center;
-                justify-content: center;
-                position: absolute;
-                top: 8px;
-                right: 8px;
-                width: 20px;
-                height: 20px;
-                background-color: #b72216;
-                color: #ffffff;
-                border-radius: 50%;
-                font-size: 0.8rem;
-                font-weight: bold;
-                line-height: 1;
-                cursor: pointer;
-                z-index: 10000;
-                border: none;
-                box-shadow: 0 1px 4px rgba(0,0,0,0.5);
-                pointer-events: auto !important;
-                padding: 0;
-            }
-
-            .menu-about li {
-                font-size: 0.9rem;
-                line-height: 1.35;
-                white-space: normal !important; 
-                word-wrap: break-word !important; 
-                padding: 2px 0 !important; 
-                text-align: center !important;
-                width: 100% !important;
-                box-sizing: border-box !important;
-                text-indent: 0 !important;
-                padding-left: 0 !important;
-            }
-
-            .menu-about li:first-child {
-                font-weight: bold;
-                margin-bottom: 4px;
-            }
-
-            .menu-contact
+                font
