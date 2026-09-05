@@ -22,7 +22,6 @@
             font-display: block;
         }
 
-        /* Sbloccato per evitare che la grafica rimanga invisibile su iPad */
         .testo-custom { visibility: visible; opacity: 1; }
 
         * { 
@@ -651,14 +650,14 @@
             }
         }
 
-        /* --- MODIFICA DEDICATA ESCLUSIVAMENTE PER IPAD (AUMENTO SPAZIO SOTTO LA BANDA ROSSA) --- */
+        /* --- MODIFICA DEDICATA ESCLUSIVAMENTE PER IPAD (SPAZIO RIDOTTO) --- */
         @media only screen 
             and (min-device-width: 768px) 
             and (max-device-width: 1366px) 
             and (-webkit-min-device-pixel-ratio: 1) {
             
             .menus-container {
-                margin-top: 2.5vw !important; /* Spazio aumentato specificamente per iPad come richiesto */
+                margin-top: 1.3vw !important; /* Spazio ridotto rispetto a prima ma comunque distanziato */
             }
         }
     </style>
