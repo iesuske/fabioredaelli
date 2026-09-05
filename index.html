@@ -22,6 +22,13 @@
             font-display: block;
         }
 
+        .testo-custom { visibility: hidden; opacity: 0; }
+        body.fonts-loaded .testo-custom { 
+            visibility: visible; 
+            opacity: 1; 
+            transition: opacity 0.3s ease-in; 
+        }
+
         * { 
             box-sizing: border-box; 
             margin: 0; 
@@ -41,7 +48,7 @@
             position: relative;
             width: 100%;
             background-color: #fde3b8;
-            margin-top: 0; /* Correggiamo per evitare che tagli il testo in alto */
+            margin-top: -50px;
         }
 
         .bg-image {
@@ -66,7 +73,6 @@
             width: 100%;
             text-align: center;
             pointer-events: auto; 
-            z-index: 100;
         }
 
         .brand-group {
@@ -424,8 +430,7 @@
             z-index: 1000;
         }
 
-        /* La tua grafica originale per Mobile e iPad (fino a 1024px) */
-        @media screen and (max-width: 1024px) {
+        @media screen and (max-width: 900px) {
             html, body {
                 height: 100vh !important;
                 height: 100dvh !important;
@@ -439,8 +444,8 @@
             .dropdown.active .dropdown-trigger { color: #000000 !important; }
 
             .master-canvas {
-                margin-top: 0 !important;
-                overflow: visible !important;
+                margin-top: -21.5px !important;
+                overflow: hidden;
             }
 
             .bg-image {
@@ -483,7 +488,7 @@
                 justify-content: space-between !important;
                 align-items: center !important;
                 width: 100% !important;
-                margin-top: 1.8vw !important; 
+                margin-top: 0.6vw !important; 
             }
 
             .btn-works, .btn-curiosity {
@@ -640,10 +645,33 @@
 
             footer p { white-space: nowrap !important; }
         }
+
+        @media screen and (min-width: 768px) and (max-width: 900px) {
+            .curiosity-overlay {
+                padding-top: 125px !important; 
+            }
+            .curiosity-modal {
+                max-height: calc(100vh - 140px) !important;
+            }
+        }
     </style>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            let fontsLoadedCalled = false;
+            function showContent() {
+                if (!fontsLoadedCalled) {
+                    fontsLoadedCalled = true;
+                    document.body.classList.add('fonts-loaded');
+                }
+            }
+
+            if (document.fonts && document.fonts.ready) {
+                document.fonts.ready.then(showContent).catch(showContent);
+            }
+            
+            setTimeout(showContent, 1000);
+
             const dropdowns = document.querySelectorAll('.dropdown');
 
             dropdowns.forEach(dropdown => {
@@ -806,15 +834,15 @@
         <div class="text-layer">
             <div class="header-anchor">
                 <div class="brand-group">
-                    <h1 class="brand-title"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
+                    <h1 class="brand-title testo-custom"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
                     
                     <div class="menus-container">
-                        <a href="#" id="btn-curiosity" class="btn-curiosity">Curiosity</a>
-                        <a href="#" class="btn-works">Works!</a>
+                        <a href="#" id="btn-curiosity" class="btn-curiosity testo-custom">Curiosity</a>
+                        <a href="#" class="btn-works testo-custom">Works!</a>
 
                         <div class="dropdown">
-                            <a class="dropdown-trigger">Bio</a>
-                            <ul class="dropdown-menu menu-about">
+                            <a class="dropdown-trigger testo-custom">Bio</a>
+                            <ul class="dropdown-menu menu-about testo-custom">
                                 <button class="close-bio-btn" type="button">&times;</button>
                                 <li>Roma, 1964.</li>
                                 <li>Autore di fumetti, storyboard artist ed illustratore;</li>
@@ -835,8 +863,8 @@
                         </div>
 
                         <div class="dropdown">
-                            <a class="dropdown-trigger">Contact Me</a>
-                            <ul class="dropdown-menu menu-contact">
+                            <a class="dropdown-trigger testo-custom">Contact Me</a>
+                            <ul class="dropdown-menu menu-contact testo-custom">
                                 <button class="close-bio-btn" type="button">&times;</button>
                                 <li><a href="mailto:fabiohotstuff@gmail.com?subject=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli">E-mail</a></li>
                                 <li><a href="https://wa.me/393400670069" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
@@ -858,12 +886,12 @@
                 <iframe id="youtube-frame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
 
-            <div class="curiosity-text">
+            <div class="curiosity-text testo-custom">
                 <h3 id="curiosity-title">Behind The Scene</h3>
                 <p id="curiosity-desc">Un breve sguardo al processo creativo, agli storyboard e alle tecniche utilizzate durante la realizzazione delle opere di Fabio Redaelli.</p>
             </div>
 
-            <div class="curiosity-footer">
+            <div class="curiosity-footer testo-custom">
                 <span id="video-counter" class="video-counter">1 / 2</span>
                 <div class="nav-buttons">
                     <button id="btn-prev-video" type="button" class="curiosity-nav-btn">&laquo; Indietro</button>
