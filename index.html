@@ -222,9 +222,9 @@
         .menu-about::-webkit-scrollbar { display: none; }
 
         .menu-contact { 
-            left: 50%;
-            transform: translateX(-50%);
-            width: max-content;
+            left: 0;
+            width: 100%;
+            transform: none;
             text-align: center; 
         }
 
@@ -501,7 +501,6 @@
                 padding: 2px !important; 
             }
 
-            /* Entrambe le tendine mobile partono dalla stessa altezza fissa dall'alto */
             .dropdown-menu {
                 position: fixed !important;
                 top: 16vh !important;
@@ -532,7 +531,7 @@
                 max-width: 210px !important;
                 padding: 28px 0 0 0 !important;
                 max-height: 50vh !important;
-                top: 16vh !important; /* Allineata alla stessa altezza dall'alto di Bio */
+                top: 16vh !important;
                 transform: translateX(-50%) !important;
             }
 
@@ -652,7 +651,6 @@
                 document.fonts.ready.then(showContent).catch(showContent);
             }
             
-            // Fallback di sicurezza: se il browser blocca o ritarda il font, mostra tutto dopo 1 secondo
             setTimeout(showContent, 1000);
 
             const dropdowns = document.querySelectorAll('.dropdown');
