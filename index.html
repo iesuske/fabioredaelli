@@ -526,11 +526,11 @@
 
             .dropdown-menu::-webkit-scrollbar { display: none !important; }
 
-            /* Contatto mobile: larghezza ridotta e banda LinkedIn completamente rossa e estesa sotto */
+            /* Contatto mobile: larghezza ridotta e padding superiore per la spaziatura */
             .dropdown-menu.menu-contact {
                 width: 45vw !important; 
                 max-width: 175px !important;
-                padding: 28px 0 0 0 !important; /* Spaziatura spostata sul link per renderla rossa */
+                padding: 28px 0 0 0 !important; 
                 max-height: 50vh !important;
                 top: 16vh !important;
                 transform: translateX(-50%) !important;
@@ -592,12 +592,15 @@
                 width: 100%;
             }
 
-            /* Banda LinkedIn interamente rossa inclusa la spaziatura extra sotto */
+            /* LinkedIn mantiene lo sfondo scuro di default ma si colora di rosso all'hover includendo l'aria extra sotto */
             .menu-contact li:last-child a {
-                background: #b72216 !important;
                 padding: 10px 12px 20px 12px !important;
                 border-bottom-left-radius: 12px !important;
                 border-bottom-right-radius: 12px !important;
+            }
+
+            .menu-contact li:last-child a:hover {
+                background: #b72216 !important;
             }
 
             .curiosity-overlay {
