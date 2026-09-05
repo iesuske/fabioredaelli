@@ -263,7 +263,6 @@
             border-top-right-radius: 12px;
         }
 
-        /* Allungato di 2px verso il basso solo su desktop (da 9px a 11px di padding inferiore) */
         .menu-contact li:last-child a {
             padding: 9px 12px 11px 12px;
             border-bottom-left-radius: 12px;
@@ -431,7 +430,6 @@
             z-index: 1000;
         }
 
-        /* Esteso a 900px per coprire correttamente iPad in verticale (es. iPad Air/Pro fino a 834px) */
         @media screen and (max-width: 900px) {
             html, body {
                 height: 100vh !important;
@@ -604,12 +602,13 @@
                 background: #b72216 !important;
             }
 
+            /* Impostazione per iPhone (bloccata e invariata) */
             .curiosity-overlay {
                 background: transparent !important;
                 backdrop-filter: none !important;
                 -webkit-backdrop-filter: none !important;
                 align-items: flex-start !important;
-                padding-top: 95px !important; /* Posizionato un po' più in alto sotto i menu su iPad e iPhone */
+                padding-top: 95px !important; 
             }
 
             .curiosity-modal {
@@ -646,6 +645,16 @@
             }
 
             footer p { white-space: nowrap !important; }
+        }
+
+        /* Regola specifica per iPad (spostato più sotto rispetto all'iPhone) */
+        @media screen and (min-width: 768px) and (max-width: 900px) {
+            .curiosity-overlay {
+                padding-top: 125px !important; 
+            }
+            .curiosity-modal {
+                max-height: calc(100vh - 140px) !important;
+            }
         }
     </style>
 
@@ -762,142 +771,4 @@
                     btnPrevVideo.style.display = (currentVideoIndex === 0) ? 'none' : 'inline-block';
                 }
                 if (btnNextVideo) {
-                    btnNextVideo.style.display = (currentVideoIndex === videos.length - 1) ? 'none' : 'inline-block';
-                }
-            }
-
-            if (btnCuriosity && curiosityOverlay) {
-                btnCuriosity.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    dropdowns.forEach(d => d.classList.remove('active'));
-                    
-                    updateVideo(0);
-                    curiosityOverlay.classList.add('open');
-                });
-
-                function closeModalCuriosity() {
-                    curiosityOverlay.classList.remove('open');
-                    if (youtubeFrame) {
-                        youtubeFrame.src = "";
-                    }
-                }
-
-                if (closeCuriosity) {
-                    closeCuriosity.addEventListener('click', closeModalCuriosity);
-                }
-
-                if (btnNextVideo) {
-                    btnNextVideo.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        if (currentVideoIndex < videos.length - 1) {
-                            updateVideo(currentVideoIndex + 1);
-                        }
-                    });
-                }
-
-                if (btnPrevVideo) {
-                    btnPrevVideo.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        if (currentVideoIndex > 0) {
-                            updateVideo(currentVideoIndex - 1);
-                        }
-                    });
-                }
-
-                curiosityOverlay.addEventListener('click', function(e) {
-                    if (e.target === curiosityOverlay) {
-                        closeModalCuriosity();
-                    }
-                });
-
-                document.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape' && curiosityOverlay.classList.contains('open')) {
-                        closeModalCuriosity();
-                    }
-                });
-            }
-        });
-    </script>
-</head>
-<body>
-
-    <div class="master-canvas">
-        <img src="images/bg2.jpg?v=COVER" class="bg-image" alt="Artwork Fabio Redaelli">
-        <div class="text-layer">
-            <div class="header-anchor">
-                <div class="brand-group">
-                    <h1 class="brand-title testo-custom"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
-                    
-                    <div class="menus-container">
-                        <a href="#" id="btn-curiosity" class="btn-curiosity testo-custom">Curiosity</a>
-                        <a href="#" class="btn-works testo-custom">Works!</a>
-
-                        <div class="dropdown">
-                            <a class="dropdown-trigger testo-custom">Bio</a>
-                            <ul class="dropdown-menu menu-about testo-custom">
-                                <button class="close-bio-btn">&times;</button>
-                                
-                                <li>Roma, 1964.</li>
-                                <li>Autore di fumetti, storyboard artist ed illustratore;</li>
-                                <li>piu' di 30 anni di esperienza sul campo, alternando</li>
-                                <li>collaborazioni di ogni tipo, dai fumetti a locandine</li>
-                                <li>teatrali, da storyboards pubblicitari ai cartoni animati,</li>
-                                <li>ritagliandomi sempre uno spazio come autore. Docente</li>
-                                <li>della Scuola Romana dei fumetti con molteplici</li>
-                                <li>collaborazioni consolidate nel tempo, con mostre, stages</li>
-                                <li>e pubblicazioni di vari fumetti. Pubblicazioni: Newton &</li>
-                                <li>Compton, Comic Art, Acme Comics, Blue press, il Sistina,</li>
-                                <li>Giunti, Einaudi, AS Roma, Tipymedia, LAV, Il Romanista.</li>
-                                <li>Gli ultimi lavori comprendono la locandina teatrale del</li>
-                                <li>blockbuster "I sette Re di Roma" di Enrico Brignano</li>
-                                <li>e cinque volumi illustrati de l'Enciclopedia Romanista</li>
-                                <li>curata dal Direttore Editoriale Tonino Cagnucci.</li>
-                            </ul>
-                        </div>
-
-                        <div class="dropdown">
-                            <a class="dropdown-trigger testo-custom">Contact Me</a>
-                            <ul class="dropdown-menu menu-contact testo-custom">
-                                <button class="close-bio-btn">&times;</button>
-                                <li><a href="mailto:fabiohotstuff@gmail.com?subject=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli">E-mail</a></li>
-                                <li><a href="https://wa.me/393400670069" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
-                                <li><a href="https://www.instagram.com/dandelion64?igsi=MXJwZHhkNTlqcjl2MA==" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-                                <li><a href="https://www.linkedin.com/in/fabio-redaelli-18682219" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="curiosity-overlay" class="curiosity-overlay">
-        <div class="curiosity-modal">
-            <button class="close-curiosity-btn" id="close-curiosity">&times;</button>
-            
-            <div class="video-container">
-                <iframe id="youtube-frame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-
-            <div class="curiosity-text testo-custom">
-                <h3 id="curiosity-title">Behind The Scene</h3>
-                <p id="curiosity-desc">Un breve sguardo al processo creativo, agli storyboard e alle tecniche utilizzate durante la realizzazione delle opere di Fabio Redaelli.</p>
-            </div>
-
-            <div class="curiosity-footer testo-custom">
-                <span id="video-counter" class="video-counter">1 / 2</span>
-                <div class="nav-buttons">
-                    <button id="btn-prev-video" class="curiosity-nav-btn">&laquo; Indietro</button>
-                    <button id="btn-next-video" class="curiosity-nav-btn">Avanti &raquo;</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <p>Copyright &copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
-    </footer>
-
-</body>
-</html>
+                    btnNextVideo.style.display = (currentVideoIndex === videos.length - 1) ? 'none
