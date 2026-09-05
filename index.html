@@ -263,7 +263,9 @@
             border-top-right-radius: 12px;
         }
 
+        /* Spaziatura extra in basso e arrotondamento per LinkedIn su desktop */
         .menu-contact li:last-child a {
+            padding: 10px 12px 20px 12px;
             border-bottom-left-radius: 12px;
             border-bottom-right-radius: 12px;
         }
@@ -526,7 +528,6 @@
 
             .dropdown-menu::-webkit-scrollbar { display: none !important; }
 
-            /* Contatto mobile: larghezza ridotta e padding superiore per la spaziatura */
             .dropdown-menu.menu-contact {
                 width: 45vw !important; 
                 max-width: 175px !important;
@@ -592,7 +593,6 @@
                 width: 100%;
             }
 
-            /* LinkedIn mantiene lo sfondo scuro di default ma si colora di rosso all'hover includendo l'aria extra sotto */
             .menu-contact li:last-child a {
                 padding: 10px 12px 20px 12px !important;
                 border-bottom-left-radius: 12px !important;
@@ -684,7 +684,6 @@
                 });
             });
 
-            // Chiude il menu quando viene cliccato un link all'interno di Contact Me
             const contactLinks = document.querySelectorAll('.menu-contact li a');
             contactLinks.forEach(link => {
                 link.addEventListener('click', function() {
@@ -692,7 +691,6 @@
                 });
             });
 
-            // Pulisce e chiude tutti i menu quando si ritorna sulla scheda del browser (dopo un link esterno)
             window.addEventListener('focus', function() {
                 dropdowns.forEach(dropdown => {
                     dropdown.classList.remove('active');
