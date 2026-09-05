@@ -431,7 +431,8 @@
             z-index: 1000;
         }
 
-        @media screen and (max-width: 768px) {
+        /* Esteso a 900px per coprire correttamente iPad in verticale (es. iPad Air/Pro fino a 834px) */
+        @media screen and (max-width: 900px) {
             html, body {
                 height: 100vh !important;
                 height: 100dvh !important;
