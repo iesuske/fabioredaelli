@@ -650,14 +650,18 @@
             }
         }
 
-        /* --- MODIFICA DEDICATA ESCLUSIVAMENTE PER IPAD (SPAZIO RIDOTTO) --- */
+        /* --- MODIFICA DEDICATA ESCLUSIVAMENTE PER IPAD (Riduzione banda beige superiore) --- */
         @media only screen 
             and (min-device-width: 768px) 
             and (max-device-width: 1366px) 
             and (-webkit-min-device-pixel-ratio: 1) {
             
+            .header-anchor {
+                top: 4.5% !important; /* Alza il blocco titolo e menu per accorciare la banda beige su iPad senza alterare il resto della grafica */
+            }
+
             .menus-container {
-                margin-top: 1.3vw !important; /* Spazio ridotto rispetto a prima ma comunque distanziato */
+                margin-top: 1.3vw !important; 
             }
         }
     </style>
