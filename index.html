@@ -133,7 +133,6 @@
             color: #000000; 
         }
 
-        /* Stile bicolore ripristinato per il pulsante Works! */
         .btn-works-style {
             font-family: 'Lobster Regular', cursive;
             font-size: 1.5vw;
@@ -225,11 +224,20 @@
 
         .menu-about::-webkit-scrollbar { display: none; }
 
-        .menu-contact, .menu-works { 
+        .menu-contact { 
             left: 50%;
             transform: translateX(-50%);
             width: 180px;
             text-align: center; 
+        }
+
+        /* Tendina Works distanziata correttamente dalla fine della cornice del bottone */
+        .menu-works { 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px;
+            text-align: center; 
+            top: calc(100% + 6px);
         }
 
         .dropdown:hover .dropdown-menu,
@@ -914,7 +922,7 @@
                     <div class="menus-container">
                         <a href="#" id="btn-curiosity" class="btn-curiosity testo-custom">Curiosity</a>
                         
-                        <!-- MENU WORKS CON BOTTONE BICOLORE E LE 2 VOCI -->
+                        <!-- MENU WORKS CON DISTANZIATORE DALLA CORNICE -->
                         <div class="dropdown">
                             <a class="dropdown-trigger btn-works-style testo-custom">Works!</a>
                             <ul class="dropdown-menu menu-works testo-custom">
