@@ -133,27 +133,6 @@
             color: #000000; 
         }
 
-        .btn-works {
-            font-family: 'Lobster Regular', cursive;
-            font-size: 1.5vw;
-            color: #ffffff;
-            background-color: #b72216;
-            padding: 1px 10px;
-            border-radius: 8px;
-            text-decoration: none;
-            display: inline-block;
-            transition: background-color 0.2s ease, color 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
-        .btn-works:hover,
-        .btn-works:active {
-            background-color: #ffffff;
-            color: #000000; 
-        }
-
         .dropdown {
             position: relative;
             display: inline-block;
@@ -180,11 +159,6 @@
 
         .dropdown.active .dropdown-trigger { 
             color: #000000 !important; 
-        }
-
-        .dropdown.active .btn-works {
-            background-color: #ffffff !important;
-            color: #000000 !important;
         }
 
         .dropdown-menu {
@@ -226,20 +200,11 @@
 
         .menu-about::-webkit-scrollbar { display: none; }
 
-        .menu-contact { 
+        .menu-contact, .menu-works { 
             left: 50%;
             transform: translateX(-50%);
             width: 180px;
             text-align: center; 
-        }
-
-        /* Menu Works perfettamente allineato con margine corretto */
-        .menu-works {
-            left: 50%;
-            transform: translateX(-50%);
-            width: 195px; /* Leggermente più largo per contenere comodamente "Sketchs and B/N" */
-            text-align: center;
-            margin-top: 8px; 
         }
 
         .dropdown:hover .dropdown-menu,
@@ -259,8 +224,7 @@
             width: 100%;
         }
 
-        .menu-contact li a,
-        .menu-works li a {
+        .menu-contact li a, .menu-works li a {
             color: #ffffff;
             display: block;
             text-decoration: none;
@@ -272,20 +236,16 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        .menu-contact li a:hover,
-        .menu-works li a:hover,
-        .menu-works li a:active { 
+        .menu-contact li a:hover, .menu-works li a:hover { 
             background: #b72216; 
         }
 
-        .menu-contact li:first-child a,
-        .menu-works li:first-child a {
+        .menu-contact li:first-child a, .menu-works li:first-child a {
             border-top-left-radius: 12px;
             border-top-right-radius: 12px;
         }
 
-        .menu-contact li:last-child a,
-        .menu-works li:last-child a {
+        .menu-contact li:last-child a, .menu-works li:last-child a {
             padding: 10px 12px 20px 12px;
             border-bottom-left-radius: 12px;
             border-bottom-right-radius: 12px;
@@ -293,6 +253,7 @@
 
         .close-bio-btn { display: none; }
 
+        /* Overlay Comune (Curiosity & Works Player) */
         .curiosity-overlay {
             position: fixed;
             top: 0;
@@ -370,6 +331,26 @@
             width: 100%;
             height: 100%;
             border: 0;
+        }
+
+        /* Container specifico per le immagini nel player works */
+        .works-image-container {
+            position: relative;
+            width: 100%;
+            height: 55vh;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .works-image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 6px;
         }
 
         .curiosity-text {
@@ -452,30 +433,6 @@
             z-index: 1000;
         }
 
-        /* Visore Hover Desktop - Bilanciato, pulito e gradevole */
-        .hover-preview-box {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(18, 18, 18, 0.95);
-            padding: 12px;
-            border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.85);
-            z-index: 999999;
-            display: none;
-            pointer-events: none; 
-        }
-
-        .hover-preview-box img {
-            display: block;
-            max-width: 50vw;  /* Misura bilanciata: né troppo grande né piccola */
-            max-height: 65vh; /* Ottima visibilità sia verticale che orizzontale */
-            border-radius: 8px;
-            object-fit: contain;
-        }
-
         @media screen and (max-width: 768px) {
             html, body {
                 height: 100vh !important;
@@ -537,7 +494,7 @@
                 margin-top: 0.6vw !important; 
             }
 
-            .btn-works, .btn-curiosity {
+            .btn-curiosity {
                 font-size: 3.2vw !important; 
                 padding: 1px 6px !important; 
                 border-radius: 6px;
@@ -573,18 +530,9 @@
 
             .dropdown-menu::-webkit-scrollbar { display: none !important; }
 
-            .dropdown-menu.menu-contact {
+            .dropdown-menu.menu-contact, .dropdown-menu.menu-works {
                 width: 45vw !important; 
                 max-width: 175px !important;
-                padding: 28px 0 0 0 !important; 
-                max-height: 50vh !important;
-                top: 16vh !important;
-                transform: translateX(-50%) !important;
-            }
-
-            .dropdown-menu.menu-works {
-                width: 52vw !important; 
-                max-width: 200px !important;
                 padding: 28px 0 0 0 !important; 
                 max-height: 50vh !important;
                 top: 16vh !important;
@@ -640,8 +588,7 @@
                 margin-bottom: 4px;
             }
 
-            .menu-contact li a,
-            .menu-works li a {
+            .menu-contact li a, .menu-works li a {
                 font-size: 0.95rem;
                 padding: 10px 8px;
                 border-radius: 0 !important;
@@ -649,15 +596,13 @@
                 width: 100%;
             }
 
-            .menu-contact li:last-child a,
-            .menu-works li:last-child a {
+            .menu-contact li:last-child a, .menu-works li:last-child a {
                 padding: 10px 8px 20px 8px !important;
                 border-bottom-left-radius: 12px !important;
                 border-bottom-right-radius: 12px !important;
             }
 
-            .menu-contact li:last-child a:hover,
-            .menu-works li:last-child a:hover {
+            .menu-contact li:last-child a:hover, .menu-works li:last-child a:hover {
                 background: #b72216 !important;
             }
 
@@ -699,10 +644,6 @@
             }
 
             footer p { white-space: nowrap !important; }
-            
-            .hover-preview-box {
-                display: none !important; 
-            }
         }
     </style>
 
@@ -725,7 +666,7 @@
             const dropdowns = document.querySelectorAll('.dropdown');
 
             dropdowns.forEach(dropdown => {
-                const trigger = dropdown.querySelector('.dropdown-trigger, .btn-works');
+                const trigger = dropdown.querySelector('.dropdown-trigger');
 
                 if(trigger) {
                     trigger.addEventListener('click', function(e) {
@@ -748,12 +689,10 @@
                 });
             });
 
-            const contactLinks = document.querySelectorAll('.menu-contact li a, .menu-works li a');
-            contactLinks.forEach(link => {
+            const linkClosers = document.querySelectorAll('.menu-contact li a, .menu-works li a');
+            linkClosers.forEach(link => {
                 link.addEventListener('click', function() {
-                    if(!this.classList.contains('work-item')){
-                        dropdowns.forEach(d => d.classList.remove('active'));
-                    }
+                    dropdowns.forEach(d => d.classList.remove('active'));
                 });
             });
 
@@ -783,6 +722,7 @@
                 });
             });
 
+            // --- CURIOSITY VIDEOS ---
             const videos = [
                 {
                     id: "hlJmwrHEUQ0",
@@ -797,7 +737,6 @@
             ];
 
             let currentVideoIndex = 0;
-
             const btnCuriosity = document.getElementById('btn-curiosity');
             const curiosityOverlay = document.getElementById('curiosity-overlay');
             const closeCuriosity = document.getElementById('close-curiosity');
@@ -811,7 +750,6 @@
             function updateVideo(index) {
                 currentVideoIndex = index;
                 const video = videos[currentVideoIndex];
-                
                 if (youtubeFrame) {
                     youtubeFrame.src = "https://www.youtube-nocookie.com/embed/" + video.id + "?autoplay=1&rel=0";
                 }
@@ -819,12 +757,8 @@
                 if (curiosityDesc) curiosityDesc.textContent = video.desc;
                 if (videoCounter) videoCounter.textContent = (currentVideoIndex + 1) + " / " + videos.length;
 
-                if (btnPrevVideo) {
-                    btnPrevVideo.style.display = (currentVideoIndex === 0) ? 'none' : 'inline-block';
-                }
-                if (btnNextVideo) {
-                    btnNextVideo.style.display = (currentVideoIndex === videos.length - 1) ? 'none' : 'inline-block';
-                }
+                if (btnPrevVideo) btnPrevVideo.style.display = (currentVideoIndex === 0) ? 'none' : 'inline-block';
+                if (btnNextVideo) btnNextVideo.style.display = (currentVideoIndex === videos.length - 1) ? 'none' : 'inline-block';
             }
 
             if (btnCuriosity && curiosityOverlay) {
@@ -832,119 +766,111 @@
                     e.preventDefault();
                     e.stopPropagation();
                     dropdowns.forEach(d => d.classList.remove('active'));
-                    
                     updateVideo(0);
                     curiosityOverlay.classList.add('open');
                 });
 
                 function closeModalCuriosity() {
                     curiosityOverlay.classList.remove('open');
-                    if (youtubeFrame) {
-                        youtubeFrame.src = "";
-                    }
+                    if (youtubeFrame) youtubeFrame.src = "";
                 }
 
-                if (closeCuriosity) {
-                    closeCuriosity.addEventListener('click', closeModalCuriosity);
-                }
+                if (closeCuriosity) closeCuriosity.addEventListener('click', closeModalCuriosity);
 
                 if (btnNextVideo) {
                     btnNextVideo.addEventListener('click', function(e) {
                         e.stopPropagation();
-                        if (currentVideoIndex < videos.length - 1) {
-                            updateVideo(currentVideoIndex + 1);
-                        }
+                        if (currentVideoIndex < videos.length - 1) updateVideo(currentVideoIndex + 1);
                     });
                 }
 
                 if (btnPrevVideo) {
                     btnPrevVideo.addEventListener('click', function(e) {
                         e.stopPropagation();
-                        if (currentVideoIndex > 0) {
-                            updateVideo(currentVideoIndex - 1);
-                        }
+                        if (currentVideoIndex > 0) updateVideo(currentVideoIndex - 1);
                     });
                 }
 
                 curiosityOverlay.addEventListener('click', function(e) {
-                    if (e.target === curiosityOverlay) {
-                        closeModalCuriosity();
-                    }
+                    if (e.target === curiosityOverlay) closeModalCuriosity();
                 });
             }
 
-            // --- LOGICA VISORE WORKS (Con controllo immagini caricate) ---
-            const workItems = document.querySelectorAll('.work-item');
-            const hoverPreviewBox = document.getElementById('hover-preview-box');
-            const hoverPreviewImg = document.getElementById('hover-preview-img');
-            const workModalOverlay = document.getElementById('work-modal-overlay');
-            const workModalImg = document.getElementById('work-modal-img');
-            const closeWorkModal = document.getElementById('close-work-modal');
+            // --- WORKS PLAYER (Sketchs and B/N con w01, w02, w03) ---
+            const worksImages = [
+                { src: "images/w01.jpg", title: "Sketchs and B/N", desc: "Primo disegno della galleria Sketchs and B/N." },
+                { src: "images/w02.jpg", title: "Sketchs and B/N", desc: "Secondo disegno della galleria Sketchs and B/N." },
+                { src: "images/w03.jpg", title: "Sketchs and B/N", desc: "Terzo disegno della galleria Sketchs and B/N." }
+            ];
 
-            workItems.forEach(item => {
-                // 1. Hover: Mostra anteprima su Desktop solo se l'immagine esiste
-                item.addEventListener('mouseenter', function(e) {
-                    if (window.innerWidth > 768) {
-                        const imgSrc = this.getAttribute('data-image');
-                        if(imgSrc) {
-                            hoverPreviewImg.src = imgSrc;
-                            hoverPreviewImg.onload = function() {
-                                hoverPreviewBox.style.display = 'block';
-                            };
-                            hoverPreviewImg.onerror = function() {
-                                hoverPreviewBox.style.display = 'none';
-                            };
-                        }
-                    }
-                });
+            let currentWorkIndex = 0;
+            const btnSketchs = document.getElementById('btn-sketchs');
+            const worksOverlay = document.getElementById('works-overlay');
+            const closeWorksModal = document.getElementById('close-works-modal');
+            const worksImgElement = document.getElementById('works-modal-img');
+            const worksTitle = document.getElementById('works-title');
+            const worksDesc = document.getElementById('works-desc');
+            const worksCounter = document.getElementById('works-counter');
+            const btnNextWork = document.getElementById('btn-next-work');
+            const btnPrevWork = document.getElementById('btn-prev-work');
 
-                item.addEventListener('mouseleave', function(e) {
-                    if (window.innerWidth > 768) {
-                        hoverPreviewBox.style.display = 'none';
-                        hoverPreviewImg.src = '';
-                    }
-                });
+            function updateWorkImage(index) {
+                currentWorkIndex = index;
+                const work = worksImages[currentWorkIndex];
+                if (worksImgElement) worksImgElement.src = work.src;
+                if (worksTitle) worksTitle.textContent = work.title;
+                if (worksDesc) worksDesc.textContent = work.desc;
+                if (worksCounter) worksCounter.textContent = (currentWorkIndex + 1) + " / " + worksImages.length;
 
-                // 2. Click/Tap: Apre il visore touch-friendly su iPad/iPhone
-                item.addEventListener('click', function(e) {
+                if (btnPrevWork) btnPrevWork.style.display = (currentWorkIndex === 0) ? 'none' : 'inline-block';
+                if (btnNextWork) btnNextWork.style.display = (currentWorkIndex === worksImages.length - 1) ? 'none' : 'inline-block';
+            }
+
+            if (btnSketchs && worksOverlay) {
+                btnSketchs.addEventListener('click', function(e) {
                     e.preventDefault();
-                    e.stopPropagation(); 
-                    const imgSrc = this.getAttribute('data-image');
-                    
-                    if(imgSrc) {
-                        workModalImg.src = imgSrc;
-                        workModalOverlay.classList.add('open');
-                        
-                        dropdowns.forEach(d => d.classList.remove('active'));
-                        if (hoverPreviewBox) hoverPreviewBox.style.display = 'none';
-                    }
+                    e.stopPropagation();
+                    dropdowns.forEach(d => d.classList.remove('active'));
+                    updateWorkImage(0);
+                    worksOverlay.classList.add('open');
                 });
-            });
 
-            function closeWorkModalFunc() {
-                workModalOverlay.classList.remove('open');
-                setTimeout(() => { workModalImg.src = ''; }, 300);
-            }
+                function closeModalWorks() {
+                    worksOverlay.classList.remove('open');
+                    if (worksImgElement) worksImgElement.src = "";
+                }
 
-            if (closeWorkModal) {
-                closeWorkModal.addEventListener('click', closeWorkModalFunc);
-            }
+                if (closeWorksModal) closeWorksModal.addEventListener('click', closeModalWorks);
 
-            if (workModalOverlay) {
-                workModalOverlay.addEventListener('click', function(e) {
-                    if (e.target === workModalOverlay) {
-                        closeWorkModalFunc();
-                    }
+                if (btnNextWork) {
+                    btnNextWork.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        if (currentWorkIndex < worksImages.length - 1) updateWorkImage(currentWorkIndex + 1);
+                    });
+                }
+
+                if (btnPrevWork) {
+                    btnPrevWork.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        if (currentWorkIndex > 0) updateWorkImage(currentWorkIndex - 1);
+                    });
+                }
+
+                worksOverlay.addEventListener('click', function(e) {
+                    if (e.target === worksOverlay) closeModalWorks();
                 });
             }
 
+            // ESC Key Handler
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
                     if (curiosityOverlay && curiosityOverlay.classList.contains('open')) {
-                        closeModalCuriosity();
+                        curiosityOverlay.classList.remove('open');
+                        if (youtubeFrame) youtubeFrame.src = "";
                     }
-                    if (workModalOverlay && workModalOverlay.classList.contains('open')) {
-                        closeWorkModalFunc();
+                    if (worksOverlay && worksOverlay.classList.contains('open')) {
+                        worksOverlay.classList.remove('open');
+                        if (worksImgElement) worksImgElement.src = "";
                     }
                 }
             });
@@ -964,14 +890,13 @@
                     <div class="menus-container">
                         <a href="#" id="btn-curiosity" class="btn-curiosity testo-custom">Curiosity</a>
                         
-                        <!-- MENU WORKS CON "Sketchs and B/N" e nuovi percorsi -->
+                        <!-- MENU WORKS CON LE DUE VOCI -->
                         <div class="dropdown">
-                            <a class="dropdown-trigger btn-works testo-custom">Works!</a>
+                            <a class="dropdown-trigger testo-custom">Works!</a>
                             <ul class="dropdown-menu menu-works testo-custom">
                                 <button class="close-bio-btn">&times;</button>
-                                <li><a href="#" class="work-item" data-image="images/w01.jpg">Sketchs and B/N</a></li>
-                                <li><a href="#" class="work-item" data-image="images/w02.jpg">Work 2</a></li>
-                                <li><a href="#" class="work-item" data-image="images/w03.jpg">Work 3</a></li>
+                                <li><a href="#" id="btn-sketchs">Sketchs and B/N</a></li>
+                                <li><a href="#">Works2</a></li>
                             </ul>
                         </div>
 
@@ -1014,6 +939,7 @@
         </div>
     </div>
 
+    <!-- Modal Player per Curiosity (Video) -->
     <div id="curiosity-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-curiosity-btn" id="close-curiosity">&times;</button>
@@ -1037,16 +963,27 @@
         </div>
     </div>
 
-    <!-- Visore Anteprima Desktop (Hover) -->
-    <div id="hover-preview-box" class="hover-preview-box">
-        <img id="hover-preview-img" src="" alt="Anteprima Artwork">
-    </div>
+    <!-- Modal Player per Works (Sketchs and B/N con w01, w02, w03) -->
+    <div id="works-overlay" class="curiosity-overlay">
+        <div class="curiosity-modal">
+            <button class="close-curiosity-btn" id="close-works-modal">&times;</button>
+            
+            <div class="works-image-container">
+                <img id="works-modal-img" src="" alt="Sketchs and B/N">
+            </div>
 
-    <!-- Visore Modal per Dispositivi Mobili (Tap) o Click da Desktop -->
-    <div id="work-modal-overlay" class="curiosity-overlay">
-        <div class="curiosity-modal" style="padding: 24px 20px 16px 20px; align-items: center; background: rgba(18, 18, 18, 0.95);">
-            <button class="close-curiosity-btn" id="close-work-modal">&times;</button>
-            <img id="work-modal-img" src="" alt="Artwork Completo" style="max-width: 100%; max-height: 75vh; border-radius: 8px; object-fit: contain;">
+            <div class="curiosity-text testo-custom">
+                <h3 id="works-title">Sketchs and B/N</h3>
+                <p id="works-desc">Primo disegno della galleria Sketchs and B/N.</p>
+            </div>
+
+            <div class="curiosity-footer testo-custom">
+                <span id="works-counter" class="video-counter">1 / 3</span>
+                <div class="nav-buttons">
+                    <button id="btn-prev-work" class="curiosity-nav-btn">&laquo; Indietro</button>
+                    <button id="btn-next-work" class="curiosity-nav-btn">Avanti &raquo;</button>
+                </div>
+            </div>
         </div>
     </div>
 
