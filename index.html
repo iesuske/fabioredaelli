@@ -656,8 +656,13 @@
             and (max-device-width: 1366px) 
             and (-webkit-min-device-pixel-ratio: 1) {
             
+            /* Solleva il canvas e l'immagine di sfondo per chiudere lo spazio vuoto in alto su iPad */
+            .master-canvas {
+                margin-top: -85px !important; 
+            }
+
             .menus-container {
-                margin-top: 1.3vw !important; /* Spazio ridotto rispetto a prima ma comunque distanziato */
+                margin-top: 1.3vw !important; 
             }
         }
     </style>
