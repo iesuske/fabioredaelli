@@ -650,13 +650,12 @@
             }
         }
 
-        /* --- MODIFICA DEDICATA ESCLUSIVAMENTE PER IPAD --- */
+        /* --- MODIFICA DEDICATA ESCLUSIVAMENTE PER IPAD ( FATTA RISALIRE LEGGERMENTE ) --- */
         @media only screen 
             and (min-device-width: 768px) 
             and (max-device-width: 1366px) 
             and (-webkit-min-device-pixel-ratio: 1) {
             
-            /* Margine immagine a -40px come concordato */
             .master-canvas {
                 margin-top: -40px !important; 
             }
@@ -665,14 +664,14 @@
                 margin-top: 1.3vw !important; 
             }
 
-            /* Fà scendere ulteriormente il player Curiosity su iPad per metterlo completamente sotto i pulsanti */
+            /* Fà risalire leggermente il player Curiosity su iPad (portato a 165px) */
             .curiosity-overlay {
                 align-items: flex-start !important;
-                padding-top: 195px !important; 
+                padding-top: 165px !important; 
             }
 
             .curiosity-modal {
-                max-height: calc(100vh - 215px) !important;
+                max-height: calc(100vh - 185px) !important;
             }
         }
     </style>
