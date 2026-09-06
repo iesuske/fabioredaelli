@@ -133,6 +133,31 @@
             color: #000000; 
         }
 
+        /* Stile bicolore ripristinato per il pulsante Works! */
+        .btn-works-style {
+            font-family: 'Lobster Regular', cursive;
+            font-size: 1.5vw;
+            color: #ffffff;
+            background-color: #b72216;
+            padding: 1px 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            cursor: pointer;
+            white-space: nowrap;
+            user-select: none;
+            text-shadow: none !important;
+        }
+
+        .btn-works-style:hover,
+        .btn-works-style:active,
+        .dropdown.active .btn-works-style {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+        }
+
         .dropdown {
             position: relative;
             display: inline-block;
@@ -152,12 +177,12 @@
         }
 
         @media (hover: hover) {
-            .dropdown:hover .dropdown-trigger { 
+            .dropdown:hover .dropdown-trigger:not(.btn-works-style) { 
                 color: #000000; 
             }
         }
 
-        .dropdown.active .dropdown-trigger { 
+        .dropdown.active .dropdown-trigger:not(.btn-works-style) { 
             color: #000000 !important; 
         }
 
@@ -333,7 +358,6 @@
             border: 0;
         }
 
-        /* Container specifico per le immagini nel player works */
         .works-image-container {
             position: relative;
             width: 100%;
@@ -443,8 +467,8 @@
             .dropdown:hover .dropdown-menu { display: none !important; }
             .dropdown.active .dropdown-menu { display: block !important; }
 
-            .dropdown:hover .dropdown-trigger { color: #ffffff; }
-            .dropdown.active .dropdown-trigger { color: #000000 !important; }
+            .dropdown:hover .dropdown-trigger:not(.btn-works-style) { color: #ffffff; }
+            .dropdown.active .dropdown-trigger:not(.btn-works-style) { color: #000000 !important; }
 
             .master-canvas {
                 margin-top: -21.5px !important;
@@ -494,13 +518,13 @@
                 margin-top: 0.6vw !important; 
             }
 
-            .btn-curiosity {
+            .btn-curiosity, .btn-works-style {
                 font-size: 3.2vw !important; 
                 padding: 1px 6px !important; 
                 border-radius: 6px;
             }
 
-            .dropdown-trigger {
+            .dropdown-trigger:not(.btn-works-style) {
                 font-size: 3.2vw !important; 
                 padding: 2px !important; 
             }
@@ -890,9 +914,9 @@
                     <div class="menus-container">
                         <a href="#" id="btn-curiosity" class="btn-curiosity testo-custom">Curiosity</a>
                         
-                        <!-- MENU WORKS CON LE DUE VOCI -->
+                        <!-- MENU WORKS CON BOTTONE BICOLORE E LE 2 VOCI -->
                         <div class="dropdown">
-                            <a class="dropdown-trigger testo-custom">Works!</a>
+                            <a class="dropdown-trigger btn-works-style testo-custom">Works!</a>
                             <ul class="dropdown-menu menu-works testo-custom">
                                 <button class="close-bio-btn">&times;</button>
                                 <li><a href="#" id="btn-sketchs">Sketchs and B/N</a></li>
