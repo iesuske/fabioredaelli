@@ -312,7 +312,7 @@
 
         .curiosity-overlay.open { display: flex; }
 
-        /* Modale Dinamica / Adattiva (Si adatta all'immagine) */
+        /* Modale Dinamica / Adattiva */
         .curiosity-modal {
             pointer-events: auto;
             position: relative;
@@ -377,7 +377,7 @@
             border: 0;
         }
 
-        /* Player Immagini Fluid e Adattivo */
+        /* Player Immagini Fluid e Adattivo (Immagini ridimensionate più compatte) */
         .works-image-container {
             position: relative;
             width: 100%;
@@ -392,7 +392,7 @@
         .works-image-container img {
             display: block;
             max-width: 100%;
-            max-height: 65vh;
+            max-height: 50vh; /* Ridotto per evitare immagini troppo grandi su Mac/Desktop */
             width: auto;
             height: auto;
             object-fit: contain;
@@ -933,7 +933,6 @@
                     <div class="menus-container">
                         <a href="#" id="btn-curiosity" class="btn-curiosity testo-custom">Curiosity</a>
                         
-                        <!-- MENU WORKS -->
                         <div class="dropdown">
                             <a class="dropdown-trigger btn-works-style testo-custom">Works!</a>
                             <ul class="dropdown-menu menu-works testo-custom">
@@ -943,7 +942,6 @@
                             </ul>
                         </div>
 
-                        <!-- MENU BIO -->
                         <div class="dropdown">
                             <a class="dropdown-trigger testo-custom">Bio</a>
                             <ul class="dropdown-menu menu-about testo-custom">
@@ -967,7 +965,6 @@
                             </ul>
                         </div>
 
-                        <!-- MENU CONTACT ME -->
                         <div class="dropdown">
                             <a class="dropdown-trigger testo-custom">Contact Me</a>
                             <ul class="dropdown-menu menu-contact testo-custom">
@@ -984,7 +981,6 @@
         </div>
     </div>
 
-    <!-- Modal Player per Curiosity (Video) -->
     <div id="curiosity-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-curiosity-btn" id="close-curiosity">&times;</button>
@@ -1008,7 +1004,6 @@
         </div>
     </div>
 
-    <!-- Modal Player Dinamico Adattivo per Works (Sketchs and B/N) -->
     <div id="works-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-curiosity-btn" id="close-works-modal">&times;</button>
