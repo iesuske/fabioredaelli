@@ -199,16 +199,7 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.35);
         }
 
-        .dropdown-menu::before {
-            content: '';
-            position: absolute;
-            top: -12px;
-            left: 0;
-            width: 100%;
-            height: 12px;
-        }
-
-        /* Menu Bio (Tarato per compensare l'assenza di cornice) */
+        /* Menu Bio */
         .menu-about { 
             left: 50%;
             transform: translateX(-50%);
@@ -220,27 +211,30 @@
             overflow-x: hidden;
             -ms-overflow-style: none;
             scrollbar-width: none;
-            top: calc(100% + 2px); 
+            top: 100%;
+            margin-top: 2px;
         }
 
         .menu-about::-webkit-scrollbar { display: none; }
 
-        /* Menu Contact Me (Tarato per compensare l'assenza di cornice) */
+        /* Menu Contact Me */
         .menu-contact { 
             left: 50%;
             transform: translateX(-50%);
             width: 180px;
             text-align: center; 
-            top: calc(100% + 2px); 
+            top: 100%;
+            margin-top: 2px;
         }
 
-        /* Menu Works! (Distanza tarata sulla fine della cornice) */
+        /* Menu Works! (Risolto il bug dell'hover con top 100% e padding-top di sicurezza) */
         .menu-works { 
             left: 50%;
             transform: translateX(-50%);
             width: 180px;
             text-align: center; 
-            top: calc(100% + 6px);
+            top: 100%;
+            padding-top: 8px !important; 
         }
 
         .dropdown:hover .dropdown-menu,
@@ -289,26 +283,28 @@
 
         .close-bio-btn { display: none; }
 
-        /* Overlay Comune (Curiosity & Works Player) */
+        /* Overlay Comune (Sfondo trasparente rimosso per mostrare solo il player) */
         .curiosity-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: transparent !important; /* Rimossa la tendina nera */
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
             z-index: 99999;
             display: none;
             align-items: center;
             justify-content: center;
             padding: 15px;
+            pointer-events: none; /* Permette i click fuori dal modale se necessario */
         }
 
         .curiosity-overlay.open { display: flex; }
 
         .curiosity-modal {
+            pointer-events: auto; /* Riattiva i click sul box del player */
             position: relative;
             background: rgba(18, 18, 18, 0.95);
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -976,7 +972,7 @@
         </div>
     </div>
 
-    <!-- Modal Player per Curiosity (Video) -->
+    <!-- Modal Player per Curiosity (Video) - Sfondo trasparente -->
     <div id="curiosity-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-curiosity-btn" id="close-curiosity">&times;</button>
@@ -1000,7 +996,7 @@
         </div>
     </div>
 
-    <!-- Modal Player per Works (Sketchs and B/N con w01, w02, w03) -->
+    <!-- Modal Player per Works (Sketchs and B/N) - Sfondo trasparente -->
     <div id="works-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-curiosity-btn" id="close-works-modal">&times;</button>
