@@ -188,7 +188,6 @@
         .dropdown-menu {
             display: none;
             position: absolute;
-            top: 100%;
             background: rgba(0, 0, 0, 0.7) !important;
             backdrop-filter: blur(8px) !important;
             -webkit-backdrop-filter: blur(8px) !important;
@@ -209,6 +208,7 @@
             height: 12px;
         }
 
+        /* Menu Bio (Tarato per compensare l'assenza di cornice) */
         .menu-about { 
             left: 50%;
             transform: translateX(-50%);
@@ -220,18 +220,21 @@
             overflow-x: hidden;
             -ms-overflow-style: none;
             scrollbar-width: none;
+            top: calc(100% + 2px); 
         }
 
         .menu-about::-webkit-scrollbar { display: none; }
 
+        /* Menu Contact Me (Tarato per compensare l'assenza di cornice) */
         .menu-contact { 
             left: 50%;
             transform: translateX(-50%);
             width: 180px;
             text-align: center; 
+            top: calc(100% + 2px); 
         }
 
-        /* Tendina Works distanziata correttamente dalla fine della cornice del bottone */
+        /* Menu Works! (Distanza tarata sulla fine della cornice) */
         .menu-works { 
             left: 50%;
             transform: translateX(-50%);
@@ -922,7 +925,7 @@
                     <div class="menus-container">
                         <a href="#" id="btn-curiosity" class="btn-curiosity testo-custom">Curiosity</a>
                         
-                        <!-- MENU WORKS CON DISTANZIATORE DALLA CORNICE -->
+                        <!-- MENU WORKS -->
                         <div class="dropdown">
                             <a class="dropdown-trigger btn-works-style testo-custom">Works!</a>
                             <ul class="dropdown-menu menu-works testo-custom">
@@ -932,6 +935,7 @@
                             </ul>
                         </div>
 
+                        <!-- MENU BIO -->
                         <div class="dropdown">
                             <a class="dropdown-trigger testo-custom">Bio</a>
                             <ul class="dropdown-menu menu-about testo-custom">
@@ -955,6 +959,7 @@
                             </ul>
                         </div>
 
+                        <!-- MENU CONTACT ME -->
                         <div class="dropdown">
                             <a class="dropdown-trigger testo-custom">Contact Me</a>
                             <ul class="dropdown-menu menu-contact testo-custom">
