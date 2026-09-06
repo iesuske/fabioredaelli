@@ -674,13 +674,16 @@
                 max-height: calc(100vh - 185px) !important;
             }
 
-            /* IPAD IN ORIZZONTALE (Landscape): Abbassato leggermente (75px) */
+            /* IPAD IN ORIZZONTALE (Landscape): Banda beige ripristinata e player posizionato esattamente sui tasti */
             @media (orientation: landscape) {
+                .master-canvas {
+                    margin-top: 10px !important; 
+                }
                 .curiosity-overlay {
-                    padding-top: 75px !important; 
+                    padding-top: 58px !important; 
                 }
                 .curiosity-modal {
-                    max-height: calc(100vh - 95px) !important;
+                    max-height: calc(100vh - 78px) !important;
                 }
             }
         }
