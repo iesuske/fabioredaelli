@@ -650,15 +650,15 @@
             }
         }
 
-        /* --- MODIFICA DEDICATA ESCLUSIVAMENTE PER IPAD (SPAZIO RIDOTTO) --- */
+        /* --- MODIFICA DEDICATA ESCLUSIVAMENTE PER IPAD (SPAZIO RIDOTTO A MISURA) --- */
         @media only screen 
             and (min-device-width: 768px) 
             and (max-device-width: 1366px) 
             and (-webkit-min-device-pixel-ratio: 1) {
             
-            /* Solleva il canvas e l'immagine di sfondo per chiudere lo spazio vuoto in alto su iPad */
+            /* Ridotto il sollevamento a -68px per lasciare circa mezzo centimetro di spazio in alto */
             .master-canvas {
-                margin-top: -85px !important; 
+                margin-top: -68px !important; 
             }
 
             .menus-container {
