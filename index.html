@@ -292,7 +292,7 @@
 
         .close-bio-btn { display: none; }
 
-        /* Contenitore per Modale ottimizzato: posizionato a 17vh (via di mezzo) */
+        /* Contenitore per Modale: posizionato a 26vh per stare sotto i tasti */
         .curiosity-overlay {
             position: fixed;
             top: 0;
@@ -306,7 +306,7 @@
             display: none;
             align-items: flex-start;
             justify-content: center;
-            padding-top: 17vh; /* Impostato a 17vh per salire leggermente rispetto a prima */
+            padding-top: 26vh; /* Portato a 26vh per scendere sotto i pulsanti */
             padding-bottom: 20px;
             overflow-y: auto;
             pointer-events: none;
@@ -654,7 +654,7 @@
 
             .curiosity-overlay {
                 align-items: flex-start !important;
-                padding-top: 18vh !important;
+                padding-top: 26vh !important; /* Portato a 26vh anche su mobile */
             }
 
             .curiosity-modal {
