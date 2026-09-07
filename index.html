@@ -652,10 +652,15 @@
                 background: #b72216 !important;
             }
 
-            /* Contenitore per Modale Mobile portato a 12vh per sollevarlo */
+            /* Contenitore per Modale Mobile standard (Safari) */
             .curiosity-overlay {
                 align-items: flex-start !important;
-                padding-top: 12vh !important; 
+                padding-top: 10vh !important; 
+            }
+
+            /* CORREZIONE SPECIFICA PER CHROME SU iOS (Tira su il player per pareggiare Safari) */
+            body.ios-chrome .curiosity-overlay {
+                padding-top: 7.2vh !important;
             }
 
             .curiosity-modal {
@@ -696,6 +701,11 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // Rilevamento specifico per Chrome su iOS (CriOS)
+            if (/CriOS/i.test(navigator.userAgent)) {
+                document.body.classList.add('ios-chrome');
+            }
+
             let fontsLoadedCalled = false;
             function showContent() {
                 if (!fontsLoadedCalled) {
