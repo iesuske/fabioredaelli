@@ -292,7 +292,7 @@
 
         .close-bio-btn { display: none; }
 
-        /* Contenitore per Modale senza Sfondo Nero/Trasparente */
+        /* Contenitore per Modale */
         .curiosity-overlay {
             position: fixed;
             top: 0;
@@ -407,6 +407,9 @@
             margin-bottom: 4px;
             font-weight: normal;
             letter-spacing: 0.5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .curiosity-text p {
@@ -415,6 +418,9 @@
             line-height: 1.4;
             color: #e0e0e0;
             letter-spacing: 0.5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .curiosity-footer {
@@ -760,57 +766,57 @@
                 });
             });
 
-            // --- CURIOSITY VIDEOS (Senza duplicati e con testi contestualizzati unici) ---
+            // --- CURIOSITY VIDEOS (Titoli e descrizioni ultra-brevi, con ogni parola maiuscola) ---
             const videos = [
                 {
                     id: "hlJmwrHEUQ0",
-                    title: "Behind the scene",
-                    desc: "Un breve sguardo al processo creativo, agli storyboard e alle tecniche utilizzate durante la realizzazione delle opere di Fabio Redaelli"
+                    title: "Behind The Scene",
+                    desc: "Tecniche E Storyboard"
                 },
                 {
                     id: "nW3AkeZIBXg",
-                    title: "Tutorial Pin-up",
-                    desc: "Tutorial e dimostrazione pratica su come disegnare una Pin-up con la Scuola Romana dei Fumetti"
+                    title: "Tutorial Pin-Up",
+                    desc: "Disegno Digitale Rapido"
                 },
                 {
                     id: "BXQFbr0yC7o",
-                    title: "Teaser sketch digitale",
-                    desc: "Anteprima esclusiva dello sketch digitale realizzato da Fabio Redaelli per la Scuola Romana dei Fumetti"
+                    title: "Teaser Sketch Digitale",
+                    desc: "Anteprima Per La Scuola"
                 },
                 {
                     id: "ISi0kyhIU6I",
-                    title: "Sketch digitale",
-                    desc: "Sessione di lavoro incentrata sulle tecniche di disegno digitale avanzate"
+                    title: "Sketch Digitale",
+                    desc: "Sessione Di Lavoro"
                 },
                 {
                     id: "Imcto-4rXbY",
-                    title: "Sketch video",
-                    desc: "Sequenza di schizzi e bozzetti in movimento firmati da Fabio Redaelli"
+                    title: "Sketch Video",
+                    desc: "Bozze In Movimento"
                 },
                 {
                     id: "ol8Gkvw67OA",
-                    title: "Illustrazione digitale",
-                    desc: "Approfondimento visivo sulla creazione di un'illustrazione in digitale passo dopo passo"
+                    title: "Illustrazione Digitale",
+                    desc: "Creazione Passo Passo"
                 },
                 {
                     id: "NXXK3bk-FOw",
-                    title: "Teaser video",
-                    desc: "Breve clip promozionale che introduce il dietro le quinte dell'atelier artistico"
+                    title: "Teaser Video",
+                    desc: "Clip Promozionale Atelier"
                 },
                 {
                     id: "xaPc4luFJN8",
-                    title: "Pin-up speed drawing",
-                    desc: "Speed drawing digitale di una Pin-up a cura di Fabio Redaelli"
+                    title: "Pin-Up Speed Drawing",
+                    desc: "Speed Drawing D'Autore"
                 },
                 {
                     id: "mwyGY66xEq4",
-                    title: "Teaser tutorial Pin-up",
-                    desc: "Introduzione video al tutorial dettagliato sulla creazione di una Pin-up"
+                    title: "Teaser Tutorial Pin-Up",
+                    desc: "Presentazione Video"
                 },
                 {
                     id: "kp9wKGouuZU",
                     title: "Augusto Tuttofusto",
-                    desc: "Intervista a Fabio Redaelli sul personaggio 'Augusto Tuttofusto' per Il Romanista"
+                    desc: "Intervista Esclusiva"
                 }
             ];
 
@@ -872,9 +878,9 @@
 
             // --- WORKS PLAYER ---
             const worksImages = [
-                { src: "images/w01.jpg", title: "Sketchs and B/N", desc: "Primo disegno della galleria Sketchs and B/N" },
-                { src: "images/w02.jpg", title: "Sketchs and B/N", desc: "Secondo disegno della galleria Sketchs and B/N" },
-                { src: "images/w03.jpg", title: "Sketchs and B/N", desc: "Terzo disegno della galleria Sketchs and B/N" }
+                { src: "images/w01.jpg", title: "Sketchs And B/N", desc: "Primo Disegno Galleria" },
+                { src: "images/w02.jpg", title: "Sketchs And B/N", desc: "Secondo Disegno Galleria" },
+                { src: "images/w03.jpg", title: "Sketchs And B/N", desc: "Terzo Disegno Galleria" }
             ];
 
             let currentWorkIndex = 0;
@@ -964,7 +970,7 @@
                             <a class="dropdown-trigger btn-works-style testo-custom">Works!</a>
                             <ul class="dropdown-menu menu-works testo-custom">
                                 <button class="close-bio-btn">&times;</button>
-                                <li><a href="#" id="btn-sketchs">Sketchs and B/N</a></li>
+                                <li><a href="#" id="btn-sketchs">Sketchs And B/N</a></li>
                                 <li><a href="#">Works2</a></li>
                             </ul>
                         </div>
@@ -1018,8 +1024,8 @@
             </div>
 
             <div class="curiosity-text testo-custom">
-                <h3 id="curiosity-title">Behind the scene</h3>
-                <p id="curiosity-desc">Un breve sguardo al processo creativo, agli storyboard e alle tecniche utilizzate durante la realizzazione delle opere di Fabio Redaelli</p>
+                <h3 id="curiosity-title">Behind The Scene</h3>
+                <p id="curiosity-desc">Tecniche E Storyboard</p>
             </div>
 
             <div class="curiosity-footer testo-custom">
@@ -1038,12 +1044,12 @@
             <button class="close-curiosity-btn" id="close-works-modal">&times;</button>
             
             <div class="works-image-container">
-                <img id="works-modal-img" src="" alt="Sketchs and B/N">
+                <img id="works-modal-img" src="" alt="Sketchs And B/N">
             </div>
 
             <div class="curiosity-text testo-custom">
-                <h3 id="works-title">Sketchs and B/N</h3>
-                <p id="works-desc">Primo disegno della galleria Sketchs and B/N</p>
+                <h3 id="works-title">Sketchs And B/N</h3>
+                <p id="works-desc">Primo Disegno Galleria</p>
             </div>
 
             <div class="curiosity-footer testo-custom">
