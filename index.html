@@ -292,7 +292,7 @@
 
         .close-bio-btn { display: none; }
 
-        /* Contenitore per Modale ottimizzato sotto i menu */
+        /* Contenitore per Modale ottimizzato: spostato più in basso rispetto a prima */
         .curiosity-overlay {
             position: fixed;
             top: 0;
@@ -304,9 +304,9 @@
             -webkit-backdrop-filter: none !important;
             z-index: 99999;
             display: none;
-            align-items: flex-start; /* Posiziona in alto e scende in base al padding o offset */
+            align-items: flex-start;
             justify-content: center;
-            padding-top: 12vh; /* Si adatta dinamicamente partendo subito sotto la fascia dei menu su qualsiasi schermo */
+            padding-top: 22vh; /* Aumentato da 12vh a 22vh per farlo scendere più in basso su desktop */
             padding-bottom: 20px;
             overflow-y: auto;
             pointer-events: none;
@@ -654,7 +654,7 @@
 
             .curiosity-overlay {
                 align-items: flex-start !important;
-                padding-top: 18vh !important; /* Adattato per dispositivi mobili */
+                padding-top: 18vh !important; /* Invariato per mobile */
             }
 
             .curiosity-modal {
@@ -992,7 +992,7 @@
                                 <li>collaborazioni consolidate nel tempo, con mostre, stages</li>
                                 <li>e pubblicazioni di vari fumetti. Pubblicazioni: Newton &</li>
                                 <li>Compton, Comic Art, Acme Comics, Blue press, il Sistina,</li>
-                                <li>Giunti, Einaudi, AS Roma, Tipymedia, LAV, Il Romanista.</li>
+                                <li>Giunti, Einaudi, AS Roma, Tipymedia, LAV, “il Romanista”.</li>
                                 <li>Gli ultimi lavori comprendono la locandina teatrale del</li>
                                 <li>blockbuster "I sette Re di Roma" di Enrico Brignano</li>
                                 <li>e cinque volumi illustrati de l'Enciclopedia Romanista</li>
