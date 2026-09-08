@@ -854,7 +854,6 @@
                     e.preventDefault();
                     e.stopPropagation();
                     
-                    // Se il player di Works è aperto, non fare partire Curiosity
                     if (worksOverlay.classList.contains('open')) return;
 
                     closeModalWorks();
@@ -933,7 +932,6 @@
                     e.preventDefault();
                     e.stopPropagation();
                     
-                    // Se il player di Curiosity è aperto, non fare partire Works
                     if (curiosityOverlay.classList.contains('open')) return;
 
                     closeModalCuriosity();
@@ -987,7 +985,7 @@
                             <ul class="dropdown-menu menu-works testo-custom">
                                 <button class="close-bio-btn">&times;</button>
                                 <li><a href="#" id="btn-sketchs">Sketches And B/N</a></li>
-                                <li><a href="#">Works2</a></li>
+                                <li><a href="#">Color Artworks</a></li>
                             </ul>
                         </div>
 
