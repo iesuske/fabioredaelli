@@ -167,14 +167,14 @@
             align-items: center;
         }
 
-        /* Ponte invisibile per non far cadere lo stato :hover quando ci si sposta col mouse sul menu */
+        /* Ponte invisibile per coprire lo spazio vuoto tra il pulsante e la tendina */
         .dropdown::after {
             content: '';
             position: absolute;
             top: 100%;
             left: -10px;
             right: -10px;
-            height: 15px;
+            height: 20px;
             background: transparent;
             z-index: 99;
         }
@@ -248,8 +248,7 @@
             transform: translateX(-50%);
             width: 180px;
             text-align: center; 
-            top: 100%;
-            margin-top: 2px;
+            top: calc(100% + 6px); /* Distanziato esattamente come Bio e Contact Me */
         }
 
         .dropdown:hover .dropdown-menu,
@@ -793,7 +792,7 @@
                 });
             });
 
-            // --- FUNZIONI DI CHIUSURA ESCLUSIVA DEI PLAYER ---
+            // --- CHIUSURA ESCLUSIVA PLAYER ---
             const curiosityOverlay = document.getElementById('curiosity-overlay');
             const youtubeFrame = document.getElementById('youtube-frame');
             const worksOverlay = document.getElementById('works-overlay');
@@ -851,7 +850,7 @@
                 btnCuriosity.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
-                    closeModalWorks(); // Chiude il player Works se aperto
+                    closeModalWorks();
                     dropdowns.forEach(d => d.classList.remove('active'));
                     updateVideo(0);
                     curiosityOverlay.classList.add('open');
@@ -927,7 +926,7 @@
                 btnSketchs.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
-                    closeModalCuriosity(); // Chiude il player Curiosity se aperto
+                    closeModalCuriosity();
                     dropdowns.forEach(d => d.classList.remove('active'));
                     updateWorkImage(0);
                     worksOverlay.classList.add('open');
