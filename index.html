@@ -167,14 +167,14 @@
             align-items: center;
         }
 
-        /* Ponte invisibile per coprire lo spazio vuoto tra il pulsante e la tendina */
+        /* Ponte invisibile esteso per coprire lo stacco del mouse */
         .dropdown::after {
             content: '';
             position: absolute;
             top: 100%;
             left: -10px;
             right: -10px;
-            height: 20px;
+            height: 25px;
             background: transparent;
             z-index: 99;
         }
@@ -229,7 +229,7 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
             top: 100%;
-            margin-top: 2px;
+            margin-top: 3px;
         }
 
         .menu-about::-webkit-scrollbar { display: none; }
@@ -240,15 +240,17 @@
             width: 180px;
             text-align: center; 
             top: 100%;
-            margin-top: 2px;
+            margin-top: 3px;
         }
 
+        /* Distanza aggiustata per bilanciare visivamente la tendina di Works con Contact Me */
         .menu-works { 
             left: 50%;
             transform: translateX(-50%);
             width: 180px;
             text-align: center; 
-            top: calc(100% + 6px); /* Distanziato esattamente come Bio e Contact Me */
+            top: 100%;
+            margin-top: 14px;
         }
 
         .dropdown:hover .dropdown-menu,
@@ -599,6 +601,7 @@
                 max-height: 50vh !important;
                 top: 16vh !important;
                 transform: translateX(-50%) !important;
+                margin-top: 0 !important;
             }
 
             .dropdown-menu.menu-contact .close-bio-btn,
@@ -792,7 +795,6 @@
                 });
             });
 
-            // --- CHIUSURA ESCLUSIVA PLAYER ---
             const curiosityOverlay = document.getElementById('curiosity-overlay');
             const youtubeFrame = document.getElementById('youtube-frame');
             const worksOverlay = document.getElementById('works-overlay');
@@ -808,7 +810,6 @@
                 if (worksImgElement) worksImgElement.src = "";
             }
 
-            // --- CURIOSITY VIDEOS ---
             const videos = [
                 { id: "hlJmwrHEUQ0", title: "Behind The Scene", desc: "scopri le tecniche e lo storyboard originale" },
                 { id: "nW3AkeZIBXg", title: "Tutorial Pin-Up", desc: "guida pratica al disegno digitale passo dopo passo" },
@@ -873,7 +874,6 @@
                 }
             }
 
-            // --- WORKS PLAYER ---
             const worksImages = [
                 { src: "images/works01.jpg", title: "Sketchs And B/N", desc: "primo disegno selezionato dalla galleria" },
                 { src: "images/works02.jpg", title: "Sketchs And B/N", desc: "secondo disegno selezionato dalla galleria" },
