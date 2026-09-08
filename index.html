@@ -167,6 +167,18 @@
             align-items: center;
         }
 
+        /* Ponte invisibile per non far cadere lo stato :hover quando ci si sposta col mouse sul menu */
+        .dropdown::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: -10px;
+            right: -10px;
+            height: 15px;
+            background: transparent;
+            z-index: 99;
+        }
+
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
             font-size: 1.5vw; 
@@ -236,17 +248,8 @@
             transform: translateX(-50%);
             width: 180px;
             text-align: center; 
-            top: calc(100% + 6px);
-        }
-
-        .menu-works::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: 0;
-            width: 100%;
-            height: 10px;
-            background: transparent;
+            top: 100%;
+            margin-top: 2px;
         }
 
         .dropdown:hover .dropdown-menu,
@@ -790,70 +793,40 @@
                 });
             });
 
+            // --- FUNZIONI DI CHIUSURA ESCLUSIVA DEI PLAYER ---
+            const curiosityOverlay = document.getElementById('curiosity-overlay');
+            const youtubeFrame = document.getElementById('youtube-frame');
+            const worksOverlay = document.getElementById('works-overlay');
+            const worksImgElement = document.getElementById('works-modal-img');
+
+            function closeModalCuriosity() {
+                if (curiosityOverlay) curiosityOverlay.classList.remove('open');
+                if (youtubeFrame) youtubeFrame.src = "";
+            }
+
+            function closeModalWorks() {
+                if (worksOverlay) worksOverlay.classList.remove('open');
+                if (worksImgElement) worksImgElement.src = "";
+            }
+
             // --- CURIOSITY VIDEOS ---
             const videos = [
-                {
-                    id: "hlJmwrHEUQ0",
-                    title: "Behind The Scene",
-                    desc: "scopri le tecniche e lo storyboard originale"
-                },
-                {
-                    id: "nW3AkeZIBXg",
-                    title: "Tutorial Pin-Up",
-                    desc: "guida pratica al disegno digitale passo dopo passo"
-                },
-                {
-                    id: "BXQFbr0yC7o",
-                    title: "Teaser Sketch Digitale",
-                    desc: "anteprima esclusiva ideata per la scuola"
-                },
-                {
-                    id: "ISi0kyhIU6I",
-                    title: "Sketch Digitale",
-                    desc: "sessione di lavoro e studio artistico avanzato"
-                },
-                {
-                    id: "Imcto-4rXbY",
-                    title: "Sketch Video",
-                    desc: "sequenza dinamica di bozzetti in movimento"
-                },
-                {
-                    id: "ol8Gkvw67OA",
-                    title: "Illustrazione Digitale",
-                    desc: "processo creativo di un artwork completo"
-                },
-                {
-                    id: "NXXK3bk-FOw",
-                    title: "Teaser Video",
-                    desc: "clip promozionale ufficiale dell'atelier"
-                },
-                {
-                    id: "xaPc4luFJN8",
-                    title: "Pin-Up Speed Drawing",
-                    desc: "realizzazione rapida di una pin-up d'autore"
-                },
-                {
-                    id: "mwyGY66xEq4",
-                    title: "Teaser Tutorial Pin-Up",
-                    desc: "breve introduzione video al tutorial completo"
-                },
-                {
-                    id: "kp9wKGouuZU",
-                    title: "Augusto Tuttofusto",
-                    desc: "intervista speciale rilasciata per “il Romanista”"
-                },
-                {
-                    id: "H5DlDbpFQwo",
-                    title: "Mostra De Andrè, (Mollica - Rai1)",
-                    desc: "di Vincenzo Mollica, mostra di De Andrè (AP)"
-                }
+                { id: "hlJmwrHEUQ0", title: "Behind The Scene", desc: "scopri le tecniche e lo storyboard originale" },
+                { id: "nW3AkeZIBXg", title: "Tutorial Pin-Up", desc: "guida pratica al disegno digitale passo dopo passo" },
+                { id: "BXQFbr0yC7o", title: "Teaser Sketch Digitale", desc: "anteprima esclusiva ideata per la scuola" },
+                { id: "ISi0kyhIU6I", title: "Sketch Digitale", desc: "sessione di lavoro e studio artistico avanzato" },
+                { id: "Imcto-4rXbY", title: "Sketch Video", desc: "sequenza dinamica di bozzetti in movimento" },
+                { id: "ol8Gkvw67OA", title: "Illustrazione Digitale", desc: "processo creativo di un artwork completo" },
+                { id: "NXXK3bk-FOw", title: "Teaser Video", desc: "clip promozionale ufficiale dell'atelier" },
+                { id: "xaPc4luFJN8", title: "Pin-Up Speed Drawing", desc: "realizzazione rapida di una pin-up d'autore" },
+                { id: "mwyGY66xEq4", title: "Teaser Tutorial Pin-Up", desc: "breve introduzione video al tutorial completo" },
+                { id: "kp9wKGouuZU", title: "Augusto Tuttofusto", desc: "intervista speciale rilasciata per “il Romanista”" },
+                { id: "H5DlDbpFQwo", title: "Mostra De Andrè, (Mollica - Rai1)", desc: "di Vincenzo Mollica, mostra di De Andrè (AP)" }
             ];
 
             let currentVideoIndex = 0;
             const btnCuriosity = document.getElementById('btn-curiosity');
-            const curiosityOverlay = document.getElementById('curiosity-overlay');
             const closeCuriosity = document.getElementById('close-curiosity');
-            const youtubeFrame = document.getElementById('youtube-frame');
             const curiosityTitle = document.getElementById('curiosity-title');
             const curiosityDesc = document.getElementById('curiosity-desc');
             const videoCounter = document.getElementById('video-counter');
@@ -878,15 +851,11 @@
                 btnCuriosity.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
+                    closeModalWorks(); // Chiude il player Works se aperto
                     dropdowns.forEach(d => d.classList.remove('active'));
                     updateVideo(0);
                     curiosityOverlay.classList.add('open');
                 });
-
-                function closeModalCuriosity() {
-                    curiosityOverlay.classList.remove('open');
-                    if (youtubeFrame) youtubeFrame.src = "";
-                }
 
                 if (closeCuriosity) closeCuriosity.addEventListener('click', closeModalCuriosity);
 
@@ -905,7 +874,7 @@
                 }
             }
 
-            // --- WORKS PLAYER (PERCORSI CORRETTI PER GITHUB) ---
+            // --- WORKS PLAYER ---
             const worksImages = [
                 { src: "images/works01.jpg", title: "Sketchs And B/N", desc: "primo disegno selezionato dalla galleria" },
                 { src: "images/works02.jpg", title: "Sketchs And B/N", desc: "secondo disegno selezionato dalla galleria" },
@@ -923,7 +892,7 @@
                 { src: "images/works14.jpg", title: "Sketchs And B/N", desc: "quattordicesimo disegno selezionato dalla galleria" },
                 { src: "images/works15.jpg", title: "Sketchs And B/N", desc: "quindicesimo disegno selezionato dalla galleria" },
                 { src: "images/works16.jpg", title: "Sketchs And B/N", desc: "sedicesimo disegno selezionato dalla galleria" },
-                { src: "images/works17.jpg", title: "Sketchs And B/N", desc: "diciassettesimo disegno selezionato dalla galleria" },
+                { src: "images/works17.jpg", title: "Sketchs And B/N", desc: "diciassesimo disegno selezionato dalla galleria" },
                 { src: "images/works18.jpg", title: "Sketchs And B/N", desc: "diciottesimo disegno selezionato dalla galleria" },
                 { src: "images/works19.jpg", title: "Sketchs And B/N", desc: "diciannovesimo disegno selezionato dalla galleria" },
                 { src: "images/works20.jpg", title: "Sketchs And B/N", desc: "ventesimo disegno selezionato dalla galleria" },
@@ -935,9 +904,7 @@
 
             let currentWorkIndex = 0;
             const btnSketchs = document.getElementById('btn-sketchs');
-            const worksOverlay = document.getElementById('works-overlay');
             const closeWorksModal = document.getElementById('close-works-modal');
-            const worksImgElement = document.getElementById('works-modal-img');
             const worksTitle = document.getElementById('works-title');
             const worksDesc = document.getElementById('works-desc');
             const worksCounter = document.getElementById('works-counter');
@@ -960,15 +927,11 @@
                 btnSketchs.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
+                    closeModalCuriosity(); // Chiude il player Curiosity se aperto
                     dropdowns.forEach(d => d.classList.remove('active'));
                     updateWorkImage(0);
                     worksOverlay.classList.add('open');
                 });
-
-                function closeModalWorks() {
-                    worksOverlay.classList.remove('open');
-                    if (worksImgElement) worksImgElement.src = "";
-                }
 
                 if (closeWorksModal) closeWorksModal.addEventListener('click', closeModalWorks);
 
@@ -989,14 +952,8 @@
 
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
-                    if (curiosityOverlay && curiosityOverlay.classList.contains('open')) {
-                        curiosityOverlay.classList.remove('open');
-                        if (youtubeFrame) youtubeFrame.src = "";
-                    }
-                    if (worksOverlay && worksOverlay.classList.contains('open')) {
-                        worksOverlay.classList.remove('open');
-                        if (worksImgElement) worksImgElement.src = "";
-                    }
+                    closeModalCuriosity();
+                    closeModalWorks();
                 }
             });
 
