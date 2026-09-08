@@ -414,53 +414,6 @@
             z-index: 2;
         }
 
-        /* --- STILE CORNICE IMPERO ROMANO (ADATTIVA ORIZZONTALE/VERTICALE SOLO HIGHLIGHTS) --- */
-        .highlights-roman-frame {
-            position: relative;
-            width: 100%;
-            max-height: 65vh;
-            background: #2a241e;
-            border: 6px solid #4a3f35;
-            border-radius: 4px;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.9), 0 10px 30px rgba(0,0,0,0.7);
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .highlights-roman-frame::before {
-            content: '';
-            position: absolute;
-            top: 5px; left: 5px; right: 5px; bottom: 5px;
-            border: 3px dashed #8c7355;
-            pointer-events: none;
-            z-index: 10;
-        }
-
-        .fade-slide-img {
-            width: 100%;
-            height: auto;
-            max-height: 60vh;
-            object-fit: contain;
-            display: block;
-            margin: 0 auto;
-            padding: 14px;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-        }
-
-        .fade-slide-img.active {
-            opacity: 1;
-            position: relative;
-            z-index: 2;
-        }
-
         .curiosity-text {
             color: #ffffff;
             text-align: center;
@@ -852,6 +805,7 @@
             const colorOverlay = document.getElementById('color-overlay');
             const colorImgElement = document.getElementById('color-modal-img');
             const highlightsOverlay = document.getElementById('highlights-overlay');
+            const highlightsImgElement = document.getElementById('highlights-modal-img');
 
             function setModalOpenState(isOpen) {
                 dropdowns.forEach(d => {
@@ -882,14 +836,9 @@
                 setModalOpenState(false);
             }
 
-            let highlightInterval = null;
-
             function closeModalHighlights() {
                 if (highlightsOverlay) highlightsOverlay.classList.remove('open');
-                if (highlightInterval) {
-                    clearInterval(highlightInterval);
-                    highlightInterval = null;
-                }
+                if (highlightsImgElement) highlightsImgElement.src = "";
                 setModalOpenState(false);
             }
 
@@ -1141,29 +1090,31 @@
                 }
             }
 
-            // --- GESTIONE HIGHLIGHTS CON CORNICE ROMANA E FADE AUTOMATICO ---
+            // --- HIGHLIGHTS STANDARD (CON FRECCE E 2 IMMAGINI) ---
+            const highlightsImages = [
+                { src: "images/b01.jpg", title: "Highlights", desc: "prima opera in primo piano" },
+                { src: "images/b02.jpg", title: "Highlights", desc: "seconda opera in primo piano" }
+            ];
+
+            let currentHighlightIndex = 0;
             const btnHighlights = document.getElementById('btn-highlights');
             const closeHighlightsModal = document.getElementById('close-highlights-modal');
-            const slide1 = document.getElementById('highlight-slide-1');
-            const slide2 = document.getElementById('highlight-slide-2');
+            const highlightsTitle = document.getElementById('highlights-title');
+            const highlightsDesc = document.getElementById('highlights-desc');
+            const highlightsCounter = document.getElementById('highlights-counter');
+            const btnNextHighlight = document.getElementById('btn-next-highlight');
+            const btnPrevHighlight = document.getElementById('btn-prev-highlight');
 
-            function startHighlightFade() {
-                if (!slide1 || !slide2) return;
-                let activeSlide = 1;
-                slide1.classList.add('active');
-                slide2.classList.remove('active');
+            function updateHighlightImage(index) {
+                currentHighlightIndex = index;
+                const item = highlightsImages[currentHighlightIndex];
+                if (highlightsImgElement) highlightsImgElement.src = item.src;
+                if (highlightsTitle) highlightsTitle.textContent = item.title;
+                if (highlightsDesc) highlightsDesc.textContent = item.desc;
+                if (highlightsCounter) highlightsCounter.textContent = (currentHighlightIndex + 1) + " / " + highlightsImages.length;
 
-                highlightInterval = setInterval(() => {
-                    if (activeSlide === 1) {
-                        slide1.classList.remove('active');
-                        slide2.classList.add('active');
-                        activeSlide = 2;
-                    } else {
-                        slide2.classList.remove('active');
-                        slide1.classList.add('active');
-                        activeSlide = 1;
-                    }
-                }, 4000);
+                if (btnPrevHighlight) btnPrevHighlight.style.display = (currentHighlightIndex === 0) ? 'none' : 'inline-block';
+                if (btnNextHighlight) btnNextHighlight.style.display = (currentHighlightIndex === highlightsImages.length - 1) ? 'none' : 'inline-block';
             }
 
             if (btnHighlights && highlightsOverlay) {
@@ -1178,12 +1129,25 @@
                     closeModalColor();
                     dropdowns.forEach(d => d.classList.remove('active'));
                     setModalOpenState(true);
-                    
+                    updateHighlightImage(0);
                     highlightsOverlay.classList.add('open');
-                    startHighlightFade();
                 });
 
                 if (closeHighlightsModal) closeHighlightsModal.addEventListener('click', closeModalHighlights);
+
+                if (btnNextHighlight) {
+                    btnNextHighlight.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        if (currentHighlightIndex < highlightsImages.length - 1) updateHighlightImage(currentHighlightIndex + 1);
+                    });
+                }
+
+                if (btnPrevHighlight) {
+                    btnPrevHighlight.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        if (currentHighlightIndex > 0) updateHighlightImage(currentHighlightIndex - 1);
+                    });
+                }
             }
 
             document.addEventListener('keydown', function(e) {
@@ -1331,19 +1295,26 @@
         </div>
     </div>
 
-    <!-- Schermata Highlights con Cornice Romana Adattiva e Dissolvenza Automatica -->
+    <!-- Player Immagini Highlights (Standard) -->
     <div id="highlights-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-curiosity-btn" id="close-highlights-modal">&times;</button>
             
-            <div class="highlights-roman-frame">
-                <img id="highlight-slide-1" class="fade-slide-img" src="images/b01.jpg" alt="Highlights One">
-                <img id="highlight-slide-2" class="fade-slide-img" src="images/b02.jpg" alt="Highlights Two">
+            <div class="works-image-container">
+                <img id="highlights-modal-img" src="" alt="Highlights">
             </div>
 
-            <div class="curiosity-text testo-custom" style="margin-top: 8px;">
-                <h3>Highlights</h3>
-                <p>Brignano, I 7 Re di Roma</p>
+            <div class="curiosity-text testo-custom">
+                <h3 id="highlights-title">Highlights</h3>
+                <p id="highlights-desc">prima opera in primo piano</p>
+            </div>
+
+            <div class="curiosity-footer testo-custom">
+                <span id="highlights-counter" class="video-counter">1 / 2</span>
+                <div class="nav-buttons">
+                    <button id="btn-prev-highlight" class="curiosity-nav-btn">&laquo; Indietro</button>
+                    <button id="btn-next-highlight" class="curiosity-nav-btn">Avanti &raquo;</button>
+                </div>
             </div>
         </div>
     </div>
