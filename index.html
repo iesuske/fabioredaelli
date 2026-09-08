@@ -112,7 +112,6 @@
             margin-top: 0.8vw; 
         }
 
-        /* Pulsante Curiosity (comportamento standard invertito: hover bianco -> rosso) */
         .btn-curiosity {
             font-family: 'Lobster Regular', cursive;
             font-size: 1.5vw;
@@ -136,7 +135,6 @@
             color: #000000; 
         }
 
-        /* Pulsante Works! */
         .btn-works-style {
             font-family: 'Lobster Regular', cursive;
             font-size: 1.5vw;
@@ -194,7 +192,6 @@
             white-space: nowrap;
         }
 
-        /* Il cambio colore al passaggio del mouse continua a funzionare anche se il modale è aperto */
         @media (hover: hover) {
             .dropdown:hover .dropdown-trigger:not(.btn-works-style) { 
                 color: #000000; 
@@ -254,7 +251,6 @@
             margin-top: 12px;
         }
 
-        /* Regola fondamentale: se c'è .modal-open, le tendine NON si aprono MAI */
         .dropdown:hover:not(.modal-open) .dropdown-menu,
         .dropdown.active:not(.modal-open) .dropdown-menu { display: block !important; }
 
@@ -744,7 +740,6 @@
                     trigger.addEventListener('click', function(e) {
                         e.preventDefault();
                         e.stopPropagation();
-                        // Se il modale è aperto, blocca l'apertura della tendina
                         if (dropdown.classList.contains('modal-open')) return;
 
                         const isActive = dropdown.classList.contains('active');
@@ -798,7 +793,7 @@
                 dropdowns.forEach(d => {
                     if (isOpen) {
                         d.classList.add('modal-open');
-                        d.classList.remove('active'); // Chiude le tendine eventualmente aperte
+                        d.classList.remove('active');
                     } else {
                         d.classList.remove('modal-open');
                     }
@@ -858,6 +853,10 @@
                 btnCuriosity.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
+                    
+                    // Se il player di Works è aperto, non fare partire Curiosity
+                    if (worksOverlay.classList.contains('open')) return;
+
                     closeModalWorks();
                     setModalOpenState(true);
                     updateVideo(0);
@@ -933,6 +932,10 @@
                 btnSketchs.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
+                    
+                    // Se il player di Curiosity è aperto, non fare partire Works
+                    if (curiosityOverlay.classList.contains('open')) return;
+
                     closeModalCuriosity();
                     dropdowns.forEach(d => d.classList.remove('active'));
                     setModalOpenState(true);
