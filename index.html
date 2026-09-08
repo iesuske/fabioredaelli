@@ -400,7 +400,7 @@
             border-radius: 10px;
         }
 
-        /* VIGNETTATURA PIÙ EVIDENTE E ARTISTICA */
+        /* VIGNETTATURA AVANZATA (CONDIVISA TRA ENTRAMBI I PLAYER WORKS) */
         .works-image-container::after {
             content: '';
             position: absolute;
@@ -803,6 +803,8 @@
             const youtubeFrame = document.getElementById('youtube-frame');
             const worksOverlay = document.getElementById('works-overlay');
             const worksImgElement = document.getElementById('works-modal-img');
+            const colorOverlay = document.getElementById('color-overlay');
+            const colorImgElement = document.getElementById('color-modal-img');
 
             function setModalOpenState(isOpen) {
                 dropdowns.forEach(d => {
@@ -824,6 +826,12 @@
             function closeModalWorks() {
                 if (worksOverlay) worksOverlay.classList.remove('open');
                 if (worksImgElement) worksImgElement.src = "";
+                setModalOpenState(false);
+            }
+
+            function closeModalColor() {
+                if (colorOverlay) colorOverlay.classList.remove('open');
+                if (colorImgElement) colorImgElement.src = "";
                 setModalOpenState(false);
             }
 
@@ -869,9 +877,10 @@
                     e.preventDefault();
                     e.stopPropagation();
                     
-                    if (worksOverlay.classList.contains('open')) return;
+                    if (worksOverlay.classList.contains('open') || colorOverlay.classList.contains('open')) return;
 
                     closeModalWorks();
+                    closeModalColor();
                     setModalOpenState(true);
                     updateVideo(0);
                     curiosityOverlay.classList.add('open');
@@ -947,9 +956,10 @@
                     e.preventDefault();
                     e.stopPropagation();
                     
-                    if (curiosityOverlay.classList.contains('open')) return;
+                    if (curiosityOverlay.classList.contains('open') || colorOverlay.classList.contains('open')) return;
 
                     closeModalCuriosity();
+                    closeModalColor();
                     dropdowns.forEach(d => d.classList.remove('active'));
                     setModalOpenState(true);
                     updateWorkImage(0);
@@ -973,10 +983,89 @@
                 }
             }
 
+            // COLOR ARTWORKS (21 foto)
+            const colorImages = [
+                { src: "images/color01.jpg", title: "Color Artworks", desc: "prima illustrazione a colori selezionata" },
+                { src: "images/color02.jpg", title: "Color Artworks", desc: "seconda illustrazione a colori selezionata" },
+                { src: "images/color03.jpg", title: "Color Artworks", desc: "terza illustrazione a colori selezionata" },
+                { src: "images/color04.jpg", title: "Color Artworks", desc: "quarta illustrazione a colori selezionata" },
+                { src: "images/color05.jpg", title: "Color Artworks", desc: "quinta illustrazione a colori selezionata" },
+                { src: "images/color06.jpg", title: "Color Artworks", desc: "sesta illustrazione a colori selezionata" },
+                { src: "images/color07.jpg", title: "Color Artworks", desc: "settima illustrazione a colori selezionata" },
+                { src: "images/color08.jpg", title: "Color Artworks", desc: "ottava illustrazione a colori selezionata" },
+                { src: "images/color09.jpg", title: "Color Artworks", desc: "nona illustrazione a colori selezionata" },
+                { src: "images/color10.jpg", title: "Color Artworks", desc: "decima illustrazione a colori selezionata" },
+                { src: "images/color11.jpg", title: "Color Artworks", desc: "undicesima illustrazione a colori selezionata" },
+                { src: "images/color12.jpg", title: "Color Artworks", desc: "dodicesima illustrazione a colori selezionata" },
+                { src: "images/color13.jpg", title: "Color Artworks", desc: "tredicesima illustrazione a colori selezionata" },
+                { src: "images/color14.jpg", title: "Color Artworks", desc: "quattordicesima illustrazione a colori selezionata" },
+                { src: "images/color15.jpg", title: "Color Artworks", desc: "quindicesima illustrazione a colori selezionata" },
+                { src: "images/color16.jpg", title: "Color Artworks", desc: "sedicesima illustrazione a colori selezionata" },
+                { src: "images/color17.jpg", title: "Color Artworks", desc: "diciassettesima illustrazione a colori selezionata" },
+                { src: "images/color18.jpg", title: "Color Artworks", desc: "diciottesima illustrazione a colori selezionata" },
+                { src: "images/color19.jpg", title: "Color Artworks", desc: "diciannovesima illustrazione a colori selezionata" },
+                { src: "images/color20.jpg", title: "Color Artworks", desc: "ventesima illustrazione a colori selezionata" },
+                { src: "images/color21.jpg", title: "Color Artworks", desc: "ventunesima illustrazione a colori selezionata" }
+            ];
+
+            let currentColorIndex = 0;
+            const btnColor = document.getElementById('btn-color-artworks');
+            const closeColorModal = document.getElementById('close-color-modal');
+            const colorTitle = document.getElementById('color-title');
+            const colorDesc = document.getElementById('color-desc');
+            const colorCounter = document.getElementById('color-counter');
+            const btnNextColor = document.getElementById('btn-next-color');
+            const btnPrevColor = document.getElementById('btn-prev-color');
+
+            function updateColorImage(index) {
+                currentColorIndex = index;
+                const item = colorImages[currentColorIndex];
+                if (colorImgElement) colorImgElement.src = item.src;
+                if (colorTitle) colorTitle.textContent = item.title;
+                if (colorDesc) colorDesc.textContent = item.desc;
+                if (colorCounter) colorCounter.textContent = (currentColorIndex + 1) + " / " + colorImages.length;
+
+                if (btnPrevColor) btnPrevColor.style.display = (currentColorIndex === 0) ? 'none' : 'inline-block';
+                if (btnNextColor) btnNextColor.style.display = (currentColorIndex === colorImages.length - 1) ? 'none' : 'inline-block';
+            }
+
+            if (btnColor && colorOverlay) {
+                btnColor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    if (curiosityOverlay.classList.contains('open') || worksOverlay.classList.contains('open')) return;
+
+                    closeModalCuriosity();
+                    closeModalWorks();
+                    dropdowns.forEach(d => d.classList.remove('active'));
+                    setModalOpenState(true);
+                    updateColorImage(0);
+                    colorOverlay.classList.add('open');
+                });
+
+                if (closeColorModal) closeColorModal.addEventListener('click', closeModalColor);
+
+                if (btnNextColor) {
+                    btnNextColor.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        if (currentColorIndex < colorImages.length - 1) updateColorImage(currentColorIndex + 1);
+                    });
+                }
+
+                if (btnPrevColor) {
+                    btnPrevColor.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        if (currentColorIndex > 0) updateColorImage(currentColorIndex - 1);
+                    });
+                }
+            }
+
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
                     closeModalCuriosity();
                     closeModalWorks();
+                    closeModalColor();
                 }
             });
 
@@ -1000,7 +1089,7 @@
                             <ul class="dropdown-menu menu-works testo-custom">
                                 <button class="close-bio-btn">&times;</button>
                                 <li><a href="#" id="btn-sketchs">Sketches And B/N</a></li>
-                                <li><a href="#">Color Artworks</a></li>
+                                <li><a href="#" id="btn-color-artworks">Color Artworks</a></li>
                             </ul>
                         </div>
 
@@ -1084,6 +1173,29 @@
                 <div class="nav-buttons">
                     <button id="btn-prev-work" class="curiosity-nav-btn">&laquo; Indietro</button>
                     <button id="btn-next-work" class="curiosity-nav-btn">Avanti &raquo;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="color-overlay" class="curiosity-overlay">
+        <div class="curiosity-modal">
+            <button class="close-curiosity-btn" id="close-color-modal">&times;</button>
+            
+            <div class="works-image-container">
+                <img id="color-modal-img" src="" alt="Color Artworks">
+            </div>
+
+            <div class="curiosity-text testo-custom">
+                <h3 id="color-title">Color Artworks</h3>
+                <p id="color-desc">prima illustrazione a colori selezionata</p>
+            </div>
+
+            <div class="curiosity-footer testo-custom">
+                <span id="color-counter" class="video-counter">1 / 21</span>
+                <div class="nav-buttons">
+                    <button id="btn-prev-color" class="curiosity-nav-btn">&laquo; Indietro</button>
+                    <button id="btn-next-color" class="curiosity-nav-btn">Avanti &raquo;</button>
                 </div>
             </div>
         </div>
