@@ -414,17 +414,19 @@
             z-index: 2;
         }
 
-        /* --- STILE CORNICE IMPERO ROMANO (BRONZO PATINATO & INCISIONE) --- */
+        /* --- STILE CORNICE IMPERO ROMANO (ADATTIVA ORIZZONTALE/VERTICALE SOLO HIGHLIGHTS) --- */
         .highlights-roman-frame {
             position: relative;
             width: 100%;
-            padding-bottom: 60%;
-            height: 0;
+            max-height: 65vh;
             background: #2a241e;
             border: 6px solid #4a3f35;
             border-radius: 4px;
             box-shadow: inset 0 0 20px rgba(0,0,0,0.9), 0 10px 30px rgba(0,0,0,0.7);
             overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .highlights-roman-frame::before {
@@ -437,20 +439,25 @@
         }
 
         .fade-slide-img {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
+            height: auto;
+            max-height: 60vh;
             object-fit: contain;
+            display: block;
+            margin: 0 auto;
             padding: 14px;
             opacity: 0;
             transition: opacity 1.5s ease-in-out;
-            z-index: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
         }
 
         .fade-slide-img.active {
             opacity: 1;
+            position: relative;
             z-index: 2;
         }
 
@@ -1324,7 +1331,7 @@
         </div>
     </div>
 
-    <!-- Schermata Highlights con Cornice Romana e Dissolvenza Automatica -->
+    <!-- Schermata Highlights con Cornice Romana Adattiva e Dissolvenza Automatica -->
     <div id="highlights-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-curiosity-btn" id="close-highlights-modal">&times;</button>
@@ -1336,7 +1343,7 @@
 
             <div class="curiosity-text testo-custom" style="margin-top: 8px;">
                 <h3>Highlights</h3>
-                <p>Opere in primo piano</p>
+                <p>Brignano, I 7 Re di Roma</p>
             </div>
         </div>
     </div>
