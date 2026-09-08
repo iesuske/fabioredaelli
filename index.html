@@ -414,11 +414,11 @@
             z-index: 2;
         }
 
-        /* --- STILE CORNICE IMPERO ROMANO (OPZIONE 2: BRONZO PATINATO & INCISIONE) --- */
+        /* --- STILE CORNICE IMPERO ROMANO (BRONZO PATINATO & INCISIONE) --- */
         .highlights-roman-frame {
             position: relative;
             width: 100%;
-            padding-bottom: 60%; /* Proporzione bilanciata */
+            padding-bottom: 60%;
             height: 0;
             background: #2a241e;
             border: 6px solid #4a3f35;
@@ -431,7 +431,7 @@
             content: '';
             position: absolute;
             top: 5px; left: 5px; right: 5px; bottom: 5px;
-            border: 3px dashed #8c7355; /* Bordo interno con effetto incisione romana */
+            border: 3px dashed #8c7355;
             pointer-events: none;
             z-index: 10;
         }
@@ -443,9 +443,9 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            padding: 14px; /* Spazio per la cornice */
+            padding: 14px;
             opacity: 0;
-            transition: opacity 1.5s ease-in-out; /* Dissolvenza fluida */
+            transition: opacity 1.5s ease-in-out;
             z-index: 1;
         }
 
@@ -972,7 +972,7 @@
                 { src: "images/works14.jpg", title: "Sketches And B/N", desc: "quattordicesimo disegno selezionato dalla galleria" },
                 { src: "images/works15.jpg", title: "Sketches And B/N", desc: "quindicesimo disegno selezionato dalla galleria" },
                 { src: "images/works16.jpg", title: "Sketches And B/N", desc: "sedicesimo disegno selezionato dalla galleria" },
-                { src: "images/works17.jpg", title: "Sketches And B/N", desc: "diciassesimo disegno selezionato dalla galleria" },
+                { src: "images/works17.jpg", title: "Sketches And B/N", desc: "diciassettesimo disegno selezionato dalla galleria" },
                 { src: "images/works18.jpg", title: "Sketches And B/N", desc: "diciottesimo disegno selezionato dalla galleria" },
                 { src: "images/works19.jpg", title: "Sketches And B/N", desc: "diciannovesimo disegno selezionato dalla galleria" },
                 { src: "images/works20.jpg", title: "Sketches And B/N", desc: "ventesimo disegno selezionato dalla galleria" },
@@ -1143,11 +1143,9 @@
             function startHighlightFade() {
                 if (!slide1 || !slide2) return;
                 let activeSlide = 1;
-                // Imposta stato iniziale
                 slide1.classList.add('active');
                 slide2.classList.remove('active');
 
-                // Cambia immagine ogni 4 secondi con dissolvenza
                 highlightInterval = setInterval(() => {
                     if (activeSlide === 1) {
                         slide1.classList.remove('active');
@@ -1332,9 +1330,8 @@
             <button class="close-curiosity-btn" id="close-highlights-modal">&times;</button>
             
             <div class="highlights-roman-frame">
-                <!-- Sostituisci i nomi dei file con le tue due foto -->
-                <img id="highlight-slide-1" class="fade-slide-img" src="images/highlight01.jpg" alt="Highlights One">
-                <img id="highlight-slide-2" class="fade-slide-img" src="images/highlight02.jpg" alt="Highlights Two">
+                <img id="highlight-slide-1" class="fade-slide-img" src="images/b01.jpg" alt="Highlights One">
+                <img id="highlight-slide-2" class="fade-slide-img" src="images/b02.jpg" alt="Highlights Two">
             </div>
 
             <div class="curiosity-text testo-custom" style="margin-top: 8px;">
