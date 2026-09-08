@@ -193,12 +193,12 @@
         }
 
         @media (hover: hover) {
-            .dropdown:hover .dropdown-trigger:not(.btn-works-style) { 
+            .dropdown:hover:not(.modal-open) .dropdown-trigger:not(.btn-works-style) { 
                 color: #000000; 
             }
         }
 
-        .dropdown.active .dropdown-trigger:not(.btn-works-style) { 
+        .dropdown.active:not(.modal-open) .dropdown-trigger:not(.btn-works-style) { 
             color: #000000 !important; 
         }
 
@@ -251,8 +251,8 @@
             margin-top: 12px;
         }
 
-        .dropdown:hover .dropdown-menu,
-        .dropdown.active .dropdown-menu { display: block !important; }
+        .dropdown:hover:not(.modal-open) .dropdown-menu,
+        .dropdown.active:not(.modal-open) .dropdown-menu { display: block !important; }
 
         .dropdown-menu li {
             font-family: 'Lobster Regular', cursive;
@@ -493,8 +493,8 @@
                 overflow: hidden !important; 
             }
 
-            .dropdown:hover .dropdown-trigger:not(.btn-works-style) { color: #ffffff; }
-            .dropdown.active .dropdown-trigger:not(.btn-works-style) { color: #000000 !important; }
+            .dropdown:hover:not(.modal-open) .dropdown-trigger:not(.btn-works-style) { color: #ffffff; }
+            .dropdown.active:not(.modal-open) .dropdown-trigger:not(.btn-works-style) { color: #000000 !important; }
 
             .master-canvas {
                 margin-top: -21.5px !important;
@@ -743,6 +743,9 @@
                     trigger.addEventListener('click', function(e) {
                         e.preventDefault();
                         e.stopPropagation();
+                        // Se un modale (Curiosity o Works galleria) è aperto, blocca l'apertura delle tendine
+                        if (dropdown.classList.contains('modal-open')) return;
+
                         const isActive = dropdown.classList.contains('active');
                         dropdowns.forEach(other => other.classList.remove('active'));
                         if (!isActive) {
@@ -752,6 +755,7 @@
                 }
 
                 dropdown.addEventListener('mouseenter', function() {
+                    if (dropdown.classList.contains('modal-open')) return;
                     dropdowns.forEach(other => {
                         if (other !== dropdown) {
                             other.classList.remove('active');
@@ -798,14 +802,27 @@
             const worksOverlay = document.getElementById('works-overlay');
             const worksImgElement = document.getElementById('works-modal-img');
 
+            function setModalOpenState(isOpen) {
+                dropdowns.forEach(d => {
+                    if (isOpen) {
+                        d.classList.add('modal-open');
+                        d.classList.remove('active'); // Chiude eventuali tendine aperte
+                    } else {
+                        d.classList.remove('modal-open');
+                    }
+                });
+            }
+
             function closeModalCuriosity() {
                 if (curiosityOverlay) curiosityOverlay.classList.remove('open');
                 if (youtubeFrame) youtubeFrame.src = "";
+                setModalOpenState(false);
             }
 
             function closeModalWorks() {
                 if (worksOverlay) worksOverlay.classList.remove('open');
                 if (worksImgElement) worksImgElement.src = "";
+                setModalOpenState(false);
             }
 
             const videos = [
@@ -850,7 +867,7 @@
                     e.preventDefault();
                     e.stopPropagation();
                     closeModalWorks();
-                    dropdowns.forEach(d => d.classList.remove('active'));
+                    setModalOpenState(true);
                     updateVideo(0);
                     curiosityOverlay.classList.add('open');
                 });
@@ -926,6 +943,7 @@
                     e.stopPropagation();
                     closeModalCuriosity();
                     dropdowns.forEach(d => d.classList.remove('active'));
+                    setModalOpenState(true);
                     updateWorkImage(0);
                     worksOverlay.classList.add('open');
                 });
@@ -1017,6 +1035,7 @@
         </div>
     </div>
 
+    <!-- Player Video Curiosity -->
     <div id="curiosity-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-curiosity-btn" id="close-curiosity">&times;</button>
@@ -1040,6 +1059,7 @@
         </div>
     </div>
 
+    <!-- Player Immagini Works -->
     <div id="works-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-curiosity-btn" id="close-works-modal">&times;</button>
