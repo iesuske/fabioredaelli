@@ -112,6 +112,7 @@
             margin-top: 0.8vw; 
         }
 
+        /* Pulsante Curiosity (comportamento standard invertito: hover bianco -> rosso) */
         .btn-curiosity {
             font-family: 'Lobster Regular', cursive;
             font-size: 1.5vw;
@@ -135,6 +136,7 @@
             color: #000000; 
         }
 
+        /* Pulsante Works! */
         .btn-works-style {
             font-family: 'Lobster Regular', cursive;
             font-size: 1.5vw;
@@ -156,7 +158,7 @@
 
         .btn-works-style:hover,
         .btn-works-style:active,
-        .dropdown.active .btn-works-style {
+        .dropdown.active:not(.modal-open) .btn-works-style {
             background-color: #ffffff !important;
             color: #000000 !important;
         }
@@ -192,8 +194,9 @@
             white-space: nowrap;
         }
 
+        /* Il cambio colore al passaggio del mouse continua a funzionare anche se il modale è aperto */
         @media (hover: hover) {
-            .dropdown:hover:not(.modal-open) .dropdown-trigger:not(.btn-works-style) { 
+            .dropdown:hover .dropdown-trigger:not(.btn-works-style) { 
                 color: #000000; 
             }
         }
@@ -251,6 +254,7 @@
             margin-top: 12px;
         }
 
+        /* Regola fondamentale: se c'è .modal-open, le tendine NON si aprono MAI */
         .dropdown:hover:not(.modal-open) .dropdown-menu,
         .dropdown.active:not(.modal-open) .dropdown-menu { display: block !important; }
 
@@ -492,9 +496,6 @@
                 height: 100dvh !important;
                 overflow: hidden !important; 
             }
-
-            .dropdown:hover:not(.modal-open) .dropdown-trigger:not(.btn-works-style) { color: #ffffff; }
-            .dropdown.active:not(.modal-open) .dropdown-trigger:not(.btn-works-style) { color: #000000 !important; }
 
             .master-canvas {
                 margin-top: -21.5px !important;
@@ -743,7 +744,7 @@
                     trigger.addEventListener('click', function(e) {
                         e.preventDefault();
                         e.stopPropagation();
-                        // Se un modale (Curiosity o Works galleria) è aperto, blocca l'apertura delle tendine
+                        // Se il modale è aperto, blocca l'apertura della tendina
                         if (dropdown.classList.contains('modal-open')) return;
 
                         const isActive = dropdown.classList.contains('active');
@@ -753,15 +754,6 @@
                         }
                     });
                 }
-
-                dropdown.addEventListener('mouseenter', function() {
-                    if (dropdown.classList.contains('modal-open')) return;
-                    dropdowns.forEach(other => {
-                        if (other !== dropdown) {
-                            other.classList.remove('active');
-                        }
-                    });
-                });
             });
 
             const linkClosers = document.querySelectorAll('.menu-contact li a, .menu-works li a');
@@ -806,7 +798,7 @@
                 dropdowns.forEach(d => {
                     if (isOpen) {
                         d.classList.add('modal-open');
-                        d.classList.remove('active'); // Chiude eventuali tendine aperte
+                        d.classList.remove('active'); // Chiude le tendine eventualmente aperte
                     } else {
                         d.classList.remove('modal-open');
                     }
