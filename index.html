@@ -767,6 +767,18 @@
 
             footer p { white-space: nowrap !important; }
         }
+        
+        /* ========================================================= */
+        /* FIX: BORDO BEIGE IN ALTO SOLO PER MOBILE ORIZZONTALE      */
+        /* (Replicando la quantità esatta dello screenshot inviato)  */
+        /* ========================================================= */
+        @media screen and (max-width: 950px) and (orientation: landscape) {
+            .master-canvas {
+                /* Spinge il layout in basso per scoprire la striscia beige (circa 35px) */
+                margin-top: 35px !important; 
+            }
+        }
+        /* ========================================================= */
     </style>
 
     <script>
