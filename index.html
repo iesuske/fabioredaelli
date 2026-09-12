@@ -44,11 +44,12 @@
             overflow: hidden;
         }
 
+        /* Stato originale per Desktop */
         .master-canvas {
             position: relative;
             width: 100%;
             background-color: #fde3b8;
-            margin-top: 0; /* Inalterato su desktop/portrait */
+            margin-top: 0; 
         }
 
         .bg-image {
@@ -513,7 +514,7 @@
             }
 
             .master-canvas {
-                margin-top: 0 !important; /* Inalterato in verticale (portrait) */
+                margin-top: -18px !important; /* Sollevato solo in verticale su mobile */
                 overflow: hidden;
             }
 
@@ -767,16 +768,13 @@
             footer p { white-space: nowrap !important; }
         }
         
-        /* ========================================================= */
-        /* MARGINE TARATO A -35px SOLO PER CHROME/SAFARI (LANDSCAPE) */
-        /* ========================================================= */
+        /* Margine landscape mobile isolato (-35px) */
         @media screen and (max-width: 950px) and (orientation: landscape) {
             .master-canvas,
             body.ios-chrome .master-canvas {
-                margin-top: -35px !important; /* Valore intermedio ottimale solo per landscape mobile */
+                margin-top: -35px !important;
             }
         }
-        /* ========================================================= */
     </style>
 
     <script>
