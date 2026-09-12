@@ -644,7 +644,6 @@
                 margin: 0 !important;
             }
 
-            /* Pulsante di chiusura identico a quello del player Curiosity */
             .close-bio-btn {
                 display: flex !important;
                 align-items: center;
@@ -769,13 +768,12 @@
         }
         
         /* ========================================================= */
-        /* FIX: BORDO BEIGE IN ALTO SOLO PER MOBILE ORIZZONTALE      */
-        /* (Replicando la quantità esatta dello screenshot inviato)  */
+        /* FIX: BORDO BEIGE IN ALTO UNIFICATO PER SAFARI E CHROME (LANDSCAPE) */
         /* ========================================================= */
         @media screen and (max-width: 950px) and (orientation: landscape) {
-            .master-canvas {
-                /* Spinge il layout in basso per scoprire la striscia beige (circa 35px) */
-                margin-top: 35px !important; 
+            .master-canvas,
+            body.ios-chrome .master-canvas {
+                margin-top: 17px !important; 
             }
         }
         /* ========================================================= */
