@@ -79,30 +79,6 @@
             display: inline-block;
             width: auto;
             max-width: 100%;
-            position: relative;
-        }
-
-        /* BANDA ROSSA DESKTOP */
-        .red-stripe {
-            position: absolute;
-            left: -60px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 2.8vw;
-            background-color: #b72216;
-            z-index: 2;
-        }
-
-        /* RIGHETTA NERA DI APPOGGIO DELLA SCRITTA */
-        .black-baseline {
-            position: absolute;
-            left: -60px;
-            right: -60px;
-            bottom: -4px;
-            height: 4px;
-            background-color: #000000;
-            z-index: 1;
         }
 
         .brand-title {
@@ -117,9 +93,6 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             transform: translateY(2px);
-            position: relative;
-            z-index: 3;
-            padding-bottom: 4px;
         }
 
         @supports (-webkit-hyphens:none) {
@@ -136,9 +109,7 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            margin-top: 1.2vw; 
-            position: relative;
-            z-index: 3;
+            margin-top: 0.8vw; 
         }
 
         .btn-curiosity {
@@ -219,6 +190,16 @@
             align-items: center;
             user-select: none;
             white-space: nowrap;
+        }
+
+        @media (hover: hover) {
+            .dropdown:hover .dropdown-trigger:not(.btn-works-style) { 
+                color: #ffffff; 
+            }
+        }
+
+        .dropdown.active:not(.modal-open) .dropdown-trigger:not(.btn-works-style) { 
+            color: #ffffff !important; 
         }
 
         .dropdown-menu {
@@ -320,69 +301,6 @@
 
         .close-bio-btn { display: none; }
         .mobile-br { display: none; }
-
-        /* BLOCCO ORIENTAMENTO ORIZZONTALE */
-        #orientation-block {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: #fde3b8;
-            z-index: 9999999;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            text-align: center;
-            padding: 0;
-            overflow: hidden;
-        }
-
-        .orientation-canvas {
-            position: relative;
-            width: 100%;
-            height: 75px;
-            background-color: #b72216;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-        }
-
-        .orientation-canvas .brand-title {
-            font-size: 6vw !important;
-            transform: none !important;
-        }
-
-        .orientation-message-container {
-            padding: 40px 20px 0 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .orientation-sub-msg {
-            font-family: 'Lobster Regular', cursive;
-            font-size: 5vw;
-            color: #b72216;
-            line-height: 1.2;
-        }
-
-        .orientation-sub-desc {
-            font-family: 'Lobster Regular', cursive;
-            font-size: 3.8vw;
-            color: #000000;
-            line-height: 1.4;
-            max-width: 90vw;
-        }
-
-        @media screen and (max-width: 900px) and (orientation: landscape) {
-            #orientation-block {
-                display: flex !important;
-            }
-        }
 
         .curiosity-overlay {
             position: fixed;
@@ -626,28 +544,12 @@
                 padding: 0;
             }
 
-            /* BANDA ROSSA MOBILE */
-            .red-stripe {
-                left: -40px !important;
-                width: 32px !important;
-                height: 5.5vw !important;
-            }
-
-            /* RIGHETTA NERA MOBILE */
-            .black-baseline {
-                left: -40px !important;
-                right: -40px !important;
-                height: 3px !important;
-                bottom: -3px !important;
-            }
-
             .brand-title {
                 font-size: calc(6.2vw + 4px); 
                 white-space: normal;
                 line-height: 1.1;
                 transform: translateY(-1px) !important; 
                 text-align: center;
-                padding-bottom: 3px !important;
             }
 
             .menus-container {
@@ -655,7 +557,7 @@
                 justify-content: space-between !important;
                 align-items: center !important;
                 width: 100% !important;
-                margin-top: 0.8vw !important; 
+                margin-top: 0.6vw !important; 
             }
 
             .dropdown {
@@ -742,6 +644,7 @@
                 margin: 0 !important;
             }
 
+            /* Pulsante di chiusura identico a quello del player Curiosity */
             .close-bio-btn {
                 display: flex !important;
                 align-items: center;
@@ -1313,7 +1216,12 @@
             }
 
             document.addEventListener('keydown', function(e) {
-                e.key === 'Escape' && (closeModalCuriosity(), closeModalWorks(), closeModalColor(), closeModalHighlights());
+                if (e.key === 'Escape') {
+                    closeModalCuriosity();
+                    closeModalWorks();
+                    closeModalColor();
+                    closeModalHighlights();
+                }
             });
 
         });
@@ -1321,31 +1229,12 @@
 </head>
 <body>
 
-    <!-- BLOCCO ORIENTAMENTO ORIZZONTALE -->
-    <div id="orientation-block">
-        <div class="orientation-canvas">
-            <h1 class="brand-title testo-custom"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
-        </div>
-        <div class="orientation-message-container">
-            <div class="orientation-sub-msg testo-custom">dispositivo in orizzontale</div>
-            <div class="orientation-sub-desc testo-custom">per una corretta visualizzazione del sito si prega di ruotare il dispositivo in posizione verticale.</div>
-        </div>
-    </div>
-
-    <!-- CONTENUTO PRINCIPALE DESKTOP / VERTICALE -->
     <div class="master-canvas">
         <img src="images/bg2.jpg?v=COVER" class="bg-image" alt="Artwork Fabio Redaelli">
         <div class="text-layer">
             <div class="header-anchor">
                 <div class="brand-group">
-                    <!-- Banda rossa -->
-                    <div class="red-stripe"></div>
-                    <!-- Titolo -->
-                    <h1 class="brand-title testo-custom">
-                        <span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span>
-                    </h1>
-                    <!-- Righetta nera di appoggio -->
-                    <div class="black-baseline"></div>
+                    <h1 class="brand-title testo-custom"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
                     
                     <div class="menus-container">
                         <a href="#" id="btn-curiosity" class="btn-curiosity testo-custom">Curiosity</a>
@@ -1470,7 +1359,7 @@
         </div>
     </div>
 
-    <!-- Player Immagini Highlights -->
+    <!-- Player Immagini Highlights (Standard) -->
     <div id="highlights-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-curiosity-btn" id="close-highlights-modal">&times;</button>
