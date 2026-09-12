@@ -587,17 +587,17 @@
                 top: 16vh !important;
                 left: 50% !important;
                 transform: translateX(-50%) !important; 
-                width: 84vw !important; 
-                max-width: 330px !important;
-                max-height: 68vh !important;
+                width: 88vw !important; 
+                max-width: 360px !important;
+                max-height: 70vh !important;
                 overflow-y: auto !important; 
                 overflow-x: hidden !important;
-                background: rgba(0, 0, 0, 0.7) !important;
+                background: rgba(0, 0, 0, 0.75) !important;
                 backdrop-filter: blur(8px) !important;
                 -webkit-backdrop-filter: blur(8px) !important;
                 border-radius: 12px;
                 overflow: hidden !important;
-                padding: 34px 14px 16px 14px !important; 
+                padding: 34px 16px 20px 16px !important; 
                 z-index: 9999 !important;
                 box-shadow: 0 10px 40px rgba(0,0,0,0.8);
                 box-sizing: border-box !important;
@@ -616,8 +616,8 @@
             }
 
             .dropdown-menu.menu-about {
-                padding-top: 24px !important;
-                padding-bottom: 24px !important;
+                padding-top: 28px !important;
+                padding-bottom: 28px !important;
                 scrollbar-width: thin;
                 scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
                 transition: scrollbar-color 0.3s ease;
@@ -665,15 +665,13 @@
             }
 
             .menu-about li {
-                font-size: 0.9rem;
-                line-height: 1.35;
-                white-space: normal !important; 
-                word-wrap: break-word !important; 
-                padding: 2px 4px !important; 
+                font-size: 1.05rem;
+                line-height: 1.25;
+                white-space: nowrap !important; 
+                padding: 1px 0 !important; 
                 text-align: center !important; 
                 width: 100% !important;
                 box-sizing: border-box !important;
-                text-indent: 0 !important;
             }
 
             .menu-about li:first-child {
@@ -688,6 +686,7 @@
                 border-radius: 0 !important;
                 margin: 0;
                 width: 100%;
+                white-space: nowrap !important;
             }
 
             .menu-contact li:last-child a, .menu-works li:last-child a {
@@ -781,7 +780,6 @@
                         if (!isActive) {
                             dropdown.classList.add('active');
                             
-                            // Gestione comparsa rapida della scrollbar all'apertura del box Bio
                             const menuAbout = dropdown.querySelector('.menu-about');
                             if (menuAbout) {
                                 menuAbout.style.scrollbarColor = "rgba(255, 255, 255, 0.4) transparent";
@@ -795,7 +793,6 @@
                 }
             });
 
-            // Mostra la scrollbar per 1.5 secondi quando l'utente effettua lo scroll
             const menuAboutEl = document.querySelector('.menu-about');
             if (menuAboutEl) {
                 menuAboutEl.addEventListener('scroll', function() {
