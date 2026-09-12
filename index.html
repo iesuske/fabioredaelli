@@ -582,6 +582,7 @@
                 vertical-align: middle !important;
             }
 
+            /* CORRETTO: Allineamento e centratura rigorosa del menu mobile */
             .dropdown-menu {
                 position: fixed !important;
                 top: 16vh !important;
@@ -596,14 +597,13 @@
                 backdrop-filter: blur(8px) !important;
                 -webkit-backdrop-filter: blur(8px) !important;
                 border-radius: 12px;
-                overflow: hidden !important;
                 padding: 34px 16px 20px 16px !important; 
                 z-index: 9999 !important;
                 box-shadow: 0 10px 40px rgba(0,0,0,0.8);
                 box-sizing: border-box !important;
+                text-align: center !important;
             }
 
-            /* Barre di scorrimento ultra-sottili e a scomparsa per dispositivi mobili */
             .dropdown-menu::-webkit-scrollbar {
                 width: 3px !important;
             }
@@ -621,6 +621,7 @@
                 scrollbar-width: thin;
                 scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
                 transition: scrollbar-color 0.3s ease;
+                text-align: center !important;
             }
 
             .dropdown-menu.menu-contact, .dropdown-menu.menu-works {
@@ -664,14 +665,17 @@
                 padding: 0;
             }
 
+            /* CORRETTO: Forzatura righe centrate e nessun padding laterale anomalo */
             .menu-about li {
                 font-size: 1.05rem;
                 line-height: 1.25;
                 white-space: nowrap !important; 
-                padding: 1px 0 !important; 
+                padding: 2px 0 !important; 
+                margin: 0 auto !important;
                 text-align: center !important; 
                 width: 100% !important;
                 box-sizing: border-box !important;
+                display: block !important;
             }
 
             .menu-about li:first-child {
@@ -687,6 +691,7 @@
                 margin: 0;
                 width: 100%;
                 white-space: nowrap !important;
+                text-align: center !important;
             }
 
             .menu-contact li:last-child a, .menu-works li:last-child a {
