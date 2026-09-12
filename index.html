@@ -284,6 +284,7 @@
             background: #b72216; 
         }
 
+        /* Nuova regola solo ed esclusivamente per Highlights! */
         #btn-highlights:hover {
             color: #000000 !important;
         }
@@ -648,25 +649,24 @@
                 padding: 0;
             }
 
-            /* CORRETTO: Allineamento e spaziatura pulita per il menu Bio su mobile */
             .menu-about li {
-                font-size: 0.88rem !important;
-                line-height: 1.35 !important;
+                font-size: 0.9rem;
+                line-height: 1.35;
                 white-space: normal !important; 
                 word-wrap: break-word !important; 
-                overflow-wrap: break-word !important;
-                padding: 3px 6px !important; 
-                text-align: center !important;
+                padding: 2px 0 !important; 
+                text-align: justify !important; /* Testo giustificato solo per mobile */
+                text-justify: inter-word !important; /* Ottimizza la spaziatura tra le parole */
                 width: 100% !important;
                 box-sizing: border-box !important;
                 text-indent: 0 !important;
-                padding-left: 6px !important;
-                padding-right: 6px !important;
+                padding-left: 0 !important;
             }
 
             .menu-about li:first-child {
                 font-weight: bold;
                 margin-bottom: 4px;
+                text-align: center !important; /* Mantiene centrato il titolo o la prima riga se preferito, oppure rimuovilo se vuoi giustificato anche quello */
             }
 
             .menu-contact li a, .menu-works li a {
@@ -1097,6 +1097,7 @@
                 }
             }
 
+            // --- HIGHLIGHTS STANDARD (CON FRECCE E 2 IMMAGINI) ---
             const highlightsImages = [
                 { src: "images/b01.jpg", title: "Highlights!", desc: "Enrico Brignano in “I 7 Re di Roma”" },
                 { src: "images/b02.jpg", title: "Highlights!", desc: "Enrico Brignano in “I 7 Re di Roma”" }
