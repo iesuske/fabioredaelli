@@ -284,7 +284,6 @@
             background: #b72216; 
         }
 
-        /* Nuova regola solo ed esclusivamente per Highlights! */
         #btn-highlights:hover {
             color: #000000 !important;
         }
@@ -649,17 +648,20 @@
                 padding: 0;
             }
 
+            /* CORRETTO: Allineamento e spaziatura pulita per il menu Bio su mobile */
             .menu-about li {
-                font-size: 0.9rem;
-                line-height: 1.35;
+                font-size: 0.88rem !important;
+                line-height: 1.35 !important;
                 white-space: normal !important; 
                 word-wrap: break-word !important; 
-                padding: 2px 0 !important; 
+                overflow-wrap: break-word !important;
+                padding: 3px 6px !important; 
                 text-align: center !important;
                 width: 100% !important;
                 box-sizing: border-box !important;
                 text-indent: 0 !important;
-                padding-left: 0 !important;
+                padding-left: 6px !important;
+                padding-right: 6px !important;
             }
 
             .menu-about li:first-child {
@@ -1095,7 +1097,6 @@
                 }
             }
 
-            // --- HIGHLIGHTS STANDARD (CON FRECCE E 2 IMMAGINI) ---
             const highlightsImages = [
                 { src: "images/b01.jpg", title: "Highlights!", desc: "Enrico Brignano in “I 7 Re di Roma”" },
                 { src: "images/b02.jpg", title: "Highlights!", desc: "Enrico Brignano in “I 7 Re di Roma”" }
