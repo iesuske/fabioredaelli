@@ -299,7 +299,7 @@
             border-bottom-right-radius: 12px;
         }
 
-        .close-menu-btn { display: none; }
+        .close-bio-btn { display: none; }
         .mobile-br { display: none; }
 
         .curiosity-overlay {
@@ -344,30 +344,26 @@
 
         .curiosity-modal::-webkit-scrollbar { display: none; }
 
-        /* PULSANTE DI CHIUSURA UNIFICATO CON TARGETING TOUCH AMPLIFICATO */
-        .close-curiosity-btn,
-        .close-menu-btn {
+        .close-curiosity-btn {
             position: absolute;
             top: 4px;
             right: 4px;
-            width: 32px;
-            height: 32px;
+            width: 20px;
+            height: 20px;
             background-color: #b72216;
             color: #ffffff;
             border: none;
             border-radius: 50%;
-            font-size: 1.1rem;
+            font-size: 0.8rem;
             font-weight: bold;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 10001;
+            z-index: 10;
             line-height: 1;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.5);
             padding: 0;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
         }
 
         .video-container {
@@ -569,10 +565,6 @@
                 align-items: center !important;
             }
 
-            .dropdown:not(.active) .dropdown-menu {
-                display: none !important;
-            }
-
             .btn-curiosity, .btn-works-style {
                 font-size: 3.2vw !important; 
                 padding: 1px 6px !important; 
@@ -644,8 +636,43 @@
 
             .menu-about, .menu-contact, .menu-works { width: 100% !important; }
 
-            .close-menu-btn {
+            .close-li {
+                list-style: none !important;
+                display: block !important;
+                height: 0 !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            /* Pulsante di chiusura identico a quello del player Curiosity */
+            .close-bio-btn {
                 display: flex !important;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                top: 4px;
+                right: 4px;
+                width: 20px !important;
+                height: 20px !important;
+                background-color: #b72216;
+                color: #ffffff;
+                border-radius: 50%;
+                font-size: 0.8rem !important;
+                font-weight: bold;
+                line-height: 1;
+                cursor: pointer;
+                z-index: 10000;
+                border: none;
+                box-shadow: 0 1px 4px rgba(0,0,0,0.5) !important;
+                pointer-events: auto !important;
+                padding: 0;
+                touch-action: manipulation;
+            }
+
+            .dropdown-menu.menu-contact .close-bio-btn,
+            .dropdown-menu.menu-works .close-bio-btn {
+                top: 4px !important;
+                right: 4px !important;
             }
 
             .menu-about li {
@@ -658,6 +685,11 @@
                 margin: 0 !important;
                 text-align: center !important; 
                 display: inline !important;
+            }
+
+            .menu-about li.close-li {
+                display: block !important;
+                height: 0 !important;
             }
 
             .menu-about li.bio-title {
@@ -707,11 +739,11 @@
             }
 
             .close-curiosity-btn {
-                top: 6px !important;
-                right: 6px !important;
-                width: 28px !important;
-                height: 28px !important;
-                font-size: 1rem !important;
+                top: 4px !important;
+                right: 4px !important;
+                width: 20px !important;
+                height: 20px !important;
+                font-size: 0.8rem !important;
             }
 
             .curiosity-text h3 { font-size: 1.35rem !important; }
@@ -763,7 +795,7 @@
                 const trigger = dropdown.querySelector('.dropdown-trigger');
 
                 if(trigger) {
-                    const handleTrigger = function(e) {
+                    trigger.addEventListener('click', function(e) {
                         e.preventDefault();
                         e.stopPropagation();
                         if (dropdown.classList.contains('modal-open')) return;
@@ -782,9 +814,7 @@
                                 }, 1500);
                             }
                         }
-                    };
-
-                    trigger.addEventListener('click', handleTrigger);
+                    });
                 }
             });
 
@@ -812,10 +842,9 @@
                 });
             });
 
-            // GESTIONE UNIFICATA CHIUSURA MENU DROPDOWN MOBILE
-            const closeMenuBtns = document.querySelectorAll('.close-menu-btn');
-            closeMenuBtns.forEach(btn => {
-                const closeHandler = function(e) {
+            const closeBtns = document.querySelectorAll('.close-bio-btn');
+            closeBtns.forEach(btn => {
+                const closeAction = function(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     const dropdown = btn.closest('.dropdown');
@@ -823,9 +852,8 @@
                         dropdown.classList.remove('active');
                     }
                 };
-
-                btn.addEventListener('click', closeHandler);
-                btn.addEventListener('touchstart', closeHandler, { passive: false });
+                btn.addEventListener('click', closeAction);
+                btn.addEventListener('touchend', closeAction, { passive: false });
             });
 
             document.addEventListener('click', function(e) {
@@ -880,25 +908,6 @@
                 setModalOpenState(false);
             }
 
-            // REGISTRAZIONE EVENTI TOUCH E CLICK SU TUTTE LE X ROSSE DELLE MODALI
-            const attachCloseAction = function(elementId, closeFunction) {
-                const btn = document.getElementById(elementId);
-                if (btn) {
-                    const handler = function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        closeFunction();
-                    };
-                    btn.addEventListener('click', handler);
-                    btn.addEventListener('touchstart', handler, { passive: false });
-                }
-            };
-
-            attachCloseAction('close-curiosity', closeModalCuriosity);
-            attachCloseAction('close-works-modal', closeModalWorks);
-            attachCloseAction('close-color-modal', closeModalColor);
-            attachCloseAction('close-highlights-modal', closeModalHighlights);
-
             const videos = [
                 { id: "hlJmwrHEUQ0", title: "Behind The Scene", desc: "scopri le tecniche e lo storyboard originale" },
                 { id: "nW3AkeZIBXg", title: "Tutorial Pin-Up", desc: "guida pratica al disegno digitale passo dopo passo" },
@@ -915,6 +924,7 @@
 
             let currentVideoIndex = 0;
             const btnCuriosity = document.getElementById('btn-curiosity');
+            const closeCuriosity = document.getElementById('close-curiosity');
             const curiosityTitle = document.getElementById('curiosity-title');
             const curiosityDesc = document.getElementById('curiosity-desc');
             const videoCounter = document.getElementById('video-counter');
@@ -949,6 +959,8 @@
                     updateVideo(0);
                     curiosityOverlay.classList.add('open');
                 });
+
+                if (closeCuriosity) closeCuriosity.addEventListener('click', closeModalCuriosity);
 
                 if (btnNextVideo) {
                     btnNextVideo.addEventListener('click', function(e) {
@@ -994,6 +1006,7 @@
 
             let currentWorkIndex = 0;
             const btnSketchs = document.getElementById('btn-sketchs');
+            const closeWorksModal = document.getElementById('close-works-modal');
             const worksTitle = document.getElementById('works-title');
             const worksDesc = document.getElementById('works-desc');
             const worksCounter = document.getElementById('works-counter');
@@ -1027,6 +1040,8 @@
                     updateWorkImage(0);
                     worksOverlay.classList.add('open');
                 });
+
+                if (closeWorksModal) closeWorksModal.addEventListener('click', closeModalWorks);
 
                 if (btnNextWork) {
                     btnNextWork.addEventListener('click', function(e) {
@@ -1089,6 +1104,7 @@
 
             let currentColorIndex = 0;
             const btnColor = document.getElementById('btn-color-artworks');
+            const closeColorModal = document.getElementById('close-color-modal');
             const colorTitle = document.getElementById('color-title');
             const colorDesc = document.getElementById('color-desc');
             const colorCounter = document.getElementById('color-counter');
@@ -1123,6 +1139,8 @@
                     colorOverlay.classList.add('open');
                 });
 
+                if (closeColorModal) closeColorModal.addEventListener('click', closeModalColor);
+
                 if (btnNextColor) {
                     btnNextColor.addEventListener('click', function(e) {
                         e.stopPropagation();
@@ -1145,6 +1163,7 @@
 
             let currentHighlightIndex = 0;
             const btnHighlights = document.getElementById('btn-highlights');
+            const closeHighlightsModal = document.getElementById('close-highlights-modal');
             const highlightsTitle = document.getElementById('highlights-title');
             const highlightsDesc = document.getElementById('highlights-desc');
             const highlightsCounter = document.getElementById('highlights-counter');
@@ -1178,6 +1197,8 @@
                     updateHighlightImage(0);
                     highlightsOverlay.classList.add('open');
                 });
+
+                if (closeHighlightsModal) closeHighlightsModal.addEventListener('click', closeModalHighlights);
 
                 if (btnNextHighlight) {
                     btnNextHighlight.addEventListener('click', function(e) {
@@ -1220,51 +1241,45 @@
                         
                         <div class="dropdown">
                             <a class="dropdown-trigger btn-works-style testo-custom">Works!</a>
-                            <div class="dropdown-menu menu-works testo-custom">
-                                <button class="close-menu-btn" type="button">&times;</button>
-                                <ul>
-                                    <li><a href="#" id="btn-sketchs">Sketches And B/N</a></li>
-                                    <li><a href="#" id="btn-color-artworks">Color Artworks</a></li>
-                                    <li><a href="#" id="btn-highlights">Highlights!</a></li>
-                                </ul>
-                            </div>
+                            <ul class="dropdown-menu menu-works testo-custom">
+                                <li class="close-li"><button class="close-bio-btn" type="button">&times;</button></li>
+                                <li><a href="#" id="btn-sketchs">Sketches And B/N</a></li>
+                                <li><a href="#" id="btn-color-artworks">Color Artworks</a></li>
+                                <li><a href="#" id="btn-highlights">Highlights!</a></li>
+                            </ul>
                         </div>
 
                         <div class="dropdown">
                             <a class="dropdown-trigger testo-custom">Bio</a>
-                            <div class="dropdown-menu menu-about testo-custom">
-                                <button class="close-menu-btn" type="button">&times;</button>
-                                <ul>
-                                    <li class="bio-title">Roma, 1964.<span class="mobile-br"><br></span></li>
-                                    <li>Autore di fumetti, storyboard artist ed illustratore;</li>
-                                    <li>piu' di 30 anni di esperienza sul campo, alternando</li>
-                                    <li>collaborazioni di ogni tipo, dai fumetti a locandine</li>
-                                    <li>teatrali, da storyboards pubblicitari ai cartoni animati,</li>
-                                    <li>ritagliandomi sempre uno spazio come autore. Docente</li>
-                                    <li>della Scuola Romana dei fumetti con molteplici</li>
-                                    <li>collaborazioni consolidate nel tempo, con mostre, stages</li>
-                                    <li>e pubblicazioni di vari fumetti. Pubblicazioni: Newton &</li>
-                                    <li>Compton, Comic Art, Acme Comics, Blue press, il Sistina,</li>
-                                    <li>Giunti, Einaudi, AS Roma, Tipymedia, LAV, “il Romanista”.</li>
-                                    <li>Gli ultimi lavori comprendono la locandina teatrale del</li>
-                                    <li>blockbuster "I sette Re di Roma" di Enrico Brignano</li>
-                                    <li>e cinque volumi illustrati de l'Enciclopedia Romanista</li>
-                                    <li>curata dal Direttore Editoriale Tonino Cagnucci.</li>
-                                </ul>
-                            </div>
+                            <ul class="dropdown-menu menu-about testo-custom">
+                                <li class="close-li"><button class="close-bio-btn" type="button">&times;</button></li>
+                                <li class="bio-title">Roma, 1964.<span class="mobile-br"><br></span></li>
+                                <li>Autore di fumetti, storyboard artist ed illustratore;</li>
+                                <li>piu' di 30 anni di esperienza sul campo, alternando</li>
+                                <li>collaborazioni di ogni tipo, dai fumetti a locandine</li>
+                                <li>teatrali, da storyboards pubblicitari ai cartoni animati,</li>
+                                <li>ritagliandomi sempre uno spazio come autore. Docente</li>
+                                <li>della Scuola Romana dei fumetti con molteplici</li>
+                                <li>collaborazioni consolidate nel tempo, con mostre, stages</li>
+                                <li>e pubblicazioni di vari fumetti. Pubblicazioni: Newton &</li>
+                                <li>Compton, Comic Art, Acme Comics, Blue press, il Sistina,</li>
+                                <li>Giunti, Einaudi, AS Roma, Tipymedia, LAV, “il Romanista”.</li>
+                                <li>Gli ultimi lavori comprendono la locandina teatrale del</li>
+                                <li>blockbuster "I sette Re di Roma" di Enrico Brignano</li>
+                                <li>e cinque volumi illustrati de l'Enciclopedia Romanista</li>
+                                <li>curata dal Direttore Editoriale Tonino Cagnucci.</li>
+                            </ul>
                         </div>
 
                         <div class="dropdown">
                             <a class="dropdown-trigger testo-custom">Contact Me</a>
-                            <div class="dropdown-menu menu-contact testo-custom">
-                                <button class="close-menu-btn" type="button">&times;</button>
-                                <ul>
-                                    <li><a href="mailto:fabiohotstuff@gmail.com?subject=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli">E-mail</a></li>
-                                    <li><a href="https://wa.me/393400670069" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
-                                    <li><a href="https://www.instagram.com/dandelion64?igsi=MXJwZHhkNTlqcjl2MA==" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-                                    <li><a href="https://www.linkedin.com/in/fabio-redaelli-18682219" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                                </ul>
-                            </div>
+                            <ul class="dropdown-menu menu-contact testo-custom">
+                                <li class="close-li"><button class="close-bio-btn" type="button">&times;</button></li>
+                                <li><a href="mailto:fabiohotstuff@gmail.com?subject=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli">E-mail</a></li>
+                                <li><a href="https://wa.me/393400670069" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+                                <li><a href="https://www.instagram.com/dandelion64?igsi=MXJwZHhkNTlqcjl2MA==" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                                <li><a href="https://www.linkedin.com/in/fabio-redaelli-18682219" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -1275,7 +1290,7 @@
     <!-- Player Video Curiosity -->
     <div id="curiosity-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
-            <button class="close-curiosity-btn" id="close-curiosity" type="button">&times;</button>
+            <button class="close-curiosity-btn" id="close-curiosity">&times;</button>
             
             <div class="video-container">
                 <iframe id="youtube-frame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -1299,7 +1314,7 @@
     <!-- Player Immagini Works (Sketches And B/N) -->
     <div id="works-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
-            <button class="close-curiosity-btn" id="close-works-modal" type="button">&times;</button>
+            <button class="close-curiosity-btn" id="close-works-modal">&times;</button>
             
             <div class="works-image-container">
                 <img id="works-modal-img" src="" alt="Sketches And B/N">
@@ -1323,7 +1338,7 @@
     <!-- Player Immagini Color Artworks -->
     <div id="color-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
-            <button class="close-curiosity-btn" id="close-color-modal" type="button">&times;</button>
+            <button class="close-curiosity-btn" id="close-color-modal">&times;</button>
             
             <div class="works-image-container">
                 <img id="color-modal-img" src="" alt="Color Artworks">
@@ -1344,10 +1359,10 @@
         </div>
     </div>
 
-    <!-- Player Immagini Highlights -->
+    <!-- Player Immagini Highlights (Standard) -->
     <div id="highlights-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
-            <button class="close-curiosity-btn" id="close-highlights-modal" type="button">&times;</button>
+            <button class="close-curiosity-btn" id="close-highlights-modal">&times;</button>
             
             <div class="works-image-container">
                 <img id="highlights-modal-img" src="" alt="Highlights!">
