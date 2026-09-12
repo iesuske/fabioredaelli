@@ -314,35 +314,11 @@
             z-index: 999999;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
-            padding-top: 6vh;
+            justify-content: center;
+            padding: 20px;
             text-align: center;
             overflow: hidden;
-        }
-
-        .landscape-red-band {
-            width: 100vw;
-            background-color: #b72216;
-            padding: 10px 0 16px 0;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .landscape-contenitore-titolo {
-            display: inline-block;
-            position: relative;
-            padding-bottom: 4px;
-        }
-
-        .landscape-riga-nera {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background-color: #000000;
+            gap: 15px;
         }
 
         .landscape-warning-content {
@@ -351,17 +327,10 @@
             padding: 0 15px;
         }
 
-        .landscape-warning-title {
-            font-size: clamp(1.4rem, 4.5vw, 2.2rem);
-            line-height: 1;
-            white-space: nowrap !important;
-            margin: 0;
-        }
-
         .landscape-warning-subtitle {
             font-size: 1.5rem;
             color: #b72216;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: normal;
         }
 
@@ -370,6 +339,37 @@
             color: #000000;
             font-weight: normal;
             line-height: 1.3;
+        }
+
+        /* Fascia rossa con scritta e linea nera ispirata all'immagine allegata */
+        .landscape-brand-bar {
+            width: 100vw;
+            background-color: #b72216;
+            position: relative;
+            padding: 10px 0;
+            margin-top: 10px;
+            border-top: 4px solid #fde3b8;
+            border-bottom: 4px solid #fde3b8;
+        }
+
+        .landscape-brand-bar::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #000000;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .landscape-brand-bar .brand-title {
+            position: relative;
+            z-index: 2;
+            font-size: 6vw;
+            text-align: center;
+            white-space: nowrap;
         }
 
         /* Attiva il blocco solo su schermi piccoli (smartphone) in modalità landscape */
@@ -1307,15 +1307,16 @@
 
     <!-- Blocco per orientamento Landscape su dispositivi mobili -->
     <div id="landscape-warning" class="landscape-warning">
-        <div class="landscape-red-band">
-            <div class="landscape-contenitore-titolo">
-                <h1 class="brand-title landscape-warning-title"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
-                <div class="landscape-riga-nera"></div>
-            </div>
-        </div>
+        <h1 class="brand-title"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
+        
         <div class="landscape-warning-content">
             <h2 class="landscape-warning-subtitle">dispositivo in orizzontale</h2>
             <p>per una corretta visualizzazione del sito si prega di ruotare il dispositivo in posizione verticale.</p>
+        </div>
+
+        <!-- Fascia rossa con scritta e linea nera aggiunta a seguire -->
+        <div class="landscape-brand-bar">
+            <h1 class="brand-title"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
         </div>
     </div>
 
