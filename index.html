@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=1200">
     <title>Fabio Hot Stuff Redaelli - Comic Art Author -</title>
     
     <link rel="icon" type="image/png" href="images/favicon-96x96.png" sizes="96x96">
@@ -36,23 +36,26 @@
         }
 
         html, body {
-            width: 100%;
+            width: 1200px;
+            min-width: 1200px;
             height: 100vh;
-            height: 100dvh;
             background-color: #fde3b8; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow: hidden;
+            overflow-x: auto;
+            overflow-y: auto;
         }
 
         .master-canvas {
             position: relative;
-            width: 100%;
+            width: 1200px;
+            min-width: 1200px;
             background-color: #fde3b8;
             margin-top: -50px;
         }
 
         .bg-image {
-            width: 100%;
+            width: 1200px;
+            min-width: 1200px;
             height: auto;
             display: block; 
         }
@@ -61,7 +64,7 @@
             position: absolute;
             top: 0; 
             left: 0;
-            width: 100%; 
+            width: 1200px;
             height: 100%;
             pointer-events: none; 
         }
@@ -70,7 +73,7 @@
             position: absolute;
             top: 7.6%; 
             left: 0;
-            width: 100%;
+            width: 1200px;
             text-align: center;
             pointer-events: auto; 
         }
@@ -83,7 +86,7 @@
 
         .brand-title {
             font-family: 'Lobster Regular', cursive;
-            font-size: 3.8vw; 
+            font-size: 45px; 
             line-height: 1;
             white-space: nowrap; 
             margin: 0;
@@ -109,12 +112,12 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            margin-top: 0.8vw; 
+            margin-top: 10px; 
         }
 
         .btn-curiosity {
             font-family: 'Lobster Regular', cursive;
-            font-size: 1.5vw;
+            font-size: 18px;
             color: #b72216;
             background-color: #ffffff;
             padding: 1px 10px;
@@ -137,7 +140,7 @@
 
         .btn-works-style {
             font-family: 'Lobster Regular', cursive;
-            font-size: 1.5vw;
+            font-size: 18px;
             color: #ffffff;
             background-color: #b72216;
             padding: 1px 10px;
@@ -180,7 +183,7 @@
 
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
-            font-size: 1.5vw; 
+            font-size: 18px; 
             color: #ffffff;
             cursor: pointer;
             text-decoration: none;
@@ -192,10 +195,8 @@
             white-space: nowrap;
         }
 
-        @media (hover: hover) {
-            .dropdown:hover .dropdown-trigger:not(.btn-works-style) { 
-                color: #ffffff; 
-            }
+        .dropdown:hover .dropdown-trigger:not(.btn-works-style) { 
+            color: #ffffff; 
         }
 
         .dropdown.active:not(.modal-open) .dropdown-trigger:not(.btn-works-style) { 
@@ -306,7 +307,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
+            width: 1200px;
             height: 100vh;
             background: transparent !important;
             backdrop-filter: none !important;
@@ -495,286 +496,19 @@
             position: fixed;
             bottom: 0;
             left: 0;
-            width: 100%;
+            width: 1200px;
             padding: 8px;
             text-align: center;
             background: rgba(13, 27, 42, 0.95);
             backdrop-filter: blur(4px);
             color: white;
-            font-size: 0.7rem;
+            font-size: 12px;
             z-index: 1000;
-        }
-
-        @media screen and (max-width: 768px) {
-            html, body {
-                height: 100vh !important;
-                height: 100dvh !important;
-                overflow: hidden !important; 
-            }
-
-            .master-canvas {
-                margin-top: -21.5px !important;
-                overflow: hidden;
-            }
-
-            .bg-image {
-                width: calc(165% + 258px); 
-                max-width: none;
-                margin-left: calc(-35% - 135.5px); 
-                -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 98%);
-                mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 98%);
-            }
-
-            .header-anchor {
-                position: absolute;
-                top: calc(7.2% + 10px) !important; 
-                left: 0;
-                width: 100%;
-                padding: 0 15px;
-                background: transparent !important;
-                border: none !important;
-                z-index: 100;
-            }
-
-            .brand-group {
-                display: table !important;
-                margin: 0 auto !important;
-                width: auto !important;
-                max-width: 100% !important;
-                padding: 0;
-            }
-
-            .brand-title {
-                font-size: calc(6.2vw + 4px); 
-                white-space: normal;
-                line-height: 1.1;
-                transform: translateY(-1px) !important; 
-                text-align: center;
-            }
-
-            .menus-container {
-                display: flex !important;
-                justify-content: space-between !important;
-                align-items: center !important;
-                width: 100% !important;
-                margin-top: 0.6vw !important; 
-            }
-
-            .dropdown {
-                display: inline-flex !important;
-                align-items: center !important;
-            }
-
-            .btn-curiosity, .btn-works-style {
-                font-size: 3.2vw !important; 
-                padding: 1px 6px !important; 
-                border-radius: 6px;
-                display: inline-flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-                vertical-align: middle !important;
-            }
-
-            .dropdown-trigger:not(.btn-works-style) {
-                font-size: 3.2vw !important; 
-                padding: 2px !important; 
-                display: inline-flex !important;
-                align-items: center !important;
-                vertical-align: middle !important;
-            }
-
-            .dropdown-menu {
-                position: fixed !important;
-                top: 16vh !important;
-                left: 50% !important;
-                transform: translateX(-50%) !important; 
-                width: 88vw !important; 
-                max-width: 360px !important;
-                max-height: 70vh !important;
-                overflow-y: auto !important; 
-                overflow-x: hidden !important;
-                background: rgba(0, 0, 0, 0.75) !important;
-                backdrop-filter: blur(8px) !important;
-                -webkit-backdrop-filter: blur(8px) !important;
-                border-radius: 12px;
-                padding: 28px 16px 20px 16px !important; 
-                z-index: 9999 !important;
-                box-shadow: 0 10px 40px rgba(0,0,0,0.8);
-                box-sizing: border-box !important;
-                text-align: center !important;
-            }
-
-            .dropdown-menu::-webkit-scrollbar {
-                width: 3px !important;
-            }
-            .dropdown-menu::-webkit-scrollbar-thumb {
-                background: rgba(255, 255, 255, 0.3) !important;
-                border-radius: 10px;
-            }
-            .dropdown-menu::-webkit-scrollbar-track {
-                background: transparent !important;
-            }
-
-            .dropdown-menu.menu-about {
-                padding-top: 22px !important;
-                padding-bottom: 24px !important;
-                scrollbar-width: thin;
-                scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
-                transition: scrollbar-color 0.3s ease;
-                text-align: center !important;
-            }
-
-            .dropdown-menu.menu-contact, .dropdown-menu.menu-works {
-                width: 45vw !important; 
-                max-width: 175px !important;
-                padding: 36px 0 0 0 !important; 
-                max-height: 50vh !important;
-                top: 16vh !important;
-                transform: translateX(-50%) !important;
-                margin-top: 0 !important;
-            }
-
-            .menu-about, .menu-contact, .menu-works { width: 100% !important; }
-
-            .close-li {
-                list-style: none !important;
-                display: block !important;
-                height: 0 !important;
-                padding: 0 !important;
-                margin: 0 !important;
-            }
-
-            /* Pulsante di chiusura identico a quello del player Curiosity */
-            .close-bio-btn {
-                display: flex !important;
-                align-items: center;
-                justify-content: center;
-                position: absolute;
-                top: 4px;
-                right: 4px;
-                width: 20px !important;
-                height: 20px !important;
-                background-color: #b72216;
-                color: #ffffff;
-                border-radius: 50%;
-                font-size: 0.8rem !important;
-                font-weight: bold;
-                line-height: 1;
-                cursor: pointer;
-                z-index: 10000;
-                border: none;
-                box-shadow: 0 1px 4px rgba(0,0,0,0.5) !important;
-                pointer-events: auto !important;
-                padding: 0;
-                touch-action: manipulation;
-            }
-
-            .dropdown-menu.menu-contact .close-bio-btn,
-            .dropdown-menu.menu-works .close-bio-btn {
-                top: 4px !important;
-                right: 4px !important;
-            }
-
-            .menu-about li {
-                font-size: 1.05rem;
-                line-height: 1.4;
-                white-space: normal !important; 
-                word-wrap: break-word !important;
-                overflow-wrap: break-word !important;
-                padding: 0 !important; 
-                margin: 0 !important;
-                text-align: center !important; 
-                display: inline !important;
-            }
-
-            .menu-about li.close-li {
-                display: block !important;
-                height: 0 !important;
-            }
-
-            .menu-about li.bio-title {
-                display: inline !important;
-                font-weight: bold;
-                margin-bottom: 0 !important; 
-                text-align: center !important;
-                white-space: normal !important;
-            }
-
-            .mobile-br {
-                display: inline !important;
-            }
-
-            .menu-contact li a, .menu-works li a {
-                font-size: 0.95rem;
-                padding: 10px 8px;
-                border-radius: 0 !important;
-                margin: 0;
-                width: 100%;
-                white-space: nowrap !important;
-                text-align: center !important;
-            }
-
-            .menu-contact li:last-child a, .menu-works li:last-child a {
-                padding: 10px 8px 20px 8px !important;
-                border-bottom-left-radius: 12px !important;
-                border-bottom-right-radius: 12px !important;
-            }
-
-            .menu-contact li:last-child a:hover, .menu-works li:last-child a:hover {
-                background: #b72216 !important;
-            }
-
-            .curiosity-overlay {
-                align-items: flex-start !important;
-                padding-top: 15vh !important;
-            }
-
-            body.ios-chrome .curiosity-overlay {
-                padding-top: 14vh !important;
-            }
-
-            .curiosity-modal {
-                width: 92vw !important;
-                padding: 26px 14px 14px 14px !important;
-            }
-
-            .close-curiosity-btn {
-                top: 4px !important;
-                right: 4px !important;
-                width: 20px !important;
-                height: 20px !important;
-                font-size: 0.8rem !important;
-            }
-
-            .curiosity-text h3 { font-size: 1.35rem !important; }
-            .curiosity-text p { font-size: 0.95rem !important; }
-
-            .curiosity-footer {
-                padding: 6px 0 !important;
-            }
-
-            .video-counter { font-size: 1rem !important; }
-
-            .curiosity-nav-btn {
-                font-size: 1.1rem !important;
-            }
-
-            footer {
-                font-size: clamp(8.5px, 2.5vw, 11px) !important;
-                white-space: nowrap !important;
-                padding: 8px 4px !important;
-            }
-
-            footer p { white-space: nowrap !important; }
         }
     </style>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            if (/CriOS/i.test(navigator.userAgent)) {
-                document.body.classList.add('ios-chrome');
-            }
-
             let fontsLoadedCalled = false;
             function showContent() {
                 if (!fontsLoadedCalled) {
@@ -840,20 +574,6 @@
                 dropdowns.forEach(dropdown => {
                     dropdown.classList.remove('active');
                 });
-            });
-
-            const closeBtns = document.querySelectorAll('.close-bio-btn');
-            closeBtns.forEach(btn => {
-                const closeAction = function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const dropdown = btn.closest('.dropdown');
-                    if (dropdown) {
-                        dropdown.classList.remove('active');
-                    }
-                };
-                btn.addEventListener('click', closeAction);
-                btn.addEventListener('touchend', closeAction, { passive: false });
             });
 
             document.addEventListener('click', function(e) {
@@ -1242,7 +962,6 @@
                         <div class="dropdown">
                             <a class="dropdown-trigger btn-works-style testo-custom">Works!</a>
                             <ul class="dropdown-menu menu-works testo-custom">
-                                <li class="close-li"><button class="close-bio-btn" type="button">&times;</button></li>
                                 <li><a href="#" id="btn-sketchs">Sketches And B/N</a></li>
                                 <li><a href="#" id="btn-color-artworks">Color Artworks</a></li>
                                 <li><a href="#" id="btn-highlights">Highlights!</a></li>
@@ -1252,8 +971,7 @@
                         <div class="dropdown">
                             <a class="dropdown-trigger testo-custom">Bio</a>
                             <ul class="dropdown-menu menu-about testo-custom">
-                                <li class="close-li"><button class="close-bio-btn" type="button">&times;</button></li>
-                                <li class="bio-title">Roma, 1964.<span class="mobile-br"><br></span></li>
+                                <li class="bio-title">Roma, 1964.</li>
                                 <li>Autore di fumetti, storyboard artist ed illustratore;</li>
                                 <li>piu' di 30 anni di esperienza sul campo, alternando</li>
                                 <li>collaborazioni di ogni tipo, dai fumetti a locandine</li>
@@ -1274,7 +992,6 @@
                         <div class="dropdown">
                             <a class="dropdown-trigger testo-custom">Contact Me</a>
                             <ul class="dropdown-menu menu-contact testo-custom">
-                                <li class="close-li"><button class="close-bio-btn" type="button">&times;</button></li>
                                 <li><a href="mailto:fabiohotstuff@gmail.com?subject=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli">E-mail</a></li>
                                 <li><a href="https://wa.me/393400670069" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
                                 <li><a href="https://www.instagram.com/dandelion64?igsi=MXJwZHhkNTlqcjl2MA==" target="_blank" rel="noopener noreferrer">Instagram</a></li>
