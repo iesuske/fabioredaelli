@@ -505,6 +505,54 @@
             z-index: 1000;
         }
 
+        /* --- STILI AVVISO LANDSCAPE (ORIZZONTALE) --- */
+        #landscape-warning {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            background-color: #fde3b8;
+            z-index: 9999999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #landscape-warning p {
+            font-family: 'Lobster Regular', cursive;
+            font-size: 6vh;
+            color: #000000;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        #landscape-warning p.highlight {
+            color: #b72216;
+            font-size: 8vh;
+            margin-bottom: 20px;
+        }
+        
+        #landscape-warning p.rotate-msg {
+            color: #b72216;
+            font-size: 5vh;
+            margin-top: 15px;
+        }
+
+        @media screen and (orientation: landscape) {
+            #landscape-warning {
+                display: flex !important;
+            }
+            .master-canvas, .curiosity-overlay, footer {
+                display: none !important;
+            }
+        }
+        /* ------------------------------------------ */
+
         @media screen and (max-width: 768px) {
             html, body {
                 height: 100vh !important;
@@ -1228,6 +1276,13 @@
     </script>
 </head>
 <body>
+
+    <!-- Avviso visibile SOLO se il dispositivo è posizionato orizzontalmente -->
+    <div id="landscape-warning" class="testo-custom">
+        <p class="highlight">Attenzione</p>
+        <p>La visualizzazione corretta del sito<br>è solamente verticale e non in orizzontale.</p>
+        <p class="rotate-msg">Per favore, ruota il tuo dispositivo.</p>
+    </div>
 
     <div class="master-canvas">
         <img src="images/bg2.jpg?v=COVER" class="bg-image" alt="Artwork Fabio Redaelli">
