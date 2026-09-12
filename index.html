@@ -633,13 +633,15 @@
                 margin-top: 0 !important;
             }
 
-            .dropdown-menu.menu-contact .close-bio-btn,
-            .dropdown-menu.menu-works .close-bio-btn {
-                top: 4px !important;
-                right: 4px !important;
-            }
-
             .menu-about, .menu-contact, .menu-works { width: 100% !important; }
+
+            .close-li {
+                list-style: none !important;
+                display: block !important;
+                height: 0 !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
 
             .close-bio-btn {
                 display: flex !important;
@@ -664,7 +666,13 @@
                 padding: 0;
             }
 
-            /* RISOLTO: Testo Bio ora fluisce fluidamente come paragrafo unico centrato senza a capo forzati */
+            .dropdown-menu.menu-contact .close-bio-btn,
+            .dropdown-menu.menu-works .close-bio-btn {
+                top: 4px !important;
+                right: 4px !important;
+            }
+
+            /* Testo Bio mobile: Roma, 1964. accentrato e a capo, seguito dal resto del testo in linea */
             .menu-about li {
                 font-size: 1.05rem;
                 line-height: 1.4;
@@ -677,10 +685,15 @@
                 display: inline !important;
             }
 
-            .menu-about li:first-child {
+            .menu-about li.close-li {
+                display: block !important;
+                height: 0 !important;
+            }
+
+            .menu-about li.bio-title {
                 display: block !important;
                 font-weight: bold;
-                margin-bottom: 8px !important;
+                margin-bottom: 12px !important;
                 text-align: center !important;
                 white-space: normal !important;
             }
@@ -1221,7 +1234,7 @@
                         <div class="dropdown">
                             <a class="dropdown-trigger btn-works-style testo-custom">Works!</a>
                             <ul class="dropdown-menu menu-works testo-custom">
-                                <button class="close-bio-btn">&times;</button>
+                                <li class="close-li"><button class="close-bio-btn" type="button">&times;</button></li>
                                 <li><a href="#" id="btn-sketchs">Sketches And B/N</a></li>
                                 <li><a href="#" id="btn-color-artworks">Color Artworks</a></li>
                                 <li><a href="#" id="btn-highlights">Highlights!</a></li>
@@ -1231,9 +1244,8 @@
                         <div class="dropdown">
                             <a class="dropdown-trigger testo-custom">Bio</a>
                             <ul class="dropdown-menu menu-about testo-custom">
-                                <button class="close-bio-btn">&times;</button>
-                                
-                                <li>Roma, 1964.</li>
+                                <li class="close-li"><button class="close-bio-btn" type="button">&times;</button></li>
+                                <li class="bio-title">Roma, 1964.</li>
                                 <li>Autore di fumetti, storyboard artist ed illustratore;</li>
                                 <li>piu' di 30 anni di esperienza sul campo, alternando</li>
                                 <li>collaborazioni di ogni tipo, dai fumetti a locandine</li>
@@ -1254,7 +1266,7 @@
                         <div class="dropdown">
                             <a class="dropdown-trigger testo-custom">Contact Me</a>
                             <ul class="dropdown-menu menu-contact testo-custom">
-                                <button class="close-bio-btn">&times;</button>
+                                <li class="close-li"><button class="close-bio-btn" type="button">&times;</button></li>
                                 <li><a href="mailto:fabiohotstuff@gmail.com?subject=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli">E-mail</a></li>
                                 <li><a href="https://wa.me/393400670069" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
                                 <li><a href="https://www.instagram.com/dandelion64?igsi=MXJwZHhkNTlqcjl2MA==" target="_blank" rel="noopener noreferrer">Instagram</a></li>
