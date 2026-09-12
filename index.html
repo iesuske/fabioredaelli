@@ -299,7 +299,7 @@
             border-bottom-right-radius: 12px;
         }
 
-        .close-bio-btn { display: none; }
+        .close-menu-btn { display: none; }
         .mobile-br { display: none; }
 
         .curiosity-overlay {
@@ -344,7 +344,9 @@
 
         .curiosity-modal::-webkit-scrollbar { display: none; }
 
-        .close-curiosity-btn {
+        /* PULSANTE DI CHIUSURA UNIFICATO (USATO SIA PER CURIOSITY CHE PER I MENU MOBILE) */
+        .close-curiosity-btn,
+        .close-menu-btn {
             position: absolute;
             top: 4px;
             right: 4px;
@@ -360,10 +362,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 10;
+            z-index: 10001;
             line-height: 1;
             box-shadow: 0 1px 4px rgba(0,0,0,0.5);
             padding: 0;
+            touch-action: manipulation;
         }
 
         .video-container {
@@ -565,7 +568,6 @@
                 align-items: center !important;
             }
 
-            /* FIX MOBILE: forza la chiusura della tendina quando non ha la classe active, annullando l'hover del touch */
             .dropdown:not(.active) .dropdown-menu {
                 display: none !important;
             }
@@ -641,43 +643,8 @@
 
             .menu-about, .menu-contact, .menu-works { width: 100% !important; }
 
-            .close-li {
-                list-style: none !important;
-                display: block !important;
-                height: 0 !important;
-                padding: 0 !important;
-                margin: 0 !important;
-            }
-
-            /* Pulsante di chiusura identico a quello del player Curiosity */
-            .close-bio-btn {
+            .close-menu-btn {
                 display: flex !important;
-                align-items: center;
-                justify-content: center;
-                position: absolute;
-                top: 4px;
-                right: 4px;
-                width: 20px !important;
-                height: 20px !important;
-                background-color: #b72216;
-                color: #ffffff;
-                border-radius: 50%;
-                font-size: 0.8rem !important;
-                font-weight: bold;
-                line-height: 1;
-                cursor: pointer;
-                z-index: 10000;
-                border: none;
-                box-shadow: 0 1px 4px rgba(0,0,0,0.5) !important;
-                pointer-events: auto !important;
-                padding: 0;
-                touch-action: manipulation;
-            }
-
-            .dropdown-menu.menu-contact .close-bio-btn,
-            .dropdown-menu.menu-works .close-bio-btn {
-                top: 4px !important;
-                right: 4px !important;
             }
 
             .menu-about li {
@@ -690,11 +657,6 @@
                 margin: 0 !important;
                 text-align: center !important; 
                 display: inline !important;
-            }
-
-            .menu-about li.close-li {
-                display: block !important;
-                height: 0 !important;
             }
 
             .menu-about li.bio-title {
@@ -847,19 +809,20 @@
                 });
             });
 
-            // Gestione della chiusura tramite la "X" su Works, Bio e Contact Me
-            const closeBtns = document.querySelectorAll('.close-bio-btn');
-            closeBtns.forEach(btn => {
-                ['click', 'touchend'].forEach(eventType => {
-                    btn.addEventListener(eventType, function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        const dropdown = this.closest('.dropdown');
-                        if (dropdown) {
-                            dropdown.classList.remove('active');
-                        }
-                    }, { passive: false });
-                });
+            // GESTIONE UNIFICATA CHIUSURA MENU MOBILE CON X ROSSA E BIANCA (IDENTICA A CURIOSITY)
+            const closeMenuBtns = document.querySelectorAll('.close-menu-btn');
+            closeMenuBtns.forEach(btn => {
+                const closeHandler = function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const dropdown = btn.closest('.dropdown');
+                    if (dropdown) {
+                        dropdown.classList.remove('active');
+                    }
+                };
+
+                btn.addEventListener('click', closeHandler);
+                btn.addEventListener('touchstart', closeHandler, { passive: false });
             });
 
             document.addEventListener('click', function(e) {
@@ -1247,45 +1210,51 @@
                         
                         <div class="dropdown">
                             <a class="dropdown-trigger btn-works-style testo-custom">Works!</a>
-                            <ul class="dropdown-menu menu-works testo-custom">
-                                <li class="close-li"><button class="close-bio-btn" type="button">&times;</button></li>
-                                <li><a href="#" id="btn-sketchs">Sketches And B/N</a></li>
-                                <li><a href="#" id="btn-color-artworks">Color Artworks</a></li>
-                                <li><a href="#" id="btn-highlights">Highlights!</a></li>
-                            </ul>
+                            <div class="dropdown-menu menu-works testo-custom">
+                                <button class="close-menu-btn" type="button">&times;</button>
+                                <ul>
+                                    <li><a href="#" id="btn-sketchs">Sketches And B/N</a></li>
+                                    <li><a href="#" id="btn-color-artworks">Color Artworks</a></li>
+                                    <li><a href="#" id="btn-highlights">Highlights!</a></li>
+                                </ul>
+                            </div>
                         </div>
 
                         <div class="dropdown">
                             <a class="dropdown-trigger testo-custom">Bio</a>
-                            <ul class="dropdown-menu menu-about testo-custom">
-                                <li class="close-li"><button class="close-bio-btn" type="button">&times;</button></li>
-                                <li class="bio-title">Roma, 1964.<span class="mobile-br"><br></span></li>
-                                <li>Autore di fumetti, storyboard artist ed illustratore;</li>
-                                <li>piu' di 30 anni di esperienza sul campo, alternando</li>
-                                <li>collaborazioni di ogni tipo, dai fumetti a locandine</li>
-                                <li>teatrali, da storyboards pubblicitari ai cartoni animati,</li>
-                                <li>ritagliandomi sempre uno spazio come autore. Docente</li>
-                                <li>della Scuola Romana dei fumetti con molteplici</li>
-                                <li>collaborazioni consolidate nel tempo, con mostre, stages</li>
-                                <li>e pubblicazioni di vari fumetti. Pubblicazioni: Newton &</li>
-                                <li>Compton, Comic Art, Acme Comics, Blue press, il Sistina,</li>
-                                <li>Giunti, Einaudi, AS Roma, Tipymedia, LAV, “il Romanista”.</li>
-                                <li>Gli ultimi lavori comprendono la locandina teatrale del</li>
-                                <li>blockbuster "I sette Re di Roma" di Enrico Brignano</li>
-                                <li>e cinque volumi illustrati de l'Enciclopedia Romanista</li>
-                                <li>curata dal Direttore Editoriale Tonino Cagnucci.</li>
-                            </ul>
+                            <div class="dropdown-menu menu-about testo-custom">
+                                <button class="close-menu-btn" type="button">&times;</button>
+                                <ul>
+                                    <li class="bio-title">Roma, 1964.<span class="mobile-br"><br></span></li>
+                                    <li>Autore di fumetti, storyboard artist ed illustratore;</li>
+                                    <li>piu' di 30 anni di esperienza sul campo, alternando</li>
+                                    <li>collaborazioni di ogni tipo, dai fumetti a locandine</li>
+                                    <li>teatrali, da storyboards pubblicitari ai cartoni animati,</li>
+                                    <li>ritagliandomi sempre uno spazio come autore. Docente</li>
+                                    <li>della Scuola Romana dei fumetti con molteplici</li>
+                                    <li>collaborazioni consolidate nel tempo, con mostre, stages</li>
+                                    <li>e pubblicazioni di vari fumetti. Pubblicazioni: Newton &</li>
+                                    <li>Compton, Comic Art, Acme Comics, Blue press, il Sistina,</li>
+                                    <li>Giunti, Einaudi, AS Roma, Tipymedia, LAV, “il Romanista”.</li>
+                                    <li>Gli ultimi lavori comprendono la locandina teatrale del</li>
+                                    <li>blockbuster "I sette Re di Roma" di Enrico Brignano</li>
+                                    <li>e cinque volumi illustrati de l'Enciclopedia Romanista</li>
+                                    <li>curata dal Direttore Editoriale Tonino Cagnucci.</li>
+                                </ul>
+                            </div>
                         </div>
 
                         <div class="dropdown">
                             <a class="dropdown-trigger testo-custom">Contact Me</a>
-                            <ul class="dropdown-menu menu-contact testo-custom">
-                                <li class="close-li"><button class="close-bio-btn" type="button">&times;</button></li>
-                                <li><a href="mailto:fabiohotstuff@gmail.com?subject=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli">E-mail</a></li>
-                                <li><a href="https://wa.me/393400670069" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
-                                <li><a href="https://www.instagram.com/dandelion64?igsi=MXJwZHhkNTlqcjl2MA==" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-                                <li><a href="https://www.linkedin.com/in/fabio-redaelli-18682219" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                            </ul>
+                            <div class="dropdown-menu menu-contact testo-custom">
+                                <button class="close-menu-btn" type="button">&times;</button>
+                                <ul>
+                                    <li><a href="mailto:fabiohotstuff@gmail.com?subject=dal%20sito%20Fabio%20Hot%20Stuff%20Redaelli">E-mail</a></li>
+                                    <li><a href="https://wa.me/393400670069" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+                                    <li><a href="https://www.instagram.com/dandelion64?igsi=MXJwZHhkNTlqcjl2MA==" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                                    <li><a href="https://www.linkedin.com/in/fabio-redaelli-18682219" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1365,7 +1334,7 @@
         </div>
     </div>
 
-    <!-- Player Immagini Highlights (Standard) -->
+    <!-- Player Immagini Highlights -->
     <div id="highlights-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-curiosity-btn" id="close-highlights-modal">&times;</button>
