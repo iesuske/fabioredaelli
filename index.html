@@ -321,6 +321,11 @@
             gap: 15px;
         }
 
+        .landscape-warning .brand-title {
+            font-size: 6vw;
+            white-space: nowrap;
+        }
+
         .landscape-warning-content {
             font-family: 'Lobster Regular', cursive;
             max-width: 90vw;
@@ -339,37 +344,6 @@
             color: #000000;
             font-weight: normal;
             line-height: 1.3;
-        }
-
-        /* Fascia rossa con scritta e linea nera ispirata all'immagine allegata */
-        .landscape-brand-bar {
-            width: 100vw;
-            background-color: #b72216;
-            position: relative;
-            padding: 10px 0;
-            margin-top: 10px;
-            border-top: 4px solid #fde3b8;
-            border-bottom: 4px solid #fde3b8;
-        }
-
-        .landscape-brand-bar::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #000000;
-            transform: translateY(-50%);
-            z-index: 1;
-        }
-
-        .landscape-brand-bar .brand-title {
-            position: relative;
-            z-index: 2;
-            font-size: 6vw;
-            text-align: center;
-            white-space: nowrap;
         }
 
         /* Attiva il blocco solo su schermi piccoli (smartphone) in modalità landscape */
@@ -1312,11 +1286,6 @@
         <div class="landscape-warning-content">
             <h2 class="landscape-warning-subtitle">dispositivo in orizzontale</h2>
             <p>per una corretta visualizzazione del sito si prega di ruotare il dispositivo in posizione verticale.</p>
-        </div>
-
-        <!-- Fascia rossa con scritta e linea nera aggiunta a seguire -->
-        <div class="landscape-brand-bar">
-            <h1 class="brand-title"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
         </div>
     </div>
 
