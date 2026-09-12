@@ -302,6 +302,48 @@
         .close-bio-btn { display: none; }
         .mobile-br { display: none; }
 
+        /* Stili per il blocco orientamento orizzontale (Landscape) su mobile */
+        .landscape-warning {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #fde3b8;
+            z-index: 999999;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .landscape-warning-content {
+            font-family: 'Lobster Regular', cursive;
+            color: #b72216;
+            max-width: 450px;
+        }
+
+        .landscape-warning-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            font-weight: normal;
+        }
+
+        .landscape-warning-content p {
+            font-size: 1.3rem;
+            color: #000000;
+            font-weight: normal;
+            line-height: 1.4;
+        }
+
+        /* Attiva il blocco solo su schermi piccoli (smartphone) in modalità landscape */
+        @media screen and (max-width: 900px) and (orientation: landscape) {
+            .landscape-warning {
+                display: flex !important;
+            }
+        }
+
         .curiosity-overlay {
             position: fixed;
             top: 0;
@@ -644,7 +686,6 @@
                 margin: 0 !important;
             }
 
-            /* Pulsante di chiusura identico a quello del player Curiosity */
             .close-bio-btn {
                 display: flex !important;
                 align-items: center;
@@ -1228,6 +1269,14 @@
     </script>
 </head>
 <body>
+
+    <!-- Blocco per orientamento Landscape su dispositivi mobili -->
+    <div id="landscape-warning" class="landscape-warning">
+        <div class="landscape-warning-content">
+            <h2>Dispositivo in Orizzontale</h2>
+            <p>Per una corretta visualizzazione del sito, si prega di ruotare il dispositivo in posizione verticale.</p>
+        </div>
+    </div>
 
     <div class="master-canvas">
         <img src="images/bg2.jpg?v=COVER" class="bg-image" alt="Artwork Fabio Redaelli">
