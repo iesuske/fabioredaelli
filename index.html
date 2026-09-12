@@ -48,7 +48,7 @@
             position: relative;
             width: 100%;
             background-color: #fde3b8;
-            margin-top: -20px;
+            margin-top: 0; /* Inalterato su desktop/portrait */
         }
 
         .bg-image {
@@ -513,7 +513,7 @@
             }
 
             .master-canvas {
-                margin-top: -20px !important; /* Margine moderato per mobile (Portrait) */
+                margin-top: 0 !important; /* Inalterato in verticale (portrait) */
                 overflow: hidden;
             }
 
@@ -768,12 +768,12 @@
         }
         
         /* ========================================================= */
-        /* MARGINE RIDOTTO MODERATO PER CHROME/SAFARI (LANDSCAPE) */
+        /* MARGINE TARATO A -35px SOLO PER CHROME/SAFARI (LANDSCAPE) */
         /* ========================================================= */
         @media screen and (max-width: 950px) and (orientation: landscape) {
             .master-canvas,
             body.ios-chrome .master-canvas {
-                margin-top: -20px !important; /* Margine moderato per landscape mobile */
+                margin-top: -35px !important; /* Valore intermedio ottimale solo per landscape mobile */
             }
         }
         /* ========================================================= */
