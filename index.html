@@ -280,8 +280,11 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        .menu-contact li a:hover, .menu-works li a:hover { 
+        /* MODIFICA: Testo nero alla selezione per le voci del menu */
+        .menu-contact li a:hover, .menu-works li a:hover,
+        .menu-contact li a:active, .menu-works li a:active { 
             background: #b72216; 
+            color: #000000 !important;
         }
 
         .menu-contact li:first-child a, .menu-works li:first-child a {
@@ -676,8 +679,11 @@
                 border-bottom-right-radius: 12px !important;
             }
 
-            .menu-contact li:last-child a:hover, .menu-works li:last-child a:hover {
+            /* MODIFICA MOBILE: Testo nero alla selezione per le voci del menu */
+            .menu-contact li:last-child a:hover, .menu-works li:last-child a:hover,
+            .menu-contact li:last-child a:active, .menu-works li:last-child a:active {
                 background: #b72216 !important;
+                color: #000000 !important;
             }
 
             .curiosity-overlay {
