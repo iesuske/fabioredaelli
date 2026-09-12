@@ -767,6 +767,16 @@
 
             footer p { white-space: nowrap !important; }
         }
+
+        /* ===== MOBILE LANDSCAPE ONLY (MODIFICATO A -30px) ===== */
+        @media screen and (max-width: 915px) and (orientation: landscape) {
+            .master-canvas {
+                margin-top: -30px !important; 
+            }
+            .header-anchor {
+                top: 7.6% !important; 
+            }
+        }
     </style>
 
     <script>
@@ -1216,12 +1226,7 @@
             }
 
             document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    closeModalCuriosity();
-                    closeModalWorks();
-                    closeModalColor();
-                    closeModalHighlights();
-                }
+                e.key === 'Escape' && (closeModalCuriosity(), closeModalWorks(), closeModalColor(), closeModalHighlights());
             });
 
         });
