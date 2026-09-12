@@ -300,6 +300,7 @@
         }
 
         .close-bio-btn { display: none; }
+        .mobile-br { display: none; }
 
         .curiosity-overlay {
             position: fixed;
@@ -596,7 +597,7 @@
                 backdrop-filter: blur(8px) !important;
                 -webkit-backdrop-filter: blur(8px) !important;
                 border-radius: 12px;
-                padding: 34px 16px 20px 16px !important; 
+                padding: 28px 16px 20px 16px !important; 
                 z-index: 9999 !important;
                 box-shadow: 0 10px 40px rgba(0,0,0,0.8);
                 box-sizing: border-box !important;
@@ -615,8 +616,8 @@
             }
 
             .dropdown-menu.menu-about {
-                padding-top: 28px !important;
-                padding-bottom: 28px !important;
+                padding-top: 22px !important;
+                padding-bottom: 24px !important;
                 scrollbar-width: thin;
                 scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
                 transition: scrollbar-color 0.3s ease;
@@ -626,7 +627,7 @@
             .dropdown-menu.menu-contact, .dropdown-menu.menu-works {
                 width: 45vw !important; 
                 max-width: 175px !important;
-                padding: 28px 0 0 0 !important; 
+                padding: 36px 0 0 0 !important; 
                 max-height: 50vh !important;
                 top: 16vh !important;
                 transform: translateX(-50%) !important;
@@ -648,22 +649,23 @@
                 align-items: center;
                 justify-content: center;
                 position: absolute;
-                top: 8px;
-                right: 8px;
-                width: 20px;
-                height: 20px;
+                top: 4px;
+                right: 4px;
+                width: 36px;
+                height: 36px;
                 background-color: #b72216;
                 color: #ffffff;
                 border-radius: 50%;
-                font-size: 0.8rem;
+                font-size: 1.2rem;
                 font-weight: bold;
                 line-height: 1;
                 cursor: pointer;
                 z-index: 10000;
                 border: none;
-                box-shadow: 0 1px 4px rgba(0,0,0,0.5);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.6);
                 pointer-events: auto !important;
                 padding: 0;
+                touch-action: manipulation;
             }
 
             .dropdown-menu.menu-contact .close-bio-btn,
@@ -672,7 +674,6 @@
                 right: 4px !important;
             }
 
-            /* Testo Bio mobile: Roma, 1964. accentrato e a capo, seguito dal resto del testo in linea */
             .menu-about li {
                 font-size: 1.05rem;
                 line-height: 1.4;
@@ -690,12 +691,17 @@
                 height: 0 !important;
             }
 
+            /* Ritorno a capo pulito e standard tramite <br> mobile */
             .menu-about li.bio-title {
-                display: block !important;
+                display: inline !important;
                 font-weight: bold;
-                margin-bottom: 12px !important;
+                margin-bottom: 0 !important; 
                 text-align: center !important;
                 white-space: normal !important;
+            }
+
+            .mobile-br {
+                display: inline !important;
             }
 
             .menu-contact li a, .menu-works li a {
@@ -838,14 +844,16 @@
 
             const closeBtns = document.querySelectorAll('.close-bio-btn');
             closeBtns.forEach(btn => {
-                btn.addEventListener('click', function(e) {
+                const closeAction = function(e) {
                     e.preventDefault();
                     e.stopPropagation();
-                    const dropdown = this.closest('.dropdown');
+                    const dropdown = btn.closest('.dropdown');
                     if (dropdown) {
                         dropdown.classList.remove('active');
                     }
-                });
+                };
+                btn.addEventListener('click', closeAction);
+                btn.addEventListener('touchend', closeAction, { passive: false });
             });
 
             document.addEventListener('click', function(e) {
@@ -1245,7 +1253,7 @@
                             <a class="dropdown-trigger testo-custom">Bio</a>
                             <ul class="dropdown-menu menu-about testo-custom">
                                 <li class="close-li"><button class="close-bio-btn" type="button">&times;</button></li>
-                                <li class="bio-title">Roma, 1964.</li>
+                                <li class="bio-title">Roma, 1964.<span class="mobile-br"><br></span></li>
                                 <li>Autore di fumetti, storyboard artist ed illustratore;</li>
                                 <li>piu' di 30 anni di esperienza sul campo, alternando</li>
                                 <li>collaborazioni di ogni tipo, dai fumetti a locandine</li>
