@@ -582,7 +582,6 @@
                 vertical-align: middle !important;
             }
 
-            /* CORRETTO: Allineamento e centratura rigorosa del menu mobile */
             .dropdown-menu {
                 position: fixed !important;
                 top: 16vh !important;
@@ -665,12 +664,14 @@
                 padding: 0;
             }
 
-            /* CORRETTO: Forzatura righe centrate e nessun padding laterale anomalo */
+            /* CORRETTO: Testo Bio ora va a capo correttamente ed evita il taglio a destra */
             .menu-about li {
                 font-size: 1.05rem;
                 line-height: 1.25;
-                white-space: nowrap !important; 
-                padding: 2px 0 !important; 
+                white-space: normal !important; 
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+                padding: 3px 4px !important; 
                 margin: 0 auto !important;
                 text-align: center !important; 
                 width: 100% !important;
@@ -682,6 +683,7 @@
                 font-weight: bold;
                 margin-bottom: 4px;
                 text-align: center !important;
+                white-space: normal !important;
             }
 
             .menu-contact li a, .menu-works li a {
