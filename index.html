@@ -284,7 +284,6 @@
             background: #b72216; 
         }
 
-        /* Nuova regola solo ed esclusivamente per Highlights! */
         #btn-highlights:hover {
             color: #000000 !important;
         }
@@ -588,8 +587,8 @@
                 top: 16vh !important;
                 left: 50% !important;
                 transform: translateX(-50%) !important; 
-                width: 88vw !important; 
-                max-width: 360px !important;
+                width: 84vw !important; 
+                max-width: 330px !important;
                 max-height: 68vh !important;
                 overflow-y: auto !important; 
                 overflow-x: hidden !important;
@@ -598,15 +597,31 @@
                 -webkit-backdrop-filter: blur(8px) !important;
                 border-radius: 12px;
                 overflow: hidden !important;
-                padding: 34px 16px 16px 16px !important; 
+                padding: 34px 14px 16px 14px !important; 
                 z-index: 9999 !important;
                 box-shadow: 0 10px 40px rgba(0,0,0,0.8);
                 box-sizing: border-box !important;
-                -ms-overflow-style: none !important;
-                scrollbar-width: none !important;
             }
 
-            .dropdown-menu::-webkit-scrollbar { display: none !important; }
+            /* Barre di scorrimento ultra-sottili e a scomparsa per dispositivi mobili */
+            .dropdown-menu::-webkit-scrollbar {
+                width: 3px !important;
+            }
+            .dropdown-menu::-webkit-scrollbar-thumb {
+                background: rgba(255, 255, 255, 0.3) !important;
+                border-radius: 10px;
+            }
+            .dropdown-menu::-webkit-scrollbar-track {
+                background: transparent !important;
+            }
+
+            .dropdown-menu.menu-about {
+                padding-top: 24px !important;
+                padding-bottom: 24px !important;
+                scrollbar-width: thin;
+                scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+                transition: scrollbar-color 0.3s ease;
+            }
 
             .dropdown-menu.menu-contact, .dropdown-menu.menu-works {
                 width: 45vw !important; 
@@ -654,19 +669,17 @@
                 line-height: 1.35;
                 white-space: normal !important; 
                 word-wrap: break-word !important; 
-                padding: 2px 0 !important; 
-                text-align: justify !important; /* Testo giustificato solo per mobile */
-                text-justify: inter-word !important; /* Ottimizza la spaziatura tra le parole */
+                padding: 2px 4px !important; 
+                text-align: center !important; 
                 width: 100% !important;
                 box-sizing: border-box !important;
                 text-indent: 0 !important;
-                padding-left: 0 !important;
             }
 
             .menu-about li:first-child {
                 font-weight: bold;
                 margin-bottom: 4px;
-                text-align: center !important; /* Mantiene centrato il titolo o la prima riga se preferito, oppure rimuovilo se vuoi giustificato anche quello */
+                text-align: center !important;
             }
 
             .menu-contact li a, .menu-works li a {
@@ -767,10 +780,32 @@
                         dropdowns.forEach(other => other.classList.remove('active'));
                         if (!isActive) {
                             dropdown.classList.add('active');
+                            
+                            // Gestione comparsa rapida della scrollbar all'apertura del box Bio
+                            const menuAbout = dropdown.querySelector('.menu-about');
+                            if (menuAbout) {
+                                menuAbout.style.scrollbarColor = "rgba(255, 255, 255, 0.4) transparent";
+                                clearTimeout(menuAbout.scrollTimeout);
+                                menuAbout.scrollTimeout = setTimeout(() => {
+                                    menuAbout.style.scrollbarColor = "transparent transparent";
+                                }, 1500);
+                            }
                         }
                     });
                 }
             });
+
+            // Mostra la scrollbar per 1.5 secondi quando l'utente effettua lo scroll
+            const menuAboutEl = document.querySelector('.menu-about');
+            if (menuAboutEl) {
+                menuAboutEl.addEventListener('scroll', function() {
+                    this.style.scrollbarColor = "rgba(255, 255, 255, 0.4) transparent";
+                    clearTimeout(this.scrollTimeout);
+                    this.scrollTimeout = setTimeout(() => {
+                        this.style.scrollbarColor = "transparent transparent";
+                    }, 1500);
+                });
+            }
 
             const linkClosers = document.querySelectorAll('.menu-contact li a, .menu-works li a');
             linkClosers.forEach(link => {
@@ -1097,7 +1132,6 @@
                 }
             }
 
-            // --- HIGHLIGHTS STANDARD (CON FRECCE E 2 IMMAGINI) ---
             const highlightsImages = [
                 { src: "images/b01.jpg", title: "Highlights!", desc: "Enrico Brignano in “I 7 Re di Roma”" },
                 { src: "images/b02.jpg", title: "Highlights!", desc: "Enrico Brignano in “I 7 Re di Roma”" }
