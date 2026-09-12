@@ -842,19 +842,19 @@
                 });
             });
 
-            // Gestione ottimizzata per la chiusura tramite la "X" su Works, Bio e Contact Me
+            // Gestione robusta della chiusura tramite la "X" su Works, Bio e Contact Me
             const closeBtns = document.querySelectorAll('.close-bio-btn');
             closeBtns.forEach(btn => {
-                const closeAction = function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const dropdown = btn.closest('.dropdown');
-                    if (dropdown) {
-                        dropdown.classList.remove('active');
-                    }
-                };
-                btn.addEventListener('pointerdown', closeAction);
-                btn.addEventListener('click', closeAction);
+                ['click', 'touchend'].forEach(eventType => {
+                    btn.addEventListener(eventType, function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const dropdown = this.closest('.dropdown');
+                        if (dropdown) {
+                            dropdown.classList.remove('active');
+                        }
+                    }, { passive: false });
+                });
             });
 
             document.addEventListener('click', function(e) {
