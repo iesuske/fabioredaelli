@@ -344,19 +344,19 @@
 
         .curiosity-modal::-webkit-scrollbar { display: none; }
 
-        /* PULSANTE DI CHIUSURA UNIFICATO (USATO SIA PER CURIOSITY CHE PER I MENU MOBILE) */
+        /* PULSANTE DI CHIUSURA UNIFICATO CON TARGETING TOUCH AMPLIFICATO */
         .close-curiosity-btn,
         .close-menu-btn {
             position: absolute;
             top: 4px;
             right: 4px;
-            width: 20px;
-            height: 20px;
+            width: 32px;
+            height: 32px;
             background-color: #b72216;
             color: #ffffff;
             border: none;
             border-radius: 50%;
-            font-size: 0.8rem;
+            font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
             display: flex;
@@ -364,9 +364,10 @@
             justify-content: center;
             z-index: 10001;
             line-height: 1;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.5);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.6);
             padding: 0;
             touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .video-container {
@@ -706,11 +707,11 @@
             }
 
             .close-curiosity-btn {
-                top: 4px !important;
-                right: 4px !important;
-                width: 20px !important;
-                height: 20px !important;
-                font-size: 0.8rem !important;
+                top: 6px !important;
+                right: 6px !important;
+                width: 28px !important;
+                height: 28px !important;
+                font-size: 1rem !important;
             }
 
             .curiosity-text h3 { font-size: 1.35rem !important; }
@@ -762,7 +763,7 @@
                 const trigger = dropdown.querySelector('.dropdown-trigger');
 
                 if(trigger) {
-                    trigger.addEventListener('click', function(e) {
+                    const handleTrigger = function(e) {
                         e.preventDefault();
                         e.stopPropagation();
                         if (dropdown.classList.contains('modal-open')) return;
@@ -781,7 +782,9 @@
                                 }, 1500);
                             }
                         }
-                    });
+                    };
+
+                    trigger.addEventListener('click', handleTrigger);
                 }
             });
 
@@ -809,7 +812,7 @@
                 });
             });
 
-            // GESTIONE UNIFICATA CHIUSURA MENU MOBILE CON X ROSSA E BIANCA (IDENTICA A CURIOSITY)
+            // GESTIONE UNIFICATA CHIUSURA MENU DROPDOWN MOBILE
             const closeMenuBtns = document.querySelectorAll('.close-menu-btn');
             closeMenuBtns.forEach(btn => {
                 const closeHandler = function(e) {
@@ -877,6 +880,25 @@
                 setModalOpenState(false);
             }
 
+            // REGISTRAZIONE EVENTI TOUCH E CLICK SU TUTTE LE X ROSSE DELLE MODALI
+            const attachCloseAction = function(elementId, closeFunction) {
+                const btn = document.getElementById(elementId);
+                if (btn) {
+                    const handler = function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        closeFunction();
+                    };
+                    btn.addEventListener('click', handler);
+                    btn.addEventListener('touchstart', handler, { passive: false });
+                }
+            };
+
+            attachCloseAction('close-curiosity', closeModalCuriosity);
+            attachCloseAction('close-works-modal', closeModalWorks);
+            attachCloseAction('close-color-modal', closeModalColor);
+            attachCloseAction('close-highlights-modal', closeModalHighlights);
+
             const videos = [
                 { id: "hlJmwrHEUQ0", title: "Behind The Scene", desc: "scopri le tecniche e lo storyboard originale" },
                 { id: "nW3AkeZIBXg", title: "Tutorial Pin-Up", desc: "guida pratica al disegno digitale passo dopo passo" },
@@ -893,7 +915,6 @@
 
             let currentVideoIndex = 0;
             const btnCuriosity = document.getElementById('btn-curiosity');
-            const closeCuriosity = document.getElementById('close-curiosity');
             const curiosityTitle = document.getElementById('curiosity-title');
             const curiosityDesc = document.getElementById('curiosity-desc');
             const videoCounter = document.getElementById('video-counter');
@@ -928,8 +949,6 @@
                     updateVideo(0);
                     curiosityOverlay.classList.add('open');
                 });
-
-                if (closeCuriosity) closeCuriosity.addEventListener('click', closeModalCuriosity);
 
                 if (btnNextVideo) {
                     btnNextVideo.addEventListener('click', function(e) {
@@ -975,7 +994,6 @@
 
             let currentWorkIndex = 0;
             const btnSketchs = document.getElementById('btn-sketchs');
-            const closeWorksModal = document.getElementById('close-works-modal');
             const worksTitle = document.getElementById('works-title');
             const worksDesc = document.getElementById('works-desc');
             const worksCounter = document.getElementById('works-counter');
@@ -1009,8 +1027,6 @@
                     updateWorkImage(0);
                     worksOverlay.classList.add('open');
                 });
-
-                if (closeWorksModal) closeWorksModal.addEventListener('click', closeModalWorks);
 
                 if (btnNextWork) {
                     btnNextWork.addEventListener('click', function(e) {
@@ -1073,7 +1089,6 @@
 
             let currentColorIndex = 0;
             const btnColor = document.getElementById('btn-color-artworks');
-            const closeColorModal = document.getElementById('close-color-modal');
             const colorTitle = document.getElementById('color-title');
             const colorDesc = document.getElementById('color-desc');
             const colorCounter = document.getElementById('color-counter');
@@ -1108,8 +1123,6 @@
                     colorOverlay.classList.add('open');
                 });
 
-                if (closeColorModal) closeColorModal.addEventListener('click', closeModalColor);
-
                 if (btnNextColor) {
                     btnNextColor.addEventListener('click', function(e) {
                         e.stopPropagation();
@@ -1132,7 +1145,6 @@
 
             let currentHighlightIndex = 0;
             const btnHighlights = document.getElementById('btn-highlights');
-            const closeHighlightsModal = document.getElementById('close-highlights-modal');
             const highlightsTitle = document.getElementById('highlights-title');
             const highlightsDesc = document.getElementById('highlights-desc');
             const highlightsCounter = document.getElementById('highlights-counter');
@@ -1166,8 +1178,6 @@
                     updateHighlightImage(0);
                     highlightsOverlay.classList.add('open');
                 });
-
-                if (closeHighlightsModal) closeHighlightsModal.addEventListener('click', closeModalHighlights);
 
                 if (btnNextHighlight) {
                     btnNextHighlight.addEventListener('click', function(e) {
@@ -1265,7 +1275,7 @@
     <!-- Player Video Curiosity -->
     <div id="curiosity-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
-            <button class="close-curiosity-btn" id="close-curiosity">&times;</button>
+            <button class="close-curiosity-btn" id="close-curiosity" type="button">&times;</button>
             
             <div class="video-container">
                 <iframe id="youtube-frame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -1289,7 +1299,7 @@
     <!-- Player Immagini Works (Sketches And B/N) -->
     <div id="works-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
-            <button class="close-curiosity-btn" id="close-works-modal">&times;</button>
+            <button class="close-curiosity-btn" id="close-works-modal" type="button">&times;</button>
             
             <div class="works-image-container">
                 <img id="works-modal-img" src="" alt="Sketches And B/N">
@@ -1313,7 +1323,7 @@
     <!-- Player Immagini Color Artworks -->
     <div id="color-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
-            <button class="close-curiosity-btn" id="close-color-modal">&times;</button>
+            <button class="close-curiosity-btn" id="close-color-modal" type="button">&times;</button>
             
             <div class="works-image-container">
                 <img id="color-modal-img" src="" alt="Color Artworks">
@@ -1337,7 +1347,7 @@
     <!-- Player Immagini Highlights -->
     <div id="highlights-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
-            <button class="close-curiosity-btn" id="close-highlights-modal">&times;</button>
+            <button class="close-curiosity-btn" id="close-highlights-modal" type="button">&times;</button>
             
             <div class="works-image-container">
                 <img id="highlights-modal-img" src="" alt="Highlights!">
