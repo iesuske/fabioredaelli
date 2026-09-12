@@ -505,7 +505,6 @@
             z-index: 1000;
         }
 
-        /* ===== MOBILE ONLY (max-width: 768px) ===== */
         @media screen and (max-width: 768px) {
             html, body {
                 height: 100vh !important;
@@ -645,6 +644,7 @@
                 margin: 0 !important;
             }
 
+            /* Pulsante di chiusura identico a quello del player Curiosity */
             .close-bio-btn {
                 display: flex !important;
                 align-items: center;
@@ -766,16 +766,6 @@
             }
 
             footer p { white-space: nowrap !important; }
-        }
-
-        /* ===== MOBILE LANDSCAPE ONLY ===== */
-        @media screen and (max-width: 915px) and (orientation: landscape) {
-            .master-canvas {
-                margin-top: 5px !important; /* Abbassa la pagina mostrando la striscia beige in alto */
-            }
-            .header-anchor {
-                top: calc(7.2% + 0px) !important; /* Abbassa la scritta in landscape */
-            }
         }
     </style>
 
@@ -1226,7 +1216,12 @@
             }
 
             document.addEventListener('keydown', function(e) {
-                e.key === 'Escape' && (closeModalCuriosity(), closeModalWorks(), closeModalColor(), closeModalHighlights());
+                if (e.key === 'Escape') {
+                    closeModalCuriosity();
+                    closeModalWorks();
+                    closeModalColor();
+                    closeModalHighlights();
+                }
             });
 
         });
