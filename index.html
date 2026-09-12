@@ -302,8 +302,8 @@
         .close-bio-btn { display: none; }
         .mobile-br { display: none; }
 
-        /* Stili per il blocco orientamento orizzontale (Landscape) su mobile */
-        .landscape-warning {
+        /* BLOCCO ORIENTAMENTO VERTICALE (Fascia rossa con riga nera e messaggi) */
+        #orientation-block {
             display: none;
             position: fixed;
             top: 0;
@@ -311,44 +311,55 @@
             width: 100vw;
             height: 100vh;
             background-color: #fde3b8;
-            z-index: 999999;
+            z-index: 9999999;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 20px;
+            justify-content: flex-start;
             text-align: center;
-            overflow: hidden;
-            gap: 15px;
+            padding: 0;
         }
 
-        .landscape-warning .brand-title {
-            font-size: 6vw;
-            white-space: nowrap;
+        .orientation-header-band {
+            width: 100%;
+            background-color: #b72216;
+            padding: 18px 10px;
+            border-bottom: 4px solid #000000;
+            margin-bottom: 35px;
         }
 
-        .landscape-warning-content {
+        .orientation-brand-title {
             font-family: 'Lobster Regular', cursive;
-            max-width: 90vw;
-            padding: 0 15px;
+            font-size: 6vw;
+            line-height: 1.1;
+            margin: 0;
+            text-shadow: none;
         }
 
-        .landscape-warning-subtitle {
-            font-size: 1.5rem;
+        .orientation-message-container {
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .orientation-sub-msg {
+            font-family: 'Lobster Regular', cursive;
+            font-size: 5.5vw;
             color: #b72216;
-            margin-bottom: 6px;
-            font-weight: normal;
+            line-height: 1.2;
         }
 
-        .landscape-warning-content p {
-            font-size: 1.1rem;
+        .orientation-sub-desc {
+            font-family: 'Lobster Regular', cursive;
+            font-size: 4vw;
             color: #000000;
-            font-weight: normal;
             line-height: 1.3;
         }
 
-        /* Attiva il blocco solo su schermi piccoli (smartphone) in modalità landscape */
-        @media screen and (max-width: 900px) and (orientation: landscape) {
-            .landscape-warning {
+        /* Attiva il blocco solo se lo schermo è in verticale su dispositivi mobili */
+        @media screen and (max-width: 900px) and (orientation: portrait) {
+            #orientation-block {
                 display: flex !important;
             }
         }
@@ -1266,12 +1277,7 @@
             }
 
             document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    closeModalCuriosity();
-                    closeModalWorks();
-                    closeModalColor();
-                    closeModalHighlights();
-                }
+                e.key === 'Escape' && (closeModalCuriosity(), closeModalWorks(), closeModalColor(), closeModalHighlights());
             });
 
         });
@@ -1279,13 +1285,14 @@
 </head>
 <body>
 
-    <!-- Blocco per orientamento Landscape su dispositivi mobili -->
-    <div id="landscape-warning" class="landscape-warning">
-        <h1 class="brand-title"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
-        
-        <div class="landscape-warning-content">
-            <h2 class="landscape-warning-subtitle">dispositivo in orizzontale</h2>
-            <p>per una corretta visualizzazione del sito si prega di ruotare il dispositivo in posizione verticale.</p>
+    <!-- BLOCCO ORIENTAMENTO VERTICALE -->
+    <div id="orientation-block">
+        <div class="orientation-header-band">
+            <h1 class="orientation-brand-title testo-custom"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
+        </div>
+        <div class="orientation-message-container">
+            <div class="orientation-sub-msg testo-custom">dispositivo in orizzontale</div>
+            <div class="orientation-sub-desc testo-custom">per una corretta visualizzazione del sito si prega di ruotare il dispositivo in posizione verticale.</div>
         </div>
     </div>
 
