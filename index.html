@@ -842,6 +842,7 @@
                 });
             });
 
+            // Gestione ottimizzata per la chiusura tramite la "X" su Works, Bio e Contact Me
             const closeBtns = document.querySelectorAll('.close-bio-btn');
             closeBtns.forEach(btn => {
                 const closeAction = function(e) {
@@ -852,8 +853,8 @@
                         dropdown.classList.remove('active');
                     }
                 };
+                btn.addEventListener('pointerdown', closeAction);
                 btn.addEventListener('click', closeAction);
-                btn.addEventListener('touchend', closeAction, { passive: false });
             });
 
             document.addEventListener('click', function(e) {
