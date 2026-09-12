@@ -132,7 +132,7 @@
         .btn-curiosity:hover,
         .btn-curiosity:active {
             background-color: #b72216;
-            color: #000000; 
+            color: #ffffff; 
         }
 
         .btn-works-style {
@@ -157,8 +157,8 @@
         .btn-works-style:hover,
         .btn-works-style:active,
         .dropdown.active:not(.modal-open) .btn-works-style {
-            background-color: #ffffff !important;
-            color: #000000 !important;
+            background-color: #b72216 !important;
+            color: #ffffff !important;
         }
 
         .dropdown {
@@ -194,12 +194,12 @@
 
         @media (hover: hover) {
             .dropdown:hover .dropdown-trigger:not(.btn-works-style) { 
-                color: #000000; 
+                color: #ffffff; 
             }
         }
 
         .dropdown.active:not(.modal-open) .dropdown-trigger:not(.btn-works-style) { 
-            color: #000000 !important; 
+            color: #ffffff !important; 
         }
 
         .dropdown-menu {
@@ -273,17 +273,19 @@
             display: block;
             text-decoration: none;
             padding: 10px 12px;
-            transition: background 0.2s ease;
+            transition: background 0.2s ease, color 0.2s ease;
             text-align: center;
             cursor: pointer;
             width: 100%;
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* MODIFICA: Testo nero alla selezione per le voci del menu */
-        .menu-contact li a:hover, .menu-works li a:hover,
-        .menu-contact li a:active, .menu-works li a:active { 
+        .menu-contact li a:hover, .menu-works li a:hover { 
             background: #b72216; 
+        }
+
+        /* Nuova regola solo ed esclusivamente per Highlights! */
+        #btn-highlights:hover {
             color: #000000 !important;
         }
 
@@ -679,11 +681,8 @@
                 border-bottom-right-radius: 12px !important;
             }
 
-            /* MODIFICA MOBILE: Testo nero alla selezione per le voci del menu */
-            .menu-contact li:last-child a:hover, .menu-works li:last-child a:hover,
-            .menu-contact li:last-child a:active, .menu-works li:last-child a:active {
+            .menu-contact li:last-child a:hover, .menu-works li:last-child a:hover {
                 background: #b72216 !important;
-                color: #000000 !important;
             }
 
             .curiosity-overlay {
@@ -1098,8 +1097,8 @@
 
             // --- HIGHLIGHTS STANDARD (CON FRECCE E 2 IMMAGINI) ---
             const highlightsImages = [
-                { src: "images/b01.jpg", title: "Highlights", desc: "Enrico Brignano in I 7 Re di Roma" },
-                { src: "images/b02.jpg", title: "Highlights", desc: "E. Brignano, I 7 Re di Roma" }
+                { src: "images/b01.jpg", title: "Highlights!", desc: "Enrico Brignano in I 7 Re di Roma" },
+                { src: "images/b02.jpg", title: "Highlights!", desc: "E. Brignano, I 7 Re di Roma" }
             ];
 
             let currentHighlightIndex = 0;
@@ -1186,7 +1185,7 @@
                                 <button class="close-bio-btn">&times;</button>
                                 <li><a href="#" id="btn-sketchs">Sketches And B/N</a></li>
                                 <li><a href="#" id="btn-color-artworks">Color Artworks</a></li>
-                                <li><a href="#" id="btn-highlights">Highlights</a></li>
+                                <li><a href="#" id="btn-highlights">Highlights!</a></li>
                             </ul>
                         </div>
 
@@ -1307,11 +1306,11 @@
             <button class="close-curiosity-btn" id="close-highlights-modal">&times;</button>
             
             <div class="works-image-container">
-                <img id="highlights-modal-img" src="" alt="Highlights">
+                <img id="highlights-modal-img" src="" alt="Highlights!">
             </div>
 
             <div class="curiosity-text testo-custom">
-                <h3 id="highlights-title">Highlights</h3>
+                <h3 id="highlights-title">Highlights!</h3>
                 <p id="highlights-desc">prima opera in primo piano</p>
             </div>
 
