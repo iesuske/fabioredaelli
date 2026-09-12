@@ -44,12 +44,11 @@
             overflow: hidden;
         }
 
-        /* Stato originale per Desktop */
         .master-canvas {
             position: relative;
             width: 100%;
             background-color: #fde3b8;
-            margin-top: 0; 
+            margin-top: -50px;
         }
 
         .bg-image {
@@ -506,6 +505,7 @@
             z-index: 1000;
         }
 
+        /* ===== MOBILE ONLY (max-width: 768px) ===== */
         @media screen and (max-width: 768px) {
             html, body {
                 height: 100vh !important;
@@ -514,7 +514,7 @@
             }
 
             .master-canvas {
-                margin-top: -18px !important; /* Sollevato solo in verticale su mobile */
+                margin-top: -21.5px !important;
                 overflow: hidden;
             }
 
@@ -766,14 +766,6 @@
             }
 
             footer p { white-space: nowrap !important; }
-        }
-        
-        /* Margine landscape mobile isolato (-35px) */
-        @media screen and (max-width: 950px) and (orientation: landscape) {
-            .master-canvas,
-            body.ios-chrome .master-canvas {
-                margin-top: -35px !important;
-            }
         }
     </style>
 
