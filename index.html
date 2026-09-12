@@ -312,35 +312,49 @@
             height: 100vh;
             background-color: #fde3b8;
             z-index: 999999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 6vh;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .landscape-red-band {
+            width: 100vw;
+            background-color: #b72216;
+            padding: 8px 0;
+            margin-bottom: 12px;
+            display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            padding: 20px;
         }
 
         .landscape-warning-content {
             font-family: 'Lobster Regular', cursive;
-            max-width: 480px;
+            max-width: 90vw;
+            padding: 0 15px;
         }
 
         .landscape-warning-title {
-            font-size: 2.4rem;
-            margin-bottom: 10px;
+            font-size: clamp(1.4rem, 4.5vw, 2.2rem);
             line-height: 1;
+            white-space: nowrap !important;
+            margin: 0;
         }
 
         .landscape-warning-subtitle {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: #b72216;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             font-weight: normal;
         }
 
         .landscape-warning-content p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #000000;
             font-weight: normal;
-            line-height: 1.4;
+            line-height: 1.3;
         }
 
         /* Attiva il blocco solo su schermi piccoli (smartphone) in modalità landscape */
@@ -1278,10 +1292,12 @@
 
     <!-- Blocco per orientamento Landscape su dispositivi mobili -->
     <div id="landscape-warning" class="landscape-warning">
-        <div class="landscape-warning-content">
+        <div class="landscape-red-band">
             <h1 class="brand-title landscape-warning-title"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
-            <h2 class="landscape-warning-subtitle">Dispositivo in orizzontale</h2>
-            <p>Per una corretta visualizzazione del sito si prega di ruotare il dispositivo in posizione verticale.</p>
+        </div>
+        <div class="landscape-warning-content">
+            <h2 class="landscape-warning-subtitle">dispositivo in orizzontale</h2>
+            <p>per una corretta visualizzazione del sito si prega di ruotare il dispositivo in posizione verticale.</p>
         </div>
     </div>
 
