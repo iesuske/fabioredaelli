@@ -768,12 +768,12 @@
         }
         
         /* ========================================================= */
-        /* FIX: RIDUZIONE MASSIMA SPAZIO BEIGE IN ALTO SU MOBILE (LANDSCAPE) */
+        /* RIDUZIONE MIRATA SPAZIO BEIGE IN ALTO PER CHROME/SAFARI (LANDSCAPE) */
         /* ========================================================= */
         @media screen and (max-width: 950px) and (orientation: landscape) {
             .master-canvas,
             body.ios-chrome .master-canvas {
-                margin-top: 0px !important; 
+                margin-top: -8px !important; /* Riduzione controllata per Chrome e Safari mobile in landscape */
             }
         }
         /* ========================================================= */
