@@ -565,6 +565,11 @@
                 align-items: center !important;
             }
 
+            /* FIX MOBILE: forza la chiusura della tendina quando non ha la classe active, annullando l'hover del touch */
+            .dropdown:not(.active) .dropdown-menu {
+                display: none !important;
+            }
+
             .btn-curiosity, .btn-works-style {
                 font-size: 3.2vw !important; 
                 padding: 1px 6px !important; 
@@ -842,7 +847,7 @@
                 });
             });
 
-            // Gestione robusta della chiusura tramite la "X" su Works, Bio e Contact Me
+            // Gestione della chiusura tramite la "X" su Works, Bio e Contact Me
             const closeBtns = document.querySelectorAll('.close-bio-btn');
             closeBtns.forEach(btn => {
                 ['click', 'touchend'].forEach(eventType => {
