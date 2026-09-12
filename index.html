@@ -302,7 +302,7 @@
         .close-bio-btn { display: none; }
         .mobile-br { display: none; }
 
-        /* BLOCCO ORIENTAMENTO ORIZZONTALE (Fascia rossa, riga nera e messaggi) */
+        /* BLOCCO ORIENTAMENTO ORIZZONTALE (Ottimizzato per iPhone 12/12 Pro landscape) */
         #orientation-block {
             display: none;
             position: fixed;
@@ -317,42 +317,45 @@
             justify-content: flex-start;
             text-align: center;
             padding: 0;
+            overflow-y: auto;
         }
 
         .orientation-header-band {
             width: 100%;
             background-color: #b72216;
-            padding: 18px 10px;
-            border-bottom: 4px solid #000000;
-            margin-bottom: 35px;
+            padding: 8px 10px;
+            border-bottom: 3px solid #000000;
+            margin-bottom: 18px;
         }
 
         .orientation-brand-title {
             font-family: 'Lobster Regular', cursive;
-            font-size: 6vw;
+            font-size: clamp(1.5rem, 5vh, 2.2rem);
             line-height: 1.1;
             margin: 0;
             text-shadow: none;
+            white-space: nowrap;
         }
 
         .orientation-message-container {
-            padding: 0 20px;
+            padding: 0 15px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 8px;
             align-items: center;
+            max-width: 90%;
         }
 
         .orientation-sub-msg {
             font-family: 'Lobster Regular', cursive;
-            font-size: 5.5vw;
+            font-size: clamp(1.1rem, 3.8vh, 1.6rem);
             color: #b72216;
             line-height: 1.2;
         }
 
         .orientation-sub-desc {
             font-family: 'Lobster Regular', cursive;
-            font-size: 4vw;
+            font-size: clamp(0.85rem, 2.8vh, 1.2rem);
             color: #000000;
             line-height: 1.3;
         }
@@ -1285,7 +1288,7 @@
 </head>
 <body>
 
-    <!-- BLOCCO ORIENTAMENTO ORIZZONTALE (Con fascia rossa, riga nera e scritta intatta) -->
+    <!-- BLOCCO ORIENTAMENTO ORIZZONTALE (Compatto per iPhone 12/12 Pro landscape) -->
     <div id="orientation-block">
         <div class="orientation-header-band">
             <h1 class="orientation-brand-title testo-custom"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
