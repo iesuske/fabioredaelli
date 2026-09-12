@@ -505,44 +505,6 @@
             z-index: 1000;
         }
 
-        /* OVERLAY DI BLOCCO PER MODALITÀ LANDSCAPE / ORIZZONTALE */
-        .landscape-warning {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            height: 100dvh;
-            background-color: #fde3b8;
-            z-index: 9999999;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 30px;
-        }
-
-        .landscape-warning p {
-            font-family: 'Lobster Regular', cursive;
-            font-size: clamp(1.8rem, 5vw, 3rem);
-            color: #b72216;
-            line-height: 1.4;
-            margin: 0;
-        }
-
-        @media screen and (orientation: landscape) {
-            .master-canvas, .curiosity-overlay, footer {
-                display: none !important;
-            }
-            .landscape-warning {
-                display: flex !important;
-            }
-            body {
-                overflow: hidden !important;
-            }
-        }
-
         @media screen and (max-width: 768px) {
             html, body {
                 height: 100vh !important;
@@ -1266,11 +1228,6 @@
     </script>
 </head>
 <body>
-
-    <!-- OVERLAY WARNING LANDSCAPE -->
-    <div id="landscape-warning" class="landscape-warning">
-        <p class="testo-custom">Il sito è progettato esclusivamente per la visualizzazione verticale.<br><br>Ruota il tuo dispositivo per continuare.</p>
-    </div>
 
     <div class="master-canvas">
         <img src="images/bg2.jpg?v=COVER" class="bg-image" alt="Artwork Fabio Redaelli">
