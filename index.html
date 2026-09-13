@@ -511,10 +511,10 @@
         #landscape-warning {
             display: none;
             position: fixed;
-            top: 0;
+            top: -3vh; /* Intero blocco superiore spostato leggermente più in alto */
             left: 0;
             width: 100vw;
-            height: 100vh;
+            height: 105vh; /* Altezza aumentata per coprire lo spazio in basso */
             background-color: #fde3b8;
             z-index: 999999;
             flex-direction: column;
@@ -561,7 +561,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Testo centrale di avviso (spostato ancora più in alto) */
+        /* Testo centrale di avviso */
         .landscape-message {
             position: absolute;
             top: 32%;
