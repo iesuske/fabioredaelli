@@ -505,6 +505,89 @@
             z-index: 1000;
         }
 
+        /* ==========================================
+           GESTIONE SCHERMATA ORIZZONTALE (LANDSCAPE MOBILE)
+           ========================================== */
+        #landscape-warning {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #fde3b8;
+            background-image: url('images/bg2.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: 999999;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        /* Barra rossa superiore con scritta integrata */
+        .landscape-header {
+            position: relative;
+            width: 100%;
+            /* Altezza proporzionata basata sulla banda rossa originale dell'immagine */
+            height: 14.5vh;
+            background-color: #b72216;
+            display: flex;
+            align-items: flex-end; /* Appoggia la scritta sulla righetta nera in basso */
+            justify-content: center;
+            border-bottom: 2px solid #5a0e0a; /* Linea/righetta nera o scura di appoggio */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .landscape-brand {
+            font-family: 'Lobster Regular', cursive;
+            font-size: 5vh;
+            line-height: 1;
+            margin: 0;
+            padding-bottom: 2px; /* Rifinitura millimetrica sulla riga */
+            white-space: nowrap;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Testo centrale di avviso (al posto della macchina/ballon) */
+        .landscape-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 90%;
+            font-family: 'Lobster Regular', cursive;
+            color: #222222;
+            padding: 20px;
+        }
+
+        .landscape-message h2 {
+            font-size: 6vw;
+            font-weight: normal;
+            margin-bottom: 8px;
+            color: #b72216;
+            text-shadow: 1px 1px 2px rgba(253, 227, 184, 0.8);
+        }
+
+        .landscape-message p {
+            font-size: 4vw;
+            font-weight: normal;
+            line-height: 1.3;
+            color: #111111;
+        }
+
+        /* Attivazione automatica su dispositivi mobili in orizzontale */
+        @media screen and (max-width: 1024px) and (orientation: landscape) {
+            #landscape-warning {
+                display: flex !important;
+            }
+            body > *:not(#landscape-warning) {
+                display: none !important;
+            }
+        }
+
         @media screen and (max-width: 768px) {
             html, body {
                 height: 100vh !important;
@@ -644,7 +727,6 @@
                 margin: 0 !important;
             }
 
-            /* Pulsante di chiusura identico a quello del player Curiosity */
             .close-bio-btn {
                 display: flex !important;
                 align-items: center;
@@ -718,10 +800,6 @@
                 padding: 10px 8px 20px 8px !important;
                 border-bottom-left-radius: 12px !important;
                 border-bottom-right-radius: 12px !important;
-            }
-
-            .menu-contact li:last-child a:hover, .menu-works li:last-child a:hover {
-                background: #b72216 !important;
             }
 
             .curiosity-overlay {
@@ -1228,6 +1306,19 @@
     </script>
 </head>
 <body>
+
+    <!-- SCHERMATA DEDICATA DISPOSITIVO IN ORIZZONTALE (LANDSCAPE) -->
+    <div id="landscape-warning">
+        <header class="landscape-header">
+            <h1 class="landscape-brand">
+                <span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span>
+            </h1>
+        </header>
+        <div class="landscape-message">
+            <h2>Dispositivo orizzontale</h2>
+            <p>per la corretta visualizzazione del sito girare il dispositivo in verticale</p>
+        </div>
+    </div>
 
     <div class="master-canvas">
         <img src="images/bg2.jpg?v=COVER" class="bg-image" alt="Artwork Fabio Redaelli">
