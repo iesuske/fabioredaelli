@@ -62,44 +62,42 @@
             align-items: center;
             overflow: hidden;
             box-sizing: border-box;
+            padding: 20px;
         }
 
         .landscape-canvas {
-            position: relative;
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
-            background-color: #fde3b8;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 15px;
+            justify-content: center;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
         }
 
         .landscape-bg-image {
             width: 100%;
             height: auto;
+            max-height: 50vh;
+            object-fit: contain;
             display: block;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            margin-bottom: 15px;
         }
 
         .landscape-content {
-            margin-top: 15px;
             text-align: center;
             font-family: 'Lobster Regular', cursive;
-            padding: 0 10px;
         }
 
         .landscape-content h2 {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: normal;
             margin-bottom: 4px;
             color: #b72216;
         }
 
         .landscape-content p {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: normal;
             line-height: 1.3;
             color: #222222;
@@ -1295,7 +1293,7 @@
 </head>
 <body>
 
-    <!-- Schermata di Avviso Orizzontale (Landscape Warning) -->
+    <!-- Schermata di Avviso Orizzontale -->
     <div id="landscape-warning">
         <div class="landscape-canvas">
             <img src="images/bg2.jpg" class="landscape-bg-image" alt="Fabio Redaelli Artwork">
