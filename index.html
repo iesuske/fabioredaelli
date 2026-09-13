@@ -45,7 +45,7 @@
         }
 
         /* ==========================================
-           SCHERMATA DI AVVISO ORIZZONTALE (ESATTA COME DA SCREENSHOT)
+           SCHERMATA DI AVVISO ORIZZONTALE (TESTO PIÙ IN ALTO, NOME FISSO)
            ========================================== */
         #landscape-warning {
             display: none;
@@ -69,6 +69,7 @@
             border-bottom: 3px solid #000000;
             padding: 12px 0;
             text-align: center;
+            flex-shrink: 0;
         }
 
         .landscape-top-bar h1 {
@@ -84,25 +85,26 @@
         }
 
         .landscape-text-container {
-            flex: 1;
+            width: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             text-align: center;
-            padding: 0 20px;
+            padding: 2vh 20px 0 20px;
             font-family: 'Lobster Regular', cursive;
+            flex: 1;
         }
 
         .landscape-text-container h2 {
-            font-size: 32px;
+            font-size: 30px;
             font-weight: normal;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
             color: #b72216;
         }
 
         .landscape-text-container p {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: normal;
             line-height: 1.2;
             color: #000000;
@@ -1298,7 +1300,7 @@
 </head>
 <body>
 
-    <!-- Schermata di Avviso Orizzontale (Esatta come da screenshot) -->
+    <!-- Schermata di Avviso Orizzontale -->
     <div id="landscape-warning">
         <div class="landscape-top-bar">
             <h1 class="testo-custom"><span>Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span>Redaelli</span></h1>
