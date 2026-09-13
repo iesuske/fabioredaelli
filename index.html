@@ -511,10 +511,10 @@
         #landscape-warning {
             display: none;
             position: fixed;
-            top: -3vh; /* Intero blocco superiore spostato leggermente più in alto */
+            top: -3vh; /* CORRETTO: Blocco spostato più in alto */
             left: 0;
             width: 100vw;
-            height: 105vh; /* Altezza aumentata per coprire lo spazio in basso */
+            height: 105vh; 
             background-color: #fde3b8;
             z-index: 999999;
             flex-direction: column;
@@ -523,7 +523,6 @@
             overflow: hidden;
         }
 
-        /* Isola solo la banda rossa e la riga nera superiore da bg2.jpg senza la macchina centrale */
         #landscape-warning::before {
             content: '';
             position: absolute;
@@ -539,7 +538,6 @@
             border-bottom: 2px solid #5a0e0a;
         }
 
-        /* Barra rossa superiore con scritta integrata */
         .landscape-header {
             position: relative;
             width: 100%;
@@ -561,7 +559,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Testo centrale di avviso */
         .landscape-message {
             position: absolute;
             top: 32%;
@@ -589,7 +586,6 @@
             color: #111111;
         }
 
-        /* Attivazione automatica su dispositivi mobili in orizzontale */
         @media screen and (max-width: 1024px) and (orientation: landscape) {
             #landscape-warning {
                 display: flex !important;
