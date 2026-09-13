@@ -45,7 +45,7 @@
         }
 
         /* ==========================================
-           SCHERMATA DI AVVISO ORIZZONTALE (LANDSCAPE)
+           SCHERMATA DI AVVISO ORIZZONTALE (ESATTA COME DA SCREENSHOT)
            ========================================== */
         #landscape-warning {
             display: none;
@@ -58,49 +58,54 @@
             background-color: #fde3b8;
             z-index: 999999;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
             overflow: hidden;
             box-sizing: border-box;
-            padding: 20px;
         }
 
-        .landscape-canvas {
+        .landscape-top-bar {
+            width: 100%;
+            background-color: #b72216;
+            border-bottom: 3px solid #000000;
+            padding: 12px 0;
+            text-align: center;
+        }
+
+        .landscape-top-bar h1 {
+            font-family: 'Lobster Regular', cursive;
+            font-size: 5vw;
+            color: #ffffff;
+            margin: 0;
+            font-weight: normal;
+        }
+
+        .landscape-top-bar h1 .text-black {
+            color: #000000;
+        }
+
+        .landscape-text-container {
+            flex: 1;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            width: 100%;
-            max-width: 400px;
+            align-items: center;
             text-align: center;
-        }
-
-        .landscape-bg-image {
-            width: 100%;
-            height: auto;
-            max-height: 50vh;
-            object-fit: contain;
-            display: block;
-            margin-bottom: 15px;
-        }
-
-        .landscape-content {
-            text-align: center;
+            padding: 0 20px;
             font-family: 'Lobster Regular', cursive;
         }
 
-        .landscape-content h2 {
-            font-size: 22px;
+        .landscape-text-container h2 {
+            font-size: 32px;
             font-weight: normal;
-            margin-bottom: 4px;
+            margin-bottom: 10px;
             color: #b72216;
         }
 
-        .landscape-content p {
-            font-size: 15px;
+        .landscape-text-container p {
+            font-size: 22px;
             font-weight: normal;
-            line-height: 1.3;
-            color: #222222;
+            line-height: 1.2;
+            color: #000000;
         }
 
         @media screen and (max-height: 500px) and (orientation: landscape) {
@@ -1293,14 +1298,14 @@
 </head>
 <body>
 
-    <!-- Schermata di Avviso Orizzontale -->
+    <!-- Schermata di Avviso Orizzontale (Esatta come da screenshot) -->
     <div id="landscape-warning">
-        <div class="landscape-canvas">
-            <img src="images/bg2.jpg" class="landscape-bg-image" alt="Fabio Redaelli Artwork">
-            <div class="landscape-content testo-custom">
-                <h2>Dispositivo orizzontale</h2>
-                <p>Per la corretta visualizzazione del sito, ti invitiamo a girare il dispositivo in verticale.</p>
-            </div>
+        <div class="landscape-top-bar">
+            <h1 class="testo-custom"><span>Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span>Redaelli</span></h1>
+        </div>
+        <div class="landscape-text-container testo-custom">
+            <h2>Dispositivo orizzontale</h2>
+            <p>per la corretta visualizzazione del sito girare il dispositivo in verticale</p>
         </div>
     </div>
 
