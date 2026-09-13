@@ -45,7 +45,7 @@
         }
 
         /* ==========================================
-           SCHERMATA DI AVVISO ORIZZONTALE (TESTO PIÙ IN ALTO, NOME FISSO)
+           SCHERMATA DI AVVISO ORIZZONTALE (TESTI INGRANDITI E MAI A CAPO)
            ========================================== */
         #landscape-warning {
             display: none;
@@ -91,23 +91,24 @@
             justify-content: flex-start;
             align-items: center;
             text-align: center;
-            padding: 2vh 20px 0 20px;
+            padding: 2vh 10px 0 10px;
             font-family: 'Lobster Regular', cursive;
             flex: 1;
         }
 
         .landscape-text-container h2 {
-            font-size: 30px;
+            font-size: 6.5vh;
             font-weight: normal;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             color: #b72216;
         }
 
         .landscape-text-container p {
-            font-size: 20px;
+            font-size: 4vh;
             font-weight: normal;
             line-height: 1.2;
             color: #000000;
+            white-space: nowrap;
         }
 
         @media screen and (max-height: 500px) and (orientation: landscape) {
