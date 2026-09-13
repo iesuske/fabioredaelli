@@ -511,7 +511,7 @@
         #landscape-warning {
             display: none;
             position: fixed;
-            top: -4.5vh;
+            top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
@@ -561,7 +561,7 @@
 
         .landscape-message {
             position: absolute;
-            top: 28%; /* MODIFICATO: Spostato leggermente più in alto (da 32% a 28%) */
+            top: 32%; /* Posizione originale della scritta principale */
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
@@ -584,6 +584,7 @@
             font-weight: normal;
             line-height: 1.4;
             color: #111111;
+            transform: translateY(-6px); /* MODIFICATO: Spostata di pochissimo verso l'alto solo questa scritta */
         }
 
         @media screen and (max-width: 1024px) and (orientation: landscape) {
