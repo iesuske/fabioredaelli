@@ -72,6 +72,11 @@
             flex-shrink: 0;
         }
 
+        /* Regola dedicata per aumentare l'altezza della banda rossa solo su Chrome mobile */
+        body.mobile-chrome .landscape-top-bar {
+            padding: 14px 0; /* Modifica questo valore a piacimento */
+        }
+
         .landscape-top-bar h1 {
             font-family: 'Lobster Regular', cursive;
             font-size: 4vw;
@@ -843,8 +848,8 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            if (/CriOS/i.test(navigator.userAgent)) {
-                document.body.classList.add('ios-chrome');
+            if (/CriOS|Android.*Chrome/i.test(navigator.userAgent)) {
+                document.body.classList.add('mobile-chrome');
             }
 
             let fontsLoadedCalled = false;
