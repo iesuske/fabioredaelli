@@ -47,54 +47,42 @@
         }
 
         /* ==========================================
-           SCHERMATA DI AVVISO ORIZZONTALE (CHROME FIX)
+           SCHERMATA DI AVVISO ORIZZONTALE (CHROME FIX DEFINITIVO)
            ========================================== */
         #landscape-warning {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
             width: 100vw;
             height: 100vh;
             height: 100dvh;
             background-color: #fde3b8;
             z-index: 999999;
-            flex-direction: column;
-            align-items: center;
-            overflow: hidden;
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+            margin: 0 !important;
+            padding: 0 !important;
         }
 
         .landscape-top-bar {
-            width: 100vw;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw !important;
             background-color: #b72216;
             border-bottom: 2px solid #000000;
-            padding: 4px 0;
+            padding: 12px 0;
             text-align: center;
-            flex-shrink: 0;
             box-sizing: border-box;
-            margin: 0;
-            left: 0;
-            right: 0;
-        }
-
-        body.mobile-chrome .landscape-top-bar {
-            padding: 12px 0; 
+            margin: 0 !important;
         }
 
         .landscape-top-bar h1 {
             font-family: 'Lobster Regular', cursive;
-            font-size: 4vw;
+            font-size: 4.5vw;
             color: #ffffff;
             margin: 0;
             font-weight: normal;
-        }
-
-        body.mobile-chrome .landscape-top-bar h1 {
-            font-size: 4.5vw; 
         }
 
         .landscape-top-bar h1 .text-black {
@@ -102,15 +90,17 @@
         }
 
         .landscape-text-container {
-            width: 100%;
+            position: absolute;
+            top: 12vh;
+            left: 0;
+            width: 100vw;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
             align-items: center;
             text-align: center;
-            padding: 6.5vh 10px 0 10px;
+            padding: 0 10px;
             font-family: 'Lobster Regular', cursive;
-            flex: 1;
+            box-sizing: border-box;
         }
 
         .landscape-text-container h2 {
@@ -130,7 +120,7 @@
 
         @media screen and (max-height: 500px) and (orientation: landscape) {
             #landscape-warning {
-                display: flex !important;
+                display: block !important;
             }
         }
 
@@ -812,10 +802,6 @@
                 padding-top: 15vh !important;
             }
 
-            body.ios-chrome .curiosity-overlay {
-                padding-top: 14vh !important;
-            }
-
             .curiosity-modal {
                 width: 92vw !important;
                 padding: 26px 14px 14px 14px !important;
@@ -854,10 +840,6 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            if (/CriOS|Android.*Chrome/i.test(navigator.userAgent)) {
-                document.body.classList.add('mobile-chrome');
-            }
-
             let fontsLoadedCalled = false;
             function showContent() {
                 if (!fontsLoadedCalled) {
