@@ -47,14 +47,15 @@
         }
 
         /* ==========================================
-           SCHERMATA DI AVVISO ORIZZONTALE (BANDA RIDOTTA E TESTI INGRANDITI)
+           SCHERMATA DI AVVISO ORIZZONTALE (CORRETTA)
            ========================================== */
         #landscape-warning {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
+            right: 0;
+            width: 100%;
             height: 100vh;
             height: 100dvh;
             background-color: #fde3b8;
@@ -63,26 +64,24 @@
             align-items: center;
             overflow: hidden;
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         .landscape-top-bar {
-            width: 100vw;
-            position: relative;
-            left: 50%;
-            right: 50%;
-            margin-left: -50vw;
-            margin-right: -50vw;
+            width: 100%;
             background-color: #b72216;
             border-bottom: 2px solid #000000;
             padding: 4px 0;
             text-align: center;
             flex-shrink: 0;
             box-sizing: border-box;
+            margin: 0;
         }
 
         /* Regola dedicata per aumentare l'altezza della banda rossa solo su Chrome mobile */
         body.mobile-chrome .landscape-top-bar {
-            padding: 12px 0; /* Modifica questo valore a piacimento */
+            padding: 12px 0; 
         }
 
         .landscape-top-bar h1 {
@@ -95,7 +94,7 @@
 
         /* Regola dedicata per ingrandire la scritta nella banda rossa solo su Chrome mobile */
         body.mobile-chrome .landscape-top-bar h1 {
-            font-size: 4.5vw; /* Modifica questo valore per ingrandire o rimpicciolire la scritta */
+            font-size: 4.5vw; 
         }
 
         .landscape-top-bar h1 .text-black {
