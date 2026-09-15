@@ -42,6 +42,8 @@
             background-color: #fde3b8; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
+            margin: 0;
+            padding: 0;
         }
 
         /* ==========================================
@@ -64,12 +66,18 @@
         }
 
         .landscape-top-bar {
-            width: 100%;
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
             background-color: #b72216;
             border-bottom: 2px solid #000000;
             padding: 4px 0;
             text-align: center;
             flex-shrink: 0;
+            box-sizing: border-box;
         }
 
         /* Regola dedicata per aumentare l'altezza della banda rossa solo su Chrome mobile */
