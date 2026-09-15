@@ -42,12 +42,10 @@
             background-color: #fde3b8; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
-            margin: 0;
-            padding: 0;
         }
 
         /* ==========================================
-           SCHERMATA DI AVVISO ORIZZONTALE (CHROME FIX DEFINITIVO)
+           SCHERMATA DI AVVISO ORIZZONTALE (BANDA RIDOTTA E TESTI INGRANDITI)
            ========================================== */
         #landscape-warning {
             display: none;
@@ -59,30 +57,37 @@
             height: 100dvh;
             background-color: #fde3b8;
             z-index: 999999;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
             box-sizing: border-box;
-            margin: 0 !important;
-            padding: 0 !important;
         }
 
         .landscape-top-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100vw !important;
+            width: 100%;
             background-color: #b72216;
             border-bottom: 2px solid #000000;
-            padding: 12px 0;
+            padding: 4px 0;
             text-align: center;
-            box-sizing: border-box;
-            margin: 0 !important;
+            flex-shrink: 0;
+        }
+
+        /* Regola dedicata per aumentare l'altezza della banda rossa solo su Chrome mobile */
+        body.mobile-chrome .landscape-top-bar {
+            padding: 12px 0; /* Modifica questo valore a piacimento */
         }
 
         .landscape-top-bar h1 {
             font-family: 'Lobster Regular', cursive;
-            font-size: 4.5vw;
+            font-size: 4vw;
             color: #ffffff;
             margin: 0;
             font-weight: normal;
+        }
+
+        /* Regola dedicata per ingrandire la scritta nella banda rossa solo su Chrome mobile */
+        body.mobile-chrome .landscape-top-bar h1 {
+            font-size: 4.5vw; /* Modifica questo valore per ingrandire o rimpicciolire la scritta */
         }
 
         .landscape-top-bar h1 .text-black {
@@ -90,17 +95,15 @@
         }
 
         .landscape-text-container {
-            position: absolute;
-            top: 12vh;
-            left: 0;
-            width: 100vw;
+            width: 100%;
             display: flex;
             flex-direction: column;
+            justify-content: flex-start;
             align-items: center;
             text-align: center;
-            padding: 0 10px;
+            padding: 6.5vh 10px 0 10px;
             font-family: 'Lobster Regular', cursive;
-            box-sizing: border-box;
+            flex: 1;
         }
 
         .landscape-text-container h2 {
@@ -120,7 +123,7 @@
 
         @media screen and (max-height: 500px) and (orientation: landscape) {
             #landscape-warning {
-                display: block !important;
+                display: flex !important;
             }
         }
 
@@ -270,6 +273,12 @@
             align-items: center;
             user-select: none;
             white-space: nowrap;
+        }
+
+        @media (hover: hover) {
+            .dropdown:hover .dropdown-trigger:not(.btn-works-style) { 
+                color: #ffffff; 
+            }
         }
 
         .dropdown.active:not(.modal-open) .dropdown-trigger:not(.btn-works-style) { 
@@ -802,6 +811,10 @@
                 padding-top: 15vh !important;
             }
 
+            body.ios-chrome .curiosity-overlay {
+                padding-top: 14vh !important;
+            }
+
             .curiosity-modal {
                 width: 92vw !important;
                 padding: 26px 14px 14px 14px !important;
@@ -840,6 +853,10 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            if (/CriOS|Android.*Chrome/i.test(navigator.userAgent)) {
+                document.body.classList.add('mobile-chrome');
+            }
+
             let fontsLoadedCalled = false;
             function showContent() {
                 if (!fontsLoadedCalled) {
