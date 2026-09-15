@@ -47,7 +47,7 @@
         }
 
         /* ==========================================
-           SCHERMATA DI AVVISO ORIZZONTALE (CORRETTA)
+           SCHERMATA DI AVVISO ORIZZONTALE (CHROME FIX)
            ========================================== */
         #landscape-warning {
             display: none;
@@ -55,7 +55,7 @@
             top: 0;
             left: 0;
             right: 0;
-            width: 100%;
+            width: 100vw;
             height: 100vh;
             height: 100dvh;
             background-color: #fde3b8;
@@ -69,7 +69,7 @@
         }
 
         .landscape-top-bar {
-            width: 100%;
+            width: 100vw;
             background-color: #b72216;
             border-bottom: 2px solid #000000;
             padding: 4px 0;
@@ -77,9 +77,10 @@
             flex-shrink: 0;
             box-sizing: border-box;
             margin: 0;
+            left: 0;
+            right: 0;
         }
 
-        /* Regola dedicata per aumentare l'altezza della banda rossa solo su Chrome mobile */
         body.mobile-chrome .landscape-top-bar {
             padding: 12px 0; 
         }
@@ -92,7 +93,6 @@
             font-weight: normal;
         }
 
-        /* Regola dedicata per ingrandire la scritta nella banda rossa solo su Chrome mobile */
         body.mobile-chrome .landscape-top-bar h1 {
             font-size: 4.5vw; 
         }
@@ -280,12 +280,6 @@
             align-items: center;
             user-select: none;
             white-space: nowrap;
-        }
-
-        @media (hover: hover) {
-            .dropdown:hover .dropdown-trigger:not(.btn-works-style) { 
-                color: #ffffff; 
-            }
         }
 
         .dropdown.active:not(.modal-open) .dropdown-trigger:not(.btn-works-style) { 
