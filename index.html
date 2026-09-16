@@ -2,7 +2,8 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <!-- Meta Viewport bloccato a scala 1.0 per il ripristino automatico al reload -->
+    <meta id="viewport-meta" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Fabio Hot Stuff Redaelli - Comic Art Author -</title>
     
     <link rel="icon" type="image/png" href="images/favicon-96x96.png" sizes="96x96">
@@ -12,6 +13,20 @@
     <link rel="manifest" href="site.webmanifest">
 
     <link rel="preload" href="fonts/lobsteregular.ttf" as="font" type="font/ttf" crossorigin>
+
+    <script>
+        // Reset forzato dello Zoom Mobile al ricaricamento / rientro nella pagina
+        function resetMobileZoom() {
+            var viewport = document.getElementById('viewport-meta');
+            if (viewport) {
+                viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover');
+            }
+            window.scrollTo(0, 0);
+        }
+
+        window.addEventListener('pageshow', resetMobileZoom);
+        window.addEventListener('load', resetMobileZoom);
+    </script>
 
     <style>
         @font-face {
@@ -42,6 +57,7 @@
             background-color: #fde3b8; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
+            touch-action: pan-x pan-y;
         }
 
         /* SCHERMATA DI AVVISO ORIZZONTALE */
@@ -629,7 +645,6 @@
                 padding: 0;
             }
 
-            /* MODIFICA: Scritta regolata a -2px per abbassarla di 1px rispetto alla versione precedente */
             .brand-title {
                 font-size: calc(6.2vw + 4px); 
                 white-space: normal;
