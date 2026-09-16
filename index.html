@@ -45,15 +45,14 @@
         }
 
         /* ==========================================
-           SCHERMATA DI AVVISO ORIZZONTALE (RIPRISTINATO E CORRETTO SOLO IN LARGHEZZA)
+           SCHERMATA DI AVVISO ORIZZONTALE (BANDA RIDOTTA E TESTI INGRANDITI)
            ========================================== */
         #landscape-warning {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            width: 100%;
+            width: 100vw;
             height: 100vh;
             height: 100dvh;
             background-color: #fde3b8;
@@ -64,32 +63,18 @@
             box-sizing: border-box;
         }
 
-        /* Estensione pura a 100vw per Chrome Mobile senza toccare margini verticali o altezza */
-        body.mobile-chrome #landscape-warning {
-            width: 100vw;
-            left: 0;
-            right: 0;
-            margin: 0;
-            padding: 0;
-        }
-
         .landscape-top-bar {
             width: 100%;
             background-color: #b72216;
             border-bottom: 2px solid #000000;
-            border-top: 2px solid #000000;
             padding: 4px 0;
             text-align: center;
             flex-shrink: 0;
         }
 
-        /* Banda rossa riportata alle dimensioni originali ma estesa correttamente a tutto schermo su Chrome Mobile */
+        /* Regola dedicata per aumentare l'altezza della banda rossa solo su Chrome mobile */
         body.mobile-chrome .landscape-top-bar {
-            width: 100vw !important;
-            max-width: none !important;
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            padding: 4px 0 !important; 
+            padding: 12px 0; /* Modifica questo valore a piacimento */
         }
 
         .landscape-top-bar h1 {
@@ -100,8 +85,9 @@
             font-weight: normal;
         }
 
+        /* Regola dedicata per ingrandire la scritta nella banda rossa solo su Chrome mobile */
         body.mobile-chrome .landscape-top-bar h1 {
-            font-size: 4vw; 
+            font-size: 4.5vw; /* Modifica questo valore per ingrandire o rimpicciolire la scritta */
         }
 
         .landscape-top-bar h1 .text-black {
