@@ -2,8 +2,7 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <!-- Viewport con zoom abilitato di base (user-scalable=yes) -->
-    <meta id="viewport-meta" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Fabio Hot Stuff Redaelli - Comic Art Author -</title>
     
     <link rel="icon" type="image/png" href="images/favicon-96x96.png" sizes="96x96">
@@ -13,27 +12,6 @@
     <link rel="manifest" href="site.webmanifest">
 
     <link rel="preload" href="fonts/lobsteregular.ttf" as="font" type="font/ttf" crossorigin>
-
-    <script>
-        // Funzione per resettare la scala originale al 100% ad ogni reload/refresh dell'URL
-        function forceZoomReset() {
-            var viewport = document.getElementById('viewport-meta');
-            if (viewport) {
-                // 1. Forza momentaneamente il blocco zoom a scala 1.0 per ripristinare le dimensioni normali
-                viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover');
-                
-                // 2. Ripristina i permessi di zoom dell'utente subito dopo
-                setTimeout(function() {
-                    viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover');
-                }, 100);
-            }
-            window.scrollTo(0, 0);
-        }
-
-        // Si attiva quando ricarichi la pagina o torni indietro/avanti dal browser
-        window.addEventListener('pageshow', forceZoomReset);
-        window.addEventListener('load', forceZoomReset);
-    </script>
 
     <style>
         @font-face {
@@ -64,19 +42,17 @@
             background-color: #fde3b8; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
-            touch-action: pan-x pan-y pinch-zoom;
         }
 
-        /* SCHERMATA DI AVVISO ORIZZONTALE */
+        /* ==========================================
+           SCHERMATA DI AVVISO ORIZZONTALE (BANDA RIDOTTA E TESTI INGRANDITI)
+           ========================================== */
         #landscape-warning {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
             width: 100vw;
-            width: 100dvw;
             height: 100vh;
             height: 100dvh;
             background-color: #fde3b8;
@@ -85,21 +61,20 @@
             align-items: center;
             overflow: hidden;
             box-sizing: border-box;
-            margin: 0;
         }
 
         .landscape-top-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
             width: 100%;
             background-color: #b72216;
             border-bottom: 2px solid #000000;
-            padding-top: max(4px, env(safe-area-inset-top, 0px));
-            padding-bottom: 6px;
+            padding: 4px 0;
             text-align: center;
-            box-sizing: border-box;
+            flex-shrink: 0;
+        }
+
+        /* Regola dedicata per aumentare l'altezza della banda rossa solo su Chrome mobile */
+        body.mobile-chrome .landscape-top-bar {
+            padding: 12px 0; /* Modifica questo valore a piacimento */
         }
 
         .landscape-top-bar h1 {
@@ -110,8 +85,9 @@
             font-weight: normal;
         }
 
+        /* Regola dedicata per ingrandire la scritta nella banda rossa solo su Chrome mobile */
         body.mobile-chrome .landscape-top-bar h1 {
-            font-size: 4.5vw;
+            font-size: 4.5vw; /* Modifica questo valore per ingrandire o rimpicciolire la scritta */
         }
 
         .landscape-top-bar h1 .text-black {
@@ -120,13 +96,12 @@
 
         .landscape-text-container {
             width: 100%;
-            margin-top: 60px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             text-align: center;
-            padding: 0 10px;
+            padding: 6.5vh 10px 0 10px;
             font-family: 'Lobster Regular', cursive;
             flex: 1;
         }
@@ -617,11 +592,12 @@
             html, body {
                 height: 100vh !important;
                 height: 100dvh !important;
-                overflow-x: hidden !important; 
+                overflow: hidden !important; 
             }
 
             .master-canvas {
                 margin-top: -21.5px !important;
+                overflow: hidden;
             }
 
             .bg-image {
@@ -655,7 +631,7 @@
                 font-size: calc(6.2vw + 4px); 
                 white-space: normal;
                 line-height: 1.1;
-                transform: translateY(-2px) !important; 
+                transform: translateY(-1px) !important; 
                 text-align: center;
             }
 
@@ -1476,7 +1452,7 @@
         </div>
     </div>
 
-    <!-- Player Immagini Highlights -->
+    <!-- Player Immagini Highlights (Standard) -->
     <div id="highlights-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-curiosity-btn" id="close-highlights-modal">&times;</button>
