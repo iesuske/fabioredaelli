@@ -45,15 +45,14 @@
         }
 
         /* ==========================================
-           SCHERMATA DI AVVISO ORIZZONTALE (FORZATA A TUTTO SCHERMO)
+           SCHERMATA DI AVVISO ORIZZONTALE (FORZA BRUTA 120%)
            ========================================== */
         #landscape-warning {
             display: none;
             position: fixed;
             top: 0;
-            left: 0 !important;
-            right: 0 !important;
-            width: 100vw !important;
+            left: -10vw !important; /* Lo spinge fuori dallo schermo a sinistra */
+            width: 120vw !important; /* Lo allarga più dello schermo fisico per bypassare la Safe Area */
             height: 100vh;
             height: 100dvh;
             background-color: #fde3b8;
@@ -67,8 +66,8 @@
         }
 
         .landscape-top-bar {
-            width: 100vw !important;
-            max-width: 100vw !important;
+            width: 100% !important; /* Prende tutto il 120vw del contenitore parent */
+            max-width: none !important;
             background-color: #b72216;
             border-bottom: 2px solid #000000;
             padding: 4px 0;
@@ -81,7 +80,7 @@
 
         /* Regola dedicata per aumentare l'altezza della banda rossa solo su Chrome mobile */
         body.mobile-chrome .landscape-top-bar {
-            padding: 12px 0;
+            padding: 12px 0; /* Modifica questo valore a piacimento */
         }
 
         .landscape-top-bar h1 {
@@ -94,7 +93,7 @@
 
         /* Regola dedicata per ingrandire la scritta nella banda rossa solo su Chrome mobile */
         body.mobile-chrome .landscape-top-bar h1 {
-            font-size: 4.5vw;
+            font-size: 4.5vw; /* Modifica questo valore per ingrandire o rimpicciolire la scritta */
         }
 
         .landscape-top-bar h1 .text-black {
