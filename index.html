@@ -72,9 +72,8 @@
             flex-shrink: 0;
         }
 
-        /* Regola dedicata per aumentare l'altezza della banda rossa solo su Chrome mobile */
         body.mobile-chrome .landscape-top-bar {
-            padding: 12px 0; /* Modifica questo valore a piacimento */
+            padding: 12px 0;
         }
 
         .landscape-top-bar h1 {
@@ -85,9 +84,8 @@
             font-weight: normal;
         }
 
-        /* Regola dedicata per ingrandire la scritta nella banda rossa solo su Chrome mobile */
         body.mobile-chrome .landscape-top-bar h1 {
-            font-size: 4.5vw; /* Modifica questo valore per ingrandire o rimpicciolire la scritta */
+            font-size: 4.5vw;
         }
 
         .landscape-top-bar h1 .text-black {
@@ -600,10 +598,11 @@
                 overflow: hidden;
             }
 
+            /* IMMAGINE DELL'AUTO INGRANDITA VERSO I LIMITI DELLA PAGINA */
             .bg-image {
-                width: calc(165% + 258px); 
-                max-width: none;
-                margin-left: calc(-35% - 135.5px); 
+                width: 240% !important; 
+                max-width: none !important;
+                margin-left: -70% !important; 
                 -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 98%);
                 mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 98%);
             }
@@ -631,7 +630,7 @@
                 font-size: calc(6.2vw + 4px); 
                 white-space: normal;
                 line-height: 1.1;
-                transform: translateY(-2.5px) !important; /* Abbassato di mezzo pixel rispetto a -3px (totale -2.5px) */
+                transform: translateY(-2.5px) !important;
                 text-align: center;
             }
 
