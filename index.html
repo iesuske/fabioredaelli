@@ -64,27 +64,32 @@
             box-sizing: border-box;
         }
 
-        /* Correzione specifica per estendere perfettamente la banda su Chrome mobile */
+        /* Correzione assoluta per estendere la banda a tutto schermo su Chrome mobile senza tagli */
         body.mobile-chrome #landscape-warning {
             width: 100vw;
-            max-width: none;
             left: 0;
             right: 0;
+            margin: 0;
+            padding: 0;
         }
 
         .landscape-top-bar {
             width: 100%;
             background-color: #b72216;
             border-bottom: 2px solid #000000;
+            border-top: 2px solid #000000;
             padding: 4px 0;
             text-align: center;
             flex-shrink: 0;
         }
 
-        /* Regola dedicata per aumentare l'altezza della banda rossa solo su Chrome mobile */
+        /* Regola dedicata per estendere la banda rossa oltre i bordi ed evitare il taglio visibile in foto */
         body.mobile-chrome .landscape-top-bar {
-            padding: 12px 0; 
-            width: 100%;
+            width: 100vw !important;
+            max-width: none !important;
+            margin-left: calc(50% - 50vw) !important;
+            margin-right: calc(50% - 50vw) !important;
+            padding: 14px 0; 
         }
 
         .landscape-top-bar h1 {
@@ -95,7 +100,6 @@
             font-weight: normal;
         }
 
-        /* Regola dedicata per ingrandire la scritta nella banda rossa solo su Chrome mobile */
         body.mobile-chrome .landscape-top-bar h1 {
             font-size: 4.5vw; 
         }
