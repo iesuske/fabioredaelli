@@ -45,15 +45,16 @@
         }
 
         /* ==========================================
-           SCHERMATA DI AVVISO ORIZZONTALE (FORZA BRUTA 140%)
+           SCHERMATA DI AVVISO ORIZZONTALE (FORZA ABSOLUTE CHROME 200%)
            ========================================== */
         #landscape-warning {
             display: none;
             position: fixed;
             top: 0;
-            left: 50% !important;
-            transform: translateX(-50%) !important;
-            width: 140vw !important; /* Copre sia destra che sinistra bypassando la Safe Area */
+            bottom: 0;
+            left: -50vw !important;
+            right: -50vw !important;
+            width: 200vw !important;
             height: 100vh;
             height: 100dvh;
             background-color: #fde3b8;
@@ -79,7 +80,6 @@
             right: 0;
         }
 
-        /* Regola dedicata per aumentare l'altezza della banda rossa solo su Chrome mobile */
         body.mobile-chrome .landscape-top-bar {
             padding: 12px 0;
         }
@@ -92,7 +92,6 @@
             font-weight: normal;
         }
 
-        /* Regola dedicata per ingrandire la scritta nella banda rossa solo su Chrome mobile */
         body.mobile-chrome .landscape-top-bar h1 {
             font-size: 4.5vw;
         }
