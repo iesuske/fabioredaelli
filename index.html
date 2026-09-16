@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Fabio Hot Stuff Redaelli - Comic Art Author -</title>
     
     <link rel="icon" type="image/png" href="images/favicon-96x96.png" sizes="96x96">
@@ -45,17 +45,14 @@
         }
 
         /* ==========================================
-           SCHERMATA DI AVVISO ORIZZONTALE (FIX CHROME SAFE-AREA & REFLOW)
+           SCHERMATA DI AVVISO ORIZZONTALE (BANDA RIDOTTA E TESTI INGRANDITI)
            ========================================== */
         #landscape-warning {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
             width: 100vw;
-            width: 100dvw;
             height: 100vh;
             height: 100dvh;
             background-color: #fde3b8;
@@ -64,27 +61,20 @@
             align-items: center;
             overflow: hidden;
             box-sizing: border-box;
-            margin: 0;
-            padding-left: env(safe-area-inset-left, 0px);
-            padding-right: env(safe-area-inset-right, 0px);
         }
 
         .landscape-top-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
             width: 100%;
             background-color: #b72216;
             border-bottom: 2px solid #000000;
-            padding-top: max(4px, env(safe-area-inset-top, 0px));
-            padding-bottom: 6px;
-            padding-left: env(safe-area-inset-left, 0px);
-            padding-right: env(safe-area-inset-right, 0px);
+            padding: 4px 0;
             text-align: center;
-            box-sizing: border-box;
-            transform: translateZ(0);
-            -webkit-transform: translateZ(0);
+            flex-shrink: 0;
+        }
+
+        /* Regola dedicata per aumentare l'altezza della banda rossa solo su Chrome mobile */
+        body.mobile-chrome .landscape-top-bar {
+            padding: 12px 0; /* Modifica questo valore a piacimento */
         }
 
         .landscape-top-bar h1 {
@@ -95,8 +85,9 @@
             font-weight: normal;
         }
 
+        /* Regola dedicata per ingrandire la scritta nella banda rossa solo su Chrome mobile */
         body.mobile-chrome .landscape-top-bar h1 {
-            font-size: 4.5vw;
+            font-size: 4.5vw; /* Modifica questo valore per ingrandire o rimpicciolire la scritta */
         }
 
         .landscape-top-bar h1 .text-black {
@@ -105,13 +96,12 @@
 
         .landscape-text-container {
             width: 100%;
-            margin-top: 60px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             text-align: center;
-            padding: 0 10px;
+            padding: 6.5vh 10px 0 10px;
             font-family: 'Lobster Regular', cursive;
             flex: 1;
         }
@@ -867,23 +857,6 @@
                 document.body.classList.add('mobile-chrome');
             }
 
-            // FORZA RE-RENDER DELLE SAFE-AREA IN ROTAZIONE SU CHROME MOBILE
-            function fixChromeLandscapeClip() {
-                const warningEl = document.getElementById('landscape-warning');
-                if (warningEl && window.innerWidth > window.innerHeight) {
-                    warningEl.style.display = 'none';
-                    void warningEl.offsetHeight; // Reflow hardware per la GPU
-                    warningEl.style.display = 'flex';
-                }
-            }
-
-            window.addEventListener('orientationchange', function() {
-                setTimeout(fixChromeLandscapeClip, 100);
-                setTimeout(fixChromeLandscapeClip, 300);
-            });
-
-            window.addEventListener('resize', fixChromeLandscapeClip);
-
             let fontsLoadedCalled = false;
             function showContent() {
                 if (!fontsLoadedCalled) {
@@ -1479,7 +1452,7 @@
         </div>
     </div>
 
-    <!-- Player Immagini Highlights -->
+    <!-- Player Immagini Highlights (Standard) -->
     <div id="highlights-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-curiosity-btn" id="close-highlights-modal">&times;</button>
