@@ -9,24 +9,7 @@
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="shortcut icon" href="images/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-    
-    <!-- Manifest aggiornato con il nome corretto per i dispositivi Apple e Android -->
     <link rel="manifest" href="site.webmanifest">
-    <script>
-        // Genera al volo il manifest via blob per forzare il nome corretto senza dipendere da file esterni sfasati
-        const manifestData = {
-            "name": "Fabio Redaelli",
-            "short_name": "Fabio Redaelli",
-            "start_url": "./",
-            "display": "standalone",
-            "background_color": "#fde3b8",
-            "theme_color": "#fde3b8"
-        };
-        const stringManifest = JSON.stringify(manifestData);
-        const blob = new Blob([stringManifest], {type: 'application/json'});
-        const manifestURL = URL.createObjectURL(blob);
-        document.querySelector('link[rel="manifest"]').setAttribute('href', manifestURL);
-    </script>
 
     <link rel="preload" href="fonts/lobsteregular.ttf" as="font" type="font/ttf" crossorigin>
 
@@ -62,7 +45,7 @@
         }
 
         /* ==========================================
-           SCHERMATA DI AVVISO ORIZZONTALE
+           SCHERMATA DI AVVISO ORIZZONTALE (BANDA RIDOTTA E TESTI INGRANDITI)
            ========================================== */
         #landscape-warning {
             display: none;
@@ -89,8 +72,9 @@
             flex-shrink: 0;
         }
 
+        /* Regola dedicata per aumentare l'altezza della banda rossa solo su Chrome mobile */
         body.mobile-chrome .landscape-top-bar {
-            padding: 12px 0;
+            padding: 12px 0; /* Modifica questo valore a piacimento */
         }
 
         .landscape-top-bar h1 {
@@ -101,8 +85,9 @@
             font-weight: normal;
         }
 
+        /* Regola dedicata per ingrandire la scritta nella banda rossa solo su Chrome mobile */
         body.mobile-chrome .landscape-top-bar h1 {
-            font-size: 4.5vw;
+            font-size: 4.5vw; /* Modifica questo valore per ingrandire o rimpicciolire la scritta */
         }
 
         .landscape-top-bar h1 .text-black {
@@ -146,7 +131,7 @@
             position: relative;
             width: 100%;
             background-color: #fde3b8;
-            margin-top: 0px;
+            margin-top: -50px;
         }
 
         .bg-image {
@@ -166,7 +151,7 @@
 
         .header-anchor {
             position: absolute;
-            top: 4.5%; 
+            top: 7.6%; 
             left: 0;
             width: 100%;
             text-align: center;
@@ -611,22 +596,21 @@
             }
 
             .master-canvas {
-                margin-top: 0px !important;
+                margin-top: -21.5px !important;
                 overflow: hidden;
             }
 
-            /* DIMENSIONI E POSIZIONE CORRETTA DELL'AUTO SU MOBILE/IPAD */
             .bg-image {
-                width: 135% !important; 
-                max-width: none !important;
-                margin-left: -17.5% !important; 
+                width: calc(165% + 258px); 
+                max-width: none;
+                margin-left: calc(-35% - 135.5px); 
                 -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 98%);
                 mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 98%);
             }
 
             .header-anchor {
                 position: absolute;
-                top: 4.5% !important; 
+                top: calc(7.2% + 10px) !important; 
                 left: 0;
                 width: 100%;
                 padding: 0 15px;
@@ -644,10 +628,10 @@
             }
 
             .brand-title {
-                font-size: calc(5.2vw + 3px); 
+                font-size: calc(6.2vw + 4px); 
                 white-space: normal;
                 line-height: 1.1;
-                transform: translateY(-2px) !important;
+                transform: translateY(-2.5px) !important; /* Abbassato di mezzo pixel rispetto a -3px (totale -2.5px) */
                 text-align: center;
             }
 
@@ -656,7 +640,7 @@
                 justify-content: space-between !important;
                 align-items: center !important;
                 width: 100% !important;
-                margin-top: 0.8vw !important; 
+                margin-top: 0.6vw !important; 
             }
 
             .dropdown {
@@ -665,7 +649,7 @@
             }
 
             .btn-curiosity, .btn-works-style {
-                font-size: 3vw !important; 
+                font-size: 3.2vw !important; 
                 padding: 1px 6px !important; 
                 border-radius: 6px;
                 display: inline-flex !important;
@@ -675,7 +659,7 @@
             }
 
             .dropdown-trigger:not(.btn-works-style) {
-                font-size: 3vw !important; 
+                font-size: 3.2vw !important; 
                 padding: 2px !important; 
                 display: inline-flex !important;
                 align-items: center !important;
