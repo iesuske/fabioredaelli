@@ -44,9 +44,7 @@
             overflow: hidden;
         }
 
-        /* ==========================================
-           SCHERMATA DI AVVISO ORIZZONTALE
-           ========================================== */
+        /* SCHERMATA DI AVVISO ORIZZONTALE */
         #landscape-warning {
             display: none;
             position: fixed;
@@ -273,12 +271,6 @@
             white-space: nowrap;
         }
 
-        @media (hover: hover) {
-            .dropdown:hover .dropdown-trigger:not(.btn-works-style) { 
-                color: #000000; 
-            }
-        }
-
         .dropdown.active:not(.modal-open) .dropdown-trigger:not(.btn-works-style) { 
             color: #000000 !important; 
         }
@@ -332,7 +324,7 @@
             margin-top: 12px;
         }
 
-        /* Gestione apertura da classe active anziche' hover diretto */
+        /* L'apertura e' gestita esclusivamente via JavaScript tramite la classe .active */
         .dropdown.active:not(.modal-open) .dropdown-menu { display: block !important; }
 
         .dropdown-menu li {
@@ -879,7 +871,7 @@
             const highlightsOverlay = document.getElementById('highlights-overlay');
             const highlightsImgElement = document.getElementById('highlights-modal-img');
 
-            // Funzione centralizzata per chiudere ogni menu e finestra modal/overlay
+            // Funzione centralizzata per chiudere tutti i menu ed eventuali finestre modal aperte
             function closeAllModalsAndMenus() {
                 dropdowns.forEach(d => {
                     d.classList.remove('active');
@@ -898,26 +890,39 @@
             dropdowns.forEach(dropdown => {
                 const trigger = dropdown.querySelector('.dropdown-trigger');
 
-                if(trigger) {
+                function openSingleDropdown() {
+                    const wasActive = dropdown.classList.contains('active');
+                    closeAllModalsAndMenus();
+                    if (!wasActive) {
+                        dropdown.classList.add('active');
+                        
+                        const menuAbout = dropdown.querySelector('.menu-about');
+                        if (menuAbout) {
+                            menuAbout.style.scrollbarColor = "rgba(255, 255, 255, 0.4) transparent";
+                            clearTimeout(menuAbout.scrollTimeout);
+                            menuAbout.scrollTimeout = setTimeout(() => {
+                                menuAbout.style.scrollbarColor = "transparent transparent";
+                            }, 1500);
+                        }
+                    }
+                }
+
+                // Apertura/sostituzione al passaggio del mouse
+                dropdown.addEventListener('mouseenter', function() {
+                    openSingleDropdown();
+                });
+
+                // Chiusura al rilascio del mouse dal menu
+                dropdown.addEventListener('mouseleave', function() {
+                    dropdown.classList.remove('active');
+                });
+
+                // Gestione del click per schermi touch / mobile
+                if (trigger) {
                     trigger.addEventListener('click', function(e) {
                         e.preventDefault();
                         e.stopPropagation();
-
-                        const isActive = dropdown.classList.contains('active');
-                        closeAllModalsAndMenus();
-
-                        if (!isActive) {
-                            dropdown.classList.add('active');
-                            
-                            const menuAbout = dropdown.querySelector('.menu-about');
-                            if (menuAbout) {
-                                menuAbout.style.scrollbarColor = "rgba(255, 255, 255, 0.4) transparent";
-                                clearTimeout(menuAbout.scrollTimeout);
-                                menuAbout.scrollTimeout = setTimeout(() => {
-                                    menuAbout.style.scrollbarColor = "transparent transparent";
-                                }, 1500);
-                            }
-                        }
+                        openSingleDropdown();
                     });
                 }
             });
@@ -1039,6 +1044,10 @@
             }
 
             if (btnCuriosity && curiosityOverlay) {
+                btnCuriosity.addEventListener('mouseenter', function() {
+                    closeAllModalsAndMenus();
+                });
+
                 btnCuriosity.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
