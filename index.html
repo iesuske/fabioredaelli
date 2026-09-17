@@ -298,13 +298,36 @@
             max-height: 60vh;
             overflow-y: auto;
             overflow-x: hidden;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
             top: 100%;
             margin-top: 3px;
+
+            /* Gestione Barra di Scorrimento Sottile */
+            scrollbar-width: thin;
+            scrollbar-color: transparent transparent;
+            transition: scrollbar-color 0.4s ease;
         }
 
-        .menu-about::-webkit-scrollbar { display: none; }
+        .menu-about::-webkit-scrollbar { 
+            width: 3px; 
+        }
+
+        .menu-about::-webkit-scrollbar-track { 
+            background: transparent; 
+        }
+
+        .menu-about::-webkit-scrollbar-thumb { 
+            background-color: transparent; 
+            border-radius: 10px;
+            transition: background-color 0.4s ease;
+        }
+
+        .menu-about.show-scrollbar {
+            scrollbar-color: rgba(255, 255, 255, 0.6) transparent;
+        }
+
+        .menu-about.show-scrollbar::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.6);
+        }
 
         .menu-contact { 
             left: 50%;
@@ -324,7 +347,6 @@
             margin-top: 12px;
         }
 
-        /* L'apertura e' gestita esclusivamente via JavaScript tramite la classe .active */
         .dropdown.active:not(.modal-open) .dropdown-menu { display: block !important; }
 
         .dropdown-menu li {
@@ -677,23 +699,9 @@
                 text-align: center !important;
             }
 
-            .dropdown-menu::-webkit-scrollbar {
-                width: 3px !important;
-            }
-            .dropdown-menu::-webkit-scrollbar-thumb {
-                background: rgba(255, 255, 255, 0.3) !important;
-                border-radius: 10px;
-            }
-            .dropdown-menu::-webkit-scrollbar-track {
-                background: transparent !important;
-            }
-
             .dropdown-menu.menu-about {
                 padding-top: 22px !important;
                 padding-bottom: 24px !important;
-                scrollbar-width: thin;
-                scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
-                transition: scrollbar-color 0.3s ease;
                 text-align: center !important;
             }
 
@@ -871,7 +879,6 @@
             const highlightsOverlay = document.getElementById('highlights-overlay');
             const highlightsImgElement = document.getElementById('highlights-modal-img');
 
-            // Funzione centralizzata per chiudere tutti i menu ed eventuali finestre modal aperte
             function closeAllModalsAndMenus() {
                 dropdowns.forEach(d => {
                     d.classList.remove('active');
@@ -898,26 +905,28 @@
                         
                         const menuAbout = dropdown.querySelector('.menu-about');
                         if (menuAbout) {
-                            menuAbout.style.scrollbarColor = "rgba(255, 255, 255, 0.4) transparent";
+                            menuAbout.classList.remove('show-scrollbar');
                             clearTimeout(menuAbout.scrollTimeout);
-                            menuAbout.scrollTimeout = setTimeout(() => {
-                                menuAbout.style.scrollbarColor = "transparent transparent";
-                            }, 1500);
+
+                            // Mostra la barra per 4 secondi SOLTANTO se il contenuto eccede l'altezza disponibile
+                            if (menuAbout.scrollHeight > menuAbout.clientHeight) {
+                                menuAbout.classList.add('show-scrollbar');
+                                menuAbout.scrollTimeout = setTimeout(() => {
+                                    menuAbout.classList.remove('show-scrollbar');
+                                }, 4000);
+                            }
                         }
                     }
                 }
 
-                // Apertura/sostituzione al passaggio del mouse
                 dropdown.addEventListener('mouseenter', function() {
                     openSingleDropdown();
                 });
 
-                // Chiusura al rilascio del mouse dal menu
                 dropdown.addEventListener('mouseleave', function() {
                     dropdown.classList.remove('active');
                 });
 
-                // Gestione del click per schermi touch / mobile
                 if (trigger) {
                     trigger.addEventListener('click', function(e) {
                         e.preventDefault();
@@ -930,11 +939,13 @@
             const menuAboutEl = document.querySelector('.menu-about');
             if (menuAboutEl) {
                 menuAboutEl.addEventListener('scroll', function() {
-                    this.style.scrollbarColor = "rgba(255, 255, 255, 0.4) transparent";
-                    clearTimeout(this.scrollTimeout);
-                    this.scrollTimeout = setTimeout(() => {
-                        this.style.scrollbarColor = "transparent transparent";
-                    }, 1500);
+                    if (this.scrollHeight > this.clientHeight) {
+                        this.classList.add('show-scrollbar');
+                        clearTimeout(this.scrollTimeout);
+                        this.scrollTimeout = setTimeout(() => {
+                            this.classList.remove('show-scrollbar');
+                        }, 4000);
+                    }
                 });
             }
 
