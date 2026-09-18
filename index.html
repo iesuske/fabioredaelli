@@ -612,7 +612,7 @@
             z-index: 1000;
         }
 
-        /* REGOLAZIONI ESCLUSIVAMENTE MOBILE (INALTERATE) */
+        /* REGOLAZIONI ESCLUSIVAMENTE MOBILE */
         @media screen and (max-width: 768px) {
             html, body {
                 height: 100vh !important;
@@ -691,9 +691,11 @@
                 vertical-align: middle !important;
             }
 
+            /* ALINEAMENTO PERFETTO SUPERIORE PER TUTTE LE TENDINE */
             .dropdown-menu {
                 position: fixed !important;
                 top: 16vh !important;
+                margin-top: 0 !important;
                 left: 50% !important;
                 transform: translateX(-50%) !important; 
                 width: 88vw !important; 
@@ -713,19 +715,22 @@
             }
 
             .dropdown-menu.menu-about {
+                top: 16vh !important;
+                margin-top: 0 !important;
                 padding-top: 22px !important;
                 padding-bottom: 24px !important;
                 text-align: center !important;
             }
 
-            .dropdown-menu.menu-contact, .dropdown-menu.menu-works {
+            .dropdown-menu.menu-contact, 
+            .dropdown-menu.menu-works {
+                top: 16vh !important;
+                margin-top: 0 !important;
                 width: 45vw !important; 
                 max-width: 175px !important;
                 padding: 12px 0 0 0 !important; 
                 max-height: 50vh !important;
-                top: 16vh !important;
                 transform: translateX(-50%) !important;
-                margin-top: 0 !important;
             }
 
             .menu-about, .menu-contact, .menu-works { width: 100% !important; }
