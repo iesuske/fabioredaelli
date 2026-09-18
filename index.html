@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Fabio Hot Stuff Redaelli - Comic Art Author -</title>
     
     <link rel="icon" type="image/png" href="images/favicon-96x96.png" sizes="96x96">
@@ -850,6 +850,20 @@
     </style>
 
     <script>
+        // Blocco delle gesture di zoom su iOS/Safari
+        document.addEventListener('gesturestart', function (e) {
+            e.preventDefault();
+        });
+
+        // Reset forzato della scala di zoom quando la pagina viene ricaricata dalla barra indirizzi
+        window.addEventListener('pageshow', function() {
+            const vp = document.querySelector('meta[name="viewport"]');
+            if (vp) {
+                vp.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover');
+            }
+            window.scrollTo(0, 0);
+        });
+
         document.addEventListener("DOMContentLoaded", function() {
             if (/CriOS|Android.*Chrome/i.test(navigator.userAgent)) {
                 document.body.classList.add('mobile-chrome');
