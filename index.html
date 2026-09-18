@@ -289,12 +289,18 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.35);
         }
 
+        /* Nasconde lo spazio vuoto del tasto chiusura su Desktop */
+        .close-li {
+            display: none;
+        }
+
+        /* Menu Bio Desktop con padding superiore regolato per allineamento perfetto */
         .menu-about { 
             left: 50%;
             transform: translateX(-50%);
             text-align: center; 
             width: max-content;
-            padding: 10px 0 18px 0; 
+            padding: 3px 0 18px 0; 
             max-height: 60vh;
             overflow-y: auto;
             overflow-x: hidden;
@@ -599,6 +605,7 @@
             z-index: 1000;
         }
 
+        /* REGOLAZIONI ESCLUSIVAMENTE MOBILE (INALTERATE) */
         @media screen and (max-width: 768px) {
             html, body {
                 height: 100vh !important;
