@@ -35,13 +35,15 @@
             padding: 0; 
             -webkit-user-drag: none;
             user-drag: none;
+            touch-action: manipulation;
         }
 
-        img, a {
+        img, a, button {
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
         html, body {
@@ -51,6 +53,7 @@
             background-color: #fde3b8; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
+            touch-action: manipulation;
         }
 
         /* SCHERMATA DI AVVISO ORIZZONTALE */
@@ -215,6 +218,7 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             cursor: pointer;
             white-space: nowrap;
+            touch-action: manipulation;
         }
 
         .btn-curiosity:hover,
@@ -240,6 +244,7 @@
             white-space: nowrap;
             user-select: none;
             text-shadow: none !important;
+            touch-action: manipulation;
         }
 
         .btn-works-style:hover,
@@ -278,6 +283,7 @@
             align-items: center;
             user-select: none;
             white-space: nowrap;
+            touch-action: manipulation;
         }
 
         .dropdown.active:not(.modal-open) .dropdown-trigger:not(.btn-works-style) { 
@@ -385,6 +391,7 @@
             cursor: pointer;
             width: 100%;
             -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         .menu-contact li a:hover, .menu-works li a:hover { 
@@ -471,6 +478,7 @@
             line-height: 1;
             box-shadow: 0 1px 4px rgba(0,0,0,0.5);
             padding: 0;
+            touch-action: manipulation;
         }
 
         .video-container {
@@ -590,6 +598,7 @@
             transition: color 0.2s ease;
             box-shadow: none;
             white-space: nowrap;
+            touch-action: manipulation;
         }
 
         .curiosity-nav-btn:hover,
@@ -691,7 +700,6 @@
                 vertical-align: middle !important;
             }
 
-            /* ALLINEAMENTO SUPERIORE IDENTICO (16vh) PER TUTTE LE TENDINE E PLAYER */
             .dropdown-menu {
                 position: fixed !important;
                 top: 16vh !important;
@@ -881,6 +889,20 @@
         document.addEventListener('gesturestart', function (e) {
             e.preventDefault();
         });
+
+        // Blocco specifico per prevenire il doppio tap zoom sui pulsanti
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                if (event.target.classList.contains('curiosity-nav-btn') || 
+                    event.target.classList.contains('close-curiosity-btn') || 
+                    event.target.tagName === 'BUTTON') {
+                    event.preventDefault();
+                }
+            }
+            lastTouchEnd = now;
+        }, false);
 
         window.addEventListener('pageshow', function() {
             const vp = document.querySelector('meta[name="viewport"]');
@@ -1497,8 +1519,8 @@
             <div class="curiosity-footer testo-custom">
                 <span id="color-counter" class="video-counter">1 / 41</span>
                 <div class="nav-buttons">
-                    <button id="btn-prev-color" class="curiosity-nav-btn">&laquo; Indietro</button>
                     <button id="btn-next-color" class="curiosity-nav-btn">Avanti &raquo;</button>
+                    <button id="btn-prev-color" class="curiosity-nav-btn">&laquo; Indietro</button>
                 </div>
             </div>
         </div>
