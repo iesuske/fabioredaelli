@@ -518,6 +518,7 @@
             height: 100%;
             object-fit: contain;
             border-radius: 10px;
+            cursor: zoom-in;
         }
 
         .works-image-container::after {
@@ -607,6 +608,63 @@
             background: transparent;
         }
 
+        /* OVERLAY FULLSCREEN PER ZOOM IMMAGINI CON BORDO */
+        .zoom-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 999999;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            box-sizing: border-box;
+            cursor: zoom-out;
+        }
+
+        .zoom-overlay.open {
+            display: flex;
+        }
+
+        .zoom-overlay img {
+            max-width: 92vw;
+            max-height: 88vh;
+            max-height: 88dvh;
+            object-fit: contain;
+            border: 2px solid rgba(255, 255, 255, 0.85);
+            border-radius: 8px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+            pointer-events: auto;
+            cursor: zoom-out;
+        }
+
+        .close-zoom-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            width: 32px;
+            height: 32px;
+            background-color: #b72216;
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            touch-action: manipulation;
+        }
+
         footer {
             position: fixed;
             bottom: 0;
@@ -624,7 +682,7 @@
         /* REGOLAZIONE ESCLUSIVA PER IPAD / TABLET */
         @media screen and (min-width: 768px) and (max-width: 1024px) {
             .master-canvas {
-                margin-top: -31px !important; /* Modifica questo valore in px per la banda rossa (es. -54px o -35px) */
+                margin-top: -31px !important;
                 overflow: hidden;
             }
 
@@ -633,19 +691,19 @@
             }
 
             .brand-title {
-                font-size: 6.0vw !important; /* Ingrandita solo per iPad (puoi testare 5.5vw, 6vw, ecc.) */
-                transform: translateY(16px) !important; /* Regola l'altezza verticale se la ingrandisci */
+                font-size: 6.0vw !important;
+                transform: translateY(16px) !important;
             }
 
             .bg-image {
-                width: 165% !important;
+                width: 190% !important;
                 max-width: none !important;
-                margin-left: -32.5% !important;
+                margin-left: -45% !important;
                 display: block;
             }
 
             .menus-container {
-                margin-top: 28px !important; /* Modificato solo per iPad: abbassa il blocco del menu */
+                margin-top: 35px !important;
             }
 
             .btn-curiosity, .btn-works-style, .dropdown-trigger:not(.btn-works-style) {
@@ -909,12 +967,10 @@
     </style>
 
     <script>
-        // Blocco tasto destro (Menu contestuale)
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
         });
 
-        // Blocco trascinamento di qualsiasi elemento
         document.addEventListener('dragstart', function(e) {
             e.preventDefault();
         });
@@ -923,13 +979,13 @@
             e.preventDefault();
         });
 
-        // Blocco specifico per prevenire il doppio tap zoom sui pulsanti
         let lastTouchEnd = 0;
         document.addEventListener('touchend', function(event) {
             const now = (new Date()).getTime();
             if (now - lastTouchEnd <= 300) {
                 if (event.target.classList.contains('curiosity-nav-btn') || 
                     event.target.classList.contains('close-curiosity-btn') || 
+                    event.target.classList.contains('close-zoom-btn') ||
                     event.target.tagName === 'BUTTON') {
                     event.preventDefault();
                 }
@@ -974,7 +1030,26 @@
             const highlightsOverlay = document.getElementById('highlights-overlay');
             const highlightsImgElement = document.getElementById('highlights-modal-img');
 
+            const zoomOverlay = document.getElementById('zoom-overlay');
+            const zoomImg = document.getElementById('zoom-modal-img');
+            const closeZoomBtn = document.getElementById('close-zoom');
+
+            function openZoom(src) {
+                if (src && zoomOverlay && zoomImg) {
+                    zoomImg.src = src;
+                    zoomOverlay.classList.add('open');
+                }
+            }
+
+            function closeZoom() {
+                if (zoomOverlay && zoomImg) {
+                    zoomOverlay.classList.remove('open');
+                    zoomImg.src = '';
+                }
+            }
+
             function closeAllModalsAndMenus() {
+                closeZoom();
                 dropdowns.forEach(d => {
                     d.classList.remove('active');
                     d.classList.remove('modal-open');
@@ -987,6 +1062,27 @@
                 if (colorImgElement) colorImgElement.src = "";
                 if (highlightsOverlay) highlightsOverlay.classList.remove('open');
                 if (highlightsImgElement) highlightsImgElement.src = "";
+            }
+
+            /* --- EVENTI ZOOM PER LE IMMAGINI DEI PLAYER --- */
+            ['works-modal-img', 'color-modal-img', 'highlights-modal-img'].forEach(id => {
+                const imgEl = document.getElementById(id);
+                if (imgEl) {
+                    imgEl.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        openZoom(this.src);
+                    });
+                }
+            });
+
+            if (closeZoomBtn) closeZoomBtn.addEventListener('click', closeZoom);
+
+            if (zoomOverlay) {
+                zoomOverlay.addEventListener('click', function(e) {
+                    if (e.target === zoomOverlay || e.target === zoomImg) {
+                        closeZoom();
+                    }
+                });
             }
 
             dropdowns.forEach(dropdown => {
@@ -1581,6 +1677,12 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Overlay Zoom Fullscreen -->
+    <div id="zoom-overlay" class="zoom-overlay">
+        <button class="close-zoom-btn" id="close-zoom">&times;</button>
+        <img id="zoom-modal-img" src="" alt="Ingrandimento Opera">
     </div>
 
     <footer>
