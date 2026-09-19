@@ -57,7 +57,7 @@
             touch-action: manipulation;
         }
 
-        /* CLASSE UNIFORMATA PER TUTTI I PULSANTI ROSSI DI CHIUSURA (PLAYER E ZOOM) */
+        /* CLASSE UNIFORMATA PER TUTTI I PULSANTI ROSSI DI CHIUSURA */
         .close-red-btn {
             position: absolute !important;
             top: 4px !important;
@@ -86,6 +86,14 @@
             margin: 0 !important;
             touch-action: manipulation !important;
             -webkit-tap-highlight-color: transparent !important;
+        }
+
+        /* POSIZIONAMENTO SPECIFICO DEL PULSANTE CHIUSURA NELLO ZOOM A SCHERMO INTERO */
+        #close-zoom {
+            position: fixed !important;
+            top: 15px !important;
+            right: 15px !important;
+            z-index: 1000000 !important;
         }
 
         /* SCHERMATA DI AVVISO ORIZZONTALE */
@@ -530,7 +538,6 @@
             cursor: zoom-in;
         }
 
-        /* VIGNETTATURA DEL PLAYER */
         .works-image-container::after {
             content: '';
             position: absolute;
@@ -618,7 +625,7 @@
             background: transparent;
         }
 
-        /* OVERLAY FULLSCREEN PER ZOOM IMMAGINI CON PROTEZIONE ANTI-DOWNLOAD */
+        /* OVERLAY FULLSCREEN PER ZOOM IMMAGINI */
         .zoom-overlay {
             display: none;
             position: fixed;
@@ -672,7 +679,6 @@
             -webkit-user-drag: none;
         }
 
-        /* VIGNETTATURA E STRATO PROTETTIVO SULLE FOTO INGRANDITE */
         .zoom-container::after {
             content: '';
             position: absolute;
@@ -956,7 +962,6 @@
     </style>
 
     <script>
-        // Blocco globale del tasto destro e del drag per evitare salvataggio immagini
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
         });
@@ -1053,7 +1058,6 @@
                 if (highlightsImgElement) highlightsImgElement.src = "";
             }
 
-            /* --- EVENTI ZOOM PER LE IMMAGINI DEI PLAYER --- */
             ['works-modal-img', 'color-modal-img', 'highlights-modal-img'].forEach(id => {
                 const imgEl = document.getElementById(id);
                 if (imgEl) {
@@ -1666,10 +1670,10 @@
         </div>
     </div>
 
-    <!-- Overlay Zoom Fullscreen Con Vignettatura e Protezione Download -->
+    <!-- Overlay Zoom Fullscreen Con Pulsante Fixato in Alto a Destra dello Schermo -->
     <div id="zoom-overlay" class="zoom-overlay">
+        <button class="close-red-btn" id="close-zoom">&times;</button>
         <div class="zoom-container">
-            <button class="close-red-btn" id="close-zoom">&times;</button>
             <img id="zoom-modal-img" src="" alt="Ingrandimento Opera">
         </div>
     </div>
