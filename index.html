@@ -60,8 +60,8 @@
         /* CLASSE UNIFORMATA PER TUTTI I PULSANTI ROSSI DI CHIUSURA */
         .close-red-btn {
             position: absolute !important;
-            top: 4px !important;
-            right: 4px !important;
+            top: 10px !important;
+            right: 10px !important;
             width: 20px !important;
             height: 20px !important;
             min-width: 20px !important;
@@ -88,11 +88,11 @@
             -webkit-tap-highlight-color: transparent !important;
         }
 
-        /* POSIZIONAMENTO SPECIFICO DEL PULSANTE CHIUSURA NELLO ZOOM A SCHERMO INTERO */
+        /* POSIZIONAMENTO SPECIFICO DEL PULSANTE CHIUSURA NELLO ZOOM FULLSCREEN */
         #close-zoom {
-            position: fixed !important;
-            top: 15px !important;
-            right: 15px !important;
+            position: absolute !important;
+            top: 10px !important;
+            right: 10px !important;
             z-index: 1000000 !important;
         }
 
@@ -650,7 +650,7 @@
         }
 
         .zoom-container {
-            position: relative;
+            position: relative !important;
             display: inline-flex;
             justify-content: center;
             align-items: center;
@@ -721,7 +721,7 @@
 
             .brand-title {
                 font-size: 6.0vw !important;
-                transform: translateY(25px) !important; /* Abbassato di 3px per appoggiarsi alla riga nera */
+                transform: translateY(19px) !important;
             }
 
             .bg-image {
@@ -1670,10 +1670,10 @@
         </div>
     </div>
 
-    <!-- Overlay Zoom Fullscreen Con Pulsante Fixato in Alto a Destra dello Schermo -->
+    <!-- Overlay Zoom Fullscreen Con Pulsante Incastrato nell'Angolo del Box Foto -->
     <div id="zoom-overlay" class="zoom-overlay">
-        <button class="close-red-btn" id="close-zoom">&times;</button>
         <div class="zoom-container">
+            <button class="close-red-btn" id="close-zoom">&times;</button>
             <img id="zoom-modal-img" src="" alt="Ingrandimento Opera">
         </div>
     </div>
