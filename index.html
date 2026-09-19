@@ -1043,7 +1043,6 @@
             }
 
             function closeAllModalsAndMenus() {
-                closeZoom();
                 dropdowns.forEach(d => {
                     d.classList.remove('active');
                     d.classList.remove('modal-open');
@@ -1068,7 +1067,12 @@
                 }
             });
 
-            if (closeZoomBtn) closeZoomBtn.addEventListener('click', closeZoom);
+            if (closeZoomBtn) {
+                closeZoomBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    closeZoom();
+                });
+            }
 
             if (zoomOverlay) {
                 zoomOverlay.addEventListener('click', function(e) {
