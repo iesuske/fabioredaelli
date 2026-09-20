@@ -727,20 +727,20 @@
             z-index: 1000;
         }
 
-        /* REGOLAZIONE PROPORZIONALE PER TUTTI GLI IPAD (4:3 e 10:7) */
+        /* REGOLAZIONE ESCLUSIVA PER IPAD / TABLET */
         @media screen and (min-width: 768px) and (max-width: 1024px) {
             .master-canvas {
-                margin-top: 0 !important;
+                margin-top: -31px !important;
                 overflow: hidden;
             }
 
             .header-anchor {
-                top: 7.2% !important;
+                top: 6% !important;
             }
 
             .brand-title {
-                font-size: 5.8vw !important;
-                transform: translateY(1.8vw) !important;
+                font-size: 6.0vw !important;
+                transform: translateY(25px) !important;
             }
 
             .bg-image {
@@ -751,7 +751,7 @@
             }
 
             .menus-container {
-                margin-top: 2.8vw !important;
+                margin-top: 35px !important;
             }
 
             .btn-curiosity, .btn-works-style, .dropdown-trigger:not(.btn-works-style) {
