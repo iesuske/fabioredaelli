@@ -263,8 +263,8 @@
 
         .btn-curiosity:hover,
         .btn-curiosity:active {
-            background-color: #b72216 !important;
-            color: #ffffff !important; 
+            background-color: #b72216;
+            color: #ffffff; 
         }
 
         .btn-works-style {
@@ -324,11 +324,6 @@
             user-select: none;
             white-space: nowrap;
             touch-action: manipulation;
-        }
-
-        /* CAMBIO COLORE IN NERO AL PASSAGGIO DEL MOUSE SU BIO E CONTACT ME */
-        .dropdown-trigger:not(.btn-works-style):hover {
-            color: #000000 !important;
         }
 
         .dropdown.active:not(.modal-open) .dropdown-trigger:not(.btn-works-style) { 
@@ -420,11 +415,9 @@
             white-space: nowrap;
         }
 
-        /* CONTROLLO INTERLINEA E SPAZIATURA MENU BIO (DESKTOP) */
         .menu-about li {
             text-align: center;
-            padding: 2px 18px; /* Regola questo valore per la distanza verticale tra gli elementi */
-            line-height: 1.1;  /* Regola l'interlinea del testo (es. 1.0, 1.1, 1.2) */
+            padding: 6px 18px;
             width: 100%;
         }
 
@@ -615,6 +608,7 @@
         .curiosity-nav-btn {
             font-family: 'Lobster Regular', cursive;
             font-size: 1.25rem;
+            color: #ffffff;
             background: transparent;
             border: none;
             padding: 0 4px;
@@ -625,25 +619,11 @@
             touch-action: manipulation;
         }
 
-        /* REGOLAZIONE COLORI PULSANTI NAVIGAZIONE PLAYER */
-        .curiosity-nav-btn.btn-prev {
-            color: #ffffff;
-        }
-
-        .curiosity-nav-btn.btn-next {
-            color: #b72216;
-        }
-
+        .curiosity-nav-btn:hover,
+        .curiosity-nav-btn:active,
         .curiosity-nav-btn.active-nav {
-            color: #b72216 !important;
-        }
-
-        .curiosity-nav-btn:not(.active-nav) {
-            color: #ffffff !important;
-        }
-
-        .curiosity-nav-btn:hover {
-            opacity: 0.85;
+            color: #b72216;
+            background: transparent;
         }
 
         /* OVERLAY FULLSCREEN PER ZOOM IMMAGINI */
@@ -896,10 +876,9 @@
                 display: flex !important;
             }
 
-            /* CONTROLLO INTERLINEA E SPAZIATURA MENU BIO (MOBILE) */
             .menu-about li {
                 font-size: 1.05rem;
-                line-height: 1.15 !important; /* Regola questo valore per cambiare l'interlinea su mobile */
+                line-height: 1.4;
                 white-space: normal !important; 
                 word-wrap: break-word !important;
                 overflow-wrap: break-word !important;
@@ -1050,14 +1029,6 @@
             const zoomImg = document.getElementById('zoom-modal-img');
             const closeZoomBtn = document.getElementById('close-zoom');
 
-            function isAnyModalOpen() {
-                return (curiosityOverlay && curiosityOverlay.classList.contains('open')) ||
-                       (worksOverlay && worksOverlay.classList.contains('open')) ||
-                       (colorOverlay && colorOverlay.classList.contains('open')) ||
-                       (highlightsOverlay && highlightsOverlay.classList.contains('open')) ||
-                       (zoomOverlay && zoomOverlay.classList.contains('open'));
-            }
-
             function openZoom(src) {
                 if (src && zoomOverlay && zoomImg) {
                     zoomImg.src = src;
@@ -1110,8 +1081,6 @@
                 const trigger = dropdown.querySelector('.dropdown-trigger');
 
                 function openSingleDropdown() {
-                    if (isAnyModalOpen()) return;
-
                     const wasActive = dropdown.classList.contains('active');
                     closeAllModalsAndMenus();
                     if (!wasActive) {
@@ -1133,22 +1102,15 @@
                 }
 
                 dropdown.addEventListener('mouseenter', function() {
-                    if (isAnyModalOpen()) return;
                     openSingleDropdown();
                 });
 
                 dropdown.addEventListener('mouseleave', function() {
-                    if (isAnyModalOpen()) return;
                     dropdown.classList.remove('active');
                 });
 
                 if (trigger) {
                     trigger.addEventListener('click', function(e) {
-                        if (isAnyModalOpen()) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            return;
-                        }
                         e.preventDefault();
                         e.stopPropagation();
                         openSingleDropdown();
@@ -1171,13 +1133,13 @@
 
             const linkClosers = document.querySelectorAll('.menu-contact li a, .menu-works li a');
             linkClosers.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    if (isAnyModalOpen()) {
-                        e.preventDefault();
-                        return;
-                    }
+                link.addEventListener('click', function() {
                     dropdowns.forEach(d => d.classList.remove('active'));
                 });
+            });
+
+            window.addEventListener('focus', function() {
+                closeAllModalsAndMenus();
             });
 
             const closeBtns = document.querySelectorAll('.close-bio-btn');
@@ -1195,7 +1157,6 @@
             });
 
             document.addEventListener('click', function(e) {
-                if (isAnyModalOpen()) return;
                 dropdowns.forEach(dropdown => {
                     if (!dropdown.contains(e.target)) {
                         dropdown.classList.remove('active');
@@ -1238,12 +1199,7 @@
                 setModalOpenState(false);
             }
 
-            function resetNavButtonState(prevBtn, nextBtn) {
-                if (!prevBtn || !nextBtn) return;
-                prevBtn.classList.remove('active-nav');
-                nextBtn.classList.add('active-nav');
-            }
-
+            // Funzione di supporto per gestire lo stato attivo persistente dei pulsanti avanti/indietro
             function setupNavButtonState(prevBtn, nextBtn) {
                 if (!prevBtn || !nextBtn) return;
                 const buttons = [prevBtn, nextBtn];
@@ -1297,7 +1253,6 @@
 
             if (btnCuriosity && curiosityOverlay) {
                 btnCuriosity.addEventListener('mouseenter', function() {
-                    if (isAnyModalOpen()) return;
                     closeAllModalsAndMenus();
                 });
 
@@ -1305,11 +1260,8 @@
                     e.preventDefault();
                     e.stopPropagation();
                     
-                    if (isAnyModalOpen()) return;
-
                     closeAllModalsAndMenus();
                     setModalOpenState(true);
-                    resetNavButtonState(btnPrevVideo, btnNextVideo);
                     updateVideo(0);
                     curiosityOverlay.classList.add('open');
                 });
@@ -1386,12 +1338,9 @@
                 btnSketchs.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
-
-                    if (isAnyModalOpen()) return;
                     
                     closeAllModalsAndMenus();
                     setModalOpenState(true);
-                    resetNavButtonState(btnPrevWork, btnNextWork);
                     updateWorkImage(0);
                     worksOverlay.classList.add('open');
                 });
@@ -1485,12 +1434,9 @@
                 btnColor.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
-
-                    if (isAnyModalOpen()) return;
                     
                     closeAllModalsAndMenus();
                     setModalOpenState(true);
-                    resetNavButtonState(btnPrevColor, btnNextColor);
                     updateColorImage(0);
                     colorOverlay.classList.add('open');
                 });
@@ -1545,12 +1491,9 @@
                 btnHighlights.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
-
-                    if (isAnyModalOpen()) return;
                     
                     closeAllModalsAndMenus();
                     setModalOpenState(true);
-                    resetNavButtonState(btnPrevHighlight, btnNextHighlight);
                     updateHighlightImage(0);
                     highlightsOverlay.classList.add('open');
                 });
@@ -1571,6 +1514,12 @@
                     });
                 }
             }
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeAllModalsAndMenus();
+                }
+            });
 
         });
     </script>
@@ -1663,8 +1612,8 @@
             <div class="curiosity-footer testo-custom">
                 <span id="video-counter" class="video-counter">1 / 11</span>
                 <div class="nav-buttons">
-                    <button id="btn-prev-video" class="curiosity-nav-btn btn-prev">&laquo; Indietro</button>
-                    <button id="btn-next-video" class="curiosity-nav-btn btn-next active-nav">Avanti &raquo;</button>
+                    <button id="btn-prev-video" class="curiosity-nav-btn">&laquo; Indietro</button>
+                    <button id="btn-next-video" class="curiosity-nav-btn">Avanti &raquo;</button>
                 </div>
             </div>
         </div>
@@ -1687,8 +1636,8 @@
             <div class="curiosity-footer testo-custom">
                 <span id="works-counter" class="video-counter">1 / 24</span>
                 <div class="nav-buttons">
-                    <button id="btn-prev-work" class="curiosity-nav-btn btn-prev">&laquo; Indietro</button>
-                    <button id="btn-next-work" class="curiosity-nav-btn btn-next active-nav">Avanti &raquo;</button>
+                    <button id="btn-prev-work" class="curiosity-nav-btn">&laquo; Indietro</button>
+                    <button id="btn-next-work" class="curiosity-nav-btn">Avanti &raquo;</button>
                 </div>
             </div>
         </div>
@@ -1711,8 +1660,8 @@
             <div class="curiosity-footer testo-custom">
                 <span id="color-counter" class="video-counter">1 / 41</span>
                 <div class="nav-buttons">
-                    <button id="btn-prev-color" class="curiosity-nav-btn btn-prev">&laquo; Indietro</button>
-                    <button id="btn-next-color" class="curiosity-nav-btn btn-next active-nav">Avanti &raquo;</button>
+                    <button id="btn-prev-color" class="curiosity-nav-btn">&laquo; Indietro</button>
+                    <button id="btn-next-color" class="curiosity-nav-btn">Avanti &raquo;</button>
                 </div>
             </div>
         </div>
@@ -1735,8 +1684,8 @@
             <div class="curiosity-footer testo-custom">
                 <span id="highlights-counter" class="video-counter">1 / 2</span>
                 <div class="nav-buttons">
-                    <button id="btn-prev-highlight" class="curiosity-nav-btn btn-prev">&laquo; Indietro</button>
-                    <button id="btn-next-highlight" class="curiosity-nav-btn btn-next active-nav">Avanti &raquo;</button>
+                    <button id="btn-prev-highlight" class="curiosity-nav-btn">&laquo; Indietro</button>
+                    <button id="btn-next-highlight" class="curiosity-nav-btn">Avanti &raquo;</button>
                 </div>
             </div>
         </div>
