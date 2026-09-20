@@ -608,7 +608,6 @@
         .curiosity-nav-btn {
             font-family: 'Lobster Regular', cursive;
             font-size: 1.25rem;
-            color: #ffffff;
             background: transparent;
             border: none;
             padding: 0 4px;
@@ -619,11 +618,25 @@
             touch-action: manipulation;
         }
 
-        .curiosity-nav-btn:hover,
-        .curiosity-nav-btn:active,
-        .curiosity-nav-btn.active-nav {
+        /* REGOLAZIONE COLORI PULSANTI NAVIGAZIONE PLAYER */
+        .curiosity-nav-btn.btn-prev {
+            color: #ffffff;
+        }
+
+        .curiosity-nav-btn.btn-next {
             color: #b72216;
-            background: transparent;
+        }
+
+        .curiosity-nav-btn.active-nav {
+            color: #b72216 !important;
+        }
+
+        .curiosity-nav-btn:not(.active-nav) {
+            color: #ffffff !important;
+        }
+
+        .curiosity-nav-btn:hover {
+            opacity: 0.85;
         }
 
         /* OVERLAY FULLSCREEN PER ZOOM IMMAGINI */
@@ -1199,7 +1212,13 @@
                 setModalOpenState(false);
             }
 
-            // Funzione di supporto per gestire lo stato attivo persistente dei pulsanti avanti/indietro
+            // Funzione per impostare/ripristinare lo stato iniziale dei pulsanti (Avanti = Rosso, Indietro = Bianco)
+            function resetNavButtonState(prevBtn, nextBtn) {
+                if (!prevBtn || !nextBtn) return;
+                prevBtn.classList.remove('active-nav');
+                nextBtn.classList.add('active-nav');
+            }
+
             function setupNavButtonState(prevBtn, nextBtn) {
                 if (!prevBtn || !nextBtn) return;
                 const buttons = [prevBtn, nextBtn];
@@ -1262,6 +1281,7 @@
                     
                     closeAllModalsAndMenus();
                     setModalOpenState(true);
+                    resetNavButtonState(btnPrevVideo, btnNextVideo);
                     updateVideo(0);
                     curiosityOverlay.classList.add('open');
                 });
@@ -1341,6 +1361,7 @@
                     
                     closeAllModalsAndMenus();
                     setModalOpenState(true);
+                    resetNavButtonState(btnPrevWork, btnNextWork);
                     updateWorkImage(0);
                     worksOverlay.classList.add('open');
                 });
@@ -1437,6 +1458,7 @@
                     
                     closeAllModalsAndMenus();
                     setModalOpenState(true);
+                    resetNavButtonState(btnPrevColor, btnNextColor);
                     updateColorImage(0);
                     colorOverlay.classList.add('open');
                 });
@@ -1494,6 +1516,7 @@
                     
                     closeAllModalsAndMenus();
                     setModalOpenState(true);
+                    resetNavButtonState(btnPrevHighlight, btnNextHighlight);
                     updateHighlightImage(0);
                     highlightsOverlay.classList.add('open');
                 });
@@ -1612,8 +1635,8 @@
             <div class="curiosity-footer testo-custom">
                 <span id="video-counter" class="video-counter">1 / 11</span>
                 <div class="nav-buttons">
-                    <button id="btn-prev-video" class="curiosity-nav-btn">&laquo; Indietro</button>
-                    <button id="btn-next-video" class="curiosity-nav-btn">Avanti &raquo;</button>
+                    <button id="btn-prev-video" class="curiosity-nav-btn btn-prev">&laquo; Indietro</button>
+                    <button id="btn-next-video" class="curiosity-nav-btn btn-next active-nav">Avanti &raquo;</button>
                 </div>
             </div>
         </div>
@@ -1636,8 +1659,8 @@
             <div class="curiosity-footer testo-custom">
                 <span id="works-counter" class="video-counter">1 / 24</span>
                 <div class="nav-buttons">
-                    <button id="btn-prev-work" class="curiosity-nav-btn">&laquo; Indietro</button>
-                    <button id="btn-next-work" class="curiosity-nav-btn">Avanti &raquo;</button>
+                    <button id="btn-prev-work" class="curiosity-nav-btn btn-prev">&laquo; Indietro</button>
+                    <button id="btn-next-work" class="curiosity-nav-btn btn-next active-nav">Avanti &raquo;</button>
                 </div>
             </div>
         </div>
@@ -1660,8 +1683,8 @@
             <div class="curiosity-footer testo-custom">
                 <span id="color-counter" class="video-counter">1 / 41</span>
                 <div class="nav-buttons">
-                    <button id="btn-prev-color" class="curiosity-nav-btn">&laquo; Indietro</button>
-                    <button id="btn-next-color" class="curiosity-nav-btn">Avanti &raquo;</button>
+                    <button id="btn-prev-color" class="curiosity-nav-btn btn-prev">&laquo; Indietro</button>
+                    <button id="btn-next-color" class="curiosity-nav-btn btn-next active-nav">Avanti &raquo;</button>
                 </div>
             </div>
         </div>
@@ -1684,8 +1707,8 @@
             <div class="curiosity-footer testo-custom">
                 <span id="highlights-counter" class="video-counter">1 / 2</span>
                 <div class="nav-buttons">
-                    <button id="btn-prev-highlight" class="curiosity-nav-btn">&laquo; Indietro</button>
-                    <button id="btn-next-highlight" class="curiosity-nav-btn">Avanti &raquo;</button>
+                    <button id="btn-prev-highlight" class="curiosity-nav-btn btn-prev">&laquo; Indietro</button>
+                    <button id="btn-next-highlight" class="curiosity-nav-btn btn-next active-nav">Avanti &raquo;</button>
                 </div>
             </div>
         </div>
