@@ -347,6 +347,12 @@
             padding: 0; 
             z-index: 1000;
             box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+
+            /* PROPRIETÀ PER EVITARE IL FLASH GRAFICO E GLITCH SU IPAD WEBKIT */
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
         }
 
         .close-li {
@@ -1121,24 +1127,32 @@
                             menuAbout.classList.remove('show-scrollbar');
                             clearTimeout(menuAbout.scrollTimeout);
 
-                            if (menuAbout.scrollHeight > menuAbout.clientHeight) {
-                                menuAbout.classList.add('show-scrollbar');
-                                menuAbout.scrollTimeout = setTimeout(() => {
-                                    menuAbout.classList.remove('show-scrollbar');
-                                }, 4000);
-                            }
+                            // requestAnimationFrame evita il glitch sul calcolo dimensioni al primo tap su iPad
+                            requestAnimationFrame(() => {
+                                if (menuAbout.scrollHeight > menuAbout.clientHeight) {
+                                    menuAbout.classList.add('show-scrollbar');
+                                    menuAbout.scrollTimeout = setTimeout(() => {
+                                        menuAbout.classList.remove('show-scrollbar');
+                                    }, 4000);
+                                }
+                            });
                         }
                     }
                 }
 
+                // Attiva mouseenter SOLO sui dispositivi con vero mouse (evita il doppio evento simulato da iPad)
                 dropdown.addEventListener('mouseenter', function() {
-                    if (isAnyModalOpen()) return;
-                    openSingleDropdown();
+                    if (window.matchMedia('(hover: hover)').matches) {
+                        if (isAnyModalOpen()) return;
+                        openSingleDropdown();
+                    }
                 });
 
                 dropdown.addEventListener('mouseleave', function() {
-                    if (isAnyModalOpen()) return;
-                    dropdown.classList.remove('active');
+                    if (window.matchMedia('(hover: hover)').matches) {
+                        if (isAnyModalOpen()) return;
+                        dropdown.classList.remove('active');
+                    }
                 });
 
                 if (trigger) {
