@@ -197,10 +197,9 @@
             pointer-events: none; 
         }
 
-        /* POSIZIONAMENTO HEADER: AUMENTATO A 7.8% PER FARLO SCENDERE PIÙ IN BASSO */
         .header-anchor {
             position: absolute;
-            top: 7.8%; 
+            top: 7.6%; 
             left: 0;
             width: 100%;
             text-align: center;
@@ -327,6 +326,7 @@
             touch-action: manipulation;
         }
 
+        /* CAMBIO COLORE IN NERO AL PASSAGGIO DEL MOUSE SU BIO E CONTACT ME */
         .dropdown-trigger:not(.btn-works-style):hover {
             color: #000000 !important;
         }
@@ -623,6 +623,7 @@
             touch-action: manipulation;
         }
 
+        /* REGOLAZIONE COLORI PULSANTI NAVIGAZIONE PLAYER */
         .curiosity-nav-btn.btn-prev {
             color: #ffffff;
         }
@@ -643,6 +644,7 @@
             opacity: 0.85;
         }
 
+        /* OVERLAY FULLSCREEN PER ZOOM IMMAGINI */
         .zoom-overlay {
             display: none;
             position: fixed;
@@ -725,15 +727,15 @@
             z-index: 1000;
         }
 
-        /* REGOLAZIONE ESCLUSIVA PER IPAD / TABLET PORTRAIT */
-        @media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+        /* REGOLAZIONE ESCLUSIVA PER IPAD / TABLET */
+        @media screen and (min-width: 768px) and (max-width: 1024px) {
             .master-canvas {
                 margin-top: -31px !important;
                 overflow: hidden;
             }
 
             .header-anchor {
-                top: 8.0% !important;
+                top: 6% !important;
             }
 
             .brand-title {
@@ -755,13 +757,6 @@
             .btn-curiosity, .btn-works-style, .dropdown-trigger:not(.btn-works-style) {
                 font-size: 2.1vw !important;
                 padding: 2px 10px !important;
-            }
-        }
-
-        /* REGOLAZIONE PER IPAD IN LANDSCAPE: SPOSTATO A 6.8% PER DARE PIÙ MARGINE */
-        @media screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) and (pointer: coarse) {
-            .header-anchor {
-                top: 6.8% !important; 
             }
         }
 
@@ -788,7 +783,7 @@
 
             .header-anchor {
                 position: absolute;
-                top: calc(8.5% + 4px) !important; 
+                top: calc(7.2% + 10px) !important; 
                 left: 0;
                 width: 100%;
                 padding: 0 15px;
@@ -846,7 +841,7 @@
 
             .dropdown-menu {
                 position: fixed !important;
-                top: 18vh !important;
+                top: 16vh !important;
                 margin-top: 0 !important;
                 left: 50% !important;
                 transform: translateX(-50%) !important; 
@@ -867,7 +862,7 @@
             }
 
             .dropdown-menu.menu-about {
-                top: 18vh !important;
+                top: 16vh !important;
                 margin-top: 0 !important;
                 padding-top: 22px !important;
                 padding-bottom: 24px !important;
@@ -876,7 +871,7 @@
 
             .dropdown-menu.menu-contact, 
             .dropdown-menu.menu-works {
-                top: 18vh !important;
+                top: 16vh !important;
                 margin-top: 0 !important;
                 width: 45vw !important; 
                 max-width: 175px !important;
@@ -1052,6 +1047,7 @@
             const zoomImg = document.getElementById('zoom-modal-img');
             const closeZoomBtn = document.getElementById('close-zoom');
 
+            // FUNZIONE PER VERIFICARE SE C'È UN PLAYER/MODAL APERTO IN QUESTO MOMENTO
             function isAnyModalOpen() {
                 return (curiosityOverlay && curiosityOverlay.classList.contains('open')) ||
                        (worksOverlay && worksOverlay.classList.contains('open')) ||
@@ -1112,6 +1108,7 @@
                 const trigger = dropdown.querySelector('.dropdown-trigger');
 
                 function openSingleDropdown() {
+                    // Se un player è aperto, non apre e non modifica i menu
                     if (isAnyModalOpen()) return;
 
                     const wasActive = dropdown.classList.contains('active');
