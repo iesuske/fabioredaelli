@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -757,6 +757,19 @@
             .btn-curiosity, .btn-works-style, .dropdown-trigger:not(.btn-works-style) {
                 font-size: 2.1vw !important;
                 padding: 2px 10px !important;
+            }
+        }
+
+        /* REGOLAZIONE ESCLUSIVA PER IPAD IN LANDSCAPE */
+        @media screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) and (pointer: coarse) {
+            .master-canvas {
+                /* Azzera il margine negativo per far scendere l'immagine di sfondo (banda rossa e righina nera) */
+                margin-top: 0px !important; 
+            }
+
+            .header-anchor {
+                /* Regola leggermente la posizione verticale del testo per mantenerlo centrato sulla banda rossa */
+                top: 7.6% !important; 
             }
         }
 
