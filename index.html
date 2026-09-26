@@ -727,6 +727,32 @@
             z-index: 1000;
         }
 
+        /* REGOLAZIONE ESCLUSIVA PER IPAD / TABLET IN VERTICALE (PORTRAIT) */
+        @media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+            .master-canvas {
+                margin-top: 0px !important;
+                overflow: hidden;
+            }
+
+            .header-anchor {
+                top: 10.2% !important; /* Abbassa il blocco della grafica in modo che esca la striscia beige in alto */
+            }
+
+            .brand-title {
+                font-size: 5.2vw !important;
+                transform: translateY(0px) !important;
+            }
+
+            .menus-container {
+                margin-top: 1.2vw !important;
+            }
+
+            .btn-curiosity, .btn-works-style, .dropdown-trigger:not(.btn-works-style) {
+                font-size: 2.2vw !important;
+                padding: 2px 12px !important;
+            }
+        }
+
         /* REGOLAZIONE ESCLUSIVA PER IPAD / TABLET IN ORIZZONTALE (LANDSCAPE) */
         @media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
             .master-canvas {
