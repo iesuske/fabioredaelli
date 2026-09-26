@@ -522,28 +522,32 @@
             border: 0;
         }
 
-        /* CORNICE APPLICATA ALLE FOTO NON INGRANDITE DENTRO IL PLAYER */
+        /* BOX PLAYER SENZA CORNICE ESTERNA */
         .works-image-container {
             position: relative;
             width: 100%;
             padding-bottom: 56.25%;
             height: 0;
             border-radius: 8px;
-            border: 2px solid rgba(255, 255, 255, 0.85);
             overflow: hidden;
             background: #000;
             box-shadow: 0 8px 25px rgba(0,0,0,0.6);
         }
 
+        /* CORNICE APPLICATA DIRETTAMENTE ALLA FOTO ALL'INTERNO DEL PLAYER */
         .works-image-container img {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            border: 2px solid rgba(255, 255, 255, 0.85);
             border-radius: 6px;
             cursor: zoom-in;
+            box-sizing: border-box;
         }
 
         .works-image-container::after {
