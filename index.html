@@ -169,14 +169,21 @@
             white-space: nowrap;
         }
 
+        /* MEDIA QUERY PER SMARTPHONE IN LANDSCAPE (ES. IPHONE) - DIMENSIONI GRANDI ORIGINARIE */
         @media screen and (max-height: 500px) and (orientation: landscape) {
             #landscape-warning {
                 display: flex !important;
             }
+            .landscape-text-container h2 {
+                font-size: 14vh !important;
+            }
+            .landscape-text-container p {
+                font-size: 7vh !important;
+            }
         }
 
-        /* MEDIA QUERY DEDICATA PER IPAD E TABLET IN LANDSCAPE CON TESTO RIDIMENSIONATO */
-        @media screen and (min-width: 768px) and (max-width: 1366px) and (orientation: landscape) {
+        /* MEDIA QUERY DEDICATA ESCLUSIVAMENTE PER IPAD E TABLET IN LANDSCAPE (ALTEZZA > 650px) */
+        @media screen and (min-width: 768px) and (min-height: 650px) and (orientation: landscape) {
             #landscape-warning {
                 display: flex !important;
             }
@@ -184,10 +191,10 @@
                 padding-top: 10vh !important;
             }
             .landscape-text-container h2 {
-                font-size: 8vh !important; /* Ridotto per evitare che sia troppo grande su iPad */
+                font-size: 8vh !important; /* Ridotto solo su iPad */
             }
             .landscape-text-container p {
-                font-size: 4vh !important; /* Ridotto per adattarsi perfettamente agli schermi dei tablet */
+                font-size: 4vh !important; /* Ridotto solo su iPad */
             }
         }
 
@@ -1030,7 +1037,6 @@
                 document.body.classList.add('mobile-chrome');
             }
 
-            // CONTROLLO JAVASCRIPT CON GESTIONE ANCHE DEL RITORNO IN VERTICALE (ELSE)
             function checkTabletOrientation() {
                 const warning = document.getElementById('landscape-warning');
                 if (!warning) return;
