@@ -175,8 +175,8 @@
             }
         }
 
-        /* AGGIUNTA PER IPAD IN LANDSCAPE */
-        @media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+        /* MEDIA QUERY AMPPIA PER IPAD E TABLET IN LANDSCAPE (FINO A 1366px) */
+        @media screen and (min-width: 768px) and (max-width: 1366px) and (orientation: landscape) {
             #landscape-warning {
                 display: flex !important;
             }
@@ -1020,6 +1020,24 @@
             if (/CriOS|Android.*Chrome/i.test(navigator.userAgent)) {
                 document.body.classList.add('mobile-chrome');
             }
+
+            // CONTROLLO AGGIUNTIVO JAVASCRIPT PER IPAD E TABLET IN LANDSCAPE
+            function checkTabletOrientation() {
+                const warning = document.getElementById('landscape-warning');
+                if (!warning) return;
+                
+                const isLandscape = window.innerWidth > window.innerHeight;
+                const isTabletSize = window.innerWidth >= 768 && window.innerWidth <= 1366;
+                const isTouchDevice = (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) || /iPad|Macintosh|Android/i.test(navigator.userAgent);
+
+                if (isLandscape && isTabletSize && isTouchDevice) {
+                    warning.style.display = 'flex';
+                }
+            }
+
+            window.addEventListener('resize', checkTabletOrientation);
+            window.addEventListener('orientationchange', checkTabletOrientation);
+            checkTabletOrientation();
 
             let fontsLoadedCalled = false;
             function showContent() {
