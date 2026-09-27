@@ -200,7 +200,7 @@
 
         .header-anchor {
             position: absolute;
-            top: 7.6%; 
+            top: 18%; 
             left: 0;
             width: 100%;
             text-align: center;
@@ -215,7 +215,7 @@
 
         .brand-title {
             font-family: 'Lobster Regular', cursive;
-            font-size: 3.8vw; 
+            font-size: 5vw; 
             line-height: 1;
             white-space: nowrap; 
             margin: 0;
@@ -241,16 +241,16 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            margin-top: 0.8vw; 
+            margin-top: 1.2vw; 
         }
 
         .btn-curiosity {
             font-family: 'Lobster Regular', cursive;
-            font-size: 1.5vw;
+            font-size: 2vw;
             color: #b72216;
             background-color: #ffffff;
-            padding: 1px 10px;
-            border-radius: 8px;
+            padding: 2px 14px;
+            border-radius: 10px;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -270,11 +270,11 @@
 
         .btn-works-style {
             font-family: 'Lobster Regular', cursive;
-            font-size: 1.5vw;
+            font-size: 2vw;
             color: #ffffff;
             background-color: #b72216;
-            padding: 1px 10px;
-            border-radius: 8px;
+            padding: 2px 14px;
+            border-radius: 10px;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -314,7 +314,7 @@
 
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
-            font-size: 1.5vw; 
+            font-size: 2vw; 
             color: #ffffff;
             cursor: pointer;
             text-decoration: none;
@@ -522,7 +522,6 @@
             border: 0;
         }
 
-        /* BOX PLAYER SENZA CORNICE ESTERNA */
         .works-image-container {
             position: relative;
             width: 100%;
@@ -534,7 +533,6 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.6);
         }
 
-        /* CORNICE APPLICATA DIRETTAMENTE ALLA FOTO ALL'INTERNO DEL PLAYER */
         .works-image-container img {
             position: absolute;
             top: 50%;
@@ -630,27 +628,12 @@
             touch-action: manipulation;
         }
 
-        .curiosity-nav-btn.btn-prev {
-            color: #ffffff;
-        }
+        .curiosity-nav-btn.btn-prev { color: #ffffff; }
+        .curiosity-nav-btn.btn-next { color: #b72216; }
+        .curiosity-nav-btn.active-nav { color: #b72216 !important; }
+        .curiosity-nav-btn:not(.active-nav) { color: #ffffff !important; }
+        .curiosity-nav-btn:hover { opacity: 0.85; }
 
-        .curiosity-nav-btn.btn-next {
-            color: #b72216;
-        }
-
-        .curiosity-nav-btn.active-nav {
-            color: #b72216 !important;
-        }
-
-        .curiosity-nav-btn:not(.active-nav) {
-            color: #ffffff !important;
-        }
-
-        .curiosity-nav-btn:hover {
-            opacity: 0.85;
-        }
-
-        /* OVERLAY FULLSCREEN PER ZOOM IMMAGINI */
         .zoom-overlay {
             display: none;
             position: fixed;
@@ -670,9 +653,7 @@
             cursor: zoom-out;
         }
 
-        .zoom-overlay.open {
-            display: flex;
-        }
+        .zoom-overlay.open { display: flex; }
 
         .zoom-container {
             position: relative;
@@ -733,38 +714,50 @@
             z-index: 1000;
         }
 
-        @media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+        /* --- STILI SPECIFICI PER TABLET / IPAD MODIFICATI --- */
+        @media screen and (min-width: 768px) and (max-width: 1024px) {
             .master-canvas {
                 margin-top: 0px !important;
                 overflow: hidden;
             }
 
+            /* --- REGOLAZIONE ALTEZZA (Sposta in blocco Titolo e Menu) --- */
+            /* Puoi modificare questo valore (es: 400px o 500px) per spostare l'intero blocco su o giù */
             .header-anchor {
-                top: 12% !important;
+                top: 450px !important; 
             }
 
+            /* --- DIMENSIONE TITOLO BLOCCATA IN PIXEL --- */
+            /* Ora la scritta non si deforma in base allo schermo dell'iPad */
             .brand-title {
-                font-size: 5.5vw !important;
+                font-size: 65px !important; 
                 transform: translateY(0px) !important;
+                white-space: nowrap !important;
             }
 
+            /* --- SFONDO INGRANDITO (SIMILE AL MOBILE) --- */
+            /* Allarga la macchina in modo che occupi più schermo */
             .bg-image {
-                width: 100% !important;
+                width: 135% !important;
                 max-width: none !important;
-                margin-left: 0 !important;
+                margin-left: -17.5% !important; /* Questo serve a mantenere l'immagine centrata */
                 display: block;
             }
 
             .menus-container {
-                margin-top: 15px !important;
+                margin-top: 25px !important; /* Distanza fissa in px tra titolo e pulsanti */
             }
 
-            .btn-curiosity, .btn-works-style, .dropdown-trigger:not(.btn-works-style) {
-                font-size: 1.8vw !important;
-                padding: 2px 10px !important;
+            /* --- DIMENSIONI PULSANTI MENU BLOCCATE IN PIXEL --- */
+            .btn-curiosity, 
+            .btn-works-style, 
+            .dropdown-trigger:not(.btn-works-style) {
+                font-size: 26px !important; 
+                padding: 6px 20px !important;
             }
         }
 
+        /* --- STILI PER SMARTPHONE / CELLULARI (INVARIATI) --- */
         @media screen and (max-width: 767px) {
             html, body {
                 height: 100vh !important;
@@ -787,7 +780,7 @@
 
             .header-anchor {
                 position: absolute;
-                top: calc(7.2% + 10px) !important; 
+                top: calc(18% + 10px) !important; 
                 left: 0;
                 width: 100%;
                 padding: 0 15px;
@@ -805,7 +798,7 @@
             }
 
             .brand-title {
-                font-size: calc(6.2vw + 4px); 
+                font-size: calc(8.2vw + 4px); 
                 white-space: normal;
                 line-height: 1.1;
                 transform: translateY(-2.5px) !important;
@@ -817,7 +810,7 @@
                 justify-content: space-between !important;
                 align-items: center !important;
                 width: 100% !important;
-                margin-top: 0.6vw !important; 
+                margin-top: 1vw !important; 
             }
 
             .dropdown {
@@ -826,9 +819,9 @@
             }
 
             .btn-curiosity, .btn-works-style {
-                font-size: 3.2vw !important; 
-                padding: 1px 6px !important; 
-                border-radius: 6px;
+                font-size: 4.2vw !important; 
+                padding: 2px 8px !important; 
+                border-radius: 8px;
                 display: inline-flex !important;
                 align-items: center !important;
                 justify-content: center !important;
@@ -836,7 +829,7 @@
             }
 
             .dropdown-trigger:not(.btn-works-style) {
-                font-size: 3.2vw !important; 
+                font-size: 4.2vw !important; 
                 padding: 2px !important; 
                 display: inline-flex !important;
                 align-items: center !important;
@@ -1647,20 +1640,17 @@
         </div>
     </div>
 
-    <!-- Player Video Curiosity -->
+    <!-- Modali Video e Gallerie... (identiche a prima) -->
     <div id="curiosity-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-red-btn" id="close-curiosity">&times;</button>
-            
             <div class="video-container">
                 <iframe id="youtube-frame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-
             <div class="curiosity-text testo-custom">
                 <h3 id="curiosity-title">Behind The Scene</h3>
                 <p id="curiosity-desc">scopri le tecniche e lo storyboard originale</p>
             </div>
-
             <div class="curiosity-footer testo-custom">
                 <span id="video-counter" class="video-counter">1 / 11</span>
                 <div class="nav-buttons">
@@ -1671,20 +1661,16 @@
         </div>
     </div>
 
-    <!-- Player Immagini Works (Sketches And B/N) -->
     <div id="works-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-red-btn" id="close-works-modal">&times;</button>
-            
             <div class="works-image-container">
                 <img id="works-modal-img" src="" alt="Sketches And B/N">
             </div>
-
             <div class="curiosity-text testo-custom">
                 <h3 id="works-title">Sketches And B/N</h3>
                 <p id="works-desc">primo disegno selezionato dalla galleria</p>
             </div>
-
             <div class="curiosity-footer testo-custom">
                 <span id="works-counter" class="video-counter">1 / 24</span>
                 <div class="nav-buttons">
@@ -1695,20 +1681,16 @@
         </div>
     </div>
 
-    <!-- Player Immagini Color Artworks -->
     <div id="color-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-red-btn" id="close-color-modal">&times;</button>
-            
             <div class="works-image-container">
                 <img id="color-modal-img" src="" alt="Color Artworks">
             </div>
-
             <div class="curiosity-text testo-custom">
                 <h3 id="color-title">Color Artworks</h3>
                 <p id="color-desc">prima illustrazione a colori selezionata</p>
             </div>
-
             <div class="curiosity-footer testo-custom">
                 <span id="color-counter" class="video-counter">1 / 41</span>
                 <div class="nav-buttons">
@@ -1719,20 +1701,16 @@
         </div>
     </div>
 
-    <!-- Player Immagini Highlights -->
     <div id="highlights-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-red-btn" id="close-highlights-modal">&times;</button>
-            
             <div class="works-image-container">
                 <img id="highlights-modal-img" src="" alt="Highlights!">
             </div>
-
             <div class="curiosity-text testo-custom">
                 <h3 id="highlights-title">Highlights!</h3>
                 <p id="highlights-desc">prima opera in primo piano</p>
             </div>
-
             <div class="curiosity-footer testo-custom">
                 <span id="highlights-counter" class="video-counter">1 / 2</span>
                 <div class="nav-buttons">
@@ -1743,7 +1721,6 @@
         </div>
     </div>
 
-    <!-- Overlay Zoom Fullscreen -->
     <div id="zoom-overlay" class="zoom-overlay">
         <button class="close-red-btn" id="close-zoom">&times;</button>
         <div class="zoom-container">
