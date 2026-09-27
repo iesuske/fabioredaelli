@@ -171,19 +171,30 @@
 
         /* MEDIA QUERY PER SMARTPHONE IN LANDSCAPE (ES. IPHONE) - DIMENSIONI GRANDI ORIGINARIE */
         @media screen and (max-height: 500px) and (orientation: landscape) {
-            /* Verrà gestito via JS per evitare attivazioni su desktop */
+            #landscape-warning {
+                display: flex !important;
+            }
+            .landscape-text-container h2 {
+                font-size: 14vh !important;
+            }
+            .landscape-text-container p {
+                font-size: 7vh !important;
+            }
         }
 
         /* MEDIA QUERY DEDICATA ESCLUSIVAMENTE PER IPAD E TABLET IN LANDSCAPE (ALTEZZA > 650px) */
         @media screen and (min-width: 768px) and (min-height: 650px) and (orientation: landscape) {
+            #landscape-warning {
+                display: flex !important;
+            }
             .landscape-text-container {
                 padding-top: 10vh !important;
             }
             .landscape-text-container h2 {
-                font-size: 8vh !important;
+                font-size: 8vh !important; /* Ridotto solo su iPad */
             }
             .landscape-text-container p {
-                font-size: 4vh !important;
+                font-size: 4vh !important; /* Ridotto solo su iPad */
             }
         }
 
@@ -1031,10 +1042,10 @@
                 if (!warning) return;
                 
                 const isLandscape = window.innerWidth > window.innerHeight;
-                const isTouchDevice = (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) || /iPad|iPhone|Android|Mobile/i.test(navigator.userAgent);
-                const isSmallOrTablet = window.innerWidth <= 1366;
+                const isTabletSize = window.innerWidth >= 768 && window.innerWidth <= 1366;
+                const isTouchDevice = (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) || /iPad|Macintosh|Android/i.test(navigator.userAgent);
 
-                if (isLandscape && isSmallOrTablet && isTouchDevice) {
+                if (isLandscape && isTabletSize && isTouchDevice) {
                     warning.style.display = 'flex';
                 } else {
                     warning.style.display = 'none';
