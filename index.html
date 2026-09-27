@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -152,7 +152,6 @@
             padding: 6.5vh 10px 0 10px;
             font-family: 'Lobster Regular', cursive;
             flex: 1;
-            transform: translateY(-3px);
         }
 
         .landscape-text-container h2 {
@@ -200,7 +199,7 @@
 
         .header-anchor {
             position: absolute;
-            top: 18%; 
+            top: 7.6%; 
             left: 0;
             width: 100%;
             text-align: center;
@@ -215,7 +214,7 @@
 
         .brand-title {
             font-family: 'Lobster Regular', cursive;
-            font-size: 5vw; 
+            font-size: 3.8vw; 
             line-height: 1;
             white-space: nowrap; 
             margin: 0;
@@ -241,16 +240,16 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            margin-top: 1.2vw; 
+            margin-top: 0.8vw; 
         }
 
         .btn-curiosity {
             font-family: 'Lobster Regular', cursive;
-            font-size: 2vw;
+            font-size: 1.5vw;
             color: #b72216;
             background-color: #ffffff;
-            padding: 2px 14px;
-            border-radius: 10px;
+            padding: 1px 10px;
+            border-radius: 8px;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -270,11 +269,11 @@
 
         .btn-works-style {
             font-family: 'Lobster Regular', cursive;
-            font-size: 2vw;
+            font-size: 1.5vw;
             color: #ffffff;
             background-color: #b72216;
-            padding: 2px 14px;
-            border-radius: 10px;
+            padding: 1px 10px;
+            border-radius: 8px;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -314,7 +313,7 @@
 
         .dropdown-trigger {
             font-family: 'Lobster Regular', cursive;
-            font-size: 2vw; 
+            font-size: 1.5vw; 
             color: #ffffff;
             cursor: pointer;
             text-decoration: none;
@@ -327,6 +326,7 @@
             touch-action: manipulation;
         }
 
+        /* CAMBIO COLORE IN NERO AL PASSAGGIO DEL MOUSE SU BIO E CONTACT ME */
         .dropdown-trigger:not(.btn-works-style):hover {
             color: #000000 !important;
         }
@@ -527,25 +527,20 @@
             width: 100%;
             padding-bottom: 56.25%;
             height: 0;
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
             background: #000;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
         }
 
         .works-image-container img {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
-            border: 2px solid rgba(255, 255, 255, 0.85);
-            border-radius: 6px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 10px;
             cursor: zoom-in;
-            box-sizing: border-box;
         }
 
         .works-image-container::after {
@@ -555,7 +550,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            border-radius: 6px;
+            border-radius: 10px;
             pointer-events: none;
             box-shadow: inset 0 0 55px rgba(0, 0, 0, 0.65);
             background: radial-gradient(circle, rgba(0,0,0,0) 50%, rgba(0,0,0,0.35) 100%);
@@ -628,12 +623,28 @@
             touch-action: manipulation;
         }
 
-        .curiosity-nav-btn.btn-prev { color: #ffffff; }
-        .curiosity-nav-btn.btn-next { color: #b72216; }
-        .curiosity-nav-btn.active-nav { color: #b72216 !important; }
-        .curiosity-nav-btn:not(.active-nav) { color: #ffffff !important; }
-        .curiosity-nav-btn:hover { opacity: 0.85; }
+        /* REGOLAZIONE COLORI PULSANTI NAVIGAZIONE PLAYER */
+        .curiosity-nav-btn.btn-prev {
+            color: #ffffff;
+        }
 
+        .curiosity-nav-btn.btn-next {
+            color: #b72216;
+        }
+
+        .curiosity-nav-btn.active-nav {
+            color: #b72216 !important;
+        }
+
+        .curiosity-nav-btn:not(.active-nav) {
+            color: #ffffff !important;
+        }
+
+        .curiosity-nav-btn:hover {
+            opacity: 0.85;
+        }
+
+        /* OVERLAY FULLSCREEN PER ZOOM IMMAGINI */
         .zoom-overlay {
             display: none;
             position: fixed;
@@ -653,7 +664,9 @@
             cursor: zoom-out;
         }
 
-        .zoom-overlay.open { display: flex; }
+        .zoom-overlay.open {
+            display: flex;
+        }
 
         .zoom-container {
             position: relative;
@@ -714,50 +727,40 @@
             z-index: 1000;
         }
 
-        /* --- STILI SPECIFICI PER TABLET / IPAD MODIFICATI --- */
+        /* REGOLAZIONE ESCLUSIVA PER IPAD / TABLET */
         @media screen and (min-width: 768px) and (max-width: 1024px) {
             .master-canvas {
-                margin-top: 0px !important;
+                margin-top: -31px !important;
                 overflow: hidden;
             }
 
-            /* --- REGOLAZIONE ALTEZZA (Sposta in blocco Titolo e Menu) --- */
-            /* Puoi modificare questo valore (es: 400px o 500px) per spostare l'intero blocco su o giù */
             .header-anchor {
-                top: 40px !important; 
+                top: 6% !important;
             }
 
-            /* --- DIMENSIONE TITOLO BLOCCATA IN PIXEL --- */
-            /* Ora la scritta non si deforma in base allo schermo dell'iPad */
             .brand-title {
-                font-size: 55px !important; 
-                transform: translateY(0px) !important;
-                white-space: nowrap !important;
+                font-size: 6.0vw !important;
+                transform: translateY(25px) !important;
             }
 
-            /* --- SFONDO INGRANDITO (SIMILE AL MOBILE) --- */
-            /* Allarga la macchina in modo che occupi più schermo */
             .bg-image {
-                width: 135% !important;
+                width: 190% !important;
                 max-width: none !important;
-                margin-left: -17.5% !important; /* Questo serve a mantenere l'immagine centrata */
+                margin-left: -45% !important;
                 display: block;
             }
 
             .menus-container {
-                margin-top: 25px !important; /* Distanza fissa in px tra titolo e pulsanti */
+                margin-top: 35px !important;
             }
 
-            /* --- DIMENSIONI PULSANTI MENU BLOCCATE IN PIXEL --- */
-            .btn-curiosity, 
-            .btn-works-style, 
-            .dropdown-trigger:not(.btn-works-style) {
-                font-size: 26px !important; 
-                padding: 6px 20px !important;
+            .btn-curiosity, .btn-works-style, .dropdown-trigger:not(.btn-works-style) {
+                font-size: 2.1vw !important;
+                padding: 2px 10px !important;
             }
         }
 
-        /* --- STILI PER SMARTPHONE / CELLULARI (INVARIATI) --- */
+        /* REGOLAZIONI ESCLUSIVAMENTE MOBILE */
         @media screen and (max-width: 767px) {
             html, body {
                 height: 100vh !important;
@@ -780,7 +783,7 @@
 
             .header-anchor {
                 position: absolute;
-                top: calc(18% + 10px) !important; 
+                top: calc(7.2% + 10px) !important; 
                 left: 0;
                 width: 100%;
                 padding: 0 15px;
@@ -798,7 +801,7 @@
             }
 
             .brand-title {
-                font-size: calc(8.2vw + 4px); 
+                font-size: calc(6.2vw + 4px); 
                 white-space: normal;
                 line-height: 1.1;
                 transform: translateY(-2.5px) !important;
@@ -810,7 +813,7 @@
                 justify-content: space-between !important;
                 align-items: center !important;
                 width: 100% !important;
-                margin-top: 1vw !important; 
+                margin-top: 0.6vw !important; 
             }
 
             .dropdown {
@@ -819,9 +822,9 @@
             }
 
             .btn-curiosity, .btn-works-style {
-                font-size: 4.2vw !important; 
-                padding: 2px 8px !important; 
-                border-radius: 8px;
+                font-size: 3.2vw !important; 
+                padding: 1px 6px !important; 
+                border-radius: 6px;
                 display: inline-flex !important;
                 align-items: center !important;
                 justify-content: center !important;
@@ -829,7 +832,7 @@
             }
 
             .dropdown-trigger:not(.btn-works-style) {
-                font-size: 4.2vw !important; 
+                font-size: 3.2vw !important; 
                 padding: 2px !important; 
                 display: inline-flex !important;
                 align-items: center !important;
@@ -1044,6 +1047,7 @@
             const zoomImg = document.getElementById('zoom-modal-img');
             const closeZoomBtn = document.getElementById('close-zoom');
 
+            // FUNZIONE PER VERIFICARE SE C'È UN PLAYER/MODAL APERTO IN QUESTO MOMENTO
             function isAnyModalOpen() {
                 return (curiosityOverlay && curiosityOverlay.classList.contains('open')) ||
                        (worksOverlay && worksOverlay.classList.contains('open')) ||
@@ -1104,6 +1108,7 @@
                 const trigger = dropdown.querySelector('.dropdown-trigger');
 
                 function openSingleDropdown() {
+                    // Se un player è aperto, non apre e non modifica i menu
                     if (isAnyModalOpen()) return;
 
                     const wasActive = dropdown.classList.contains('active');
@@ -1640,17 +1645,20 @@
         </div>
     </div>
 
-    <!-- Modali Video e Gallerie... (identiche a prima) -->
+    <!-- Player Video Curiosity -->
     <div id="curiosity-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-red-btn" id="close-curiosity">&times;</button>
+            
             <div class="video-container">
                 <iframe id="youtube-frame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
+
             <div class="curiosity-text testo-custom">
                 <h3 id="curiosity-title">Behind The Scene</h3>
                 <p id="curiosity-desc">scopri le tecniche e lo storyboard originale</p>
             </div>
+
             <div class="curiosity-footer testo-custom">
                 <span id="video-counter" class="video-counter">1 / 11</span>
                 <div class="nav-buttons">
@@ -1661,16 +1669,20 @@
         </div>
     </div>
 
+    <!-- Player Immagini Works (Sketches And B/N) -->
     <div id="works-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-red-btn" id="close-works-modal">&times;</button>
+            
             <div class="works-image-container">
                 <img id="works-modal-img" src="" alt="Sketches And B/N">
             </div>
+
             <div class="curiosity-text testo-custom">
                 <h3 id="works-title">Sketches And B/N</h3>
                 <p id="works-desc">primo disegno selezionato dalla galleria</p>
             </div>
+
             <div class="curiosity-footer testo-custom">
                 <span id="works-counter" class="video-counter">1 / 24</span>
                 <div class="nav-buttons">
@@ -1681,16 +1693,20 @@
         </div>
     </div>
 
+    <!-- Player Immagini Color Artworks -->
     <div id="color-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-red-btn" id="close-color-modal">&times;</button>
+            
             <div class="works-image-container">
                 <img id="color-modal-img" src="" alt="Color Artworks">
             </div>
+
             <div class="curiosity-text testo-custom">
                 <h3 id="color-title">Color Artworks</h3>
                 <p id="color-desc">prima illustrazione a colori selezionata</p>
             </div>
+
             <div class="curiosity-footer testo-custom">
                 <span id="color-counter" class="video-counter">1 / 41</span>
                 <div class="nav-buttons">
@@ -1701,16 +1717,20 @@
         </div>
     </div>
 
+    <!-- Player Immagini Highlights -->
     <div id="highlights-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-red-btn" id="close-highlights-modal">&times;</button>
+            
             <div class="works-image-container">
                 <img id="highlights-modal-img" src="" alt="Highlights!">
             </div>
+
             <div class="curiosity-text testo-custom">
                 <h3 id="highlights-title">Highlights!</h3>
                 <p id="highlights-desc">prima opera in primo piano</p>
             </div>
+
             <div class="curiosity-footer testo-custom">
                 <span id="highlights-counter" class="video-counter">1 / 2</span>
                 <div class="nav-buttons">
@@ -1721,6 +1741,7 @@
         </div>
     </div>
 
+    <!-- Overlay Zoom Fullscreen Con Pulsante Fixato in Alto a Destra dello Schermo -->
     <div id="zoom-overlay" class="zoom-overlay">
         <button class="close-red-btn" id="close-zoom">&times;</button>
         <div class="zoom-container">
