@@ -169,32 +169,9 @@
             white-space: nowrap;
         }
 
-        /* MEDIA QUERY PER SMARTPHONE IN LANDSCAPE (ES. IPHONE) - DIMENSIONI GRANDI ORIGINARIE */
         @media screen and (max-height: 500px) and (orientation: landscape) {
             #landscape-warning {
                 display: flex !important;
-            }
-            .landscape-text-container h2 {
-                font-size: 14vh !important;
-            }
-            .landscape-text-container p {
-                font-size: 7vh !important;
-            }
-        }
-
-        /* MEDIA QUERY DEDICATA ESCLUSIVAMENTE PER IPAD E TABLET IN LANDSCAPE (ALTEZZA > 650px) */
-        @media screen and (min-width: 768px) and (min-height: 650px) and (orientation: landscape) {
-            #landscape-warning {
-                display: flex !important;
-            }
-            .landscape-text-container {
-                padding-top: 10vh !important;
-            }
-            .landscape-text-container h2 {
-                font-size: 8vh !important; /* Ridotto solo su iPad */
-            }
-            .landscape-text-container p {
-                font-size: 4vh !important; /* Ridotto solo su iPad */
             }
         }
 
@@ -349,6 +326,7 @@
             touch-action: manipulation;
         }
 
+        /* CAMBIO COLORE IN NERO AL PASSAGGIO DEL MOUSE SU BIO E CONTACT ME */
         .dropdown-trigger:not(.btn-works-style):hover {
             color: #000000 !important;
         }
@@ -645,6 +623,7 @@
             touch-action: manipulation;
         }
 
+        /* REGOLAZIONE COLORI PULSANTI NAVIGAZIONE PLAYER */
         .curiosity-nav-btn.btn-prev {
             color: #ffffff;
         }
@@ -665,6 +644,7 @@
             opacity: 0.85;
         }
 
+        /* OVERLAY FULLSCREEN PER ZOOM IMMAGINI */
         .zoom-overlay {
             display: none;
             position: fixed;
@@ -747,6 +727,7 @@
             z-index: 1000;
         }
 
+        /* REGOLAZIONE ESCLUSIVA PER IPAD / TABLET */
         @media screen and (min-width: 768px) and (max-width: 1024px) {
             .master-canvas {
                 margin-top: -31px !important;
@@ -779,6 +760,7 @@
             }
         }
 
+        /* REGOLAZIONI ESCLUSIVAMENTE MOBILE */
         @media screen and (max-width: 767px) {
             html, body {
                 height: 100vh !important;
@@ -1037,25 +1019,6 @@
                 document.body.classList.add('mobile-chrome');
             }
 
-            function checkTabletOrientation() {
-                const warning = document.getElementById('landscape-warning');
-                if (!warning) return;
-                
-                const isLandscape = window.innerWidth > window.innerHeight;
-                const isTabletSize = window.innerWidth >= 768 && window.innerWidth <= 1366;
-                const isTouchDevice = (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) || /iPad|Macintosh|Android/i.test(navigator.userAgent);
-
-                if (isLandscape && isTabletSize && isTouchDevice) {
-                    warning.style.display = 'flex';
-                } else {
-                    warning.style.display = 'none';
-                }
-            }
-
-            window.addEventListener('resize', checkTabletOrientation);
-            window.addEventListener('orientationchange', checkTabletOrientation);
-            checkTabletOrientation();
-
             let fontsLoadedCalled = false;
             function showContent() {
                 if (!fontsLoadedCalled) {
@@ -1084,6 +1047,7 @@
             const zoomImg = document.getElementById('zoom-modal-img');
             const closeZoomBtn = document.getElementById('close-zoom');
 
+            // FUNZIONE PER VERIFICARE SE C'È UN PLAYER/MODAL APERTO IN QUESTO MOMENTO
             function isAnyModalOpen() {
                 return (curiosityOverlay && curiosityOverlay.classList.contains('open')) ||
                        (worksOverlay && worksOverlay.classList.contains('open')) ||
@@ -1144,6 +1108,7 @@
                 const trigger = dropdown.querySelector('.dropdown-trigger');
 
                 function openSingleDropdown() {
+                    // Se un player è aperto, non apre e non modifica i menu
                     if (isAnyModalOpen()) return;
 
                     const wasActive = dropdown.classList.contains('active');
@@ -1289,6 +1254,7 @@
                 });
             }
 
+            /* --- CURIOSITY (VIDEO) --- */
             const videos = [
                 { id: "hlJmwrHEUQ0", title: "Behind The Scene", desc: "scopri le tecniche e lo storyboard originale" },
                 { id: "nW3AkeZIBXg", title: "Tutorial Pin-Up", desc: "guida pratica al disegno digitale passo dopo passo" },
@@ -1364,6 +1330,7 @@
                 }
             }
 
+            /* --- SKETCHES AND B/N --- */
             const worksImages = [
                 { src: "images/works01.jpg", title: "Sketches And B/N", desc: "primo disegno selezionato dalla galleria" },
                 { src: "images/works02.jpg", title: "Sketches And B/N", desc: "secondo disegno selezionato dalla galleria" },
@@ -1445,6 +1412,7 @@
                 }
             }
 
+            /* --- COLOR ARTWORKS --- */
             const colorImages = [
                 { src: "images/color01.jpg", title: "Color Artworks", desc: "prima illustrazione a colori selezionata" },
                 { src: "images/color02.jpg", title: "Color Artworks", desc: "seconda illustrazione a colori selezionata" },
@@ -1543,6 +1511,7 @@
                 }
             }
 
+            /* --- HIGHLIGHTS --- */
             const highlightsImages = [
                 { src: "images/b01.jpg", title: "Highlights!", desc: "Enrico Brignano in “I 7 Re di Roma”" },
                 { src: "images/b02.jpg", title: "Highlights!", desc: "Enrico Brignano in “I 7 Re di Roma”" }
