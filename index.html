@@ -326,7 +326,6 @@
             touch-action: manipulation;
         }
 
-        /* CAMBIO COLORE IN NERO AL PASSAGGIO DEL MOUSE SU BIO E CONTACT ME */
         .dropdown-trigger:not(.btn-works-style):hover {
             color: #000000 !important;
         }
@@ -522,6 +521,7 @@
             border: 0;
         }
 
+        /* CONTENITORE IMMAGINI PLAYER CON CORNICE E VIGNETTATURA SCURA */
         .works-image-container {
             position: relative;
             width: 100%;
@@ -532,6 +532,7 @@
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
             border: 2px solid rgba(255, 255, 255, 0.85);
+            cursor: zoom-in;
         }
 
         .works-image-container img {
@@ -551,7 +552,7 @@
             z-index: 1;
         }
 
-        /* EFFETTO VIGNETTA TURA E CORNICE UNIFORMATA */
+        /* OVERLAY VIGNETTATURA SCURA: pointer-events: none per permettere il click diretto sull'immagine sottostante */
         .works-image-container::after {
             content: '';
             position: absolute;
@@ -560,7 +561,7 @@
             width: 100%;
             height: 100%;
             border-radius: 6px;
-            pointer-events: auto;
+            pointer-events: none;
             cursor: zoom-in;
             box-shadow: inset 0 0 55px rgba(0, 0, 0, 0.65);
             background: radial-gradient(circle, rgba(0,0,0,0) 50%, rgba(0,0,0,0.35) 100%);
@@ -633,7 +634,6 @@
             touch-action: manipulation;
         }
 
-        /* REGOLAZIONE COLORI PULSANTI NAVIGAZIONE PLAYER */
         .curiosity-nav-btn.btn-prev {
             color: #ffffff;
         }
@@ -716,7 +716,7 @@
             width: 100%;
             height: 100%;
             border-radius: 6px;
-            pointer-events: auto;
+            pointer-events: none;
             cursor: zoom-out;
             box-shadow: inset 0 0 55px rgba(0, 0, 0, 0.65);
             background: radial-gradient(circle, rgba(0,0,0,0) 50%, rgba(0,0,0,0.35) 100%);
@@ -737,7 +737,6 @@
             z-index: 1000;
         }
 
-        /* REGOLAZIONE ESCLUSIVA PER IPAD / TABLET */
         @media screen and (min-width: 768px) and (max-width: 1024px) {
             .master-canvas {
                 margin-top: -31px !important;
@@ -770,7 +769,6 @@
             }
         }
 
-        /* REGOLAZIONI ESCLUSIVAMENTE MOBILE */
         @media screen and (max-width: 767px) {
             html, body {
                 height: 100vh !important;
@@ -1057,7 +1055,6 @@
             const zoomImg = document.getElementById('zoom-modal-img');
             const closeZoomBtn = document.getElementById('close-zoom');
 
-            // FUNZIONE PER VERIFICARE SE C'È UN PLAYER/MODAL APERTO IN QUESTO MOMENTO
             function isAnyModalOpen() {
                 return (curiosityOverlay && curiosityOverlay.classList.contains('open')) ||
                        (worksOverlay && worksOverlay.classList.contains('open')) ||
@@ -1096,14 +1093,24 @@
                 if (highlightsImgElement) highlightsImgElement.src = "";
             }
 
-            ['works-modal-img', 'color-modal-img', 'highlights-modal-img'].forEach(id => {
-                const imgEl = document.getElementById(id);
-                if (imgEl) {
-                    imgEl.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        openZoom(this.src);
-                    });
-                }
+            // GESTIONE ZOOM DA CLIC SUL CONTENITORE DEL PLAYER O SULL'IMMAGINE
+            ['works-image-container', 'works-modal-img', 'color-modal-img', 'highlights-modal-img'].forEach(selector => {
+                const elements = selector.startsWith('.') ? document.querySelectorAll(selector) : [document.getElementById(selector)];
+                elements.forEach(el => {
+                    if (el) {
+                        el.addEventListener('click', function(e) {
+                            e.stopPropagation();
+                            // Trova l'immagine attiva all'interno del contenitore se cliccato il contenitore
+                            let targetImg = this;
+                            if (!this.tagName || this.tagName.toLowerCase() !== 'img') {
+                                targetImg = this.querySelector('img');
+                            }
+                            if (targetImg && targetImg.src) {
+                                openZoom(targetImg.src);
+                            }
+                        });
+                    }
+                });
             });
 
             if (closeZoomBtn) closeZoomBtn.addEventListener('click', closeZoom);
@@ -1118,7 +1125,6 @@
                 const trigger = dropdown.querySelector('.dropdown-trigger');
 
                 function openSingleDropdown() {
-                    // Se un player è aperto, non apre e non modifica i menu
                     if (isAnyModalOpen()) return;
 
                     const wasActive = dropdown.classList.contains('active');
@@ -1751,7 +1757,7 @@
         </div>
     </div>
 
-    <!-- Overlay Zoom Fullscreen Con Pulsante Fixato in Alto a Destra dello Schermo -->
+    <!-- Overlay Zoom Fullscreen -->
     <div id="zoom-overlay" class="zoom-overlay">
         <button class="close-red-btn" id="close-zoom">&times;</button>
         <div class="zoom-container">
