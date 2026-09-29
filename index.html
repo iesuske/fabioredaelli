@@ -522,34 +522,33 @@
             border: 0;
         }
 
-        /* CONTENITORE IMMAGINI PLAYER (WORKS) - Ora aderisce alla foto */
+        /* CONTENITORE IMMAGINI PLAYER (WORKS) - Dimensione fissa 16:9 per essere identico al video */
         .works-image-container {
             position: relative;
-            align-self: center; /* Fa aderire il contenitore alla larghezza dell'immagine */
-            max-width: 100%;
-            background: transparent;
-            border-radius: 8px;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #000;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
             border: 2px solid rgba(255, 255, 255, 0.85);
             cursor: zoom-in;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
         .works-image-container img {
-            display: block;
-            max-width: 100%;
-            max-height: 55vh; /* Evita che l'immagine esca dal modal in verticale */
-            width: auto;
-            height: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* L'immagine si adatta dentro al box senza deformarsi */
             border: none;
-            border-radius: 6px;
             cursor: zoom-in;
             z-index: 1;
         }
 
-        /* OVERLAY VIGNETTATURA SCURA: applicata direttamente sopra la foto ridimensionata */
+        /* OVERLAY VIGNETTATURA SCURA SUL PLAYER */
         .works-image-container::after {
             content: '';
             position: absolute;
@@ -557,7 +556,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            border-radius: 6px;
+            border-radius: 8px; /* Si accorda al raggio esterno del bordo */
             pointer-events: none;
             cursor: zoom-in;
             box-shadow: inset 0 0 55px rgba(0, 0, 0, 0.65);
@@ -686,7 +685,6 @@
             border-radius: 8px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
             border: 2px solid rgba(255, 255, 255, 0.85);
-            /* overflow: hidden; */
         }
 
         .zoom-container img {
