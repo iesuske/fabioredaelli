@@ -502,6 +502,7 @@
 
         .curiosity-modal::-webkit-scrollbar { display: none; }
 
+        /* CONTENITORE VIDEO YOUTUBE (CURIOSITY) - Mantiene 16:9 */
         .video-container {
             position: relative;
             width: 100%;
@@ -521,29 +522,25 @@
             border: 0;
         }
 
-        /* CONTENITORE IMMAGINI PLAYER CON CORNICE E VIGNETTATURA SCURA */
+        /* CONTENITORE IMMAGINI PLAYER (WORKS) - Ora aderisce alla foto */
         .works-image-container {
             position: relative;
-            width: 100%;
-            padding-bottom: 56.25%;
-            height: 0;
+            align-self: center; /* Fa aderire il contenitore alla larghezza dell'immagine */
+            max-width: 100%;
             background: transparent;
             border-radius: 8px;
-            overflow: hidden;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
             border: 2px solid rgba(255, 255, 255, 0.85);
             cursor: zoom-in;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .works-image-container img {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: auto;
+            display: block;
             max-width: 100%;
-            max-height: 100%;
+            max-height: 55vh; /* Evita che l'immagine esca dal modal in verticale */
             width: auto;
             height: auto;
             border: none;
@@ -552,7 +549,7 @@
             z-index: 1;
         }
 
-        /* OVERLAY VIGNETTATURA SCURA: pointer-events: none per permettere il click diretto sull'immagine sottostante */
+        /* OVERLAY VIGNETTATURA SCURA: applicata direttamente sopra la foto ridimensionata */
         .works-image-container::after {
             content: '';
             position: absolute;
@@ -689,14 +686,15 @@
             border-radius: 8px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
             border: 2px solid rgba(255, 255, 255, 0.85);
-            overflow: hidden;
+            /* overflow: hidden; */
         }
 
         .zoom-container img {
             max-width: 92vw;
             max-height: 88vh;
             max-height: 88dvh;
-            object-fit: contain;
+            width: auto;
+            height: auto;
             display: block;
             pointer-events: none;
             -webkit-touch-callout: none;
