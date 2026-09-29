@@ -502,7 +502,7 @@
 
         .curiosity-modal::-webkit-scrollbar { display: none; }
 
-        /* CONTENITORE VIDEO YOUTUBE (CURIOSITY) - Mantiene 16:9 */
+        /* CONTENITORE VIDEO YOUTUBE (CURIOSITY) - 16:9 fisso */
         .video-container {
             position: relative;
             width: 100%;
@@ -522,7 +522,7 @@
             border: 0;
         }
 
-        /* CONTENITORE IMMAGINI PLAYER (WORKS) - Dimensione fissa 16:9 per essere identico al video */
+        /* CONTENITORE IMMAGINI PLAYER (WORKS) - Dimensione fissa 16:9 IDENTICA al video, SENZA CORNICE ESTERNA */
         .works-image-container {
             position: relative;
             width: 100%;
@@ -531,8 +531,6 @@
             border-radius: 10px;
             overflow: hidden;
             background: #000;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
-            border: 2px solid rgba(255, 255, 255, 0.85);
             cursor: zoom-in;
         }
 
@@ -542,21 +540,47 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: contain; /* L'immagine si adatta dentro al box senza deformarsi */
+            object-fit: contain; 
             border: none;
             cursor: zoom-in;
             z-index: 1;
         }
 
-        /* OVERLAY VIGNETTATURA SCURA SUL PLAYER */
-        .works-image-container::after {
+        /* CONTENITORE WRAPPER DELLA FOTO CON CORNICE E VIGNETTATURA (APPLICATO DIRETTAMENTE SULLA FOTO) */
+        .framed-photo-wrapper {
+            position: relative;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 8px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.85);
+            background: #000;
+            cursor: zoom-in;
+        }
+
+        .framed-photo-wrapper img {
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 6px;
+            pointer-events: none;
+        }
+
+        /* EFFETTO VIGNETTATURA SULLA FOTO */
+        .framed-photo-wrapper::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border-radius: 8px; /* Si accorda al raggio esterno del bordo */
+            border-radius: 6px;
             pointer-events: none;
             cursor: zoom-in;
             box-shadow: inset 0 0 55px rgba(0, 0, 0, 0.65);
@@ -685,6 +709,7 @@
             border-radius: 8px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
             border: 2px solid rgba(255, 255, 255, 0.85);
+            background: #000;
         }
 
         .zoom-container img {
@@ -694,6 +719,7 @@
             width: auto;
             height: auto;
             display: block;
+            border-radius: 6px;
             pointer-events: none;
             -webkit-touch-callout: none;
             -webkit-user-select: none;
@@ -1089,24 +1115,17 @@
                 if (highlightsImgElement) highlightsImgElement.src = "";
             }
 
-            // GESTIONE ZOOM DA CLIC SUL CONTENITORE DEL PLAYER O SULL'IMMAGINE
-            ['works-image-container', 'works-modal-img', 'color-modal-img', 'highlights-modal-img'].forEach(selector => {
-                const elements = selector.startsWith('.') ? document.querySelectorAll(selector) : [document.getElementById(selector)];
-                elements.forEach(el => {
-                    if (el) {
-                        el.addEventListener('click', function(e) {
-                            e.stopPropagation();
-                            // Trova l'immagine attiva all'interno del contenitore se cliccato il contenitore
-                            let targetImg = this;
-                            if (!this.tagName || this.tagName.toLowerCase() !== 'img') {
-                                targetImg = this.querySelector('img');
-                            }
-                            if (targetImg && targetImg.src) {
-                                openZoom(targetImg.src);
-                            }
-                        });
-                    }
-                });
+            // GESTIONE ZOOM DA CLIC SUL CONTENITORE DELLA FOTO O SULL'IMMAGINE
+            ['works-modal-img', 'color-modal-img', 'highlights-modal-img'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        if (this.src) {
+                            openZoom(this.src);
+                        }
+                    });
+                }
             });
 
             if (closeZoomBtn) closeZoomBtn.addEventListener('click', closeZoom);
@@ -1687,7 +1706,9 @@
             <button class="close-red-btn" id="close-works-modal">&times;</button>
             
             <div class="works-image-container">
-                <img id="works-modal-img" src="" alt="Sketches And B/N">
+                <div class="framed-photo-wrapper">
+                    <img id="works-modal-img" src="" alt="Sketches And B/N">
+                </div>
             </div>
 
             <div class="curiosity-text testo-custom">
@@ -1711,7 +1732,9 @@
             <button class="close-red-btn" id="close-color-modal">&times;</button>
             
             <div class="works-image-container">
-                <img id="color-modal-img" src="" alt="Color Artworks">
+                <div class="framed-photo-wrapper">
+                    <img id="color-modal-img" src="" alt="Color Artworks">
+                </div>
             </div>
 
             <div class="curiosity-text testo-custom">
@@ -1735,7 +1758,9 @@
             <button class="close-red-btn" id="close-highlights-modal">&times;</button>
             
             <div class="works-image-container">
-                <img id="highlights-modal-img" src="" alt="Highlights!">
+                <div class="framed-photo-wrapper">
+                    <img id="highlights-modal-img" src="" alt="Highlights!">
+                </div>
             </div>
 
             <div class="curiosity-text testo-custom">
@@ -1757,7 +1782,9 @@
     <div id="zoom-overlay" class="zoom-overlay">
         <button class="close-red-btn" id="close-zoom">&times;</button>
         <div class="zoom-container">
-            <img id="zoom-modal-img" src="" alt="Ingrandimento Opera">
+            <div class="framed-photo-wrapper">
+                <img id="zoom-modal-img" src="" alt="Ingrandimento Opera">
+            </div>
         </div>
     </div>
 
