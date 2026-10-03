@@ -57,6 +57,7 @@
             touch-action: manipulation;
         }
 
+        /* CLASSE UNIFORMATA PER TUTTI I PULSANTI ROSSI DI CHIUSURA */
         .close-red-btn {
             position: absolute !important;
             top: 4px !important;
@@ -87,6 +88,7 @@
             -webkit-tap-highlight-color: transparent !important;
         }
 
+        /* POSIZIONAMENTO SPECIFICO DEL PULSANTE CHIUSURA NELLO ZOOM A SCHERMO INTERO */
         #close-zoom {
             position: fixed !important;
             top: 10px !important;
@@ -94,6 +96,7 @@
             z-index: 1000000 !important;
         }
 
+        /* SCHERMATA DI AVVISO ORIZZONTALE */
         #landscape-warning {
             display: none;
             position: fixed;
@@ -518,58 +521,47 @@
             border: 0;
         }
 
-        /* PLAYER IMMAGINI 16:9 PULITO (SENZA BORDI ESTERNI SUL PLAYER) */
+        /* CONTENITORE IMMAGINI PLAYER SENZA CORNICE ESTERNA */
         .works-image-container {
             position: relative;
             width: 100%;
             padding-bottom: 56.25%;
             height: 0;
-            border-radius: 10px;
+            background: transparent;
+            border-radius: 8px;
             overflow: hidden;
-            background: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+            border: none;
+            cursor: zoom-in;
         }
 
-        /* WRAPPER DELLA FOTO CON CORNICE E VIGNETTATURA (COLLOCATO DENTRO AL PLAYER 16:9) */
-        .framed-photo-wrapper {
+        /* IMMAGINI DEL PLAYER CON CORNICE APPLICATA DIRETTAMENTE */
+        .works-image-container img {
             position: absolute;
             top: 0;
+            bottom: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 10px;
-            border: 2px solid rgba(255, 255, 255, 0.85);
-            background: #000;
-            cursor: zoom-in;
-            box-sizing: border-box;
-            overflow: hidden;
-        }
-
-        .framed-photo-wrapper img {
+            right: 0;
+            margin: auto;
             max-width: 100%;
             max-height: 100%;
             width: auto;
             height: auto;
-            object-fit: contain;
-            border-radius: 8px;
-            display: block;
+            border: 2px solid rgba(255, 255, 255, 0.85);
+            border-radius: 6px;
             cursor: zoom-in;
             z-index: 1;
         }
 
-        .framed-photo-wrapper::after {
+        /* OVERLAY VIGNETTATURA SCURA: pointer-events: none per permettere il click diretto sull'immagine sottostante */
+        .works-image-container::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border-radius: 8px;
+            border-radius: 6px;
             pointer-events: none;
             cursor: zoom-in;
             box-shadow: inset 0 0 55px rgba(0, 0, 0, 0.65);
@@ -663,6 +655,7 @@
             opacity: 0.85;
         }
 
+        /* OVERLAY FULLSCREEN PER ZOOM IMMAGINI */
         .zoom-overlay {
             display: none;
             position: fixed;
@@ -688,17 +681,15 @@
 
         .zoom-container {
             position: relative;
-            display: flex;
+            display: inline-flex;
             justify-content: center;
             align-items: center;
             max-width: 92vw;
             max-height: 88vh;
             max-height: 88dvh;
-            border-radius: 10px;
+            border-radius: 8px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
             border: 2px solid rgba(255, 255, 255, 0.85);
-            background: #000;
-            cursor: zoom-out;
             overflow: hidden;
         }
 
@@ -706,10 +697,8 @@
             max-width: 92vw;
             max-height: 88vh;
             max-height: 88dvh;
-            width: auto;
-            height: auto;
+            object-fit: contain;
             display: block;
-            border-radius: 8px;
             pointer-events: none;
             -webkit-touch-callout: none;
             -webkit-user-select: none;
@@ -727,7 +716,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            border-radius: 8px;
+            border-radius: 6px;
             pointer-events: none;
             cursor: zoom-out;
             box-shadow: inset 0 0 55px rgba(0, 0, 0, 0.65);
@@ -1105,25 +1094,22 @@
                 if (highlightsImgElement) highlightsImgElement.src = "";
             }
 
-            ['works-modal-img', 'color-modal-img', 'highlights-modal-img'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) {
-                    el.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        if (this.src) {
-                            openZoom(this.src);
-                        }
-                    });
-                }
-            });
-
-            const wrappers = document.querySelectorAll('.framed-photo-wrapper');
-            wrappers.forEach(wrap => {
-                wrap.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const img = this.querySelector('img');
-                    if (img && img.src) {
-                        openZoom(img.src);
+            // GESTIONE ZOOM DA CLIC SUL CONTENITORE DEL PLAYER O SULL'IMMAGINE
+            ['works-image-container', 'works-modal-img', 'color-modal-img', 'highlights-modal-img'].forEach(selector => {
+                const elements = selector.startsWith('.') ? document.querySelectorAll(selector) : [document.getElementById(selector)];
+                elements.forEach(el => {
+                    if (el) {
+                        el.addEventListener('click', function(e) {
+                            e.stopPropagation();
+                            // Trova l'immagine attiva all'interno del contenitore se cliccato il contenitore
+                            let targetImg = this;
+                            if (!this.tagName || this.tagName.toLowerCase() !== 'img') {
+                                targetImg = this.querySelector('img');
+                            }
+                            if (targetImg && targetImg.src) {
+                                openZoom(targetImg.src);
+                            }
+                        });
                     }
                 });
             });
@@ -1706,9 +1692,7 @@
             <button class="close-red-btn" id="close-works-modal">&times;</button>
             
             <div class="works-image-container">
-                <div class="framed-photo-wrapper">
-                    <img id="works-modal-img" src="" alt="Sketches And B/N">
-                </div>
+                <img id="works-modal-img" src="" alt="Sketches And B/N">
             </div>
 
             <div class="curiosity-text testo-custom">
@@ -1732,9 +1716,7 @@
             <button class="close-red-btn" id="close-color-modal">&times;</button>
             
             <div class="works-image-container">
-                <div class="framed-photo-wrapper">
-                    <img id="color-modal-img" src="" alt="Color Artworks">
-                </div>
+                <img id="color-modal-img" src="" alt="Color Artworks">
             </div>
 
             <div class="curiosity-text testo-custom">
@@ -1758,9 +1740,7 @@
             <button class="close-red-btn" id="close-highlights-modal">&times;</button>
             
             <div class="works-image-container">
-                <div class="framed-photo-wrapper">
-                    <img id="highlights-modal-img" src="" alt="Highlights!">
-                </div>
+                <img id="highlights-modal-img" src="" alt="Highlights!">
             </div>
 
             <div class="curiosity-text testo-custom">
