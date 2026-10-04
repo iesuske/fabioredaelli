@@ -736,69 +736,43 @@
             z-index: 1000;
         }
 
-        /* CORREZIONE TABLET STANDARD IN VERTICALE (es. iPad normali 768px - 1024px) */
-        @media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+        /* CORREZIONE UNIVERSALE IPAD IN VERTICALE (da 768px a 1200px di larghezza) */
+        @media screen and (min-width: 768px) and (max-width: 1200px) and (orientation: portrait) {
             .master-canvas {
                 margin-top: 0px !important;
                 overflow: hidden;
             }
 
             .header-anchor {
-                top: 4% !important;
+                top: 2.5vh !important;
             }
 
-            .brand-title {
-                font-size: 5.8vw !important;
-                transform: translateY(0px) !important;
-            }
-
-            .bg-image {
-                width: 160% !important;
-                max-width: none !important;
-                margin-left: -30% !important;
-                display: block;
-            }
-
-            .menus-container {
-                margin-top: 20px !important;
-            }
-
-            .btn-curiosity, .btn-works-style, .dropdown-trigger:not(.btn-works-style) {
-                font-size: 2.1vw !important;
-                padding: 2px 10px !important;
-            }
-        }
-
-        /* CORREZIONE SPECIFICA PER IPAD PRO/AIR GRANDI IN VERTICALE (es. 12.9" e 13") */
-        @media screen and (min-width: 800px) and (min-height: 1150px) and (orientation: portrait) {
-            .master-canvas {
-                margin-top: 0px !important;
-                overflow: hidden;
-            }
-
-            .header-anchor {
-                top: 4% !important;
+            .brand-group {
+                width: 90% !important;
+                margin: 0 auto !important;
             }
 
             .brand-title {
                 font-size: 5.2vw !important;
-                transform: translateY(0px) !important; 
+                transform: translateY(0px) !important;
+                white-space: nowrap !important;
             }
 
             .bg-image {
-                width: 150% !important;
+                width: 140% !important;
                 max-width: none !important;
-                margin-left: -25% !important;
+                margin-left: -20% !important;
                 display: block;
             }
 
             .menus-container {
-                margin-top: 22px !important;
+                margin-top: 1.5vh !important;
+                justify-content: space-around !important;
             }
 
             .btn-curiosity, .btn-works-style, .dropdown-trigger:not(.btn-works-style) {
-                font-size: 2.1vw !important;
-                padding: 2px 10px !important;
+                font-size: 2.2vw !important;
+                padding: 4px 12px !important;
             }
         }
 
