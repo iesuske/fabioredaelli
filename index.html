@@ -1,5 +1,3 @@
-Ecco il codice HTML completo e aggiornato con le regole CSS ottimizzate per gestire correttamente la visualizzazione su qualsiasi modello di iPad in modalità verticale (inclusi i display più grandi come l'iPad Pro da 12.9" e 13"):
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -741,28 +739,28 @@ Ecco il codice HTML completo e aggiornato con le regole CSS ottimizzate per gest
         /* CORREZIONE TABLET STANDARD IN VERTICALE (es. iPad normali 768px - 1024px) */
         @media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
             .master-canvas {
-                margin-top: -31px !important;
+                margin-top: 0px !important;
                 overflow: hidden;
             }
 
             .header-anchor {
-                top: 6% !important;
+                top: 4% !important;
             }
 
             .brand-title {
-                font-size: 6.0vw !important;
-                transform: translateY(25px) !important;
+                font-size: 5.8vw !important;
+                transform: translateY(0px) !important;
             }
 
             .bg-image {
-                width: 190% !important;
+                width: 160% !important;
                 max-width: none !important;
-                margin-left: -45% !important;
+                margin-left: -30% !important;
                 display: block;
             }
 
             .menus-container {
-                margin-top: 35px !important;
+                margin-top: 20px !important;
             }
 
             .btn-curiosity, .btn-works-style, .dropdown-trigger:not(.btn-works-style) {
@@ -774,28 +772,28 @@ Ecco il codice HTML completo e aggiornato con le regole CSS ottimizzate per gest
         /* CORREZIONE SPECIFICA PER IPAD PRO/AIR GRANDI IN VERTICALE (es. 12.9" e 13") */
         @media screen and (min-width: 800px) and (min-height: 1150px) and (orientation: portrait) {
             .master-canvas {
-                margin-top: -35px !important;
+                margin-top: 0px !important;
                 overflow: hidden;
             }
 
             .header-anchor {
-                top: 5.8% !important;
+                top: 4% !important;
             }
 
             .brand-title {
                 font-size: 5.2vw !important;
-                transform: translateY(22px) !important; 
+                transform: translateY(0px) !important; 
             }
 
             .bg-image {
-                width: 160% !important;
+                width: 150% !important;
                 max-width: none !important;
-                margin-left: -30% !important;
+                margin-left: -25% !important;
                 display: block;
             }
 
             .menus-container {
-                margin-top: 28px !important;
+                margin-top: 22px !important;
             }
 
             .btn-curiosity, .btn-works-style, .dropdown-trigger:not(.btn-works-style) {
