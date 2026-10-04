@@ -131,7 +131,7 @@
             font-size: 4vw;
             color: #ffffff;
             margin: 0;
-            margin-bottom: -4px; /* MODIFICA: Margine negativo portato a -4px per alzare ulteriormente la riga nera */
+            margin-bottom: -5px; /* MODIFICA: Margine negativo portato a -5px */
             font-weight: normal;
             line-height: 1;
         }
@@ -523,7 +523,6 @@
             border: 0;
         }
 
-        /* CONTENITORE IMMAGINI PLAYER SENZA CORNICE ESTERNA */
         .works-image-container {
             position: relative;
             width: 100%;
@@ -537,7 +536,6 @@
             cursor: zoom-in;
         }
 
-        /* IMMAGINI DEL PLAYER CON CORNICE APPLICATA DIRETTAMENTE */
         .works-image-container img {
             position: absolute;
             top: 0;
@@ -555,7 +553,6 @@
             z-index: 1;
         }
 
-        /* OVERLAY VIGNETTATURA SCURA: pointer-events: none per permettere il click diretto sull'immagine sottostante */
         .works-image-container::after {
             content: '';
             position: absolute;
@@ -657,7 +654,6 @@
             opacity: 0.85;
         }
 
-        /* OVERLAY FULLSCREEN PER ZOOM IMMAGINI */
         .zoom-overlay {
             display: none;
             position: fixed;
@@ -1096,14 +1092,12 @@
                 if (highlightsImgElement) highlightsImgElement.src = "";
             }
 
-            // GESTIONE ZOOM DA CLIC SUL CONTENITORE DEL PLAYER O SULL'IMMAGINE
             ['works-image-container', 'works-modal-img', 'color-modal-img', 'highlights-modal-img'].forEach(selector => {
                 const elements = selector.startsWith('.') ? document.querySelectorAll(selector) : [document.getElementById(selector)];
                 elements.forEach(el => {
                     if (el) {
                         el.addEventListener('click', function(e) {
                             e.stopPropagation();
-                            // Trova l'immagine attiva all'interno del contenitore se cliccato il contenitore
                             let targetImg = this;
                             if (!this.tagName || this.tagName.toLowerCase() !== 'img') {
                                 targetImg = this.querySelector('img');
@@ -1273,7 +1267,6 @@
                 });
             }
 
-            /* --- CURIOSITY (VIDEO) --- */
             const videos = [
                 { id: "hlJmwrHEUQ0", title: "Behind The Scene", desc: "scopri le tecniche e lo storyboard originale" },
                 { id: "nW3AkeZIBXg", title: "Tutorial Pin-Up", desc: "guida pratica al disegno digitale passo dopo passo" },
@@ -1349,7 +1342,6 @@
                 }
             }
 
-            /* --- SKETCHES AND B/N --- */
             const worksImages = [
                 { src: "images/works01.jpg", title: "Sketches And B/N", desc: "primo disegno selezionato dalla galleria" },
                 { src: "images/works02.jpg", title: "Sketches And B/N", desc: "secondo disegno selezionato dalla galleria" },
@@ -1431,7 +1423,6 @@
                 }
             }
 
-            /* --- COLOR ARTWORKS --- */
             const colorImages = [
                 { src: "images/color01.jpg", title: "Color Artworks", desc: "prima illustrazione a colori selezionata" },
                 { src: "images/color02.jpg", title: "Color Artworks", desc: "seconda illustrazione a colori selezionata" },
@@ -1530,7 +1521,6 @@
                 }
             }
 
-            /* --- HIGHLIGHTS --- */
             const highlightsImages = [
                 { src: "images/b01.jpg", title: "Highlights!", desc: "Enrico Brignano in “I 7 Re di Roma”" },
                 { src: "images/b02.jpg", title: "Highlights!", desc: "Enrico Brignano in “I 7 Re di Roma”" }
