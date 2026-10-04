@@ -96,7 +96,7 @@
             z-index: 1000000 !important;
         }
 
-        /* SCHERMATA DI AVVISO ORIZZONTALE */
+        /* SCHERMATA DI AVVISO ORIZZONTALE (CELLULARI E IPAD) */
         #landscape-warning {
             display: none;
             position: fixed;
@@ -131,7 +131,7 @@
             font-size: 4vw;
             color: #ffffff;
             margin: 0;
-            margin-bottom: -5px; /* MODIFICA: Margine negativo portato a -5px */
+            margin-bottom: -5px;
             font-weight: normal;
             line-height: 1;
         }
@@ -171,7 +171,8 @@
             white-space: nowrap;
         }
 
-        @media screen and (max-height: 500px) and (orientation: landscape) {
+        /* Attivazione avviso orizzontale per Smartphone e iPad/Tablet in landscape */
+        @media screen and (max-width: 1366px) and (max-height: 1024px) and (orientation: landscape) and (pointer: coarse) {
             #landscape-warning {
                 display: flex !important;
             }
@@ -1591,7 +1592,7 @@
             <h1 class="testo-custom"><span>Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span>Redaelli</span></h1>
         </div>
         <div class="landscape-text-container testo-custom">
-            <h2>...Ops! Dispositivo orizzontale...</h2>
+            <h2>Dispositivo orizzontale</h2>
             <p>per la corretta visualizzazione del sito girare il dispositivo in verticale</p>
         </div>
     </div>
