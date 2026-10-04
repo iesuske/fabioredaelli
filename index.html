@@ -131,7 +131,7 @@
             font-size: 4vw;
             color: #ffffff;
             margin: 0;
-            margin-bottom: -5px;
+            margin-bottom: -5px; /* MODIFICA: Margine negativo portato a -5px */
             font-weight: normal;
             line-height: 1;
         }
@@ -736,43 +736,35 @@
             z-index: 1000;
         }
 
-        /* CORREZIONE UNIVERSALE IPAD IN VERTICALE (da 768px a 1200px di larghezza) */
-        @media screen and (min-width: 768px) and (max-width: 1200px) and (orientation: portrait) {
+        @media screen and (min-width: 768px) and (max-width: 1024px) {
             .master-canvas {
-                margin-top: 0px !important;
+                margin-top: -31px !important;
                 overflow: hidden;
             }
 
             .header-anchor {
-                top: 2.5vh !important;
-            }
-
-            .brand-group {
-                width: 90% !important;
-                margin: 0 auto !important;
+                top: 6% !important;
             }
 
             .brand-title {
-                font-size: 5.2vw !important;
-                transform: translateY(0px) !important;
-                white-space: nowrap !important;
+                font-size: 6.0vw !important;
+                transform: translateY(25px) !important;
             }
 
             .bg-image {
-                width: 140% !important;
+                width: 190% !important;
                 max-width: none !important;
-                margin-left: -20% !important;
+                margin-left: -45% !important;
                 display: block;
             }
 
             .menus-container {
-                margin-top: 1.5vh !important;
-                justify-content: space-around !important;
+                margin-top: 35px !important;
             }
 
             .btn-curiosity, .btn-works-style, .dropdown-trigger:not(.btn-works-style) {
-                font-size: 2.2vw !important;
-                padding: 4px 12px !important;
+                font-size: 2.1vw !important;
+                padding: 2px 10px !important;
             }
         }
 
