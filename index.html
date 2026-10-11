@@ -131,7 +131,7 @@
             font-size: 4vw;
             color: #ffffff;
             margin: 0;
-            margin-bottom: -5px; /* MODIFICA: Margine negativo portato a -5px */
+            margin-bottom: -5px;
             font-weight: normal;
             line-height: 1;
         }
@@ -736,19 +736,23 @@
             z-index: 1000;
         }
 
-        @media screen and (min-width: 768px) and (max-width: 1024px) {
+        /* ========================================================
+           INIZIO MODIFICA MAGGIORE PER IPAD IN VERTICALE 
+           Modificato max-width a 1200px per includere iPad Pro M4
+           ======================================================== */
+        @media screen and (min-width: 768px) and (max-width: 1200px) {
             .master-canvas {
                 margin-top: -31px !important;
                 overflow: hidden;
             }
 
             .header-anchor {
-                top: 6% !important;
+                top: 11.25vw !important; /* Calcolo su larghezza invece di percentuale su altezza */
             }
 
             .brand-title {
                 font-size: 6.0vw !important;
-                transform: translateY(25px) !important;
+                transform: translateY(0) !important; /* Azzerato il pixel fixing che causava lo sfalsamento */
             }
 
             .bg-image {
@@ -759,7 +763,7 @@
             }
 
             .menus-container {
-                margin-top: 35px !important;
+                margin-top: 4.5vw !important; /* Proporzionato per scalare uniformemente al titolo */
             }
 
             .btn-curiosity, .btn-works-style, .dropdown-trigger:not(.btn-works-style) {
@@ -767,6 +771,7 @@
                 padding: 2px 10px !important;
             }
         }
+        /* FINE MODIFICA MAGGIORE PER IPAD IN VERTICALE */
 
         @media screen and (max-width: 767px) {
             html, body {
