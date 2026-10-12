@@ -737,7 +737,7 @@
         }
 
         /* ========================================================
-           MEDIA QUERY SPECIFICA PER IPAD IN VERTICALE
+           MEDIA QUERY IPAD IN VERTICALE (CORRETTO DI 2 PIXEL IN GIÙ)
            ======================================================== */
         @media screen and (min-width: 768px) and (max-width: 1200px) {
             .master-canvas {
@@ -746,12 +746,15 @@
             }
 
             .header-anchor {
-                top: 9.8vw !important; /* Ridotto da 11.25vw a 9.8vw per alzare il blocco */
+                top: 9.8vw !important;
+            }
+
+            .brand-group {
+                transform: translateY(2px) !important; /* Sposta l'intero blocco (titolo + menu) giù di 2 pixel */
             }
 
             .brand-title {
                 font-size: 6.0vw !important;
-                transform: translateY(0) !important;
             }
 
             .bg-image {
