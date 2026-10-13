@@ -737,16 +737,16 @@
         }
 
         /* ========================================================
-           CORREZIONE PER IPAD IN VERTICALE (ABBASSATA LEGGERMENTE)
+           CORRETTO PER IPAD IN VERTICALE (PORTRAIT)
            ======================================================== */
-        @media screen and (min-width: 768px) and (max-width: 1200px) {
+        @media screen and (min-width: 768px) and (max-width: 1152px) and (orientation: portrait) {
             .master-canvas {
                 margin-top: -31px !important;
                 overflow: hidden;
             }
 
             .header-anchor {
-                top: 10.2vw !important; /* Abbassata leggermente rispetto a 9.8vw */
+                top: 14.5vw !important; 
             }
 
             .brand-group {
@@ -775,11 +775,40 @@
         }
 
         /* ========================================================
-           CORREZIONE SPECIFICA PER IPAD IN ORIZZONTALE (ALZATA LEGGERMENTE)
+           CORRETTO PER IPAD IN ORIZZONTALE (LANDSCAPE)
            ======================================================== */
-        @media screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+        @media screen and (min-width: 1024px) and (max-width: 1536px) and (orientation: landscape) {
+            .master-canvas {
+                margin-top: -40px !important;
+                overflow: hidden;
+            }
+
             .header-anchor {
-                top: 6.8% !important; /* Sollevata leggermente rispetto al 7.6% standard */
+                top: 13.5% !important; 
+            }
+
+            .brand-group {
+                transform: translateY(0) !important;
+            }
+
+            .brand-title {
+                font-size: 3.8vw !important;
+            }
+
+            .bg-image {
+                width: 130% !important;
+                max-width: none !important;
+                margin-left: -15% !important;
+                display: block;
+            }
+
+            .menus-container {
+                margin-top: 1.5vw !important;
+            }
+
+            .btn-curiosity, .btn-works-style, .dropdown-trigger:not(.btn-works-style) {
+                font-size: 1.5vw !important;
+                padding: 1px 10px !important;
             }
         }
 
