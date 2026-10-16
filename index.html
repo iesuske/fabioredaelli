@@ -711,35 +711,40 @@
         }
 
         /* ========================================================
-           CORRETTO PER IPAD IN VERTICALE (PORTRAIT) [768px - 1152px]
+           PERFETTO PER IPAD IN VERTICALE (PORTRAIT) [768px - 1152px]
            ======================================================== */
-        @media screen and (min-width: 768px) and (max-width: 1152px) and (orientation: portrait) {
+        @media screen and (min-width: 768px) and (max-width: 1200px) and (orientation: portrait) {
             .master-canvas {
-                margin-top: -31px !important;
+                margin-top: 0 !important;
+                height: 100vh;
+                height: 100dvh;
                 overflow: hidden;
             }
 
             .header-anchor {
-                top: 14.5vw !important; 
+                top: 5.2% !important; 
             }
 
             .brand-group {
-                transform: translateY(2px) !important;
+                transform: none !important;
             }
 
             .brand-title {
-                font-size: 6.0vw !important;
+                font-size: 5.6vw !important;
+                transform: translateY(0) !important;
             }
 
             .bg-image {
-                width: 190% !important;
-                max-width: none !important;
-                margin-left: -45% !important;
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: fill !important;
+                margin-left: 0 !important;
+                max-width: 100% !important;
                 display: block;
             }
 
             .menus-container {
-                margin-top: 4.5vw !important;
+                margin-top: 1.2vw !important;
             }
 
             .btn-curiosity, .btn-works-style, .dropdown-trigger:not(.btn-works-style) {
@@ -749,35 +754,40 @@
         }
 
         /* ========================================================
-           CORRETTO PER IPAD IN ORIZZONTALE (LANDSCAPE) [1024px - 1536px]
+           PERFETTO PER IPAD IN ORIZZONTALE (LANDSCAPE) [1024px - 1536px]
            ======================================================== */
-        @media screen and (min-width: 1024px) and (max-width: 1536px) and (orientation: landscape) {
+        @media screen and (min-width: 1024px) and (max-width: 1600px) and (orientation: landscape) {
             .master-canvas {
-                margin-top: -40px !important;
+                margin-top: 0 !important;
+                height: 100vh;
+                height: 100dvh;
                 overflow: hidden;
             }
 
             .header-anchor {
-                top: 13.5% !important; 
+                top: 5.8% !important; 
             }
 
             .brand-group {
-                transform: translateY(0) !important;
+                transform: none !important;
             }
 
             .brand-title {
                 font-size: 3.8vw !important;
+                transform: translateY(0) !important;
             }
 
             .bg-image {
-                width: 130% !important;
-                max-width: none !important;
-                margin-left: -15% !important;
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: fill !important;
+                margin-left: 0 !important;
+                max-width: 100% !important;
                 display: block;
             }
 
             .menus-container {
-                margin-top: 1.5vw !important;
+                margin-top: 0.8vw !important;
             }
 
             .btn-curiosity, .btn-works-style, .dropdown-trigger:not(.btn-works-style) {
