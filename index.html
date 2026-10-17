@@ -42,12 +42,12 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .landscape-text-container p{font-size:7vh;line-height:1.2;color:#000;white-space:nowrap}
 @media screen and (max-height:500px) and (orientation:landscape){#landscape-warning{display:flex}}
 
-/* Immagine di sfondo e barra menu */
-.master-canvas{position:relative;width:100%;margin-top:-50px}
+/* Immagine di sfondo e barra menu - Spostato più in alto */
+.master-canvas{position:relative;width:100%;margin-top:-100px}
 .bg-image{width:100%;height:auto;display:block}
 .header-anchor{position:absolute;top:15.5%;left:0;width:100%;text-align:center}
 .brand-group{display:inline-block;width:84%;max-width:900px}
-.menus-container{display:flex;justify-content:space-between;align-items:center;width:100%}
+.menus-container{display:flex;justify-space-between;align-items:center;width:100%}
 
 .btn-curiosity,.btn-works-style,.dropdown-trigger{font-family:var(--f);font-size:1.5vw;display:inline-flex;align-items:center;white-space:nowrap;cursor:pointer;text-decoration:none;user-select:none}
 .btn-curiosity,.btn-works-style{justify-content:center;padding:1px 12px;border-radius:8px;box-shadow:0 2px 5px rgba(0,0,0,.2);transition:background-color .2s,color .2s}
@@ -118,7 +118,7 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
 
 /* iPad / tablet verticale */
 @media screen and (min-width:768px) and (max-width:1200px) and (orientation:portrait){
-  .master-canvas{margin-top:-31px;overflow:hidden}
+  .master-canvas{margin-top:-60px;overflow:hidden}
   .header-anchor{top:14%}
   .brand-group{width:75%}
   .bg-image{width:190%;max-width:none;margin-left:-45%}
@@ -127,7 +127,7 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
 
 /* Tablet / desktop orizzontale */
 @media screen and (min-width:768px) and (orientation:landscape){
-  .master-canvas{margin-top:-25px}
+  .master-canvas{margin-top:-50px}
 }
 @media screen and (min-width:768px) and (max-width:1366px) and (orientation:landscape){
   html,body{height:auto;overflow:auto}
@@ -138,7 +138,7 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
 
 /* Smartphone */
 @media screen and (max-width:767px){
-  .master-canvas{margin-top:-21.5px;overflow:hidden}
+  .master-canvas{margin-top:-45px;overflow:hidden}
   .bg-image{width:calc(165% + 258px);max-width:none;margin-left:calc(-35% - 135.5px);-webkit-mask-image:linear-gradient(to bottom,#000 85%,transparent 98%);mask-image:linear-gradient(to bottom,#000 85%,transparent 98%)}
   .header-anchor{top:14.5%;padding:0 15px;z-index:100}
   .brand-group{width:90%}
