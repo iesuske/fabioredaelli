@@ -44,8 +44,9 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 
 /* Immagine di sfondo e barra menu */
 .master-canvas{position:relative;width:100%;margin-top:-50px}
+.image-wrapper{position:relative;width:100%;display:block}
 .bg-image{width:100%;height:auto;display:block}
-.header-anchor{position:absolute;top:15.5%;left:0;width:100%;text-align:center}
+.header-anchor{position:absolute;top:15.5%;left:0;width:100%;text-align:center;z-index:300}
 .brand-group{display:inline-block;width:84%;max-width:900px}
 .menus-container{display:flex;justify-content:space-around;align-items:center;width:100%}
 
@@ -56,13 +57,13 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .dropdown-trigger:not(.btn-works-style){text-shadow:1px 1px 2px rgba(0,0,0,.3)}
 .dropdown-trigger:not(.btn-works-style):hover,.dropdown.active:not(.modal-open) .dropdown-trigger:not(.btn-works-style){color:#000}
 
-/* Area sensibile e Animazione Zoom Elastico per il Balloon Curiosity (centrato perfettamente) */
+/* Area sensibile e Animazione Zoom Elastico ancorata perfettamente all'immagine */
 .balloon-curiosity-hotspot{
   position:absolute;
-  top:40.5%;
-  left:13.5%;
-  width:23%;
-  height:14%;
+  top:43%;
+  left:13%;
+  width:24%;
+  height:16%;
   cursor:pointer;
   z-index:200;
   border-radius:50%;
@@ -136,7 +137,6 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
   .brand-group{width:75%}
   .bg-image{width:190%;max-width:none;margin-left:-45%}
   .btn-works-style,.dropdown-trigger:not(.btn-works-style){font-size:2.1vw;padding:2px 10px}
-  .balloon-curiosity-hotspot{top:38%;left:2%;width:38%;height:14%}
 }
 
 /* Tablet / desktop orizzontale */
@@ -147,7 +147,7 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
   html,body{height:auto;overflow:auto}
   .header-anchor{top:13.5%}
   .brand-group{width:75%}
-  .btn-works-style,.dropdown-trigger:not(.btn-works-style){font-size:1.8vw;padding:2px 10px}
+  .btn-works-style,.dropdown-trigger:not(.btn-works-style){font-size:1.8vw;padding:1.5px 8px}
 }
 
 /* Smartphone */
@@ -158,8 +158,6 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
   .brand-group{width:90%}
   .btn-works-style{font-size:3.2vw;padding:1px 6px;border-radius:6px}
   .dropdown-trigger:not(.btn-works-style){font-size:3.2vw;padding:2px}
-
-  .balloon-curiosity-hotspot{top:36%;left:4%;width:36%;height:13%}
 
   .dropdown-menu{position:fixed;top:16vh;margin-top:0;width:100%;max-width:360px;max-height:70vh;overflow-y:auto;background:rgba(0,0,0,.75);padding:28px 16px 20px;z-index:9999;box-shadow:0 10px 40px rgba(0,0,0,.8)}
   .menu-about{padding:22px 16px 24px}
@@ -199,10 +197,11 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
 </div>
 
 <div class="master-canvas">
-    <img src="images/bg2.jpg?v=COVER" class="bg-image" alt="Artwork Fabio Redaelli" fetchpriority="high">
-    
-    <!-- Area sensibile cliccabile sul balloon Curiosity (senza etichetta) -->
-    <div id="btn-curiosity" class="balloon-curiosity-hotspot"></div>
+    <!-- Contenitore dedicato che vincola l'area sensibile esattamente all'immagine -->
+    <div class="image-wrapper">
+        <img src="images/bg2.jpg?v=COVER" class="bg-image" alt="Artwork Fabio Redaelli" fetchpriority="high">
+        <div id="btn-curiosity" class="balloon-curiosity-hotspot"></div>
+    </div>
 
     <div class="header-anchor">
         <div class="brand-group">
