@@ -96,7 +96,7 @@
             z-index: 1000000 !important;
         }
 
-        /* SCHERMATA DI AVVISO ORIZZONTALE */
+        /* SCHERMATA DI AVVISO ORIZZONTALE (Smartphone) */
         #landscape-warning {
             display: none;
             position: fixed;
@@ -199,9 +199,10 @@
             pointer-events: none; 
         }
 
+        /* ANCORA PER I BOTTONI DI MENU (Posizionati subito sotto la fascia rossa integrata) */
         .header-anchor {
             position: absolute;
-            top: 7.6%; 
+            top: 15.5%; 
             left: 0;
             width: 100%;
             text-align: center;
@@ -210,28 +211,8 @@
 
         .brand-group {
             display: inline-block;
-            width: auto;
-            max-width: 100%;
-        }
-
-        .brand-title {
-            font-family: 'Lobster Regular', cursive;
-            font-size: 3.8vw; 
-            line-height: 1;
-            white-space: nowrap; 
-            margin: 0;
-            text-shadow: none;
-            text-rendering: optimizeLegibility;
-            font-variant-ligatures: none;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            transform: translateY(2px);
-        }
-
-        @supports (-webkit-hyphens:none) {
-            .brand-title {
-                transform: translateY(3.2px);
-            }
+            width: 58%;
+            max-width: 600px;
         }
 
         .text-white { color: #ffffff; }
@@ -242,7 +223,7 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            margin-top: 0.8vw; 
+            margin-top: 0; 
         }
 
         .btn-curiosity {
@@ -736,23 +717,19 @@
             z-index: 1000;
         }
 
-        /* ========================================================
-           MEDIA QUERY SPECIFICA PER IPAD IN VERTICALE 
-           (Intero blocco - scritta + tasti - abbassato di un ulteriore mezzo pixel)
-           ======================================================== */
-        @media screen and (min-width: 768px) and (max-width: 1200px) {
+        /* MEDIA QUERY IPAD / TABLET VERTICALE */
+        @media screen and (min-width: 768px) and (max-width: 1200px) and (orientation: portrait) {
             .master-canvas {
                 margin-top: -31px !important;
                 overflow: hidden;
             }
 
             .header-anchor {
-                top: calc(9.8vw + 1.5px) !important; 
+                top: 14% !important; 
             }
 
-            .brand-title {
-                font-size: 6.0vw !important;
-                transform: translateY(0.5px) !important;
+            .brand-group {
+                width: 75% !important;
             }
 
             .bg-image {
@@ -763,7 +740,7 @@
             }
 
             .menus-container {
-                margin-top: 1.5vw !important;
+                margin-top: 0 !important;
             }
 
             .btn-curiosity, .btn-works-style, .dropdown-trigger:not(.btn-works-style) {
@@ -772,15 +749,51 @@
             }
         }
 
-        /* ========================================================
-           CORREZIONE PER SCHERMI DESKTOP / 1440px (Mostra la barra beige in alto)
-           ======================================================== */
-        @media screen and (min-width: 1201px) {
+        /* MEDIA QUERY IPAD / TABLET ORIZZONTALE */
+        @media screen and (min-width: 768px) and (max-width: 1366px) and (orientation: landscape) {
+            html, body {
+                height: auto !important;
+                overflow: auto !important;
+            }
+
+            .master-canvas {
+                margin-top: -25px !important;
+                overflow: visible !important;
+            }
+
+            .bg-image {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin-left: 0 !important;
+                display: block;
+            }
+
+            .header-anchor {
+                top: 13.5% !important;
+            }
+
+            .brand-group {
+                width: 50% !important;
+            }
+
+            .menus-container {
+                margin-top: 0 !important;
+            }
+
+            .btn-curiosity, .btn-works-style, .dropdown-trigger:not(.btn-works-style) {
+                font-size: 1.8vw !important;
+                padding: 2px 10px !important;
+            }
+        }
+
+        /* MEDIA QUERY DESKTOP */
+        @media screen and (min-width: 1201px) and (orientation: landscape) {
             .master-canvas {
                 margin-top: -25px !important; 
             }
         }
 
+        /* MEDIA QUERY SMARTPHONE */
         @media screen and (max-width: 767px) {
             html, body {
                 height: 100vh !important;
@@ -803,7 +816,7 @@
 
             .header-anchor {
                 position: absolute;
-                top: calc(7.2% + 10px) !important; 
+                top: 14.5% !important; 
                 left: 0;
                 width: 100%;
                 padding: 0 15px;
@@ -813,19 +826,8 @@
             }
 
             .brand-group {
-                display: table !important;
+                width: 90% !important;
                 margin: 0 auto !important;
-                width: auto !important;
-                max-width: 100% !important;
-                padding: 0;
-            }
-
-            .brand-title {
-                font-size: calc(6.2vw + 4px); 
-                white-space: normal;
-                line-height: 1.1;
-                transform: translateY(-2.5px) !important;
-                text-align: center;
             }
 
             .menus-container {
@@ -833,7 +835,7 @@
                 justify-content: space-between !important;
                 align-items: center !important;
                 width: 100% !important;
-                margin-top: 0.6vw !important; 
+                margin-top: 0 !important; 
             }
 
             .dropdown {
@@ -1598,7 +1600,7 @@
 </head>
 <body>
 
-    <!-- Schermata di Avviso Orizzontale -->
+    <!-- Schermata di Avviso Orizzontale (Smartphone) -->
     <div id="landscape-warning">
         <div class="landscape-top-bar">
             <h1 class="testo-custom"><span>Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span>Redaelli</span></h1>
@@ -1614,8 +1616,7 @@
         <div class="text-layer">
             <div class="header-anchor">
                 <div class="brand-group">
-                    <h1 class="brand-title testo-custom"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
-                    
+                    <!-- Nota: La scritta testuale è stata rimossa perché ora è incorporata direttamente nell'immagine di sfondo -->
                     <div class="menus-container">
                         <a href="#" id="btn-curiosity" class="btn-curiosity testo-custom">Curiosity</a>
                         
