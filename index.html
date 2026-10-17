@@ -47,14 +47,14 @@
             -webkit-touch-callout: none;
         }
 
-        /* CONFIGURAZIONE DESKTOP (DEFAULT) */
         html, body {
             width: 100%;
-            min-height: 100vh;
+            height: 100vh;
+            height: 100dvh;
             background-color: #fde3b8; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow-x: hidden;
-            overflow-y: auto;
+            overflow: hidden;
+            touch-action: manipulation;
         }
 
         /* CLASSE UNIFORMATA PER TUTTI I PULSANTI ROSSI DI CHIUSURA */
@@ -88,6 +88,7 @@
             -webkit-tap-highlight-color: transparent !important;
         }
 
+        /* POSIZIONAMENTO SPECIFICO DEL PULSANTE CHIUSURA NELLO ZOOM A SCHERMO INTERO */
         #close-zoom {
             position: fixed !important;
             top: 10px !important;
@@ -95,6 +96,7 @@
             z-index: 1000000 !important;
         }
 
+        /* SCHERMATA DI AVVISO ORIZZONTALE */
         #landscape-warning {
             display: none;
             position: fixed;
@@ -138,7 +140,9 @@
             font-size: 4.5vw;
         }
 
-        .landscape-top-bar h1 .text-black { color: #000000; }
+        .landscape-top-bar h1 .text-black {
+            color: #000000;
+        }
 
         .landscape-text-container {
             width: 100%;
@@ -168,14 +172,16 @@
         }
 
         @media screen and (max-height: 500px) and (orientation: landscape) {
-            #landscape-warning { display: flex !important; }
+            #landscape-warning {
+                display: flex !important;
+            }
         }
 
         .master-canvas {
             position: relative;
             width: 100%;
             background-color: #fde3b8;
-            margin-top: 0;
+            margin-top: -50px;
         }
 
         .bg-image {
@@ -223,7 +229,9 @@
         }
 
         @supports (-webkit-hyphens:none) {
-            .brand-title { transform: translateY(3.2px); }
+            .brand-title {
+                transform: translateY(3.2px);
+            }
         }
 
         .text-white { color: #ffffff; }
@@ -320,8 +328,13 @@
             touch-action: manipulation;
         }
 
-        .dropdown-trigger:not(.btn-works-style):hover { color: #000000 !important; }
-        .dropdown.active:not(.modal-open) .dropdown-trigger:not(.btn-works-style) { color: #000000 !important; }
+        .dropdown-trigger:not(.btn-works-style):hover {
+            color: #000000 !important;
+        }
+
+        .dropdown.active:not(.modal-open) .dropdown-trigger:not(.btn-works-style) { 
+            color: #000000 !important; 
+        }
 
         .dropdown-menu {
             display: none;
@@ -337,7 +350,9 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.35);
         }
 
-        .close-li { display: none; }
+        .close-li {
+            display: none;
+        }
 
         .menu-about { 
             left: 50%;
@@ -350,21 +365,33 @@
             overflow-x: hidden;
             top: 100%;
             margin-top: 3px;
+
             scrollbar-width: thin;
             scrollbar-color: transparent transparent;
             transition: scrollbar-color 0.4s ease;
         }
 
-        .menu-about::-webkit-scrollbar { width: 3px; }
-        .menu-about::-webkit-scrollbar-track { background: transparent; }
+        .menu-about::-webkit-scrollbar { 
+            width: 3px; 
+        }
+
+        .menu-about::-webkit-scrollbar-track { 
+            background: transparent; 
+        }
+
         .menu-about::-webkit-scrollbar-thumb { 
             background-color: transparent; 
             border-radius: 10px;
             transition: background-color 0.4s ease;
         }
 
-        .menu-about.show-scrollbar { scrollbar-color: rgba(255, 255, 255, 0.6) transparent; }
-        .menu-about.show-scrollbar::-webkit-scrollbar-thumb { background-color: rgba(255, 255, 255, 0.6); }
+        .menu-about.show-scrollbar {
+            scrollbar-color: rgba(255, 255, 255, 0.6) transparent;
+        }
+
+        .menu-about.show-scrollbar::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.6);
+        }
 
         .menu-contact { 
             left: 50%;
@@ -394,7 +421,11 @@
             white-space: nowrap;
         }
 
-        .menu-about li { text-align: center; padding: 6px 18px; width: 100%; }
+        .menu-about li {
+            text-align: center;
+            padding: 6px 18px;
+            width: 100%;
+        }
 
         .menu-contact li a, .menu-works li a {
             color: #ffffff;
@@ -409,8 +440,13 @@
             touch-action: manipulation;
         }
 
-        .menu-contact li a:hover, .menu-works li a:hover { background: #b72216; }
-        #btn-highlights:hover { color: #000000 !important; }
+        .menu-contact li a:hover, .menu-works li a:hover { 
+            background: #b72216; 
+        }
+
+        #btn-highlights:hover {
+            color: #000000 !important;
+        }
 
         .menu-contact li:first-child a, .menu-works li:first-child a {
             border-top-left-radius: 12px;
@@ -598,11 +634,25 @@
             touch-action: manipulation;
         }
 
-        .curiosity-nav-btn.btn-prev { color: #ffffff; }
-        .curiosity-nav-btn.btn-next { color: #b72216; }
-        .curiosity-nav-btn.active-nav { color: #b72216 !important; }
-        .curiosity-nav-btn:not(.active-nav) { color: #ffffff !important; }
-        .curiosity-nav-btn:hover { opacity: 0.85; }
+        .curiosity-nav-btn.btn-prev {
+            color: #ffffff;
+        }
+
+        .curiosity-nav-btn.btn-next {
+            color: #b72216;
+        }
+
+        .curiosity-nav-btn.active-nav {
+            color: #b72216 !important;
+        }
+
+        .curiosity-nav-btn:not(.active-nav) {
+            color: #ffffff !important;
+        }
+
+        .curiosity-nav-btn:hover {
+            opacity: 0.85;
+        }
 
         .zoom-overlay {
             display: none;
@@ -623,7 +673,9 @@
             cursor: zoom-out;
         }
 
-        .zoom-overlay.open { display: flex; }
+        .zoom-overlay.open {
+            display: flex;
+        }
 
         .zoom-container {
             position: relative;
@@ -648,6 +700,9 @@
             pointer-events: none;
             -webkit-touch-callout: none;
             -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
             user-select: none;
             -webkit-user-drag: none;
         }
@@ -682,22 +737,16 @@
         }
 
         /* ========================================================
-           MEDIA QUERY SPECIFICA PER IPAD IN VERTICALE (Portrait)
+           MEDIA QUERY SPECIFICA PER IPAD IN VERTICALE (Aggiornata +1px)
            ======================================================== */
         @media screen and (min-width: 768px) and (max-width: 1200px) {
-            html, body {
-                height: 100vh !important;
-                height: 100dvh !important;
-                overflow: hidden !important;
-            }
-
             .master-canvas {
                 margin-top: -31px !important;
                 overflow: hidden;
             }
 
             .header-anchor {
-                top: calc(9.8vw + 1px) !important; /* Posizione corretta con il pixel aggiuntivo richiesto */
+                top: calc(9.8vw + 1px) !important; /* Abbassato esattamente di un pixel rispetto a prima */
             }
 
             .brand-title {
@@ -710,7 +759,6 @@
                 max-width: none !important;
                 margin-left: -45% !important;
                 display: block;
-                height: auto !important;
             }
 
             .menus-container {
@@ -723,9 +771,6 @@
             }
         }
 
-        /* ========================================================
-           VERSIONE MOBILE [<= 767px]
-           ======================================================== */
         @media screen and (max-width: 767px) {
             html, body {
                 height: 100vh !important;
@@ -855,7 +900,9 @@
                 margin: 0 !important;
             }
 
-            .close-bio-btn { display: flex !important; }
+            .close-bio-btn {
+                display: flex !important;
+            }
 
             .menu-about li {
                 font-size: 1.05rem;
@@ -869,7 +916,10 @@
                 display: inline !important;
             }
 
-            .menu-about li.close-li { display: block !important; height: 0 !important; }
+            .menu-about li.close-li {
+                display: block !important;
+                height: 0 !important;
+            }
 
             .menu-about li.bio-title {
                 display: inline !important;
@@ -879,7 +929,9 @@
                 white-space: normal !important;
             }
 
-            .mobile-br { display: inline !important; }
+            .mobile-br {
+                display: inline !important;
+            }
 
             .menu-contact li a, .menu-works li a {
                 font-size: 0.95rem;
@@ -906,7 +958,9 @@
                 padding-top: 16vh !important;
             }
 
-            body.ios-chrome .curiosity-overlay { padding-top: 16vh !important; }
+            body.ios-chrome .curiosity-overlay {
+                padding-top: 16vh !important;
+            }
 
             .curiosity-modal {
                 width: 92vw !important;
@@ -915,9 +969,16 @@
 
             .curiosity-text h3 { font-size: 1.35rem !important; }
             .curiosity-text p { font-size: 0.95rem !important; }
-            .curiosity-footer { padding: 6px 0 !important; }
+
+            .curiosity-footer {
+                padding: 6px 0 !important;
+            }
+
             .video-counter { font-size: 1rem !important; }
-            .curiosity-nav-btn { font-size: 1.1rem !important; }
+
+            .curiosity-nav-btn {
+                font-size: 1.1rem !important;
+            }
 
             footer {
                 font-size: clamp(8.5px, 2.5vw, 11px) !important;
@@ -930,9 +991,17 @@
     </style>
 
     <script>
-        document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
-        document.addEventListener('dragstart', function(e) { e.preventDefault(); });
-        document.addEventListener('gesturestart', function (e) { e.preventDefault(); });
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('gesturestart', function (e) {
+            e.preventDefault();
+        });
 
         let lastTouchEnd = 0;
         document.addEventListener('touchend', function(event) {
@@ -1047,7 +1116,9 @@
             if (closeZoomBtn) closeZoomBtn.addEventListener('click', closeZoom);
 
             if (zoomOverlay) {
-                zoomOverlay.addEventListener('click', function(e) { closeZoom(); });
+                zoomOverlay.addEventListener('click', function(e) {
+                    closeZoom();
+                });
             }
 
             dropdowns.forEach(dropdown => {
@@ -1130,7 +1201,9 @@
                     e.preventDefault();
                     e.stopPropagation();
                     const dropdown = btn.closest('.dropdown');
-                    if (dropdown) { dropdown.classList.remove('active'); }
+                    if (dropdown) {
+                        dropdown.classList.remove('active');
+                    }
                 };
                 btn.addEventListener('click', closeAction);
                 btn.addEventListener('touchend', closeAction, { passive: false });
@@ -1588,13 +1661,16 @@
     <div id="curiosity-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-red-btn" id="close-curiosity">&times;</button>
+            
             <div class="video-container">
                 <iframe id="youtube-frame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
+
             <div class="curiosity-text testo-custom">
                 <h3 id="curiosity-title">Behind The Scene</h3>
                 <p id="curiosity-desc">scopri le tecniche e lo storyboard originale</p>
             </div>
+
             <div class="curiosity-footer testo-custom">
                 <span id="video-counter" class="video-counter">1 / 11</span>
                 <div class="nav-buttons">
@@ -1609,13 +1685,16 @@
     <div id="works-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-red-btn" id="close-works-modal">&times;</button>
+            
             <div class="works-image-container">
                 <img id="works-modal-img" src="" alt="Sketches And B/N">
             </div>
+
             <div class="curiosity-text testo-custom">
                 <h3 id="works-title">Sketches And B/N</h3>
                 <p id="works-desc">primo disegno selezionato dalla galleria</p>
             </div>
+
             <div class="curiosity-footer testo-custom">
                 <span id="works-counter" class="video-counter">1 / 24</span>
                 <div class="nav-buttons">
@@ -1630,13 +1709,16 @@
     <div id="color-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-red-btn" id="close-color-modal">&times;</button>
+            
             <div class="works-image-container">
                 <img id="color-modal-img" src="" alt="Color Artworks">
             </div>
+
             <div class="curiosity-text testo-custom">
                 <h3 id="color-title">Color Artworks</h3>
                 <p id="color-desc">prima illustrazione a colori selezionata</p>
             </div>
+
             <div class="curiosity-footer testo-custom">
                 <span id="color-counter" class="video-counter">1 / 41</span>
                 <div class="nav-buttons">
@@ -1651,13 +1733,16 @@
     <div id="highlights-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-red-btn" id="close-highlights-modal">&times;</button>
+            
             <div class="works-image-container">
                 <img id="highlights-modal-img" src="" alt="Highlights!">
             </div>
+
             <div class="curiosity-text testo-custom">
                 <h3 id="highlights-title">Highlights!</h3>
                 <p id="highlights-desc">prima opera in primo piano</p>
             </div>
+
             <div class="curiosity-footer testo-custom">
                 <span id="highlights-counter" class="video-counter">1 / 2</span>
                 <div class="nav-buttons">
