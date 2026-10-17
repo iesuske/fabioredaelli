@@ -738,7 +738,7 @@
 
         /* ========================================================
            MEDIA QUERY SPECIFICA PER IPAD IN VERTICALE 
-           (Tasti rialzati verso la banda rossa, scritta adesa alla linea nera)
+           (Intero blocco - scritta + tasti - abbassato di un ulteriore mezzo pixel)
            ======================================================== */
         @media screen and (min-width: 768px) and (max-width: 1200px) {
             .master-canvas {
@@ -747,12 +747,12 @@
             }
 
             .header-anchor {
-                top: calc(9.8vw + 1px) !important;
+                top: calc(9.8vw + 1.5px) !important; /* Blocco intero (scritta + tasti) abbassato di un altro mezzo pixel */
             }
 
             .brand-title {
                 font-size: 6.0vw !important;
-                transform: translateY(0.5px) !important; /* Abbassa solo il testo di 0.5px */
+                transform: translateY(0.5px) !important;
             }
 
             .bg-image {
@@ -763,7 +763,7 @@
             }
 
             .menus-container {
-                margin-top: 1.5vw !important; /* Ridotto per rialzare i 4 tasti vicino alla riga rossa */
+                margin-top: 1.5vw !important;
             }
 
             .btn-curiosity, .btn-works-style, .dropdown-trigger:not(.btn-works-style) {
