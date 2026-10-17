@@ -44,7 +44,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 
 /* Immagine di sfondo e barra menu */
 .master-canvas{position:relative;width:100%;margin-top:-50px}
-.image-wrapper{position:relative;width:100%;display:block}
+.image-wrapper{position:relative;width:100%;max-width:100%;display:inline-block;}
 .bg-image{width:100%;height:auto;display:block}
 .header-anchor{position:absolute;top:15.5%;left:0;width:100%;text-align:center;z-index:300}
 .brand-group{display:inline-block;width:84%;max-width:900px}
@@ -57,15 +57,15 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .dropdown-trigger:not(.btn-works-style){text-shadow:1px 1px 2px rgba(0,0,0,.3)}
 .dropdown-trigger:not(.btn-works-style):hover,.dropdown.active:not(.modal-open) .dropdown-trigger:not(.btn-works-style){color:#000}
 
-/* Area sensibile e Animazione Zoom Elastico ancorata perfettamente all'immagine */
+/* Area sensibile e Animazione Zoom Elastico ancorata perfettamente sul Balloon Curiosity */
 .balloon-curiosity-hotspot{
   position:absolute;
-  top:43%;
+  top:33%;
   left:13%;
-  width:24%;
-  height:16%;
+  width:23%;
+  height:18%;
   cursor:pointer;
-  z-index:200;
+  z-index:250;
   border-radius:50%;
   transition:transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -197,7 +197,7 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
 </div>
 
 <div class="master-canvas">
-    <!-- Contenitore dedicato che vincola l'area sensibile esattamente all'immagine -->
+    <!-- Contenitore rigido bloccato sull'immagine -->
     <div class="image-wrapper">
         <img src="images/bg2.jpg?v=COVER" class="bg-image" alt="Artwork Fabio Redaelli" fetchpriority="high">
         <div id="btn-curiosity" class="balloon-curiosity-hotspot"></div>
