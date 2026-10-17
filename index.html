@@ -17,7 +17,6 @@
 
 :root{--f:'Lobster Regular',cursive;--red:#b72216;--cream:#fde3b8}
 
-/* Testi custom nascosti finché il font non è caricato */
 .testo-custom{visibility:hidden;opacity:0}
 body.fonts-loaded .testo-custom{visibility:visible;opacity:1;transition:opacity .3s ease-in}
 
@@ -26,11 +25,9 @@ img,a,button{-webkit-user-select:none;user-select:none;-webkit-tap-highlight-col
 
 html,body{width:100%;height:100vh;height:100dvh;background:var(--cream);font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;overflow:hidden}
 
-/* Pulsanti rossi di chiusura */
 .close-red-btn{position:absolute;top:4px;right:4px;width:20px;height:20px;background:var(--red);color:#fff;border:0;border-radius:50%;font:bold 13px/1 Arial,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:1000;box-shadow:0 1px 4px rgba(0,0,0,.5)}
 #close-zoom{position:fixed;top:10px;right:10px;z-index:1000000}
 
-/* Avviso smartphone in orizzontale */
 #landscape-warning{display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;height:100dvh;background:var(--cream);z-index:999999;flex-direction:column;align-items:center;overflow:hidden}
 .landscape-top-bar{width:100%;background:var(--red);border-bottom:2px solid #000;padding:4px 0 0;text-align:center;flex-shrink:0}
 body.mobile-chrome .landscape-top-bar{padding-top:12px}
@@ -42,7 +39,6 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .landscape-text-container p{font-size:7vh;line-height:1.2;color:#000;white-space:nowrap}
 @media screen and (max-height:500px) and (orientation:landscape){#landscape-warning{display:flex}}
 
-/* Immagine di sfondo e barra menu */
 .master-canvas{position:relative;width:100%;margin-top:-50px}
 .image-wrapper{position:relative;width:100%;max-width:100%;display:inline-block}
 .bg-image{width:100%;height:auto;display:block}
@@ -57,21 +53,25 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .dropdown-trigger:not(.btn-works-style){text-shadow:1px 1px 2px rgba(0,0,0,.3)}
 .dropdown-trigger:not(.btn-works-style):hover,.dropdown.active:not(.modal-open) .dropdown-trigger:not(.btn-works-style){color:#000}
 
-/* AREA SENSIBILE COCO JSON (3000x1800 convertito in %) */
-.balloon-curiosity-hotspot{
+/* LIVELLO SVG RESPONSIVE PER IL TRACCIATO COCO */
+.curiosity-svg-overlay{
   position:absolute;
-  top:32.9%;
-  left:31.1%;
-  width:10.9%;
-  height:7.1%;
-  cursor:pointer;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
   z-index:250;
-  background: rgba(255, 0, 0, 0.45); /* Rosso visibile temporaneo */
-  border: 2px dashed yellow;          /* Bordo giallo guida */
-  border-radius: 40%;
+  pointer-events:none;
+}
+.balloon-poly-hotspot{
+  cursor:pointer;
+  pointer-events:auto;
+  fill: rgba(255, 0, 0, 0.45); /* Rosso visibile temporaneo di verifica */
+  stroke: yellow;
+  stroke-width: 4;
+  stroke-dasharray: 8,6;
 }
 
-/* Menu a tendina */
 .dropdown{position:relative;display:inline-flex;align-items:center}
 .dropdown::after{content:'';position:absolute;top:100%;left:-10px;right:-10px;height:20px;z-index:99}
 .dropdown-menu{display:none;position:absolute;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:12px;overflow:hidden;list-style:none;z-index:1000;box-shadow:0 10px 25px rgba(0,0,0,.35);font-family:var(--f);color:#fff}
@@ -96,7 +96,6 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 #btn-highlights:hover{color:#000}
 .mobile-br{display:none}
 
-/* Modali (video e gallerie) */
 .curiosity-overlay{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:99999;display:none;align-items:flex-start;justify-content:center;padding:19vh 0 20px;overflow-y:auto;pointer-events:none}
 .curiosity-overlay.open{display:flex}
 .curiosity-modal{position:relative;background:rgba(18,18,18,.95);border:1px solid rgba(255,255,255,.15);border-radius:16px;width:100%;max-width:680px;max-height:82vh;overflow-y:auto;padding:24px 20px 16px;box-shadow:0 20px 50px rgba(0,0,0,.8);display:flex;flex-direction:column;gap:12px;scrollbar-width:none;pointer-events:auto;font-family:var(--f)}
@@ -120,7 +119,6 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .curiosity-nav-btn.active-nav{color:var(--red)}
 .curiosity-nav-btn:hover{opacity:.85}
 
-/* Zoom a schermo intero */
 .zoom-overlay{display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;height:100dvh;background:rgba(0,0,0,.92);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:999999;justify-content:center;align-items:center;padding:15px;cursor:zoom-out}
 .zoom-overlay.open{display:flex}
 .zoom-container{position:relative;display:flex;max-width:92vw;max-height:88vh;max-height:88dvh;border-radius:8px;box-shadow:0 15px 40px rgba(0,0,0,.8);border:2px solid rgba(255,255,255,.85);overflow:hidden}
@@ -128,7 +126,6 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 
 footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;background:rgba(13,27,42,.95);backdrop-filter:blur(4px);color:#fff;font-size:.7rem;z-index:1000}
 
-/* iPad / tablet verticale */
 @media screen and (min-width:768px) and (max-width:1200px) and (orientation:portrait){
   .master-canvas{margin-top:-31px;overflow:hidden}
   .header-anchor{top:14%}
@@ -137,7 +134,6 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
   .btn-works-style,.dropdown-trigger:not(.btn-works-style){font-size:2.1vw;padding:2px 10px}
 }
 
-/* Tablet / desktop orizzontale */
 @media screen and (min-width:768px) and (orientation:landscape){
   .master-canvas{margin-top:-25px}
 }
@@ -148,7 +144,6 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
   .btn-works-style,.dropdown-trigger:not(.btn-works-style){font-size:1.8vw;padding:1.5px 8px}
 }
 
-/* Smartphone */
 @media screen and (max-width:767px){
   .master-canvas{margin-top:-21.5px;overflow:hidden}
   .bg-image{width:calc(165% + 258px);max-width:none;margin-left:calc(-35% - 135.5px);-webkit-mask-image:linear-gradient(to bottom,#000 85%,transparent 98%);mask-image:linear-gradient(to bottom,#000 85%,transparent 98%)}
@@ -183,7 +178,6 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
 </head>
 <body>
 
-<!-- Avviso orizzontale (smartphone) -->
 <div id="landscape-warning">
     <div class="landscape-top-bar">
         <h1 class="testo-custom"><span>Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span>Redaelli</span></h1>
@@ -197,8 +191,10 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
 <div class="master-canvas">
     <div class="image-wrapper">
         <img src="images/bg2.jpg?v=COVER" class="bg-image" alt="Artwork Fabio Redaelli" fetchpriority="high">
-        <!-- Area sensibile calcolata direttamente dal COCO JSON -->
-        <div id="btn-curiosity" class="balloon-curiosity-hotspot"></div>
+        <!-- SVG VETTORIALE SCALABILE SULLE COORDINATE NATIVE COCO JSON (3000x1800) -->
+        <svg class="curiosity-svg-overlay" viewBox="0 0 3000 1800" preserveAspectRatio="none">
+            <polygon id="btn-curiosity" class="balloon-poly-hotspot" points="941.36,679.64 937.5,668.04 945.23,662.24 941.37,654.51 933.63,644.85 933.63,637.11 947.16,631.31 954.9,631.31 960.7,629.38 968.43,627.45 978.09,617.78 981.96,611.98 991.62,611.98 995.49,602.32 1007.09,604.25 1020.62,602.32 1026.42,602.32 1028.35,602.32 1039.95,604.25 1045.75,602.32 1053.48,602.32 1063.14,598.45 1068.94,598.45 1080.54,596.52 1086.34,596.52 1109.54,594.59 1094.07,592.65 1123.07,594.59 1132.73,598.45 1138.53,602.32 1148.2,598.45 1161.73,602.32 1173.32,602.32 1179.12,600.39 1182.99,602.32 1184.92,602.32 1190.72,604.25 1196.52,604.25 1204.25,608.12 1206.19,610.05 1206.19,610.05 1206.19,613.92 1215.85,619.72 1227.45,621.65 1239.05,623.58 1242.91,629.38 1248.71,637.11 1254.51,644.85 1254.51,639.05 1252.58,631.31 1248.71,658.38 1250.64,668.04 1252.58,683.51 1262.24,671.91 1262.24,664.18 1258.38,662.24 1242.91,689.3 1237.11,693.17 1221.65,691.24 1211.98,697.04 1210.05,700.9 1198.45,706.7 1194.59,706.7 1184.92,708.63 1182.99,708.64 1163.66,714.43 1155.93,708.63 1152.06,706.7 1142.4,708.63 1136.6,712.5 1125,716.37 1123.07,716.37 1119.2,718.3 1111.47,720.23 1103.74,720.23 1103.74,720.23 1092.14,718.3 1074.74,718.3 1065.08,714.43 1061.21,712.5 1051.55,708.63 1043.81,714.43 1036.08,714.43 1030.28,714.43 1036.08,714.43 1018.69,712.5 1010.95,710.57 1001.29,708.63 995.49,706.7 993.56,704.77 983.89,706.7 985.82,695.1 981.96,693.17 976.16,689.3 966.49,689.3 954.9,689.3"/>
+        </svg>
     </div>
 
     <div class="header-anchor">
@@ -251,7 +247,6 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
     </div>
 </div>
 
-<!-- Zoom a schermo intero -->
 <div id="zoom-overlay" class="zoom-overlay">
     <button class="close-red-btn" id="close-zoom" type="button">&times;</button>
     <div class="zoom-container"><img id="zoom-modal-img" src="" alt="Ingrandimento Opera"></div>
@@ -264,7 +259,6 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
     const $ = id => document.getElementById(id);
     const body = document.body;
 
-    /* --- Blocchi anti-zoom / menu contestuale / drag --- */
     ['contextmenu', 'dragstart', 'gesturestart'].forEach(t => document.addEventListener(t, e => e.preventDefault()));
 
     let lastTouchEnd = 0;
@@ -278,13 +272,11 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
     const vpContent = vp.content;
     window.addEventListener('pageshow', () => { vp.content = vpContent; window.scrollTo(0, 0); });
 
-    /* --- Caricamento font --- */
     if (/CriOS|Android.*Chrome/i.test(navigator.userAgent)) body.classList.add('mobile-chrome');
     const showFonts = () => body.classList.add('fonts-loaded');
     document.fonts?.ready.then(showFonts, showFonts);
     setTimeout(showFonts, 1000);
 
-    /* --- Dati --- */
     const ORD = ['primo','secondo','terzo','quarto','quinto','sesto','settimo','ottavo','nono','decimo','undicesimo','dodicesimo','tredicesimo','quattordicesimo','quindicesimo','sedicesimo','diciassettesimo','diciottesimo','diciannovesimo','ventesimo','ventunesimo','ventiduesimo','ventitreesimo','ventiquattresimo','venticinquesimo','ventiseiesimo','ventisettesimo','ventottesimo','ventinovesimo','trentesimo','trentunesimo','trentaduesimo','trentatreesimo','trentaquattresimo','trentacinquesimo','trentaseiesimo','trentasettesimo','trentottesimo','trentanovesimo','quarantesimo','quarantunesimo'];
     const images = (prefix, n, title, desc) => Array.from({ length: n }, (_, i) => ({
         src: `images/${prefix}${String(i + 1).padStart(2, '0')}.jpg`, title, desc: desc(ORD[i])
@@ -316,7 +308,6 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
         ] }
     ];
 
-    /* --- Stato condiviso --- */
     const dropdowns = [...document.querySelectorAll('.dropdown')];
     const zoomOverlay = $('zoom-overlay');
     const zoomImg = $('zoom-modal-img');
@@ -333,7 +324,6 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
 
     zoomOverlay.addEventListener('click', closeZoom);
 
-    /* --- Gallerie / player (un'unica logica per tutte e quattro) --- */
     galleries.forEach(g => {
         const media = g.alt
             ? `<div class="works-image-container"><img alt="${g.alt}"></div>`
@@ -397,7 +387,6 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
 
     $('btn-curiosity').addEventListener('mouseenter', () => { if (!modalOpen()) closeAll(); });
 
-    /* --- Menu a tendina --- */
     const flashScrollbar = menu => {
         if (menu.scrollHeight <= menu.clientHeight) return;
         menu.classList.add('show-scrollbar');
