@@ -562,7 +562,7 @@
             height: 100%;
             border-radius: 6px;
             pointer-events: none;
-            cursor: zoom-in;
+            cursor: zoom-out;
             box-shadow: inset 0 0 55px rgba(0, 0, 0, 0.65);
             background: radial-gradient(circle, rgba(0,0,0,0) 50%, rgba(0,0,0,0.35) 100%);
             z-index: 2;
@@ -737,7 +737,7 @@
         }
 
         /* ========================================================
-           MEDIA QUERY SPECIFICA PER IPAD IN VERTICALE
+           MEDIA QUERY SPECIFICA PER IPAD IN VERTICALE (Aggiornata +1px)
            ======================================================== */
         @media screen and (min-width: 768px) and (max-width: 1200px) {
             .master-canvas {
@@ -746,7 +746,7 @@
             }
 
             .header-anchor {
-                top: 9.8vw !important; /* Ridotto da 11.25vw a 9.8vw per alzare il blocco */
+                top: calc(9.8vw + 1px) !important; /* Spostato in basso di esattamente 1 pixel */
             }
 
             .brand-title {
