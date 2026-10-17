@@ -57,7 +57,6 @@
             touch-action: manipulation;
         }
 
-        /* CLASSE UNIFORMATA PER TUTTI I PULSANTI ROSSI DI CHIUSURA */
         .close-red-btn {
             position: absolute !important;
             top: 4px !important;
@@ -95,7 +94,6 @@
             z-index: 1000000 !important;
         }
 
-        /* SCHERMATA DI AVVISO ORIZZONTALE (SOLO SMARTPHONE) */
         #landscape-warning {
             display: none;
             position: fixed;
@@ -139,9 +137,7 @@
             font-size: 4.5vw;
         }
 
-        .landscape-top-bar h1 .text-black {
-            color: #000000;
-        }
+        .landscape-top-bar h1 .text-black { color: #000000; }
 
         .landscape-text-container {
             width: 100%;
@@ -171,21 +167,23 @@
         }
 
         @media screen and (max-height: 500px) and (max-width: 767px) and (orientation: landscape) {
-            #landscape-warning {
-                display: flex !important;
-            }
+            #landscape-warning { display: flex !important; }
         }
 
         .master-canvas {
             position: relative;
             width: 100%;
+            height: 100vh;
+            height: 100dvh;
             background-color: #fde3b8;
-            margin-top: -50px;
+            overflow: hidden;
         }
 
         .bg-image {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
             display: block; 
         }
 
@@ -200,7 +198,7 @@
 
         .header-anchor {
             position: absolute;
-            top: 7.6%; 
+            top: 10px; 
             left: 0;
             width: 100%;
             text-align: center;
@@ -224,13 +222,6 @@
             font-variant-ligatures: none;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            transform: translateY(2px);
-        }
-
-        @supports (-webkit-hyphens:none) {
-            .brand-title {
-                transform: translateY(3.2px);
-            }
         }
 
         .text-white { color: #ffffff; }
@@ -241,7 +232,7 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            margin-top: 0.8vw; 
+            margin-top: 10px; 
         }
 
         .btn-curiosity {
@@ -349,9 +340,7 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.35);
         }
 
-        .close-li {
-            display: none;
-        }
+        .close-li { display: none; }
 
         .menu-about { 
             left: 50%;
@@ -364,7 +353,6 @@
             overflow-x: hidden;
             top: 100%;
             margin-top: 3px;
-
             scrollbar-width: thin;
             scrollbar-color: transparent transparent;
             transition: scrollbar-color 0.4s ease;
@@ -378,13 +366,8 @@
             transition: background-color 0.4s ease;
         }
 
-        .menu-about.show-scrollbar {
-            scrollbar-color: rgba(255, 255, 255, 0.6) transparent;
-        }
-
-        .menu-about.show-scrollbar::-webkit-scrollbar-thumb {
-            background-color: rgba(255, 255, 255, 0.6);
-        }
+        .menu-about.show-scrollbar { scrollbar-color: rgba(255, 255, 255, 0.6) transparent; }
+        .menu-about.show-scrollbar::-webkit-scrollbar-thumb { background-color: rgba(255, 255, 255, 0.6); }
 
         .menu-contact { 
             left: 50%;
@@ -414,11 +397,7 @@
             white-space: nowrap;
         }
 
-        .menu-about li {
-            text-align: center;
-            padding: 6px 18px;
-            width: 100%;
-        }
+        .menu-about li { text-align: center; padding: 6px 18px; width: 100%; }
 
         .menu-contact li a, .menu-works li a {
             color: #ffffff;
@@ -433,13 +412,8 @@
             touch-action: manipulation;
         }
 
-        .menu-contact li a:hover, .menu-works li a:hover { 
-            background: #b72216; 
-        }
-
-        #btn-highlights:hover {
-            color: #000000 !important;
-        }
+        .menu-contact li a:hover, .menu-works li a:hover { background: #b72216; }
+        #btn-highlights:hover { color: #000000 !important; }
 
         .menu-contact li:first-child a, .menu-works li:first-child a {
             border-top-left-radius: 12px;
@@ -555,7 +529,7 @@
             height: 100%;
             border-radius: 6px;
             pointer-events: none;
-            cursor: zoom-in;
+            cursor: zoom-out;
             box-shadow: inset 0 0 55px rgba(0, 0, 0, 0.65);
             background: radial-gradient(circle, rgba(0,0,0,0) 50%, rgba(0,0,0,0.35) 100%);
             z-index: 2;
@@ -711,61 +685,30 @@
         }
 
         /* ========================================================
-           CORRETTO PER IPAD IN VERTICALE (PORTRAIT) [768px - 1200px]
+           CORREZIONE PERFETTA ANCORAGGIO PER IPAD (PORTRAIT & LANDSCAPE)
            ======================================================== */
-        @media screen and (min-width: 768px) and (max-width: 1200px) and (orientation: portrait) {
+        @media screen and (min-width: 768px) and (max-width: 1600px) {
             .master-canvas {
-                margin-top: -30px !important;
-                overflow: hidden;
+                margin-top: 0 !important;
+                height: 100vh !important;
+                height: 100dvh !important;
             }
 
             .bg-image {
                 width: 100% !important;
-                height: auto !important;
-                display: block !important;
-                margin-left: 0 !important;
+                height: 100% !important;
+                object-fit: contain !important;
+                object-position: center top !important;
+                background-color: #fde3b8;
             }
 
             .header-anchor {
-                top: 7.4% !important; 
+                top: 0.5% !important; 
             }
 
             .brand-title {
-                font-size: 4.8vw !important;
-            }
-
-            .menus-container {
-                margin-top: 0.8vw !important;
-            }
-
-            .btn-curiosity, .btn-works-style, .dropdown-trigger:not(.btn-works-style) {
-                font-size: 2.1vw !important;
-                padding: 2px 10px !important;
-            }
-        }
-
-        /* ========================================================
-           CORRETTO PER IPAD IN ORIZZONTALE (LANDSCAPE) [1024px - 1600px]
-           ======================================================== */
-        @media screen and (min-width: 1024px) and (max-width: 1600px) and (orientation: landscape) {
-            .master-canvas {
-                margin-top: -35px !important;
-                overflow: hidden;
-            }
-
-            .bg-image {
-                width: 100% !important;
-                height: auto !important;
-                display: block !important;
-                margin-left: 0 !important;
-            }
-
-            .header-anchor {
-                top: 7.2% !important; 
-            }
-
-            .brand-title {
-                font-size: 3.4vw !important;
+                font-size: clamp(26px, 4vw, 52px) !important;
+                transform: translateY(0) !important;
             }
 
             .menus-container {
@@ -773,7 +716,7 @@
             }
 
             .btn-curiosity, .btn-works-style, .dropdown-trigger:not(.btn-works-style) {
-                font-size: 1.5vw !important;
+                font-size: clamp(13px, 1.6vw, 20px) !important;
                 padding: 1px 10px !important;
             }
         }
@@ -910,9 +853,7 @@
                 margin: 0 !important;
             }
 
-            .close-bio-btn {
-                display: flex !important;
-            }
+            .close-bio-btn { display: flex !important; }
 
             .menu-about li {
                 font-size: 1.05rem;
@@ -926,10 +867,7 @@
                 display: inline !important;
             }
 
-            .menu-about li.close-li {
-                display: block !important;
-                height: 0 !important;
-            }
+            .menu-about li.close-li { display: block !important; height: 0 !important; }
 
             .menu-about li.bio-title {
                 display: inline !important;
@@ -939,9 +877,7 @@
                 white-space: normal !important;
             }
 
-            .mobile-br {
-                display: inline !important;
-            }
+            .mobile-br { display: inline !important; }
 
             .menu-contact li a, .menu-works li a {
                 font-size: 0.95rem;
@@ -968,9 +904,7 @@
                 padding-top: 16vh !important;
             }
 
-            body.ios-chrome .curiosity-overlay {
-                padding-top: 16vh !important;
-            }
+            body.ios-chrome .curiosity-overlay { padding-top: 16vh !important; }
 
             .curiosity-modal {
                 width: 92vw !important;
@@ -979,16 +913,9 @@
 
             .curiosity-text h3 { font-size: 1.35rem !important; }
             .curiosity-text p { font-size: 0.95rem !important; }
-
-            .curiosity-footer {
-                padding: 6px 0 !important;
-            }
-
+            .curiosity-footer { padding: 6px 0 !important; }
             .video-counter { font-size: 1rem !important; }
-
-            .curiosity-nav-btn {
-                font-size: 1.1rem !important;
-            }
+            .curiosity-nav-btn { font-size: 1.1rem !important; }
 
             footer {
                 font-size: clamp(8.5px, 2.5vw, 11px) !important;
@@ -1001,17 +928,9 @@
     </style>
 
     <script>
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
-
-        document.addEventListener('dragstart', function(e) {
-            e.preventDefault();
-        });
-
-        document.addEventListener('gesturestart', function (e) {
-            e.preventDefault();
-        });
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+        document.addEventListener('dragstart', function(e) { e.preventDefault(); });
+        document.addEventListener('gesturestart', function (e) { e.preventDefault(); });
 
         let lastTouchEnd = 0;
         document.addEventListener('touchend', function(event) {
@@ -1126,9 +1045,7 @@
             if (closeZoomBtn) closeZoomBtn.addEventListener('click', closeZoom);
 
             if (zoomOverlay) {
-                zoomOverlay.addEventListener('click', function(e) {
-                    closeZoom();
-                });
+                zoomOverlay.addEventListener('click', function(e) { closeZoom(); });
             }
 
             dropdowns.forEach(dropdown => {
@@ -1211,9 +1128,7 @@
                     e.preventDefault();
                     e.stopPropagation();
                     const dropdown = btn.closest('.dropdown');
-                    if (dropdown) {
-                        dropdown.classList.remove('active');
-                    }
+                    if (dropdown) { dropdown.classList.remove('active'); }
                 };
                 btn.addEventListener('click', closeAction);
                 btn.addEventListener('touchend', closeAction, { passive: false });
@@ -1671,16 +1586,13 @@
     <div id="curiosity-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-red-btn" id="close-curiosity">&times;</button>
-            
             <div class="video-container">
                 <iframe id="youtube-frame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-
             <div class="curiosity-text testo-custom">
                 <h3 id="curiosity-title">Behind The Scene</h3>
                 <p id="curiosity-desc">scopri le tecniche e lo storyboard originale</p>
             </div>
-
             <div class="curiosity-footer testo-custom">
                 <span id="video-counter" class="video-counter">1 / 11</span>
                 <div class="nav-buttons">
@@ -1695,16 +1607,13 @@
     <div id="works-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-red-btn" id="close-works-modal">&times;</button>
-            
             <div class="works-image-container">
                 <img id="works-modal-img" src="" alt="Sketches And B/N">
             </div>
-
             <div class="curiosity-text testo-custom">
                 <h3 id="works-title">Sketches And B/N</h3>
                 <p id="works-desc">primo disegno selezionato dalla galleria</p>
             </div>
-
             <div class="curiosity-footer testo-custom">
                 <span id="works-counter" class="video-counter">1 / 24</span>
                 <div class="nav-buttons">
@@ -1719,16 +1628,13 @@
     <div id="color-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-red-btn" id="close-color-modal">&times;</button>
-            
             <div class="works-image-container">
                 <img id="color-modal-img" src="" alt="Color Artworks">
             </div>
-
             <div class="curiosity-text testo-custom">
                 <h3 id="color-title">Color Artworks</h3>
                 <p id="color-desc">prima illustrazione a colori selezionata</p>
             </div>
-
             <div class="curiosity-footer testo-custom">
                 <span id="color-counter" class="video-counter">1 / 41</span>
                 <div class="nav-buttons">
@@ -1743,16 +1649,13 @@
     <div id="highlights-overlay" class="curiosity-overlay">
         <div class="curiosity-modal">
             <button class="close-red-btn" id="close-highlights-modal">&times;</button>
-            
             <div class="works-image-container">
                 <img id="highlights-modal-img" src="" alt="Highlights!">
             </div>
-
             <div class="curiosity-text testo-custom">
                 <h3 id="highlights-title">Highlights!</h3>
                 <p id="highlights-desc">prima opera in primo piano</p>
             </div>
-
             <div class="curiosity-footer testo-custom">
                 <span id="highlights-counter" class="video-counter">1 / 2</span>
                 <div class="nav-buttons">
