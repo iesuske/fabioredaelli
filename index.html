@@ -737,7 +737,8 @@
         }
 
         /* ========================================================
-           MEDIA QUERY SPECIFICA PER IPAD IN VERTICALE (Abbassata la scritta di ~0.5px)
+           MEDIA QUERY SPECIFICA PER IPAD IN VERTICALE 
+           (Tasti all'altezza originale, scritta abbassata di un ulteriore mezzo pixel)
            ======================================================== */
         @media screen and (min-width: 768px) and (max-width: 1200px) {
             .master-canvas {
@@ -746,12 +747,12 @@
             }
 
             .header-anchor {
-                top: calc(9.8vw + 1.5px) !important; /* Abbassato di un ulteriore mezzo pixel per far aderire perfettamente la scritta alla riga */
+                top: calc(9.8vw + 1px) !important; /* Tasti riportati all'altezza originale */
             }
 
             .brand-title {
                 font-size: 6.0vw !important;
-                transform: translateY(0) !important;
+                transform: translateY(0.5px) !important; /* Abbassa ulteriormente solo la scritta di mezzo pixel */
             }
 
             .bg-image {
