@@ -57,18 +57,18 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .dropdown-trigger:not(.btn-works-style){text-shadow:1px 1px 2px rgba(0,0,0,.3)}
 .dropdown-trigger:not(.btn-works-style):hover,.dropdown.active:not(.modal-open) .dropdown-trigger:not(.btn-works-style){color:#000}
 
-/* AREA SENSIBILE CORRETTA SECONDO LO SCREENSHOT */
+/* AREA SENSIBILE CALCOLATA DAL JSON DI TRACCIAMENTO */
 .balloon-curiosity-hotspot{
   position:absolute;
-  top:39%;
+  top:38%;
   left:29.5%;
-  width:18%;
-  height:11.5%;
+  width:10%;
+  height:7%;
   cursor:pointer;
   z-index:250;
-  background: rgba(255, 0, 0, 0.45); /* Rosso visibile temporaneo */
+  background: rgba(255, 0, 0, 0.45); /* Rosso visibile temporaneo dal JSON */
   border: 2px dashed yellow;          /* Bordo giallo guida */
-  border-radius: 12px;
+  border-radius: 50%;
 }
 
 /* Menu a tendina */
@@ -197,7 +197,7 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
 <div class="master-canvas">
     <div class="image-wrapper">
         <img src="images/bg2.jpg?v=COVER" class="bg-image" alt="Artwork Fabio Redaelli" fetchpriority="high">
-        <!-- Area sensibile riposizionata -->
+        <!-- Area sensibile basata sui punti del JSON -->
         <div id="btn-curiosity" class="balloon-curiosity-hotspot"></div>
     </div>
 
