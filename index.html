@@ -85,11 +85,11 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 
 .dropdown{position:relative;display:inline-flex;align-items:center}
 
-/* ANCORAGGIO PRECISO AL RETTANGOLO DEL JSON (16.45vh)[span_0](start_span)[span_0](end_span) */
+/* ANCORAGGIO AGGIORNATO PIÙ IN ALTO (15.4vh) */
 .dropdown-menu{
   display:none;
   position:fixed;
-  top:16.45vh;
+  top:15.4vh;
   left:50%;
   transform:translateX(-50%);
   background:rgba(0,0,0,.88);
@@ -107,7 +107,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .dropdown-menu li{font-size:1.3rem;line-height:1.3;white-space:nowrap}
 .close-li{display:block}
 
-.menu-contact{width:220px;padding:24px 10px 10px}
+.menu-contact{width:220px;padding:24px 4px 10px}
 
 .menu-about{
   width:90vw;
@@ -139,13 +139,13 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
   white-space:normal;
 }
 
-/* SELEZIONE ARROTONDATA PER IL MENU CONTACT */
+/* SELEZIONE ARROTONDATA ESTESA VERSO I BORDI PER CONTACT */
 .menu-contact li a{
   color:#fff;
   display:block;
   text-decoration:none;
-  padding:10px 12px;
-  margin:2px 6px;
+  padding:10px 8px;
+  margin:2px 2px;
   border-radius:8px;
   transition:background .2s, color .2s;
   text-align:center;
@@ -165,7 +165,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
   display:none;
   align-items:flex-start;
   justify-content:center;
-  padding-top:16.45vh;
+  padding-top:15.4vh;
   overflow-y:auto;
   pointer-events:none;
 }
@@ -217,8 +217,8 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 
 @media screen and (max-width: 1024px) and (orientation: portrait) {
   .master-canvas{margin-top:-28px}
-  .dropdown-menu{top:16.45vh}
-  .curiosity-overlay{padding-top:16.45vh}
+  .dropdown-menu{top:15.4vh}
+  .curiosity-overlay{padding-top:15.4vh}
   
   .menu-about{width:92vw;max-width:92vw;padding:26px 16px 18px;max-height:65vh}
   .bio-title{font-size:1.25rem}
@@ -231,13 +231,13 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 
 @media screen and (max-width: 767px) {
   .master-canvas{margin-top:-21.5px}
-  .dropdown-menu{top:16.45vh}
-  .curiosity-overlay{padding-top:16.45vh}
+  .dropdown-menu{top:15.4vh}
+  .curiosity-overlay{padding-top:15.4vh}
   .menu-about{width:92vw;max-width:92vw;padding:24px 14px 16px;max-height:60vh}
   .bio-title{font-size:1.15rem}
   .bio-text{font-size:0.95rem;line-height:1.35}
 
-  .curiosity-overlay{padding-top:16.45vh}
+  .curiosity-overlay{padding-top:15.4vh}
   .curiosity-modal{width:94vw;max-width:94vw;padding:22px 12px 12px}
   .curiosity-text h3{font-size:1.2rem}
   .curiosity-text p{font-size:0.9rem}
@@ -355,7 +355,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 
     const ORD = ['primo','secondo','terzo','quarto','quinto','sesto','settimo','ottavo','nono','decimo','undicesimo','dodicesimo','tredicesimo','quattordicesimo','quindicesimo','sedicesimo','diciassettesimo','diciottesimo','diciannovesimo','ventesimo','ventunesimo','ventiduesimo','ventitreesimo','ventiquattresimo','venticinquesimo','ventiseiesimo','ventisettesimo','ventottesimo','ventinovesimo','trentesimo','trentunesimo','trentaduesimo','trentatreesimo','trentaquattresimo','trentacinquesimo','trentaseiesimo','trentasettesimo','trentottesimo','trentanovesimo','quarantesimo','quarantunesimo'];
 
-    // ELENCO DELLE 9 FOTO PORTFOLIO CON LE DESCRIZIONI CORRETTE (apostrofo protetto)
+    // ELENCO DELLE 9 FOTO PORTFOLIO CON LE DESCRIZIONI PERSONALIZZATE
     const portfolioImages = [
         { src: 'images/01_Portfolio.png', title: 'Portfolios', desc: `Copertina "Rock 'n' Roll stratchers", 2023` },
         { src: 'images/02_Portfolio.png', title: 'Portfolios', desc: 'Copertina "Il Grande romanzo della Roma", 2024' },
