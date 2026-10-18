@@ -62,11 +62,11 @@ html,body{
     width:100%;
     background:var(--red);
     border-bottom:2px solid #000;
-    padding:12px 0 0;
+    padding:15px 0 0; /* Aumentato lo spazio sopra per farla scendere ancora di più */
     text-align:center;
     flex-shrink:0;
 }
-body.mobile-chrome .landscape-top-bar{padding-top:16px}
+body.mobile-chrome .landscape-top-bar{padding-top:19px}
 .landscape-top-bar h1{
     font-family:var(--f);
     font-size:4.2vw;
@@ -74,7 +74,7 @@ body.mobile-chrome .landscape-top-bar{padding-top:16px}
     margin:0;
     padding-bottom:0;
     font-weight:400;
-    line-height:1.05; /* Corretto per far scendere la scritta esattamente di un pixel e mezzo */
+    line-height:1.2; /* Line-height calibrata per scendere di altri tre pixel */
 }
 body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .text-black{color:#000}
@@ -544,7 +544,7 @@ footer {
         g.media = g.el.querySelector('iframe, img');
         const [title, desc, counter] = ['h3', 'p', '.video-counter'].map(s => g.el.querySelector(s));
         const [prev, next] = g.el.querySelectorAll('.curiosity-nav-btn');
-        const total = g.items.length;
+    const total = g.items.length;
         let index = 0;
 
         const show = n => {
