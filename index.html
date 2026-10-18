@@ -43,7 +43,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .image-wrapper{position:relative;width:100%;max-width:100%;display:block}
 .bg-image{width:100%;height:auto;display:block}
 
-/* LIVELLO SVG RESPONSIVE (AREE TRASPARENTI + FARI A CONO INTENSI) */
+/* LIVELLO SVG RESPONSIVE PER AREE SENSIBILI E FARI */
 .curiosity-svg-overlay{
   position:absolute;
   top:0;
@@ -60,31 +60,33 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
   stroke: none;
 }
 
-/* FARI E FASCI A CONO ABBAGLIANTI */
+/* EFFETTO DISSOLVENZA MORBIDA (TRANSITION REGOLATA A 0.6s) */
+.headlight-glow, .headlight-beam{
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+  pointer-events: none;
+}
+
 .headlight-glow{
-  fill: rgba(255, 235, 59, 0.2);
+  fill: rgba(255, 240, 130, 0.9);
   mix-blend-mode: overlay;
-  transition: fill .3s ease, filter .3s ease;
-  pointer-events: none;
 }
+
 .headlight-beam{
-  fill: none;
-  mix-blend-mode: screen;
-  transition: fill .3s ease, filter .3s ease;
-  pointer-events: none;
-}
-.headlights-active .headlight-glow{
-  fill: rgba(255, 243, 128, 0.9);
-  filter: drop-shadow(0 0 15px rgba(255, 235, 59, 1));
-}
-.headlights-active .headlight-beam{
   fill: url(#beam-gradient);
-  filter: drop-shadow(0 0 25px rgba(255, 243, 128, 0.8));
+  mix-blend-mode: color-dodge;
+  filter: url(#soft-blur);
+}
+
+/* ATTIVAZIONE DISSOLVENZA ALL'HOVER */
+.headlights-active .headlight-glow,
+.headlights-active .headlight-beam{
+  opacity: 0.85;
 }
 
 .dropdown{position:relative;display:inline-flex;align-items:center}
 
-/* ANCORAGGIO MENU A TENDINA / MODALI (13.5vh) */
+/* ANCORAGGIO FINESTRE ALLA GIUSTA ALTEZZA (13.5vh) */
 .dropdown-menu{
   display:none;
   position:fixed;
@@ -108,7 +110,6 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 
 .menu-contact{width:220px;padding:24px 10px 10px}
 
-/* MENU BIO ALLINEATO AI PLAYER (680px) */
 .menu-about{
   width:90vw;
   max-width:680px;
@@ -128,7 +129,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
   font-size:1.4rem;
   margin-bottom:12px;
   text-align:center;
-  color:#fff; /* Bianco come richiesto */
+  color:#fff;
 }
 
 .bio-text{
@@ -142,7 +143,6 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .menu-contact li a{color:#fff;display:block;text-decoration:none;padding:10px 12px;transition:background .2s,color .2s;text-align:center;cursor:pointer}
 .menu-contact li a:hover{background:var(--red)}
 
-/* POPUP DELLE GALLERIE E PLAYER */
 .curiosity-overlay{
   position:fixed;
   top:0;
@@ -201,9 +201,8 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .zoom-container{position:relative;display:flex;max-width:92vw;max-height:88vh;max-height:88dvh;border-radius:8px;box-shadow:0 15px 40px rgba(0,0,0,.8);border:2px solid rgba(255,255,255,.85);overflow:hidden}
 .zoom-container img{max-width:92vw;max-height:88vh;max-height:88dvh;object-fit:contain;display:block;pointer-events:none}
 
-<footer>Copyright &copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</footer>
+footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;background:rgba(13,27,42,.95);backdrop-filter:blur(4px);color:#fff;font-size:.7rem;z-index:1000}
 
-/* ADATTAMENTO MIRATO PER TABLET E SMARTPHONE VERTICALI */
 @media screen and (max-width: 1024px) and (orientation: portrait) {
   .master-canvas{margin-top:-28px}
   .dropdown-menu{top:13.5vh}
@@ -226,7 +225,6 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
   .bio-title{font-size:1.15rem}
   .bio-text{font-size:0.95rem;line-height:1.35}
 
-  .curiosity-overlay{padding-top:13.5vh}
   .curiosity-modal{width:94vw;max-width:94vw;padding:22px 12px 12px}
   .curiosity-text h3{font-size:1.2rem}
   .curiosity-text p{font-size:0.9rem}
@@ -251,15 +249,20 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
     <div class="image-wrapper" id="img-wrapper">
         <img src="images/bg2.jpg?v=COVER" class="bg-image" alt="Artwork Fabio Redaelli" fetchpriority="high">
         
-        <!-- SVG VETTORIALE CON AREE SENSIBILI E FASCI DI LUCE A CONO -->
         <svg class="curiosity-svg-overlay" viewBox="0 0 3000 1800" preserveAspectRatio="none" id="svg-overlay">
             <defs>
-                <!-- Gradiente luminoso per i coni di luce dei fari -->
-                <linearGradient id="beam-gradient" x1="0%" y1="0%" x2="100%" y2="40%">
-                    <stop offset="0%" stop-color="rgba(255, 245, 150, 0.85)" />
-                    <stop offset="40%" stop-color="rgba(255, 235, 59, 0.4)" />
-                    <stop offset="100%" stop-color="rgba(255, 235, 59, 0)" />
+                <!-- GRADIENTE SOFFICE PER IL CONO DI LUCE -->
+                <linearGradient id="beam-gradient" x1="0%" y1="0%" x2="100%" y2="10%">
+                    <stop offset="0%" stop-color="rgba(255, 250, 180, 0.85)" />
+                    <stop offset="25%" stop-color="rgba(255, 235, 100, 0.45)" />
+                    <stop offset="70%" stop-color="rgba(255, 220, 80, 0.15)" />
+                    <stop offset="100%" stop-color="rgba(255, 220, 80, 0)" />
                 </linearGradient>
+
+                <!-- FILTRO PER AMMORBIDIRE I BORDI DEL CONO -->
+                <filter id="soft-blur" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="8" />
+                </filter>
             </defs>
 
             <!-- 1. Curiosity -->
@@ -275,11 +278,12 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
             <!-- 6. Contact Me -->
             <polygon id="btn-contact" class="balloon-poly-hotspot" points="1824.71,724.31 1817.37,719.90 1810.76,714.03 1804.89,705.95 1804.16,702.28 1796.08,701.55 1785.80,697.88 1780.66,692.00 1777.73,686.13 1777.73,677.32 1779.93,672.18 1784.33,669.98 1776.99,664.11 1773.32,656.03 1776.26,647.22 1780.66,640.61 1788.74,637.68 1796.08,636.94 1799.75,635.47 1802.69,625.93 1808.56,620.06 1815.17,616.39 1829.85,614.92 1836.46,611.98 1845.27,612.72 1850.41,613.45 1858.48,608.31 1868.03,605.37 1876.10,603.17 1884.18,603.17 1894.45,603.17 1902.53,604.64 1907.67,607.58 1913.54,611.25 1926.02,611.25 1934.83,611.25 1946.58,613.45 1953.19,617.85 1957.59,621.53 1962.73,628.87 1961.26,633.27 1972.27,634.01 1984.75,639.88 1990.63,650.16 1990.63,661.17 1985.49,666.31 1986.96,676.59 1989.16,683.19 1986.22,692.00 1978.15,696.41 1972.27,699.34 1964.93,703.01 1962.73,710.36 1959.06,718.43 1945.11,720.63 1935.57,724.31 1925.29,724.31 1917.21,724.31 1909.14,729.44 1890.05,732.38 1876.84,732.38 1867.29,729.44 1858.48,727.24 1856.28,725.77 1854.08,723.57 1847.47,725.77 1840.86,725.77"/>
             
-            <!-- Fasci di luce a cono (proiettati in avanti verso destra) -->
-            <polygon class="headlight-beam" points="1573.12,937.60 1644.43,991.79 2650,1150 2450,1350"/>
-            <polygon class="headlight-beam" points="1994.33,831.10 2046.62,871.99 2800,920 2700,780"/>
+            <!-- CONO FARO SINISTRO (Parte dal diametro esatto del faro e si proietta verso destra) -->
+            <polygon class="headlight-beam" points="1592.13,934.74 1602.59,1047.89 3000,1260 3000,980"/>
+            <!-- CONO FARO DESTRO -->
+            <polygon class="headlight-beam" points="2006.69,824.45 2010.49,917.63 3000,970 3000,810"/>
 
-            <!-- Fari della macchina (cerchietti illuminati) -->
+            <!-- ILLUMINAZIONE DEI DUE FARI (PERIMETRO TONDO) -->
             <polygon class="headlight-glow" points="1573.12,937.60 1592.13,934.74 1607.35,936.64 1618.76,940.45 1627.31,946.15 1633.02,953.76 1640.63,964.22 1643.48,977.53 1644.43,991.79 1641.58,1010.81 1632.07,1028.87 1615.90,1041.23 1602.59,1047.89 1587.38,1048.84 1571.22,1046.94 1554.10,1037.43 1538.89,1018.41 1533.18,995.59 1537.94,968.97 1550.30,949.96"/>
             <polygon class="headlight-glow" points="1994.33,831.10 2006.69,824.45 2017.15,824.45 2027.61,827.30 2036.16,834.91 2044.72,850.12 2046.62,871.99 2041.87,892.91 2033.31,905.27 2021.90,914.78 2010.49,917.63 1991.47,910.02 1984.82,898.61 1981.02,871.04 1981.02,853.92 1983.87,839.66"/>
         </svg>
@@ -388,7 +392,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 
     zoomOverlay.addEventListener('click', closeZoom);
 
-    // Attivazione fari e fasci abbaglianti al passaggio del mouse sui menu
+    // Attivazione fari al passaggio del mouse
     document.querySelectorAll('.balloon-poly-hotspot').forEach(hotspot => {
         hotspot.addEventListener('mouseenter', () => { if (!modalOpen()) svgOverlay.classList.add('headlights-active'); });
         hotspot.addEventListener('mouseleave', () => { svgOverlay.classList.remove('headlights-active'); });
