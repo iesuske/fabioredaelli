@@ -75,11 +75,11 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .dropdown{position:relative;display:inline-flex;align-items:center}
 .dropdown::after{content:'';position:absolute;top:100%;left:-10px;right:-10px;height:20px;z-index:99}
 
-/* ANCORAGGIO PRECISO ALLA LINEA SUPERIORE DEL JSON COCO (Y ~ 290) */
+/* ANCORAGGIO PRECISO AL LATO SUPERIORE DEL QUADRATO DEL JSON (Y ~ 303) */
 .dropdown-menu{
   display:none;
   position:fixed;
-  top:16vh;
+  top:17vh;
   left:50%;
   transform:translateX(-50%);
   background:rgba(0,0,0,.85);
@@ -98,19 +98,19 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .close-li{display:block}
 
 .menu-works, .menu-contact{width:220px;padding:24px 10px 10px}
-.menu-about{width:85vw;max-width:480px;padding:32px 20px 20px;max-height:65vh;overflow-y:auto;text-align:center}
+.menu-about{width:90vw;max-width:680px;padding:32px 24px 20px;max-height:68vh;overflow-y:auto;text-align:justify;text-justify:inter-word}
 
 .menu-about::-webkit-scrollbar{width:3px}
 .menu-about::-webkit-scrollbar-track{background:transparent}
 .menu-about::-webkit-scrollbar-thumb{background-color:transparent;border-radius:10px;transition:background-color .4s ease}
 .menu-about.show-scrollbar{scrollbar-color:rgba(255,255,255,.6) transparent}
 .menu-about.show-scrollbar::-webkit-scrollbar-thumb{background-color:rgba(255,255,255,.6)}
-.menu-about li{padding:4px 12px;white-space:normal}
+.menu-about li{padding:4px 0;white-space:normal;text-align:justify}
 
 .menu-contact li a,.menu-works li a{color:#fff;display:block;text-decoration:none;padding:10px 12px;transition:background .2s,color .2s;text-align:center;cursor:pointer}
 .menu-contact li a:hover,.menu-works li a:hover{background:var(--red)}
 
-/* POPUP DELLE GALLERIE E PLAYER AGGANCIATI ALLA STESSA ALTEZZA */
+/* POPUP DELLE GALLERIE E PLAYER AGGANCIATI ALL'IDENTICA ALTEZZA */
 .curiosity-overlay{
   position:fixed;
   top:0;
@@ -121,7 +121,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
   display:none;
   align-items:flex-start;
   justify-content:center;
-  padding-top:16vh;
+  padding-top:17vh;
   overflow-y:auto;
   pointer-events:none;
 }
@@ -133,7 +133,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
   border-radius:16px;
   width:90vw;
   max-width:680px;
-  max-height:68vh;
+  max-height:70vh;
   overflow-y:auto;
   padding:28px 20px 16px;
   box-shadow:0 20px 50px rgba(0,0,0,.8);
@@ -189,11 +189,11 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
   .btn-works-style{font-size:3.2vw;padding:1px 6px;border-radius:6px}
   .dropdown-trigger:not(.btn-works-style){font-size:3.2vw;padding:2px}
 
-  .dropdown-menu{top:15vh}
-  .menu-about{padding:28px 14px 16px;max-height:60vh}
-  .menu-about li{font-size:0.95rem;line-height:1.35}
+  .dropdown-menu{top:16vh}
+  .menu-about{padding:28px 16px 16px;max-height:60vh}
+  .menu-about li{font-size:0.95rem;line-height:1.35;text-align:justify}
 
-  .curiosity-overlay{padding-top:15vh}
+  .curiosity-overlay{padding-top:16vh}
   .curiosity-modal{width:92vw;padding:26px 14px 14px}
   .curiosity-text h3{font-size:1.35rem}
   .curiosity-text p{font-size:.95rem}
@@ -246,7 +246,7 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
                 <div class="dropdown" id="dropdown-bio">
                     <ul class="dropdown-menu menu-about testo-custom">
                         <li class="close-li"><button class="close-red-btn close-bio-btn" type="button">&times;</button></li>
-                        <li class="bio-title" style="font-weight:bold; font-size:1.4rem; margin-bottom:8px;">Roma, 1964.</li>
+                        <li class="bio-title" style="font-weight:bold; font-size:1.4rem; margin-bottom:8px; text-align:center;">Roma, 1964.</li>
                         <li>Autore di fumetti, storyboard artist ed illustratore;</li>
                         <li>piu' di 30 anni di esperienza sul campo, alternando</li>
                         <li>collaborazioni di ogni tipo, dai fumetti a locandine</li>
