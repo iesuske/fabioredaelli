@@ -188,7 +188,6 @@ html,body{
   background:var(--red);
 }
 
-/* ANCORAGGIO FINESTRE RIPRESO DA HTML 3 (14.8vh standard) */
 .curiosity-overlay{
   position:fixed;
   top:0;
@@ -247,7 +246,7 @@ html,body{
 .zoom-container{position:relative;display:flex;max-width:92vw;max-height:88vh;max-height:88dvh;border-radius:8px;box-shadow:0 15px 40px rgba(0,0,0,.8);border:2px solid rgba(255,255,255,.85);overflow:hidden}
 .zoom-container img{max-width:92vw;max-height:88vh;max-height:88dvh;object-fit:contain;display:block;pointer-events:none}
 
-/* FOOTER FISSO CON CARATTERE BIANCO E SFONDO ROSSO HEADER */
+/* FOOTER FISSO CON SFONDO ROSSO E TESTO NERO */
 footer {
     position: fixed;
     bottom: 0;
@@ -256,7 +255,7 @@ footer {
     padding: 8px;
     text-align: center;
     background: var(--red);
-    color: #ffffff;
+    color: #000000;
     font-size: 0.75rem;
     z-index: 1000;
     box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
@@ -458,7 +457,6 @@ footer {
         ['H5DlDbpFQwo', 'Mostra De Andrè, (Mollica - Rai1)', 'di Vincenzo Mollica, mostra di De Andrè (AP)']
     ].map(([id, title, desc]) => ({ src: `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`, title, desc }));
 
-    // Galleria Works con le descrizioni richieste per ciascuna delle 9 immagini
     const worksImages = Array.from({ length: 9 }, (_, i) => {
         const num = String(i + 1).padStart(2, '0');
         const descList = [
@@ -508,7 +506,6 @@ footer {
 
     zoomOverlay.addEventListener('click', closeZoom);
 
-    // Attivazione fari al passaggio del mouse
     document.querySelectorAll('.balloon-poly-hotspot').forEach(hotspot => {
         hotspot.addEventListener('mouseenter', () => { if (!modalOpen()) svgOverlay.classList.add('headlights-active'); });
         hotspot.addEventListener('mouseleave', () => { svgOverlay.classList.remove('headlights-active'); });
