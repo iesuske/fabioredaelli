@@ -257,7 +257,7 @@ footer {
   .curiosity-text p{font-size:1rem}
 }
 
-/* OTTIMIZZAZIONE INGRANDIMENTO GRAFICA PER MOBILE VERTICALE (IPHONE) */
+/* OTTIMIZZAZIONE INGRANDIMENTO E STRISCIA BEIGE UNIFORME PER MOBILE VERTICALE */
 @media screen and (max-width: 767px) and (orientation: portrait) {
   html, body {
     height: 100%;
@@ -265,16 +265,18 @@ footer {
   }
   .master-canvas {
     margin-top: 0;
-    height: calc(100dvh - 30px);
+    height: calc(100dvh - 28px);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     overflow: hidden;
+    padding-top: max(env(safe-area-inset-top), 10px);
   }
   .image-wrapper {
     width: 100%;
-    transform: scale(2.2);
-    transform-origin: center 22%;
+    transform: scale(2.25);
+    transform-origin: center top;
+    margin-top: -8.5%;
   }
   .bg-image {
     width: 100%;
