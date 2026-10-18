@@ -43,7 +43,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .image-wrapper{position:relative;width:100%;max-width:100%;display:block}
 .bg-image{width:100%;height:auto;display:block}
 
-/* LIVELLO SVG RESPONSIVE */
+/* LIVELLO SVG RESPONSIVE (AREE TRASPARENTI SENZA BORDI) */
 .curiosity-svg-overlay{
   position:absolute;
   top:0;
@@ -56,19 +56,17 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .balloon-poly-hotspot{
   cursor:pointer;
   pointer-events:auto;
-  fill: rgba(255, 0, 0, 0.45); /* Guida visiva temporanea */
-  stroke: yellow;
-  stroke-width: 4;
-  stroke-dasharray: 8,6;
+  fill: transparent;
+  stroke: none;
 }
 
 .dropdown{position:relative;display:inline-flex;align-items:center}
 
-/* ANCORAGGIO MENU A TENDINA / MODALI (20.7vh) */
+/* ANCORAGGIO PRECISO ALLA PARTE SUPERIORE DEL RETTANGOLO DEL JSON (16.45vh) */
 .dropdown-menu{
   display:none;
   position:fixed;
-  top:20.7vh;
+  top:16.45vh;
   left:50%;
   transform:translateX(-50%);
   background:rgba(0,0,0,.88);
@@ -122,7 +120,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .menu-contact li a{color:#fff;display:block;text-decoration:none;padding:10px 12px;transition:background .2s,color .2s;text-align:center;cursor:pointer}
 .menu-contact li a:hover{background:var(--red)}
 
-/* POPUP DELLE GALLERIE E PLAYER */
+/* POPUP DELLE GALLERIE E PLAYER AGGANCIATI ALLA STESSA ALTEZZA */
 .curiosity-overlay{
   position:fixed;
   top:0;
@@ -133,7 +131,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
   display:none;
   align-items:flex-start;
   justify-content:center;
-  padding-top:20.7vh;
+  padding-top:16.45vh;
   overflow-y:auto;
   pointer-events:none;
 }
@@ -186,8 +184,8 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
 /* ADATTAMENTO MIRATO PER TABLET E SMARTPHONE VERTICALI */
 @media screen and (max-width: 1024px) and (orientation: portrait) {
   .master-canvas{margin-top:-28px}
-  .dropdown-menu{top:20.7vh}
-  .curiosity-overlay{padding-top:20.7vh}
+  .dropdown-menu{top:16.45vh}
+  .curiosity-overlay{padding-top:16.45vh}
   
   .menu-about{width:92vw;max-width:92vw;padding:26px 16px 18px;max-height:65vh}
   .bio-title{font-size:1.25rem}
@@ -200,12 +198,12 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
 
 @media screen and (max-width: 767px) {
   .master-canvas{margin-top:-21.5px}
-  .dropdown-menu{top:20.7vh}
+  .dropdown-menu{top:16.45vh}
   .menu-about{width:92vw;max-width:92vw;padding:24px 14px 16px;max-height:60vh}
   .bio-title{font-size:1.15rem}
   .bio-text{font-size:0.95rem;line-height:1.35}
 
-  .curiosity-overlay{padding-top:20.7vh}
+  .curiosity-overlay{padding-top:16.45vh}
   .curiosity-modal{width:94vw;max-width:94vw;padding:22px 12px 12px}
   .curiosity-text h3{font-size:1.2rem}
   .curiosity-text p{font-size:0.9rem}
@@ -229,7 +227,7 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
 <div class="master-canvas">
     <div class="image-wrapper">
         <img src="images/bg2.jpg?v=COVER" class="bg-image" alt="Artwork Fabio Redaelli" fetchpriority="high">
-        <!-- SVG VETTORIALE CON LE AREE SENSIBILI BASATE SUI JSON -->
+        <!-- SVG VETTORIALE CON LE AREE SENSIBILI TRASPARENTI -->
         <svg class="curiosity-svg-overlay" viewBox="0 0 3000 1800" preserveAspectRatio="none">
             <!-- 1. Curiosity -->
             <polygon id="btn-curiosity" class="balloon-poly-hotspot" points="1126.18,726.22 1121.13,729.58 1116.09,731.26 1108.53,732.94 1102.64,733.78 1098.44,734.62 1090.88,735.46 1081.63,736.3 1075.75,736.3 1068.19,736.3 1063.14,735.46 1058.1,733.78 1051.38,732.94 1048.02,731.26 1042.13,730.42 1037.93,727.06 1034.57,724.53 1029.53,727.06 1021.12,727.06 1015.24,727.06 1002.63,727.06 994.23,727.06 985.82,727.06 976.58,723.69 972.38,721.17 966.49,718.65 965.65,714.45 963.13,710.25 960.61,706.89 953.89,706.05 948.85,705.21 942.12,702.68 937.08,701.84 931.2,699.32 926.15,696.8 921.95,693.44 919.43,690.08 919.43,684.19 919.43,679.99 921.11,675.79 922.79,674.11 926.99,672.43 929.52,672.43 922.79,667.39 920.27,663.18 915.23,657.3 916.91,653.1 921.11,648.9 923.63,643.85 929.52,643.01 932.88,640.49 937.92,639.65 942.12,639.65 951.37,637.97 952.21,637.13 954.73,633.77 955.57,627.05 958.93,624.52 963.97,622.0 974.06,620.32 975.74,617.8 982.46,615.28 987.51,615.28 991.71,612.76 994.23,612.76 1000.95,612.76 1006.0,612.76 1011.04,611.92 1017.76,612.76 1023.64,612.76 1031.21,614.44 1037.93,609.4 1044.65,608.56 1054.74,606.87 1059.78,605.19 1068.19,605.19 1079.95,605.19 1087.52,604.35 1093.4,603.51 1095.92,603.51 1101.8,603.51 1106.01,606.03 1112.73,607.72 1116.93,607.72 1118.61,610.24 1123.66,612.76 1132.06,613.6 1136.26,612.76 1142.14,612.76 1149.71,612.76 1154.75,611.92 1160.63,611.92 1167.36,612.76 1170.72,613.6 1175.76,614.44 1179.96,616.12 1184.17,620.32 1188.37,620.32 1190.05,622.84 1199.29,626.2 1200.97,630.41 1199.29,632.93 1206.02,634.61 1207.7,635.45 1211.9,636.29 1217.78,637.13 1222.83,638.81 1225.35,640.49 1229.55,643.01 1231.23,646.37 1238.79,650.58 1241.32,653.94 1242.16,658.98 1241.32,664.02 1239.63,664.86 1234.59,666.55 1230.39,668.23 1234.59,671.59 1237.11,673.27 1239.63,676.63 1240.48,679.99 1240.48,684.19 1239.63,686.72 1238.79,690.08 1235.43,691.76 1232.91,695.96 1230.39,696.8 1224.51,699.32 1221.99,700.16 1217.78,701.0 1216.1,701.84 1214.42,702.68 1212.74,702.68 1210.22,702.68 1209.38,702.68 1206.02,703.52 1205.18,704.36 1200.97,704.36 1200.13,709.41 1195.09,711.93 1194.25,714.45 1190.89,716.13 1188.37,718.65 1185.85,719.49 1183.33,720.33 1178.28,721.17 1169.04,722.85 1164.84,722.85 1156.43,723.69 1151.39,723.69 1144.67,723.69 1137.94,723.69 1132.9,726.22"/>
