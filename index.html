@@ -85,7 +85,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 
 .dropdown{position:relative;display:inline-flex;align-items:center}
 
-/* ANCORAGGIO PRECISO AL RETTANGOLO DEL JSON (16.45vh)[span_1](start_span)[span_1](end_span) */
+/* ANCORAGGIO PRECISO AL RETTANGOLO DEL JSON (16.45vh)[span_0](start_span)[span_0](end_span) */
 .dropdown-menu{
   display:none;
   position:fixed;
@@ -355,13 +355,18 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 
     const ORD = ['primo','secondo','terzo','quarto','quinto','sesto','settimo','ottavo','nono','decimo','undicesimo','dodicesimo','tredicesimo','quattordicesimo','quindicesimo','sedicesimo','diciassettesimo','diciottesimo','diciannovesimo','ventesimo','ventunesimo','ventiduesimo','ventitreesimo','ventiquattresimo','venticinquesimo','ventiseiesimo','ventisettesimo','ventottesimo','ventinovesimo','trentesimo','trentunesimo','trentaduesimo','trentatreesimo','trentaquattresimo','trentacinquesimo','trentaseiesimo','trentasettesimo','trentottesimo','trentanovesimo','quarantesimo','quarantunesimo'];
 
-    // ELENCO ESATTO DEI FILE PORTFOLIO PRESENTI (saltando la 09 che non c'è)
-    const portfolioFiles = ['01', '02', '03', '04', '05', '06', '07', '08', '10'];
-    const portfolioImages = portfolioFiles.map((num, i) => ({
-        src: `images/${num}_Portfolio.png`,
-        title: 'Portfolios',
-        desc: `${ORD[i]} disegno selezionato dalla galleria portfolio`
-    }));
+    // ELENCO DELLE 9 FOTO PORTFOLIO CON LE DESCRIZIONI PERSONALIZZABILI
+    const portfolioImages = [
+        { src: 'images/01_Portfolio.png', title: 'Portfolios', desc: 'Inserisci qui la descrizione per la prima foto' },
+        { src: 'images/02_Portfolio.png', title: 'Portfolios', desc: 'Inserisci qui la descrizione per la seconda foto' },
+        { src: 'images/03_Portfolio.png', title: 'Portfolios', desc: 'Inserisci qui la descrizione per la terza foto' },
+        { src: 'images/04_Portfolio.png', title: 'Portfolios', desc: 'Inserisci qui la descrizione per la quarta foto' },
+        { src: 'images/05_Portfolio.png', title: 'Portfolios', desc: 'Inserisci qui la descrizione per la quinta foto' },
+        { src: 'images/06_Portfolio.png', title: 'Portfolios', desc: 'Inserisci qui la descrizione per la sesta foto' },
+        { src: 'images/07_Portfolio.png', title: 'Portfolios', desc: 'Inserisci qui la descrizione per la settima foto' },
+        { src: 'images/08_Portfolio.png', title: 'Portfolios', desc: 'Inserisci qui la descrizione per l\'ottava foto' },
+        { src: 'images/10_Portfolio.png', title: 'Portfolios', desc: 'Inserisci qui la descrizione per la nona foto' }
+    ];
 
     const videos = [
         ['hlJmwrHEUQ0', 'Behind The Scene', 'scopri le tecniche e lo storyboard originale'],
