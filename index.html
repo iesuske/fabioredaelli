@@ -75,11 +75,11 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .dropdown{position:relative;display:inline-flex;align-items:center}
 .dropdown::after{content:'';position:absolute;top:100%;left:-10px;right:-10px;height:20px;z-index:99}
 
-/* POSIZIONAMENTO PIÙ IN ALTO PER TUTTE LE FINESTRE POPUP E MENU */
+/* ANCORAGGIO PRECISO ALLA LINEA SUPERIORE INDICATA DAL JSON COCO */
 .dropdown-menu{
   display:none;
   position:fixed;
-  top:12vh;
+  top:16vh;
   left:50%;
   transform:translateX(-50%);
   background:rgba(0,0,0,.85);
@@ -98,7 +98,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .close-li{display:block}
 
 .menu-works, .menu-contact{width:220px;padding:24px 10px 10px}
-.menu-about{width:90vw;max-width:620px;padding:32px 20px 20px;max-height:70vh;overflow-y:auto;text-align:center}
+.menu-about{width:90vw;max-width:620px;padding:32px 20px 20px;max-height:68vh;overflow-y:auto;text-align:center}
 
 .menu-about::-webkit-scrollbar{width:3px}
 .menu-about::-webkit-scrollbar-track{background:transparent}
@@ -110,7 +110,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .menu-contact li a,.menu-works li a{color:#fff;display:block;text-decoration:none;padding:10px 12px;transition:background .2s,color .2s;text-align:center;cursor:pointer}
 .menu-contact li a:hover,.menu-works li a:hover{background:var(--red)}
 
-/* POPUP DELLE GALLERIE E PLAYER PIÙ IN ALTO */
+/* POPUP DELLE GALLERIE E PLAYER AGGANCIATI ALLA STESSA ALTEZZA */
 .curiosity-overlay{
   position:fixed;
   top:0;
@@ -121,7 +121,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
   display:none;
   align-items:flex-start;
   justify-content:center;
-  padding-top:12vh;
+  padding-top:16vh;
   overflow-y:auto;
   pointer-events:none;
 }
@@ -133,7 +133,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
   border-radius:16px;
   width:90vw;
   max-width:680px;
-  max-height:75vh;
+  max-height:72vh;
   overflow-y:auto;
   padding:28px 20px 16px;
   box-shadow:0 20px 50px rgba(0,0,0,.8);
@@ -189,11 +189,11 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
   .btn-works-style{font-size:3.2vw;padding:1px 6px;border-radius:6px}
   .dropdown-trigger:not(.btn-works-style){font-size:3.2vw;padding:2px}
 
-  .dropdown-menu{top:14vh}
-  .menu-about{padding:28px 14px 16px;max-height:65vh}
+  .dropdown-menu{top:15vh}
+  .menu-about{padding:28px 14px 16px;max-height:62vh}
   .menu-about li{font-size:0.95rem;line-height:1.35}
 
-  .curiosity-overlay{padding-top:14vh}
+  .curiosity-overlay{padding-top:15vh}
   .curiosity-modal{width:92vw;padding:26px 14px 14px}
   .curiosity-text h3{font-size:1.35rem}
   .curiosity-text p{font-size:.95rem}
@@ -419,15 +419,17 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
         });
     });
 
-    // Collegamento area sensibile vettoriale "Bio" per aprire correttamente il menu Bio
-    $('btn-bio').addEventListener('click', e => {
+    // Gestione unificata click e hover per l'area Bio (SVG e testo)
+    const toggleBio = e => {
         e.preventDefault();
         e.stopPropagation();
         if (modalOpen()) return;
         const wasActive = bioDropdown.classList.contains('active');
         closeAll();
         if (!wasActive) bioDropdown.classList.add('active');
-    });
+    };
+
+    $('btn-bio').addEventListener('click', toggleBio);
 
     $('btn-curiosity').addEventListener('mouseenter', () => { if (!modalOpen()) closeAll(); });$('btn-sketchs').addEventListener('mouseenter', () => { if (!modalOpen()) closeAll(); });
     $('btn-highlights').addEventListener('mouseenter', () => { if (!modalOpen()) closeAll(); });$('btn-bio').addEventListener('mouseenter', () => { if (!modalOpen()) closeAll(); });
@@ -446,7 +448,11 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
         dd.querySelector('.dropdown-trigger').addEventListener('click', e => {
             e.preventDefault();
             e.stopPropagation();
-            toggle();
+            if (dd === bioDropdown) {
+                toggleBio(e);
+            } else {
+                toggle();
+            }
         });
     });
 
