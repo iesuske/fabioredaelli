@@ -43,7 +43,7 @@ html,body{
 .close-red-btn{position:absolute;top:10px;right:10px;width:24px;height:24px;background:var(--red);color:#fff;border:0;border-radius:50%;font:bold 15px/1 Arial,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:1000;box-shadow:0 1px 4px rgba(0,0,0,.5)}
 #close-zoom{position:fixed;top:10px;right:10px;z-index:1000000}
 
-/* SCHERMATA ORIZZONTALE MOBILE */
+/* SCHERMATA ORIZZONTALE MOBILE: POSIZIONAMENTO DIRETTO SUL TESTO */
 #landscape-warning{
     display:none;
     position:fixed;
@@ -65,6 +65,7 @@ html,body{
     padding:0;
     text-align:center;
     flex-shrink:0;
+    height: auto;
 }
 body.mobile-chrome .landscape-top-bar{padding:0}
 .landscape-top-bar h1{
@@ -72,7 +73,8 @@ body.mobile-chrome .landscape-top-bar{padding:0}
     font-size:3.8vw;
     color:#fff;
     margin:0;
-    padding:4px 0 1px 0; /* Valore calibrato per far scendere la scritta esattamente sulla riga nera */
+    position:relative;
+    top:2px; /* Forzatura diretta di 2px verso il basso */
     font-weight:400;
     line-height:1;
 }
