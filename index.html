@@ -43,7 +43,7 @@ html,body{
 .close-red-btn{position:absolute;top:10px;right:10px;width:24px;height:24px;background:var(--red);color:#fff;border:0;border-radius:50%;font:bold 15px/1 Arial,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:1000;box-shadow:0 1px 4px rgba(0,0,0,.5)}
 #close-zoom{position:fixed;top:10px;right:10px;z-index:1000000}
 
-/* SCHERMATA ORIZZONTALE MOBILE */
+/* SCHERMATA ORIZZONTALE MOBILE: BANDA ROSSA RIDOTTA E SCRITTA ABBASSATA SULLA RIGA NERA */
 #landscape-warning{
     display:none;
     position:fixed;
@@ -62,21 +62,21 @@ html,body{
     width:100%;
     background:var(--red);
     border-bottom:2px solid #000;
-    padding:15px 0 0; /* Aumentato lo spazio sopra per farla scendere ancora di più */
+    padding:2px 0 0; /* Banda rossa ridotta al minimo */
     text-align:center;
     flex-shrink:0;
 }
-body.mobile-chrome .landscape-top-bar{padding-top:19px}
+body.mobile-chrome .landscape-top-bar{padding-top:4px}
 .landscape-top-bar h1{
     font-family:var(--f);
-    font-size:4.2vw;
+    font-size:3.8vw;
     color:#fff;
     margin:0;
     padding-bottom:0;
     font-weight:400;
-    line-height:1.2; /* Line-height calibrata per scendere di altri tre pixel */
+    line-height:0.9; /* Scritta abbassata per toccare perfettamente la riga nera */
 }
-body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
+body.mobile-chrome .landscape-top-bar h1{font-size:4.2vw}
 .text-black{color:#000}
 .landscape-text-container{
     width:100%;
@@ -544,7 +544,7 @@ footer {
         g.media = g.el.querySelector('iframe, img');
         const [title, desc, counter] = ['h3', 'p', '.video-counter'].map(s => g.el.querySelector(s));
         const [prev, next] = g.el.querySelectorAll('.curiosity-nav-btn');
-    const total = g.items.length;
+        const total = g.items.length;
         let index = 0;
 
         const show = n => {
