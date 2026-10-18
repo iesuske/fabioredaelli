@@ -43,7 +43,7 @@ html,body{
 .close-red-btn{position:absolute;top:10px;right:10px;width:24px;height:24px;background:var(--red);color:#fff;border:0;border-radius:50%;font:bold 15px/1 Arial,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:1000;box-shadow:0 1px 4px rgba(0,0,0,.5)}
 #close-zoom{position:fixed;top:10px;right:10px;z-index:1000000}
 
-/* SCHERMATA ORIZZONTALE MOBILE */
+/* SCHERMATA ORIZZONTALE MOBILE SENZA ELEMENTI GRAFICI DI INTESTAZIONE */
 #landscape-warning{
     display:none;
     position:fixed;
@@ -56,40 +56,22 @@ html,body{
     z-index:999999;
     flex-direction:column;
     align-items:center;
+    justify-content:center;
     overflow:hidden;
 }
-.landscape-top-bar{
-    width:100%;
-    background:var(--red);
-    border-bottom:2px solid #000;
-    padding:3px 0 1px;
-    text-align:center;
-    flex-shrink:0;
-}
-body.mobile-chrome .landscape-top-bar{padding:3px 0 1px}
-.landscape-top-bar h1{
-    font-family:var(--f);
-    font-size:3.8vw;
-    color:#fff;
-    margin:0;
-    font-weight:400;
-    line-height:1;
-}
-body.mobile-chrome .landscape-top-bar h1{font-size:4.2vw}
-.text-black{color:#000}
+.landscape-top-bar{display:none;}
 .landscape-text-container{
     width:100%;
     display:flex;
     flex-direction:column;
-    justify-content:flex-start;
+    justify-content:center;
     align-items:center;
     text-align:center;
-    padding:6.5vh 10px 0;
+    padding:0 15px;
     font-family:var(--f);
-    flex:1;
 }
-.landscape-text-container h2{font-size:14vh;font-weight:400;margin-bottom:8px;color:var(--red)}
-.landscape-text-container p{font-size:7vh;line-height:1.2;color:#000;white-space:nowrap}
+.landscape-text-container h2{font-size:10vh;font-weight:400;margin-bottom:12px;color:var(--red)}
+.landscape-text-container p{font-size:5vh;line-height:1.2;color:#000;white-space:nowrap}
 @media screen and (max-height:500px) and (orientation:landscape){#landscape-warning{display:flex}}
 
 .master-canvas{position:relative;width:100%;margin-top:-50px}
@@ -113,7 +95,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.2vw}
   stroke:none;
 }
 
-/* DISSOLVENZA E FARI INTENSI */
+/* DISSOLVENZA E FARI INTENSI AMPLIATI A CONO IN FONDO */
 .headlight-glow, .headlight-beam{
   opacity:0;
   transition:opacity 0.6s ease-in-out;
@@ -206,6 +188,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.2vw}
   background:var(--red);
 }
 
+/* ANCORAGGIO FINESTRE RIPRESO DA HTML 3 (14.8vh standard) */
 .curiosity-overlay{
   position:fixed;
   top:0;
@@ -216,7 +199,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.2vw}
   display:none;
   align-items:flex-start;
   justify-content:center;
-  padding-top:9.5vh;
+  padding-top:14.8vh;
   overflow-y:auto;
   pointer-events:none;
 }
@@ -264,7 +247,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.2vw}
 .zoom-container{position:relative;display:flex;max-width:92vw;max-height:88vh;max-height:88dvh;border-radius:8px;box-shadow:0 15px 40px rgba(0,0,0,.8);border:2px solid rgba(255,255,255,.85);overflow:hidden}
 .zoom-container img{max-width:92vw;max-height:88vh;max-height:88dvh;object-fit:contain;display:block;pointer-events:none}
 
-/* FOOTER FISSO IN BASSO */
+/* FOOTER FISSO CON CARATTERE BIANCO E SFONDO ROSSO HEADER */
 footer {
     position: fixed;
     bottom: 0;
@@ -272,12 +255,11 @@ footer {
     width: 100%;
     padding: 8px;
     text-align: center;
-    background: rgba(13, 27, 42, 0.95);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    color: white;
+    background: var(--red);
+    color: #ffffff;
     font-size: 0.75rem;
     z-index: 1000;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
 }
 
 @media screen and (max-width: 1024px) and (orientation: portrait) {
@@ -294,7 +276,6 @@ footer {
   .curiosity-text p{font-size:1rem}
 }
 
-/* OTTIMIZZAZIONE MOBILE VERTICALE (IPHONE / SMARTPHONE) */
 @media screen and (max-width: 767px) and (orientation: portrait) {
   html, body {
     height: 100%;
@@ -323,8 +304,8 @@ footer {
     height: auto;
     display: block;
   }
-  .dropdown-menu{top:9.5vh}
-  .curiosity-overlay{padding-top:9.5vh}
+  .dropdown-menu{top:14.8vh}
+  .curiosity-overlay{padding-top:14.8vh}
 
   .menu-about{width:92vw;max-width:92vw;padding:24px 14px 16px;max-height:60vh}
   .bio-title{font-size:1.15rem}
@@ -341,10 +322,7 @@ footer {
 <body>
 
 <div id="landscape-warning">
-    <div class="landscape-top-bar">
-        <h1 class="testo-custom"><span>Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span>Redaelli</span></h1>
-    </div>
-    <div class="landscape-text-container testo-custom">
+    <div class="landscape-text-container">
         <h2>Dispositivo orizzontale</h2>
         <p>per la corretta visualizzazione del sito girare il dispositivo in verticale</p>
     </div>
@@ -381,10 +359,10 @@ footer {
             <!-- 6. Contact Me -->
             <polygon id="btn-contact" class="balloon-poly-hotspot" points="1824.71,724.31 1817.37,719.90 1810.76,714.03 1804.89,705.95 1804.16,702.28 1796.08,701.55 1785.80,697.88 1780.66,692.00 1777.73,686.13 1777.73,677.32 1779.93,672.18 1784.33,669.98 1776.99,664.11 1773.32,656.03 1776.26,647.22 1780.66,640.61 1788.74,637.68 1796.08,636.94 1799.75,635.47 1802.69,625.93 1808.56,620.06 1815.17,616.39 1829.85,614.92 1836.46,611.98 1845.27,612.72 1850.41,613.45 1858.48,608.31 1868.03,605.37 1876.10,603.17 1884.18,603.17 1894.45,603.17 1902.53,604.64 1907.67,607.58 1913.54,611.25 1926.02,611.25 1934.83,611.25 1946.58,613.45 1953.19,617.85 1957.59,621.53 1962.73,628.87 1961.26,633.27 1972.27,634.01 1984.75,639.88 1990.63,650.16 1990.63,661.17 1985.49,666.31 1986.96,676.59 1989.16,683.19 1986.22,692.00 1978.15,696.41 1972.27,699.34 1964.93,703.01 1962.73,710.36 1959.06,718.43 1945.11,720.63 1935.57,724.31 1925.29,724.31 1917.21,724.31 1909.14,729.44 1890.05,732.38 1876.84,732.38 1867.29,729.44 1858.48,727.24 1856.28,725.77 1854.08,723.57 1847.47,725.77 1840.86,725.77"/>
             
-            <!-- Cono faro sinistro -->
-            <polygon class="headlight-beam" points="1592.13,934.74 1602.59,1047.89 3000,1260 3000,980"/>
-            <!-- Cono faro destro -->
-            <polygon class="headlight-beam" points="2006.69,824.45 2010.49,917.63 3000,970 3000,810"/>
+            <!-- Cono faro sinistro (ampiamente allargato in fondo a cono) -->
+            <polygon class="headlight-beam" points="1592.13,934.74 1602.59,1047.89 3000,1380 3000,880"/>
+            <!-- Cono faro destro (ampiamente allargato in fondo a cono) -->
+            <polygon class="headlight-beam" points="2006.69,824.45 2010.49,917.63 3000,1050 3000,720"/>
 
             <!-- Illuminazione fari tondi -->
             <polygon class="headlight-glow" points="1573.12,937.60 1592.13,934.74 1607.35,936.64 1618.76,940.45 1627.31,946.15 1633.02,953.76 1640.63,964.22 1643.48,977.53 1644.43,991.79 1641.58,1010.81 1632.07,1028.87 1615.90,1041.23 1602.59,1047.89 1587.38,1048.84 1571.22,1046.94 1554.10,1037.43 1538.89,1018.41 1533.18,995.59 1537.94,968.97 1550.30,949.96"/>
@@ -480,13 +458,24 @@ footer {
         ['H5DlDbpFQwo', 'Mostra De Andrè, (Mollica - Rai1)', 'di Vincenzo Mollica, mostra di De Andrè (AP)']
     ].map(([id, title, desc]) => ({ src: `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`, title, desc }));
 
-    // NUOVA GALLERIA WORKS (Sostituisce Color Artworks con Works01.png...Works09.png)
+    // Galleria Works con le descrizioni richieste per ciascuna delle 9 immagini
     const worksImages = Array.from({ length: 9 }, (_, i) => {
         const num = String(i + 1).padStart(2, '0');
+        const descList = [
+            'Prima illustrazione della sezione Works',
+            'Seconda illustrazione della sezione Works',
+            'Terza illustrazione della sezione Works',
+            'Quarta illustrazione della sezione Works',
+            'Quinta illustrazione della sezione Works',
+            'Sesta illustrazione della sezione Works',
+            'Settima illustrazione della sezione Works',
+            'Ottava illustrazione della sezione Works',
+            'Nona illustrazione della sezione Works'
+        ];
         return {
             src: `images/Works${num}.png`,
             title: 'Works',
-            desc: `${ORD[i].slice(0, -1)}a illustrazione selezionata`
+            desc: descList[i]
         };
     });
 
