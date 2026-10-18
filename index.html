@@ -43,7 +43,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .image-wrapper{position:relative;width:100%;max-width:100%;display:block}
 .bg-image{width:100%;height:auto;display:block}
 
-/* LIVELLO SVG RESPONSIVE (AREE TRASPARENTI + FARI ABBAGLIANTI DINAMICI) */
+/* LIVELLO SVG RESPONSIVE (AREE TRASPARENTI + FARI A CONO INTENSI) */
 .curiosity-svg-overlay{
   position:absolute;
   top:0;
@@ -60,16 +60,26 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
   stroke: none;
 }
 
-/* FARI ABBAGLIANTI BASATI SULLE COORDINATE JSON */
+/* FARI E FASCI A CONO ABBAGLIANTI */
 .headlight-glow{
-  fill: rgba(255, 235, 59, 0.15);
+  fill: rgba(255, 235, 59, 0.2);
   mix-blend-mode: overlay;
   transition: fill .3s ease, filter .3s ease;
   pointer-events: none;
 }
+.headlight-beam{
+  fill: none;
+  mix-blend-mode: screen;
+  transition: fill .3s ease, filter .3s ease;
+  pointer-events: none;
+}
 .headlights-active .headlight-glow{
-  fill: rgba(255, 243, 128, 0.75);
-  filter: drop-shadow(0 0 12px rgba(255, 235, 59, 0.95));
+  fill: rgba(255, 243, 128, 0.9);
+  filter: drop-shadow(0 0 15px rgba(255, 235, 59, 1));
+}
+.headlights-active .headlight-beam{
+  fill: url(#beam-gradient);
+  filter: drop-shadow(0 0 25px rgba(255, 243, 128, 0.8));
 }
 
 .dropdown{position:relative;display:inline-flex;align-items:center}
@@ -118,7 +128,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
   font-size:1.4rem;
   margin-bottom:12px;
   text-align:center;
-  color:#fff; /* Modificato in bianco come richiesto */
+  color:#fff; /* Bianco come richiesto */
 }
 
 .bio-text{
@@ -211,6 +221,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 @media screen and (max-width: 767px) {
   .master-canvas{margin-top:-21.5px}
   .dropdown-menu{top:13.5vh}
+  .curiosity-overlay{padding-top:13.5vh}
   .menu-about{width:92vw;max-width:92vw;padding:24px 14px 16px;max-height:60vh}
   .bio-title{font-size:1.15rem}
   .bio-text{font-size:0.95rem;line-height:1.35}
@@ -239,8 +250,18 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 <div class="master-canvas">
     <div class="image-wrapper" id="img-wrapper">
         <img src="images/bg2.jpg?v=COVER" class="bg-image" alt="Artwork Fabio Redaelli" fetchpriority="high">
-        <!-- SVG VETTORIALE CON AREE SENSIBILI E FARI ABBAGLIANTI -->
+        
+        <!-- SVG VETTORIALE CON AREE SENSIBILI E FASCI DI LUCE A CONO -->
         <svg class="curiosity-svg-overlay" viewBox="0 0 3000 1800" preserveAspectRatio="none" id="svg-overlay">
+            <defs>
+                <!-- Gradiente luminoso per i coni di luce dei fari -->
+                <linearGradient id="beam-gradient" x1="0%" y1="0%" x2="100%" y2="40%">
+                    <stop offset="0%" stop-color="rgba(255, 245, 150, 0.85)" />
+                    <stop offset="40%" stop-color="rgba(255, 235, 59, 0.4)" />
+                    <stop offset="100%" stop-color="rgba(255, 235, 59, 0)" />
+                </linearGradient>
+            </defs>
+
             <!-- 1. Curiosity -->
             <polygon id="btn-curiosity" class="balloon-poly-hotspot" points="1126.18,726.22 1121.13,729.58 1116.09,731.26 1108.53,732.94 1102.64,733.78 1098.44,734.62 1090.88,735.46 1081.63,736.3 1075.75,736.3 1068.19,736.3 1063.14,735.46 1058.1,733.78 1051.38,732.94 1048.02,731.26 1042.13,730.42 1037.93,727.06 1034.57,724.53 1029.53,727.06 1021.12,727.06 1015.24,727.06 1002.63,727.06 994.23,727.06 985.82,727.06 976.58,723.69 972.38,721.17 966.49,718.65 965.65,714.45 963.13,710.25 960.61,706.89 953.89,706.05 948.85,705.21 942.12,702.68 937.08,701.84 931.2,699.32 926.15,696.8 921.95,693.44 919.43,690.08 919.43,684.19 919.43,679.99 921.11,675.79 922.79,674.11 926.99,672.43 929.52,672.43 922.79,667.39 920.27,663.18 915.23,657.3 916.91,653.1 921.11,648.9 923.63,643.85 929.52,643.01 932.88,640.49 937.92,639.65 942.12,639.65 951.37,637.97 952.21,637.13 954.73,633.77 955.57,627.05 958.93,624.52 963.97,622.0 974.06,620.32 975.74,617.8 982.46,615.28 987.51,615.28 991.71,612.76 994.23,612.76 1000.95,612.76 1006.0,612.76 1011.04,611.92 1017.76,612.76 1023.64,612.76 1031.21,614.44 1037.93,609.4 1044.65,608.56 1054.74,606.87 1059.78,605.19 1068.19,605.19 1079.95,605.19 1087.52,604.35 1093.4,603.51 1095.92,603.51 1101.8,603.51 1106.01,606.03 1112.73,607.72 1116.93,607.72 1118.61,610.24 1123.66,612.76 1132.06,613.6 1136.26,612.76 1142.14,612.76 1149.71,612.76 1154.75,611.92 1160.63,611.92 1167.36,612.76 1170.72,613.6 1175.76,614.44 1179.96,616.12 1184.17,620.32 1188.37,620.32 1190.05,622.84 1199.29,626.2 1200.97,630.41 1199.29,632.93 1206.02,634.61 1207.7,635.45 1211.9,636.29 1217.78,637.13 1222.83,638.81 1225.35,640.49 1229.55,643.01 1231.23,646.37 1238.79,650.58 1241.32,653.94 1242.16,658.98 1241.32,664.02 1239.63,664.86 1234.59,666.55 1230.39,668.23 1234.59,671.59 1237.11,673.27 1239.63,676.63 1240.48,679.99 1240.48,684.19 1239.63,686.72 1238.79,690.08 1235.43,691.76 1232.91,695.96 1230.39,696.8 1224.51,699.32 1221.99,700.16 1217.78,701.0 1216.1,701.84 1214.42,702.68 1212.74,702.68 1210.22,702.68 1209.38,702.68 1206.02,703.52 1205.18,704.36 1200.97,704.36 1200.13,709.41 1195.09,711.93 1194.25,714.45 1190.89,716.13 1188.37,718.65 1185.85,719.49 1183.33,720.33 1178.28,721.17 1169.04,722.85 1164.84,722.85 1156.43,723.69 1151.39,723.69 1144.67,723.69 1137.94,723.69 1132.9,726.22"/>
             <!-- 2. Sketches And B/N -->
@@ -254,7 +275,11 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
             <!-- 6. Contact Me -->
             <polygon id="btn-contact" class="balloon-poly-hotspot" points="1824.71,724.31 1817.37,719.90 1810.76,714.03 1804.89,705.95 1804.16,702.28 1796.08,701.55 1785.80,697.88 1780.66,692.00 1777.73,686.13 1777.73,677.32 1779.93,672.18 1784.33,669.98 1776.99,664.11 1773.32,656.03 1776.26,647.22 1780.66,640.61 1788.74,637.68 1796.08,636.94 1799.75,635.47 1802.69,625.93 1808.56,620.06 1815.17,616.39 1829.85,614.92 1836.46,611.98 1845.27,612.72 1850.41,613.45 1858.48,608.31 1868.03,605.37 1876.10,603.17 1884.18,603.17 1894.45,603.17 1902.53,604.64 1907.67,607.58 1913.54,611.25 1926.02,611.25 1934.83,611.25 1946.58,613.45 1953.19,617.85 1957.59,621.53 1962.73,628.87 1961.26,633.27 1972.27,634.01 1984.75,639.88 1990.63,650.16 1990.63,661.17 1985.49,666.31 1986.96,676.59 1989.16,683.19 1986.22,692.00 1978.15,696.41 1972.27,699.34 1964.93,703.01 1962.73,710.36 1959.06,718.43 1945.11,720.63 1935.57,724.31 1925.29,724.31 1917.21,724.31 1909.14,729.44 1890.05,732.38 1876.84,732.38 1867.29,729.44 1858.48,727.24 1856.28,725.77 1854.08,723.57 1847.47,725.77 1840.86,725.77"/>
             
-            <!-- Fari della macchina basati sulle coordinate JSON -->
+            <!-- Fasci di luce a cono (proiettati in avanti verso destra) -->
+            <polygon class="headlight-beam" points="1573.12,937.60 1644.43,991.79 2650,1150 2450,1350"/>
+            <polygon class="headlight-beam" points="1994.33,831.10 2046.62,871.99 2800,920 2700,780"/>
+
+            <!-- Fari della macchina (cerchietti illuminati) -->
             <polygon class="headlight-glow" points="1573.12,937.60 1592.13,934.74 1607.35,936.64 1618.76,940.45 1627.31,946.15 1633.02,953.76 1640.63,964.22 1643.48,977.53 1644.43,991.79 1641.58,1010.81 1632.07,1028.87 1615.90,1041.23 1602.59,1047.89 1587.38,1048.84 1571.22,1046.94 1554.10,1037.43 1538.89,1018.41 1533.18,995.59 1537.94,968.97 1550.30,949.96"/>
             <polygon class="headlight-glow" points="1994.33,831.10 2006.69,824.45 2017.15,824.45 2027.61,827.30 2036.16,834.91 2044.72,850.12 2046.62,871.99 2041.87,892.91 2033.31,905.27 2021.90,914.78 2010.49,917.63 1991.47,910.02 1984.82,898.61 1981.02,871.04 1981.02,853.92 1983.87,839.66"/>
         </svg>
@@ -363,7 +388,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 
     zoomOverlay.addEventListener('click', closeZoom);
 
-    // Attivazione fari abbaglianti al passaggio del mouse sopra i menu (hotspots)
+    // Attivazione fari e fasci abbaglianti al passaggio del mouse sui menu
     document.querySelectorAll('.balloon-poly-hotspot').forEach(hotspot => {
         hotspot.addEventListener('mouseenter', () => { if (!modalOpen()) svgOverlay.classList.add('headlights-active'); });
         hotspot.addEventListener('mouseleave', () => { svgOverlay.classList.remove('headlights-active'); });
