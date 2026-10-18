@@ -30,7 +30,7 @@ body.fonts-loaded .testo-custom{visibility:visible;opacity:1;transition:opacity 
 *{box-sizing:border-box;margin:0;padding:0;-webkit-user-drag:none;touch-action:manipulation}
 img,a,button{-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
 
-/* ELIMINAZIONE SCROLL COME NEL VECCHIO LAYOUT */
+/* ELIMINAZIONE SCROLL */
 html,body{
     width:100%;
     height:100vh;
@@ -43,7 +43,7 @@ html,body{
 .close-red-btn{position:absolute;top:10px;right:10px;width:24px;height:24px;background:var(--red);color:#fff;border:0;border-radius:50%;font:bold 15px/1 Arial,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:1000;box-shadow:0 1px 4px rgba(0,0,0,.5)}
 #close-zoom{position:fixed;top:10px;right:10px;z-index:1000000}
 
-/* SCHERMATA ORIZZONTALE MOBILE: POSIZIONAMENTO DIRETTO SUL TESTO */
+/* SCHERMATA ORIZZONTALE MOBILE */
 #landscape-warning{
     display:none;
     position:fixed;
@@ -62,19 +62,16 @@ html,body{
     width:100%;
     background:var(--red);
     border-bottom:2px solid #000;
-    padding:0;
+    padding:3px 0 1px;
     text-align:center;
     flex-shrink:0;
-    height: auto;
 }
-body.mobile-chrome .landscape-top-bar{padding:0}
+body.mobile-chrome .landscape-top-bar{padding:3px 0 1px}
 .landscape-top-bar h1{
     font-family:var(--f);
     font-size:3.8vw;
     color:#fff;
     margin:0;
-    position:relative;
-    top:2px; /* Forzatura diretta di 2px verso il basso */
     font-weight:400;
     line-height:1;
 }
@@ -162,7 +159,6 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.2vw}
 .dropdown-menu li{font-size:1.3rem;line-height:1.3;white-space:nowrap}
 .close-li{display:block}
 
-/* PADDING SIMMETRICO (STESSO SPAZIO NERO SOPRA E SOTTO) */
 .menu-contact{width:220px;padding:16px 2px 16px}
 
 .menu-about{
@@ -484,15 +480,20 @@ footer {
         ['H5DlDbpFQwo', 'Mostra De Andrè, (Mollica - Rai1)', 'di Vincenzo Mollica, mostra di De Andrè (AP)']
     ].map(([id, title, desc]) => ({ src: `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`, title, desc }));
 
+    // NUOVA GALLERIA WORKS (Sostituisce Color Artworks)
+    const worksImages = Array.from({ length: 9 }, (_, i) => {
+        const num = String(i + 1).padStart(2, '0');
+        return {
+            src: `images/Works${num}.png`,
+            title: 'Works',
+            desc: `${ORD[i].slice(0, -1)}a illustrazione selezionata`
+        };
+    });
+
     const galleries = [
         { btn: 'btn-curiosity', items: videos },
         { btn: 'btn-sketchs', alt: 'Portfolios', items: portfolioImages },
-        { btn: 'btn-color-artworks', alt: 'Color Artworks',
-          items: Array.from({ length: 41 }, (_, i) => ({
-              src: `images/color${String(i + 1).padStart(2, '0')}.jpg`,
-              title: 'Color Artworks',
-              desc: `${ORD[i].slice(0, -1)}a illustrazione a colori selezionata`
-          })) },
+        { btn: 'btn-color-artworks', alt: 'Works', items: worksImages },
         { btn: 'btn-highlights', alt: 'Highlights!', items: [
             { src: 'images/b01.jpg', title: 'Highlights!', desc: 'Enrico Brignano in “I 7 Re di Roma”' },
             { src: 'images/b02.jpg', title: 'Highlights!', desc: 'Enrico Brignano in “I 7 Re di Roma”' }
