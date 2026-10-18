@@ -53,7 +53,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .dropdown-trigger:not(.btn-works-style){text-shadow:1px 1px 2px rgba(0,0,0,.3)}
 .dropdown-trigger:not(.btn-works-style):hover,.dropdown.active:not(.modal-open) .dropdown-trigger:not(.btn-works-style){color:#000}
 
-/* LIVELLO SVG RESPONSIVE PER IL TRACCIATO COCO */
+/* LIVELLO SVG PRONTO PER IL NUOVO TRACCIATO */
 .curiosity-svg-overlay{
   position:absolute;
   top:0;
@@ -66,10 +66,8 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .balloon-poly-hotspot{
   cursor:pointer;
   pointer-events:auto;
-  fill: rgba(255, 0, 0, 0.45); /* Rosso visibile temporaneo di verifica */
-  stroke: yellow;
-  stroke-width: 4;
-  stroke-dasharray: 8,6;
+  fill: transparent; /* Invisibile, pronto all'uso */
+  stroke: none;
 }
 
 .dropdown{position:relative;display:inline-flex;align-items:center}
@@ -191,9 +189,9 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
 <div class="master-canvas">
     <div class="image-wrapper">
         <img src="images/bg2.jpg?v=COVER" class="bg-image" alt="Artwork Fabio Redaelli" fetchpriority="high">
-        <!-- SVG VETTORIALE SCALABILE SULLE COORDINATE NATIVE COCO JSON (3000x1800) -->
+        <!-- SVG VETTORIALE SCALABILE (PRONTO PER IL NUOVO SFONDO) -->
         <svg class="curiosity-svg-overlay" viewBox="0 0 3000 1800" preserveAspectRatio="none">
-            <polygon id="btn-curiosity" class="balloon-poly-hotspot" points="941.36,679.64 937.5,668.04 945.23,662.24 941.37,654.51 933.63,644.85 933.63,637.11 947.16,631.31 954.9,631.31 960.7,629.38 968.43,627.45 978.09,617.78 981.96,611.98 991.62,611.98 995.49,602.32 1007.09,604.25 1020.62,602.32 1026.42,602.32 1028.35,602.32 1039.95,604.25 1045.75,602.32 1053.48,602.32 1063.14,598.45 1068.94,598.45 1080.54,596.52 1086.34,596.52 1109.54,594.59 1094.07,592.65 1123.07,594.59 1132.73,598.45 1138.53,602.32 1148.2,598.45 1161.73,602.32 1173.32,602.32 1179.12,600.39 1182.99,602.32 1184.92,602.32 1190.72,604.25 1196.52,604.25 1204.25,608.12 1206.19,610.05 1206.19,610.05 1206.19,613.92 1215.85,619.72 1227.45,621.65 1239.05,623.58 1242.91,629.38 1248.71,637.11 1254.51,644.85 1254.51,639.05 1252.58,631.31 1248.71,658.38 1250.64,668.04 1252.58,683.51 1262.24,671.91 1262.24,664.18 1258.38,662.24 1242.91,689.3 1237.11,693.17 1221.65,691.24 1211.98,697.04 1210.05,700.9 1198.45,706.7 1194.59,706.7 1184.92,708.63 1182.99,708.64 1163.66,714.43 1155.93,708.63 1152.06,706.7 1142.4,708.63 1136.6,712.5 1125,716.37 1123.07,716.37 1119.2,718.3 1111.47,720.23 1103.74,720.23 1103.74,720.23 1092.14,718.3 1074.74,718.3 1065.08,714.43 1061.21,712.5 1051.55,708.63 1043.81,714.43 1036.08,714.43 1030.28,714.43 1036.08,714.43 1018.69,712.5 1010.95,710.57 1001.29,708.63 995.49,706.7 993.56,704.77 983.89,706.7 985.82,695.1 981.96,693.17 976.16,689.3 966.49,689.3 954.9,689.3"/>
+            <polygon id="btn-curiosity" class="balloon-poly-hotspot" points=""/>
         </svg>
     </div>
 
