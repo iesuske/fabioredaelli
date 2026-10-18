@@ -480,7 +480,7 @@ footer {
         ['H5DlDbpFQwo', 'Mostra De Andrè, (Mollica - Rai1)', 'di Vincenzo Mollica, mostra di De Andrè (AP)']
     ].map(([id, title, desc]) => ({ src: `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`, title, desc }));
 
-    // NUOVA GALLERIA WORKS (Sostituisce Color Artworks)
+    // NUOVA GALLERIA WORKS (Sostituisce Color Artworks con Works01.png...Works09.png)
     const worksImages = Array.from({ length: 9 }, (_, i) => {
         const num = String(i + 1).padStart(2, '0');
         return {
