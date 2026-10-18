@@ -25,7 +25,7 @@ img,a,button{-webkit-user-select:none;user-select:none;-webkit-tap-highlight-col
 
 html,body{width:100%;height:100vh;height:100dvh;background:var(--cream);font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;overflow-x:hidden;overflow-y:auto}
 
-.close-red-btn{position:absolute;top:8px;right:8px;width:24px;height:24px;background:var(--red);color:#fff;border:0;border-radius:50%;font:bold 15px/1 Arial,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:1000;box-shadow:0 1px 4px rgba(0,0,0,.5)}
+.close-red-btn{position:absolute;top:10px;right:10px;width:24px;height:24px;background:var(--red);color:#fff;border:0;border-radius:50%;font:bold 15px/1 Arial,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:1000;box-shadow:0 1px 4px rgba(0,0,0,.5)}
 #close-zoom{position:fixed;top:10px;right:10px;z-index:1000000}
 
 #landscape-warning{display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;height:100dvh;background:var(--cream);z-index:999999;flex-direction:column;align-items:center;overflow:hidden}
@@ -75,14 +75,14 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .dropdown{position:relative;display:inline-flex;align-items:center}
 .dropdown::after{content:'';position:absolute;top:100%;left:-10px;right:-10px;height:20px;z-index:99}
 
-/* ANCORAGGIO PRECISO AL LATO SUPERIORE DEL QUADRATO DEL JSON (Y ~ 303) */
+/* ANCORAGGIO PRECISO AL LATO SUPERIORE DEL JSON (Y ~ 303) */
 .dropdown-menu{
   display:none;
   position:fixed;
   top:17vh;
   left:50%;
   transform:translateX(-50%);
-  background:rgba(0,0,0,.85);
+  background:rgba(0,0,0,.88);
   backdrop-filter:blur(8px);
   -webkit-backdrop-filter:blur(8px);
   border-radius:16px;
@@ -98,19 +98,43 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .close-li{display:block}
 
 .menu-works, .menu-contact{width:220px;padding:24px 10px 10px}
-.menu-about{width:90vw;max-width:680px;padding:32px 24px 20px;max-height:68vh;overflow-y:auto;text-align:justify;text-justify:inter-word}
+
+/* OTTIMIZZAZIONE FINESTRA E TESTO BIO */
+.menu-about{
+  width:88vw;
+  max-width:580px;
+  padding:32px 28px 24px;
+  max-height:68vh;
+  overflow-y:auto;
+}
 
 .menu-about::-webkit-scrollbar{width:3px}
 .menu-about::-webkit-scrollbar-track{background:transparent}
 .menu-about::-webkit-scrollbar-thumb{background-color:transparent;border-radius:10px;transition:background-color .4s ease}
 .menu-about.show-scrollbar{scrollbar-color:rgba(255,255,255,.6) transparent}
 .menu-about.show-scrollbar::-webkit-scrollbar-thumb{background-color:rgba(255,255,255,.6)}
-.menu-about li{padding:4px 0;white-space:normal;text-align:justify}
+
+.bio-title{
+  font-weight:bold;
+  font-size:1.4rem;
+  margin-bottom:12px;
+  text-align:center;
+  color:var(--cream);
+}
+
+.bio-text{
+  font-size:1.15rem;
+  line-height:1.45;
+  text-align:justify;
+  text-justify:inter-word;
+  white-space:normal;
+  word-spacing:-0.5px;
+}
 
 .menu-contact li a,.menu-works li a{color:#fff;display:block;text-decoration:none;padding:10px 12px;transition:background .2s,color .2s;text-align:center;cursor:pointer}
 .menu-contact li a:hover,.menu-works li a:hover{background:var(--red)}
 
-/* POPUP DELLE GALLERIE E PLAYER AGGANCIATI ALL'IDENTICA ALTEZZA */
+/* POPUP DELLE GALLERIE E PLAYER AGGANCIATI ALLA STESSA ALTEZZA */
 .curiosity-overlay{
   position:fixed;
   top:0;
@@ -190,8 +214,8 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
   .dropdown-trigger:not(.btn-works-style){font-size:3.2vw;padding:2px}
 
   .dropdown-menu{top:16vh}
-  .menu-about{padding:28px 16px 16px;max-height:60vh}
-  .menu-about li{font-size:0.95rem;line-height:1.35;text-align:justify}
+  .menu-about{padding:28px 18px 18px;max-height:60vh}
+  .bio-text{font-size:0.95rem;line-height:1.35}
 
   .curiosity-overlay{padding-top:16vh}
   .curiosity-modal{width:92vw;padding:26px 14px 14px}
@@ -244,24 +268,13 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
                 </div>
 
                 <div class="dropdown" id="dropdown-bio">
-                    <ul class="dropdown-menu menu-about testo-custom">
-                        <li class="close-li"><button class="close-red-btn close-bio-btn" type="button">&times;</button></li>
-                        <li class="bio-title" style="font-weight:bold; font-size:1.4rem; margin-bottom:8px; text-align:center;">Roma, 1964.</li>
-                        <li>Autore di fumetti, storyboard artist ed illustratore;</li>
-                        <li>piu' di 30 anni di esperienza sul campo, alternando</li>
-                        <li>collaborazioni di ogni tipo, dai fumetti a locandine</li>
-                        <li>teatrali, da storyboards pubblicitari ai cartoni animati,</li>
-                        <li>ritagliandomi sempre uno spazio come autore. Docente</li>
-                        <li>della Scuola Romana dei fumetti con molteplici</li>
-                        <li>collaborazioni consolidate nel tempo, con mostre, stages</li>
-                        <li>e pubblicazioni di vari fumetti. Pubblicazioni: Newton &amp;</li>
-                        <li>Compton, Comic Art, Acme Comics, Blue press, il Sistina,</li>
-                        <li>Giunti, Einaudi, AS Roma, Tipymedia, LAV, “il Romanista”.</li>
-                        <li>Gli ultimi lavori comprendono la locandina teatrale del</li>
-                        <li>blockbuster "I sette Re di Roma" di Enrico Brignano</li>
-                        <li>e cinque volumi illustrati de l'Enciclopedia Romanista</li>
-                        <li>curata dal Direttore Editoriale Tonino Cagnucci.</li>
-                    </ul>
+                    <div class="dropdown-menu menu-about testo-custom">
+                        <button class="close-red-btn close-bio-btn" type="button">&times;</button>
+                        <div class="bio-title">Roma, 1964.</div>
+                        <p class="bio-text">
+                            Autore di fumetti, storyboard artist ed illustratore; più di 30 anni di esperienza sul campo, alternando collaborazioni di ogni tipo, dai fumetti a locandine teatrali, da storyboards pubblicitari ai cartoni animati, ritagliandomi sempre uno spazio come autore. Docente della Scuola Romana dei fumetti con molteplici collaborazioni consolidate nel tempo, con mostre, stages e pubblicazioni di vari fumetti. Pubblicazioni: Newton &amp; Compton, Comic Art, Acme Comics, Blue press, il Sistina, Giunti, Einaudi, AS Roma, Tipymedia, LAV, “il Romanista”. Gli ultimi lavori comprendono la locandina teatrale del blockbuster "I sette Re di Roma" di Enrico Brignano e cinque volumi illustrati de l'Enciclopedia Romanista curata dal Direttore Editoriale Tonino Cagnucci.
+                        </p>
+                    </div>
                 </div>
 
                 <div class="dropdown">
