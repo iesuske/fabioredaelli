@@ -43,7 +43,7 @@ html,body{
 .close-red-btn{position:absolute;top:10px;right:10px;width:24px;height:24px;background:var(--red);color:#fff;border:0;border-radius:50%;font:bold 15px/1 Arial,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:1000;box-shadow:0 1px 4px rgba(0,0,0,.5)}
 #close-zoom{position:fixed;top:10px;right:10px;z-index:1000000}
 
-/* SCHERMATA ORIZZONTALE MOBILE: BANDA ROSSA SOTTILE ORIGINALE + SCRITTA ABBASSATA */
+/* SCHERMATA ORIZZONTALE MOBILE: RIDUZIONE ALTEZZA BANDA ROSSA DAL BASSO */
 #landscape-warning{
     display:none;
     position:fixed;
@@ -62,19 +62,20 @@ html,body{
     width:100%;
     background:var(--red);
     border-bottom:2px solid #000;
-    padding:3px 0 1px; /* Banda rossa mantenuta sottile e originale */
+    padding:0; /* Padding azzerato per stringere la banda dal basso */
     text-align:center;
     flex-shrink:0;
+    line-height:1;
 }
-body.mobile-chrome .landscape-top-bar{padding:5px 0 1px}
+body.mobile-chrome .landscape-top-bar{padding:0}
 .landscape-top-bar h1{
     font-family:var(--f);
     font-size:4.2vw;
     color:#fff;
     margin:0;
-    padding-top:2px; /* Sposta solo la scritta verso il basso per toccare la riga nera */
+    padding:1px 0 0 0; /* Controllo millimetrico del posizionamento */
     font-weight:400;
-    line-height:1;
+    line-height:0.95;
 }
 body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .text-black{color:#000}
