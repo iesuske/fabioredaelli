@@ -60,7 +60,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
   stroke: none;
 }
 
-/* DISSOLVENZA E FARI INTENSI (BASATI SUL NUOVO JSON 16.45vh) */
+/* DISSOLVENZA E FARI INTENSI */
 .headlight-glow, .headlight-beam{
   opacity: 0;
   transition: opacity 0.6s ease-in-out;
@@ -85,7 +85,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 
 .dropdown{position:relative;display:inline-flex;align-items:center}
 
-/* ANCORAGGIO PRECISO AL RETTANGOLO DEL JSON (16.45vh) */
+/* ANCORAGGIO PRECISO AL RETTANGOLO DEL JSON (16.45vh)[span_1](start_span)[span_1](end_span) */
 .dropdown-menu{
   display:none;
   position:fixed;
@@ -139,7 +139,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
   white-space:normal;
 }
 
-/* MODIFICA: SELEZIONE ROSSA ARROTONdata PER IL MENU CONTACT */
+/* SELEZIONE ARROTONDATA PER IL MENU CONTACT */
 .menu-contact li a{
   color:#fff;
   display:block;
@@ -213,7 +213,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .zoom-container{position:relative;display:flex;max-width:92vw;max-height:88vh;max-height:88dvh;border-radius:8px;box-shadow:0 15px 40px rgba(0,0,0,.8);border:2px solid rgba(255,255,255,.85);overflow:hidden}
 .zoom-container img{max-width:92vw;max-height:88vh;max-height:88dvh;object-fit:contain;display:block;pointer-events:none}
 
-footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;background:rgba(13,27,42,.95);backdrop-filter:blur(4px);color:#fff;font-size:.7rem;z-index:1000}
+<footer>Copyright &copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</footer>
 
 @media screen and (max-width: 1024px) and (orientation: portrait) {
   .master-canvas{margin-top:-28px}
@@ -355,9 +355,10 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
 
     const ORD = ['primo','secondo','terzo','quarto','quinto','sesto','settimo','ottavo','nono','decimo','undicesimo','dodicesimo','tredicesimo','quattordicesimo','quindicesimo','sedicesimo','diciassettesimo','diciottesimo','diciannovesimo','ventesimo','ventunesimo','ventiduesimo','ventitreesimo','ventiquattresimo','venticinquesimo','ventiseiesimo','ventisettesimo','ventottesimo','ventinovesimo','trentesimo','trentunesimo','trentaduesimo','trentatreesimo','trentaquattresimo','trentacinquesimo','trentaseiesimo','trentasettesimo','trentottesimo','trentanovesimo','quarantesimo','quarantunesimo'];
 
-    // CORREZIONE PERCORSO IMMAGINI PORTFOLIO: punta esattamente ai file "XX_Portfolio.png"
-    const portfolioImages = Array.from({ length: 10 }, (_, i) => ({
-        src: `images/${String(i + 1).padStart(2, '0')}_Portfolio.png`,
+    // ELENCO ESATTO DEI FILE PORTFOLIO PRESENTI (saltando la 09 che non c'è)
+    const portfolioFiles = ['01', '02', '03', '04', '05', '06', '07', '08', '10'];
+    const portfolioImages = portfolioFiles.map((num, i) => ({
+        src: `images/${num}_Portfolio.png`,
         title: 'Portfolios',
         desc: `${ORD[i]} disegno selezionato dalla galleria portfolio`
     }));
