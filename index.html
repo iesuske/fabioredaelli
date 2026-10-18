@@ -257,7 +257,7 @@ footer {
   .curiosity-text p{font-size:1rem}
 }
 
-/* OTTIMIZZAZIONE MOBILE VERTICALE (IPHONE / SMARTPHONE): BANDA BEIGE PERFETTA E SFUMATURA IN BASSO */
+/* OTTIMIZZAZIONE MOBILE VERTICALE (IPHONE / SMARTPHONE): ANCORAGGIO FINESTRE PIÙ ALTO */
 @media screen and (max-width: 767px) and (orientation: portrait) {
   html, body {
     height: 100%;
@@ -271,23 +271,25 @@ footer {
     align-items: flex-start;
     justify-content: center;
     overflow: hidden;
-    padding-top: 10px; /* BANDA BEIGE SUPERIORE RIDOTTA ESATTAMENTE A METÀ RISPETTO A PRIMA */
+    padding-top: 10px;
   }
   .image-wrapper {
     width: 100%;
     transform: scale(2.2);
     transform-origin: center top;
-    margin-top: -5.5%; /* POSIZIONAMENTO OTTIMALE DELLA GRAFICA */
+    margin-top: -5.5%;
     -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%);
-    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%); /* SFUMATURA MORBIDA IN BASSO */
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%);
   }
   .bg-image {
     width: 100%;
     height: auto;
     display: block;
   }
-  .dropdown-menu{top:13vh}
-  .curiosity-overlay{padding-top:13vh}
+  /* LINEA DI ANCORAGGIO DELLE FINESTRE ALZATA IN ALTO SU MOBILE */
+  .dropdown-menu{top:9.5vh}
+  .curiosity-overlay{padding-top:9.5vh}
+
   .menu-about{width:92vw;max-width:92vw;padding:24px 14px 16px;max-height:60vh}
   .bio-title{font-size:1.15rem}
   .bio-text{font-size:0.95rem;line-height:1.35}
