@@ -23,8 +23,7 @@ body.fonts-loaded .testo-custom{visibility:visible;opacity:1;transition:opacity 
 *{box-sizing:border-box;margin:0;padding:0;-webkit-user-drag:none;touch-action:manipulation}
 img,a,button{-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
 
-/* BLOCCO TOTALE DELLO SCROLL DELLA PAGINA */
-html,body{width:100%;height:100vh;height:100dvh;background:var(--cream);font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;overflow:hidden;position:relative}
+html,body{width:100%;height:100vh;height:100dvh;background:var(--cream);font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;overflow-x:hidden;overflow-y:auto}
 
 .close-red-btn{position:absolute;top:10px;right:10px;width:24px;height:24px;background:var(--red);color:#fff;border:0;border-radius:50%;font:bold 15px/1 Arial,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:1000;box-shadow:0 1px 4px rgba(0,0,0,.5)}
 #close-zoom{position:fixed;top:10px;right:10px;z-index:1000000}
@@ -86,11 +85,11 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 
 .dropdown{position:relative;display:inline-flex;align-items:center}
 
-/* ANCORAGGIO DELLE FINESTRE (15.4vh) */
+/* ANCORAGGIO PRECISO AL RETTANGOLO DEL JSON (16.45vh)[span_0](start_span)[span_0](end_span) */
 .dropdown-menu{
   display:none;
   position:fixed;
-  top:15.4vh;
+  top:16.45vh;
   left:50%;
   transform:translateX(-50%);
   background:rgba(0,0,0,.88);
@@ -108,7 +107,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .dropdown-menu li{font-size:1.3rem;line-height:1.3;white-space:nowrap}
 .close-li{display:block}
 
-.menu-contact{width:220px;padding:24px 4px 10px}
+.menu-contact{width:220px;padding:24px 10px 10px}
 
 .menu-about{
   width:90vw;
@@ -140,13 +139,13 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
   white-space:normal;
 }
 
-/* SELEZIONE ARROTONDATA ESTESA VERSO I BORDI PER CONTACT */
+/* SELEZIONE ARROTONDATA PER IL MENU CONTACT */
 .menu-contact li a{
   color:#fff;
   display:block;
   text-decoration:none;
-  padding:10px 8px;
-  margin:2px 2px;
+  padding:10px 12px;
+  margin:2px 6px;
   border-radius:8px;
   transition:background .2s, color .2s;
   text-align:center;
@@ -166,7 +165,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
   display:none;
   align-items:flex-start;
   justify-content:center;
-  padding-top:15.4vh;
+  padding-top:16.45vh;
   overflow-y:auto;
   pointer-events:none;
 }
@@ -214,24 +213,12 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .zoom-container{position:relative;display:flex;max-width:92vw;max-height:88vh;max-height:88dvh;border-radius:8px;box-shadow:0 15px 40px rgba(0,0,0,.8);border:2px solid rgba(255,255,255,.85);overflow:hidden}
 .zoom-container img{max-width:92vw;max-height:88vh;max-height:88dvh;object-fit:contain;display:block;pointer-events:none}
 
-/* FOOTER FISSO IN BASSO COME ALL'INIZIO */
-footer{
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  background: var(--cream);
-  z-index: 200;
-  font-size: clamp(9px, 2.2vw, 12px);
-  padding: 4px 0;
-  white-space: nowrap;
-}
+<footer>Copyright &copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</footer>
 
 @media screen and (max-width: 1024px) and (orientation: portrait) {
   .master-canvas{margin-top:-28px}
-  .dropdown-menu{top:15.4vh}
-  .curiosity-overlay{padding-top:15.4vh}
+  .dropdown-menu{top:16.45vh}
+  .curiosity-overlay{padding-top:16.45vh}
   
   .menu-about{width:92vw;max-width:92vw;padding:26px 16px 18px;max-height:65vh}
   .bio-title{font-size:1.25rem}
@@ -244,13 +231,13 @@ footer{
 
 @media screen and (max-width: 767px) {
   .master-canvas{margin-top:-21.5px}
-  .dropdown-menu{top:15.4vh}
-  .curiosity-overlay{padding-top:15.4vh}
+  .dropdown-menu{top:16.45vh}
+  .curiosity-overlay{padding-top:16.45vh}
   .menu-about{width:92vw;max-width:92vw;padding:24px 14px 16px;max-height:60vh}
   .bio-title{font-size:1.15rem}
   .bio-text{font-size:0.95rem;line-height:1.35}
 
-  .curiosity-overlay{padding-top:15.4vh}
+  .curiosity-overlay{padding-top:16.45vh}
   .curiosity-modal{width:94vw;max-width:94vw;padding:22px 12px 12px}
   .curiosity-text h3{font-size:1.2rem}
   .curiosity-text p{font-size:0.9rem}
@@ -368,6 +355,7 @@ footer{
 
     const ORD = ['primo','secondo','terzo','quarto','quinto','sesto','settimo','ottavo','nono','decimo','undicesimo','dodicesimo','tredicesimo','quattordicesimo','quindicesimo','sedicesimo','diciassettesimo','diciottesimo','diciannovesimo','ventesimo','ventunesimo','ventiduesimo','ventitreesimo','ventiquattresimo','venticinquesimo','ventiseiesimo','ventisettesimo','ventottesimo','ventinovesimo','trentesimo','trentunesimo','trentaduesimo','trentatreesimo','trentaquattresimo','trentacinquesimo','trentaseiesimo','trentasettesimo','trentottesimo','trentanovesimo','quarantesimo','quarantunesimo'];
 
+    // ELENCO DELLE 9 FOTO PORTFOLIO CON LE DESCRIZIONI CORRETTE (apostrofo protetto)
     const portfolioImages = [
         { src: 'images/01_Portfolio.png', title: 'Portfolios', desc: `Copertina "Rock 'n' Roll stratchers", 2023` },
         { src: 'images/02_Portfolio.png', title: 'Portfolios', desc: 'Copertina "Il Grande romanzo della Roma", 2024' },
@@ -400,4 +388,147 @@ footer{
         { btn: 'btn-color-artworks', alt: 'Color Artworks',
           items: Array.from({ length: 41 }, (_, i) => ({
               src: `images/color${String(i + 1).padStart(2, '0')}.jpg`,
-              title
+              title: 'Color Artworks',
+              desc: `${ORD[i].slice(0, -1)}a illustrazione a colori selezionata`
+          })) },
+        { btn: 'btn-highlights', alt: 'Highlights!', items: [
+            { src: 'images/b01.jpg', title: 'Highlights!', desc: 'Enrico Brignano in “I 7 Re di Roma”' },
+            { src: 'images/b02.jpg', title: 'Highlights!', desc: 'Enrico Brignano in “I 7 Re di Roma”' }
+        ] }
+    ];
+
+    const dropdowns = [...document.querySelectorAll('.dropdown')];
+    const zoomOverlay = $('zoom-overlay');
+    const zoomImg = $('zoom-modal-img');
+    const bioDropdown = $('dropdown-bio');
+    const contactDropdown = $('dropdown-contact');
+
+    const modalOpen = () => zoomOverlay.classList.contains('open') || galleries.some(g => g.el.classList.contains('open'));
+    const closeZoom = () => { zoomOverlay.classList.remove('open'); zoomImg.src = ''; };
+    const closeGallery = g => { g.el.classList.remove('open'); g.media.src = ''; };
+    const setModalOpen = on => dropdowns.forEach(d => { d.classList.toggle('modal-open', on); if (on) d.classList.remove('active'); });
+    const closeAll = () => {
+        closeZoom();
+        dropdowns.forEach(d => d.classList.remove('active', 'modal-open'));
+        galleries.forEach(closeGallery);
+        svgOverlay.classList.remove('headlights-active');
+    };
+
+    zoomOverlay.addEventListener('click', closeZoom);
+
+    // Attivazione fari al passaggio del mouse
+    document.querySelectorAll('.balloon-poly-hotspot').forEach(hotspot => {
+        hotspot.addEventListener('mouseenter', () => { if (!modalOpen()) svgOverlay.classList.add('headlights-active'); });
+        hotspot.addEventListener('mouseleave', () => { svgOverlay.classList.remove('headlights-active'); });
+    });
+
+    galleries.forEach(g => {
+        const media = g.alt
+            ? `<div class="works-image-container"><img alt="${g.alt}"></div>`
+            : '<div class="video-container"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
+
+        g.el = document.createElement('div');
+        g.el.className = 'curiosity-overlay';
+        g.el.innerHTML = `<div class="curiosity-modal">
+            <button class="close-red-btn" type="button">&times;</button>${media}
+            <div class="curiosity-text testo-custom"><h3></h3><p></p></div>
+            <div class="curiosity-footer testo-custom">
+                <span class="video-counter"></span>
+                <div class="nav-buttons">
+                    <button class="curiosity-nav-btn" type="button">&laquo; Indietro</button>
+                    <button class="curiosity-nav-btn active-nav" type="button">Avanti &raquo;</button>
+                </div>
+            </div></div>`;
+        body.insertBefore(g.el, zoomOverlay);
+
+        g.media = g.el.querySelector('iframe, img');
+        const [title, desc, counter] = ['h3', 'p', '.video-counter'].map(s => g.el.querySelector(s));
+        const [prev, next] = g.el.querySelectorAll('.curiosity-nav-btn');
+        const total = g.items.length;
+        let index = 0;
+
+        const show = n => {
+            index = n;
+            const item = g.items[n];
+            g.media.src = item.src;
+            title.textContent = item.title;
+            desc.textContent = item.desc;
+            counter.textContent = `${n + 1} / ${total}`;
+        };
+
+        [prev, next].forEach(btn => btn.addEventListener('click', e => {
+            e.stopPropagation();
+            show((index + (btn === next ? 1 : -1) + total) % total);
+            prev.classList.toggle('active-nav', btn === prev);
+            next.classList.toggle('active-nav', btn === next);
+        }));
+
+        g.el.querySelector('.close-red-btn').addEventListener('click', () => { closeGallery(g); setModalOpen(false); svgOverlay.classList.remove('headlights-active'); });
+
+        $(g.btn)?.addEventListener('click', e => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (modalOpen()) return;
+            closeAll();
+            setModalOpen(true);
+            prev.classList.remove('active-nav');
+            next.classList.add('active-nav');
+            show(0);
+            g.el.classList.add('open');
+            svgOverlay.classList.add('headlights-active');
+        });
+
+        if (g.alt) g.media.addEventListener('click', e => {
+            e.stopPropagation();
+            if (g.media.src) { zoomImg.src = g.media.src; zoomOverlay.classList.add('open'); }
+        });
+    });
+
+    const toggleBio = e => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (modalOpen()) return;
+        const wasActive = bioDropdown.classList.contains('active');
+        closeAll();
+        if (!wasActive) {
+            bioDropdown.classList.add('active');
+            svgOverlay.classList.add('headlights-active');
+        }
+    };
+
+    const toggleContact = e => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (modalOpen()) return;
+        const wasActive = contactDropdown.classList.contains('active');
+        closeAll();
+        if (!wasActive) {
+            contactDropdown.classList.add('active');
+            svgOverlay.classList.add('headlights-active');
+        }
+    };
+
+    $('btn-bio').addEventListener('click', toggleBio);$('btn-contact').addEventListener('click', toggleContact);
+
+    document.querySelectorAll('.close-bio-btn').forEach(btn => {
+        const close = e => {
+            e.preventDefault();
+            e.stopPropagation();
+            btn.closest('.dropdown').classList.remove('active');
+            svgOverlay.classList.remove('headlights-active');
+        };
+        btn.addEventListener('click', close);
+        btn.addEventListener('touchend', close, { passive: false });
+    });
+
+    document.addEventListener('click', e => {
+        if (modalOpen()) return;
+        dropdowns.forEach(d => { if (!d.contains(e.target)) d.classList.remove('active'); });
+        if (!dropdowns.some(d => d.classList.contains('active'))) {
+            svgOverlay.classList.remove('headlights-active');
+        }
+    });
+})();
+</script>
+</body>
+</html>
