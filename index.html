@@ -254,10 +254,10 @@ footer {
   
   .curiosity-modal{width:92vw;max-width:92vw;padding:24px 14px 14px}
   .curiosity-text h3{font-size:1.4rem}
-  .curiosity-text p{font-size:0.9rem}
+  .curiosity-text p{font-size:1rem}
 }
 
-/* OTTIMIZZAZIONE MOBILE VERTICALE (IPHONE / SMARTPHONE): BANDA BEIGE IN ALTO E SFUMATURA MORBIDA IN BASSO */
+/* OTTIMIZZAZIONE MOBILE VERTICALE (IPHONE / SMARTPHONE): BANDA BEIGE PERFETTA E SFUMATURA IN BASSO */
 @media screen and (max-width: 767px) and (orientation: portrait) {
   html, body {
     height: 100%;
@@ -271,15 +271,15 @@ footer {
     align-items: flex-start;
     justify-content: center;
     overflow: hidden;
-    padding-top: 20px; /* ABBASSA LA GRAFICA LASCIANDO UNA BANDA BEIGE AMPIA IN ALTO */
+    padding-top: 10px; /* BANDA BEIGE SUPERIORE RIDOTTA ESATTAMENTE A METÀ RISPETTO A PRIMA */
   }
   .image-wrapper {
     width: 100%;
     transform: scale(2.2);
     transform-origin: center top;
-    margin-top: -3%; /* DÀ IL GIUSTO SPAZIO IN ALTO PER MOSTRARE LA STRISCIA BEIGE */
+    margin-top: -5.5%; /* POSIZIONAMENTO OTTIMALE DELLA GRAFICA */
     -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%);
-    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%); /* SFUMATURA DISSOLVENZA VERSO IL BASSO */
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%); /* SFUMATURA MORBIDA IN BASSO */
   }
   .bg-image {
     width: 100%;
