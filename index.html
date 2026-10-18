@@ -246,7 +246,7 @@ html,body{
 .zoom-container{position:relative;display:flex;max-width:92vw;max-height:88vh;max-height:88dvh;border-radius:8px;box-shadow:0 15px 40px rgba(0,0,0,.8);border:2px solid rgba(255,255,255,.85);overflow:hidden}
 .zoom-container img{max-width:92vw;max-height:88vh;max-height:88dvh;object-fit:contain;display:block;pointer-events:none}
 
-/* FOOTER FISSO CON SFONDO ROSSO E TESTO NERO */
+/* FOOTER FISSO CON SFONDO ROSSO, TESTO BIANCO E NOME NERO */
 footer {
     position: fixed;
     bottom: 0;
@@ -255,10 +255,14 @@ footer {
     padding: 8px;
     text-align: center;
     background: var(--red);
-    color: #000000;
+    color: #ffffff;
     font-size: 0.75rem;
     z-index: 1000;
     box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+}
+footer .footer-name {
+    color: #000000;
+    font-weight: bold;
 }
 
 @media screen and (max-width: 1024px) and (orientation: portrait) {
@@ -397,7 +401,7 @@ footer {
 </div>
 
 <footer>
-    <p>Copyright &copy; 2026 Fabio Redaelli - Comic Art Author. Tutti i diritti riservati.</p>
+    <p>Copyright &copy; 2026 <span class="footer-name">Fabio Redaelli</span> - Comic Art Author. Tutti i diritti riservati.</p>
 </footer>
 
 <script>
