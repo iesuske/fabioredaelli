@@ -79,7 +79,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .dropdown-menu{
   display:none;
   position:fixed;
-  top:29vh;
+  top:16vh;
   left:50%;
   transform:translateX(-50%);
   background:rgba(0,0,0,.85);
@@ -98,7 +98,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .close-li{display:block}
 
 .menu-works, .menu-contact{width:220px;padding:24px 10px 10px}
-.menu-about{width:90vw;max-width:620px;padding:32px 20px 20px;max-height:60vh;overflow-y:auto;text-align:center}
+.menu-about{width:85vw;max-width:480px;padding:32px 20px 20px;max-height:65vh;overflow-y:auto;text-align:center}
 
 .menu-about::-webkit-scrollbar{width:3px}
 .menu-about::-webkit-scrollbar-track{background:transparent}
@@ -121,7 +121,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
   display:none;
   align-items:flex-start;
   justify-content:center;
-  padding-top:29vh;
+  padding-top:16vh;
   overflow-y:auto;
   pointer-events:none;
 }
@@ -133,7 +133,7 @@ body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
   border-radius:16px;
   width:90vw;
   max-width:680px;
-  max-height:65vh;
+  max-height:68vh;
   overflow-y:auto;
   padding:28px 20px 16px;
   box-shadow:0 20px 50px rgba(0,0,0,.8);
@@ -189,11 +189,11 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
   .btn-works-style{font-size:3.2vw;padding:1px 6px;border-radius:6px}
   .dropdown-trigger:not(.btn-works-style){font-size:3.2vw;padding:2px}
 
-  .dropdown-menu{top:28vh}
-  .menu-about{padding:28px 14px 16px;max-height:55vh}
+  .dropdown-menu{top:15vh}
+  .menu-about{padding:28px 14px 16px;max-height:60vh}
   .menu-about li{font-size:0.95rem;line-height:1.35}
 
-  .curiosity-overlay{padding-top:28vh}
+  .curiosity-overlay{padding-top:15vh}
   .curiosity-modal{width:92vw;padding:26px 14px 14px}
   .curiosity-text h3{font-size:1.35rem}
   .curiosity-text p{font-size:.95rem}
@@ -244,7 +244,6 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
                 </div>
 
                 <div class="dropdown" id="dropdown-bio">
-                    <a class="dropdown-trigger testo-custom" id="trigger-bio">Bio</a>
                     <ul class="dropdown-menu menu-about testo-custom">
                         <li class="close-li"><button class="close-red-btn close-bio-btn" type="button">&times;</button></li>
                         <li class="bio-title" style="font-weight:bold; font-size:1.4rem; margin-bottom:8px;">Roma, 1964.</li>
@@ -419,7 +418,7 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
         });
     });
 
-    // Gestione sicura e diretta per l'apertura della Bio (sia da SVG che da testo)
+    // Gestione apertura Bio tramite balloon SVG
     const toggleBio = e => {
         e.preventDefault();
         e.stopPropagation();
@@ -429,13 +428,13 @@ footer{position:fixed;bottom:0;left:0;width:100%;padding:8px;text-align:center;b
         if (!wasActive) bioDropdown.classList.add('active');
     };
 
-    $('btn-bio').addEventListener('click', toggleBio);$('trigger-bio').addEventListener('click', toggleBio);
+    $('btn-bio').addEventListener('click', toggleBio);
 
     $('btn-curiosity').addEventListener('mouseenter', () => { if (!modalOpen()) closeAll(); });$('btn-sketchs').addEventListener('mouseenter', () => { if (!modalOpen()) closeAll(); });
     $('btn-highlights').addEventListener('mouseenter', () => { if (!modalOpen()) closeAll(); });$('btn-bio').addEventListener('mouseenter', () => { if (!modalOpen()) closeAll(); });
 
     dropdowns.forEach(dd => {
-        if (dd === bioDropdown) return; // Gestito da toggleBio separatamente
+        if (dd === bioDropdown) return;
 
         const toggle = () => {
             if (modalOpen()) return;
