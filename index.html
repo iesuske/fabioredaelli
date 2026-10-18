@@ -254,14 +254,15 @@ footer {
   
   .curiosity-modal{width:92vw;max-width:92vw;padding:24px 14px 14px}
   .curiosity-text h3{font-size:1.4rem}
-  .curiosity-text p{font-size:1rem}
+  .curiosity-text p{font-size:0.9rem}
 }
 
-/* OTTIMIZZAZIONE INGRANDIMENTO E STRISCIA BEIGE UNIFORME PER MOBILE VERTICALE */
+/* OTTIMIZZAZIONE MOBILE VERTICALE (IPHONE / SMARTPHONE): BANDA BEIGE IN ALTO E SFUMATURA MORBIDA IN BASSO */
 @media screen and (max-width: 767px) and (orientation: portrait) {
   html, body {
     height: 100%;
     overflow: hidden;
+    background-color: var(--cream);
   }
   .master-canvas {
     margin-top: 0;
@@ -270,21 +271,23 @@ footer {
     align-items: flex-start;
     justify-content: center;
     overflow: hidden;
-    padding-top: max(env(safe-area-inset-top), 10px);
+    padding-top: 20px; /* ABBASSA LA GRAFICA LASCIANDO UNA BANDA BEIGE AMPIA IN ALTO */
   }
   .image-wrapper {
     width: 100%;
-    transform: scale(2.25);
+    transform: scale(2.2);
     transform-origin: center top;
-    margin-top: -8.5%;
+    margin-top: -3%; /* DÀ IL GIUSTO SPAZIO IN ALTO PER MOSTRARE LA STRISCIA BEIGE */
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%); /* SFUMATURA DISSOLVENZA VERSO IL BASSO */
   }
   .bg-image {
     width: 100%;
     height: auto;
     display: block;
   }
-  .dropdown-menu{top:12vh}
-  .curiosity-overlay{padding-top:12vh}
+  .dropdown-menu{top:13vh}
+  .curiosity-overlay{padding-top:13vh}
   .menu-about{width:92vw;max-width:92vw;padding:24px 14px 16px;max-height:60vh}
   .bio-title{font-size:1.15rem}
   .bio-text{font-size:0.95rem;line-height:1.35}
