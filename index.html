@@ -43,7 +43,7 @@ html,body{
 .close-red-btn{position:absolute;top:10px;right:10px;width:24px;height:24px;background:var(--red);color:#fff;border:0;border-radius:50%;font:bold 15px/1 Arial,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:1000;box-shadow:0 1px 4px rgba(0,0,0,.5)}
 #close-zoom{position:fixed;top:10px;right:10px;z-index:1000000}
 
-/* SCHERMATA ORIZZONTALE MOBILE: SCRITTA APPOGGIATA PERFETTAMENTE SULLA LINEA NERA */
+/* SCHERMATA ORIZZONTALE MOBILE: SCRITTA RIGOROSAMENTE APPOGGIATA SULLA LINEA */
 #landscape-warning{
     display:none;
     position:fixed;
@@ -62,19 +62,20 @@ html,body{
     width:100%;
     background:var(--red);
     border-bottom:2px solid #000;
-    padding:12px 0 0; /* Padding azzerato in basso per far toccare la scritta alla riga nera */
+    padding:10px 0 0;
     text-align:center;
     flex-shrink:0;
 }
-body.mobile-chrome .landscape-top-bar{padding-top:16px}
+body.mobile-chrome .landscape-top-bar{padding-top:14px}
 .landscape-top-bar h1{
     font-family:var(--f);
     font-size:4.2vw;
     color:#fff;
     margin:0;
+    margin-bottom:-4px; /* FORZA L'ABBASSAMENTO FINO A TOCCARE LA LINEA NERA */
     padding-bottom:0;
     font-weight:400;
-    line-height:0.95; /* Abbassa perfettamente la scritta fino al bordo inferiore */
+    line-height:1;
 }
 body.mobile-chrome .landscape-top-bar h1{font-size:4.5vw}
 .text-black{color:#000}
