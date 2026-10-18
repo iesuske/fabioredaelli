@@ -257,7 +257,7 @@ footer {
   .curiosity-text p{font-size:1rem}
 }
 
-/* OTTIMIZZAZIONE SPECIFICA PER IPHONE / MOBILE VERTICALE */
+/* OTTIMIZZAZIONE INGRANDIMENTO GRAFICA PER MOBILE VERTICALE (IPHONE) */
 @media screen and (max-width: 767px) and (orientation: portrait) {
   html, body {
     height: 100%;
@@ -265,20 +265,21 @@ footer {
   }
   .master-canvas {
     margin-top: 0;
-    height: calc(100dvh - 32px);
+    height: calc(100dvh - 30px);
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
+    overflow: hidden;
   }
   .image-wrapper {
     width: 100%;
-    height: auto;
-    max-height: 100%;
+    transform: scale(2.2);
+    transform-origin: center 22%;
   }
   .bg-image {
     width: 100%;
     height: auto;
-    object-fit: contain;
+    display: block;
   }
   .dropdown-menu{top:12vh}
   .curiosity-overlay{padding-top:12vh}
@@ -290,7 +291,7 @@ footer {
   .curiosity-text h3{font-size:1.2rem}
   .curiosity-text p{font-size:0.9rem}
   
-  footer{font-size: clamp(9px, 2.8vw, 11px); white-space: nowrap; padding: 6px 4px;}
+  footer{font-size: clamp(8px, 2.5vw, 10px); white-space: nowrap; padding: 6px 4px;}
 }
 </style>
 </head>
