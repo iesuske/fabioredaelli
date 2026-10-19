@@ -143,6 +143,7 @@ html,body{
 .close-li{display:block}
 
 .menu-contact{width:220px;padding:16px 2px 16px}
+.menu-contact li{font-size:1.15rem}
 
 .menu-about{
   width:90vw;
@@ -201,7 +202,7 @@ html,body{
   justify-content:center;
   padding-top:14.8vh;
   overflow-y:auto;
-  pointer-events:none;
+  pointer-events:auto;
 }
 .curiosity-overlay.open{display:flex}
 .curiosity-modal{
@@ -314,6 +315,7 @@ footer .footer-name {
   .menu-about{width:92vw;max-width:92vw;padding:24px 14px 16px;max-height:60vh}
   .bio-title{font-size:1.15rem}
   .bio-text{font-size:0.95rem;line-height:1.35}
+  .menu-contact li{font-size:0.95rem}
 
   .curiosity-modal{width:94vw;max-width:94vw;padding:22px 12px 12px}
   .curiosity-text h3{font-size:1.2rem}
@@ -433,8 +435,6 @@ footer .footer-name {
         showFonts();
     }
     setTimeout(showFonts, 1000);
-
-    const ORD = ['primo','secondo','terzo','quarto','quinto','sesto','settimo','ottavo','nono','decimo','undicesimo','dodicesimo','tredicesimo','quattordicesimo','quindicesimo','sedicesimo','diciassettesimo','diciottesimo','diciannovesimo','ventesimo','ventunesimo','ventiduesimo','ventitreesimo','ventiquattresimo','venticinquesimo','ventiseiesimo','ventisettesimo','ventottesimo','ventinovesimo','trentesimo','trentunesimo','trentaduesimo','trentatreesimo','trentaquattresimo','trentacinquesimo','trentaseiesimo','trentasettesimo','trentottesimo','trentanovesimo','quarantesimo','quarantunesimo'];
 
     const portfolioImages = [
         { src: 'images/01_Portfolio.png', title: 'Portfolios', desc: `Copertina "Rock 'n' Roll stratchers", 2023` },
@@ -558,6 +558,15 @@ footer .footer-name {
         }));
 
         g.el.querySelector('.close-red-btn').addEventListener('click', () => { closeGallery(g); setModalOpen(false); svgOverlay.classList.remove('headlights-active'); });
+
+        // Chiusura al click sullo sfondo della galleria/player
+        g.el.addEventListener('click', e => {
+            if (e.target === g.el) {
+                closeGallery(g);
+                setModalOpen(false);
+                svgOverlay.classList.remove('headlights-active');
+            }
+        });
 
         $(g.btn)?.addEventListener('click', e => {
             e.preventDefault();
