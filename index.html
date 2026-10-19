@@ -102,6 +102,13 @@ html,body{
   stroke:none;
 }
 
+/* STILE TEMPORANEO PER EVIDENZIARE IL CLACSON CON UN BORDO ROSSO */
+#btn-clacson {
+  fill: rgba(255, 0, 0, 0.35) !important;
+  stroke: #ff0000 !important;
+  stroke-width: 8px !important;
+}
+
 /* DISSOLVENZA E FARI OTTIMIZZATI */
 .headlight-glow, .headlight-beam{
   opacity:0;
@@ -410,6 +417,9 @@ footer .footer-name {
             <!-- 6. Contact Me -->
             <polygon id="btn-contact" class="balloon-poly-hotspot" points="1824.71,724.31 1817.37,719.90 1810.76,714.03 1804.89,705.95 1804.16,702.28 1796.08,701.55 1785.80,697.88 1780.66,692.00 1777.73,686.13 1777.73,677.32 1779.93,672.18 1784.33,669.98 1776.99,664.11 1773.32,656.03 1776.26,647.22 1780.66,640.61 1788.74,637.68 1796.08,636.94 1799.75,635.47 1802.69,625.93 1808.56,620.06 1815.17,616.39 1829.85,614.92 1836.46,611.98 1845.27,612.72 1850.41,613.45 1858.48,608.31 1868.03,605.37 1876.10,603.17 1884.18,603.17 1894.45,603.17 1902.53,604.64 1907.67,607.58 1913.54,611.25 1926.02,611.25 1934.83,611.25 1946.58,613.45 1953.19,617.85 1957.59,621.53 1962.73,628.87 1961.26,633.27 1972.27,634.01 1984.75,639.88 1990.63,650.16 1990.63,661.17 1985.49,666.31 1986.96,676.59 1989.16,683.19 1986.22,692.00 1978.15,696.41 1972.27,699.34 1964.93,703.01 1962.73,710.36 1959.06,718.43 1945.11,720.63 1935.57,724.31 1925.29,724.31 1917.21,724.31 1909.14,729.44 1890.05,732.38 1876.84,732.38 1867.29,729.44 1858.48,727.24 1856.28,725.77 1854.08,723.57 1847.47,725.77 1840.86,725.77"/>
             
+            <!-- 7. Easter Egg: Clacson (Area visibile con contorno rosso)[span_1](start_span)[span_1](end_span) -->
+            <polygon id="btn-clacson" class="balloon-poly-hotspot" points="1921.80,1077.49 1928.92,1106.99 1930.95,1106.99 1929.94,1106.99 2011.33,1063.25 2006.24,1034.76 2006.24,1031.71"/>
+
             <!-- Cono faro sinistro (ampiamente allargato in fondo a cono) -->
             <polygon class="headlight-beam" points="1592.13,934.74 1602.59,1047.89 3000,1380 3000,880"/>
             <!-- Cono faro destro (corretto: apertura superiore più ampia e conica) -->
@@ -480,6 +490,15 @@ footer .footer-name {
         showFonts();
     }
     setTimeout(showFonts, 1000);
+
+    // EASTER EGG AUDIO CLACSON
+    const clacsonAudio = new Audio('clacson.mp3');
+    $('btn-clacson')?.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        clacsonAudio.currentTime = 0;
+        clacsonAudio.play().catch(err => console.log('Audio error:', err));
+    });
 
     const portfolioImages = [
         { src: 'images/01_Portfolio.png', title: 'Portfolios', desc: `Copertina "Rock 'n' Roll stratchers", 2023` },
@@ -557,6 +576,7 @@ footer .footer-name {
     zoomOverlay.addEventListener('click', closeZoom);
 
     document.querySelectorAll('.balloon-poly-hotspot').forEach(hotspot => {
+        if (hotspot.id === 'btn-clacson') return;
         hotspot.addEventListener('mouseenter', () => { if (!modalOpen()) svgOverlay.classList.add('headlights-active'); });
         hotspot.addEventListener('mouseleave', () => { svgOverlay.classList.remove('headlights-active'); });
     });
@@ -592,7 +612,7 @@ footer .footer-name {
             g.media.src = item.src;
             title.textContent = item.title;
             desc.textContent = item.desc;
-            counter.textContent = `${n + 1} / ${total}`;
+            counter.textContent = `${n + 1} /${total}`;
         };
 
         [prev, next].forEach(btn => btn.addEventListener('click', e => {
@@ -602,6 +622,7 @@ footer .footer-name {
             next.classList.toggle('active-nav', btn === next);
         }));
 
+        g.el.querySelector('.close-red-btn').append
         g.el.querySelector('.close-red-btn').addEventListener('click', () => { closeGallery(g); setModalOpen(false); svgOverlay.classList.remove('headlights-active'); });
 
         g.el.addEventListener('click', e => {
@@ -651,7 +672,7 @@ footer .footer-name {
         closeAll();
         if (!wasActive) {
             contactDropdown.classList.add('active');
-            svgOverlay.classList.add('headlights-active');
+            svgOverlay.classList.add('headlights-active`');
         }
     };
 
