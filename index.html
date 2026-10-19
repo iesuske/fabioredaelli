@@ -272,7 +272,7 @@ footer .footer-name {
     font-weight: normal;
 }
 
-/* OTTIMIZZAZIONE PIENA PER TABLET E IPAD IN PORTRAIT (768px -> 1200px) - ALLINEATO CON VALORE DIMEZZATO */
+/* OTTIMIZZAZIONE PIENA PER TABLET E IPAD IN PORTRAIT (768px -> 1200px) - ALLINEATO E CORRETTO */
 @media screen and (min-width: 768px) and (max-width: 1200px) and (orientation: portrait) {
   html, body {
     height: 100dvh;
@@ -286,13 +286,12 @@ footer .footer-name {
     align-items: flex-start; /* Mantiene l'allineamento identico tra Safari e Chrome */
     justify-content: center;
     overflow: hidden;
-    padding-top: 0px;
+    padding-top: 7.5px; /* Spaziatura positiva corretta (metà del valore precedente) */
   }
   .image-wrapper {
     width: 100%;
     transform: scale(2.05);
     transform-origin: center top;
-    margin-top: -7.5px; /* Valore dimezzato (-7.5px) per ridurre la banda beige sopra */
   }
   .bg-image {
     width: 100%;
