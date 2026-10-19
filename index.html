@@ -272,21 +272,21 @@ footer .footer-name {
     font-weight: normal;
 }
 
-/* OTTIMIZZAZIONE PIENA PER TABLET E IPAD IN PORTRAIT (768px -> 1200px) */
+/* OTTIMIZZAZIONE PIENA PER TABLET E IPAD IN PORTRAIT (768px -> 1200px) - UNIFORMATA SAFARI/CHROME */
 @media screen and (min-width: 768px) and (max-width: 1200px) and (orientation: portrait) {
   html, body {
-    height: 100%;
+    height: 100vh;
     overflow: hidden;
     background-color: var(--cream);
   }
   .master-canvas {
     margin-top: 0;
-    height: calc(100dvh - 35px);
+    height: calc(100vh - 35px);
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    padding-top: 16px; /* Spaziatura superiore ottimizzata per iPad in portrait */
+    padding-top: 15px; /* Spaziatura superiore ottimizzata e identica su Safari e Chrome */
   }
   .image-wrapper {
     width: 100%;
