@@ -268,20 +268,58 @@ footer .footer-name {
     font-weight: normal;
 }
 
-@media screen and (max-width: 1024px) and (orientation: portrait) {
-  .master-canvas{margin-top:0}
-  .dropdown-menu{top:14.8vh}
-  .curiosity-overlay{padding-top:14.8vh}
-  
-  .menu-about{width:92vw;max-width:92vw;padding:26px 16px 18px;max-height:65vh}
-  .bio-title{font-size:1.25rem}
-  .bio-text{font-size:1.05rem;line-height:1.4}
-  
-  .curiosity-modal{width:92vw;max-width:92vw;padding:24px 14px 14px}
-  .curiosity-text h3{font-size:1.4rem}
-  .curiosity-text p{font-size:1rem}
+/* OTTIMIZZAZIONE PER TABLET E IPAD IN PORTRAIT (768px -> 1200px) */
+@media screen and (min-width: 768px) and (max-width: 1200px) and (orientation: portrait) {
+  html, body {
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--cream);
+  }
+  .master-canvas {
+    margin-top: 0;
+    height: calc(100dvh - 35px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .image-wrapper {
+    width: 100%;
+    transform: scale(1.45);
+    transform-origin: center center;
+  }
+  .bg-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .dropdown-menu {
+    top: 12vh;
+  }
+  .curiosity-overlay {
+    padding-top: 12vh;
+  }
+  .menu-about {
+    width: 80vw;
+    max-width: 620px;
+    padding: 28px 20px 20px;
+    max-height: 65vh;
+  }
+  .bio-title {
+    font-size: 1.3rem;
+  }
+  .bio-text {
+    font-size: 1.1rem;
+    line-height: 1.4;
+  }
+  .curiosity-modal {
+    width: 85vw;
+    max-width: 650px;
+    padding: 24px 16px 16px;
+  }
 }
 
+/* SMARTPHONE IN PORTRAIT */
 @media screen and (max-width: 767px) and (orientation: portrait) {
   html, body {
     height: 100%;
@@ -560,7 +598,6 @@ footer .footer-name {
 
         g.el.querySelector('.close-red-btn').addEventListener('click', () => { closeGallery(g); setModalOpen(false); svgOverlay.classList.remove('headlights-active'); });
 
-        // Chiusura al click sullo sfondo della galleria/player
         g.el.addEventListener('click', e => {
             if (e.target === g.el) {
                 closeGallery(g);
