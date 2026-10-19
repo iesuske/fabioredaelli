@@ -272,7 +272,7 @@ footer .footer-name {
     font-weight: normal;
 }
 
-/* OTTIMIZZAZIONE PIENA PER TABLET E IPAD IN PORTRAIT (768px -> 1200px) - ALLINEATO E RIDOTTO */
+/* OTTIMIZZAZIONE PIENA PER TABLET E IPAD IN PORTRAIT (768px -> 1200px) - ALLINEATO CON VALORE DIMEZZATO */
 @media screen and (min-width: 768px) and (max-width: 1200px) and (orientation: portrait) {
   html, body {
     height: 100dvh;
@@ -292,7 +292,7 @@ footer .footer-name {
     width: 100%;
     transform: scale(2.05);
     transform-origin: center top;
-    margin-top: -15px; /* Tira l'immagine verso l'alto riducendo drasticamente la banda beige */
+    margin-top: -7.5px; /* Valore dimezzato (-7.5px) per ridurre la banda beige sopra */
   }
   .bg-image {
     width: 100%;
