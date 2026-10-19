@@ -45,7 +45,7 @@ html,body{
 .close-red-btn{position:absolute;top:10px;right:10px;width:24px;height:24px;background:var(--red);color:#fff;border:0;border-radius:50%;font:bold 15px/1 Arial,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:1000;box-shadow:0 1px 4px rgba(0,0,0,.5)}
 #close-zoom{position:fixed;top:10px;right:10px;z-index:1000000}
 
-/* SCHERMATA ORIZZONTALE MOBILE SENZA ELEMENTI GRAFICI DI INTESTAZIONE */
+/* SCHERMATA ORIZZONTALE PER SMARTPHONE E TABLET (IPAD) */
 #landscape-warning{
     display:none;
     position:fixed;
@@ -75,7 +75,11 @@ html,body{
 }
 .landscape-text-container h2{font-size:12vh;font-weight:400;margin-bottom:8px;color:var(--red)}
 .landscape-text-container p{font-size:6vh;line-height:1.2;color:#000;white-space:normal}
-@media screen and (max-height:500px) and (orientation:landscape){#landscape-warning{display:flex}}
+
+/* Attivazione avviso orizzontale su iPhone, smartphone e iPad in landscape */
+@media screen and (max-width:1366px) and (orientation:landscape) and (hover:none){
+    #landscape-warning{display:flex}
+}
 
 .master-canvas{position:relative;width:100%;margin-top:-50px}
 .image-wrapper{position:relative;width:100%;max-width:100%;display:block}
