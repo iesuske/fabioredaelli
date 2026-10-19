@@ -275,18 +275,18 @@ footer .footer-name {
 /* OTTIMIZZAZIONE PIENA PER TABLET E IPAD IN PORTRAIT (768px -> 1200px) - UNIFORMATA SAFARI/CHROME */
 @media screen and (min-width: 768px) and (max-width: 1200px) and (orientation: portrait) {
   html, body {
-    height: 100vh;
+    height: 100dvh;
     overflow: hidden;
     background-color: var(--cream);
   }
   .master-canvas {
     margin-top: 0;
-    height: calc(100vh - 35px);
+    height: calc(100dvh - 35px);
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    padding-top: 15px; /* Spaziatura superiore ottimizzata e identica su Safari e Chrome */
+    padding-top: 7px; /* Spaziatura superiore dimezzata (7px) e identica su Safari e Chrome */
   }
   .image-wrapper {
     width: 100%;
