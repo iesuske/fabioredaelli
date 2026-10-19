@@ -102,7 +102,7 @@ html,body{
   stroke:none;
 }
 
-/* DISSOLVENZA E FARI OTTIMIZZATI */
+/* DISSOLVENZA E FARI ORIGINALI */
 .headlight-glow, .headlight-beam{
   opacity:0;
   transition:opacity 0.6s ease-in-out;
@@ -412,12 +412,12 @@ footer .footer-name {
             <!-- 7. Easter Egg: Clacson (Invisibile e reattivo al click/tap) -->
             <polygon id="btn-clacson" class="balloon-poly-hotspot" points="1921.80,1077.49 1928.92,1106.99 1930.95,1106.99 1929.94,1106.99 2011.33,1063.25 2006.24,1034.76 2006.24,1031.71"/>
 
-            <!-- Cono faro sinistro (ampiamente allargato in fondo a cono) -->
+            <!-- Cono faro sinistro (intensità originale) -->
             <polygon class="headlight-beam" points="1592.13,934.74 1602.59,1047.89 3000,1380 3000,880"/>
-            <!-- Cono faro destro (corretto: apertura superiore più ampia e conica) -->
+            <!-- Cono faro destro (intensità originale) -->
             <polygon class="headlight-beam" points="1995.0,812.0 2010.49,917.63 3000,1070 3000,690"/>
 
-            <!-- Illuminazione fari tondi -->
+            <!-- Illuminazione fari tondi (intensità originale) -->
             <polygon class="headlight-glow" points="1573.12,937.60 1592.13,934.74 1607.35,936.64 1618.76,940.45 1627.31,946.15 1633.02,953.76 1640.63,964.22 1643.48,977.53 1644.43,991.79 1641.58,1010.81 1632.07,1028.87 1615.90,1041.23 1602.59,1047.89 1587.38,1048.84 1571.22,1046.94 1554.10,1037.43 1538.89,1018.41 1533.18,995.59 1537.94,968.97 1550.30,949.96"/>
             <polygon class="headlight-glow" points="1994.33,831.10 2006.69,824.45 2017.15,824.45 2027.61,827.30 2036.16,834.91 2044.72,850.12 2046.62,871.99 2041.87,892.91 2033.31,905.27 2021.90,914.78 2010.49,917.63 1991.47,910.02 1984.82,898.61 1981.02,871.04 1981.02,853.92 1983.87,839.66"/>
         </svg>
@@ -483,7 +483,7 @@ footer .footer-name {
     }
     setTimeout(showFonts, 1000);
 
-    // EASTER EGG CLACSON (Audio + fari attivati al click/tap)
+    // EASTER EGG CLACSON (Audio + fari attivati al click/tap sul volante)
     const clacsonAudio = new Audio('clacson.mp3');
     const clacsonHotspot = $('btn-clacson');
     let clacsonTimeout = null;
@@ -497,11 +497,11 @@ footer .footer-name {
             // Accende i fari
             svgOverlay.classList.add('headlights-active');
 
-            // Fa partire l'audio da capo
+            // Fa partire l'audio
             clacsonAudio.currentTime = 0;
             clacsonAudio.play().catch(err => console.log('Audio error:', err));
 
-            // Spegne i fari dopo 1.2 secondi (o alla fine dell'audio)
+            // Spegne i fari dopo 1.2 secondi
             clearTimeout(clacsonTimeout);
             clacsonTimeout = setTimeout(() => {
                 svgOverlay.classList.remove('headlights-active');
@@ -634,9 +634,6 @@ footer .footer-name {
             next.classList.toggle('active-nav', btn === next);
         }));
 
-        g.el.querySelector('.close-red-btn').addEventListener('click', () => { closeGallery(g); setModalOpen(false); svgOverlay.classList.remove('headlights-active'); });
-
-        g.el.querySelector('.close-red-btn').append
         g.el.querySelector('.close-red-btn').addEventListener('click', () => { closeGallery(g); setModalOpen(false); svgOverlay.classList.remove('headlights-active'); });
 
         g.el.addEventListener('click', e => {
