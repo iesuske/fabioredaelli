@@ -272,7 +272,7 @@ footer .footer-name {
     font-weight: normal;
 }
 
-/* OTTIMIZZAZIONE MIRATA SOLO PER IPAD IN PORTRAIT (768px -> 1200px) - BANDA SUPERIORE RIDOTTA E UNIFORME */
+/* OTTIMIZZAZIONE MIRATA SOLO PER IPAD IN PORTRAIT (768px -> 1200px) - BANDA SUPERIORE DIMEZZATA ULTERIORMENTE */
 @media screen and (min-width: 768px) and (max-width: 1200px) and (orientation: portrait) {
   html, body {
     height: 100dvh;
@@ -286,13 +286,13 @@ footer .footer-name {
     align-items: flex-start; /* Allineamento identico al millimetro tra Safari e Chrome */
     justify-content: center;
     overflow: hidden;
-    padding-top: 0px; /* Annulla lo spazio extra in alto */
+    padding-top: 0px;
   }
   .image-wrapper {
     width: 100%;
     transform: scale(2.05);
     transform-origin: center top;
-    margin-top: -12px; /* Solleva l'immagine riducendo drasticamente la banda beige sopra */
+    margin-top: -18px; /* Valore aumentato a -18px per ridurre ancora della metà la banda beige */
   }
   .bg-image {
     width: 100%;
