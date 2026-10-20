@@ -27,8 +27,20 @@
 .testo-custom{visibility:hidden;opacity:0}
 body.fonts-loaded .testo-custom{visibility:visible;opacity:1;transition:opacity .3s ease-in}
 
-*{box-sizing:border-box;margin:0;padding:0;-webkit-user-drag:none;touch-action:manipulation}
-img,a,button{-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  -webkit-user-drag:none;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent; /* Disabilita il quadrato di tap grigio nativo di iOS/Safari su tutti gli elementi */
+}
+img,a,button,svg,polygon{
+  -webkit-user-select:none;
+  user-select:none;
+  -webkit-tap-highlight-color:transparent;
+  -webkit-touch-callout:none;
+}
 
 /* ELIMINAZIONE SCROLL E BLOCCO ZOOM AUTOMATICO TESTO SU MOBILE */
 html,body{
@@ -100,6 +112,8 @@ html,body{
   pointer-events:auto;
   fill:transparent;
   stroke:none;
+  outline:none;
+  -webkit-tap-highlight-color:transparent; /* Rimuove l'evidenziato sui polygon SVG */
 }
 
 /* DISSOLVENZA E FARI ORIGINALI E GIALLI SU TUTTI I DISPOSITIVI */
