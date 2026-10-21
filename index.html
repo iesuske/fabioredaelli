@@ -116,7 +116,7 @@ html,body{
   -webkit-tap-highlight-color:transparent;
 }
 
-/* DISSOLVENZA E FARI BILANCIATI BIANCO/GIALLO */
+/* DISSOLVENZA E FARI PIU' INTENSI E AMPI */
 .headlight-glow, .headlight-beam{
   opacity:0;
   transition:opacity 0.6s ease-in-out;
@@ -418,7 +418,7 @@ footer .footer-name {
         
         <svg class="curiosity-svg-overlay" viewBox="0 0 3000 1800" preserveAspectRatio="none" id="svg-overlay">
             <defs>
-                <!-- Gradiente fari con leggero tocco di giallo in piu' -->
+                <!-- Gradiente fari con cono di luce ampliato e tonalita' calde -->
                 <linearGradient id="beam-gradient" x1="0%" y1="0%" x2="100%" y2="10%">
                     <stop offset="0%" stop-color="rgba(255, 245, 180, 0.90)" />
                     <stop offset="25%" stop-color="rgba(255, 225, 100, 0.60)" />
@@ -446,10 +446,10 @@ footer .footer-name {
             <!-- 7. Easter Egg: Clacson (Invisibile e reattivo al click/tap) -->
             <polygon id="btn-clacson" class="balloon-poly-hotspot" points="1921.80,1077.49 1928.92,1106.99 1930.95,1106.99 1929.94,1106.99 2011.33,1063.25 2006.24,1034.76 2006.24,1031.71"/>
 
-            <!-- Cono faro sinistro -->
-            <polygon class="headlight-beam" points="1592.13,934.74 1602.59,1047.89 3000,1380 3000,880"/>
-            <!-- Cono faro destro -->
-            <polygon class="headlight-beam" points="2006.69,824.45 2010.49,917.63 3000,1050 3000,720"/>
+            <!-- Cono faro sinistro (ampliato) -->
+            <polygon class="headlight-beam" points="1592.13,934.74 1602.59,1047.89 3000,1620 3000,650"/>
+            <!-- Cono faro destro (ampliato) -->
+            <polygon class="headlight-beam" points="2006.69,824.45 2010.49,917.63 3000,1320 3000,520"/>
 
             <!-- Illuminazione fari tondi -->
             <polygon class="headlight-glow" points="1573.12,937.60 1592.13,934.74 1607.35,936.64 1618.76,940.45 1627.31,946.15 1633.02,953.76 1640.63,964.22 1643.48,977.53 1644.43,991.79 1641.58,1010.81 1632.07,1028.87 1615.90,1041.23 1602.59,1047.89 1587.38,1048.84 1571.22,1046.94 1554.10,1037.43 1538.89,1018.41 1533.18,995.59 1537.94,968.97 1550.30,949.96"/>
