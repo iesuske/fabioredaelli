@@ -33,7 +33,7 @@ body.fonts-loaded .testo-custom{visibility:visible;opacity:1;transition:opacity 
   padding:0;
   -webkit-user-drag:none;
   touch-action:manipulation;
-  -webkit-tap-highlight-color:transparent; /* Disabilita il quadrato di tap grigio nativo di iOS/Safari su tutti gli elementi */
+  -webkit-tap-highlight-color:transparent;
 }
 img,a,button,svg,polygon{
   -webkit-user-select:none;
@@ -42,7 +42,7 @@ img,a,button,svg,polygon{
   -webkit-touch-callout:none;
 }
 
-/* ELIMINAZIONE SCROLL E BLOCCO ZOOM AUTOMATICO TESTO SU MOBILE */
+/* SCROLLBAR E BLOCCO ZOOM TESTO MOBILE */
 html,body{
     width:100%;
     height:100vh;
@@ -57,7 +57,7 @@ html,body{
 .close-red-btn{position:absolute;top:10px;right:10px;width:24px;height:24px;background:var(--red);color:#fff;border:0;border-radius:50%;font:bold 15px/1 Arial,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:1000;box-shadow:0 1px 4px rgba(0,0,0,.5)}
 #close-zoom{position:fixed;top:10px;right:10px;z-index:1000000}
 
-/* SCHERMATA ORIZZONTALE PER SMARTPHONE E TABLET (IPAD) */
+/* ORIENTAMENTO ORIZZONTALE */
 #landscape-warning{
     display:none;
     position:fixed;
@@ -88,7 +88,6 @@ html,body{
 .landscape-text-container h2{font-size:12vh;font-weight:400;margin-bottom:8px;color:var(--red)}
 .landscape-text-container p{font-size:4.8vh;line-height:1.3;color:#000;white-space:normal}
 
-/* Attivazione avviso orizzontale su iPhone, smartphone e iPad in landscape */
 @media screen and (max-width:1366px) and (orientation:landscape) and (hover:none){
     #landscape-warning{display:flex}
 }
@@ -97,7 +96,7 @@ html,body{
 .image-wrapper{position:relative;width:100%;max-width:100%;display:block}
 .bg-image{width:100%;height:auto;display:block}
 
-/* LIVELLO SVG RESPONSIVE PER AREE SENSIBILI E FARI */
+/* LAYER SVG OVERLAY E HOTSPOTS */
 .curiosity-svg-overlay{
   position:absolute;
   top:0;
@@ -113,34 +112,30 @@ html,body{
   fill:transparent;
   stroke:none;
   outline:none;
-  -webkit-tap-highlight-color:transparent; /* Rimuove l'evidenziato sui polygon SVG */
+  -webkit-tap-highlight-color:transparent;
 }
 
-/* DISSOLVENZA E FARI ORIGINALI E GIALLI SU TUTTI I DISPOSITIVI */
+/* ILLUMINAZIONE FARI */
 .headlight-glow, .headlight-beam{
   opacity:0;
   transition:opacity 0.6s ease-in-out;
   pointer-events:none;
 }
-
 .headlight-glow{
   fill:rgba(255, 220, 80, 0.95);
   mix-blend-mode:screen;
 }
-
 .headlight-beam{
   fill:url(#beam-gradient);
   mix-blend-mode:screen;
   filter:url(#soft-blur);
 }
-
 .headlights-active .headlight-glow,
 .headlights-active .headlight-beam{
   opacity:0.95;
 }
 
 .dropdown{position:relative;display:inline-flex;align-items:center}
-
 .dropdown-menu{
   display:none;
   position:fixed;
@@ -171,7 +166,6 @@ html,body{
   max-height:68vh;
   overflow-y:auto;
 }
-
 .menu-about::-webkit-scrollbar{width:3px}
 .menu-about::-webkit-scrollbar-track{background:transparent}
 .menu-about::-webkit-scrollbar-thumb{background-color:transparent;border-radius:10px;transition:background-color .4s ease}
@@ -185,7 +179,6 @@ html,body{
   text-align:center;
   color:#fff;
 }
-
 .bio-text{
   font-size:1.15rem;
   line-height:1.45;
@@ -209,6 +202,7 @@ html,body{
   background:var(--red);
 }
 
+/* MODALI E GALLERIA */
 .curiosity-overlay{
   position:fixed;
   top:0;
@@ -244,11 +238,44 @@ html,body{
 }
 .curiosity-modal::-webkit-scrollbar{display:none}
 
-.video-container,.works-image-container{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden}
-.video-container{border-radius:10px;background:#000}
-.video-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
-.works-image-container{border-radius:8px;box-shadow:0 15px 40px rgba(0,0,0,.8);cursor:zoom-in}
-.works-image-container img{position:absolute;inset:0;margin:auto;max-width:100%;max-height:100%;width:auto;height:auto;border:2px solid rgba(255,255,255,.85);border-radius:6px;cursor:zoom-in;z-index:1}
+.media-container{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/9;
+  overflow:hidden;
+  background:#000000;
+  border-radius:8px;
+}
+
+.video-container,.works-image-container{
+  position:relative;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:#000000;
+}
+.video-container{border-radius:10px}
+.video-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;background:#000000}
+.works-image-container{border-radius:8px;box-shadow:0 15px 40px rgba(0,0,0,.8);cursor:zoom-in;background:#000000}
+.works-image-container img{
+  position:absolute;
+  inset:0;
+  margin:auto;
+  max-width:100%;
+  max-height:100%;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  border:2px solid rgba(255,255,255,.85);
+  border-radius:6px;
+  cursor:zoom-in;
+  z-index:1;
+  background:#000000;
+  opacity:1;
+  transition:opacity 0.2s ease-in-out;
+}
+.works-image-container img.loading{opacity:0}
+
 .works-image-container::after,.zoom-container::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;border-radius:6px;pointer-events:none;box-shadow:inset 0 0 55px rgba(0,0,0,.65);background:radial-gradient(circle,rgba(0,0,0,0) 50%,rgba(0,0,0,.35) 100%);z-index:2}
 
 .curiosity-text{color:#fff;text-align:center}
@@ -264,10 +291,10 @@ html,body{
 
 .zoom-overlay{display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;height:100dvh;background:rgba(0,0,0,.92);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:999999;justify-content:center;align-items:center;padding:15px;cursor:zoom-out}
 .zoom-overlay.open{display:flex}
-.zoom-container{position:relative;display:flex;max-width:92vw;max-height:88vh;max-height:88dvh;border-radius:8px;box-shadow:0 15px 40px rgba(0,0,0,.8);border:2px solid rgba(255,255,255,.85);overflow:hidden}
-.zoom-container img{max-width:92vw;max-height:88vh;max-height:88dvh;object-fit:contain;display:block;pointer-events:none}
+.zoom-container{position:relative;display:flex;max-width:92vw;max-height:88vh;max-height:88dvh;border-radius:8px;box-shadow:0 15px 40px rgba(0,0,0,.8);border:2px solid rgba(255,255,255,.85);overflow:hidden;background:#000000}
+.zoom-container img{max-width:92vw;max-height:88vh;max-height:88dvh;object-fit:contain;display:block;pointer-events:none;background:#000000}
 
-/* FOOTER FISSO CON SFONDO ROSSO, TESTO BIANCO, NOME NERO E RIGHINA NERA SUPERIORE */
+/* FOOTER */
 footer {
     position: fixed;
     bottom: 0;
@@ -279,7 +306,7 @@ footer {
     color: #ffffff;
     font-size: 0.75rem;
     z-index: 2000;
-    border-top: 1px solid #000000; /* Righina nera sopra al footer */
+    border-top: 1px solid #000000;
     box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
 }
 footer .footer-name {
@@ -287,7 +314,7 @@ footer .footer-name {
     font-weight: normal;
 }
 
-/* OTTIMIZZAZIONE MIRATA SOLO PER IPAD IN PORTRAIT (768px -> 1200px) */
+/* MEDIA QUERIES TABLET / PORTRAIT */
 @media screen and (min-width: 768px) and (max-width: 1200px) and (orientation: portrait) {
   html, body {
     height: 100dvh;
@@ -400,7 +427,6 @@ footer .footer-name {
         
         <svg class="curiosity-svg-overlay" viewBox="0 0 3000 1800" preserveAspectRatio="none" id="svg-overlay">
             <defs>
-                <!-- Gradiente fari ottimizzato con tonalita' calde e gialle -->
                 <linearGradient id="beam-gradient" x1="0%" y1="0%" x2="100%" y2="10%">
                     <stop offset="0%" stop-color="rgba(255, 230, 80, 0.95)" />
                     <stop offset="25%" stop-color="rgba(255, 210, 50, 0.65)" />
@@ -425,21 +451,20 @@ footer .footer-name {
             <polygon id="btn-color-artworks" class="balloon-poly-hotspot" points="1805.8,493.38 1776.42,497.24 1785.7,481.78 1779.51,468.63 1771.78,466.31 1761.73,462.45 1756.31,454.72 1755.54,441.57 1760.95,435.39 1751.68,423.02 1755.54,413.74 1764.05,408.32 1771.01,404.46 1777.19,403.69 1780.28,395.18 1787.24,389.0 1794.2,384.36 1803.48,381.26 1813.53,381.26 1824.36,383.58 1832.86,377.4 1843.69,374.3 1858.38,372.76 1869.2,376.62 1880.8,381.26 1883.89,382.04 1893.94,379.72 1908.63,380.49 1914.82,383.58 1923.32,391.31 1928.74,399.05 1927.96,402.91 1941.11,404.46 1950.39,409.87 1955.03,421.47 1951.93,429.97 1948.07,433.07 1955.03,440.03 1956.57,447.76 1952.71,457.04 1947.29,460.13 1937.24,463.99 1931.83,465.54 1928.74,472.5 1924.87,479.46 1917.14,483.32 1907.86,485.64 1893.17,487.19 1884.66,485.64 1876.16,491.06 1865.34,494.15 1853.74,494.92 1844.46,494.92 1836.73,494.15 1829.77,491.06 1824.36,487.96 1821.26,494.15"/>
             <!-- 6. Contact Me -->
             <polygon id="btn-contact" class="balloon-poly-hotspot" points="1824.71,724.31 1817.37,719.90 1810.76,714.03 1804.89,705.95 1804.16,702.28 1796.08,701.55 1785.80,697.88 1780.66,692.00 1777.73,686.13 1777.73,677.32 1779.93,672.18 1784.33,669.98 1776.99,664.11 1773.32,656.03 1776.26,647.22 1780.66,640.61 1788.74,637.68 1796.08,636.94 1799.75,635.47 1802.69,625.93 1808.56,620.06 1815.17,616.39 1829.85,614.92 1836.46,611.98 1845.27,612.72 1850.41,613.45 1858.48,608.31 1868.03,605.37 1876.10,603.17 1884.18,603.17 1894.45,603.17 1902.53,604.64 1907.67,607.58 1913.54,611.25 1926.02,611.25 1934.83,611.25 1946.58,613.45 1953.19,617.85 1957.59,621.53 1962.73,628.87 1961.26,633.27 1972.27,634.01 1984.75,639.88 1990.63,650.16 1990.63,661.17 1985.49,666.31 1986.96,676.59 1989.16,683.19 1986.22,692.00 1978.15,696.41 1972.27,699.34 1964.93,703.01 1962.73,710.36 1959.06,718.43 1945.11,720.63 1935.57,724.31 1925.29,724.31 1917.21,724.31 1909.14,729.44 1890.05,732.38 1876.84,732.38 1867.29,729.44 1858.48,727.24 1856.28,725.77 1854.08,723.57 1847.47,725.77 1840.86,725.77"/>
-            <!-- 7. Easter Egg: Clacson (Invisibile e reattivo al click/tap) -->
+            <!-- 7. Easter Egg: Clacson -->
             <polygon id="btn-clacson" class="balloon-poly-hotspot" points="1921.80,1077.49 1928.92,1106.99 1930.95,1106.99 1929.94,1106.99 2011.33,1063.25 2006.24,1034.76 2006.24,1031.71"/>
 
-            <!-- Cono faro sinistro -->
+            <!-- Coni fari -->
             <polygon class="headlight-beam" points="1592.13,934.74 1602.59,1047.89 3000,1380 3000,880"/>
-            <!-- Cono faro destro -->
             <polygon class="headlight-beam" points="2006.69,824.45 2010.49,917.63 3000,1050 3000,720"/>
 
-            <!-- Illuminazione fari tondi -->
+            <!-- Fari tondi -->
             <polygon class="headlight-glow" points="1573.12,937.60 1592.13,934.74 1607.35,936.64 1618.76,940.45 1627.31,946.15 1633.02,953.76 1640.63,964.22 1643.48,977.53 1644.43,991.79 1641.58,1010.81 1632.07,1028.87 1615.90,1041.23 1602.59,1047.89 1587.38,1048.84 1571.22,1046.94 1554.10,1037.43 1538.89,1018.41 1533.18,995.59 1537.94,968.97 1550.30,949.96"/>
             <polygon class="headlight-glow" points="1994.33,831.10 2006.69,824.45 2017.15,824.45 2027.61,827.30 2036.16,834.91 2044.72,850.12 2046.62,871.99 2041.87,892.91 2033.31,905.27 2021.90,914.78 2010.49,917.63 1991.47,910.02 1984.82,898.61 1981.02,871.04 1981.02,853.92 1983.87,839.66"/>
         </svg>
     </div>
 
-    <!-- CONTENITORI NASCOSTI PER BIO E CONTACT -->
+    <!-- CONTENITORI BIO E CONTACT -->
     <div class="dropdown" id="dropdown-bio">
         <div class="dropdown-menu menu-about testo-custom">
             <button class="close-red-btn close-bio-btn" type="button">&times;</button>
@@ -499,17 +524,15 @@ footer .footer-name {
     }
     setTimeout(showFonts, 1000);
 
-    // EASTER EGG CLACSON (Audio + fari sincronizzati con la durata del file MP3)
+    // EASTER EGG CLACSON
     const clacsonAudio = new Audio('clacson.mp3');
     const clacsonHotspot = $('btn-clacson');
 
     if (clacsonHotspot) {
-        // Alla fine del file audio, spegne i fari avviando la dissolvenza CSS
         clacsonAudio.addEventListener('ended', () => {
             svgOverlay.classList.remove('headlights-active');
         });
 
-        // Gestisce anche eventuali interruzioni o pause dell'audio
         clacsonAudio.addEventListener('pause', () => {
             if (clacsonAudio.currentTime < clacsonAudio.duration) {
                 svgOverlay.classList.remove('headlights-active');
@@ -521,10 +544,7 @@ footer .footer-name {
             e.stopPropagation();
             if (modalOpen()) return;
 
-            // Accende i fari
             svgOverlay.classList.add('headlights-active');
-
-            // Fa partire l'audio dall'inizio
             clacsonAudio.currentTime = 0;
             clacsonAudio.play().catch(err => console.log('Audio error:', err));
         };
@@ -533,13 +553,13 @@ footer .footer-name {
         clacsonHotspot.addEventListener('touchend', triggerClacson);
     }
 
-    // 1. I 5 Video selezionati (1, 2, 6, 10, 11)
+    // VIDEO CURIOSITY
     const curiosityVideos = [
-        ['hlJmwrHEUQ0', 'Behind The Scene', 'scopri le tecniche e lo storyboard originale'], // 1
-        ['nW3AkeZIBXg', 'Tutorial Pin-Up', 'guida pratica al disegno digitale passo dopo passo'], // 2
-        ['ol8Gkvw67OA', 'Illustrazione Digitale', 'processo creativo di un artwork completo'], // 6
-        ['kp9wKGouuZU', 'Augusto Tuttofusto', 'intervista speciale rilasciata per “il Romanista”'], // 10
-        ['H5DlDbpFQwo', 'Mostra De Andrè, (Mollica - Rai1)', 'di Vincenzo Mollica, mostra di De Andrè (AP)'] // 11
+        ['hlJmwrHEUQ0', 'Behind The Scene', 'scopri le tecniche e lo storyboard originale'],
+        ['nW3AkeZIBXg', 'Tutorial Pin-Up', 'guida pratica al disegno digitale passo dopo passo'],
+        ['ol8Gkvw67OA', 'Illustrazione Digitale', 'processo creativo di un artwork completo'],
+        ['kp9wKGouuZU', 'Augusto Tuttofusto', 'intervista speciale rilasciata per “il Romanista”'],
+        ['H5DlDbpFQwo', 'Mostra De Andrè, (Mollica - Rai1)', 'di Vincenzo Mollica, mostra di De Andrè (AP)']
     ].map(([id, title, desc]) => ({
         type: 'video',
         src: `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`,
@@ -547,7 +567,7 @@ footer .footer-name {
         desc
     }));
 
-    // 2. Le 11 Immagini Curiosity
+    // IMMAGINI CURIOSITY
     const curiosityImages = Array.from({ length: 11 }, (_, i) => {
         const num = String(i + 1).padStart(2, '0');
         const ext = (i + 1) === 8 ? 'jpg' : 'png';
@@ -559,7 +579,6 @@ footer .footer-name {
         };
     });
 
-    // Unione Video + Immagini per il player Curiosity
     const curiosityItems = [...curiosityVideos, ...curiosityImages];
 
     const portfolioImages = [
@@ -665,9 +684,19 @@ footer .footer-name {
                 g.iframe = mediaBox.querySelector('iframe');
                 g.img = null;
             } else {
-                mediaBox.innerHTML = `<div class="works-image-container"><img src="${item.src}" alt="${item.title}"></div>`;
+                mediaBox.innerHTML = `<div class="works-image-container"><img class="loading" src="" alt="${item.title}"></div>`;
                 g.img = mediaBox.querySelector('img');
                 g.iframe = null;
+
+                const tempImg = new Image();
+                tempImg.src = item.src;
+                tempImg.onload = () => {
+                    if (g.img) {
+                        g.img.src = item.src;
+                        g.img.classList.remove('loading');
+                    }
+                };
+
                 g.img.addEventListener('click', e => {
                     e.stopPropagation();
                     if (g.img.src) { zoomImg.src = g.img.src; zoomOverlay.classList.add('open'); }
@@ -734,7 +763,8 @@ footer .footer-name {
         }
     };
 
-    $('btn-bio').addEventListener('click', toggleBio);$('btn-contact').addEventListener('click', toggleContact);
+    $('btn-bio').addEventListener('click', toggleBio);
+    $('btn-contact').addEventListener('click', toggleContact);
 
     document.querySelectorAll('.close-bio-btn').forEach(btn => {
         const close = e => {
