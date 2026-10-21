@@ -546,7 +546,9 @@ footer .footer-name {
         clacsonHotspot.addEventListener('touchend', triggerClacson);
     }
 
-    // 1. I 5 Video selezionati (1, 2, 6, 10, 11)
+    // =========================================================================
+    // 1. I 5 VIDEO CURIOSITY
+    // =========================================================================
     const curiosityVideos = [
         ['hlJmwrHEUQ0', 'Behind The Scene', 'scopri le tecniche e lo storyboard originale'],
         ['nW3AkeZIBXg', 'Tutorial Pin-Up', 'guida pratica al disegno digitale passo dopo passo'],
@@ -560,15 +562,32 @@ footer .footer-name {
         desc
     }));
 
-    // 2. Le 11 Immagini Curiosity
-    const curiosityImages = Array.from({ length: 11 }, (_, i) => {
+    // =========================================================================
+    // 2. LE IMMAGINI CURIOSITY (Modifica qui le tue descrizioni!)
+    // =========================================================================
+    // Cambia il testo di 'title' e 'desc' per ciascuna delle 11 foto
+    const curiosityImageDescriptions = [
+        { title: 'Curiosity', desc: 'Curiosity 01' },
+        { title: 'Curiosity', desc: 'Curiosity 02' },
+        { title: 'Curiosity', desc: 'Curiosity 03' },
+        { title: 'Curiosity', desc: 'Curiosity 04' },
+        { title: 'Curiosity', desc: 'Curiosity 05' },
+        { title: 'Curiosity', desc: 'Curiosity 06' },
+        { title: 'Curiosity', desc: 'Curiosity 07' },
+        { title: 'Curiosity', desc: 'Curiosity 08' },
+        { title: 'Curiosity', desc: 'Curiosity 09' },
+        { title: 'Curiosity', desc: 'Curiosity 10' },
+        { title: 'Curiosity', desc: 'Curiosity 11' }
+    ];
+
+    const curiosityImages = curiosityImageDescriptions.map((info, i) => {
         const num = String(i + 1).padStart(2, '0');
         const ext = (i + 1) === 8 ? 'jpg' : 'png';
         return {
             type: 'image',
             src: `images/Curiosity${num}.${ext}`,
-            title: 'Curiosity',
-            desc: `Curiosity ${num}`
+            title: info.title,
+            desc: info.desc
         };
     });
 
@@ -767,7 +786,8 @@ footer .footer-name {
         }
     };
 
-    $('btn-bio').addEventListener('click', toggleBio);$('btn-contact').addEventListener('click', toggleContact);
+    $('btn-bio').addEventListener('click', toggleBio);
+    $('btn-contact').addEventListener('click', toggleContact);
 
     document.querySelectorAll('.close-bio-btn').forEach(btn => {
         const close = e => {
