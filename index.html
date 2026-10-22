@@ -282,8 +282,25 @@ html,body{
 
 .zoom-overlay{display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;height:100dvh;background:rgba(0,0,0,.92);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:999999;justify-content:center;align-items:center;padding:15px;cursor:zoom-out}
 .zoom-overlay.open{display:flex}
-.zoom-container{position:relative;display:flex;max-width:92vw;max-height:88vh;max-height:88dvh;border-radius:8px;box-shadow:0 15px 40px rgba(0,0,0,.8);border:2px solid rgba(255,255,255,.85);overflow:hidden;background:#000}
+.zoom-container{position:relative;display:flex;max-width:92vw;max-height:88vh;max-height:88dvh;border-radius:8px;box-shadow:0 15px 40px rgba(0,0,0,.8);border:2px solid rgba(255,255,255,.85);overflow:hidden;background:#000;cursor:default}
 .zoom-container img{max-width:92vw;max-height:88vh;max-height:88dvh;object-fit:contain;display:block;pointer-events:none;background:#000}
+
+/* BARRA DINAMICA IN BASSO NELLA FOTO INGRANDITA */
+.zoom-footer{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:8px 16px;
+    background:linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 70%, transparent 100%);
+    z-index:10;
+    font-family:var(--f);
+    pointer-events:auto;
+}
+.zoom-counter{color:var(--cream);font-size:1.15rem;letter-spacing:.5px}
 
 /* FOOTER FISSO CON SFONDO ROSSO, TESTO BIANCO, NOME NERO E RIGHINA NERA SUPERIORE */
 footer {
@@ -481,7 +498,16 @@ footer .footer-name {
 
 <div id="zoom-overlay" class="zoom-overlay">
     <button class="close-red-btn" id="close-zoom" type="button">&times;</button>
-    <div class="zoom-container"><img id="zoom-modal-img" src="" alt="Ingrandimento Opera"></div>
+    <div class="zoom-container" id="zoom-container">
+        <img id="zoom-modal-img" src="" alt="Ingrandimento Opera">
+        <div class="zoom-footer testo-custom">
+            <span class="zoom-counter" id="zoom-counter"></span>
+            <div class="nav-buttons">
+                <button class="curiosity-nav-btn" id="zoom-prev" type="button">&laquo; Indietro</button>
+                <button class="curiosity-nav-btn active-nav" id="zoom-next" type="button">Avanti &raquo;</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <footer>
@@ -563,9 +589,8 @@ footer .footer-name {
     }));
 
     // =========================================================================
-    // 2. LE IMMAGINI CURIOSITY (Modifica qui le tue descrizioni!)
+    // 2. LE IMMAGINI CURIOSITY
     // =========================================================================
-    // Cambia il testo di 'title' e 'desc' per ciascuna delle 11 foto
     const curiosityImageDescriptions = [
         { title: 'Curiosity', desc: 'Keith & Anita, 2026' },
         { title: 'Curiosity', desc: 'What If, The Who, 2026' },
@@ -626,17 +651,19 @@ footer .footer-name {
         };
     });
 
-    const galleries = [
-        { btn: 'btn-curiosity', items: curiosityItems },
-        { btn: 'btn-sketchs', items: portfolioImages },
-        { btn: 'btn-color-artworks', items: worksImages },
-        { btn: 'btn-highlights', items: [
-            { type: 'image', src: 'images/b01.jpg', title: 'Highlights!', desc: 'Enrico Brignano in “I 7 Re di Roma”' },
-            { type: 'image', src: 'images/b02.jpg', title: 'Highlights!', desc: 'Enrico Brignano in “I 7 Re di Roma”' }
-        ] }
+    const highlightImages = [
+        { type: 'image', src: 'images/b01.jpg', title: 'Highlights!', desc: 'Enrico Brignano in “I 7 Re di Roma”' },
+        { type: 'image', src: 'images/b02.jpg', title: 'Highlights!', desc: 'Enrico Brignano in “I 7 Re di Roma”' }
     ];
 
-    // Precaricamento silente di tutte le immagini delle gallerie per fluidità istantanea
+    const galleries = [
+        { btn: 'btn-curiosity', items: curiosityItems, imageItems: curiosityImages },
+        { btn: 'btn-sketchs', items: portfolioImages, imageItems: portfolioImages },
+        { btn: 'btn-color-artworks', items: worksImages, imageItems: worksImages },
+        { btn: 'btn-highlights', items: highlightImages, imageItems: highlightImages }
+    ];
+
+    // Precaricamento silente di tutte le immagini delle gallerie
     galleries.forEach(g => {
         g.items.forEach(item => {
             if (item.type === 'image') {
@@ -649,11 +676,49 @@ footer .footer-name {
     const dropdowns = [...document.querySelectorAll('.dropdown')];
     const zoomOverlay = $('zoom-overlay');
     const zoomImg = $('zoom-modal-img');
+    const zoomCounter = $('zoom-counter');
+    const zoomPrev = $('zoom-prev');
+    const zoomNext = $('zoom-next');
     const bioDropdown = $('dropdown-bio');
     const contactDropdown = $('dropdown-contact');
 
-    const modalOpen = () => zoomOverlay.classList.contains('open') || galleries.some(g => g.el.classList.contains('open'));
+    let activeZoomGallery = null;
+    let activeZoomIndex = 0;
+
+    const updateZoomImage = () => {
+        if (!activeZoomGallery) return;
+        const item = activeZoomGallery.imageItems[activeZoomIndex];
+        zoomImg.src = item.src;
+        zoomCounter.textContent = `${activeZoomIndex + 1} / ${activeZoomGallery.imageItems.length}`;
+    };
+
     const closeZoom = () => { zoomOverlay.classList.remove('open'); zoomImg.src = ''; };
+
+    zoomPrev.addEventListener('click', e => {
+        e.stopPropagation();
+        if (!activeZoomGallery) return;
+        const total = activeZoomGallery.imageItems.length;
+        activeZoomIndex = (activeZoomIndex - 1 + total) % total;
+        updateZoomImage();
+        zoomPrev.classList.add('active-nav');
+        zoomNext.classList.remove('active-nav');
+    });
+
+    zoomNext.addEventListener('click', e => {
+        e.stopPropagation();
+        if (!activeZoomGallery) return;
+        const total = activeZoomGallery.imageItems.length;
+        activeZoomIndex = (activeZoomIndex + 1) % total;
+        updateZoomImage();
+        zoomNext.classList.add('active-nav');
+        zoomPrev.classList.remove('active-nav');
+    });
+
+    zoomOverlay.addEventListener('click', e => {
+        if (e.target === zoomOverlay) closeZoom();
+    });
+
+    const modalOpen = () => zoomOverlay.classList.contains('open') || galleries.some(g => g.el.classList.contains('open'));
     const closeGallery = g => { 
         g.el.classList.remove('open'); 
         if (g.iframe) g.iframe.src = '';
@@ -666,8 +731,6 @@ footer .footer-name {
         galleries.forEach(closeGallery);
         svgOverlay.classList.remove('headlights-active');
     };
-
-    zoomOverlay.addEventListener('click', closeZoom);
 
     document.querySelectorAll('.balloon-poly-hotspot').forEach(hotspot => {
         if (hotspot.id === 'btn-clacson') return;
@@ -722,7 +785,13 @@ footer .footer-name {
 
                 g.img.addEventListener('click', e => {
                     e.stopPropagation();
-                    if (g.img.src) { zoomImg.src = g.img.src; zoomOverlay.classList.add('open'); }
+                    const imgIdx = g.imageItems.findIndex(imgItem => imgItem.src === item.src);
+                    activeZoomGallery = g;
+                    activeZoomIndex = imgIdx >= 0 ? imgIdx : 0;
+                    updateZoomImage();
+                    zoomPrev.classList.remove('active-nav');
+                    zoomNext.classList.add('active-nav');
+                    zoomOverlay.classList.add('open');
                 });
             }
 
