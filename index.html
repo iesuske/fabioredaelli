@@ -97,28 +97,6 @@ html,body{
 .image-wrapper{position:relative;width:100%;max-width:100%;display:block}
 .bg-image{width:100%;height:auto;display:block}
 
-/* TESTO SOTTO LA MACCHINA */
-.sub-title {
-    position: absolute;
-    bottom: 3.5%;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: var(--f);
-    font-size: 2.2rem;
-    text-align: center;
-    z-index: 300;
-    pointer-events: none;
-    letter-spacing: 1px;
-    white-space: nowrap;
-}
-.sub-title .word-white {
-    color: #ffffff;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
-}
-.sub-title .word-black {
-    color: #000000;
-}
-
 /* LIVELLO SVG RESPONSIVE PER AREE SENSIBILI E FARI */
 .curiosity-svg-overlay{
   position:absolute;
@@ -400,10 +378,6 @@ footer .footer-name {
     height: auto;
     display: block;
   }
-  .sub-title {
-    font-size: 1.8rem;
-    bottom: 2.8%;
-  }
   .dropdown-menu {
     top: 13vh;
   }
@@ -459,10 +433,6 @@ footer .footer-name {
     height: auto;
     display: block;
   }
-  .sub-title {
-    font-size: 1.4rem;
-    bottom: 2.2%;
-  }
   .dropdown-menu{top:calc(9vh + 3px)}
   .curiosity-overlay{padding-top:calc(9vh + 3px)}
 
@@ -492,11 +462,6 @@ footer .footer-name {
     <div class="image-wrapper" id="img-wrapper">
         <img src="images/bg2.jpg?v=COVER" class="bg-image" alt="Artwork Fabio Redaelli" fetchpriority="high">
         
-        <!-- Scritta sotto la vettura -->
-        <div class="sub-title testo-custom">
-            <span class="word-white">comic</span> <span class="word-black">art</span> <span class="word-white">author</span>
-        </div>
-
         <svg class="curiosity-svg-overlay" viewBox="0 0 3000 1800" preserveAspectRatio="none" id="svg-overlay">
             <defs>
                 <!-- Gradiente fari con cono di luce ampliato e tonalita' calde -->
