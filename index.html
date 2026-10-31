@@ -34,8 +34,10 @@ html,body{width:100%;height:100vh;height:100dvh;background-color:var(--cream);fo
 .landscape-text-container h2{font-size:12vh;font-weight:400;margin-bottom:8px;color:var(--red)}
 .landscape-text-container p{font-size:4.8vh;line-height:1.3;color:#000}
 
+/* Regola specifica per cellulari/smartphone in orizzontale (landscape) */
 @media screen and (max-width:900px) and (orientation:landscape){
-    .landscape-text-container p{font-size:3.5vh;white-space:nowrap}
+    .landscape-text-container h2{font-size:14vh}
+    .landscape-text-container p{font-size:5vh;white-space:nowrap}
 }
 
 @media screen and (max-width:1366px) and (orientation:landscape) and (hover:none){#landscape-warning{display:flex}}
