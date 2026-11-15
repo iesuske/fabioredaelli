@@ -42,8 +42,9 @@ html,body{width:100%;height:100vh;height:100dvh;background-color:var(--cream);fo
 
 @media screen and (max-width:1366px) and (orientation:landscape) and (hover:none){#landscape-warning{display:flex}}
 
-.master-canvas{position:relative;width:100%;margin-top:-50px}
-.image-wrapper{position:relative;width:100%}
+/* Contenitore principale Desktop: evita il taglio in basso del cerchio */
+.master-canvas{position:relative;width:100%;height:calc(100dvh - 30px);display:flex;align-items:flex-start;justify-content:center;overflow:hidden}
+.image-wrapper{position:relative;width:100%;max-width:calc((100dvh - 15px) * 1.6667);margin-top:-24px}
 .bg-image{width:100%;height:auto;display:block}
 
 /* Testo SVG integrato */
@@ -117,7 +118,7 @@ footer .footer-name{color:#000}
 /* iPad in portrait */
 @media screen and (min-width:768px) and (max-width:1200px) and (orientation:portrait){
   .master-canvas{margin-top:0;height:calc(100dvh - 35px);display:flex;align-items:flex-start;justify-content:center;overflow:hidden}
-  .image-wrapper{transform:scale(2.05);transform-origin:center top;margin-top:-32px}
+  .image-wrapper{max-width:none;transform:scale(2.05);transform-origin:center top;margin-top:-32px}
   .dropdown-menu{top:13vh}
   .curiosity-overlay{padding-top:13vh}
   .menu-about{width:80vw;max-width:620px;padding:28px 20px 20px;max-height:65vh}
@@ -130,7 +131,7 @@ footer .footer-name{color:#000}
 @media screen and (max-width:767px) and (orientation:portrait){
   html,body{height:100%}
   .master-canvas{margin-top:0;height:calc(100dvh - 28px);display:flex;align-items:flex-start;justify-content:center;overflow:hidden;padding-top:10px}
-  .image-wrapper{transform:scale(2.2);transform-origin:center top;margin-top:-5.5%;-webkit-mask-image:linear-gradient(to bottom,#000 80%,transparent 100%);mask-image:linear-gradient(to bottom,#000 80%,transparent 100%)}
+  .image-wrapper{max-width:none;transform:scale(2.2);transform-origin:center top;margin-top:-5.5%;-webkit-mask-image:linear-gradient(to bottom,#000 80%,transparent 100%);mask-image:linear-gradient(to bottom,#000 80%,transparent 100%)}
   .dropdown-menu{top:calc(9vh + 3px)}
   .curiosity-overlay{padding-top:calc(9vh + 3px)}
   .menu-about{width:92vw;max-width:92vw;padding:24px 14px 16px;max-height:60vh}
