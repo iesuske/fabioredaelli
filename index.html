@@ -22,7 +22,7 @@ body.fonts-loaded .testo-custom{visibility:visible;opacity:1;transition:opacity 
 *{box-sizing:border-box;margin:0;padding:0;-webkit-user-drag:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 img,a,button,svg,polygon{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 
-/* Sfondo della pagina coordinato */
+/* Niente scroll e blocco zoom automatico del testo su mobile */
 html,body{width:100%;height:100vh;height:100dvh;background-color:var(--cream);font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;overflow:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 
 .close-red-btn{position:absolute;top:10px;right:10px;width:24px;height:24px;background:var(--red);color:#fff;border:0;border-radius:50%;font:bold 15px/1 Arial,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:1000;box-shadow:0 1px 4px rgba(0,0,0,.5)}
@@ -34,6 +34,7 @@ html,body{width:100%;height:100vh;height:100dvh;background-color:var(--cream);fo
 .landscape-text-container h2{font-size:14vh;font-weight:400;margin-bottom:8px;color:var(--red)}
 .landscape-text-container p{font-size:7.8vh;line-height:1.2;color:#000;white-space:nowrap}
 
+/* Regola specifica per cellulari/smartphone in orizzontale (landscape) */
 @media screen and (max-width:900px) and (orientation:landscape){
     .landscape-text-container h2{font-size:16vh}
     .landscape-text-container p{font-size:7.8vh;white-space:nowrap}
@@ -41,10 +42,9 @@ html,body{width:100%;height:100vh;height:100dvh;background-color:var(--cream);fo
 
 @media screen and (max-width:1366px) and (orientation:landscape) and (hover:none){#landscape-warning{display:flex}}
 
-/* Soluzione definitiva Desktop: contenitore centrato che scala in base all'altezza della finestra senza tagliare nulla */
-.master-canvas{position:relative;width:100%;height:100vh;height:100dvh;display:flex;align-items:center;justify-content:center;overflow:hidden;background-color:var(--cream)}
-.image-wrapper{position:relative;height:92vh;width:calc(92vh * (3000 / 1800));max-width:100vw;max-height:100vh;display:flex;align-items:center;justify-content:center;margin:auto}
-.bg-image{width:100%;height:100%;object-fit:contain;display:block}
+.master-canvas{position:relative;width:100%;margin-top:-50px}
+.image-wrapper{position:relative;width:100%}
+.bg-image{width:100%;height:auto;display:block}
 
 /* Testo SVG integrato */
 .svg-subtitle-text{font-family:var(--f);font-size:72px;pointer-events:none;letter-spacing:.5px}
@@ -116,8 +116,8 @@ footer .footer-name{color:#000}
 
 /* iPad in portrait */
 @media screen and (min-width:768px) and (max-width:1200px) and (orientation:portrait){
-  .master-canvas{height:calc(100dvh - 35px);display:flex;align-items:center;justify-content:center;overflow:hidden}
-  .image-wrapper{transform:scale(2.05);transform-origin:center center;height:auto;width:100%}
+  .master-canvas{margin-top:0;height:calc(100dvh - 35px);display:flex;align-items:flex-start;justify-content:center;overflow:hidden}
+  .image-wrapper{transform:scale(2.05);transform-origin:center top;margin-top:-32px}
   .dropdown-menu{top:13vh}
   .curiosity-overlay{padding-top:13vh}
   .menu-about{width:80vw;max-width:620px;padding:28px 20px 20px;max-height:65vh}
@@ -129,8 +129,8 @@ footer .footer-name{color:#000}
 /* Smartphone in portrait */
 @media screen and (max-width:767px) and (orientation:portrait){
   html,body{height:100%}
-  .master-canvas{height:calc(100dvh - 28px);display:flex;align-items:center;justify-content:center;overflow:hidden}
-  .image-wrapper{transform:scale(2.2);transform-origin:center center;-webkit-mask-image:linear-gradient(to bottom,#000 80%,transparent 100%);mask-image:linear-gradient(to bottom,#000 80%,transparent 100%);height:auto;width:100%}
+  .master-canvas{margin-top:0;height:calc(100dvh - 28px);display:flex;align-items:flex-start;justify-content:center;overflow:hidden;padding-top:10px}
+  .image-wrapper{transform:scale(2.2);transform-origin:center top;margin-top:-5.5%;-webkit-mask-image:linear-gradient(to bottom,#000 80%,transparent 100%);mask-image:linear-gradient(to bottom,#000 80%,transparent 100%)}
   .dropdown-menu{top:calc(9vh + 3px)}
   .curiosity-overlay{padding-top:calc(9vh + 3px)}
   .menu-about{width:92vw;max-width:92vw;padding:24px 14px 16px;max-height:60vh}
@@ -155,7 +155,7 @@ footer .footer-name{color:#000}
 
 <div class="master-canvas">
     <div class="image-wrapper" id="img-wrapper">
-        <img src="images/bg4.jpg?v=COVER" class="bg-image" alt="Artwork Fabio Redaelli" fetchpriority="high">
+        <img src="images/bg2.jpg?v=COVER" class="bg-image" alt="Artwork Fabio Redaelli" fetchpriority="high">
 
         <svg class="curiosity-svg-overlay" viewBox="0 0 3000 1800" preserveAspectRatio="none" id="svg-overlay">
             <defs>
