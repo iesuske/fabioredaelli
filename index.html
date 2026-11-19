@@ -29,15 +29,15 @@ html,body{width:100%;height:100vh;height:100dvh;background-color:var(--cream);fo
 #close-zoom{position:fixed;z-index:1000000}
 
 /* Avviso orizzontale per smartphone e tablet */
-#landscape-warning{display:none;position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;background:var(--cream);z-index:999999;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:16vh;overflow:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
-.landscape-text-container{width:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 15px;font-family:var(--f);-webkit-text-size-adjust:100%;text-size-adjust:100%}
-.landscape-text-container h2{font-size:15.5vh;font-weight:400;margin-bottom:8px;color:var(--red);-webkit-text-size-adjust:100%;text-size-adjust:100%}
-.landscape-text-container p{font-size:8.6vh;line-height:1.2;color:#000;white-space:nowrap;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+#landscape-warning{display:none;position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;background:var(--cream);z-index:999999;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:16vh;overflow:hidden;-webkit-text-size-adjust:none;text-size-adjust:none}
+.landscape-text-container{width:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 15px;font-family:var(--f);-webkit-text-size-adjust:none;text-size-adjust:none}
+.landscape-text-container h2{font-size:14vh;font-weight:400;margin-bottom:8px;color:var(--red);-webkit-text-size-adjust:none;text-size-adjust:none}
+.landscape-text-container p{font-size:7.8vh;line-height:1.2;color:#000;white-space:nowrap;-webkit-text-size-adjust:none;text-size-adjust:none}
 
 /* Regola specifica per cellulari/smartphone in orizzontale (landscape) */
 @media screen and (max-width:900px) and (orientation:landscape){
-    .landscape-text-container h2{font-size:17.5vh}
-    .landscape-text-container p{font-size:8.6vh;white-space:nowrap}
+    .landscape-text-container h2{font-size:16vh;-webkit-text-size-adjust:none;text-size-adjust:none}
+    .landscape-text-container p{font-size:7.8vh;white-space:nowrap;-webkit-text-size-adjust:none;text-size-adjust:none}
 }
 
 @media screen and (max-width:1366px) and (orientation:landscape) and (hover:none){#landscape-warning{display:flex}}
@@ -264,4 +264,278 @@ footer .footer-name{color:#000}
     });
 
     const vp = document.querySelector('meta[name="viewport"]');
-    const vpContent =
+    const vpContent = vp.content;
+    window.addEventListener('pageshow', () => { vp.content = vpContent; window.scrollTo(0, 0); });
+
+    const showFonts = () => body.classList.add('fonts-loaded');
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(showFonts, showFonts);
+    setTimeout(showFonts, 1000);
+
+    // Easter egg clacson: audio + fari sincronizzati con la durata dell'MP3
+    const clacsonAudio = new Audio('clacson.mp3');
+    ['ended', 'pause'].forEach(t => clacsonAudio.addEventListener(t, lightsOff));
+    const triggerClacson = e => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (modalOpen()) return;
+        lightsOn();
+        clacsonAudio.currentTime = 0;
+        clacsonAudio.play().catch(() => {});
+    };
+    ['click', 'touchend'].forEach(t => $('btn-clacson').addEventListener(t, triggerClacson));
+
+    // =========================================================================
+    // Contenuti delle gallerie
+    // =========================================================================
+    const imgs = (title, list) => list.map(([file, desc]) => ({ type: 'image', src: `images/${file}`, title, desc }));
+    const num = i => String(i + 1).padStart(2, '0');
+
+    const curiosityVideos = [
+        ['hlJmwrHEUQ0', 'Behind The Scene', 'scopri le tecniche e lo storyboard originale'],
+        ['nW3AkeZIBXg', 'Tutorial Pin-Up', 'guida pratica al disegno digitale passo dopo passo'],
+        ['ol8Gkvw67OA', 'Illustrazione Digitale', 'processo creativo di un artwork completo'],
+        ['kp9wKGouuZU', 'Augusto Tuttofusto', 'intervista speciale rilasciata per “il Romanista”'],
+        ['H5DlDbpFQwo', 'Mostra De Andrè, (Mollica - Rai1)', 'di Vincenzo Mollica, mostra di De Andrè (AP)']
+    ].map(([id, title, desc]) => ({
+        type: 'video',
+        src: `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`,
+        title,
+        desc
+    }));
+
+    const curiosityImages = imgs('Curiosity', [
+        'Keith & Anita, 2026',
+        'What If, The Who, 2026',
+        'What If, Blondie, 2026',
+        'The Ramones, 2026',
+        'A Tribute To Small Faces, 2026',
+        'What If, Medusa Fetish',
+        'The Sunshine Of Love',
+        'The Boss, From Rock&Roll Scratches, 2003',
+        'Tribute To Tom Pertty, 2022',
+        'What If, Elton John & Octopus',
+        'Keith Richards, Watercolor, 2021'
+    ].map((desc, i) => [`Curiosity${num(i)}.${i === 7 ? 'jpg' : 'png'}`, desc]));
+
+    const portfolioImages = imgs('Portfolios', [
+        ['01_Portfolio.png', 'Copertina “Rock ’n’ Roll stratchers”, 2023'],
+        ['02_Portfolio.png', 'Copertina “Il Grande romanzo della Roma”, 2024'],
+        ['03_Portfolio.png', 'Copertina “Blue”, 2003'],
+        ['04_Portfolio.png', 'Copertina “Enciclopedia Romanista”, Vol. 2'],
+        ['05_Portfolio.png', 'Copertina per LAV, “Piccole Impronte”, 2017'],
+        ['06_Portfolio.png', 'Copertina “Enciclopedia Romanista”, Vol. 4'],
+        ['07_Portfolio.png', 'Plancia per “60 (e dintorni)”, Typimedia Editore, 2020'],
+        ['08_Portfolio.png', 'Copertina “Albo”, 2011'],
+        ['10_Portfolio.png', 'Prima Pagina de “Il Romanista”, Nov. 2025']
+    ]);
+
+    const worksImages = imgs('Works', [
+        'Ago da “Capitani E Bandiere”, Newton Compton',
+        'Digital MockUp per “Il Romanista”, 2026',
+        'Figli Di Roma “Capitani E Bandiere”, 2016',
+        '“Io Che Guardo Solo Te”, Enciclopedia Romanista',
+        'Fan Art poster, 2024',
+        'Fan Art Leo Balerdi, 2026',
+        'Illustrazione inedita',
+        '“DIMMI COS’E’”, AS ROMA Edizione Skira, 2016',
+        'Tavola per Enciclopedia Romanista, Vol. 2'
+    ].map((desc, i) => [`Works${num(i)}.png`, desc]));
+
+    const highlightImages = imgs('Highlights!', [
+        ['b01.jpg', 'Enrico Brignano in “I 7 Re di Roma”'],
+        ['b02.jpg', 'Enrico Brignano in “I 7 Re di Roma”']
+    ]);
+
+    const galleries = [
+        { btn: 'btn-curiosity', items: [...curiosityVideos, ...curiosityImages], imageItems: curiosityImages },
+        { btn: 'btn-sketchs', items: portfolioImages, imageItems: portfolioImages },
+        { btn: 'btn-color-artworks', items: worksImages, imageItems: worksImages },
+        { btn: 'btn-highlights', items: highlightImages, imageItems: highlightImages }
+    ];
+
+    // Precaricamento silente di tutte le immagini delle gallerie
+    galleries.forEach(g => g.items.forEach(item => {
+        if (item.type === 'image') new Image().src = item.src;
+    }));
+
+    // =========================================================================
+    // Zoom
+    // =========================================================================
+    const dropdowns = [...document.querySelectorAll('.dropdown')];
+    const zoomOverlay = $('zoom-overlay');
+    const zoomImg = $('zoom-modal-img');
+    const zoomCounter = $('zoom-counter');
+    const zoomPrev = $('zoom-prev');
+    const zoomNext = $('zoom-next');
+    const closeZoomBtn = $('close-zoom');
+
+    let activeZoomGallery = null;
+    let activeZoomIndex = 0;
+
+    const updateZoomImage = () => {
+        if (!activeZoomGallery) return;
+        zoomImg.src = activeZoomGallery.imageItems[activeZoomIndex].src;
+        zoomCounter.textContent = `${activeZoomIndex + 1} / ${activeZoomGallery.imageItems.length}`;
+    };
+
+    const closeZoom = () => { zoomOverlay.classList.remove('open'); zoomImg.src = ''; };
+
+    ['click', 'touchend'].forEach(t => closeZoomBtn.addEventListener(t, e => {
+        e.stopPropagation();
+        closeZoom();
+    }, { passive: false }));
+
+    const stepZoom = dir => e => {
+        e.stopPropagation();
+        if (!activeZoomGallery) return;
+        const total = activeZoomGallery.imageItems.length;
+        activeZoomIndex = (activeZoomIndex + dir + total) % total;
+        updateZoomImage();
+        zoomPrev.classList.toggle('active-nav', dir < 0);
+        zoomNext.classList.toggle('active-nav', dir > 0);
+    };
+    zoomPrev.addEventListener('click', stepZoom(-1));
+    zoomNext.addEventListener('click', stepZoom(1));
+
+    zoomOverlay.addEventListener('click', e => {
+        if (e.target === zoomOverlay) closeZoom();
+    });
+
+    const modalOpen = () => zoomOverlay.classList.contains('open') || galleries.some(g => g.el.classList.contains('open'));
+    const closeGallery = g => {
+        g.el.classList.remove('open');
+        if (g.iframe) g.iframe.src = '';
+        if (g.img) g.img.src = '';
+    };
+    const setModalOpen = on => dropdowns.forEach(d => { d.classList.toggle('modal-open', on); if (on) d.classList.remove('active'); });
+    const closeAll = () => {
+        closeZoom();
+        dropdowns.forEach(d => d.classList.remove('active', 'modal-open'));
+        galleries.forEach(closeGallery);
+        lightsOff();
+    };
+
+    document.querySelectorAll('.balloon-poly-hotspot:not(#btn-clacson)').forEach(hotspot => {
+        hotspot.addEventListener('mouseenter', () => { if (!modalOpen()) lightsOn(); });
+        hotspot.addEventListener('mouseleave', lightsOff);
+    });
+
+    // =========================================================================
+    // Gallerie (modali)
+    // =========================================================================
+    galleries.forEach(g => {
+        g.el = document.createElement('div');
+        g.el.className = 'curiosity-overlay';
+        g.el.innerHTML = `<div class="curiosity-modal">
+            <button class="close-red-btn" type="button">&times;</button>
+            <div class="media-container"></div>
+            <div class="curiosity-text testo-custom"><h3></h3><p></p></div>
+            <div class="curiosity-footer testo-custom">
+                <span class="video-counter"></span>
+                <div class="nav-buttons">
+                    <button class="curiosity-nav-btn" type="button">&laquo; Indietro</button>
+                    <button class="curiosity-nav-btn active-nav" type="button">Avanti &raquo;</button>
+                </div>
+            </div></div>`;
+        body.insertBefore(g.el, zoomOverlay);
+
+        const mediaBox = g.el.querySelector('.media-container');
+        const [title, desc, counter] = ['h3', 'p', '.video-counter'].map(s => g.el.querySelector(s));
+        const [prev, next] = g.el.querySelectorAll('.curiosity-nav-btn');
+        const total = g.items.length;
+        let index = 0;
+
+        const show = n => {
+            index = n;
+            const item = g.items[n];
+
+            if (item.type === 'video') {
+                mediaBox.innerHTML = `<div class="video-container"><iframe src="${item.src}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
+                g.iframe = mediaBox.querySelector('iframe');
+                g.img = null;
+            } else {
+                mediaBox.innerHTML = `<div class="works-image-container"><img class="loading-img" src="${item.src}" alt="${item.title}"></div>`;
+                const img = g.img = mediaBox.querySelector('img');
+                g.iframe = null;
+
+                const onLoaded = () => img.classList.remove('loading-img');
+                if (img.complete) onLoaded();
+                else img.addEventListener('load', onLoaded);
+
+                img.addEventListener('click', e => {
+                    e.stopPropagation();
+                    activeZoomGallery = g;
+                    activeZoomIndex = Math.max(0, g.imageItems.indexOf(item));
+                    updateZoomImage();
+                    zoomPrev.classList.remove('active-nav');
+                    zoomNext.classList.add('active-nav');
+                    zoomOverlay.classList.add('open');
+                });
+            }
+
+            title.textContent = item.title;
+            desc.textContent = item.desc;
+            counter.textContent = `${n + 1} / ${total}`;
+        };
+
+        [prev, next].forEach(btn => btn.addEventListener('click', e => {
+            e.stopPropagation();
+            show((index + (btn === next ? 1 : -1) + total) % total);
+            prev.classList.toggle('active-nav', btn === prev);
+            next.classList.toggle('active-nav', btn === next);
+        }));
+
+        const dismiss = () => { closeGallery(g); setModalOpen(false); lightsOff(); };
+        g.el.querySelector('.close-red-btn').addEventListener('click', dismiss);
+        g.el.addEventListener('click', e => { if (e.target === g.el) dismiss(); });
+
+        $(g.btn)?.addEventListener('click', e => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (modalOpen()) return;
+            closeAll();
+            setModalOpen(true);
+            prev.classList.remove('active-nav');
+            next.classList.add('active-nav');
+            show(0);
+            g.el.classList.add('open');
+            lightsOn();
+        });
+    });
+
+    // =========================================================================
+    // Bio e Contact
+    // =========================================================================
+    const toggleDropdown = dd => e => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (modalOpen()) return;
+        const wasActive = dd.classList.contains('active');
+        closeAll();
+        if (!wasActive) {
+            dd.classList.add('active');
+            lightsOn();
+        }
+    };
+    $('btn-bio').addEventListener('click', toggleDropdown($('dropdown-bio')));
+    $('btn-contact').addEventListener('click', toggleDropdown($('dropdown-contact')));
+
+    document.querySelectorAll('.close-bio-btn').forEach(btn => {
+        const close = e => {
+            e.preventDefault();
+            e.stopPropagation();
+            btn.closest('.dropdown').classList.remove('active');
+            lightsOff();
+        };
+        ['click', 'touchend'].forEach(t => btn.addEventListener(t, close, { passive: false }));
+    });
+
+    document.addEventListener('click', e => {
+        if (modalOpen()) return;
+        dropdowns.forEach(d => { if (!d.contains(e.target)) d.classList.remove('active'); });
+        if (!dropdowns.some(d => d.classList.contains('active'))) lightsOff();
+    });
+})();
+</script>
+</body>
+</html>
