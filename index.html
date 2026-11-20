@@ -59,10 +59,10 @@ html,body{width:100%;height:100vh;height:100dvh;background-color:var(--cream);fo
 .headlights-active .headlight-glow,.headlights-active .headlight-beam{opacity:.9}
 
 /* Etichetta discreta bianca su nero con discesa morbida (solo desktop) */
-.balloon-tooltip{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;opacity:0;visibility:hidden;transition:opacity .14s ease,visibility .14s ease}
+.balloon-tooltip{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;opacity:0;visibility:hidden;transition:opacity .15s ease,visibility .15s ease}
 .balloon-tooltip.visible{opacity:1;visibility:visible}
-.balloon-tooltip .tt-inner{background:var(--dark);color:#ffffff;font-family:var(--f);font-size:14px;line-height:1.25;letter-spacing:.3px;padding:6px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.16);box-shadow:0 6px 16px rgba(0,0,0,.35);white-space:nowrap;transform:translateY(-6px);transition:transform .2s cubic-bezier(.22,1,.36,1)}
-.balloon-tooltip.visible .tt-inner{transform:translateY(0)}
+.balloon-tooltip .tt-box{background:var(--dark);color:#ffffff;font-family:var(--f);font-size:14px;line-height:1.25;letter-spacing:.3px;padding:6px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.16);box-shadow:0 6px 16px rgba(0,0,0,.35);white-space:nowrap;transform:translateY(-6px);transition:transform .22s cubic-bezier(.22,1,.36,1)}
+.balloon-tooltip.visible .tt-box{transform:translateY(0)}
 
 @media (hover:none),(pointer:coarse),(max-width:767px){
   .balloon-tooltip{display:none!important}
@@ -240,7 +240,7 @@ footer .footer-name{color:#000}
 
 <!-- Etichetta flottante (solo desktop) -->
 <div class="balloon-tooltip testo-custom" id="balloon-tooltip" role="tooltip" aria-hidden="true">
-    <div class="tt-inner" id="balloon-tooltip-text"></div>
+    <div class="tt-box" id="balloon-tooltip-text"></div>
 </div>
 
 <!-- Zoom immagine -->
@@ -446,96 +446,81 @@ footer .footer-name{color:#000}
         lightsOff();
     };
 
-    // Etichetta al passaggio del mouse (solo desktop, segue la manina, sparisce all'uscita o dopo 4s)
+    // Etichetta al passaggio del mouse (solo desktop: vicina alla manina, sparisce all'uscita o dopo 4s)
     const balloonTooltip = $('balloon-tooltip');
     const balloonTooltipText = $('balloon-tooltip-text');
     const isDesktopPointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    let activeTooltipHotspot = null;
-    let tooltipAutoHideTimer = null;
+    let activeHotspot = null;
+    let hideTimer = null;
+    let watchInterval = null;
 
-    const clearTooltipTimer = () => {
-        if (tooltipAutoHideTimer) {
-            clearTimeout(tooltipAutoHideTimer);
-            tooltipAutoHideTimer = null;
-        }
+    const stopWatchers = () => {
+        if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+        if (watchInterval) { clearInterval(watchInterval); watchInterval = null; }
     };
 
     const hideTooltip = () => {
-        clearTooltipTimer();
-        activeTooltipHotspot = null;
+        stopWatchers();
+        activeHotspot = null;
         balloonTooltip.classList.remove('visible');
     };
 
-    const positionTooltip = (clientX, clientY) => {
+    const moveTooltipNearCursor = (x, y) => {
         const offsetX = 12;
         const offsetY = 14;
         const rect = balloonTooltip.getBoundingClientRect();
         const vw = window.innerWidth;
         const vh = window.innerHeight;
 
-        let x = clientX + offsetX;
-        let y = clientY + offsetY;
+        let left = x + offsetX;
+        let top = y + offsetY;
 
-        if (x + rect.width > vw - 10) x = Math.max(10, clientX - rect.width - offsetX);
-        if (y + rect.height > vh - 10) y = Math.max(10, clientY - rect.height - offsetY);
+        if (left + rect.width > vw - 10) left = Math.max(10, x - rect.width - offsetX);
+        if (top + rect.height > vh - 10) top = Math.max(10, y - rect.height - offsetY);
 
-        balloonTooltip.style.left = `${Math.round(x)}px`;
-        balloonTooltip.style.top = `${Math.round(y)}px`;
-    };
-
-    const showTooltipForHotspot = (hotspot, clientX, clientY) => {
-        hideTooltip();
-        if (!isDesktopPointer || !hotspot || !hotspot.dataset.tooltip || modalOpen()) return;
-        activeTooltipHotspot = hotspot;
-        balloonTooltipText.textContent = hotspot.dataset.tooltip;
-        positionTooltip(clientX, clientY);
-        requestAnimationFrame(() => {
-            if (activeTooltipHotspot === hotspot && !modalOpen()) {
-                balloonTooltip.classList.add('visible');
-                clearTooltipTimer();
-                tooltipAutoHideTimer = setTimeout(() => {
-                    hideTooltip();
-                }, 4000);
-            }
-        });
+        balloonTooltip.style.left = `${Math.round(left)}px`;
+        balloonTooltip.style.top = `${Math.round(top)}px`;
     };
 
     document.querySelectorAll('.balloon-poly-hotspot:not(#btn-clacson)').forEach(hotspot => {
-        hotspot.addEventListener('pointerenter', e => {
-            if (e.pointerType !== 'mouse') return;
+        hotspot.addEventListener('mouseenter', e => {
             if (!modalOpen()) lightsOn();
-            showTooltipForHotspot(hotspot, e.clientX, e.clientY);
+            hideTooltip();
+            if (!isDesktopPointer || !hotspot.dataset.tooltip || modalOpen()) return;
+
+            activeHotspot = hotspot;
+            balloonTooltipText.textContent = hotspot.dataset.tooltip;
+            moveTooltipNearCursor(e.clientX, e.clientY);
+
+            requestAnimationFrame(() => {
+                if (activeHotspot !== hotspot || modalOpen()) return;
+                balloonTooltip.classList.add('visible');
+
+                // Sparisce dopo 4 secondi esatti
+                hideTimer = setTimeout(hideTooltip, 4000);
+
+                // Controllo ogni 150ms: se il mouse non è più sopra il poligono, sparisce subito
+                watchInterval = setInterval(() => {
+                    if (!activeHotspot || modalOpen() || !activeHotspot.matches(':hover')) {
+                        hideTooltip();
+                    }
+                }, 150);
+            });
         });
 
-        hotspot.addEventListener('pointermove', e => {
-            if (e.pointerType !== 'mouse') return;
-            if (activeTooltipHotspot === hotspot && balloonTooltip.classList.contains('visible') && !modalOpen()) {
-                positionTooltip(e.clientX, e.clientY);
+        hotspot.addEventListener('mousemove', e => {
+            if (isDesktopPointer && activeHotspot === hotspot && balloonTooltip.classList.contains('visible') && !modalOpen()) {
+                moveTooltipNearCursor(e.clientX, e.clientY);
             }
         });
 
-        hotspot.addEventListener('pointerleave', e => {
-            if (e.pointerType !== 'mouse') return;
+        hotspot.addEventListener('mouseleave', () => {
             lightsOff();
-            if (activeTooltipHotspot === hotspot) hideTooltip();
+            if (activeHotspot === hotspot) hideTooltip();
         });
     });
 
-    // Verifica reale sotto il cursore: se non è più su activeTooltipHotspot, sparisce subito
-    document.addEventListener('pointermove', e => {
-        if (e.pointerType !== 'mouse' || !activeTooltipHotspot || !isDesktopPointer) return;
-        if (modalOpen()) {
-            hideTooltip();
-            return;
-        }
-        const stack = document.elementsFromPoint ? document.elementsFromPoint(e.clientX, e.clientY) : [];
-        if (!stack.includes(activeTooltipHotspot)) {
-            hideTooltip();
-        }
-    });
-
     window.addEventListener('blur', hideTooltip);
-    document.addEventListener('pointercancel', hideTooltip);
 
     // =========================================================================
     // Gallerie (modali)
