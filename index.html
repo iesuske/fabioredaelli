@@ -58,7 +58,7 @@ html,body{width:100%;height:100vh;height:100dvh;background-color:var(--cream);fo
 .headlight-beam{fill:url(#beam-gradient);filter:url(#soft-blur)}
 .headlights-active .headlight-glow,.headlights-active .headlight-beam{opacity:.9}
 
-/* Balloon leggermente staccato dalla manina (solo desktop) con fade in/out in 3s */
+/* Balloon a 2px dalla manina (solo desktop) con fade in/out in 3s */
 .balloon-tooltip{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;opacity:0;visibility:hidden;transform:translate3d(-9999px,-9999px,0);transition:opacity .18s ease-out,visibility .18s ease-out}
 .balloon-tooltip.is-shown{opacity:1;visibility:visible}
 .balloon-tooltip.is-fading-out{opacity:0;transition:opacity .35s ease-in-out,visibility .35s ease-in-out}
@@ -240,7 +240,7 @@ footer .footer-name{color:#000}
     </div>
 </div>
 
-<!-- Balloon leggermente staccato dalla manina (solo desktop) -->
+<!-- Balloon a 2px dalla manina (solo desktop) -->
 <div class="balloon-tooltip" id="balloon-tooltip" role="tooltip" aria-hidden="true">
     <div class="tt-inner" id="balloon-tooltip-text"></div>
 </div>
@@ -449,7 +449,7 @@ footer .footer-name{color:#000}
     };
 
     // =========================================================================
-    // Balloon leggermente staccato dalla manina (solo desktop)
+    // Balloon a 2px dalla manina (solo desktop)
     // Durata totale 3s con fade in/out + chiusura immediata all'uscita dalla zona
     // =========================================================================
     const balloonTooltip = $('balloon-tooltip');
@@ -498,9 +498,9 @@ footer .footer-name{color:#000}
     };
 
     const placeBalloonAt = (clientX, clientY) => {
-        // Leggermente staccato dalla manina: +14px a destra e +16px in basso
-        const offsetX = 14;
-        const offsetY = 16;
+        // Attaccato di 2px vicino alla manina
+        const offsetX = 2;
+        const offsetY = 2;
         const rect = balloonTooltip.getBoundingClientRect();
         const vw = window.innerWidth;
         const vh = window.innerHeight;
