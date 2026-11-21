@@ -14,7 +14,7 @@
 
 <style>
 @font-face{font-family:'Lobster Regular';src:url('fonts/lobsteregular.ttf') format('truetype');font-display:block}
-:root{--f:'Lobster Regular',cursive;--red:#BC281B;--cream:#fde3b8;--dark:rgba(18,18,18,.92)}
+:root{--f:'Lobster Regular',cursive;--red:#BC281B;--cream:#fde3b8;--dark:rgba(18,18,18,.94)}
 
 .testo-custom{visibility:hidden;opacity:0}
 body.fonts-loaded .testo-custom{visibility:visible;opacity:1;transition:opacity .3s ease-in}
@@ -58,11 +58,11 @@ html,body{width:100%;height:100vh;height:100dvh;background-color:var(--cream);fo
 .headlight-beam{fill:url(#beam-gradient);filter:url(#soft-blur)}
 .headlights-active .headlight-glow,.headlights-active .headlight-beam{opacity:.9}
 
-/* Etichetta discreta bianca su nero con discesa morbida (solo desktop) */
-.balloon-tooltip{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;opacity:0;visibility:hidden;transition:opacity .15s ease,visibility .15s ease}
-.balloon-tooltip.visible{opacity:1;visibility:visible}
-.balloon-tooltip .tt-box{background:var(--dark);color:#ffffff;font-family:var(--f);font-size:14px;line-height:1.25;letter-spacing:.3px;padding:6px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.16);box-shadow:0 6px 16px rgba(0,0,0,.35);white-space:nowrap;transform:translateY(-6px);transition:transform .22s cubic-bezier(.22,1,.36,1)}
-.balloon-tooltip.visible .tt-box{transform:translateY(0)}
+/* Balloon quasi attaccato alla manina (solo desktop): segue in tempo reale senza ritardi */
+.balloon-tooltip{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;opacity:0;visibility:hidden;transform:translate3d(-9999px,-9999px,0);transition:opacity .12s ease,visibility .12s ease}
+.balloon-tooltip.is-shown{opacity:1;visibility:visible}
+.balloon-tooltip .tt-inner{background:var(--dark);color:#ffffff;font-family:var(--f);font-size:14px;line-height:1.25;letter-spacing:.3px;padding:6px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.16);box-shadow:0 6px 16px rgba(0,0,0,.35);white-space:nowrap;transform:translateY(-4px);transition:transform .18s cubic-bezier(.22,1,.36,1)}
+.balloon-tooltip.is-shown .tt-inner{transform:translateY(0)}
 
 @media (hover:none),(pointer:coarse),(max-width:767px){
   .balloon-tooltip{display:none!important}
@@ -238,9 +238,9 @@ footer .footer-name{color:#000}
     </div>
 </div>
 
-<!-- Etichetta flottante (solo desktop) -->
-<div class="balloon-tooltip testo-custom" id="balloon-tooltip" role="tooltip" aria-hidden="true">
-    <div class="tt-box" id="balloon-tooltip-text"></div>
+<!-- Balloon quasi attaccato alla manina (solo desktop) -->
+<div class="balloon-tooltip" id="balloon-tooltip" role="tooltip" aria-hidden="true">
+    <div class="tt-inner" id="balloon-tooltip-text"></div>
 </div>
 
 <!-- Zoom immagine -->
@@ -446,81 +446,108 @@ footer .footer-name{color:#000}
         lightsOff();
     };
 
-    // Etichetta al passaggio del mouse (solo desktop: vicina alla manina, sparisce all'uscita o dopo 4s)
+    // =========================================================================
+    // Balloon vicino/quasi attaccato alla manina (solo desktop)
+    // Sparisce SEMPRE: all'uscita/allontanamento dalla zona oppure dopo 4s
+    // =========================================================================
     const balloonTooltip = $('balloon-tooltip');
     const balloonTooltipText = $('balloon-tooltip-text');
     const isDesktopPointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    let activeHotspot = null;
-    let hideTimer = null;
-    let watchInterval = null;
 
-    const stopWatchers = () => {
-        if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
-        if (watchInterval) { clearInterval(watchInterval); watchInterval = null; }
+    let currentHotspot = null;
+    let balloonTimer = null;
+
+    const clearBalloonTimer = () => {
+        if (balloonTimer) {
+            clearTimeout(balloonTimer);
+            balloonTimer = null;
+        }
     };
 
-    const hideTooltip = () => {
-        stopWatchers();
-        activeHotspot = null;
-        balloonTooltip.classList.remove('visible');
+    const hideBalloon = () => {
+        clearBalloonTimer();
+        currentHotspot = null;
+        balloonTooltip.classList.remove('is-shown');
+        balloonTooltip.style.transform = 'translate3d(-9999px,-9999px,0)';
     };
 
-    const moveTooltipNearCursor = (x, y) => {
-        const offsetX = 12;
-        const offsetY = 14;
+    const placeBalloonAt = (clientX, clientY) => {
+        // Quasi attaccato alla manina: +6px a destra e +8px in basso
+        const offsetX = 6;
+        const offsetY = 8;
         const rect = balloonTooltip.getBoundingClientRect();
         const vw = window.innerWidth;
         const vh = window.innerHeight;
 
-        let left = x + offsetX;
-        let top = y + offsetY;
+        let x = clientX + offsetX;
+        let y = clientY + offsetY;
 
-        if (left + rect.width > vw - 10) left = Math.max(10, x - rect.width - offsetX);
-        if (top + rect.height > vh - 10) top = Math.max(10, y - rect.height - offsetY);
+        if (x + rect.width > vw - 8) x = Math.max(8, clientX - rect.width - offsetX);
+        if (y + rect.height > vh - 8) y = Math.max(8, clientY - rect.height - offsetY);
 
-        balloonTooltip.style.left = `${Math.round(left)}px`;
-        balloonTooltip.style.top = `${Math.round(top)}px`;
+        balloonTooltip.style.transform = `translate3d(${Math.round(x)}px, ${Math.round(y)}px, 0)`;
+    };
+
+    const isCursorOverHotspot = (hotspot, clientX, clientY) => {
+        if (!hotspot) return false;
+        const rect = hotspot.getBoundingClientRect();
+        if (clientX < rect.left || clientX > rect.right || clientY < rect.top || clientY > rect.bottom) {
+            return false;
+        }
+        if (typeof hotspot.isPointInFill === 'function' && svgOverlay.createSVGPoint) {
+            const pt = svgOverlay.createSVGPoint();
+            pt.x = clientX;
+            pt.y = clientY;
+            const ctm = hotspot.getScreenCTM();
+            if (ctm) {
+                const localPt = pt.matrixTransform(ctm.inverse());
+                return hotspot.isPointInFill(localPt);
+            }
+        }
+        return true;
     };
 
     document.querySelectorAll('.balloon-poly-hotspot:not(#btn-clacson)').forEach(hotspot => {
         hotspot.addEventListener('mouseenter', e => {
             if (!modalOpen()) lightsOn();
-            hideTooltip();
+            hideBalloon();
             if (!isDesktopPointer || !hotspot.dataset.tooltip || modalOpen()) return;
 
-            activeHotspot = hotspot;
+            currentHotspot = hotspot;
             balloonTooltipText.textContent = hotspot.dataset.tooltip;
-            moveTooltipNearCursor(e.clientX, e.clientY);
+            placeBalloonAt(e.clientX, e.clientY);
+            balloonTooltip.classList.add('is-shown');
 
-            requestAnimationFrame(() => {
-                if (activeHotspot !== hotspot || modalOpen()) return;
-                balloonTooltip.classList.add('visible');
-
-                // Sparisce dopo 4 secondi esatti
-                hideTimer = setTimeout(hideTooltip, 4000);
-
-                // Controllo ogni 150ms: se il mouse non è più sopra il poligono, sparisce subito
-                watchInterval = setInterval(() => {
-                    if (!activeHotspot || modalOpen() || !activeHotspot.matches(':hover')) {
-                        hideTooltip();
-                    }
-                }, 150);
-            });
-        });
-
-        hotspot.addEventListener('mousemove', e => {
-            if (isDesktopPointer && activeHotspot === hotspot && balloonTooltip.classList.contains('visible') && !modalOpen()) {
-                moveTooltipNearCursor(e.clientX, e.clientY);
-            }
+            // Sparisce dopo 4 secondi esatti anche se il cursore resta fermo
+            balloonTimer = setTimeout(() => {
+                hideBalloon();
+            }, 4000);
         });
 
         hotspot.addEventListener('mouseleave', () => {
             lightsOff();
-            if (activeHotspot === hotspot) hideTooltip();
+            if (currentHotspot === hotspot) hideBalloon();
         });
     });
 
-    window.addEventListener('blur', hideTooltip);
+    // Segue la manina in tempo reale e chiude all'istante appena ci si allontana dalla zona
+    document.addEventListener('pointermove', e => {
+        if (!isDesktopPointer || !currentHotspot) return;
+        if (e.pointerType && e.pointerType !== 'mouse') {
+            hideBalloon();
+            return;
+        }
+        if (modalOpen() || !isCursorOverHotspot(currentHotspot, e.clientX, e.clientY)) {
+            hideBalloon();
+            return;
+        }
+        if (balloonTooltip.classList.contains('is-shown')) {
+            placeBalloonAt(e.clientX, e.clientY);
+        }
+    });
+
+    window.addEventListener('blur', hideBalloon);
+    document.addEventListener('pointercancel', hideBalloon);
 
     // =========================================================================
     // Gallerie (modali)
@@ -594,7 +621,7 @@ footer .footer-name{color:#000}
         $(g.btn)?.addEventListener('click', e => {
             e.preventDefault();
             e.stopPropagation();
-            hideTooltip();
+            hideBalloon();
             if (modalOpen()) return;
             closeAll();
             setModalOpen(true);
@@ -612,7 +639,7 @@ footer .footer-name{color:#000}
     const toggleDropdown = dd => e => {
         e.preventDefault();
         e.stopPropagation();
-        hideTooltip();
+        hideBalloon();
         if (modalOpen()) return;
         const wasActive = dd.classList.contains('active');
         closeAll();
