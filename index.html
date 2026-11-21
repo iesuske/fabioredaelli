@@ -58,11 +58,13 @@ html,body{width:100%;height:100vh;height:100dvh;background-color:var(--cream);fo
 .headlight-beam{fill:url(#beam-gradient);filter:url(#soft-blur)}
 .headlights-active .headlight-glow,.headlights-active .headlight-beam{opacity:.9}
 
-/* Balloon quasi attaccato alla manina (solo desktop): segue in tempo reale senza ritardi */
-.balloon-tooltip{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;opacity:0;visibility:hidden;transform:translate3d(-9999px,-9999px,0);transition:opacity .12s ease,visibility .12s ease}
+/* Balloon leggermente staccato dalla manina (solo desktop) con fade in/out in 3s */
+.balloon-tooltip{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;opacity:0;visibility:hidden;transform:translate3d(-9999px,-9999px,0);transition:opacity .18s ease-out,visibility .18s ease-out}
 .balloon-tooltip.is-shown{opacity:1;visibility:visible}
-.balloon-tooltip .tt-inner{background:var(--dark);color:#ffffff;font-family:var(--f);font-size:14px;line-height:1.25;letter-spacing:.3px;padding:6px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.16);box-shadow:0 6px 16px rgba(0,0,0,.35);white-space:nowrap;transform:translateY(-4px);transition:transform .18s cubic-bezier(.22,1,.36,1)}
+.balloon-tooltip.is-fading-out{opacity:0;transition:opacity .35s ease-in-out,visibility .35s ease-in-out}
+.balloon-tooltip .tt-inner{background:var(--dark);color:#ffffff;font-family:var(--f);font-size:14px;line-height:1.25;letter-spacing:.3px;padding:6px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.16);box-shadow:0 6px 16px rgba(0,0,0,.35);white-space:nowrap;transform:translateY(6px);transition:transform .2s cubic-bezier(.22,1,.36,1)}
 .balloon-tooltip.is-shown .tt-inner{transform:translateY(0)}
+.balloon-tooltip.is-fading-out .tt-inner{transform:translateY(-3px);transition:transform .35s ease-in-out}
 
 @media (hover:none),(pointer:coarse),(max-width:767px){
   .balloon-tooltip{display:none!important}
@@ -238,7 +240,7 @@ footer .footer-name{color:#000}
     </div>
 </div>
 
-<!-- Balloon quasi attaccato alla manina (solo desktop) -->
+<!-- Balloon leggermente staccato dalla manina (solo desktop) -->
 <div class="balloon-tooltip" id="balloon-tooltip" role="tooltip" aria-hidden="true">
     <div class="tt-inner" id="balloon-tooltip-text"></div>
 </div>
@@ -447,34 +449,58 @@ footer .footer-name{color:#000}
     };
 
     // =========================================================================
-    // Balloon vicino/quasi attaccato alla manina (solo desktop)
-    // Sparisce SEMPRE: all'uscita/allontanamento dalla zona oppure dopo 4s
+    // Balloon leggermente staccato dalla manina (solo desktop)
+    // Durata totale 3s con fade in/out + chiusura immediata all'uscita dalla zona
     // =========================================================================
     const balloonTooltip = $('balloon-tooltip');
     const balloonTooltipText = $('balloon-tooltip-text');
     const isDesktopPointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-    let currentHotspot = null;
-    let balloonTimer = null;
+    const TOTAL_DURATION_MS = 3000;
+    const FADE_OUT_MS = 350;
+    const FADE_OUT_START_MS = TOTAL_DURATION_MS - FADE_OUT_MS;
 
-    const clearBalloonTimer = () => {
-        if (balloonTimer) {
-            clearTimeout(balloonTimer);
-            balloonTimer = null;
+    let currentHotspot = null;
+    let fadeOutStartTimer = null;
+    let hideFinishTimer = null;
+    let isFadingOut = false;
+
+    const clearBalloonTimers = () => {
+        if (fadeOutStartTimer) {
+            clearTimeout(fadeOutStartTimer);
+            fadeOutStartTimer = null;
+        }
+        if (hideFinishTimer) {
+            clearTimeout(hideFinishTimer);
+            hideFinishTimer = null;
         }
     };
 
     const hideBalloon = () => {
-        clearBalloonTimer();
+        clearBalloonTimers();
         currentHotspot = null;
-        balloonTooltip.classList.remove('is-shown');
+        isFadingOut = false;
+        balloonTooltip.classList.remove('is-shown', 'is-fading-out');
         balloonTooltip.style.transform = 'translate3d(-9999px,-9999px,0)';
     };
 
+    const startFadeOut = () => {
+        if (!currentHotspot && !balloonTooltip.classList.contains('is-shown')) return;
+        if (isFadingOut) return;
+        clearBalloonTimers();
+        isFadingOut = true;
+        currentHotspot = null;
+        balloonTooltip.classList.add('is-fading-out');
+        balloonTooltip.classList.remove('is-shown');
+        hideFinishTimer = setTimeout(() => {
+            hideBalloon();
+        }, FADE_OUT_MS);
+    };
+
     const placeBalloonAt = (clientX, clientY) => {
-        // Quasi attaccato alla manina: +6px a destra e +8px in basso
-        const offsetX = 6;
-        const offsetY = 8;
+        // Leggermente staccato dalla manina: +14px a destra e +16px in basso
+        const offsetX = 14;
+        const offsetY = 16;
         const rect = balloonTooltip.getBoundingClientRect();
         const vw = window.innerWidth;
         const vh = window.innerHeight;
@@ -516,32 +542,37 @@ footer .footer-name{color:#000}
             currentHotspot = hotspot;
             balloonTooltipText.textContent = hotspot.dataset.tooltip;
             placeBalloonAt(e.clientX, e.clientY);
-            balloonTooltip.classList.add('is-shown');
 
-            // Sparisce dopo 4 secondi esatti anche se il cursore resta fermo
-            balloonTimer = setTimeout(() => {
-                hideBalloon();
-            }, 4000);
+            requestAnimationFrame(() => {
+                if (!currentHotspot || isFadingOut) return;
+                balloonTooltip.classList.add('is-shown');
+            });
+
+            // Fade out programmato per completarsi esattamente a 3 secondi (3000ms)
+            fadeOutStartTimer = setTimeout(() => {
+                startFadeOut();
+            }, FADE_OUT_START_MS);
         });
 
         hotspot.addEventListener('mouseleave', () => {
             lightsOff();
-            if (currentHotspot === hotspot) hideBalloon();
+            if (currentHotspot === hotspot) startFadeOut();
         });
     });
 
-    // Segue la manina in tempo reale e chiude all'istante appena ci si allontana dalla zona
+    // Segue la manina in tempo reale e avvia il fade-out appena ci si allontana dalla zona
     document.addEventListener('pointermove', e => {
-        if (!isDesktopPointer || !currentHotspot) return;
+        if (!isDesktopPointer) return;
         if (e.pointerType && e.pointerType !== 'mouse') {
             hideBalloon();
             return;
         }
+        if (!currentHotspot) return;
         if (modalOpen() || !isCursorOverHotspot(currentHotspot, e.clientX, e.clientY)) {
-            hideBalloon();
+            startFadeOut();
             return;
         }
-        if (balloonTooltip.classList.contains('is-shown')) {
+        if (balloonTooltip.classList.contains('is-shown') && !isFadingOut) {
             placeBalloonAt(e.clientX, e.clientY);
         }
     });
