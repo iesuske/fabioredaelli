@@ -95,6 +95,8 @@ html,body{width:100%;height:100vh;height:100dvh;background-color:var(--cream);fo
 .curiosity-text h3,.curiosity-text p{letter-spacing:.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .curiosity-text h3{color:var(--cream);font-size:1.8rem;margin-bottom:4px;font-weight:400}
 .curiosity-text p{font-size:1.15rem;line-height:1.4;color:#e0e0e0}
+.curiosity-text a.desc-link{color:var(--red);text-decoration:underline;text-underline-offset:3px;cursor:pointer;transition:opacity .2s}
+.curiosity-text a.desc-link:hover{opacity:.85}
 .curiosity-footer,.zoom-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.2);border-bottom:1px solid rgba(255,255,255,.2)}
 .curiosity-footer{margin-top:4px;padding:8px 0}
 .video-counter,.zoom-counter{color:var(--cream);font-size:1.15rem;letter-spacing:.5px}
@@ -290,7 +292,19 @@ footer .footer-name{color:#000}
     // =========================================================================
     // Contenuti delle gallerie
     // =========================================================================
-    const imgs = (title, list) => list.map(([file, desc]) => ({ type: 'image', src: `images/${file}`, title, desc }));
+    const escapeHtml = s => String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+
+    const imgs = (title, list) => list.map(entry => {
+        if (typeof entry === 'object' && entry !== null) {
+            return { type: 'image', src: `images/${entry.file}`, title, desc: entry.desc, descHtml: entry.descHtml || null };
+        }
+        const [file, desc] = entry;
+        return { type: 'image', src: `images/${file}`, title, desc, descHtml: null };
+    });
     const num = i => String(i + 1).padStart(2, '0');
 
     const curiosityVideos = [
@@ -349,10 +363,16 @@ footer .footer-name{color:#000}
         ['b02.jpg', 'Enrico Brignano in “I 7 Re di Roma”']
     ]);
 
+    const fumettoOnlineUrl = 'https://www.fumetto-online.it/it/ricerca_lib.php?sp=&E_DETT=CONIGLIO+EDITORE&COLLANA=&LIB=&vall=1&AUTORE=HOT+STUFF+%28REDAELLI+Fabio%29';
+
     // Descrizioni da compilare a mano solo per Pin-Up
     const pinupImages = imgs('Pin-Ups', [
         ['pinup01.png', '50\'s Pin-Up, traditional and finishing digital'],
-        ['pinup02.png', 'Pin-Up from "The Blues Bondage" magazine available here!'],
+        {
+            file: 'pinup02.png',
+            desc: 'Pin-Up from "The Blues Bondage" magazine available here!',
+            descHtml: `Pin-Up from "The Blues Bondage" magazine available <a class="desc-link" href="${fumettoOnlineUrl}" target="_blank" rel="noopener noreferrer">here!</a>`
+        },
         ['pinup03.png', 'Pop Pin-Up'],
         ['pinup04.png', '"The French Maid"'],
         ['pinup05.png', 'Pin-Up artwork in collaboration with Franco Saudelli'],
@@ -476,7 +496,7 @@ footer .footer-name{color:#000}
                 g.iframe = mediaBox.querySelector('iframe');
                 g.img = null;
             } else {
-                mediaBox.innerHTML = `<div class="works-image-container"><img class="loading-img" src="${item.src}" alt="${item.title}"></div>`;
+                mediaBox.innerHTML = `<div class="works-image-container"><img class="loading-img" src="${item.src}" alt="${escapeHtml(item.title)}"></div>`;
                 const img = g.img = mediaBox.querySelector('img');
                 g.iframe = null;
 
@@ -496,7 +516,7 @@ footer .footer-name{color:#000}
             }
 
             title.textContent = item.title;
-            desc.textContent = item.desc;
+            desc.innerHTML = item.descHtml ? item.descHtml : escapeHtml(item.desc);
             counter.textContent = `${n + 1} / ${total}`;
         };
 
