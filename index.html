@@ -292,19 +292,7 @@ footer .footer-name{color:#000}
     // =========================================================================
     // Contenuti delle gallerie
     // =========================================================================
-    const escapeHtml = s => String(s)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;');
-
-    const imgs = (title, list) => list.map(entry => {
-        if (typeof entry === 'object' && entry !== null) {
-            return { type: 'image', src: `images/${entry.file}`, title, desc: entry.desc, descHtml: entry.descHtml || null };
-        }
-        const [file, desc] = entry;
-        return { type: 'image', src: `images/${file}`, title, desc, descHtml: null };
-    });
+    const imgs = (title, list) => list.map(([file, desc]) => ({ type: 'image', src: `images/${file}`, title, desc }));
     const num = i => String(i + 1).padStart(2, '0');
 
     const curiosityVideos = [
@@ -363,16 +351,10 @@ footer .footer-name{color:#000}
         ['b02.jpg', 'Enrico Brignano in “I 7 Re di Roma”']
     ]);
 
-    const fumettoOnlineUrl = 'https://www.fumetto-online.it/it/ricerca_lib.php?sp=&E_DETT=CONIGLIO+EDITORE&COLLANA=&LIB=&vall=1&AUTORE=HOT+STUFF+%28REDAELLI+Fabio%29';
-
     // Descrizioni da compilare a mano solo per Pin-Up
     const pinupImages = imgs('Pin-Ups', [
         ['pinup01.png', '50\'s Pin-Up, traditional and finishing digital'],
-        {
-            file: 'pinup02.png',
-            desc: 'Pin-Up from "The Blues Bondage" magazine available here!',
-            descHtml: `Pin-Up from "The Blues Bondage" magazine available <a class="desc-link" href="${fumettoOnlineUrl}" target="_blank" rel="noopener noreferrer">here!</a>`
-        },
+        ['pinup02.png', 'Pin-Up from "The Blues Bondage" magazine available here!'],
         ['pinup03.png', 'Pop Pin-Up'],
         ['pinup04.png', '"The French Maid"'],
         ['pinup05.png', 'Pin-Up artwork in collaboration with Franco Saudelli'],
@@ -381,6 +363,15 @@ footer .footer-name{color:#000}
         ['pinup08.png', 'Pin-Up on paper, extract from "Blue" magazine, 2004'],
         ['pinup09.png', 'Digital poster for exhibit, 2017']
     ]);
+
+    const fumettoOnlineUrl = 'https://www.fumetto-online.it/it/ricerca_lib.php?sp=&E_DETT=CONIGLIO+EDITORE&COLLANA=&LIB=&vall=1&AUTORE=HOT+STUFF+%28REDAELLI+Fabio%29';
+
+    const formatDesc = item => {
+        if (item.src.endsWith('/pinup02.png')) {
+            return `Pin-Up from "The Blues Bondage" magazine available <a class="desc-link" href="${fumettoOnlineUrl}" target="_blank" rel="noopener noreferrer">here!</a>`;
+        }
+        return item.desc;
+    };
 
     const galleries = [
         { btn: 'btn-curiosity', items: [...curiosityVideos, ...curiosityImages], imageItems: curiosityImages },
@@ -496,7 +487,7 @@ footer .footer-name{color:#000}
                 g.iframe = mediaBox.querySelector('iframe');
                 g.img = null;
             } else {
-                mediaBox.innerHTML = `<div class="works-image-container"><img class="loading-img" src="${item.src}" alt="${escapeHtml(item.title)}"></div>`;
+                mediaBox.innerHTML = `<div class="works-image-container"><img class="loading-img" src="${item.src}" alt="${item.title}"></div>`;
                 const img = g.img = mediaBox.querySelector('img');
                 g.iframe = null;
 
@@ -516,7 +507,7 @@ footer .footer-name{color:#000}
             }
 
             title.textContent = item.title;
-            desc.innerHTML = item.descHtml ? item.descHtml : escapeHtml(item.desc);
+            desc.innerHTML = formatDesc(item);
             counter.textContent = `${n + 1} / ${total}`;
         };
 
